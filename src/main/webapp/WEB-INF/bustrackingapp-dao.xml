@@ -1,0 +1,52 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+ 
+	<bean id="mainDAO" class="bustracking.dao.MainDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="trackingInfoDAO" class="bustracking.dao.TrackingInfoDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="studentDAO" class="bustracking.dao.StudentRegistrationDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="busDAO" class="bustracking.dao.BusRegistrationDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="classSectionDAO" class="bustracking.dao.ClassSectionDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="busDeviceRegistrationDAO" class="bustracking.dao.BusDeviceRegistrationDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="orgDAO" class="bustracking.dao.OrgRegistrationDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="fleetHomepageDAO" class="bustracking.dao.FleetHomepageDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="userDAO" class="bustracking.dao.AddUserDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="deviceRegistrationDAO" class="bustracking.dao.DeviceRegistrationDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+ 
+ <bean id="messageSending" class="bustracking.dao.MessageSending">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+ <bean id="routeDAO" class="bustracking.dao.RouteDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	 <bean id="businessRuleDAO" class="bustracking.dao.OrgBusinessRuleDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="clientHomeDAO" class="bustracking.dao.ClientHomeDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+</beans>
