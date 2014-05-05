@@ -37,9 +37,11 @@ import bustracking.forms.BusRegistrationForm;
 import bustracking.forms.ClientHomeForm;
 import bustracking.forms.FleetHomepageForm;
 import bustracking.forms.OrgBusinessRuleForm;
+import bustracking.forms.SuperAdminHomeForm;
 
 import bustracking.forms.LatLongForm;
 import bustracking.model.*;
+
 
 
 import bustracking.model.XMLWriter;
@@ -76,8 +78,15 @@ public class MainController {
 		String role=mainDAO.getRole(principal.getName());
 		session.setAttribute("menu",mainDAO.getRole(principal.getName()));
 		
-		if(role.equals("ROLE_SUPERADMIN"))
+		if(role.equals("ROLE_SUPERADMIN")){
+			
+			SuperAdminHomeForm superAdminHomeForm = new SuperAdminHomeForm();
+			superAdminHomeForm.setSuperAdminHome(mainDAO.getAdminHomes());
+			model.addAttribute("superAdminHomeForm",superAdminHomeForm);
 			return "superadmin_homepage";
+		}
+			
+			
 		else if(role.equals("ROLE_FCLIENT"))
 		{
 		    FleetHomepageForm fleetHomepageForm=new FleetHomepageForm();

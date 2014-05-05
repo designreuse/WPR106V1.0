@@ -92,26 +92,22 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
 									<!-- <td valign="middle" align="center" width="1%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
-         						<td valign="top" align="left" width="15%"> Organization Name</td>					         	
-					         	<td valign="top" align="left" width="15%"> Branch Name</td>
+         						<td valign="top" align="left" width="24%"> Organization Name</td>					         	
+					         	<td valign="top" align="left" width="14%"> Branch Name</td>
           						<td valign="top" align="left" width="15%"> No.of Busses</td>
-          						<td valign="top" align="left" width="15%"> Device Status</td>
           						<td valign="top" align="left" width="25%"> No.of Students</td>
 
 
 
 								</tr></table><div class="Panel_One_Inner">
-								<table>
+								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<!-- Display Admin Userd here  Suresh--> 
-									<c:forEach items="${participantsDetailsForm.participantsDetails}" var="participantsDetails" varStatus="status">
+									<c:forEach items="${superAdminHomeForm.superAdminHome}" var="superAdmin" varStatus="status">
 							       		<tr class="row1" onmouseover="mouse_event(this,'row_hover');" onmouseout="mouse_event(this,'row1');">
-								           	<td valign="top" align="left"  width="10%">${participantsDetails.fname}</td>
-											<td valign="top" align="left" width="15%">${participantsDetails.mobile_num}</td>
-											<td valign="top" align="left" width="10%">${participantsDetails.city}</td>
-											<td valign="top" align="left" width="10%">${participantsDetails.age}</td>
-											<td valign="top" align="left" width="15%">${participantsDetails.age}</td>
-											
-										
+								           	<td valign="top" align="left"  width="25%">${superAdmin.org_name}</td>
+											<td valign="top" align="left" width="16%">${superAdmin.branch}</td>
+											<td valign="top" align="left" width="15%">${superAdmin.no_of_vechicle}</td>
+											<td valign="top" align="left" width="25%">${superAdmin.no_of_student}</td>
 										</tr>
 							    	</c:forEach>
 						    	</table></div>
