@@ -35,7 +35,7 @@ public class BusRegistrationDAO {
 		
 		try{
 			System.out.println("inserting into Tbl_bus");
-			PreparedStatement preparedStatement=con.prepareStatement("Insert into tbl_vechicle(org_id,vechicle_reg_no,device_imei_number,driver_name,driver_licence_no,driver_licence_exp_date,route_no) values(?,?,?,?,?,?,?)");
+			PreparedStatement preparedStatement=con.prepareStatement("Insert into tbl_vechicle(org_id,vechicle_reg_no,device_imei_number,driver_name,driver_licence_number,driver_licence_exp_date,route_no) values(?,?,?,?,?,?,?)");
 			preparedStatement.setString(1,bus.getOrg_id());
 			preparedStatement.setString(2,bus.getVechicle_reg_no());
         	preparedStatement.setString(3,bus.getDevice_imei_number());
@@ -80,11 +80,11 @@ public class BusRegistrationDAO {
 	}
 	List<BusRegistration> busregistration = new ArrayList<BusRegistration>();
 	try{
-		resultSet = statement.executeQuery("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_no,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id");
+		resultSet = statement.executeQuery("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id");
 		while(resultSet.next()){
 			busregistration.add(new BusRegistration(resultSet.getString("org_name"),resultSet.getString("branch"),
 				resultSet.getString("vechicle_reg_no"),resultSet.getString("device_imei_number"),resultSet.getString("driver_name"),
-					resultSet.getString("driver_licence_no"),resultSet.getString("driver_licence_exp_date")));
+					resultSet.getString("driver_licence_number"),resultSet.getString("driver_licence_exp_date")));
 		}
 	
     }catch(Exception e){

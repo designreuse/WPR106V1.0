@@ -1,5 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
@@ -17,7 +19,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 $('.datetimeinput').timepicker();
 </script>
 
-<!-- <script type='text/javascript'
+<script type='text/javascript'
 	src='http://code.jquery.com/jquery-1.4.3.min.js'></script>
 	<script type="text/javascript"
 	src="<c:url value="/resources/js/jquery.ui.timepicker.js" />"></script>
@@ -31,7 +33,7 @@ $('.datetimeinput').timepicker();
 			});
      });
 	
-	</script> -->
+	</script> 
 	
 	
 	<script type="text/javascript">
@@ -225,7 +227,7 @@ p {
 							--%>
 							<tr class="row2" style="margin-top:20px;">
 								<td valign="middle" align="right" class="input_txt" ><span
-									class="err">*</span>&nbsp;&nbsp;<a href="" id="addScnt" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;"> Add Bus Stops :</a><input type="hidden" id="number_of_stops" name="number_of_stops"></td>
+									class="err">*</span>&nbsp;&nbsp;<a href="#" id="addScnt" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;"> Add Bus Stops :</a><input type="hidden" id="number_of_stops" name="number_of_stops"></td>
 								<td valign="top" align="left" class="input_txt" width="70%" id="p_scents">
 								
 								
@@ -269,7 +271,7 @@ p {
 	</div></div>				
 <script
 	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-<script language="JavaScript">
+<script type="text/javascript">
 //This example adds a search box to a map, using the Google Place Autocomplete
 //feature. People can enter geographical searches. The search box will return a
 //pick list containing a mix of places and predicted search terms.
