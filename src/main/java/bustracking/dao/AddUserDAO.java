@@ -393,7 +393,7 @@ public class AddUserDAO{
 		   			return 0;
 	}
 	
-	public List<AddUser> finduser( String org_id,String admin_id, String name){
+	public List<AddUser> finduser( String org_name,String branch, String firstname, String lastname, String email){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -405,12 +405,12 @@ public class AddUserDAO{
 		}
 		List<AddUser> adduser = new ArrayList<AddUser>();
 	    try{
-	    	String cmd="select * from tbl_user where  org_id='"+org_id+"' or admin_id='"+admin_id+"' or name='"+name+"'";
+	    	String cmd="SELECT t1.org_name,t1.branch,t2.firstname,t2.lastname,t2.email,t2.username,t2.password from tbl_organization as t1 join tbl_user as t2 on t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"' or firstname='"+firstname+"' or lastname='"+lastname+"' or email='"+email+"'";
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);			
 			while(resultSet.next()){
 				
-				//adduser.add(new AddUser(resultSet.getInt("admin_reg_no"),resultSet.getString("org_id"),resultSet.getString("admin_id"),resultSet.getString("name"),resultSet.getString("password"),resultSet.getString("user_access_control"),resultSet.getString("contact_no"),resultSet.getString("notification_email")));
+				adduser.add(new AddUser(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("firstname"),resultSet.getString("lastname"),resultSet.getString("email"),resultSet.getString("username"),resultSet.getString("password")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());

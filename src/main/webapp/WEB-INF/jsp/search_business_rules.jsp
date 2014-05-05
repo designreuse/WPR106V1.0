@@ -45,7 +45,8 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Business Rules Information<span style="margin:3% 0 0 65%; padding:2px;">
+			          <h2>Business Rules Information<span style="margin:3% 0 0 55%; padding:2px;">
+			          <a href="#" onclick="window.history.back();"><img title="Back"src="resources/images/back.png" style="height:20px;width:50px;"/></a>
 			          <a href="#" onclick="toggle(this,'div');return false">
 			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:20px;width:50px;"/></a>
 			          
@@ -150,6 +151,12 @@
         				</td>
         				</tr>
         				</table></div></div>
+<script>
+function goBack()
+  {
+  window.history.back()
+  }
+</script>
 
 
 <jsp:include page="footer.jsp"></jsp:include>

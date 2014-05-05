@@ -95,8 +95,8 @@ var ddaccordion={
 				this.ajaxloadcontent($targetHeader, $targetContent, config, function(){ddaccordion.expandit($targetHeader, $targetContent, config, useractivated, directclick)})
 			else if (ajaxinfo.status=="cached"){
 				$targetContent.html(ajaxinfo.cacheddata)
-				ajaxinfo.cacheddata=null
-				ajaxinfo.status="complete"
+				ajaxinfo.cacheddata=null;
+				ajaxinfo.status="complete";
 			}
 		}
 		this.transformHeader($targetHeader, config, "expand")
@@ -262,3 +262,130 @@ var ddaccordion={
 
 //preload any images defined inside ajaxloadingmsg variable
 ddaccordion.preloadimages(jQuery(ddaccordion.ajaxloadingmsg).filter('img'))
+
+
+/*###############################################################DDaccordion plugin ############################################*/
+/*############################################################### Search DDL ############################################*/
+
+/*############################################################### Search DDL ############################################*/
+
+/*###################################################Filter box ######################################################*/
+$(function() {
+
+
+	var $placeholder = $('input[placeholder]');
+
+
+	if ($placeholder.length > 0) {
+
+
+		var attrPh = $placeholder.attr('placeholder');
+
+
+		$placeholder.attr('value', attrPh)
+ .bind('focus', function() {
+
+
+			var $this = $(this);
+
+
+			if($this.val() === attrPh)
+
+				$this.val('').css('color','#171207');
+
+
+		}).bind('blur', function() {
+
+
+			var $this = $(this);
+
+
+			if($this.val() === '')
+
+				$this.val(attrPh).css('color','#333');
+
+
+		});
+
+	}
+
+});
+
+
+/*#############################################################Filter Function script################################
+ */
+(function(document) {
+	'use strict';
+
+	var LightTableFilter = (function(Arr) {
+
+		var _input;
+
+		function _onInputEvent(e) {
+			_input = e.target;
+			var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+			Arr.forEach.call(tables, function(table) {
+				Arr.forEach.call(table.tBodies, function(tbody) {
+					Arr.forEach.call(tbody.rows, _filter);
+				});
+			});
+		}
+
+		function _filter(row) {
+			var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+			row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+		}
+
+		return {
+			init: function() {
+				var inputs = document.getElementsByClassName('light-table-filter');
+				Arr.forEach.call(inputs, function(input) {
+					input.oninput = _onInputEvent;
+				});
+			}
+		};
+	})(Array.prototype);
+
+	document.addEventListener('readystatechange', function() {
+		if (document.readyState === 'complete') {
+			LightTableFilter.init();
+		}
+	});
+
+})(document);
+/*################################################Show hide Div Query################################################*/
+function toggle1(b,id1){
+	
+	var divfilter=document.getElementById(id1);
+	if(divfilter.style.display=='none'){
+		$("#divfilter").slideToggle("slow");
+	divfilter.style.display='block';
+	b.innerHTML='<img src="resources/images/filter red.png" style="height:20px;width:50px;" title="Close filter"/>';
+
+	}
+	else{
+		$("#divfilter").slideToggle("slow");
+	divfilter.style.display='none';
+	b.innerHTML='<img src="resources/images/filter.png" style="height:20px;width:50px;" title="Open filter"/>';
+	}
+
+	}
+
+function toggle(a,id){
+	
+	var div=document.getElementById(id);
+	if(div.style.display=='none'){
+		$("#div").slideDown("slow");
+	div.style.display='block';
+	a.innerHTML='<img src="resources/images/search-red-icon.png" style="height:20px; width:50px;" title="Close Search"/>';
+
+	}
+	else{
+		$("#div").slideUp("slow");
+	div.style.display='none';
+	a.innerHTML='<img src="resources/images/search-blue-icon.png" style="height:20px;width:50px;" title="Open Search"/>';
+	}
+
+	}
+
+/*#####################################################test new slide ################################################*/

@@ -198,21 +198,21 @@ public String removeStudent(@RequestParam("org_id") String org_id, ModelMap mode
 }
 
 @RequestMapping(value="/finduser",method=RequestMethod.GET)
-public String findorg(HttpServletRequest request,@RequestParam("org_id") String org_id, @RequestParam("admin_id")String admin_id,@RequestParam("name") String name,ModelMap model)
+public String findorg(HttpServletRequest request,@RequestParam("org_name") String org_name, @RequestParam("branch")String branch,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,ModelMap model)
 {
-	if( org_id== " " && admin_id== " " && name==" ")
+	if( org_name== " " && branch== " " && firstname==" " && lastname==" " && email==" ")
 	{
 		AddUserForm adduserform=new AddUserForm();
 		adduserform.setAdduser(userDAO.getAdduser());
 		model.addAttribute("adduserform",adduserform);
         
-		return "search_user";
+		return "view_adminuser";
 	}
 	else
 	{
 	
 		AddUserForm adduserform=new AddUserForm();
-		adduserform.setAdduser(userDAO.finduser(org_id, admin_id, name));
+		adduserform.setAdduser(userDAO.finduser(org_name,branch,firstname,lastname,email));
 		model.addAttribute("adduserform",adduserform);
 
 	 return "search_user";

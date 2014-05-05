@@ -9,7 +9,7 @@
 <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
 <tr>
 <td valign="top" align="left">
-<div>
+
         
             <div class="headings altheading">
               <h2>Search</h2> </div>

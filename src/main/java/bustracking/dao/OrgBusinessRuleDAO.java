@@ -121,7 +121,47 @@ public class OrgBusinessRuleDAO {
 	
 	}
 	
+
+	
+	public List<OrgBusinessRule> findRules(String org_name,String branch){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<OrgBusinessRule> orgBusinessRules = new ArrayList<OrgBusinessRule>();
+	    try{
+	    	String cmd="Select t1.org_name,t1.branch,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"';";
+			resultSet = statement.executeQuery(cmd);
+			System.out.println(cmd);			
+			while(resultSet.next()){
 				
+				orgBusinessRules.add(new OrgBusinessRule(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("google_map_traffic"),
+						resultSet.getString("pickup_start_time"),resultSet.getString("pickup_end_time"),resultSet.getString("drop_start_time"),resultSet.getString("drop_end_time"),
+						resultSet.getString("kg_start_time"),resultSet.getString("kg_end_time"),resultSet.getString("speed_limit"),
+						resultSet.getString("sms_options"),resultSet.getString("alert_time_interval"), resultSet.getString("saturday"),
+						resultSet.getString("sms_sending")));
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return orgBusinessRules;
+		
+	}
+	
+	
+	
 	public void releaseConnection(Connection con){
 		try{if(con != null)
 			con.close();
