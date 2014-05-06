@@ -27,6 +27,7 @@ import bustracking.forms.RouteViewForm;
 import bustracking.model.AddUser;
 import bustracking.model.ClassSection;
 import bustracking.model.BusRegistration;
+import bustracking.model.StudentRegistration;
 import bustracking.forms.BusRegistrationForm;
 import bustracking.dao.BusRegistrationDAO;
 
@@ -159,5 +160,39 @@ public class ClassSectionController
 		}
 	}
 
+	// Edit Class and Section
+	
+	@RequestMapping(value="/editclass",method=RequestMethod.GET)
+	public String editclass(HttpServletRequest request,@RequestParam("org_name") String org_name,
+			@RequestParam("branch")String branch,ModelMap model)
+	{
+			
+		List <String> orgname_for_school=new ArrayList<String>();
+		orgname_for_school=busDAO.getorgname_for_school();
+		model.addAttribute("orgname_for_school",orgname_for_school);
+		
+		ClassSectionForm classSectionForm=new ClassSectionForm();
+		classSectionForm.setClassSections(classSectionDAO.edit_classsection(org_name,branch));
+		model.addAttribute("classSectionForm",classSectionForm);
+		
+		return "edit_class";
+	}
+	
+	// Update Class And Section
+	
+	@RequestMapping(value="/updateclass",method=RequestMethod.POST)
+	public String updateclass(HttpServletRequest request,@Valid ClassSection class_standard,BindingResult result,ModelMap model)
+	{
+		int status=classSectionDAO.update_classsection(class_standard);
+		if(status==1)
+		{
+			ClassSectionForm classSectionForm=new ClassSectionForm();
+			classSectionForm.setClassSections(classSectionDAO.get_classsection());
+			model.addAttribute("classSectionForm",classSectionForm);
+		}
+		
+		return "view_ClassAndSection";
+	}
+	
 
 }

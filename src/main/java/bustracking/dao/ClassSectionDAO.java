@@ -108,6 +108,8 @@ public class ClassSectionDAO
 	    return classSections;
 		
 	}
+	
+	
 //search class and section 06/05/2014
 	public List<ClassSection> view_classsection(String org_name , String branch,String class_std,String section){
 		Connection con = null;
@@ -132,11 +134,7 @@ public class ClassSectionDAO
 				classSections.add(new ClassSection(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("class"),resultSet.getString("section"),resultSet.getString("service")));
 			}
 			
-			
-			
-				
-			
-	    }catch(Exception e){
+		}catch(Exception e){
 	    	System.out.println(e.toString());
 	    	releaseResultSet(resultSet);
 	    	releaseStatement(statement);
@@ -149,6 +147,92 @@ public class ClassSectionDAO
 	    return classSections;
 		
 	}
+	
+	
+	
+	
+	// Edit Class and Section 
+	
+	public List<ClassSection> edit_classsection(String org_name , String branch){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		int result=0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<ClassSection> classSection=new ArrayList<ClassSection>();
+		try{
+			String sql="Select t1.org_name,t1.branch,t2.class,t2.section,t2.service from tbl_organization as t1 join tbl_class as t2 ON t1.org_id=t2.org_id where org_name='"+org_name+"' and branch='"+branch+"'";
+			resultSet=statement.executeQuery(sql);
+		
+			
+			while(resultSet.next())
+			{
+				classSection.add(new ClassSection(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("class"),resultSet.getString("section"),resultSet.getString("service")));
+			}
+			
+		}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return classSection;
+		
+	}
+	
+	
+	// Update Class and Section by TD
+	
+	public int update_classsection(ClassSection class_standard){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		int flag=0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		try{
+			
+			String sql="UPDATE tbl_class SET service='"+class_standard.getService()+"' where class='"+class_standard.getClass_std()+"' and section='"+class_standard.getSection()+"'";
+			statement.execute(sql);
+			System.out.println(sql);
+			flag=1;
+			
+		}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+		
+		if(flag==1)
+			return 1;
+		else
+			return 0;
+			
+	}
+	
+	
+	
 	public void releaseConnection(Connection con){
 		try{if(con != null)
 			con.close();

@@ -127,6 +127,7 @@
 					         	<td valign="top" align="left" width="15%"> Branch </td>
           						<td valign="top" align="left" width="15%">Class</td>
           						<td valign="top" align="left" width="15%"> Section</td>
+          						<td valign="top" align="left" width="15%">service</td>
           						<td valign="top" align="left" width="25%">Operation</td>
           						
           						
@@ -134,7 +135,7 @@
 							<div class="Panel_One_Inner">
 							
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
 							<c:if test="${fn:length(classSectionForm.classSections) gt 0 }">
         					<c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
         				       					<tr class="row1">
@@ -144,12 +145,12 @@
 											<td valign="top" align="left" width="15%">${classSection.branch}</td>
 											<td valign="top" align="left" width="15%">${classSection.class_std}</td>
 											<td valign="top" align="left" width="15%">${classSection.section}</td>
-											
+											<td valign="top" align="left" width="15%">${classSection.service}</td>
 											<td valign="top" align="left" width="25%">
 										
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editorg?org_id=${orgRegistration.org_id}"/>" style="padding-right:10px;">Edit</a>
+												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editclass?org_name=${classSection.org_name}&branch=${classSection.branch}"/>" style="padding-right:10px;">Edit</a>
 												
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteorg?org_id=${orgRegistration.org_id}"/>" onclick="return confirmation()">Remove</a>
+											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteclass?org_id=${orgRegistration.org_id}"/>" onclick="return confirmation()">Remove</a>
 									
 											</td>
 								</tr>
