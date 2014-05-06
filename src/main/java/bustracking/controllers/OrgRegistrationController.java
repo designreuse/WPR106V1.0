@@ -151,28 +151,47 @@ public String removeStudent(@RequestParam("registration_no") String registration
 }
 
 @RequestMapping(value="/findorg",method=RequestMethod.GET)
-public String findorg(HttpServletRequest request,@RequestParam("registration_no")String registration_no,@RequestParam("org_id") String org_id,@RequestParam("org_name") String org_name,ModelMap model)
+public String findorg(HttpServletRequest request,@RequestParam("org_name")String org_name,@RequestParam("branch") String branch,@RequestParam("city") String city,@RequestParam("country") String country,ModelMap model)
 {
-	if(registration_no== "" && org_id== "" && org_name=="")
+	if(org_name=="" && branch== "" && city== "" && country=="")
 	{
 		OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
         orgregistrationform.setOrgregistration(orgDAO.getOrgregistration());
 		model.addAttribute("orgregistrationform",orgregistrationform);
         
-		return "search_org";
+		return "view_org";
 	}
 	else
 	{
 	
-		OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
-        orgregistrationform.setOrgregistration(orgDAO.findOrganization(registration_no, org_id, org_name));
-		model.addAttribute("orgregistrationform",orgregistrationform);
-	model.addAttribute("orgregistrationform", orgregistrationform);
-   
-    
+	OrgRegistrationForm orgregistrationform= new OrgRegistrationForm();
+	orgregistrationform.setOrgregistration(orgDAO.findOrganization(org_name, branch, city,country));
+	model.addAttribute("orgregistrationform",orgregistrationform);
 	return "search_org";
 	}
 }
+
+@RequestMapping(value="/findorgInSearch",method=RequestMethod.GET)
+public String findorgInSearch(HttpServletRequest request,@RequestParam("org_name")String org_name,@RequestParam("branch") String branch,@RequestParam("city") String city,@RequestParam("country") String country,ModelMap model)
+{
+	if(org_name=="" && branch== "" && city== "" && country=="")
+	{
+		OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
+        orgregistrationform.setOrgregistration(orgDAO.getOrgregistration());
+		model.addAttribute("orgregistrationform",orgregistrationform);
+        
+		return "view_org";
+	}
+	else
+	{
+	
+	OrgRegistrationForm orgregistrationform= new OrgRegistrationForm();
+	orgregistrationform.setOrgregistration(orgDAO.findOrganization(org_name, branch, city,country));
+	model.addAttribute("orgregistrationform",orgregistrationform);
+	return "search_org";
+	}
+}
+	
 	
 	
 @RequestMapping(value="/orgdetails", method=RequestMethod.GET)

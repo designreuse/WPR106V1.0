@@ -205,31 +205,50 @@ public class BusRegistrationController {
 		return "view_bus_details";
 	}*/
 	
-	/*
+
 	@RequestMapping(value="/findbus",method=RequestMethod.GET)
-	public String findBus(HttpServletRequest request,@RequestParam("bus_id") String bus_id,@RequestParam("driver_id") String driver_id,@RequestParam("gps_id") String gps_id,ModelMap model)
+	public String findBus1(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("device_imei_number") String device_imei_number,ModelMap model)
 	{
-		if(bus_id==""&&driver_id==""&&gps_id=="")
+		if(org_name=="" && branch=="" && vechicle_reg_no=="" && device_imei_number=="")
 		{
 			BusRegistrationForm busregistrationform = new BusRegistrationForm();
 	        busregistrationform.setBusregistration(busDAO.getBusregistration());
 			model.addAttribute("busregistrationform", busregistrationform);
-	        model.addAttribute("menu","participants");
+	       
 			return "view_bus_details";
 		}
 		else
 		{
-			System.out.println(bus_id);
-		//ParticipantsDetailsForm participantsDetailsForm = new ParticipantsDetailsForm();
+			
 		BusRegistrationForm busregistrationform = new BusRegistrationForm();
-		//participantsDetailsForm.setParticipantsDetails(mainDAO.getParticipants(mobile,groupname,city));
-		busregistrationform.setBusregistration(busDAO.findBus(bus_id, driver_id, gps_id));
-        model.addAttribute("busregistrationform", busregistrationform);
-        model.addAttribute("menu","participants");
-        
-		return "view_bus_details";
+		busregistrationform.setBusregistration(busDAO.findBus( org_name, branch, vechicle_reg_no, device_imei_number));
+        model.addAttribute("busregistrationform", busregistrationform);        
+		return "search_bus";
 		}
 		
-	}*/
+	}
+	@RequestMapping(value="/findbusInSearch",method=RequestMethod.GET)
+	public String findbusInSearch(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("device_imei_number") String device_imei_number,ModelMap model)
+	{
+		if(org_name=="" && branch=="" && vechicle_reg_no=="" && device_imei_number=="")
+		{
+			BusRegistrationForm busregistrationform = new BusRegistrationForm();
+	        busregistrationform.setBusregistration(busDAO.getBusregistration());
+			model.addAttribute("busregistrationform", busregistrationform);
+	       
+			return "view_bus_details";
+		}
+		else
+		{
+			
+		BusRegistrationForm busregistrationform = new BusRegistrationForm();
+		busregistrationform.setBusregistration(busDAO.findBus( org_name, branch, vechicle_reg_no, device_imei_number));
+        model.addAttribute("busregistrationform", busregistrationform);
+        
+        
+		return "search_bus";
+		}
+		
+	}
 	
 }

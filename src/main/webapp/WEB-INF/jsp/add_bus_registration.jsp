@@ -49,7 +49,7 @@
 						         </tr> 
 								<tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Bus Registration No :</td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" onblur="busreg('bus_no')" id="bus_no" name="vechicle_reg_no" /></br><font color="Red" size="+1"></font></td>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" onblur="busreg('bus_no')" id="bus_no" name="vechicle_reg_no" /><br/><font color="Red" size="+1"></font></td>
 				                </tr> 
 								<tr class="row1">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Device IMEI No : </td>

@@ -130,5 +130,30 @@ public class OrgBusinessRuleController{
 		}
 		
 	}
-	
+	@RequestMapping(value="/findBusinessRulesInSearch",method=RequestMethod.GET)
+	public String findBusinessRulesInSearch(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model)
+	{
+		if(org_name=="" && branch=="")
+		{
+			OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
+			orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
+			model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
+	        
+			return "view_business_rules";
+		}
+		else
+		{
+			System.out.println(org_name);
+			OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
+			orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.findRules(org_name, branch));
+	    model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
+	    
+	    
+		return "search_business_rules";
+		}
+		
+	}
+
 }
+
+

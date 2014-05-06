@@ -382,7 +382,7 @@ public class OrgRegistrationDAO{
 		   			return 0;
 		}
 	
-	public List<OrgRegistration> findOrganization(String registration_no, String org_id,String org_name){
+	public List<OrgRegistration> findOrganization(String org_name, String branch,String city, String country){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -394,12 +394,12 @@ public class OrgRegistrationDAO{
 		}
 		List<OrgRegistration> orgRegistration = new ArrayList<OrgRegistration>();
 	    try{
-	    	String cmd="select * from tbl_org where registration_no='"+registration_no+"' or org_id='"+org_id+"' or org_name='"+org_name+"'";
+	    	String cmd="Select * from tbl_organization where org_name='"+org_name+"' or branch='"+branch+"' or city='"+city+"' or country='"+country+"';";
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);			
 			while(resultSet.next()){
 				
-				//orgRegistration.add(new OrgRegistration(resultSet.getString("registration_no"),resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("is_active")));
+				orgRegistration.add(new OrgRegistration(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("city"),resultSet.getString("country"),resultSet.getString("type_of_organization"),resultSet.getString("is_active"),resultSet.getString("address"),resultSet.getString("state"),resultSet.getString("pincode"),resultSet.getString("office_land_line1"),resultSet.getString("office_land_line2"),resultSet.getString("office_fax"),resultSet.getString("email_id"),resultSet.getString("chairman_name"),resultSet.getString("chairman_telephone_number"),resultSet.getString("principal_name"),resultSet.getString("principal_telephone_number"),resultSet.getString("transport_officer_name"),resultSet.getString("transport_officer_number")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());

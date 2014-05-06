@@ -131,29 +131,7 @@ public class RouteController
 		return "client_view_route_details";
 	}
 	
-	/*@RequestMapping(value="/insert_route_stop", method = RequestMethod.POST)
-	public String insert_route(Route route,ModelMap model, Principal principal)
-	{
 	
-		RouteForm routeForm=new RouteForm();
-		routeForm.setRoutes(routeDAO.insert_route(route));
-		model.addAttribute("routeForm",routeForm);
-		return "view_route";
-	}
-	*/
-	
-	/*@RequestMapping(value="/addroute", method=RequestMethod.GET)
-	public String printWelcome(HttpSession session,ModelMap model, Principal principal){
-		
-		
-		
-		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
-		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
-		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
-		
-		
-	return "add_route";
-	}*/
 	
 @RequestMapping(value="/insert_route_stop", method = RequestMethod.POST)
 
@@ -281,7 +259,35 @@ public class RouteController
 	   System.out.println(returnText);
 	return returnText;
 	}
-	
+	//find route 06/05/2014 
+
+@RequestMapping(value="/findroute",method=RequestMethod.GET)
+public String findroute(HttpServletRequest request,
+		@RequestParam("org_name") String org_name,
+		@RequestParam("branch")String branch,
+		@RequestParam("vechicle_reg_no") String vechicle_reg_no,
+		@RequestParam("route_no") String route_no,
+		@RequestParam("trip") String trip,ModelMap model)
+{
+	if( org_name== " " && branch== " " && vechicle_reg_no==" " && route_no==" " && trip==" ")
+	{
+		RouteViewForm routeViewForm=new RouteViewForm();
+		routeViewForm.setRoute_views(routeDAO.getRoutes());
+		model.addAttribute("routeViewForm",routeViewForm);
+		
+		return "view_route";
+	}
+	else
+	{
+		
+		RouteViewForm routeViewForm=new RouteViewForm();
+		routeViewForm.setRoute_views(routeDAO.findroute(org_name,branch,vechicle_reg_no,route_no,trip));
+		model.addAttribute("routeViewForm",routeViewForm);
+		
+	 return "search_route";
+	}
+}
+
 	
 	/*
 @RequestMapping(value="/viewroute", method=RequestMethod.GET)

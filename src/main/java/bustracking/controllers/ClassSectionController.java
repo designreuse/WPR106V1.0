@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -22,6 +23,7 @@ import bustracking.dao.ClassSectionDAO;
 import bustracking.dao.OrgRegistrationDAO;
 import bustracking.forms.ClassSectionForm;
 import bustracking.forms.OrgRegistrationForm;
+import bustracking.forms.RouteViewForm;
 import bustracking.model.AddUser;
 import bustracking.model.ClassSection;
 import bustracking.model.BusRegistration;
@@ -127,5 +129,35 @@ public class ClassSectionController
 	   returnText=returnText+"</select>";		 
 	return returnText;
 	}
-	
+	//find class and section 06/05/2014
+	@RequestMapping(value="/findclass",method=RequestMethod.GET)
+	public String findroute(HttpServletRequest request,
+			@RequestParam("org_name") String org_name,
+			@RequestParam("branch")String branch,
+			@RequestParam("class_std") String class_std,
+			@RequestParam("section") String section,
+			ModelMap model)
+	{
+		if( org_name== " " && branch== " " && class_std=="" && section=="")
+		{
+			ClassSectionForm classSectionForm=new ClassSectionForm();
+			classSectionForm.setClassSections(classSectionDAO.get_classsection());
+			model.addAttribute("classSectionForm",classSectionForm);
+			
+			return "view_ClassAndSection";
+			
+		}
+		else
+		{
+			
+			ClassSectionForm classSectionForm=new ClassSectionForm();
+			classSectionForm.setClassSections(classSectionDAO.view_classsection(org_name,branch,class_std,section));
+			model.addAttribute("classSectionForm",classSectionForm);
+			
+			return "search_ClassAndSection";
+			
+		}
+	}
+
+
 }

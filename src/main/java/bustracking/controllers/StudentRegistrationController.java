@@ -304,17 +304,6 @@ public class StudentRegistrationController {
 	@RequestMapping(value="/edit_student", method=RequestMethod.GET)
 	public String editStudent(HttpServletRequest request,@RequestParam("student_reg_no")int student_reg_no,ModelMap model,StudentRegistration studentRegistration)
 	{
-		
-	/*	RouteForm routeForm=new RouteForm();
-		routeForm.setRoutes(studentDAO.getRouteids());
-		model.addAttribute("routeForm",routeForm);
-		
-		BusDeviceRegistrationForm busDeviceRegistrationForm= new BusDeviceRegistrationForm();
-		busDeviceRegistrationForm.setBusDeviceRegistrations(studentDAO.getbusRegistation());
-		model.addAttribute("busDeviceRegistrationForm", busDeviceRegistrationForm);*/
-		
-		
-		
 		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
 		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
 		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
@@ -326,17 +315,6 @@ public class StudentRegistrationController {
 	public String updatestudent(HttpServletRequest request,@ModelAttribute("studentregistration") @Valid StudentRegistration studentRegistration,
 			BindingResult result,ModelMap model,Principal principal)
 	{
-		
-		/*RouteForm routeForm=new RouteForm();
-		routeForm.setRoutes(studentDAO.getRouteids());
-		model.addAttribute("routeForm",routeForm);
-		
-		BusDeviceRegistrationForm busDeviceRegistrationForm= new BusDeviceRegistrationForm();
-		busDeviceRegistrationForm.setBusDeviceRegistrations(studentDAO.getbusRegistation());
-		model.addAttribute("busDeviceRegistrationForm", busDeviceRegistrationForm);
-		*/
-		
-		
 		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
 		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
 		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
@@ -370,32 +348,31 @@ public class StudentRegistrationController {
 		
 		return "view_student_details";
 	}
-	@RequestMapping(value="/searchstudent", method=RequestMethod.GET)
-	public String searchstudent(ModelMap model, Principal principal) {
-		StudentRegistrationForm studentregistrationform= new StudentRegistrationForm();
-		studentregistrationform.setStudentregistration(studentDAO.getstudentregistration());
-		model.addAttribute("studentregistrationform",studentregistrationform);
-		return "searchbasedonstudent";
-	}
 	
-	@RequestMapping(value="/findstudent",method=RequestMethod.GET)
-	public String findstudent(HttpServletRequest request,@RequestParam("student_reg_no") String student_reg_no,@RequestParam("student_roll_no") String student_roll_no,@RequestParam("name") String name,ModelMap model)
+	
+	@RequestMapping(value="/findstudents",method=RequestMethod.GET)
+	public String findstudents(HttpServletRequest request,
+			@RequestParam("org_name") String org_name,
+			@RequestParam("branch") String branch,
+			@RequestParam("student_roll_no") String student_roll_no,
+			@RequestParam("first_name") String first_name,
+			@RequestParam("last_name") String last_name,ModelMap model)
 	{
-		if(student_reg_no== "" && student_roll_no== "" && name=="")
+		if(org_name=="" && branch=="" && student_roll_no=="" && first_name=="" && last_name=="")
 		{
 			StudentRegistrationForm studentregistrationform = new StudentRegistrationForm();
 	        studentregistrationform.setStudentregistration(studentDAO.getstudentregistration());
 			model.addAttribute("studentregistrationform", studentregistrationform);
-	        /*model.addAttribute("menu","participants");*/
-			return "search_student";
+			
+			return "view_student_details";
 		}
 		else
 		{
-			System.out.println(student_roll_no);
+			
 		StudentRegistrationForm studentregistrationform = new StudentRegistrationForm();
-        studentregistrationform.setStudentregistration(studentDAO.findStudent(student_reg_no, student_roll_no, name));
+        studentregistrationform.setStudentregistration(studentDAO.findStudent(org_name,branch,student_roll_no,first_name,last_name));
 		model.addAttribute("studentregistrationform", studentregistrationform);
-       /* model.addAttribute("menu","participants");*/
+       
         
 		return "search_student";
 		}

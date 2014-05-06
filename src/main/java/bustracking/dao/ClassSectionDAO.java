@@ -108,7 +108,47 @@ public class ClassSectionDAO
 	    return classSections;
 		
 	}
-
+//search class and section 06/05/2014
+	public List<ClassSection> view_classsection(String org_name , String branch,String class_std,String section){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		int result=0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<ClassSection> classSections=new ArrayList<ClassSection>();
+		try{
+			String sql="Select t1.org_name,t1.branch,t2.class,t2.section,t2.service from tbl_organization as t1 join tbl_class as t2 ON t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"' or class='"+class_std+"' or section='"+section+"';";
+			resultSet=statement.executeQuery(sql);
+		
+			
+			while(resultSet.next())
+			{
+				classSections.add(new ClassSection(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("class"),resultSet.getString("section"),resultSet.getString("service")));
+			}
+			
+			
+			
+				
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return classSections;
+		
+	}
 	public void releaseConnection(Connection con){
 		try{if(con != null)
 			con.close();

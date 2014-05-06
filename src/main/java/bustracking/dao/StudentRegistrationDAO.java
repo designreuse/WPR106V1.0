@@ -488,7 +488,8 @@ public class StudentRegistrationDAO {
 		   			return 0;
 		}
 	
-	public List<StudentRegistration> findStudent(String student_reg_no, String student_roll_no,String name){
+	
+	public List<StudentRegistration> findStudent(String org_name, String branch,String student_roll_no,String first_name,String last_name){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -500,12 +501,13 @@ public class StudentRegistrationDAO {
 		}
 		List<StudentRegistration> studentRegistrations = new ArrayList<StudentRegistration>();
 	    try{
-	    	String cmd="select * from tbl_student where student_reg_no='"+student_reg_no+"' or student_roll_no='"+student_roll_no+"' or name='"+name+"'";
+	    		
+	    		    	String cmd="SELECT t1.org_name,t1.branch,t2.student_roll_no,t2.first_name,t2.last_name from tbl_organization as t1 join tbl_student as t2 on t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"' or  student_roll_no='"+student_roll_no+"' or first_name='"+first_name+"' or last_name='"+last_name+"';";
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);			
 			while(resultSet.next()){
 				
-				studentRegistrations.add(new StudentRegistration(resultSet.getString("student_reg_no"),resultSet.getString("org_id"),resultSet.getString("student_roll_no"),resultSet.getString("name"),resultSet.getString("student_class"), resultSet.getString("section"),resultSet.getString("age"),resultSet.getString("gender"),resultSet.getString("blood_group"),resultSet.getString("address"),resultSet.getString("father_name"),resultSet.getString("mobile_number"),resultSet.getString("email_id"),resultSet.getString("pickup_bus_id"),resultSet.getString("drop_bus_id"),resultSet.getString("pickup_route_id"),resultSet.getString("drop_route_id"),resultSet.getString("pickup_stop_id"),resultSet.getString("drop_stop_id")));
+				studentRegistrations.add(new StudentRegistration(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("student_roll_no"),resultSet.getString("first_name"),resultSet.getString("last_name")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());

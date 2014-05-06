@@ -57,7 +57,7 @@
 			    				
 <div style="display:none" id="div">
 						<div class="searchpanel">
-						<form action="findBusinessRules" method="GET">
+						<form action="findBusinessRulesInSearch" method="GET">
 							 
 							<table >
 							  <tr>

@@ -151,6 +151,40 @@ public class RouteDAO {
 	    return busDeviceRegistrations;
 		
 	}
+	//find routes 06/05/2014
+
+	public List<Route_view> findroute(String org_name,String branch,String vechicle_reg_no,String route_no,String trip){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Route_view> route_view = new ArrayList<Route_view>();
+	    try{
+	    	String cmd="select t3.org_name,t3.branch,t1.vechicle_reg_no,t2.org_id,t2.route_no,t2.stop_id,t2.trip,t2.address from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no join tbl_organization as t3 on t3.org_id=t2.org_id where t3.org_name='"+org_name+"' or t3.branch='"+branch+"' or t1.vechicle_reg_no='"+vechicle_reg_no+"' or t2.route_no='"+route_no+"' or t2.trip='"+trip+"'";
+			resultSet = statement.executeQuery(cmd);
+			System.out.println(cmd);			
+			while(resultSet.next()){
+				
+				route_view.add(new Route_view(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address")));
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return route_view;
+		
+	}
 	
 	// Get Route Information For Client Side View
 	

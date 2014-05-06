@@ -371,7 +371,7 @@ public class BusRegistrationDAO {
 	    return routes;
 		
 	}
-	/*public List<BusRegistration> findBus(String bus_id,String driver_id,String gps_id){
+	public List<BusRegistration> findBus(String org_name,String branch,String vechicle_reg_no,String device_imei_number){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -383,14 +383,14 @@ public class BusRegistrationDAO {
 		}
 		List<BusRegistration> busRegistrations = new ArrayList<BusRegistration>();
 	    try{
-	    	String cmd="select * from tbl_bus where vechicle_reg_no='"+bus_id+"' or driver_id='"+driver_id+"' or gps_id='"+gps_id+"'";
+	    	String cmd="SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"' or vechicle_reg_no='"+vechicle_reg_no+"'";
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);			
 			while(resultSet.next()){
 				
-				busRegistrations.add(new BusRegistration(resultSet.getString("org_id"),
-						resultSet.getString("vechicle_reg_no"),resultSet.getString("device_imei_no"),resultSet.getString("driver_name"),
-						resultSet.getString("driver_licence_no"),resultSet.getString("driver_licence_exp_date")));
+				busRegistrations.add(new BusRegistration(resultSet.getString("org_name"),resultSet.getString("branch"),
+						resultSet.getString("vechicle_reg_no"),resultSet.getString("device_imei_number"),resultSet.getString("driver_name"),
+						resultSet.getString("driver_licence_number"),resultSet.getString("driver_licence_exp_date")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -444,7 +444,7 @@ public class BusRegistrationDAO {
 		   			return 1;
 		   		else
 		   			return 0;
-		}*/
+		}
 		
 public void releaseConnection(Connection con){
 	try{if(con != null)

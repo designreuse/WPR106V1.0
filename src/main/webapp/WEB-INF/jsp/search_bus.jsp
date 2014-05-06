@@ -2,7 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- ###################################DDDL################################### -->
   
-  	<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+  <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 <link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
     <!--[if lt IE 9]>
@@ -45,7 +45,8 @@
         $("#e5").select2();
     });
 </script>
-   <!-- ######################################DDDL END HERE@############################################## -->
+
+  <!-- ######################################DDDL END HERE@############################################## -->
   
  <jsp:include page="header.jsp"></jsp:include> 
 
@@ -58,7 +59,7 @@
 	<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2> Admin User Information
+			          <h2> Vehicle Information
 			          <span style="margin:3% 0 0 65%; padding:2px;">
 			          <a href="#" onclick="toggle(this,'div');return false">
 			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:20px;width:50px;"/></a>
@@ -68,69 +69,68 @@
 			          </span></h2>
 			        </div>
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    	
+    	<c:if test="${success==true}">
+        <tr>
+        <td valign="top" align="left" style="padding:5px 0 10px 0;">&nbsp;
+            <div id="success_statusbar" class="status success">
+            <p class="closestatus"><a title="Close" href="viewuser">x</a></p>
+            <p><img alt="Success" src="resources/images/icons/icon_success.png"><span>Success!</span>.</p>
+          </div>
+      </tr>
+    </c:if> 
 <tr>
 
 <td>
 
+
 <div style="display:none" id="div"><div class="searchpanel">
-<form action="finduser" method="GET">
+ 
+<form action="findbusInSearch" method="GET">
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="30%" class="input_txtlabel">&nbsp;Organization Name<br/>
+							    <td align="left" valign="middle" width="15%" class="input_txtlabel"> Organization Name &nbsp;
+							    <br/>
 							    <select   id="e1"style="width:250px;" name="org_name">
-							 	<option value="">Select None</option>     
-							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.org_name}">${addUser1.org_name}</option>
+							       <option value="">Select None</option>
+							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <option value="${BusRegistration1.org_name}">${BusRegistration1.org_name}</option>
 							    </c:forEach>
 							    </select>
 							    </td>
 							    
-							    
-							    <td align="left" valign="middle" width="30%">Branch<br/>
+								<td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp; Branch &nbsp;
+								<br/>
 							    <select   id="e2"style="width:250px;" name="branch">
-									<option value="">Select None</option>							      
-							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.branch}">${addUser1.branch}</option>
+							     <option value="">Select None</option>
+							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <option value="${BusRegistration1.branch}">${BusRegistration1.branch}</option>
 							    </c:forEach>
 							    </select>
-
-							    
-							  </td>
-							  
-							    <td align="left" valign="middle" width="30%">First Name<br/>
-							    <select   id="e3"style="width:250px;" name="firstname">
-								<option value="">Select None</option>							      
-							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.firstname}">${addUser1.firstname}</option>
+								</td>
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp;Bus Registration No &nbsp;
+							    <br/>
+							    <select   id="e3"style="width:250px;" name="vechicle_reg_no">
+							     <option value="">Select None</option>
+							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <option value="${BusRegistration1.vechicle_reg_no}">${BusRegistration1.vechicle_reg_no}</option>
 							    </c:forEach>
 							    </select>
-
 							    </td>
-							     
+							    
 							  </tr>
 							  <tr >
-							    
-							    <td align="left" valign="middle" width="30%">Last Name<br/>
-							    	<select   id="e4"style="width:250px;" name="lastname">
-							    <option value="">Select None</option>  
-							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.lastname}">${addUser1.lastname}</option>
-							    </c:forEach>
-							    </select></td>
-							    
-							    <td align="left" valign="middle" width="30%">Email<br/>
-							    <select   id="e5"style="width:250px;" name="email">
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp;Device IMEI No: &nbsp;
+							    <br/>
+							    <select   id="e4"style="width:250px;" name="device_imei_number">
 							      <option value="">Select None</option>
-							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.email}">${addUser1.email}</option>
+							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <option value="${BusRegistration1.device_imei_number}">${BusRegistration1.device_imei_number}</option>
 							    </c:forEach>
 							    </select>
 							    </td>
-							  
-							    <td align="left" valign="middle" width="30%">
-							    <input type="submit" class="btn" value="Search" ></td>
+							    
+							    <td align="left" valign="middle" width="20%"><br/><input type="submit" class="submit_btn" value="Search" name="find"></td>
 							 
 							  </tr>
 							
@@ -140,7 +140,7 @@
 							</td>
 							</tr>
 							</table>
-							        					<div style="display:none" id="divfilter">
+							<div style="display:none" id="divfilter">
 							<div id="filter_box">
 
 	<div class="wrapperFilter">
@@ -152,47 +152,43 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								<td valign="top" align="left" width="15%"> Organization</td>
-         						<td valign="top" align="left" width="15%"> Branch</td>
-         						<td valign="top" align="left" width="10%"> FirstName</td>
-         						<td valign="top" align="left" width="10%"> LastName</td>
-         						<td valign="top" align="left" width="15%"> Email</td>
-					         	<td valign="top" align="left" width="10%"> UserName</td>
-					         	<td valign="top" align="left" width="10%"> Password</td>
+         						<td valign="top" align="left" width="10%"> Branch</td>
+         						<td valign="top" align="left" width="10%"> Bus Reg No</td>
+         						<td valign="top" align="left" width="15%"> Device IMEI No</td>
+         						<td valign="top" align="left" width="12%"> Driver Name</td>
+					         	<td valign="top" align="left" width="10%"> Licence No</td>
+					         	<td valign="top" align="left" width="15%"> Licence Exp Date</td>
 					        	<td valign="top" align="left" width="25%"> Action</td>
           						
         					</tr></table>
 							<div class="Panel_One_Inner">
-							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
-							
-        					<c:if test="${fn:length(adduserform.adduser) gt 0 }">
-        					<c:forEach items="${adduserform.adduser}" var="addUser" varStatus="status">
+							 <table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<c:if test="${fn:length(busregistrationform.busregistration) gt 0 }">
+        					<c:forEach items="${busregistrationform.busregistration}" var="BusRegistration" varStatus="status">
         				       					<tr class="row1">
-							         	    <td valign="top" align="left"  width="15%" >${addUser.org_name}</td>
-							         	    <td valign="top" align="left" width="15%">${addUser.branch}</td>
-											<td valign="top" align="left" width="10%">${addUser.firstname}</td>
-											<td valign="top" align="left" width="10%">${addUser.lastname}</td>
-											<td valign="top" align="left" width="15%">${addUser.email}</td>
-											<td valign="top" align="left"  width="10%">${addUser.username}</td>
-											<td valign="top" align="left" width="10%">${addUser.password}</td>
-											
-											
+							       		<td valign="top" align="left" width="15%">${BusRegistration.org_name}</td>
+											<td valign="top" align="left" width="10%">${BusRegistration.branch}</td>
+											<td valign="top" align="left" width="10%">${BusRegistration.vechicle_reg_no}</td>
+											<td valign="top" align="left" width="15%">${BusRegistration.device_imei_number}</td>
+											<td valign="top" align="left" width="12%">${BusRegistration.driver_name}</td>
+											<td valign="top" align="left" width="10%">${BusRegistration.driver_licence_no}</td>
+											<td valign="top" align="left" width="15%">${BusRegistration.driver_licence_exp_date}</td>
 											<td valign="top" align="left" width="25%">
 										
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edituser?admin_reg_no=${addUser.username}"/>" style="padding-right:10px;">Edit</a>
+												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_bus?org_id=${BusRegistration.org_id}"/>" style="padding-right:10px;">Edit</a>
 												
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?admin_id=${addUser.username}"/>" onclick="return confirmation()">Remove</a>
+											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_bus?org_id=${BusRegistration.org_id}}"/>" onclick="return confirmation()">Remove</a>
 									
 											</td>
 								</tr>
-							    	</c:forEach>
-							    </c:if>
-							     <c:if test="${fn:length(adduserform.adduser) == 0}">	
+							    	</c:forEach></c:if>
+							    <c:if test="${fn:length(adduserform.adduser) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Users Found!!!</b></center></td>
+							    	
 							    	</tr>
-							    	</c:if>
-        				</table>
+							    	</c:if> </table>
+        				
+        			</div>
         				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								
@@ -200,8 +196,6 @@
           						
         					</tr>
         					</table>
-        			</div>
-        				
         				</td>
         				</tr>
         				</table></div></div>
@@ -239,6 +233,7 @@ function selectall(field)
 	}
 }
 </script>
-	 
+        	
+
 
 <jsp:include page="footer.jsp"></jsp:include>
