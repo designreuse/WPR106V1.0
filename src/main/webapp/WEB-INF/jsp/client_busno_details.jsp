@@ -13,7 +13,7 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Vehicle Information <span style="margin:0 0 0 70%;"><a href="javascript:history.back();" class="submit_btn12" >Go Back</a> </span> </h2>
+			          <h2>Vehicle Informations <span style="margin:0 0 0 70%;"><a href="javascript:history.back();" class="submit_btn12" >Go Back</a> </span> </h2>
 			        </div>
 			    
 
@@ -43,7 +43,8 @@
 						</div></div>
 						<!-- <br/> -->
 							<table >
-						<tr align="right"><td width="70%"><a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:40px;width:70px;"/></a></td><td><input type="submit" class="submit_btn" value="Show" name="find"></td>
+						<tr align="right"><td width="70%"><div class='buttonsheader'><a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > Show</a></div></td>
 						<td><input type="submit" class="submit_btn" value="Download" name="find"></td>
 						<td><input type="submit" class="submit_btn" value="Print" name="find"></td>
 					<td><input type="submit" class="submit_btn" value="Email" name="find"></td></tr>
@@ -87,20 +88,6 @@
         				</td>
         				</tr>
         				</table></form>	</div></div>        	
-<script type="text/javascript">
-function toggle(a,id){
-var div=document.getElementById(id);
-if(div.style.display=='none'){
-div.style.display='block';
-a.innerHTML='<img src="resources/images/search-red-icon.png" style="height:40px;width:70px;" title="Close Search"/>';
-}
-else{
-div.style.display='none';
-a.innerHTML='<img src="resources/images/search-blue-icon.png" style="height:40px;width:70px;" title="Open Search"/>';
-}
-}
-</script>
-	 
 
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
 

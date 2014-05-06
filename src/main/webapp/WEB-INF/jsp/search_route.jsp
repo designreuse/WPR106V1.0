@@ -149,7 +149,7 @@
 							
 							<div class="Panel_One_Inner">
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
 							
         					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">

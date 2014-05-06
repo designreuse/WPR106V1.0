@@ -70,7 +70,7 @@
 
 <td>
 <div style="display:none" id="div"><div class="searchpanel">
-<form action="findsuperadminhome" method="GET">
+<form action="findsuperadminSr" method="GET">
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							

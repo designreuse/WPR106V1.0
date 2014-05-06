@@ -112,7 +112,7 @@
           						<td valign="top" align="left" width="13%">Action</td>          						
         					</tr></table>
     	<div class="Panel_One_Inner">
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
 							<c:if test="${fn:length(orgBusinessRuleForm.orgBusinessRules) gt 0 }">
         					
         					<c:forEach items="${orgBusinessRuleForm.orgBusinessRules}" var="vieworgBusinessRules" varStatus="status">

@@ -125,36 +125,7 @@ else{
 		
 		return "demo";
 	}
-	@RequestMapping(value="/viewbusinessrules", method = RequestMethod.GET)
-	public String viewbusinessrules(HttpServletRequest request,ModelMap model, Principal principal ) {
-		
-		
-		return "view_business_rules";
-	}
-
-	/*Dummy Dependent DDL */
-
-	@RequestMapping(value="/DDDL", method = RequestMethod.GET)
-	public String Dependent1(HttpServletRequest request,ModelMap model, Principal principal ) {
-		
-		
-		return "Dependent1";
-	}
-
-	@RequestMapping(value="/DDDL2", method = RequestMethod.GET)
-	public String Dependent2(HttpServletRequest request,ModelMap model, Principal principal ) {
-		
-		
-		return "Dependent2";
-	}
 	
-
-	@RequestMapping(value="/DDDL3", method = RequestMethod.GET)
-	public String Dependent3(HttpServletRequest request,ModelMap model, Principal principal ) {
-		
-		
-		return "DependentOrg";
-	}
 	/*Client Dependent actions ::::GPS*/
 	@RequestMapping(value="/clienthome", method = RequestMethod.GET)
 	public String clienthome(HttpServletRequest request,ModelMap model, Principal principal ) {
@@ -357,12 +328,42 @@ else{
 		return "autocomplete_Search_org";
 	}
 		
-
+//admin home search 06/05/2014
 	
-	
-	
-	
-	
+	@RequestMapping(value="/findsuperadminhome", method = RequestMethod.GET)
+	public String findadminhome(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model, Principal principal ) {
+		if(org_name=="" && branch==""){
+			SuperAdminHomeForm superAdminHomeForm = new SuperAdminHomeForm();
+			superAdminHomeForm.setSuperAdminHome(mainDAO.getAdminHomes());
+			model.addAttribute("superAdminHomeForm",superAdminHomeForm);
+			return "superadmin_homepage";
+		}
+		else{
+			SuperAdminHomeForm superAdminHomeForm = new SuperAdminHomeForm();
+			superAdminHomeForm.setSuperAdminHome(mainDAO.findadminhome(org_name ,branch));
+			model.addAttribute("superAdminHomeForm",superAdminHomeForm);
+			return "search_Sadminhome";
+		}
+		
+		
+	}
+	@RequestMapping(value="/findsuperadminSr", method = RequestMethod.GET)
+	public String findsuperadminSr(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model, Principal principal ) {
+		if(org_name=="" && branch==""){
+			SuperAdminHomeForm superAdminHomeForm = new SuperAdminHomeForm();
+			superAdminHomeForm.setSuperAdminHome(mainDAO.getAdminHomes());
+			model.addAttribute("superAdminHomeForm",superAdminHomeForm);
+			return "superadmin_homepage";
+		}
+		else{
+			SuperAdminHomeForm superAdminHomeForm = new SuperAdminHomeForm();
+			superAdminHomeForm.setSuperAdminHome(mainDAO.findadminhome(org_name ,branch));
+			model.addAttribute("superAdminHomeForm",superAdminHomeForm);
+			return "search_Sadminhome";
+		}
+		
+		
+	}
 	@RequestMapping(value="/calculate", method = RequestMethod.POST)
 	public String calculate(HttpServletRequest request,ModelMap model, Principal principal ) {
 		
@@ -611,12 +612,6 @@ else{
 		
 		return "addadminuser";
 	}
-	@RequestMapping(value="/viewadminuser", method=RequestMethod.GET)
-	public String viewAdminUser(ModelMap model) {
-		
-		return "viewadminuser";
-	}
-	
 	@RequestMapping(value="/activityofadmin", method=RequestMethod.GET)
 	public String activityOfAdmin(ModelMap model) {
 		

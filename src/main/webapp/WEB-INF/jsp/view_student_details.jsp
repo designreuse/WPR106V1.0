@@ -138,7 +138,7 @@
         					</tr>
         				</table>
 							<div class="Panel_One_Inner">    
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
 								<c:if test="${fn:length(studentregistrationform.studentregistration) gt 0 }">
         					    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
         				       			<tr class="row1">

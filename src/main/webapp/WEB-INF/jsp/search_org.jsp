@@ -142,7 +142,7 @@
 							<div class="Panel_One_Inner">
 							
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
 							
         					<c:if test="${fn:length(orgregistrationform.orgregistration) gt 0 }">
         					<c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration" varStatus="status">

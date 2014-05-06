@@ -192,7 +192,7 @@
 							    	<td colspan="7" width="100%"><center><b>No Users Found!!!</b></center></td>
 							    	</tr>
 							    	</c:if>
-        				</table>
+        				</table></div>
         				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								
@@ -200,7 +200,7 @@
           						
         					</tr>
         					</table>
-        			</div>
+        			
         				
         				</td>
         				</tr>

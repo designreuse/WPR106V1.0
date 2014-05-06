@@ -131,6 +131,15 @@
 							</td>
 							</tr>
 							</table>
+							<div style="display:none" id="divfilter">
+							<div id="filter_box">
+
+	<div class="wrapperFilter">
+		<img src="resources/images/filter.png" width="25" height="27"title="Search" align="center"/>
+	<input type="text" id="search" name="search" placeholder="Enter Text To Filter" class="light-table-filter" data-table="order-table" placeholder="Filter"/>
+	</div>
+</div></div>
+							
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 									<!-- 	<td valign="top" align="left" width="18%"> Bus Id</td> -->
@@ -149,7 +158,7 @@
 							
 							<div class="Panel_One_Inner">
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
 							
         					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">

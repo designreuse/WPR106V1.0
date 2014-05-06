@@ -119,7 +119,36 @@ public class MainDAO {
 	    }
 	    return superAdminHomes;
 	}
+		//find home contents 06/05/2014
+public List<SuperAdminHome> findadminhome( String org_name , String branch){
 		
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<SuperAdminHome> superAdminHomes=new ArrayList<SuperAdminHome>();
+	    try{
+			resultSet = statement.executeQuery("Select t1.org_name,t1.branch, (select count(t2.vechicle_reg_no) from tbl_vechicle as t2 where t2.org_id=t1.org_id) as no_of_vechicle, (select count(t3.student_roll_no) from tbl_student as t3 where t3.org_id=t1.org_id)as no_of_student from tbl_organization as t1 group by t1.org_id where org_name='"+org_name+"' or branch='"+branch+"'");
+			while(resultSet.next()){
+				superAdminHomes.add(new SuperAdminHome(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("no_of_vechicle"),resultSet.getString("no_of_student")));
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return superAdminHomes;
+	}
 	
 	/*public List<DeviceFail> getdevicefails(){
 		Connection con = null;
