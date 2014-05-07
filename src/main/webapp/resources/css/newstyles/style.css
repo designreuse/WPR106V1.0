@@ -1584,3 +1584,136 @@ background:-webkit-gradient(linear, 0 0, 0 100%, from(#ccc), to(#fff));
       left: 306px; }
     .buttonsheader a:nth-of-type(8) {
       left: 357px; }
+      
+      
+      /* ############################DDL############################################## */
+      .heapBox
+{
+clear:both;
+display:inline-block;
+line-height:35px;
+position:relative;
+}
+
+.heapBox *
+{
+margin:0;
+padding:0;
+outline: none;
+}
+
+.heapBox.disabled .holder
+{
+color:#989898;
+}
+
+.heapBox.disabled .handler
+{
+background:url(../gfx/heapbox_bg.jpg) repeat-x;
+}
+
+.heapBox a{
+text-decoration:none;
+color:#fff;
+}
+
+.heapBox .holder
+{
+width:150px;
+overflow:hidden;
+background:#fff;
+-webkit-box-shadow: inset 0px 0px 10px 0px #eee;
+-moz-box-shadow: inset 0px 0px 10px 0px #eee;
+box-shadow: inset 0px 0px 10px 0px #eee;
+color:#666;
+text-indent:20px;
+border:1px solid #eee;
+border-right:none;
+height:35px;
+}
+
+.heapBox .handler
+{
+width:25px;
+background:url(resources/images/dddl1.png) no-repeat;
+-webkit-box-shadow: inset 0px 0px 10px 0px #eee;
+-moz-box-shadow: inset 0px 0px 10px 0px #eee;
+box-shadow: inset 0px 0px 10px 0px #eee;
+
+height:35px;
+border:1px solid #eee;
+border-left:none;
+
+}
+
+.heapBox .holder,.heapBox .handler
+{
+float:left;
+position:relative;
+z-index:10;
+}
+
+.heapBox div.heap
+{
+display:none;
+position:absolute;
+list-style-type:none;
+left:0;
+width:175px;
+top:36px;
+overflow:hidden;
+border:1px solid #eee;
+border-top:none;
+}
+
+.heapBox .heap .heapOptions
+{
+display:block;
+overflow:hidden;
+z-index:20;
+position:relative;
+}
+
+
+.heapBox .heap .heapOptions .heapOption
+{
+z-index:20;
+position:relative;
+display:block;
+height:35px;
+}
+
+.heapBox .heap .heapOptions .heapOption a{
+width:100%;
+display:block;
+background:#3bb9ff;
+-webkit-box-shadow: inset 0px 0px 10px 0px #eee;
+-moz-box-shadow: inset 0px 0px 10px 0px #eee;
+box-shadow: inset 0px 0px 10px 0px #eee;
+
+text-indent:20px;
+color:fff;
+}
+
+.heapBox .heap .heapOptions .heapOption a:hover{
+background:#fff;
+-webkit-box-shadow: inset 0px 0px 10px 0px #eee;
+-moz-box-shadow: inset 0px 0px 10px 0px #eee;
+box-shadow: inset 0px 0px 10px 0px #eee;
+color:#666;
+}
+
+.heapBox .heap .heapOptions .heapOption a.selected{
+background:#3366cc;
+color:#fff;
+}
+
+.heapBox .heap .heapOptions .heapOption a.disabled{
+	color:#777;
+}
+
+.heapBox .heap .heapOptions .heapOption a.disabled:hover{
+	background:#fff;
+	color:#ccc;
+}
+      

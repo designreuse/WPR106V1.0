@@ -73,16 +73,16 @@
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							   <td align="left" valign="middle" width="8%">&nbsp;Vehicle No:<br/>
+							   <td align="left" valign="middle" width="20%">&nbsp;Vehicle No:<br/>
 							    <select   id="e1"style="width:250px;" name="org_name">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.org_name}">${addUser1.org_name}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;From Date:<br/><input type="text" name="driver_id" class=""></td>
+							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;From Date:<br/><input type="text" name="driver_id" style="margin:4px 0 0 0;"></td>
 							    
-							      <td align="left" valign="middle" width="10%">&nbsp;&nbsp;To Date:<br/><input type="text" name="driver_id" class="search_txtbx_client"></td>
+							      <td align="left" valign="middle" width="10%">&nbsp;&nbsp;To Date:<br/><input type="text" name="driver_id" style="margin:4px 0 0 0;"></td>
 							   <td align="center" valign="middle" width="10%">
 							  <input type="submit" class="btn" value="Search" ></td>
 							 

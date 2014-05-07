@@ -1197,3 +1197,30 @@ font-size:11px; font-style:italic; color:#ff0000;
 	margin:-10px 0 0 0;
 	float:right;
 }
+
+
+
+/* ################################text############################# */
+input[type="text"] {
+	outline: none;
+	padding: 13px;
+	width: 220px;
+	font-family: Helvetica, Arial, "Sans Serif";
+	font-size: 13px;
+	color: #666;
+	border: 1px solid #eee;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #eee;
+	-moz-box-shadow: inset 0px 0px 10px 0px #eee;
+	box-shadow: inset 0px 0px 10px 0px #eee;
+	background:#fff;
+}
+
+input[type="text"]:focus {
+	border-color: #3bb9ff;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #ddd;
+	-moz-box-shadow: inset 0px 0px 10px 0px #ddd;
+	box-shadow: inset 0px 0px 10px 0px #86D4FE;
+}
