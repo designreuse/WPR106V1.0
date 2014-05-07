@@ -262,7 +262,7 @@ public class OrgRegistrationDAO{
 		    return result;
 		   
 	   }
-	public List<OrgRegistration> getOrgregistration_no(String registration_no)
+	public List<OrgRegistration> getOrgregistration_id(String org_name,String branch)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -277,11 +277,11 @@ public class OrgRegistrationDAO{
 		{
 		try
 		{
-			String cmd="select *from tbl_org where registration_no='"+registration_no+"'";
+			String cmd="select *from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"'";
 			resultSet = statement.executeQuery(cmd);
 			while(resultSet.next())
 			{
-				//orgregistration.add(new OrgRegistration(resultSet.getString("registration_no"),resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("is_active")));
+				orgregistration.add(new OrgRegistration(resultSet.getString("org_name"),resultSet.getString("office_fax"), resultSet.getString("branch"),resultSet.getString("email_id"),resultSet.getString("address"), resultSet.getString("chairman_name"), resultSet.getString("country"),resultSet.getString("chairman_telephone_number"), resultSet.getString("state"), resultSet.getString("principal_name"), resultSet.getString("city"),resultSet.getString("principal_telephone_number"),resultSet.getString("pincode"),resultSet.getString("transport_officer_name"), resultSet.getString("type_of_organization"),resultSet.getString("transport_officer_number"), resultSet.getString("office_land_line1"), resultSet.getString("is_active"),resultSet.getString("office_land_line2")));
 			}
 		}
 			catch(Exception e){
@@ -303,7 +303,7 @@ public class OrgRegistrationDAO{
 	
 	
 	
-	public int updateOrganization(OrgRegistration orgRegistration,String registration_no)
+	public int updateOrganization(OrgRegistration orgRegistration)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -315,10 +315,10 @@ public class OrgRegistrationDAO{
 			e1.printStackTrace();
 		}
 	    try{
-	    	//String cmd="UPDATE tbl_org_register SET org_id='"+orgRegistration.getOrg_id()+"',org_name='"+orgRegistration.getOrg_name()+"',is_active='"+orgRegistration.getIs_active()+"'WHERE registration_no='"+orgRegistration.getRegistration_no()+"';";
-	    	//String Desc="Update orgRegistration "+orgRegistration.getRegistration_no();
+	    	String cmd="UPDATE tbl_organization SET address='"+orgRegistration.getAddress()+"', country='"+orgRegistration.getCountry()+"', state='"+orgRegistration.getState()+"',city='"+orgRegistration.getCity()+"',pincode='"+orgRegistration.getPincode()+"',type_of_organization='"+orgRegistration.getType_of_organization()+"',office_land_line1='"+orgRegistration.getOffice_land_line1()+"',office_land_line2='"+orgRegistration.getOffice_land_line2()+"',office_fax='"+orgRegistration.getOffice_fax()+"',email_id='"+orgRegistration.getEmail_id()+"',chairman_name='"+orgRegistration.getChairman_name()+"',chairman_telephone_number='"+orgRegistration.getChairman_telephone_number()+"',principal_name='"+orgRegistration.getPrincipal_name()+"',principal_telephone_number='"+orgRegistration.getPrincipal_telephone_number()+"',transport_officer_name='"+orgRegistration.getTransport_officer_name()+"',transport_officer_number='"+orgRegistration.getTransport_officer_number()+"',is_active='"+orgRegistration.getIs_active()+"' WHERE org_name='"+orgRegistration.getOrg_name()+"' and branch='"+orgRegistration.getBranch()+"'";
+	    	String Desc="Update orgRegistration "+orgRegistration.getOrg_name();
 	    	//System.out.println(cmd);
-	    	//statement.execute(cmd);
+	    	statement.execute(cmd);
 	    	flag=1;
 	    }
 	    	 catch(Exception e){

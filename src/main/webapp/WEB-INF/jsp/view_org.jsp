@@ -171,7 +171,7 @@
 											
 											<td valign="top" align="left" width="20%">
 										
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editorg?org_id=${orgRegistration.org_id}"/>" style="padding-right:10px;">Edit</a>
+												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editorg?org_name=${orgRegistration.org_name}&branch=${orgRegistration.branch}"/>" style="padding-right:10px;">Edit</a>
 												
 											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteorg?org_id=${orgRegistration.org_id}"/>" onclick="return confirmation()">Remove</a>
 									

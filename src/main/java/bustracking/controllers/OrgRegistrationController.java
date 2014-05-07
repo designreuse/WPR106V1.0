@@ -102,10 +102,10 @@ public String vieworg(ModelMap model,Principal prinicipal)
 
 
 @RequestMapping(value="/editorg",method=RequestMethod.GET)
-public String editorg(HttpServletRequest request,@RequestParam("registration_no") String registration_no,ModelMap model,OrgRegistration orgregistration)
+public String editorg(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model,OrgRegistration orgregistration)
 {
 	OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
-	orgregistrationform.setOrgregistration(orgDAO.getOrgregistration_no(registration_no));
+	orgregistrationform.setOrgregistration(orgDAO.getOrgregistration_id(org_name, branch));
 	model.addAttribute("orgregistrationform", orgregistrationform);
 	return "edit_org";
 	
@@ -115,7 +115,7 @@ public String editorg(HttpServletRequest request,@RequestParam("registration_no"
 public String updateorg(HttpServletRequest request,@ModelAttribute ("OrgRegistration") OrgRegistration orgRegistration,ModelMap model,Principal prinicipal)
 {
 	
-		/*int status = orgDAO.updateOrganization(orgRegistration,orgRegistration.getRegistration_no());
+		int status = orgDAO.updateOrganization(orgRegistration);
 		System.out.println(status);
 		if(status==1)
 		{
@@ -124,7 +124,7 @@ public String updateorg(HttpServletRequest request,@ModelAttribute ("OrgRegistra
 			orgregistrationform.setOrgregistration(orgDAO.getOrgregistration());
 			model.addAttribute("orgregistrationform",orgregistrationform);
 			
-		}*/
+		}
 		
 		return "view_org";
 		
@@ -194,7 +194,7 @@ public String findorgInSearch(HttpServletRequest request,@RequestParam("org_name
 	
 	
 	
-@RequestMapping(value="/orgdetails", method=RequestMethod.GET)
+/*@RequestMapping(value="/orgdetails", method=RequestMethod.GET)
 	public String searchdetails(HttpServletRequest request,@RequestParam("registration_no") String registration_no,ModelMap model,OrgRegistration orgRegistration)
 	{
 		
@@ -205,7 +205,7 @@ public String findorgInSearch(HttpServletRequest request,@RequestParam("org_name
 		
 		
 		return "org_details";
-	}
+	}*/
 
 // Post method for organization and branch
 

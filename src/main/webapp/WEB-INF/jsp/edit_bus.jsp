@@ -188,8 +188,7 @@
 				          </form>
 				          </div>
 				          </div>
-				          </body>
-				          </html>				
+				          				
 				          <jsp:include page="footer.jsp"></jsp:include>
 				          
 				         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">

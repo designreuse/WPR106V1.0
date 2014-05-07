@@ -257,4 +257,38 @@ public void setOffice_land_line2(String office_land_line2) {
 	this.office_land_line2 = office_land_line2;
 }
 
+
+// Constructor For Edit
+
+public OrgRegistration(String org_name, String office_fax, String branch,
+		String email_id, String address, String chairman_name, String country,
+		String chairman_telephone_number, String state, String principal_name,
+		String city, String principal_telephone_number, String pincode,
+		String transport_officer_name, String type_of_organization,
+		String transport_officer_number, String office_land_line1,
+		String is_active, String office_land_line2) {
+	super();
+	this.org_name = org_name;
+	this.office_fax = office_fax;
+	this.branch = branch;
+	this.email_id = email_id;
+	this.address = address;
+	this.chairman_name = chairman_name;
+	this.country = country;
+	this.chairman_telephone_number = chairman_telephone_number;
+	this.state = state;
+	this.principal_name = principal_name;
+	this.city = city;
+	this.principal_telephone_number = principal_telephone_number;
+	this.pincode = pincode;
+	this.transport_officer_name = transport_officer_name;
+	this.type_of_organization = type_of_organization;
+	this.transport_officer_number = transport_officer_number;
+	this.office_land_line1 = office_land_line1;
+	this.is_active = is_active;
+	this.office_land_line2 = office_land_line2;
+}
+
+
+
 }
