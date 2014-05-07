@@ -51,7 +51,7 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Vehicle Informations<br/></h2>
+			          <h2>Vehicle Information<br/></h2>
 			          <div class="buttonswitchpanel">
 			          <div class='buttonsheader'>
 						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
@@ -74,10 +74,10 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							   <td align="left" valign="middle" width="20%">&nbsp;Vehicle No:<br/>
-							    <select   id="e1"style="width:250px;" name="org_name">
+							    <select   id="e1"style="width:250px;" name="vechicle_reg_no">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.org_name}">${addUser1.org_name}</option>
+							    <c:forEach items="${busregistrationform.busregistration}" var="driverlist" varStatus="status">
+							    <option value="${driverlist.vechicle_reg_no}">${driverlist.vechicle_reg_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;From Date:<br/><input type="text" name="driver_id" style="margin:4px 0 0 0;"></td>
@@ -114,8 +114,8 @@
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
 							 
         							<tr class="row1">
-							       		<%-- <td align="center" width="15%"><input type="checkbox" value="${DriverRegistration.driver_id}" name="chkUser"></td>
-					     		     	 --%><td valign="top" align="left"  width="10%"><a href="driver_details?driver_id=${DriverRegistration.driver_id}">${DriverRegistration.driver_id}</a></td>
+							       		
+					     		     	 <td valign="top" align="left"  width="10%"><a href="driver_details?driver_id=${DriverRegistration.driver_id}">${DriverRegistration.driver_id}</a></td>
 											<td valign="top" align="left" width="15%">${DriverRegistration.driver_name}</td>
 											<td valign="top" align="left" width="15%">${DriverRegistration.contact_no}</td>
 												<td valign="top" align="left" width="15%">${DriverRegistration.license_type}</td>

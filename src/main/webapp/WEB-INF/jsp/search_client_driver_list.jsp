@@ -74,19 +74,12 @@
 
 			        
 						
-						<form action="finddriverClient" method="GET">
+						<form action="finddriver" method="GET">
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							   <td align="left" valign="middle" width="8%">
-							   <select   id="e4"style="width:250px;" name="org_id">
-							 	<option value="">Select None</option>     
-							    <c:forEach items="${busRegistrationForm.busregistration}" var="driverlist" varStatus="status">
-							    <option value="${driverlist.org_id}">${driverlist.org_id}</option>
-							    </c:forEach>
-							    </select>
-							   Driver Name:<br/>
-							    <select   id="e1"style="width:250px;" name="driver_name">
+							   <td align="left" valign="middle" width="8%">Driver Name:<br/>
+							    <select   id="e1"style="width:250px;" name="vechicle_reg_no">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${busRegistrationForm.busregistration}" var="driverlist" varStatus="status">
 							    <option value="${driverlist.driver_name}">${driverlist.driver_name}</option>
@@ -100,7 +93,7 @@
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">License No:<br/>
-							    <select   id="e3"style="width:250px;" name="driver_licence_number">
+							    <select   id="e3"style="width:250px;" name="vechicle_reg_no">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${busRegistrationForm.busregistration}" var="driverlist" varStatus="status">
 							    <option value="${driverlist.driver_licence_no}">${driverlist.driver_licence_no}</option>
@@ -143,7 +136,7 @@
 											<td valign="top" align="left" width="15%">${DriverRegistration.vechicle_reg_no}</td>
 											<td valign="top" align="left" width="20%">${DriverRegistration.driver_licence_no}</td>
 												<td valign="top" align="left" width="15%">${DriverRegistration.driver_licence_exp_date}</td>
-											<td valign="top" align="left" width="15%">${DriverRegistration.org_id}</td>
+											
 								</tr>
 							    	</c:forEach>
 							    </c:if>
