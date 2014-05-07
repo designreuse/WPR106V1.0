@@ -148,43 +148,40 @@ public class BusRegistrationController {
 		return "bus_details";
 	}*/
 	
-	/*@RequestMapping(value="/edit_bus", method=RequestMethod.GET)
-	public String editBus(HttpServletRequest request,@RequestParam("vechicle_reg_no") String bus_id,ModelMap model,BusRegistration busRegistration)
+	@RequestMapping(value="/edit_bus", method=RequestMethod.GET)
+	public String editBus(HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,ModelMap model,BusRegistration busRegistration)
 	{
 		
+		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
+		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.getDevice_imei_no());
+		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
 		
 		BusRegistrationForm busRegistrationForm = new BusRegistrationForm();
-        busRegistrationForm.setBusregistration(busDAO.getBus_id(bus_id));
+        busRegistrationForm.setBusregistration(busDAO.getBusRegistrations_by_vechicle_reg(vechicle_reg_no));
 		model.addAttribute("busRegistrationForm", busRegistrationForm);
 		
 		return "edit_bus";
 	}
+	
+	
+	// Update the Bus Information
+	
 	@RequestMapping(value="/update_bus", method=RequestMethod.POST)
 	public String updateBus(HttpServletRequest request,@ModelAttribute("busregistration") @Valid BusRegistration busregistration,
 			BindingResult result,ModelMap model,Principal principal)
 	{
-		if (result.hasErrors())
-		{
-			
-			BusRegistrationForm busRegistrationForm = new BusRegistrationForm();
-	      //physicalexamForm.setPhysicalexam(physicalDAO.getPhysical(physicalexam.getPhysical_id()));
-			
-			String str =  busregistration.getVechicle_reg_no();
 		
-				busRegistrationForm.setBusregistration(busDAO.getBus_id(str));
-	        model.addAttribute("busRegistrationForm", busRegistrationForm);
-			    
-		        return "edit_bus";
-		}
 		System.out.println("bus id"+busregistration.getVechicle_reg_no());
 		int status = busDAO.updatebus(busregistration, busregistration.getVechicle_reg_no(),principal.getName());
 		System.out.println(status);
+		
 		BusRegistrationForm busregistrationform= new BusRegistrationForm();
 		busregistrationform.setBusregistration(busDAO.getBusregistration());
 		model.addAttribute("busregistrationform",busregistrationform);
+		
 		return "view_bus_details";
 		
-	}*/
+	}
 	
 	/*@RequestMapping(value="/delete_bus", method=RequestMethod.GET)
 	public String removeBus(@RequestParam("bus_id") String bus_id,ModelMap model, Principal principal) {

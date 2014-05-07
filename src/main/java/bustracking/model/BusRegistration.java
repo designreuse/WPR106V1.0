@@ -124,5 +124,25 @@ public class BusRegistration
 
 	
 	
+	// 	Constructor for Edit Operation
+	
+	public BusRegistration(String org_name, String branch,
+			String vechicle_reg_no, String device_imei_number,
+			String driver_name, String driver_licence_no,
+			String driver_licence_exp_date, String route_no) {
+		super();
+		
+		this.org_name = org_name;
+		this.branch = branch;
+		this.vechicle_reg_no = vechicle_reg_no;
+		this.device_imei_number = device_imei_number;
+		this.driver_name = driver_name;
+		this.driver_licence_no = driver_licence_no;
+		this.driver_licence_exp_date = driver_licence_exp_date;
+		this.route_no = route_no;
+	}
+
+	
+	
 	
 }

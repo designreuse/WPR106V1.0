@@ -109,7 +109,7 @@
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="20%">
-							    <input type="submit" class="submit_btn" value="Search" ></td>
+							    <input type="submit" class="btn" value="Search" ></td>
 							 
 							  </tr>
 							</table>

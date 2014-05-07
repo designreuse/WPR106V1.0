@@ -131,7 +131,7 @@
 							    </td>
 							    
 							    <td align="left" valign="middle" width="20%"><br/>
-							    <input type="submit" class="submit_btn" value="Search" ></td>
+							    <input type="submit" class="btn" value="Search" ></td>
 							 
 							  </tr>
 							
@@ -176,9 +176,9 @@
 											<td valign="top" align="left" width="15%">${BusRegistration.driver_licence_exp_date}</td>
 											<td valign="top" align="left" width="25%">
 										
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_bus?org_id=${BusRegistration.org_id}"/>" style="padding-right:10px;">Edit</a>
+												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_bus?vechicle_reg_no=${BusRegistration.vechicle_reg_no}"/>" style="padding-right:10px;">Edit</a>
 												
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_bus?org_id=${BusRegistration.org_id}}"/>" onclick="return confirmation()">Remove</a>
+											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_bus?org_id=${BusRegistration.vechicle_reg_no}}"/>" onclick="return confirmation()">Remove</a>
 									
 											</td>
 								</tr>

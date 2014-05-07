@@ -68,6 +68,9 @@ public class BusRegistrationDAO {
 		
 	}
 	
+	// Get Bus Details For Edit And View
+	
+	
 	public List<BusRegistration> getBusregistration(){
 	Connection con = null;
 	Statement statement = null;
@@ -100,6 +103,8 @@ public class BusRegistrationDAO {
     return busregistration;
 	
 }
+	
+	
 	public List<String> getBus_id(String org_name){
 		Connection con = null;
 		Statement statement = null;
@@ -132,6 +137,9 @@ public class BusRegistrationDAO {
 	        }
 	        return busRegistrations;
 	    }
+	
+	
+	// Select organization name
 	
 	public List<String> getorgname(){
 		Connection con = null;
@@ -202,6 +210,40 @@ public class BusRegistrationDAO {
 	        return busRegister;
 	    }
 	
+	//Get Details for Edit
+	
+	public List<BusRegistration> getBusRegistrations_by_vechicle_reg(String vechicle_reg_no){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<BusRegistration> busregistrations= new ArrayList<BusRegistration>();
+		try{
+			resultSet = statement.executeQuery("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date,t2.route_no from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where vechicle_reg_no='"+vechicle_reg_no+"'");
+			while(resultSet.next()){
+				busregistrations.add(new BusRegistration(resultSet.getString("org_name"),resultSet.getString("branch"),
+					resultSet.getString("vechicle_reg_no"),resultSet.getString("device_imei_number"),resultSet.getString("driver_name"),
+						resultSet.getString("driver_licence_number"),resultSet.getString("driver_licence_exp_date"),resultSet.getString("route_no")));
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return busregistrations;
+		
+	}
 	
 	
 	
@@ -217,10 +259,12 @@ public class BusRegistrationDAO {
 			e1.printStackTrace();
 		}
 	    try{
-	    	String cmd="UPDATE tbl_vechicle SET device_imei_number='"+busRegistration.getDevice_imei_number()+"', driver_name='"+busRegistration.getDriver_name()+"', driver_licence_no='"+busRegistration.getDriver_licence_no()+"',driver_licence_exp_date='"+busRegistration.getDriver_licence_exp_date()+"' WHERE vechicle_reg_no='"+busRegistration.getVechicle_reg_no()+"';";
+	    	String cmd="UPDATE tbl_vechicle SET device_imei_number='"+busRegistration.getDevice_imei_number()+"', driver_name='"+busRegistration.getDriver_name()+"', driver_licence_number='"+busRegistration.getDriver_licence_no()+"',driver_licence_exp_date='"+busRegistration.getDriver_licence_exp_date()+"',route_no='"+busRegistration.getRoute_no()+"' WHERE vechicle_reg_no='"+busRegistration.getVechicle_reg_no()+"'";
+	    	String cmd1="UPDATE tbl_device_configuration SET is_assigned='1' where device_imei_number='"+busRegistration.getDevice_imei_number()+"'";
 	    	String Desc="Update busRegistration "+busRegistration.getVechicle_reg_no();
 	    	System.out.println(cmd);
 	    	statement.execute(cmd);
+	    	statement.execute(cmd1);
 	    	flag=1;
 	    }
 	    	 catch(Exception e){
