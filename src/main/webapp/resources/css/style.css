@@ -213,7 +213,8 @@ background: -moz-linear-gradient(top, #ccc, #000); /* for firefox 3.6+ */
 }
 
 .headings {
-	padding: 0 2px;
+	padding-bottom: 15px ;
+	padding-top: 0px ;
 	border: 1px solid #CACACA;
 	text-shadow: 1px 1px 1px #fff;
 	/* background: #EAEAEA url(../images/bg_heading.png) repeat-x top; */
@@ -866,6 +867,35 @@ ul.prev li{margin-right:50px; float:left; margin-bottom:20px;}
 	border-radius:5px;
 	
 }
+
+.search_txtbx_client {
+    border: 1px solid #c4c4c4;
+    width: 180px;
+    height: 18px;
+    font-size: 13px;
+    padding: 4px 4px 4px 4px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    box-shadow: 0px 0px 8px #d9d9d9;
+    -moz-box-shadow: 0px 0px 8px #d9d9d9;
+    -webkit-box-shadow: 0px 0px 8px #d9d9d9;
+}
+
+.search_txtbx_client:focus {
+    border: 1px solid #07c;
+    box-shadow: 0 0 5px #07c;
+    outline: none;
+}
+/* .search_txtbx_client{
+	width:250px;
+	height:50px;
+	padding:5px;
+	background:#f8fbfd;
+	border:2px solid #9fb7cd;
+	border-radius:5px;
+	
+} */
 .search_txtbx_height1:focus{
     width:200px;
 	height:20px;

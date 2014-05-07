@@ -58,7 +58,7 @@
 	<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2> Admin User Information
+			          <h2> Admin User Information 
 			          <span style="margin:3% 0 0 65%; padding:2px;">
 			          <a href="#" onclick="toggle(this,'div');return false">
 			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:20px;width:50px;"/></a>

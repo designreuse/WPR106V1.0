@@ -360,13 +360,13 @@ function toggle1(b,id1){
 	if(divfilter.style.display=='none'){
 		$("#divfilter").slideToggle("slow");
 	divfilter.style.display='block';
-	b.innerHTML='<img src="resources/images/filter red.png" style="height:20px;width:50px;" title="Close filter"/>';
+	b.innerHTML='<img src="resources/images/filter red.png" style="height:25px;width:35px;" title="Close filter"/>';
 
 	}
 	else{
 		$("#divfilter").slideToggle("slow");
 	divfilter.style.display='none';
-	b.innerHTML='<img src="resources/images/filter.png" style="height:20px;width:50px;" title="Open filter"/>';
+	b.innerHTML='<img src="resources/images/filter.png" style="height:25px;width:35px;" title="Open filter"/>';
 	}
 
 	}
@@ -377,13 +377,13 @@ function toggle(a,id){
 	if(div.style.display=='none'){
 		$("#div").slideDown("slow");
 	div.style.display='block';
-	a.innerHTML='<img src="resources/images/search-red-icon.png" style="height:20px; width:50px;" title="Close Search"/>';
+	a.innerHTML='<img src="resources/images/search-red-icon.png" style="height:25px; width:35px;" title="Close Search"/>';
 
 	}
 	else{
 		$("#div").slideUp("slow");
 	div.style.display='none';
-	a.innerHTML='<img src="resources/images/search-blue-icon.png" style="height:20px;width:50px;" title="Open Search"/>';
+	a.innerHTML='<img src="resources/images/search-blue-icon.png" style="height:25px;width:35px;" title="Open Search"/>';
 	}
 
 	}
