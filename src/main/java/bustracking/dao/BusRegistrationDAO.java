@@ -103,6 +103,7 @@ public class BusRegistrationDAO {
     return busregistration;
 	
 }
+	//find bus client side
 	
 	
 	public List<String> getBus_id(String org_name){
@@ -333,9 +334,9 @@ public class BusRegistrationDAO {
 		}
 		List<BusRegistration> busregistration = new ArrayList<BusRegistration>();
 		try{
-			resultSet = statement.executeQuery("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_no,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where t2.org_id='"+org_id+"'");
+			resultSet = statement.executeQuery("SELECT t1.org_id,t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where t2.org_id='"+org_id+"'");
 			while(resultSet.next()){
-				busregistration.add(new BusRegistration(resultSet.getString("vechicle_reg_no"),resultSet.getString("driver_name"),resultSet.getString("driver_licence_no"),resultSet.getString("driver_licence_exp_date")));
+				busregistration.add(new BusRegistration(resultSet.getString("org_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("driver_name"),resultSet.getString("driver_licence_number"),resultSet.getString("driver_licence_exp_date")));
 				
 			}
 		
@@ -352,6 +353,40 @@ public class BusRegistrationDAO {
 	    return busregistration;
 		
 	}
+	
+	public List<BusRegistration> clientdriverlistsearch(String org_id,String driver_name,String vechicle_reg_no,String driver_licence_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<BusRegistration> busregistration = new ArrayList<BusRegistration>();
+		try{
+			resultSet = statement.executeQuery("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where (driver_name='"+driver_name+"' or vechicle_reg_no='"+vechicle_reg_no+"' or driver_licence_number='"+driver_licence_number+"') and (t2.org_id='"+org_id+"' )");
+			System.out.println("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where driver_name='"+driver_name+"' or vechicle_reg_no='"+vechicle_reg_no+"' or driver_licence_number='"+driver_licence_number+"' or t2.org_id='"+org_id+"' ");
+			while(resultSet.next()){
+				busregistration.add(new BusRegistration(resultSet.getString("vechicle_reg_no"),resultSet.getString("driver_name"),resultSet.getString("driver_licence_number"),resultSet.getString("driver_licence_exp_date")));
+				
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return busregistration;
+		
+	}
+	
 	
 	public List<String> getPickupStop_location(String pickup_route_no){
 		Connection con = null;

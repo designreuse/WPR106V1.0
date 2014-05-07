@@ -54,6 +54,8 @@ public class MainController {
 	@Autowired  
 	ClientHomeDAO clientHomeDAO; 
 	
+	@Autowired  
+	BusRegistrationDAO busDAO;
 	
 	@Autowired
 	OrgBusinessRuleDAO businessRuleDAO;
@@ -218,7 +220,27 @@ else{
 		return "client_driver_list";
 	}
 	
-	
+	@RequestMapping(value="/finddriverClient",method=RequestMethod.GET)
+	public String finddriverClient(HttpServletRequest request,@RequestParam("org_id") String org_id,@RequestParam("driver_name") String driver_name,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("driver_licence_number") String driver_licence_number,ModelMap model, Principal principal)
+	{
+		if(driver_name=="" && vechicle_reg_no=="" && driver_licence_number=="")
+		{
+
+			BusRegistrationForm busRegistrationForm=new BusRegistrationForm();
+			busRegistrationForm.setBusregistration(busRegistrationDAO.getBusregistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("busRegistrationForm",busRegistrationForm);
+			return "client_driver_list";
+		}
+		else
+		{
+			
+		BusRegistrationForm busregistrationform = new BusRegistrationForm();
+		busregistrationform.setBusregistration(busDAO.clientdriverlistsearch(org_id, driver_name,vechicle_reg_no, driver_licence_number));
+        model.addAttribute("busregistrationform", busregistrationform);        
+		return "search_client_driver_list";
+		}
+		
+	}
 
 
 	@RequestMapping(value="/clientstudentlist", method = RequestMethod.GET)

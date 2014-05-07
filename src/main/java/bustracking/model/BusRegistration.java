@@ -116,7 +116,16 @@ public class BusRegistration
 		this.driver_licence_no = driver_licence_no;
 		this.driver_licence_exp_date = driver_licence_exp_date;
 	}
-
+	public BusRegistration(String org_id, String vechicle_reg_no,
+			String driver_name, String driver_licence_no,
+			String driver_licence_exp_date) {
+		super();
+		this.org_id=org_id;
+		this.vechicle_reg_no = vechicle_reg_no;
+		this.driver_name = driver_name;
+		this.driver_licence_no = driver_licence_no;
+		this.driver_licence_exp_date = driver_licence_exp_date;
+	}
 	public BusRegistration(String route_no) {
 		super();
 		this.route_no = route_no;
