@@ -123,8 +123,8 @@
 				                    <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Avail Transport Facility :</td>
 				                  	<td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	 <input type="radio" name="transport_facility" value="1" class="input_txt" checked="checked">&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;
-					                <input type="radio" name="transport_facility" value="0" class="input_txt">No&nbsp;&nbsp;&nbsp;
+				                  	 <input type="radio" name="transport_facility" value="yes" class="input_txt" checked="checked">&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;
+					                <input type="radio" name="transport_facility" value="no" class="input_txt">No&nbsp;&nbsp;&nbsp;
 				                  <!-- <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.transport_facility"></form:errors></font> -->	
 				                  </td>
 				                  

@@ -102,16 +102,9 @@
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
-	<form method="POST" action="update_bus">
+	<form method="POST" action="update_student">
 
 <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
-      <tr>
-        <td valign="top" align="left" style="padding:5px 0 10px 0;">&nbsp;
-		<div class="status success" style="display: none;">
-            <p class="closestatus"><a title="Close" href="">x</a></p>
-            <p><img alt="Success" src="images/icons/icon_success.png"><span>Success!</span>.</p>
-          </div>
-      </tr>
       <tr>
         <td valign="top" align="left">
         
@@ -119,37 +112,38 @@
 	              <h2> Edit Student Registration</h2>
 	            </div>
             <div class="contentbox">
-              <table cellpadding="0" cellspacing="0"  width="100%">
+              <table cellpadding="0" cellspacing="0"  width="100%" border="0">
   				<tr>
     				<td align="left" valign="top" width="100%" style="padding-right:25px;">
-    				<c:set value="${studentregistrationform.studentregistration[0]}" var="student"></c:set>
+    				<c:set value="${studentRegistrationForm.studentregistration[0]}" var="student"></c:set>
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
     						
 				                <tr class="row1">
     						<td width="5%" class="input_txt"></td>
-				                  <td valign="middle" align="right" class="input_txt"  ><span class="err">*</span> Organization Name:</td>
-				                  <td valign="top" align="left" class="input_txt">
-				                 <input type="hidden" name="org_name" class="org_input_cmbbx" value="${studentregistration.org_name}"/>${studentregistration.org_name}
+				                  <td valign="middle" align="right" class="input_txt" ><span class="err">*</span> Organization Name:</td>
+				                  <td valign="middle" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				                 <input type="hidden" name="org_name" class="org_input_cmbbx" id="orgid" value="${student.org_name}"/>${student.org_name}</td>
 				                 
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Point Address:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<div id="drop_address" style="height:8px;"><select class="student_txtbx_height_right_ddl" name="drop_point_address" id="drop_location_id" onblur="Validate1('bid')">
-							    <option value="Selected">-- Select Drop Location--</option>
+							    	<option value="${student.drop_point_address}" selected>${student.drop_point_address}</option>
 				                  	</select>
 				                  	</div>
+				                  	</td>
 				                    <td width="15%" class="input_txt"></td>
 				               </tr>
 				                
                         		<tr class="row2">
-                        		<td width="5%" class="input_txt"></td>
+                        		<td width="3%" class="input_txt"></td>
                         		<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Branch :</td>
-				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="hidden" name="branch" class="org_input_cmbbx" value="${studentregistration.branch}"/>${studentregistration.branch}
+				                  <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="hidden" name="branch" id="bid" class="org_input_cmbbx" value="${student.branch}"/>${student.branch}
 				                  	
 				                  	</td>
 				                 <td valign="middle" align="right" class="input_txt"><span class="err">*</span> KG Drop :</td>
-				                  <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<input type="checkbox"  id="inp_id" name="kg_drop" value="${studentregistration.kg_drop}" />
+				                  <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="checkbox"  id="inp_id" name="kg_drop" value="${student.kg_drop}" />
 				                  	
 				                  </td>
 				                  <td width="15%" class="input_txt"></td>
@@ -157,97 +151,118 @@
 
 								 
 								<tr class="row1">
-								<td width="5%" class="input_txt"></td>
-								<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Student Roll Number :</td>
-				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="student_txtbx_height_right" id="inp_id" name="student_roll_no" value="${studentregistration.student_roll_no}"/><br/>
+								<td width="3%" class="input_txt"></td>
+								<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Student Roll Number:</td>
+				                  <td valign="middle" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="hidden" class="student_txtbx_height_right" id="inp_id" name="student_roll_no" value="${student.student_roll_no}"/>${student.student_roll_no} <br/>
 				                  	<font color="Red" size="+1"><form:errors path="StudentRegistration.student_roll_no"></form:errors></font>
 				                  </td>
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Name 1:</td>
 					                <td valign="top" align="left" class="input_txt">
-					                <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_name1" value="${studentregistration.parent_name1}"/>
+					                <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_name1" value="${student.parent_name1}"/>
 					               <!--  <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.drop_route_no"></form:errors></font> --></td>
 				                  
 				                   <td width="15%" class="input_txt"></td>
 				                </tr>
 				                
 				                 <tr class="row2">
-				                 <td width="5%" class="input_txt"></td>
+				                 <td width="3%" class="input_txt"></td>
 				                        <td valign="middle" align="right" class="input_txt"><span class="err">*</span> First Name:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="student_txtbx_height_right" id="inp_id" name="first_name" value="${studentregistration.first_name}"/>
+				                  	<input type="text" class="student_txtbx_height_right" id="inp_id" name="first_name" value="${student.first_name}"/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="StudentRegistration.student_class"></form:errors></font></td>
 				                     <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Parent Name 2:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_name2" value="${studentregistration.parent_name2}"/>
+					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_name2" value="${student.parent_name2}"/>
 					         <!--  <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.drop_location"></form:errors></font>--></td>
 					               	 	
 					               	 	<td width="15%" class="input_txt"></td>			                					            	 
 				                </tr>
 				                <tr class="row1">
-				                <td width="5%" class="input_txt"></td>
+				                <td width="3%" class="input_txt"></td>
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Last Name</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="student_txtbx_height_right" id="inp_id" name="last_name" value="${studentregistration.last_name}"/>
+				                  	<input type="text" class="student_txtbx_height_right" id="inp_id" name="last_name" value="${student.last_name}"/>
 				                  	      	<br/><font color="Red" size="+1"><form:errors path="StudentRegistration.section"></form:errors></font></td>
 				                
 				         
 				                
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Parent Mobile 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_mobile1" value="${studentregistration.parent_mobile1}" />
+					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_mobile1" value="${student.parent_mobile1}" />
 					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.father_name"></form:errors></font>
 					              </td>
 					              <td width="15%" class="input_txt"></td>
 				                </tr>
 				                <tr class="row2">
 				                
-				                <td width="5%" class="input_txt"></td>
+				                <td width="3%" class="input_txt"></td>
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Gender :</td>
-						            <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						            	<input type="radio" value="M" name="gender" checked>Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="F" name="gender">FeMale
+						            <td valign="middle" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						             <c:choose>
+					                <c:when test="${student.gender=='M'}">
+					                <input type="radio" value="M" name="gender" checked>Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					                <input type="radio" value="F" name="gender">FeMale
+					                </c:when>
+					                
+					                <c:otherwise>
+					                <input type="radio" value="M" name="gender">Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					                <input type="radio" value="F" name="gender" checked>FeMale
+					                
+					                </c:otherwise>
+					                </c:choose>
+						            	
 						            	<font color="Red" size="+1"><form:errors path="StudentRegistration.name"></form:errors></font></td>
 						            	
 						       
 				                 <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Mobile 2:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text" class="student_txtbx_height_right" name="parent_mobile2" id="inp_id" value="${studentregistration.parent_mobile2}"/>
+					               <input type="text" class="student_txtbx_height_right" name="parent_mobile2" id="inp_id" value="${student.parent_mobile2}"/>
 					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.mobile_number"></form:errors></font>
 					               </td>
 					               <td width="15%" class="input_txt"></td>
 				                </tr>
 				                
 				                <tr class="row1">
-				                    <td width="5%" class="input_txt"></td>
+				                    <td width="3%" class="input_txt"></td>
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Avail Transport Facility :</td>
 				                  	<td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	 <input type="radio" name="transport_facility" value="1" class="input_txt" checked="checked">&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;
-					                <input type="radio" name="transport_facility" value="0" class="input_txt">No&nbsp;&nbsp;&nbsp;
+				                  	<c:choose>
+				                  	<c:when test="${student.transport_facility=='yes'}">
+				                  	<input type="radio" name="transport_facility" value="yes" class="input_txt" checked="checked">&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;
+					                <input type="radio" name="transport_facility" value="no" class="input_txt">No&nbsp;&nbsp;&nbsp;
+				                  	</c:when>
+				                  	<c:otherwise>
+				                  	<input type="radio" name="transport_facility" value="yes" class="input_txt">&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;
+					                <input type="radio" name="transport_facility" value="no" class="input_txt"  checked="checked">No&nbsp;&nbsp;&nbsp;
+				                  	</c:otherwise>
+				                  	</c:choose>
+				                  	 
 				                  <!-- <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.transport_facility"></form:errors></font> -->	
 				                  </td>
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Email 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_email1" value="${studentregistration.parent_email1}" />
+					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_email1" value="${student.parent_email1}" />
 					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.email_id"></form:errors></font>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
 				                      <tr class="row2">
-				                    <td width="5%" class="input_txt"></td>
+				                    <td width="3%" class="input_txt"></td>
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Pickup Route No :</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	 <div id="info1"><select name="pickup_route_no" class="student_txtbx_height_right_ddl" id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()" value="${studentregistration.pickup_route_no}">
-					               <option value="" selected>--Select PickUp Route No--</option>
-					               <%-- <c:forEach items="${route_no}" var="route_no" varStatus="status">
+				                  	 <div id="info1"><select name="pickup_route_no" class="student_txtbx_height_right_ddl" id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()" value="${student.pickup_route_no}">
+					               <option value="${student.pickup_route_no}" selected>${student.pickup_route_no}</option>
+					               <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}">${route_no}</option> 
-			                  </c:forEach>--%>
+			                  </c:forEach>
 			                  </select>
 			                  </div>
 				                  	</td>
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Email 2:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_email2" value="${studentregistration.parent_email2}"/>
+					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_email2" value="${student.parent_email2}"/>
 					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.email_id"></form:errors></font>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
@@ -255,8 +270,8 @@
 				                    <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Pickup Point Address :</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	 <div id="pickup_address" style="height:8px;"><select class="student_txtbx_height_right_ddl" name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')" ">
-							    <option value="Selected">-- Select PickUp Location--</option>
+				                  	 <div id="pickup_address" style="height:8px;"><select class="student_txtbx_height_right_ddl" name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')" >
+							    <option value="${student.pickup_point_address}" selected>${student.pickup_point_address}</option>
 				                  	</select>
 				                  	</div>
 				                  </td>
@@ -264,72 +279,40 @@
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Class:</td>
 					               <td valign="middle" align="left" class="input_txt">
 					               <div id="info3"> <select name="class_standard" id="class_standard_id" onchange="doAjaxPost_section()" class="student_txtbx_height_right_ddl" >
-					               <option value="" selected>--Select Class--</option>
-					               <%-- <c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
-        				        <option value="${classSection.class_std}">${classSection.class_std}</option>
-			                  </c:forEach> --%>
+					               <option value="${student.class_standard}" selected>${student.class_standard}</option>
+					               <c:forEach items="${class_std}" var="class_std" varStatus="status">
+        				        <option value="${class_std}">${class_std}</option>
+			                  </c:forEach> 
 					               </select></div>
 					               </td>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
 				                      <tr class="row2">
-				                    <td width="5%" class="input_txt"></td>
+				                    <td width="3%" class="input_txt"></td>
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Route No :</td>
-				                  	<td valign="top" align="left" class="input_txt">
+				                  	<td valign="middle" align="left" class="input_txt">
 				                  	 <div id="info2"><select name="drop_route_no" class="student_txtbx_height_right_ddl" onchange="doAjaxPost_drop_route_no()" id="drop_route_id">
-					               <option value="" selected>--Select Drop Route No--</option>
-					               <%-- <c:forEach items="${route_no}" var="route_no" varStatus="status">
+					               <option value="${student.drop_route_no}" selected>${student.drop_route_no}</option>
+					                <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}">${route_no}</option>
-			                  </c:forEach> --%>
+			                  </c:forEach>
 			                  
 			                  </select> </div>
 			                  </td>
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Section:</td>
-					               <td valign="top" align="left" class="input_txt">
-					              <div id="info_section"> <select name="section" id="section_id" class="student_txtbx_height_right_ddl">
-					               <option value="" selected>--Select Section--</option>
-					               <%-- <c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
-        				        <option value="${classSection.section}">${classSection.section}</option>
-			                  </c:forEach> --%>
+					               <td valign="middle" align="left" class="input_txt">
+					              <div id="info_section"> <select name="section" id="section_id" class="student_txtbx_height_right_ddl" >
+					               <option value="${student.section}" selected>${student.section}</option>
+					               <%-- <c:forEach items="${class_std}" var="classSection" varStatus="status">
+        				        <option value="${class_std}">${class_std}</option>
+			                  </c:forEach> --%> 
 					               </select></div>
 					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.email_id"></form:errors></font>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
-				                 <tr class="row2">
-					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Gender:</td>
-					                <td valign="top" align="left" class="input_txt">
-					                <c:choose>
-					                <c:when test="${student.gender=='male'}">
-					                <input type="radio" name="gender" value="male" class="input_txt"  checked="true" style="margin:0% 0% 0% 13%;">Male&nbsp;&nbsp;&nbsp;
-					                <input type="radio" name="gender" value="female" class="input_txt">Female&nbsp;&nbsp;&nbsp;
-					                <input type="radio" name="gender" value="other" class="input_txt">Other
-					                </c:when>
-					                
-					                <c:when test="${student.gender=='female' }">
-					                <input type="radio" name="gender" value="male" class="input_txt"   style="margin:0% 0% 0% 13%;">Male&nbsp;&nbsp;&nbsp;
-					                <input type="radio" name="gender" value="female" class="input_txt" checked="true">Female&nbsp;&nbsp;&nbsp;
-					                <input type="radio" name="gender" value="other" class="input_txt">Other
-					                </c:when>
-					                
-					                <c:when test="${student.gender=='other' }">
-					                <input type="radio" name="gender" value="male" class="input_txt"   style="margin:0% 0% 0% 13%;">Male&nbsp;&nbsp;&nbsp;
-					                <input type="radio" name="gender" value="female" class="input_txt" >Female&nbsp;&nbsp;&nbsp;
-					                <input type="radio" name="gender" value="other" class="input_txt" checked="true">Other
-					                </c:when>
-					                
-					                </c:choose>
-					                </td>
-					                
-					            
-					               <td valign="middle" align="right" class="input_txt"><span class="err"></span></td>
-				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="hidden" class="input_txtbx1" id="inp_id" name="#" />
-				                  	
-				                  </td>
-				                </tr>
-				                
 				               
+					                
                 <tr class="row1">
                 <td valign="top" align="right"></td>
 				               <td valign="top" align="right"></td>
@@ -350,6 +333,7 @@
  	</table>
 </form>
 </div>
+</div>
  <script language="JavaScript">
 function CreateGroup()
 {
@@ -357,4 +341,71 @@ function CreateGroup()
 	document.update.submit();
 }
 </script>
+
+<script type="text/javascript">
+function doAjaxPost_pickup_route_no() {  
+	/* alert("hi"); */
+	var pickup_route_no = $('#pickup_route_id').val();
+	/* alert(orgname); */
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/pickup_route_no_ajax",  
+		    data: "pickup_route_no="+pickup_route_no,
+		    success: function(response){  
+		
+$('#pickup_address').html(response);
+
+   },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+		</script>
+		
+	
+<script type="text/javascript">
+function doAjaxPost_drop_route_no() {  
+	/* alert("hi"); */
+	var drop_route_no = $('#drop_route_id').val();
+	/* alert(orgname); */
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/drop_route_no_ajax",  
+		    data: "drop_route_no="+drop_route_no,
+		    success: function(response){  
+		
+$('#drop_address').html(response);
+
+   },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+	</script>
+
+<script type="text/javascript">
+function doAjaxPost_section() { 
+	alert("calling!!!");
+	var orgname = $('#orgid').val();
+	var branch=$('#bid').val();
+	var classstandard=$('#class_standard_id').val();
+	
+	/* alert(orgname); */
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/stud_section_ajax",  
+		    data: "org_name="+orgname+"&branch="+branch+"&class_standard="+classstandard,
+		    success: function(response){
+		    	
+	$('#info_section').html(response);
+	},  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+		</script>
+
 <jsp:include page="footer.jsp"></jsp:include>

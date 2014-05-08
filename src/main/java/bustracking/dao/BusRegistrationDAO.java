@@ -287,9 +287,9 @@ public class BusRegistrationDAO {
 	    }
 	
 	
-	// Get Route No for Student
+	// Get Route No for Student In Edit Page
 	
-	public List<String> getBusRegistrations_route_no(){
+	public List<String> getBusRegistrations_route_no(String org_name,String branch){
 		
 		Connection con = null;
 		Statement statement = null;
@@ -302,7 +302,7 @@ public class BusRegistrationDAO {
 		}
 		List<String> busregistration = new ArrayList<String>();
 		try{
-			resultSet = statement.executeQuery("SELECT route_no FROM tbl_vechicle");
+			resultSet = statement.executeQuery("SELECT route_no FROM tbl_vechicle WHERE org_id=(SELECT org_id FROM tbl_organization WHERE org_name='"+org_name+"' and branch='"+branch+"')");
 			while(resultSet.next()){
 				busregistration.add(resultSet.getString("route_no"));
 				
@@ -367,7 +367,7 @@ public class BusRegistrationDAO {
 		List<BusRegistration> busregistration = new ArrayList<BusRegistration>();
 		try{
 			resultSet = statement.executeQuery("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where (driver_name='"+driver_name+"' or vechicle_reg_no='"+vechicle_reg_no+"' or driver_licence_number='"+driver_licence_number+"') and (t2.org_id='"+org_id+"' )");
-			System.out.println("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where driver_name='"+driver_name+"' or vechicle_reg_no='"+vechicle_reg_no+"' or driver_licence_number='"+driver_licence_number+"' or t2.org_id='"+org_id+"' ");
+			System.out.println("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where (driver_name='"+driver_name+"' or vechicle_reg_no='"+vechicle_reg_no+"' or driver_licence_number='"+driver_licence_number+"') and (t2.org_id='"+org_id+"')");
 			while(resultSet.next()){
 				busregistration.add(new BusRegistration(resultSet.getString("vechicle_reg_no"),resultSet.getString("driver_name"),resultSet.getString("driver_licence_number"),resultSet.getString("driver_licence_exp_date")));
 				

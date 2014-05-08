@@ -79,12 +79,12 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							   <td align="left" valign="middle" width="8%">
-							   <select   id="e4"style="width:250px;" name="org_id">
-							 	<option value="">Select None</option>     
+							   <%-- <select   id="e4"style="width:250px; display:none;" name="org_id">
+							 	   
 							    <c:forEach items="${busRegistrationForm.busregistration}" var="driverlist" varStatus="status">
 							    <option value="${driverlist.org_id}">${driverlist.org_id}</option>
 							    </c:forEach>
-							    </select>
+							    </select> --%>
 							   Driver Name:<br/>
 							    <select   id="e1"style="width:250px;" name="driver_name">
 							 	<option value="">Select None</option>     

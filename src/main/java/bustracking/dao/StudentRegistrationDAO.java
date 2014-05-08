@@ -412,6 +412,8 @@ public class StudentRegistrationDAO {
 	} 
 	
 	
+	// Client Side Update for Student
+	
 	public int clientupdateStudent(StudentRegistration student)
 	{
 		Connection con = null;
@@ -425,6 +427,82 @@ public class StudentRegistrationDAO {
 		}
 	    try{
 	    	String cmd="UPDATE tbl_student SET pickup_route_no='"+student.getPickup_route_no()+"', pickup_point_address='"+student.getPickup_point_address()+"',drop_route_no='"+student.getDrop_route_no()+"',drop_point_address='"+student.getDrop_point_address()+"',parent_name1='"+student.getParent_name1()+"',parent_name2='"+student.getParent_name2()+"',parent_mobile1='"+student.getParent_mobile1()+"',parent_mobile2='"+student.getParent_mobile2()+"',parent_email1='"+student.getParent_email1()+"',parent_email2='"+student.getParent_email2()+"' WHERE student_roll_no='"+student.getStudent_roll_no()+"'";
+	    	System.out.println(cmd);
+	    	statement.execute(cmd);
+	    	flag=1;
+	    }
+	    	 catch(Exception e){
+	 	    	System.out.println(e.toString());
+	 	    	releaseStatement(statement);
+	 	    	releaseConnection(con);
+	 	    	flag=0;
+	 	    	//return 0;
+	 	    }finally{
+	 	     	releaseStatement(statement);
+	 	    	releaseConnection(con);	    
+	 	    	
+	 	    }
+	 	    if(flag==1)
+	     		return 1;
+	     	else
+	     		return 0;
+	}
+	
+	
+	// Admin Side Edit For Student
+	
+	public List<StudentRegistration> getStudent_for_edit(String student_roll_no){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<StudentRegistration> studentregistration = new ArrayList<StudentRegistration>();
+	    try{
+	    	String cmd="select t1.org_name,t1.branch,t2.* from tbl_organization as t1 join tbl_student as t2 on t1.org_id=t2.org_id where student_roll_no='"+student_roll_no+"'";
+	    	System.out.println(student_roll_no);
+			resultSet = statement.executeQuery(cmd);
+			System.out.println(cmd);
+			
+			while(resultSet.next())
+			{
+				studentregistration.add(new StudentRegistration(resultSet.getString("org_name"), resultSet.getString("branch"),resultSet.getString("student_roll_no"), resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("gender"),resultSet.getString("transport_facility"),resultSet.getString("pickup_route_no"),resultSet.getString("pickup_point_address"),resultSet.getString("drop_route_no"),resultSet.getString("drop_point_address"),resultSet.getString("kg_drop"),resultSet.getString("parent_name1"),resultSet.getString("parent_name2"),resultSet.getString("parent_mobile1"),resultSet.getString("parent_mobile2"),resultSet.getString("parent_email1"),resultSet.getString("parent_email2"), resultSet.getString("class_standard"),resultSet.getString("section")));
+				System.out.println("Sex"+resultSet.getString("gender"));
+			}
+	    }catch(Exception e){
+	        System.out.println(e.toString());
+	        	releaseResultSet(resultSet);
+	        	releaseStatement(statement);
+	        	releaseConnection(con);
+	        }finally{
+	        	releaseResultSet(resultSet);
+	        	releaseStatement(statement);
+	        	releaseConnection(con);	    	
+	        }
+	        return studentregistration;
+	    
+	} 
+	
+	
+	// Admin side Update for Student
+	
+	public int adminupdateStudent(StudentRegistration student)
+	{
+		Connection con = null;
+		Statement statement = null;
+		int flag=0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+	    try{
+	    	String cmd="UPDATE tbl_student SET first_name='"+student.getFirst_name()+"',last_name='"+student.getLast_name()+"',gender='"+student.getGender()+"',transport_facility='"+student.getTransport_facility()+"',pickup_route_no='"+student.getPickup_route_no()+"', pickup_point_address='"+student.getPickup_point_address()+"',drop_route_no='"+student.getDrop_route_no()+"',drop_point_address='"+student.getDrop_point_address()+"',kg_drop='"+student.getKg_drop()+"',parent_name1='"+student.getParent_name1()+"',parent_name2='"+student.getParent_name2()+"',parent_mobile1='"+student.getParent_mobile1()+"',parent_mobile2='"+student.getParent_mobile2()+"',parent_email1='"+student.getParent_email1()+"',parent_email2='"+student.getParent_email2()+"',class_standard='"+student.getClass_standard()+"',section='"+student.getSection()+"' WHERE student_roll_no='"+student.getStudent_roll_no()+"'";
 	    	System.out.println(cmd);
 	    	statement.execute(cmd);
 	    	flag=1;

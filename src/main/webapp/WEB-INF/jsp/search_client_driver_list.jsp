@@ -128,8 +128,8 @@
 						
     	<div class="Panel_One_Inner">
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
-							<c:if test="${fn:length(busRegistrationForm.busregistration) gt 0 }">
-        					<c:forEach items="${busRegistrationForm.busregistration}" var="DriverRegistration" varStatus="status">
+							<c:if test="${fn:length(busregistrationform.busregistration) gt 0 }">
+        					<c:forEach items="${busregistrationform.busregistration}" var="DriverRegistration" varStatus="status">
         				       					<tr class="row1">
 							       		
 					     		     	<td valign="top" align="left"  width="15%">${DriverRegistration.driver_name}</td>
@@ -140,7 +140,7 @@
 								</tr>
 							    	</c:forEach>
 							    </c:if>
-							    <c:if test="${fn:length(busRegistrationForm.busregistration) == 0}">	
+							    <c:if test="${fn:length(busregistrationform.busregistration) == 0}">	
 							    	<tr class="row1">
 							    	<td colspan="7" width="100%"><center><b>No Drivers Found!!!</b></center></td>
 							    	</tr>

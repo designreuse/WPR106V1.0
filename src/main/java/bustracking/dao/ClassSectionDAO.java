@@ -68,6 +68,10 @@ public class ClassSectionDAO
 	    return result;
 		
 	}
+	
+	
+	
+	
 	public List<ClassSection> get_classsection(){
 		Connection con = null;
 		Statement statement = null;
@@ -91,11 +95,7 @@ public class ClassSectionDAO
 				classSections.add(new ClassSection(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("class"),resultSet.getString("section"),resultSet.getString("service")));
 			}
 			
-			
-			
-				
-			
-	    }catch(Exception e){
+		 }catch(Exception e){
 	    	System.out.println(e.toString());
 	    	releaseResultSet(resultSet);
 	    	releaseStatement(statement);
@@ -108,6 +108,43 @@ public class ClassSectionDAO
 	    return classSections;
 		
 	}
+	
+	//Get Class For Edit operation in Admin Side
+	
+public List<String> getclass_for_edit(String org_name,String branch){
+		
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> class_std = new ArrayList<String>();
+		try{
+			resultSet = statement.executeQuery("SELECT class FROM tbl_class WHERE org_id=(SELECT org_id FROM tbl_organization WHERE org_name='"+org_name+"' and branch='"+branch+"')");
+			while(resultSet.next()){
+				class_std.add(resultSet.getString("class"));
+				
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return class_std;
+		
+	}
+	
+	
 	
 	
 //search class and section 06/05/2014

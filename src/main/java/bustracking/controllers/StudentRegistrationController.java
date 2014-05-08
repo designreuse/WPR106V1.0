@@ -91,11 +91,6 @@ public class StudentRegistrationController {
 		classSectionForm.setClassSections(classSectionDAO.get_classsection());
 		model.addAttribute("classSectionForm",classSectionForm);
 		
-		List <String> route_no=new ArrayList<String>();
-		route_no=busDAO.getBusRegistrations_route_no();
-		model.addAttribute("route_no",route_no);
-		
-		
 		model.addAttribute("registration_no",studentDAO.getMax_StudentReg());
 		StudentRegistrationForm studentregistrationform= new StudentRegistrationForm();
 		studentregistrationform.setStudentregistration(studentDAO.getstudentregistration());
@@ -299,28 +294,40 @@ public class StudentRegistrationController {
 		return "view_student_details";
 	}
 	
-	
+	// Edit Controller for Admin Side 
 	
 	@RequestMapping(value="/edit_student", method=RequestMethod.GET)
-	public String editStudent(HttpServletRequest request,@RequestParam("student_reg_no")int student_reg_no,ModelMap model,StudentRegistration studentRegistration)
+	public String editStudent(HttpServletRequest request,@RequestParam("student_roll_no")String student_roll_no,@RequestParam("org_name")String org_name,@RequestParam("branch")String branch,ModelMap model,StudentRegistration studentRegistration)
 	{
 		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
 		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
 		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
 		
+		StudentRegistrationForm studentRegistrationForm=new StudentRegistrationForm();
+		studentRegistrationForm.setStudentregistration(studentDAO.getStudent_for_edit(student_roll_no));
+		model.addAttribute("studentRegistrationForm",studentRegistrationForm);
+		
+		List <String> class_std=new ArrayList<String>();
+		class_std=classSectionDAO.getclass_for_edit(org_name, branch);
+		model.addAttribute("class_std",class_std);
+		
+		List <String> route_no=new ArrayList<String>();
+		route_no=busDAO.getBusRegistrations_route_no(org_name, branch);
+		model.addAttribute("route_no",route_no);
 		
 		return "edit_student";
 	}
+	
+	//Update operation for Student Admin side
+	
 	@RequestMapping(value="/update_student", method=RequestMethod.POST)
 	public String updatestudent(HttpServletRequest request,@ModelAttribute("studentregistration") @Valid StudentRegistration studentRegistration,
 			BindingResult result,ModelMap model,Principal principal)
 	{
-		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
-		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
-		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
+	
 		
 		//System.out.println("student_reg_no"+studentRegistration.getStudent_reg_no());
-		int status =studentDAO.clientupdateStudent(studentRegistration);
+		int status =studentDAO.adminupdateStudent(studentRegistration);
 		System.out.println(status);
 		if(status==1){
 			StudentRegistrationForm studentregistrationform= new StudentRegistrationForm();
@@ -428,7 +435,7 @@ public class StudentRegistrationController {
 
 	// Edit Student Information In Client Side 
 	@RequestMapping(value="/client_edit_student", method=RequestMethod.GET)
-	public String clienteditStudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,ModelMap model,StudentRegistration studentRegistration)
+	public String clienteditStudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model,StudentRegistration studentRegistration)
 	{
 		
 		
@@ -437,7 +444,7 @@ public class StudentRegistrationController {
  		model.addAttribute("studentregistrationform", studentregistrationform);
  		
 		List <String> route_no=new ArrayList<String>();
-		route_no=busDAO.getBusRegistrations_route_no();
+		route_no=busDAO.getBusRegistrations_route_no(org_name, branch);
 		model.addAttribute("route_no",route_no);
 		
 		return "client_edit_student";

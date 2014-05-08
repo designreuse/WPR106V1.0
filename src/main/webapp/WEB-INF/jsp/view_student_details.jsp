@@ -148,7 +148,7 @@
 									    <td valign="top" align="left" width="15%">${studentRegistration.first_name}</td>
 									    <td valign="top" align="left" width="15%">${studentRegistration.last_name}</td>
 										<td valign="top" align="left" width="25%">
-										<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_student?student_roll_no=${studentRegistration.student_roll_no}"/>" style="padding-right:10px;">Edit</a>
+										<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_student?student_roll_no=${studentRegistration.student_roll_no}&org_name=${studentRegistration.org_name}&branch=${studentRegistration.branch}"/>" style="padding-right:10px;">Edit</a>
 										<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_student?student_roll_no=${studentRegistration.student_roll_no}"/>" onclick="return confirmation()">Remove</a>
 								        <td>
 								     </tr>

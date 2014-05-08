@@ -320,5 +320,41 @@ public class StudentRegistration
 		this.parent_email2 = parent_email2;
 	}
 
+	
 
+	// Admin Side Edit Constructor
+	
+	public StudentRegistration(String org_name, String branch,
+			String student_roll_no, String first_name, String last_name,
+			String gender, String transport_facility, String pickup_route_no,
+			String pickup_point_address, String drop_route_no,
+			String drop_point_address, String kg_drop, String parent_name1,
+			String parent_name2, String parent_mobile1, String parent_mobile2,
+			String parent_email1, String parent_email2, String class_standard,
+			String section) {
+		super();
+		this.org_name = org_name;
+		this.branch = branch;
+		this.student_roll_no = student_roll_no;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.gender = gender;
+		this.transport_facility = transport_facility;
+		this.pickup_route_no = pickup_route_no;
+		this.pickup_point_address = pickup_point_address;
+		this.drop_route_no = drop_route_no;
+		this.drop_point_address = drop_point_address;
+		this.kg_drop = kg_drop;
+		this.parent_name1 = parent_name1;
+		this.parent_name2 = parent_name2;
+		this.parent_mobile1 = parent_mobile1;
+		this.parent_mobile2 = parent_mobile2;
+		this.parent_email1 = parent_email1;
+		this.parent_email2 = parent_email2;
+		this.class_standard = class_standard;
+		this.section = section;
+	}
+
+	
+	
 }
