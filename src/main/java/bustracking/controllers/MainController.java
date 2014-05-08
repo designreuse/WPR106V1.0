@@ -30,6 +30,7 @@ import bustracking.dao.ClientHomeDAO;
 import bustracking.dao.FleetHomepageDAO;
 import bustracking.dao.MainDAO;
 import bustracking.dao.OrgBusinessRuleDAO;
+import bustracking.dao.RouteDAO;
 import bustracking.dao.TrackingInfoDAO;
 import bustracking.forms.BusDeviceRegistrationForm;
 /*import bustracking.forms.DeviceFailForm;*/
@@ -37,6 +38,7 @@ import bustracking.forms.BusRegistrationForm;
 import bustracking.forms.ClientHomeForm;
 import bustracking.forms.FleetHomepageForm;
 import bustracking.forms.OrgBusinessRuleForm;
+import bustracking.forms.RouteViewForm;
 import bustracking.forms.SuperAdminHomeForm;
 
 import bustracking.forms.LatLongForm;
@@ -48,6 +50,8 @@ import bustracking.model.XMLWriter;
 @Controller
 @SessionAttributes({"sample","listsize","menu","role"})
 public class MainController {
+	@Autowired
+	RouteDAO routeDAO;
 	
 	@Autowired  
 	MainDAO mainDAO; 
@@ -384,6 +388,27 @@ else{
 		
 		
 	}
+	//*******************************************************************************************************************
+	//find route client side
+	//*******************************************************************************************************************
+	@RequestMapping(value="/clientfindroutedetails", method = RequestMethod.GET)
+	public String clientfindroutedetails(HttpServletRequest request,@RequestParam("route_no") String route_no,@RequestParam("trip") String trip,ModelMap model, Principal principal ) {
+		if(route_no=="" && trip==""){
+			RouteViewForm routeViewForm=new RouteViewForm();
+			routeViewForm.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("routeViewForm",routeViewForm);
+			return "client_view_route_details";
+		}
+		else{
+			RouteViewForm routeViewForm=new RouteViewForm();
+			routeViewForm.setRoute_views(mainDAO.searchRouteclient(mainDAO.getOrg_id(principal.getName()),route_no,trip));
+			model.addAttribute("routeViewForm",routeViewForm);
+			return "client_search_route_details";
+		}
+		
+		
+	}
+	
 	@RequestMapping(value="/calculate", method = RequestMethod.POST)
 	public String calculate(HttpServletRequest request,ModelMap model, Principal principal ) {
 		

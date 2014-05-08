@@ -35,10 +35,10 @@ public class ClientHomeDAO{
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		
+		//Home List View
 		List<ClientHome> clienthome = new ArrayList<ClientHome>();
 		try{
-			System.out.println("welcome to client home");
+			
 			resultSet = statement.executeQuery("SELECT * from tbl_vechicle_tracking_history where bus_tracking_timestamp in (select max(bus_tracking_timestamp) from tbl_vechicle_tracking_history where org_id='"+org_id+"' group by vechicle_reg_no) order by vechicle_reg_no desc,bus_tracking_timestamp desc;");
 			while(resultSet.next()){
 				clienthome.add(new ClientHome(resultSet.getString("vechicle_reg_no"),resultSet.getString("address"),resultSet.getString("speed"),resultSet.getString("bus_tracking_timestamp")));

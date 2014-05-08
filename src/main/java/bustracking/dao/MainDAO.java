@@ -9,6 +9,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import bustracking.forms.SuperAdminHomeForm;
+import bustracking.model.Route_view;
 import bustracking.model.SuperAdminHome;
 
 
@@ -121,7 +122,7 @@ public class MainDAO {
 	}
 	
 		//find home contents 06/05/2014
-public List<SuperAdminHome> findadminhome( String org_name , String branch){
+		public List<SuperAdminHome> findadminhome( String org_name , String branch){
 		
 		Connection con = null;
 		Statement statement = null;
@@ -150,7 +151,42 @@ public List<SuperAdminHome> findadminhome( String org_name , String branch){
 	    }
 	    return superAdminHomes;
 	}
-	
+	//Search client route view
+		public List<Route_view> searchRouteclient(String org_id,String route_no,String trip){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<Route_view> route_views = new ArrayList<Route_view>();
+			try{
+				
+				resultSet = statement.executeQuery("SELECT t1.vechicle_reg_no,t1.route_no, t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.org_id=t2.org_id where t2.org_id='"+org_id+"' and (t1.route_no='"+route_no+"' and trip='"+trip+"')");
+				System.out.println("SELECT t1.vechicle_reg_no,t1.route_no, t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.org_id=t2.org_id where t2.org_id='"+org_id+"' and (route_no='"+route_no+"' and trip='"+trip+"')");
+				while(resultSet.next()){
+					route_views.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time")));
+					
+				}
+			
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return route_views;
+			
+		}
+
+		
 	/*public List<DeviceFail> getdevicefails(){
 		Connection con = null;
 		Statement statement = null;

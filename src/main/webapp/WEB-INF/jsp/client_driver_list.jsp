@@ -107,7 +107,8 @@
 							    </c:forEach>
 							    </select></td>
 							    <td align="center" valign="middle" width="10%">
-							  <input type="submit" class="btn" value="Search" ></td>
+							  <input type="submit" class="pressableButton blue" value="Search" >
+							  </td>
 							 
 							  </tr>
 							</table>
@@ -134,7 +135,7 @@
         					</tr>  </table>
 						
     	<div class="Panel_One_Inner">
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
 							<c:if test="${fn:length(busRegistrationForm.busregistration) gt 0 }">
         					<c:forEach items="${busRegistrationForm.busregistration}" var="DriverRegistration" varStatus="status">
         				       					<tr class="row1">
@@ -143,7 +144,7 @@
 											<td valign="top" align="left" width="15%">${DriverRegistration.vechicle_reg_no}</td>
 											<td valign="top" align="left" width="20%">${DriverRegistration.driver_licence_no}</td>
 												<td valign="top" align="left" width="15%">${DriverRegistration.driver_licence_exp_date}</td>
-											<td valign="top" align="left" width="15%">${DriverRegistration.org_id}</td>
+											
 								</tr>
 							    	</c:forEach>
 							    </c:if>

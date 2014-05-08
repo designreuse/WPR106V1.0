@@ -47,11 +47,13 @@
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
-    <table class="margin_table">			
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="margin_table"> 
+      		
+			
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Vehicle Information<br/></h2>
+			          <h2>Vehicle Route View<br/></h2>
 			          <div class="buttonswitchpanel">
 			          <div class='buttonsheader'>
 						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
@@ -68,30 +70,47 @@
 
 
 <div style="display:none" id="div"><div class="searchpanel">
-						<form action="findbus" method="GET">
+
+						<form action="#" method="GET">
 							 
-							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							  <tr>
-							   <td align="left" valign="middle" width="20%">&nbsp;Vehicle No:<br/>
-							    <select   id="e1"style="width:250px;" name="vechicle_reg_no">
+							  <tr><td align="left" valign="middle" width="8%">
+							  
+							   <td align="left" valign="middle" width="8%">&nbsp;Route No:<br/>
+							    <select   id="e3"style="width:250px;" name="route_no">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${busregistrationform.busregistration}" var="driverlist" varStatus="status">
-							    <option value="${driverlist.vechicle_reg_no}">${driverlist.vechicle_reg_no}</option>
+							    <c:forEach items="${routeViewForm.route_views}" var="clientrouteview1" varStatus="status">
+							    <option value="${clientrouteview1.route_no}">${clientrouteview1.route_no}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;From Date:<br/><input type="text" name="driver_id" style="margin:4px 0 0 0;"></td>
+							    <td align="left" valign="middle" width="10%">Stop details By:<br/>
+							    <select   id="e2"style="width:250px;" name="driver_licence_number">
+							 	<option value="">Select None</option>    
+							 	<c:forEach items="${routeViewForm.route_views}" var="clientrouteview1" varStatus="status"> 
+							    <c:choose>
+											<c:when test="${clientrouteview1.trip==0}">
+											<option value="0"><c:out value="PickUp"></c:out>	</option>										
+											</c:when>
+											<c:when test="${clientrouteview1.trip==1}">
+											<option value="1"><c:out value="Drop"></c:out>	</option>										
+											</c:when>
+											<c:when test="${clientrouteview1.trip==2}">
+											<option value="2"><c:out value="KG Drop"></c:out>	</option>										
+											</c:when>
+											</c:choose>
 							    
-							      <td align="left" valign="middle" width="10%">&nbsp;&nbsp;To Date:<br/><input type="text" name="driver_id" style="margin:4px 0 0 0;"></td>
-							   <td align="center" valign="middle" width="10%">
-							  <input type="submit" class="pressableButton blue" value="Search" ></td>
+							   </c:forEach>
+							   
+							    </select>
+							  <td align="center" valign="middle" width="30%">
+							  <input type="submit" class="pressableButton blue" value="View Stops" ></td>
 							 
 							  </tr>
 							</table>
 							</form>
 						</div></div>
-						
-							<div style="display:none" id="divfilter">
+					
+						<div style="display:none" id="divfilter">
 							<div id="filter_box">
 
 	<div class="wrapperFilter">
@@ -99,47 +118,56 @@
 	<input type="text" id="search" name="search" placeholder="Enter Text To Filter" class="light-table-filter" data-table="order-table" placeholder="Filter"/>
 	</div>
 </div></div>
-						
-						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+					 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-								<!-- <input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"> -->					
-					         	<td valign="top" align="left" width="5%">Date</td>
-          						<td valign="top" align="left" width="10%">Start Time</td>
-          						<td valign="top" align="left" width="10%">End Time</td>
-          						<td valign="top" align="left" width="5%">Duration</td>
-          						<td valign="top" align="left" width="40%">Location</td>
-          						<td valign="top" align="left" width="25%">Trip</td>
+								<td valign="top" align="left" width="13%">Vechicle Reg No</td>					
+					         	<td valign="top" align="left" width="10%">Route No</td>
+          						<td valign="top" align="left" width="8%">Stop Id</td>
+          						<td valign="top" align="left" width="45%">Stop Location</td>
+          						<td valign="top" align="left" width="15%">Stop Arrival Time</td>
+          						<td valign="top" align="left" width="15%">Trip</td>
+          						
         					</tr>  </table>
-    	<div class="Panel_One_Inner">
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%"class="order-table table">
-							 
-        							<tr class="row1">
-							       		
-					     		     	 <td valign="top" align="left"  width="10%"><a href="driver_details?driver_id=${DriverRegistration.driver_id}">${DriverRegistration.driver_id}</a></td>
-											<td valign="top" align="left" width="15%">${DriverRegistration.driver_name}</td>
-											<td valign="top" align="left" width="15%">${DriverRegistration.contact_no}</td>
-												<td valign="top" align="left" width="15%">${DriverRegistration.license_type}</td>
-											<td valign="top" align="left" width="25%">
-										
-										
-											</td>
+						<div class="Panel_One_Inner">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
+							<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
+        					<c:forEach items="${routeViewForm.route_views}" var="clientrouteview" varStatus="status">
+        				       		<tr class="row1">	
+        				       				<td valign="top" align="left" width="15%">${clientrouteview.bus_reg_no}</td>						       		
+											<td valign="top" align="left" width="10%">${clientrouteview.route_no}</td>
+											<td valign="top" align="left" width="8%">${clientrouteview.stop_id}</td>
+											<td valign="top" align="left" width="50%">${clientrouteview.bus_stop_address}</td>
+											<td valign="top" align="left" width="15%">${clientrouteview.bus_arrival_time}</td>
+											<td valign="top" align="left" width="10%"><c:choose>
+											<c:when test="${clientrouteview.trip==0}">
+											<c:out value="PickUp"></c:out>											
+											</c:when>
+											<c:when test="${clientrouteview.trip==1}">
+											<c:out value="Drop"></c:out>											
+											</c:when>
+											<c:when test="${clientrouteview.trip==2}">
+											<c:out value="KG Drop"></c:out>											
+											</c:when>
+											</c:choose></td>
 								</tr>
-							    	
-    
-        				</table>
-        				
-        				</div>
+							    	</c:forEach>
+							    </c:if>
+							    <c:if test="${fn:length(routeViewForm.route_views) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Routes Found!!!</b></center></td>
+							    	</tr>
+							    	</c:if>
+        				</table></div>
         				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-								
+
           						<td valign="top" align="right" width="100%">&#9660;</td>
+          						
         					</tr>  </table>
         				
         				</td>
         				</tr>
-        				</table></div></div>        	
-
-
-
+        				</table></div></div>
 
 <jsp:include page="footer.jsp"></jsp:include>
+ 
