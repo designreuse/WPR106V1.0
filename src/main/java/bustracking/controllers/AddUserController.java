@@ -139,19 +139,16 @@ public String viewuser(ModelMap model, Principal principal){
 }
 
 @RequestMapping(value="/edituser",method=RequestMethod.GET)
-public String edituser(HttpServletRequest request,@RequestParam("org_id")String org_id,ModelMap model,OrgRegistration orgregistration)
+public String edituser(HttpServletRequest request,@RequestParam("username")String username,ModelMap model,OrgRegistration orgregistration)
 {
-	OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
-	orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
-	model.addAttribute("orgRegistrationForm",orgRegistrationForm);
-	
 	
 	AddUserForm adduserform=new AddUserForm();
-	adduserform.setAdduser(userDAO.getUsers(org_id));
+	adduserform.setAdduser(userDAO.getUsers(username));
 	model.addAttribute("adduserform",adduserform);
 	return "edit_user";
 	
 }
+
 
 @RequestMapping(value="/updateuser",method=RequestMethod.POST)
 
@@ -248,7 +245,7 @@ public String finduserInSearch(HttpServletRequest request,@RequestParam("org_nam
 	
 	
 	
-@RequestMapping(value="/userdetails", method=RequestMethod.GET)
+/*@RequestMapping(value="/userdetails", method=RequestMethod.GET)
 	public String userdetails(HttpServletRequest request,@RequestParam("admin_reg_no") String admin_reg_no,ModelMap model,AddUser adduser)
 	{
 		
@@ -259,7 +256,7 @@ public String finduserInSearch(HttpServletRequest request,@RequestParam("org_nam
 		
 		
 		return "user_details";
-	}
+	}*/
 
 /*@RequestMapping(value="/smsreport", method=RequestMethod.GET)
 public String smsreport(ModelMap model, Principal principal){

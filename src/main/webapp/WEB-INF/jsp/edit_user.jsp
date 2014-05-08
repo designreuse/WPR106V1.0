@@ -1,67 +1,109 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<jsp:include page="header.jsp"></jsp:include>
-<html>
-<head>
-<title>Edit User Details</title>
-</head>
-<body>
-	<form method="POST" action="updateuser" name="update">
-	<script type="text/javascript">
-$(document).ready(function () {
-	//called when key is pressed in textbox
-	$("#inp_contact_no").keypress(function (e) {	
-	   //if the letter is not digit then display error and don't type anything
-	   if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57))
-		   {
-	      //display error message
-	      $("#errmsg").html("Kindly give numbers").show();
-	             return false;
-	 	 }
-	   else{
-	  	 $("#errmsg").html("Kindly give numbers").fadeOut();
-	  	 }
-	 });
-});
-</script>
-<script language="Javascript" type="text/javascript">
- 
-        function onlyAlphabets(e, t) {
-            try {
-                if (window.event) {
-                    var charCode = window.event.keyCode;
-                }
-                else if (e) {
-                    var charCode = e.which;
-                }
-                else { return true; }
-                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode > 45 && charCode < 47) || (charCode > 31 && charCode < 33))
-                    return true;
-                else
-                    return false;
-            }
-            catch (err) {
-                alert(err.Description);
-            }
-        }
- 
+<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+  <script type="text/javascript" src="resources/js/autoddl/magicsuggest-1.3.1.js"></script>
+  <link rel="stylesheet" href="resources/js/autoddl/magicsuggest-1.3.1.css">
+   <script type="text/javascript">
+        $(document).ready(function() {
+            var jsonData = [];
+            var cities=new Array();
+            var i0=0;
+            '<c:forEach items="${classSectionForm.classSections}" var="classSection">';
+                cities[i0]='<c:out value="${classSection.org_name}"></c:out>';
+                i0=i0+1;
+            '</c:forEach>';
+            for(var i0=0;i0<cities.length;i0++) jsonData.push({id:i0,name:cities[i0],status:i0%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
+
+            var jsonData1 = [];
+            var cities1=new Array();
+            var i1=0;
+            alert(i1);
+            '<c:forEach items="${classSectionForm.classSections}" var="classSection">';
+                cities1[i1]='<c:out value="${classSection.branch}"></c:out>';
+                i1=i1+1;
+            '</c:forEach>';
+            for(var i1=0;i1<cities1.length;i1++) jsonData1.push({id:i1,name:cities1[i1],status:i1%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
+
+
+            var jsonData2 = [];
+            var cities2=new Array();
+            var i2=0;
+            
+			
+            '<c:forEach items="${classSectionForm.classSections}" var="classSection">';
+                cities2[i2]='<c:out value="${classSection.class_std}"></c:out>';
+                i2=i2+1;
+            '</c:forEach>';
+            for(var i2=0;i2<cities2.length;i2++) jsonData2.push({id:i2,name:cities2[i2],status:i2%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
+
+            var jsonData3 = [];
+            var cities3=new Array();
+            var i3=0;
+            
+			
+            '<c:forEach items="${classSectionForm.classSections}" var="classSection">';
+                cities3[i3]='<c:out value="${classSection.section}"></c:out>';
+               
+                i3=i3+1;
+            '</c:forEach>';
+            
+            for(var i3=0;i3<cities3.length;i3++) jsonData3.push({id:i3,name:cities3[i3],status:i3%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
+
+/* 
+            var jsonData4 = [];
+            var cities4=new Array();
+            var i4=0;
+            
+			
+            '<c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration">';
+                cities4[i4]='<c:out value="${orgRegistration.branch}"></c:out>';
+                i4=i4+1;
+           
+                '</c:forEach>';            
+            for(var i4=0;i4<cities4.length;i4++) jsonData4.push({id:i4,name:cities4[i4],status:i4%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
+			
+ */            
+            var ms7 = $('#ms7').magicSuggest({
+                data: jsonData,
+                resultAsString: true,
+                maxSelection: 1,
+                maxSelectionRenderer: function(){}
+            });
+            var ms8 = $('#ms8').magicSuggest({
+                data: jsonData1,
+                resultAsString: true,
+                maxSelection: 1,
+                maxSelectionRenderer: function(){}
+            });
+            var ms9 = $('#ms9').magicSuggest({
+                data: jsonData2,
+                resultAsString: true,
+                maxSelection: 1,
+                maxSelectionRenderer: function(){}
+            });
+
+            var ms10 = $('#ms10').magicSuggest({
+                data: jsonData3,
+                resultAsString: true,
+                maxSelection: 1,
+                maxSelectionRenderer: function(){}
+            });
+/*             var ms11 = $('#ms11').magicSuggest({
+                data: jsonData4,
+                resultAsString: true,
+                maxSelection: 1,
+                maxSelectionRenderer: function(){}
+            });
+			
+ */
+             });
     </script>
-    <script type="text/javascript">
-	function validat(){
-	
-	var x=document.forms["update"]["notification_email"].value;
-	var atpos=x.indexOf("@");
-	var dotpos=x.lastIndexOf(".");
-	if (atpos < 1 || dotpos<atpos+2 || dotpos+2>=x.length)
-	  {
-	  alert("Not a valid e-mail address");
-	  setTimeout(function(){document.getElementById("inp_id_email").focus();}, 1);
-	  return false;
-	  }
+<jsp:include page="header.jsp"></jsp:include>
+<div id="GPS_View_container">
+    <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
+    <div id="GPS_View_table">
+	<form method="POST" action="updateuser">
 
-
-	}
-</script>
 <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
 
       <tr>
@@ -73,89 +115,106 @@ $(document).ready(function () {
 	       <div class="contentbox">
 	        <c:set value="${adduserform.adduser[0]}" var="addUser"/>
                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                        <tr class="row2">
-				                  <td valign="middle" align="right" class="input_txtlabel"><span class="err">*</span> Organization Id :</td>
+                        <tr class="row1">
+    						<td width="15%"></td>
+				                  <td valign="middle" align="left" class="input_txtlabel" width="15%">
+				                  <span class="err">*</span>Organization Name</td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  <input type="hidden" name="admin_reg_no" value=" ${addUser.admin_reg_no}">
-				                 	  ${addUser.admin_reg_no}</td></tr>
-	                            <tr class="row2">
-				                  <td valign="middle" align="right" class="input_txtlabel"><span class="err">*</span> Organization Id :</td>
-				                  <td valign="top" align="left" class="input_txt">
-				                  <%-- <input type="hidden" name="org_id" value=" ${addUser.org_id}">
-				                 	  ${addUser.org_id}</td> --%>
-				                  <select class="org_input_cmbbx" name="org_id" id="inp_id_validate">
-							    <option value="${addUser.org_id}" selected>${addUser.org_id}</option>
-        				    
-			                <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
-        				          <option value="${OrgRegistration.org_id}">${OrgRegistration.org_id}</option>
+				                  
+				                  <input type="hidden" name="org_name" class="org_input_cmbbx" value="${addUser.org_name}"/>${addUser.org_name}
+				               <%--  <select class="org_input_cmbbx" name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
+							    <option value="">-- Select Organization--</option>
+        				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
+        				        <option value="${orgname}" >${orgname}</option>
 			                  </c:forEach>
-			                 </select>
-				                </tr>
-				                 <tr class="row1">
-				                  <td valign="middle" align="right" class="input_txtlabel"><span class="err">*</span> Admin Id :</td>
-				                 <td valign="top" align="left" class="input_txt">
-				                 <input type="text" class="org_input_txtbx_height1" id="inp_id" name="admin_id" value="${addUser.admin_id}"/>
- 								
- 				                  </td>
+			                 </select> --%>
+				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row2">
-				                  <td valign="middle" align="right" class="input_txtlabel"><span class="err">*</span> Name :</td>
+				                <td width="15%"></td>
+				                  <td valign="middle" align="left" class="input_txtlabel">
+				                  <span class="err">*</span> Branch </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                	 <input type="text" class="org_input_txtbx_height1" id="inp_id" onkeypress="return onlyAlphabets(event,this);" name="name" value="${addUser.name}"/>                 
-								
-								 </td>
-				                </tr>
-				                 <tr class="row1">
-				                  <td valign="middle" align="right" class="input_txtlabel"><span class="err">*</span> Password :</td>
-				                  <td valign="top" align="left" class="input_txt">
-				                  <input type="password" class="org_input_txtbx_height1" id="inp_id" name="password" value="${addUser.password}"/>
-				                  </td>
-				                </tr>
-				                <tr class="row2">
-				                  <td valign="middle" align="right" class="input_txtlabel"><span class="err">*</span> User Type :</td>
-				                  <td valign="top" align="left" class="input_txt">
-				                	 <%-- <input type="text" class="org_input_txtbx_height1" id="inp_id" name="user_access_control" value="${addUser.user_access_control}"/> --%>                 
-				                	<c:choose>
-				                	<c:when test="${addUser.user_access_control=='Normal'}">
-				                	<input type="radio" name="user_access_control" value="Admin"/>Admin User&nbsp;&nbsp;
-				                	<input type="radio" name=user_access_control value="Normal" checked="true"/>Normal User&nbsp;&nbsp;
-									
-				                	</c:when>
-				                	<c:when test="${addUser.user_access_control=='Admin'}">
-				                	<input type="radio" name="user_access_control" value="Admin"  checked="true"/>Admin User&nbsp;&nbsp;
-				                	<input type="radio" name=user_access_control value="Normal"/>Normal User&nbsp;&nbsp;
-									
-				                	</c:when>
-				                	</c:choose>
-				                	 
-								 </td>
+				                 
+				                  <input type="hidden" name="org_name" class="org_input_cmbbx" value="${addUser.branch}"/>${addUser.branch}
+				                 
+				                 <%-- <div id="info" style="height:8px; " > 	<select class="org_input_cmbbx" name="branch" id="bid" onblur="Validate1('bid')">
+							    <option value="">-- Select branch--</option>
+							   </select> 
+        				       </div> --%>
+        				       
+				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row1">
-				                  <td valign="middle" align="right" class="input_txtlabel"><span class="err">*</span> Contact Number :</td>
+				                <td width="15%"></td>
+				                  <td valign="middle" align="left" class="input_txtlabel">
+				                  <span class="err">*</span> First Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                	 <input type="text" class="org_input_txtbx_height1" id="inp_contact_no" name="contact_no" maxlength="10" value="${addUser.contact_no}"/>                 
-								 </td>
+				                  	<input type="text" class="org_input_txtbx_height1" id="fname" oninput="validateAlpha();" onblur="toTitleCase('fname')" value="${addUser.firstname }" name="firstname" />
+				                  	<br/><font color="Red" size="+1"><form:errors path="AddUser.firstname"></form:errors></font>
+				                  </td><td width="15%"></td>
 				                </tr>
-				          
-				          		<tr class="row2">
-				                  <td valign="middle" align="right" class="input_txtlabel"><span class="err">*</span> Notification Email :</td>
+                        		<tr class="row2">
+                        		<td width="15%"></td>
+				                  <td valign="middle" align="left" class="input_txtlabel">
+				                  <span class="err">*</span> Last Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                	 <input type="text" class="org_input_txtbx_height1" id="inp_id_email" name="notification_email" value="${addUser.notification_email}"/>                 
-								 </td>
+				                  	<input type="text" class="org_input_txtbx_height1" id="lname" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" name="lastname"   value="${addUser.lastname}"/>
+				                  	<br/><font color="Red" size="+1"><form:errors path="AddUser.lastname"></form:errors></font>
+				                  </td><td width="15%"></td>
 				                </tr>
-				                  <tr class="row2">
-				                   <td valign="middle" align="right" class="input_txt">
-				                   <input id="inp_id" type="submit" class="submit_btn1" value="Update" onclick="return validat()"></td>
+				                <tr class="row1">
+				                <td width="15%"></td>
+				                  <td valign="middle" align="left" class="input_txtlabel">
+				                  <span class="err">*</span> Email </td><td>:</td>
+				                  <td valign="top" align="left" class="input_txt">
+				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" onblur="emailcheck('eid')"  value="${addUser.email}"/>
+				                  </td><td width="15%"></td>
+				                </tr>
+				                <tr class="row2">
+				                <td width="15%"></td>
+				                  <td valign="middle" align="left" class="input_txtlabel">
+				                  <span class="err">*</span> User Name </td><td>:</td>
+				                  <td valign="top" align="left" class="input_txt">
+				                  	<input type="hidden" class="org_input_txtbx_height1" id="uname"  name="username" onblur="user('uname')"  value="${addUser.username}"/>${addUser.username}
+				                  	<br/><font color="Red" size="+1"><c:out value="${userexists}"/><form:errors path="AddUser.username"></form:errors></font>
+				                  
+				                  </td><td width="15%"></td>
+				                </tr>
+				                <tr class="row1">
+				                <td width="15%"></td>
+				                  <td valign="middle" align="left" class="input_txtlabel">
+				                  <span class="err">*</span> Password </td><td>:</td>
+				                  <td valign="top" align="left" class="input_txt">
+				                  	<input type="text" class="org_input_txtbx_height1" onblur="passcheck('pass')" id="pass" name="password" value="${addUser.password}" />
+				                  	<br/><font color="Red" size="+1"><form:errors path="AddUser.password"></form:errors></font>
+				                  </td><td width="15%"></td>
+				                  
+				                </tr>
+				                 <tr class="row2">
+				                 <td width="15%"></td>
+				                  <td valign="middle" align="left" class="input_txtlabel">
+				                  <span class="err">*</span> Re-Enter Password </td><td>:</td>
+				                  <td valign="top" align="left" class="input_txt">
+				                  	<input type="text" class="org_input_txtbx_height1" id="repass" onblur="repasscheck('repass')" name="confirm_password" value="${addUser.confirm_password}"/>
+				                  	<br/><font color="Red" size="+1"><form:errors path="AddUser.password"></form:errors></font>
+				                  </td><td width="25%"></td>
+				                  
+				                </tr>
+                        		<tr class="row1">
+                        		<td>&nbsp;&nbsp;</td>
+				                   <td align="right" ><input type="submit" class="submit_btn" value="Update" ></td>
 				                   
-				                    
-				                    <td valign="middle" align="left" class="input_txt">
-				                    <input type="button" class="submit_btn1" value="Cancel"  onclick="window.location.href='viewuser'"></td>
+				                    <td colspan="1"></td>
+				                    <td><input type="reset" class="submit_btn" value="Cancel"  onclick="window.location.href='viewuser'"></td>
 				                  </tr>
-				                  </table>
+                        	
+				        </table>
 				          </div>
 				          </td>
 				          </tr>
 				          </table>
 				          </form>
-				          </body>
-				          </html>				          
+				          </div>
+				          </div>
+				          <jsp:include page="footer.jsp"></jsp:include>			          

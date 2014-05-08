@@ -117,6 +117,26 @@ public class AddUser{
 	public void setConfirm_password(String confirm_password) {
 		this.confirm_password = confirm_password;
 	}
+
+
+	// Constructor for Edit Operation
+	
+	
+	public AddUser(String org_name, String branch, String firstname,
+			String lastname, String email, String username, String password,
+			String confirm_password) {
+		super();
+		this.org_name = org_name;
+		this.branch = branch;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.confirm_password = confirm_password;
+	}
+	
+	
 	
 	
 }

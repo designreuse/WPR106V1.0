@@ -179,9 +179,9 @@
 											
 											<td valign="top" align="left" width="25%">
 										
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edituser?admin_reg_no=${addUser.username}"/>" style="padding-right:10px;">Edit</a>
+												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edituser?username=${addUser.username}"/>" style="padding-right:10px;">Edit</a>
 												
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?admin_id=${addUser.username}"/>" onclick="return confirmation()">Remove</a>
+											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?org_name=${addUser.org_name}"/>" onclick="return confirmation()">Remove</a>
 									
 											</td>
 								</tr>

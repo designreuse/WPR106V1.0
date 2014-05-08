@@ -270,7 +270,9 @@ public class AddUserDAO{
 		
 	}
 	
-	public List<AddUser> getUsers(String org_id)
+	// Get Users For Edit
+	
+	public List<AddUser> getUsers(String username)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -286,12 +288,12 @@ public class AddUserDAO{
 		{
 		try
 		{
-			String cmd="select *from tbl_user where org_id='"+org_id+"'";
+			String cmd="SELECT t1.org_name,t1.branch,t2.firstname,t2.lastname,t2.email,t2.username,t2.password,t2.confirm_password from tbl_organization as t1 join tbl_user as t2 on t1.org_id=t2.org_id where t2.username='"+username+"'";
 			resultSet = statement.executeQuery(cmd);
 			while(resultSet.next())
 			{
-				adduser.add(new AddUser(resultSet.getString("org_id"),resultSet.getString("firstname"),resultSet.getString("lastname"),resultSet.getString("email"),resultSet.getString("username"),resultSet.getString("password"),resultSet.getString("confirm_password")));
-			System.out.print(org_id);
+				adduser.add(new AddUser(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("firstname"),resultSet.getString("lastname"),resultSet.getString("email"),resultSet.getString("username"),resultSet.getString("password"),resultSet.getString("confirm_password")));
+			System.out.print(username);
 			}
 		}
 			catch(Exception e){
@@ -312,6 +314,7 @@ public class AddUserDAO{
 	}
 	
 	
+	// Update User Info
 	
 	public int updateUser(AddUser user)
 	{
@@ -326,7 +329,7 @@ public class AddUserDAO{
 			e1.printStackTrace();
 		}
 	    try{
-	    	String cmd="UPDATE tbl_user SET org_name='"+user.getOrg_name()+"',branch='"+user.getBranch()+"',firstname='"+user.getFirstname()+"',lastname='"+user.getLastname()+"',email='"+user.getEmail()+"',username='"+user.getUsername()+"',password='"+user.getPassword()+"',confirm_password='"+user.getConfirm_password()+"' WHERE org_id='"+user.getOrg_id()+"';";
+	    	String cmd="UPDATE tbl_user SET firstname='"+user.getFirstname()+"',lastname='"+user.getLastname()+"',email='"+user.getEmail()+"',password='"+user.getPassword()+"',confirm_password='"+user.getConfirm_password()+"' WHERE username='"+user.getUsername()+"'";
 	    	//String Desc="Update user "+user.getAdmin_reg_no();
 	    	System.out.println(cmd);
 	    	statement.execute(cmd);
