@@ -116,6 +116,7 @@
         					
         					<c:forEach items="${orgBusinessRuleForm.orgBusinessRules}" var="vieworgBusinessRules" varStatus="status">
         				       <tr class="row1">
+        				       
         				       <td valign="top" align="left" width="10%">${vieworgBusinessRules.org_name}</td>
 					         	<td valign="top" align="left" width="3%">${vieworgBusinessRules.branch}</td>
 					         	<td valign="top" align="center" width="8%">${vieworgBusinessRules.google_map_traffic}</td>
@@ -125,8 +126,8 @@
           						<td valign="top" align="center" width="15%">${vieworgBusinessRules.speed_limit }</td>
           						<td valign="top" align="left" width="2%">${vieworgBusinessRules.sms_options }</td> 
         				        <td valign="top" align="right" width="17%">
-							    <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_bus?bus_id=${BusRegistration.bus_id}"/>" style="padding-right:10px;">Edit</a>
-							    <a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_bus?bus_id=${BusRegistration.bus_id}}"/>" onclick="return confirmation()">Remove</a>
+							    <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editbusinessrulesadmin?org_name=${vieworgBusinessRules.org_name}&branch=${vieworgBusinessRules.branch}"/>" style="padding-right:10px;">Edit</a>
+							    <a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteadminbrules?org_name=${vieworgBusinessRules.org_name}&branch=${vieworgBusinessRules.branch}"/>" onclick="return confirm('Are you sure want to delete?')">Remove</a>
 									
 											</td>
 								</tr>
@@ -151,5 +152,7 @@
         				</tr>
         				</table></div></div>
 
-
-<jsp:include page="footer.jsp"></jsp:include>
+<table width="100%"><tr>
+<td>
+<jsp:include page="footer.jsp"></jsp:include></td></tr>
+</table>

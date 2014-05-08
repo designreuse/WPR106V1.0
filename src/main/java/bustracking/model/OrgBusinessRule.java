@@ -154,6 +154,27 @@ public class OrgBusinessRule{
 		this.saturday=saturday;
 		this.alert_time_interval=alert_time_interval;
 	}
+	public OrgBusinessRule(String org_id,String org_name,String branch,String google_map_traffic,String pickup_start_time,
+			String pickup_end_time,	String drop_start_time, String drop_end_time,String kg_start_time,String kg_end_time ,
+			String speed_limit,	String sms_options,String alert_time_interval,String saturday,String sms_sending) {
+		super();
+		this.org_id=org_id;
+		this.org_name=org_name;
+		this.branch=branch;
+		this.google_map_traffic=google_map_traffic;
+		this.sms_sending = sms_sending;
+		this.sms_options = sms_options;
+		this.speed_limit = speed_limit;
+		this.pickup_start_time = pickup_start_time;
+		this.pickup_end_time = pickup_end_time;
+		this.drop_start_time = drop_start_time;
+		this.drop_end_time = drop_end_time;
+		this.kg_start_time=kg_start_time;
+		this.kg_end_time=kg_end_time;
+		this.saturday=saturday;
+		this.alert_time_interval=alert_time_interval;
+	}
+	
 	public OrgBusinessRule() {
 		super();
 		// TODO Auto-generated constructor stub

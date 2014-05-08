@@ -5,7 +5,7 @@
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
-    <form action="business_rule" method="POST">
+    <form action="updatebrulesadmin" method="POST">
 		<table class="margin_table">
 			
 			<tr>
@@ -19,52 +19,44 @@
 								<tr>
 									<td align="left" valign="top" width="100%"
 										style="padding-right: 25px;">
-
+										<c:set value="${orgBusinessRuleForm.orgBusinessRules[0]}" var="orgbrulesadmin"></c:set>
 										<table cellpadding="0" cellspacing="0" border="0" width="100%">
 											<tr class="row1">
 												<td valign="middle" align="right" class="input_txt" width="40%">
-												
+												<input type="text" value="${orgbrulesadmin.org_id}" name="org_id" />
 												<span class="err">*</span> Organization Name :</td>
 												<td valign="top" align="left" class="input_txt">
-												<select class="org_input_cmbbx" name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option value="Selected">-- Select Organization--</option>
-        				        <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
-        				        <option value="${orgname_for_school}" <%-- <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if> --%>>${orgname_for_school}</option>
-			                  </c:forEach>
-			                 </select>
+												<input type="hidden" value="${orgbrulesadmin.org_name}" />${orgbrulesadmin.org_name}
 			                 </tr>
 
 											<tr class="row2">
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span> Branch:</td>
 												<td valign="top" align="left" class="input_txt">
-												<div id="info" style="height:8px; " > 	<select class="org_input_cmbbx" name="branch" id="bid" onblur="Validate1('bid')">
-							    <option value="">-- Select branch--</option>
-							  <%--  <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
-        				        <option value="${OrgRegistration.org_id}" <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if>>${OrgRegistration.branch}</option>
-			                  </c:forEach> --%>
-			                 
-        				      </select>
-        				       </div> </td>
+												<input type="hidden" value="${orgbrulesadmin.branch}" />${orgbrulesadmin.branch} </td>
 											</tr>
 											<tr class="row1">
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span> Use Google Map With traffic?:</td>
 												<td valign="top" align="left" class="input_txt">
+												<c:choose>
+												<c:when test="${orgbrulesadmin.google_map_traffic=='on'}">
+												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="google_map_traffic" checked />
+												</c:when>
+												<c:when test="${orgbrulesadmin.google_map_traffic=='off'}">
 												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="google_map_traffic"  />
-												<span class="err" id="errmsg"></span> <br />
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.contact_no"></form:errors></font>
+												</c:when>
+												</c:choose>
+												
 												</td>
 											</tr>
 											<tr class="row2">
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Pickup Start Time</td>
 												<td valign="top" align="left" class="input_txt">
-												<!-- <input type="text" class="input_txtbx_driver" id="inp_id" name="license_type" /> -->
 												<input type="text" class="input_txtbx_br" id="inp_id"
-													name="pickup_start_time"  />
-												<br/>
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.license_type"></form:errors></font>
+													name="pickup_start_time" value="${orgbrulesadmin.pickup_start_time}" />
+												
 												</td>
 											</tr>
 											<tr class="row1">
@@ -72,8 +64,7 @@
 													class="err">*</span>Pickup end time :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx_br" id="inp_id"
-													name="pickup_end_time" /> <br />
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.license_no"></form:errors></font>
+													name="pickup_end_time" value="${orgbrulesadmin.pickup_end_time}"/> <br />
 												</td>
 											</tr>
 											<tr class="row2">
@@ -81,30 +72,23 @@
 													class="err">*</span>Drop Start Time :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx_br" id="datepicker"
-													name="drop_start_time" value="${driverdetails.license_expired_date}"/> <br />
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.license_expired_date"></form:errors></font>
+													name="drop_start_time" value="${orgbrulesadmin.drop_start_time}"/> 
 												</td>
 											</tr>
 											<tr class="row1">
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Drop end Time :</td>
 												<td valign="top" align="left" class="input_txt">
-												<%-- <textarea rows="*" cols="*" class="input_txtArea_driver" name="address" value="${license_expired_date.address}"></textarea>
-												 --%><input
-													type="text" class="input_txtbx_br" id="datepicker"
-													name="drop_end_time" value="${driverdetails.license_expired_date}"/>	
-													<br />
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.address"></form:errors></font>
-												</td>
+												<input	type="text" class="input_txtbx_br" id="datepicker"
+													name="drop_end_time" value="${orgbrulesadmin.drop_end_time}"/>	
+													</td>
 											</tr>
 											<tr class="row2">
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>KG Drop Start Time:</td>
 												<td valign="top" align="left" class="input_txt"> <input
 													type="text" class="input_txtbx_br" id="inp_id"
-													name="kg_start_time" />
-												<br />
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.driver_status"></form:errors></font>
+													name="kg_start_time" value="${orgbrulesadmin.kg_start_time}" />
 												</td>
 											</tr>
 											<tr class="row1">
@@ -112,9 +96,8 @@
 													class="err">*</span>KG Drop end Time:</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx_br" id="inp_id"
-													name="kg_end_time" />	
-									             <br />
-												
+													name="kg_end_time"  value="${orgbrulesadmin.kg_end_time}"/>	
+									           
 												</td>
 											</tr>
 											<tr class="row2">
@@ -122,29 +105,30 @@
 													class="err">*</span>Speed Limit  :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx_br" id="inp_id"
-													name="speed_limit" />
-												 <br />
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.driver_status"></form:errors></font>
+													name="speed_limit"  value="${orgbrulesadmin.speed_limit}" />
 												</td>
 											</tr>
 											<tr class="row1">
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>SMS Option:</td>
 												<td valign="top" align="left" class="input_txt">
-												 <input type="radio" name="sms_options" value="yes" checked/>Yes&nbsp;&nbsp;
-									             <input type="radio" name="sms_options" value="no"/>NO&nbsp;&nbsp;
-												  <br />
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.driver_status"></form:errors></font>
-												</td>
+												<c:choose>
+												<c:when test="${orgbrulesadmin.sms_options=='yes'}">
+												<input type="radio" name="sms_options" value="yes" checked/> Yes&nbsp;&nbsp;
+									             <input type="radio" name="sms_options" value="no"/>NO&nbsp;&nbsp;</c:when>
+									             <c:when test="${orgbrulesadmin.sms_options=='no'}">
+												<input type="radio" name="sms_options" value="yes" /> Yes&nbsp;&nbsp;
+									             <input type="radio" name="sms_options" value="no" checked/>NO&nbsp;&nbsp;</c:when>
+												</c:choose>
+												 
+												  </td>
 											</tr>
 											<tr class="row2">
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Alert Time Interval:</td>
 												<td valign="top" align="left" class="input_txt"> <input
 													type="text" class="input_txtbx_br" id="inp_id"
-													name="alert_time_interval" /> 
-												 <br />
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.driver_status"></form:errors></font>
+													name="alert_time_interval" value="${orgbrulesadmin.alert_time_interval}"/> 
 												</td>
 											</tr>
 											<tr class="row1">
@@ -152,9 +136,15 @@
 													class="err">*</span>Is Saturday Working Day?: 
 												 </td>
 												 <td valign="top" align="left" class="input_txt">
-												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="saturday"  />
-												<span class="err" id="errmsg"></span> <br />
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.contact_no"></form:errors></font>
+												 <c:choose>
+												 <c:when test="${orgbrulesadmin.saturday=='on'}">
+												 <input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="saturday" checked />
+												 </c:when>
+												 <c:when test="${orgbrulesadmin.saturday=='off'}">
+												 <input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="saturday"  />
+												 </c:when>
+												 </c:choose>
+												
 												</td>
 												
 											</tr>
@@ -162,9 +152,15 @@
 											<td valign="top" align="right" class="input_txt"> <span
 													class="err"></span>SMS sending:</td>
 													<td valign="top" align="left" class="input_txt">
-												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="sms_sending"  />
-												<span class="err" id="errmsg"></span> <br />
-												<font color="Red" size="+1"><form:errors path="DriverRegistration.contact_no"></form:errors></font>
+													<c:choose>
+												 <c:when test="${orgbrulesadmin.sms_sending=='on'}">
+												 <input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="sms_sending" checked />
+												 </c:when>
+												 <c:when test="${orgbrulesadmin.sms_sending=='off'}">
+												 <input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="sms_sending"  />
+												 </c:when>
+												 </c:choose>
+												
 												</td>
 												</tr>
 											<tr class="row1">
@@ -233,6 +229,4 @@ select.add(option, 0); */
 <script type='text/javascript'	src='http://code.jquery.com/jquery-1.4.3.min.js'></script>
 <jsp:include page="footer.jsp"></jsp:include>
 
-						
-						
 						

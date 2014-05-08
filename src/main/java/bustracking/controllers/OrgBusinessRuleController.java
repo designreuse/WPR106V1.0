@@ -25,8 +25,11 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 
 import bustracking.model.AddUser;
+import bustracking.model.ClassSection;
 import bustracking.model.OrgBusinessRule;
 import bustracking.controllers.*;
+import bustracking.forms.AddUserForm;
+import bustracking.forms.ClassSectionForm;
 import bustracking.forms.OrgBusinessRuleForm;
 import bustracking.dao.BusRegistrationDAO;
 import bustracking.dao.OrgBusinessRuleDAO;
@@ -42,20 +45,16 @@ public class OrgBusinessRuleController{
 	@Autowired
 	OrgBusinessRuleDAO businessRuleDAO;
 	
-	
+	//add business rules admin 
 	@RequestMapping(value="/business_rule", method=RequestMethod.GET)
 	public String getbusinessrule(ModelMap model, Principal principal){
 		
 		List <String> orgname_for_school=new ArrayList<String>();
 		orgname_for_school=busDAO.getorgname_for_school();
-		
-		/*OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
-		orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.getDefaultSettings("2"));
-		model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);*/
 		model.addAttribute("orgname_for_school",orgname_for_school);
 		return "admin_settings";
 	}
-	
+	//ajax codes
 
 	@RequestMapping(value="/add_brules_admin_ajax",method=RequestMethod.POST)
 	public @ResponseBody String add_brules_admin_ajax(@ModelAttribute(value="org_id")OrgBusinessRule orgBusinessRule, BindingResult result,ModelMap model ) {
@@ -76,6 +75,8 @@ public class OrgBusinessRuleController{
 	   returnText=returnText+"</select>";		 
 	return returnText;
 	}
+	
+	//add business rules post method
 	@RequestMapping(value="/business_rule",method=RequestMethod.POST)
 	public String defaultsetting(HttpServletRequest request,@ModelAttribute("OrgBusinessRule") OrgBusinessRule businessRule,ModelMap model,OrgBusinessRule orgBusinessRules)
 	{
@@ -92,20 +93,19 @@ public class OrgBusinessRuleController{
 		
 	}
 
+	//view business ruless
+	
 	
 	@RequestMapping(value="/view_business_rule", method=RequestMethod.GET)
 	public String view_business_rule(ModelMap model, Principal principal){
 		
-		/*List <String> orgname=new ArrayList<String>();
-		orgname=busDAO.getorgname();*/
-		
 		OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
 		orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
 		model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
-		
-		/*model.addAttribute("orgname",orgname);*/
 		return "view_business_rules";
 	}
+	
+	//search admin business rules
 	
 	@RequestMapping(value="/findBusinessRules",method=RequestMethod.GET)
 	public String findBus(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model)
@@ -130,6 +130,9 @@ public class OrgBusinessRuleController{
 		}
 		
 	}
+	
+	//second search in search result page
+	
 	@RequestMapping(value="/findBusinessRulesInSearch",method=RequestMethod.GET)
 	public String findBusinessRulesInSearch(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model)
 	{
@@ -146,14 +149,71 @@ public class OrgBusinessRuleController{
 			System.out.println(org_name);
 			OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
 			orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.findRules(org_name, branch));
-	    model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
+			model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
 	    
 	    
 		return "search_business_rules";
 		}
 		
 	}
+	
+//edit business rules 
+	
+	@RequestMapping(value="/editbusinessrulesadmin",method=RequestMethod.GET)
+	public String editbusinessrulesadmin(HttpServletRequest request,@RequestParam("org_name") String org_name,
+			@RequestParam("branch")String branch,ModelMap model)
+	{
+			
+		List <String> orgname_for_school=new ArrayList<String>();
+		orgname_for_school=busDAO.getorgname_for_school();
+		model.addAttribute("orgname_for_school",orgname_for_school);
+		
+		OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
+		orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.edit_orgbusinessrules(org_name,branch));
+		model.addAttribute("orgBusinessRuleForm",orgBusinessRuleForm);
+		
+		return "edit_admin_brules";
+	}
+//Update Businesss Rules Admin Side
+	
+	@RequestMapping(value="/updatebrulesadmin",method=RequestMethod.POST)
+	public String updateclass(HttpServletRequest request,@Valid OrgBusinessRule orgBusinessRule,BindingResult result,ModelMap model)
+	{
+		int status=businessRuleDAO.update_orgbusinessrules(orgBusinessRule);
+		if(status==1)
+		{
+			OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
+			orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
+			model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
+			
+		}
+		
+		return "view_business_rules";
+	}
+	
+//Delete Admin Business Rules
+	
+	@RequestMapping(value="/deleteadminbrules", method=RequestMethod.GET)
+	public String deleteadminbrules(@RequestParam("org_id") String org_id,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch, ModelMap model, Principal principal)
+	{
 
+		int status=businessRuleDAO.deletebusinessrulesadmin(org_id,org_name,branch);
+		
+		if(status==1)
+		{
+			OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
+			orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
+			model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
+			
+		
+		
+		}
+		
+		return "view_business_rules";
+
+	}
+
+	
 }
 
 
