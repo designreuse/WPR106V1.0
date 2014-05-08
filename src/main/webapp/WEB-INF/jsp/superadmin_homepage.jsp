@@ -55,20 +55,24 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Admin   Home<span style="margin:3% 0 0 75%; padding:2px;">
-			          <a href="#" onclick="toggle(this,'div');return false">
-			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:20px;width:50px;"/></a>
-			          
-			          <a href="#" onclick="toggle1(this,'divfilter');return false">
-			          <img title="Open Search"src="resources/images/filter.png" style="height:20px;width:50px;"/></a>
-			          </span></h2>
-			          
+			          <h2>Admin   Home<br/></h2>
+			          <div class="buttonswitchpanelAD" >
+			          	<div class='buttonsheader'>
+						<!-- <a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a> -->
+						<a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
+						<a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
+						<!-- <a  href='#' > <img title="Show"src="resources/images/show.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > <img title="Download"src="resources/images/download.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
+						 -->
+						 </div>
+						 </div>
+			         
 			        </div>
-			       
-    	<table width="100%" border="0" cellspacing="0" cellpadding="0" >
-    	<tr>
+			    
 
-<td>
+
 <div style="display:none" id="div"><div class="searchpanel">
 <form action="findsuperadminhome" method="GET">
 							 
@@ -96,11 +100,7 @@
 							</table>
 							</form>
 							</div></div>
-							</td>
-							</tr>
-							
-							</table>
-						<div style="display:none" id="divfilter">
+													<div style="display:none" id="divfilter">
 							<div id="filter_box">
 
 	<div class="wrapperFilter">
@@ -146,11 +146,9 @@
           						
         					</tr></table>
 								</td>
-								</tr>
-								<tr>
-									<td valign="top" align="left">&nbsp;</td>
-								</tr>
-								
+							</tr>
+							
 							</table>
+								
 							</div></div>
 <jsp:include page="footer.jsp"></jsp:include>

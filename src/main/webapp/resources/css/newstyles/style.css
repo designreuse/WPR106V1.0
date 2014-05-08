@@ -1511,12 +1511,12 @@ background:-webkit-gradient(linear, 0 0, 0 100%, from(#ccc), to(#fff));
 	height:auto;
 	width:auto;
 }
-
-.buttonswitchpanelonlythree{
-	margin:-54px 0 0 780px;
+.buttonswitchpanelAD{
+	margin:-65px 0 0 940px;
 	height:auto;
 	width:auto;
 }
+
 
 .buttonsheader {
   position: relative;
