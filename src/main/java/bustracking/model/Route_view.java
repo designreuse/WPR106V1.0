@@ -61,11 +61,28 @@ public class Route_view
 	}
 	
 
+	// Constructor For Admin Side Edit
+	
+	public Route_view(String org_id,String org_name, String branch, String route_no,
+			 String trip, String bus_stop_address,
+			String bus_arrival_time) {
+		super();
+		this.org_name = org_name;
+		this.branch = branch;
+		this.route_no = route_no;
+		
+		this.trip = trip;
+		this.bus_stop_address = bus_stop_address;
+		this.bus_arrival_time = bus_arrival_time;
+	}
+
+
 	
 	public String getOrg_name() {
 		return org_name;
 	}
 
+	
 	public void setOrg_name(String org_name) {
 		this.org_name = org_name;
 	}

@@ -280,7 +280,7 @@
         <a href="#x" class="overlay" id="join_form"></a>
         <div class="popup">
             <h2>Student Details</h2>
-            <p>Search will come here</p>
+            
            <table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="titlepop">
 													

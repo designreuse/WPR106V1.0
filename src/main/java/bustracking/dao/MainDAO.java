@@ -165,7 +165,7 @@ public class MainDAO {
 			List<Route_view> route_views = new ArrayList<Route_view>();
 			try{
 				
-				resultSet = statement.executeQuery("SELECT t1.vechicle_reg_no,t1.route_no, t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.org_id=t2.org_id where t2.org_id='"+org_id+"' and (t1.route_no='"+route_no+"' and trip='"+trip+"')");
+				resultSet = statement.executeQuery("SELECT t1.vechicle_reg_no,t1.route_no, t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no where t2.org_id='"+org_id+"' and (t1.route_no='"+route_no+"' and trip='"+trip+"')");
 				System.out.println("SELECT t1.vechicle_reg_no,t1.route_no, t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.org_id=t2.org_id where t2.org_id='"+org_id+"' and (route_no='"+route_no+"' and trip='"+trip+"')");
 				while(resultSet.next()){
 					route_views.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time")));

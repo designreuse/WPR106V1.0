@@ -151,6 +151,7 @@ public class RouteDAO {
 	    return busDeviceRegistrations;
 		
 	}
+	
 	//find routes 06/05/2014
 
 	public List<Route_view> findroute(String org_name,String branch,String vechicle_reg_no,String route_no,String trip){
@@ -201,7 +202,7 @@ public class RouteDAO {
 		List<Route_view> route_views = new ArrayList<Route_view>();
 		try{
 			System.out.println("welcome Route View");
-			resultSet = statement.executeQuery("SELECT t1.vechicle_reg_no,t1.route_no, t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.org_id=t2.org_id where t2.org_id='"+org_id+"'");
+			resultSet = statement.executeQuery("SELECT t1.vechicle_reg_no,t2.route_no, t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no where t2.org_id='"+org_id+"'");
 			while(resultSet.next()){
 				route_views.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time")));
 				
@@ -221,9 +222,9 @@ public class RouteDAO {
 		
 	}
 
+	// Admin Side Edit Route
 	
-	
-	/*public List<Route> getRoutesView(String route_no)
+	public List<Route_view> getRoutesView(String route_no)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -235,16 +236,16 @@ public class RouteDAO {
 			e1.printStackTrace();
 		}
 		
-		List<Route> routesView=new ArrayList<Route>();
+		List<Route_view> routesView=new ArrayList<Route_view>();
 		{
 		try
 		{
-			String cmd="select *from tbl_route where route_no='"+route_no+"'";
+			String cmd="select t1.org_name,t1.branch,t2.* from tbl_organization as t1 join tbl_bus_route as t2 on t1.org_id=t2.org_id where t2.route_no='"+route_no+"'";
 			resultSet = statement.executeQuery(cmd);
 			while(resultSet.next())
 			{
-				routesView.add(new Route(resultSet.getInt("org_id"),resultSet.getString("route_no"),resultSet.getString("trip"),resultSet.getString("vechicle_reg_no"),resultSet.getString("address"),resultSet.getString("latitude"),resultSet.getString("longitude"),resultSet.getString("bus_arrival_time")));
-			System.out.print(route_no);
+				routesView.add(new Route_view(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"), resultSet.getString("route_no"), resultSet.getString("trip"), resultSet.getString("address"), resultSet.getString("bus_arrival_time")));
+			System.out.printf(route_no,resultSet.getString("trip"));
 			}
 		}
 			catch(Exception e){
@@ -263,7 +264,7 @@ public class RouteDAO {
 		}
 		return routesView;
 	}
-	*/
+	
 	
 
 	/*public int updateRoute(Route route)

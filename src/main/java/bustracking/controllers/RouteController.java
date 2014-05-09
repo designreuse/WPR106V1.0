@@ -121,7 +121,8 @@ public class RouteController
 		return "view_route";
 	}
 
-
+	//Client Side View
+	
 	@RequestMapping(value="/clientviewroutedetails", method = RequestMethod.GET)
 	public String driverlist(HttpServletRequest request,ModelMap model, Principal principal ) {
 		RouteViewForm routeViewForm=new RouteViewForm();
@@ -259,6 +260,7 @@ public class RouteController
 	   System.out.println(returnText);
 	return returnText;
 	}
+	
 	//find route 06/05/2014 
 
 @RequestMapping(value="/findroute",method=RequestMethod.GET)
@@ -301,24 +303,24 @@ public String viewuser(ModelMap model, Principal principal){
 	model.addAttribute("routeForm",routeForm);
 	
 	return "view_route";
-}
+}*/
+
+// Admin Side Edit 
 
 
 @RequestMapping(value="/editroute",method=RequestMethod.GET)
-public String edituser(HttpServletRequest request,@RequestParam("route_id")String route_id,ModelMap model,OrgRegistration orgregistration)
+public String edituser(HttpServletRequest request,@RequestParam("route_no")String route_no,ModelMap model,OrgRegistration orgregistration)
 {
-	BusDeviceRegistrationForm busDeviceRegistrationForm= new BusDeviceRegistrationForm();
-	busDeviceRegistrationForm.setBusDeviceRegistrations(routeDAO.getBusids());
-	model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);
 	
-	RouteForm routeForm= new RouteForm();
-	routeForm.setRoutes(routeDAO.getRoutesView(route_id));
+	RouteViewForm routeForm= new RouteViewForm();
+	routeForm.setRoute_views(routeDAO.getRoutesView(route_no));
 	model.addAttribute("routeForm",routeForm);
 	
 	return "edit_route";
 	
 }
 
+/*
 @RequestMapping(value="/updateroute",method=RequestMethod.POST)
 
 public String updateuser(HttpServletRequest request,@ModelAttribute ("Route") Route route,ModelMap model)
