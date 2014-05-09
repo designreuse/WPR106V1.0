@@ -45,6 +45,7 @@
     });
 </script>
 <jsp:include page="header.jsp"></jsp:include>
+
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
@@ -53,15 +54,16 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Organization Information<span style="margin:3% 0 0 65%; padding:2px;">
-			          <a href="#" onclick="toggle(this,'div');return false">
-			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:20px;width:50px;"/></a>
-			          
-			          <a href="#" onclick="toggle1(this,'divfilter');return false">
-			          <img title="Open Search"src="resources/images/filter.png" style="height:20px;width:50px;"/></a>
-			          </span></h2>
+			          <h2>Organization Information<br/></h2>
+			          <div class="buttonswitchpanelADmin">
+			          <div class='buttonsheader'>
+						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
+						<a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
+						<a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
+						</div></div>
 			          
 			        </div>
+			    
 			       
     	<table width="100%" border="0" cellspacing="0" cellpadding="0" >
     	<tr>
@@ -110,7 +112,7 @@
 							    
 							    
 							    <td align="center" valign="middle" width="20%">
-							    <input type="submit" class="btn" value="Search" ></td>
+							    <input type="submit" class="pressableButton blue" value="Search" ></td>
 							
 							  </tr>
 							</table>
@@ -130,13 +132,13 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								<!-- <td valign="middle" align="center" width="15%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
-         						<td valign="top" align="left" width="15%"> Organization Name </td>					         	
+         						<td valign="top" align="left" width="19.8%"> Organization Name </td>					         	
 					         	<td valign="top" align="left" width="15%"> Branch</td>
           						<td valign="top" align="left" width="15%"> City</td>
           						<td valign="top" align="left" width="15%"> Country</td>
-          						<td valign="top" align="left" width="15%"> Organization Type</td>
-          						<td valign="top" align="left" width="10%"> Status</td>
-          						<td valign="top" align="left" width="20%"> Action</td>
+          						<td valign="top" align="left" width="12.5%"> Org Type</td>
+          						<td valign="top" align="left" width="1%"> Status</td>
+          						<td valign="top" align="left" width="9.5%"> Action</td>
           						
           						
         					</tr></table>
@@ -149,13 +151,13 @@
         					<c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration" varStatus="status">
         				       					<tr class="row1">
 							       		<%-- <td valign="middle" align="center" width="15%"><input type="checkbox" value="${orgRegistration.org_name}" name="chkUser"></td> --%>
-					     		     	<td valign="top" align="left" width="15%">${orgRegistration.org_name}</td>					     		     
+					     		     	<td valign="top" align="left" width="20%">${orgRegistration.org_name}</td>					     		     
 					     		     
 											<td valign="top" align="left" width="15%">${orgRegistration.branch}</td>
 											<td valign="top" align="left" width="15%">${orgRegistration.city}</td>
 											<td valign="top" align="left" width="15%">${orgRegistration.country}</td>
-											<td valign="top" align="left" width="15%">${orgRegistration.type_of_organization}</td>
-											<td valign="top" align="left" width="10%">
+											<td valign="top" align="left" width="13%">${orgRegistration.type_of_organization}</td>
+											<td valign="top" align="left" width="5.8%">
 											<c:choose>
 											<c:when test="${orgRegistration.is_active==1}">
 											<c:out value="Active"></c:out>
@@ -169,11 +171,11 @@
 											</c:choose>
 											</td>
 											
-											<td valign="top" align="left" width="20%">
+											<td valign="top" align="left" width="8.6%">
 										
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editorg?org_name=${orgRegistration.org_name}&branch=${orgRegistration.branch}"/>" style="padding-right:10px;">Edit</a>
+												<a href="<c:out value="editorg?org_name=${orgRegistration.org_name}&branch=${orgRegistration.branch}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 												
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteorg?org_id=${orgRegistration.org_id}"/>" onclick="return confirmation()">Remove</a>
+											<a href="<c:out value="deleteorg?org_id=${orgRegistration.org_id}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>
@@ -196,19 +198,9 @@
         					</tr></table>
         				</td>
         				</tr>
-        				</table></form>
-						</div></div><script>
-
-function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete the Organization ?");
-	if (answer){
-		return true;
-	}
-	else{
-		return false;
-	}
-}
-</script>
-
+        				</table>
+						</div></div>
+						
+						
 
 <jsp:include page="footer.jsp"></jsp:include>

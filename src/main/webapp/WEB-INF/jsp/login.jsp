@@ -18,9 +18,11 @@
 .errorblock {
 	color: #ff0000;
 	/* background-color: #ffEEEE; */
-	border: 3px solid #ff0000;
+	border: 2px solid #ff0000;
 	padding: 8px;
 	margin: 16px;
+	border-radius:15px;
+	
 }
 </style>
 </head>
@@ -48,8 +50,8 @@
 <br/><br/>
 </div>
 <div class="Login_side_contact_outline" id="contact-form">
-<h1 class="ribbon_login">
-   <strong class="ribbon_login-content"><span style="color: #fff;">Contact Us</span></strong>
+<h1 >
+   <img src="resources/images/contact.png" width="360" height="60"/>
 </h1>
 <br/>
 			<input type="text" name="name" id="fname" placeholder="First Name" autocomplete="off" tabindex="1" class="txtinput_small">

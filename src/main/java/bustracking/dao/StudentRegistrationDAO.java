@@ -33,6 +33,10 @@ public class StudentRegistrationDAO {
 		return new java.sql.Timestamp(today.getTime());
 	 
 	}
+	
+	//**************************************************************************************************************
+	//Insert Student Admin Side
+	//**************************************************************************************************************
 	public int setstudentregistration(StudentRegistration student,Principal principal){
 		Connection con = null;
 		Statement statement = null;
@@ -97,7 +101,10 @@ public class StudentRegistrationDAO {
 	    
 		
 	}
-	
+	//**************************************************************************************************************
+	//Student Id Admin Side
+	//**************************************************************************************************************
+		
 	
 	public Long getMax_StudentReg(){
 		Connection con = null;
@@ -168,6 +175,7 @@ public class StudentRegistrationDAO {
 	        }
 	        return studrouteRegistrations;
 	    }
+	
 	// Get class For specific organization
 	
 	
@@ -344,7 +352,10 @@ public class StudentRegistrationDAO {
 		
 	}*/
 	
-	
+	//**************************************************************************************************************
+	//View Student Admin Side
+	//**************************************************************************************************************
+			
 	public List<StudentRegistration> getstudentregistration(){
 	Connection con = null;
 	Statement statement = null;
@@ -566,7 +577,10 @@ public class StudentRegistrationDAO {
 		   			return 0;
 		}
 	
-	
+	//**************************************************************************************************************
+	//Find Student Admin Side
+	//**************************************************************************************************************
+		
 	public List<StudentRegistration> findStudent(String org_name, String branch,String student_roll_no,String first_name,String last_name){
 		Connection con = null;
 		Statement statement = null;
@@ -638,7 +652,44 @@ public class StudentRegistrationDAO {
 		
 	}
 
-	
+	//**************************************************************************************************************
+	//Find Student Client Side
+	//**************************************************************************************************************
+
+	public List<StudentRegistration> findStudent_by_org_id_client(String org_id,String student_roll_no,String first_name,String last_name,String parent_mobile1){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<StudentRegistration> studentregistration = new ArrayList<StudentRegistration>();
+		try{
+			
+			resultSet = statement.executeQuery("SELECT t1.org_name,t1.branch,t2.student_roll_no, t2.first_name,t2.last_name,t2.gender,t2.transport_facility,t2.pickup_route_no,t2.pickup_point_address,t2.drop_route_no,t2.drop_point_address,t2.kg_drop,t2.parent_name1,t2.parent_name2,t2.parent_mobile1,t2.parent_mobile2,t2.parent_email1,t2.parent_email2,t2.class_standard,t2.section from tbl_organization as t1 join tbl_student as t2 on t1.org_id=t2.org_id where t2.org_id='"+org_id+"' and (student_roll_no='"+student_roll_no+"' or first_name='"+first_name+"' or parent_mobile1='"+parent_mobile1+"' or last_name='"+last_name+"')");
+			while(resultSet.next()){
+				studentregistration.add(new StudentRegistration(resultSet.getString("student_roll_no"),resultSet.getString("first_name"),
+						resultSet.getString("last_name"),resultSet.getString("gender"),resultSet.getString("pickup_route_no"),resultSet.getString("pickup_point_address"),resultSet.getString("drop_route_no"),resultSet.getString("drop_point_address"),resultSet.getString("kg_drop"),resultSet.getString("parent_name1"),resultSet.getString("parent_name2"),resultSet.getString("parent_mobile1"),resultSet.getString("parent_mobile2"),resultSet.getString("parent_email1")
+						,resultSet.getString("parent_email2"),resultSet.getString("class_standard"),resultSet.getString("section")));
+				
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return studentregistration;
+		
+	}
 	
 	
 public void releaseConnection(Connection con){

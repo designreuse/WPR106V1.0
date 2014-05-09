@@ -58,15 +58,17 @@
 	<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2> Admin User Information 
-			          <span style="margin:3% 0 0 65%; padding:2px;">
-			          <a href="#" onclick="toggle(this,'div');return false">
-			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:20px;width:50px;"/></a>
+			          <h2> Admin User Information<br/></h2>
+			          <div class="buttonswitchpanelADmin">
+			          <div class='buttonsheader'>
+						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
+						<a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
+						<a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
+						</div></div>
 			          
-			          <a href="#" onclick="toggle1(this,'divfilter');return false">
-			          <img title="Open Search"src="resources/images/filter.png" style="height:20px;width:50px;"/></a>
-			          </span></h2>
 			        </div>
+			    
+			    
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
     	
 <tr>
@@ -155,10 +157,10 @@
          						<td valign="top" align="left" width="15%"> Branch</td>
          						<td valign="top" align="left" width="10%"> FirstName</td>
          						<td valign="top" align="left" width="10%"> LastName</td>
-         						<td valign="top" align="left" width="15%"> Email</td>
-					         	<td valign="top" align="left" width="10%"> UserName</td>
-					         	<td valign="top" align="left" width="10%"> Password</td>
-					        	<td valign="top" align="left" width="25%"> Action</td>
+         						<td valign="top" align="left" width="18%"> Email</td>
+					         	<td valign="top" align="left" width="13%"> UserName</td>
+					         	<td valign="top" align="left" width="9%"> Password</td>
+					        	<td valign="top" align="left" width="15%"> Action</td>
           						
         					</tr></table>
 							<div class="Panel_One_Inner">
@@ -170,18 +172,18 @@
         				       					<tr class="row1">
 							         	    <td valign="top" align="left"  width="15%" >${addUser.org_name}</td>
 							         	    <td valign="top" align="left" width="15%">${addUser.branch}</td>
-											<td valign="top" align="left" width="10%">${addUser.firstname}</td>
+											<td valign="top" align="left" width="11%">${addUser.firstname}</td>
 											<td valign="top" align="left" width="10%">${addUser.lastname}</td>
-											<td valign="top" align="left" width="15%">${addUser.email}</td>
-											<td valign="top" align="left"  width="10%">${addUser.username}</td>
-											<td valign="top" align="left" width="10%">${addUser.password}</td>
+											<td valign="top" align="left" width="18%">${addUser.email}</td>
+											<td valign="top" align="left"  width="13%">${addUser.username}</td>
+											<td valign="top" align="left" width="9.5%">${addUser.password}</td>
 											
 											
-											<td valign="top" align="left" width="25%">
+											<td valign="top" align="left" width="10%">
 										
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edituser?username=${addUser.username}"/>" style="padding-right:10px;">Edit</a>
+												<a href="<c:out value="edituser?username=${addUser.username}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 												
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?org_name=${addUser.org_name}"/>" onclick="return confirmation()">Remove</a>
+											<a href="<c:out value="deleteuser?org_name=${addUser.org_name}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>

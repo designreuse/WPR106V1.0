@@ -402,7 +402,34 @@ public class StudentRegistrationController {
 		
 		return "search_student_details";
 	}
-	
+//client find student
+	@RequestMapping(value="/findstudentsclient",method=RequestMethod.GET)
+	public String findstudentsclient(HttpServletRequest request,
+			@RequestParam("student_roll_no") String student_roll_no,
+			@RequestParam("first_name") String first_name,
+			@RequestParam("last_name") String last_name,
+			@RequestParam("parent_mobile1") String parent_mobile1,
+			ModelMap model, Principal principal)
+	{
+		if(student_roll_no=="" && first_name=="" && last_name=="" && parent_mobile1=="")
+		{
+			StudentRegistrationForm studentRegistrationForm=new StudentRegistrationForm();
+			studentRegistrationForm.setStudentregistration(studentDAO.getStudentRegistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("studentRegistrationForm",studentRegistrationForm);
+			return "client_view_student";
+		}
+		else
+		{
+			
+		StudentRegistrationForm studentRegistrationForm = new StudentRegistrationForm();
+		studentRegistrationForm.setStudentregistration(studentDAO.findStudent_by_org_id_client(mainDAO.getOrg_id(principal.getName()),student_roll_no,first_name,last_name,parent_mobile1));
+		model.addAttribute("studentRegistrationForm", studentRegistrationForm);
+       
+        
+		return "client_search_student";
+		}
+		
+	}
 	
 	@RequestMapping(value="/load_class", method=RequestMethod.POST)
 	public  @ResponseBody String load_class(HttpServletRequest request,@RequestParam("org_id") int org_id,ModelMap model,StudentRegistration studentRegistration)

