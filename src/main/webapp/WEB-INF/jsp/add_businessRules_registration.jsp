@@ -12,17 +12,17 @@
 				<td valign="top" align="left">
 					
 						<div class="headings altheading">
-							<h2>Business Rule </h2>
+							<h2>Business Rules </h2>
 						</div>
 						
-							<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<table cellpadding="0" cellspacing="0" border="1" width="100%">
 								<tr>
 									<td align="left" valign="top" width="100%"
 										style="padding-right: 25px;">
 
-										<table cellpadding="0" cellspacing="0" border="0" width="100%">
-											<tr class="row1">
-												<td valign="middle" align="right" class="input_txt" width="40%">
+										<table cellpadding="0" cellspacing="0" border="1" width="100%">
+											<tr class="row1"><td valign="middle" align="right"  width="20%"></td>
+												<td valign="middle" align="right" class="input_txt" width="30%">
 												
 												<span class="err">*</span> Organization Name :</td>
 												<td valign="top" align="left" class="input_txt">
@@ -33,7 +33,7 @@
 			                  </c:forEach>
 			                 </select></tr>
 
-											<tr class="row2">
+											<tr class="row2"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span> Branch:</td>
 												<td valign="top" align="left" class="input_txt"><div id="info" style="height:8px; " > 	<select class="org_input_cmbbx" name="branch" id="bid" onblur="Validate1('bid')">
@@ -45,7 +45,7 @@
         				      </select>
         				       </div> </td>
 											</tr>
-											<tr class="row1">
+											<tr class="row1"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span> Use Google Map With traffic?:</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -54,7 +54,7 @@
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.contact_no"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row2">
+											<tr class="row2"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Pickup Start Time</td>
 												<td valign="top" align="left" class="input_txt">
@@ -66,7 +66,7 @@
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.license_type"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row1">
+											<tr class="row1"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Pickup end time :</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -75,7 +75,7 @@
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.license_no"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row2">
+											<tr class="row2"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Drop Start Time :</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -84,7 +84,7 @@
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.license_expired_date"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row1">
+											<tr class="row1"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Drop end Time :</td>
 												<td valign="top" align="left" class="input_txt">
@@ -96,7 +96,7 @@
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.address"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row2">
+											<tr class="row2"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>KG Drop Start Time:</td>
 												<td valign="top" align="left" class="input_txt"> <input
@@ -106,7 +106,7 @@
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.driver_status"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row1">
+											<tr class="row1"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>KG Drop end Time:</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -116,7 +116,7 @@
 												
 												</td>
 											</tr>
-											<tr class="row2">
+											<tr class="row2"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Speed Limit  :</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -126,7 +126,7 @@
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.driver_status"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row1">
+											<tr class="row1"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>SMS Option:</td>
 												<td valign="top" align="left" class="input_txt"><!-- <input
@@ -138,7 +138,7 @@
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.driver_status"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row2">
+											<tr class="row2"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Alert Time Interval:</td>
 												<td valign="top" align="left" class="input_txt"> <input
@@ -148,7 +148,7 @@
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.driver_status"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row1">
+											<tr class="row1"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Is Saturday Working Day?:</td>
 												<td valign="top" align="left" class="input_txt"> <input
@@ -159,7 +159,7 @@
 												</td>
 												
 											</tr>
-											<tr class="row2">
+											<tr class="row2"><td valign="middle" align="right"  width="20%"></td>
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>SMS sending:</td>
 												<td valign="top" align="left" class="input_txt"> <input

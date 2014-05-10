@@ -3,50 +3,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-<jsp:include page="header.jsp"></jsp:include>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">	
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>	
-
-<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
-    <!--[if lt IE 9]>
-      <script src="js/html5shim.js"></script>
-    <![endif]-->
-      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
-      
-      <!-- <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> --> <!-- for sortable example -->
-      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
-      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
-      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script>
-      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
-      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
-
-
-<script id="script_e1">
-    $(document).ready(function() {
-        $("#manuid").select2();
-    });
-</script>
-
-<script id="script_e2">
-    $(document).ready(function() {
-        $("#carrierid").select2();
-    });
-</script>
-
-<script id="script_e3">
-    $(document).ready(function() {
-        $("#apn_id").select2();
-    });
-</script>
-<!-- 
-<script id="script_e4">
-    $(document).ready(function() {
-        $("#manuid").select2();
-    });
-</script> -->
 
      <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>

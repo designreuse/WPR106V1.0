@@ -1,6 +1,61 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#bid").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#orgid").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#bid").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#section_id").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#drop_route_id").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#class_standard_id").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#pickup_location_id").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#drop_location_id").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#pickup_route_id").select2();
+    });
+</script>
+
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -21,35 +76,37 @@
     				
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
     						<tr class="row1">
-    						<td width="5%" class="input_txt"></td>
-				                  <td valign="middle" align="right" class="input_txt"  ><span class="err">*</span> Organization Name:</td>
-				                  <td valign="top" align="left" class="input_txt">
-				                  	<select class="student_txtbx_height_right_ddl" onchange="doAjaxPost()" name="org_name" id="orgid">
+    						<td width="25%" class="input_txt"></td>
+				                  <td valign="middle" align="left" class="input_txt"  width="25%"><span class="err">*</span> Organization Name</td>
+				                  <td width="0.5%">:</td><td valign="top" align="left" class="input_txt">
+				                  	<select  onchange="doAjaxPost()" style="width:220px;"name="org_name" id="orgid">
 							   <option value="Selected">-- Select Organization--</option>
 							    <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
         				        <option value="${orgname_for_school}">${orgname_for_school}</option>
 			                  </c:forEach>
 			                 </select>
 				                 
-				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Point Address:</td>
+				                  <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span> Drop Point Address</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<div id="drop_address" style="height:8px;"><select class="student_txtbx_height_right_ddl" name="drop_point_address" id="drop_location_id" onblur="Validate1('bid')">
+				                  	<div id="drop_address" style="height:8px;">
+				                  	<select  name="drop_point_address" style="width:220px;"id="drop_location_id" onblur="Validate1('bid')">
 							    <option value="Selected">-- Select Drop Location--</option>
 				                  	</select>
 				                  	</div>
-				                    <td width="15%" class="input_txt"></td>
+				                    <td width="25%" class="input_txt"></td>
 				               </tr>
 				                
-                        		<tr class="row2">
+                        		<tr class="row2" rowspan="2">
                         		<td width="5%" class="input_txt"></td>
-                        		<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Branch :</td>
+                        		<td valign="middle" align="left" class="input_txt" ><span class="err">*</span>Branch <br/>.</td>:</td><td width="0.5%">:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<div id="info" style="height:8px;"><select class="student_txtbx_height_right_ddl" onchange="doAjaxPost1()" name="branch" id="bid" onblur="Validate1('bid')">
+				                  	<div id="info" style="height:8px;">
+				                  	<select  style="width:220px;"onchange="doAjaxPost1()" name="branch" id="bid" onblur="Validate1('bid')">
 							    <option value="Selected">-- Select branch--</option>
-				                  	</select>
+				                  	</select><br/>
 				                  	</div>
 				                  	</td>
-				                 <td valign="middle" align="right" class="input_txt"><span class="err">*</span> KG Drop :</td>
+				                 <td valign="middle" align="left" class="input_txt"><span class="err">*</span> KG Drop </td><td width="0.5%">:</td>
 				                  <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="checkbox"  id="inp_id" name="kg_drop" value="${studentDetails.pickup_location}" />
 				                  	
@@ -60,14 +117,14 @@
 								 
 								<tr class="row1">
 								<td width="5%" class="input_txt"></td>
-								<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Student Roll Number :</td>
+								<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Student Roll Number </td><td width="0.5%">:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="student_txtbx_height_right" id="inp_id" name="student_roll_no" value="${studentDetails.student_roll_no}"/><br/>
+				                  	<input type="text"  id="inp_id" name="student_roll_no" value="${studentDetails.student_roll_no}"/><br/>
 				                  	<font color="Red" size="+1"><form:errors path="StudentRegistration.student_roll_no"></form:errors></font>
 				                  </td>
-				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Name 1:</td>
+				                  <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Name 1</td><td width="0.5%">:</td>
 					                <td valign="top" align="left" class="input_txt">
-					                <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_name1" value="${studentDetails.drop_route_no}"/>
+					                <input type="text"  id="inp_id" name="parent_name1" value="${studentDetails.drop_route_no}"/>
 					               <!--  <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.drop_route_no"></form:errors></font> --></td>
 				                  
 				                   <td width="15%" class="input_txt"></td>
@@ -75,29 +132,29 @@
 				                
 				                 <tr class="row2">
 				                 <td width="5%" class="input_txt"></td>
-				                        <td valign="middle" align="right" class="input_txt"><span class="err">*</span> First Name:</td>
+				                        <td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="student_txtbx_height_right" id="inp_id" name="first_name" />
+				                  	<input type="text"  id="inp_id" name="first_name" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="StudentRegistration.student_class"></form:errors></font></td>
-				                     <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Parent Name 2:</td>
+				                     <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Parent Name 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_name2" />
+					               <input type="text"  id="inp_id" name="parent_name2" />
 					         <!--  <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.drop_location"></form:errors></font>--></td>
 					               	 	
 					               	 	<td width="15%" class="input_txt"></td>			                					            	 
 				                </tr>
 				                <tr class="row1">
 				                <td width="5%" class="input_txt"></td>
-				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Last Name</td>
+				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Last Name</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="student_txtbx_height_right" id="inp_id" name="last_name" />
+				                  	<input type="text"  id="inp_id" name="last_name" />
 				                  	      	<br/><font color="Red" size="+1"><form:errors path="StudentRegistration.section"></form:errors></font></td>
 				                
 				         
 				                
-				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Parent Mobile 1:</td>
+				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Parent Mobile 1</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_mobile1" />
+					               <input type="text"  id="inp_id" name="parent_mobile1" />
 					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.father_name"></form:errors></font>
 					              </td>
 					              <td width="15%" class="input_txt"></td>
@@ -105,15 +162,15 @@
 				                <tr class="row2">
 				                
 				                <td width="5%" class="input_txt"></td>
-					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Gender :</td>
+					            	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Gender </td><td width="0.5%">:</td>
 						            <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						            	<input type="radio" value="M" name="gender" checked>Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="F" name="gender">FeMale
 						            	<font color="Red" size="+1"><form:errors path="StudentRegistration.name"></form:errors></font></td>
 						            	
 						       
-				                 <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Mobile 2:</td>
+				                 <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Mobile 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text" class="student_txtbx_height_right" name="parent_mobile2" id="inp_id"/>
+					               <input type="text"  name="parent_mobile2" id="inp_id"/>
 					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.mobile_number"></form:errors></font>
 					               </td>
 					               <td width="15%" class="input_txt"></td>
@@ -121,24 +178,25 @@
 				                
 				                <tr class="row1">
 				                    <td width="5%" class="input_txt"></td>
-				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Avail Transport Facility :</td>
+				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Avail Transport Facility </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	 <input type="radio" name="transport_facility" value="yes" class="input_txt" checked="checked">&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;
 					                <input type="radio" name="transport_facility" value="no" class="input_txt">No&nbsp;&nbsp;&nbsp;
 				                  <!-- <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.transport_facility"></form:errors></font> -->	
 				                  </td>
 				                  
-				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Email 1:</td>
+				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Email 1</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_email1" />
+					               <input type="text"  id="inp_id" name="parent_email1" />
 					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.email_id"></form:errors></font>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
 				                      <tr class="row2">
 				                    <td width="5%" class="input_txt"></td>
-				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Pickup Route No :</td>
+				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Pickup Route No </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	 <div id="info1"><select name="pickup_route_no" class="student_txtbx_height_right_ddl" id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()">
+				                  	 <div id="info1">
+				                  	 <select style="width:220px;"name="pickup_route_no"  id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()">
 					               <option value="" selected>--Select PickUp Route No--</option>
 					               <%-- <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}">${route_no}</option> 
@@ -147,25 +205,27 @@
 			                  </div>
 				                  	</td>
 				                  
-				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Email 2:</td>
+				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Email 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_email2" />
+					               <input type="text"  id="inp_id" name="parent_email2" />
 					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.email_id"></form:errors></font>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
 				                      <tr class="row1">
 				                    <td width="5%" class="input_txt"></td>
-				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Pickup Point Address :</td>
+				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Pickup Point Address </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	 <div id="pickup_address" style="height:8px;"><select class="student_txtbx_height_right_ddl" name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')">
+				                  	 <div id="pickup_address" style="height:8px;">
+				                  	 <select  name="pickup_point_address" style="width:220px;"id="pickup_location_id" onblur="Validate1('bid')">
 							    <option value="Selected">-- Select PickUp Location--</option>
 				                  	</select>
 				                  	</div>
 				                  </td>
 				                  
-				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Class:</td>
+				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Class</td><td width="0.5%">:</td>
 					               <td valign="middle" align="left" class="input_txt">
-					               <div id="info3"> <select name="class_standard" id="class_standard_id" onchange="doAjaxPost_section()" class="student_txtbx_height_right_ddl">
+					               <div id="info3">
+					                <select name="class_standard" id="class_standard_id"style="width:220px;" onchange="doAjaxPost_section()" >
 					               <option value="" selected>--Select Class--</option>
 					               <%-- <c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
         				        <option value="${classSection.class_std}">${classSection.class_std}</option>
@@ -176,9 +236,9 @@
 				                     </tr>
 				                      <tr class="row2">
 				                    <td width="5%" class="input_txt"></td>
-				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Route No :</td>
+				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Drop Route No </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	 <div id="info2"><select name="drop_route_no" class="student_txtbx_height_right_ddl" onchange="doAjaxPost_drop_route_no()" id="drop_route_id">
+				                  	 <div id="info2"><select style="width:220px;" name="drop_route_no"  onchange="doAjaxPost_drop_route_no()" id="drop_route_id">
 					               <option value="" selected>--Select Drop Route No--</option>
 					               <%-- <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}">${route_no}</option>
@@ -187,9 +247,10 @@
 			                  </select> </div>
 			                  </td>
 				                  
-				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Section:</td>
+				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Section</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					              <div id="info_section"> <select name="section" id="section_id" class="student_txtbx_height_right_ddl">
+					              <div id="info_section"> 
+					              <select style="width:220px;"name="section" id="section_id" >
 					               <option value="" selected>--Select Section--</option>
 					               <%-- <c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
         				        <option value="${classSection.section}">${classSection.section}</option>
@@ -198,20 +259,20 @@
 					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.email_id"></form:errors></font>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
-				               
-				                
+				               </table>
+				                <table style="margin:0 0 0 30%;">
                 <tr class="row1">
 				              <td valign="top" align="left" colspan="3"></td>
                 
                  <td valign="top">
                   <table cellpadding="0" cellspacing="0" border="0" >
                   <tr>
-                  <td ><input type="submit" class="submit_btn" value="Register" onclick=""></td>
+                  <td ><input type="submit" class="pressableButton blue" value="Register" onclick=""></td>
                   <td> 
                    
                   </td>
                   <td> 
-                   <input type="button" class="submit_btn " onclick="window.location.href='welcome'" value="Cancel">
+                   <input type="button" class="pressableButton blue " onclick="window.location.href='welcome'" value="Cancel">
                   </td>
                   
                   </tr>
@@ -435,6 +496,4 @@ function validat(org_id){
  
     </script>
    
-<script type='text/javascript'	src='http://code.jquery.com/jquery-1.4.3.min.js'></script>
-	<script type="text/javascript" src="resources/js/jquery-1.3.2.js"></script>
 <jsp:include page="footer.jsp"></jsp:include>

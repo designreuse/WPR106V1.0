@@ -2,6 +2,34 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#orgid").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#bid").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#inp_id").select2();
+    });
+</script>
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#inp_id1").select2();
+    });
+</script>
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#service").select2();
+    });
+</script>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -33,6 +61,7 @@ select.add(option, 0); */
 		}  
 		</script>
 
+
 <form action="insert_class_section" method="POST">
 <table class="margin_table">
 
@@ -54,7 +83,7 @@ select.add(option, 0); */
     						<tr class="row2">
 				                  <td valign="middle" align="right" class="input_txt" width="40%" ><span class="err">*</span> Organization :</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
-				                  	<select class="org_input_cmbbx" name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
+				                  	<select  style="width:220px;"name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
         				        <option value="${orgname_for_school}" >${orgname_for_school}</option>
@@ -68,7 +97,8 @@ select.add(option, 0); */
                         		<td valign="middle" align="right" class="input_txt" "><span class="err">*</span> Branch:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	
-				                  	 <div id="info" style="height:8px; " > 	<select class="org_input_cmbbx" name="branch" id="bid" onblur="Validate1('bid')">
+				                  	 <div id="info" style="height:8px; " > 
+				                  	 	<select  style="width:220px;"name="branch" id="bid" onblur="Validate1('bid')">
 							    <option value="">-- Select branch--</option>
 							  </select>
         				       </div> 
@@ -79,7 +109,7 @@ select.add(option, 0); */
 						  <tr class="row1">
 				                <td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Class :</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<select class="org_input_cmbbx" id="inp_id" name="class_std" value="${class_section.class_std}">
+				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
 				                  	<option value="PreKG">Pre-KG</option>
 				                  	<option value="UKG">UKG</option>
 				                  	<option value="LKG">LKG</option>
@@ -103,7 +133,7 @@ select.add(option, 0); */
 				                <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Section:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<select class="org_input_cmbbx" id="inp_id" name="section" value="${class_section.section}">
+				                  	<select  style="width:220px;"id="inp_id1" name="section" value="${class_section.section}">
 				                  	<option value="A">A</option>
 				                  	<option value="B">B</option>
 				                  	<option value="C">C</option>
@@ -138,7 +168,7 @@ select.add(option, 0); */
 				                     <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Services:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<select name="service" class="org_input_cmbbx">
+				                  	<select name="service" style="width:220px;"id="service">
 				                  	<option value="" selected>--Select Service--</option>
 				                  	<option value="Attendance" >Attendance</option>
 				                  	<option value="Tracking" >Tracking</option>
@@ -155,10 +185,10 @@ select.add(option, 0); */
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="submit_btn" value="Register"></td>
+                  <td><input type="submit" class="pressableButton blue" value="Register"></td>
                   
                   <td> 
-                   <input type="button" class="submit_btn " onclick="window.location.href='welcome'" value="Cancel">
+                   <input type="button" class="pressableButton blue" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
                   
                   </tr>
@@ -182,4 +212,3 @@ function CreateGroup()
 }
 </script>
 <jsp:include page="footer.jsp"></jsp:include>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.4.3.min.js'></script>

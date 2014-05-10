@@ -124,7 +124,7 @@
 <div class="submenu">
 	<ul>
 	<li><a href="addclass?submenuheader=4">Class &amp; Section Registration</a></li>
-	<li><a href="viewclass?submenuheader=4">Class &amp; Section view</a></li>
+	<li><a href="viewclass?submenuheader=4">View Class &amp; Section </a></li>
 		</ul>
 
 </div>	
