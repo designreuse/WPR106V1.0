@@ -213,7 +213,7 @@ background: -moz-linear-gradient(top, #ccc, #000); /* for firefox 3.6+ */
 }
 
 .headings {
-	padding-bottom: 15px ;
+	padding-bottom:25px ;
 	padding-top: 0px ;
 	border: 1px solid #CACACA;
 	text-shadow: 1px 1px 1px #fff;
@@ -227,10 +227,10 @@ background: -moz-linear-gradient(top, #ccc, #000); /* for firefox 3.6+ */
 	-moz-border-radius-topright: 10px;
 	-moz-border-radius-topleft: 10px;
 	letter-spacing: -1px;
-	height: auto;
+	height: 35px;
 }
 .headings h2 {
-	padding-top: 8px;
+	padding-top: 0px;
 	padding-left: 10px;
 	font-size: 17px;
 }

