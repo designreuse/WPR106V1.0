@@ -82,12 +82,7 @@ public class DeviceRegistrationController
 	//find devices
 
 	@RequestMapping(value="/find_devicesadmin",method=RequestMethod.GET)
-	public String find_devicesadmin(HttpServletRequest request,
-			@RequestParam("device_imei_number") String device_imei_number,
-			@RequestParam("device_sim_number") String device_sim_number,
-			@RequestParam("adminip") String adminip,
-			@RequestParam("create_user_id") String create_user_id,
-			ModelMap model)
+	public String find_devicesadmin(HttpServletRequest request,@RequestParam("device_imei_number") String device_imei_number,@RequestParam("device_sim_number") String device_sim_number,@RequestParam("adminip") String adminip,@RequestParam("create_user_id") String create_user_id,ModelMap model)
 	
 	{		
 		if( device_imei_number=="" && device_sim_number==""  && adminip=="" && create_user_id=="")

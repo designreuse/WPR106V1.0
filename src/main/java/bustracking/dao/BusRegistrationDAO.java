@@ -354,6 +354,8 @@ public class BusRegistrationDAO {
 		
 	}
 	
+	// Client Side Driver List Serach
+	
 	public List<BusRegistration> clientdriverlistsearch(String org_id,String driver_name,String vechicle_reg_no,String driver_licence_number){
 		Connection con = null;
 		Statement statement = null;
@@ -450,6 +452,45 @@ public class BusRegistrationDAO {
 	    return routes;
 		
 	}
+	
+	// Get Route_no For Particular User In Client Side Edit Page
+	
+	
+public List<String> getStudent_route_no(String org_id){
+		
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> route_no = new ArrayList<String>();
+		try{
+			resultSet = statement.executeQuery("SELECT route_no FROM tbl_vechicle WHERE org_id='"+org_id+"'");
+			while(resultSet.next()){
+				route_no.add(resultSet.getString("route_no"));
+				
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return route_no;
+		
+	}
+	
+	
+	
 	public List<BusRegistration> findBus(String org_name,String branch,String vechicle_reg_no,String device_imei_number){
 		Connection con = null;
 		Statement statement = null;

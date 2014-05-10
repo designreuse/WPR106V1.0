@@ -405,6 +405,7 @@ public class StudentRegistrationController {
 		
 		return "search_student_details";
 	}
+	
 //client find student
 	@RequestMapping(value="/findstudentsclient",method=RequestMethod.GET)
 	public String findstudentsclient(HttpServletRequest request,
@@ -465,7 +466,7 @@ public class StudentRegistrationController {
 
 	// Edit Student Information In Client Side 
 	@RequestMapping(value="/client_edit_student", method=RequestMethod.GET)
-	public String clienteditStudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model,StudentRegistration studentRegistration)
+	public String clienteditStudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,@RequestParam("org_name")String org_name,@RequestParam("branch")String branch,ModelMap model,StudentRegistration studentRegistration,Principal principal)
 	{
 		
 		
@@ -473,8 +474,8 @@ public class StudentRegistrationController {
 		studentregistrationform.setStudentregistration(studentDAO.getStudent_roll_no(student_roll_no));
  		model.addAttribute("studentregistrationform", studentregistrationform);
  		
-		List <String> route_no=new ArrayList<String>();
-		route_no=busDAO.getBusRegistrations_route_no(org_name, branch);
+ 		List <String> route_no=new ArrayList<String>();
+		route_no=busDAO.getStudent_route_no(mainDAO.getOrg_id(principal.getName()));
 		model.addAttribute("route_no",route_no);
 		
 		return "client_edit_student";

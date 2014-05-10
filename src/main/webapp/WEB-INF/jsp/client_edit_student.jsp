@@ -103,7 +103,7 @@ $(document).ready(function () {
 						         	<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Pick Route No:</td>
 						            <td valign="top" align="left" class="input_txt">
 						            	<select name="pickup_route_no" class="student_txtbx_height_right_ddl" id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()">
-					               <option value="">--Select PickUp Route No--</option>
+					               <option value="${student.pickup_route_no}">${student.pickup_route_no}</option>
 					               <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}" selected>${route_no}</option>
 			                  </c:forEach>
@@ -115,7 +115,7 @@ $(document).ready(function () {
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Pick Point Address :</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<div id="pickup_address" style="height:8px;"><select class="student_txtbx_height_right_ddl" name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')">
-							    <option value="${student.pickup_point_address}" selected>${student.pickup_point_address}</option>
+						    	<option value="${student.pickup_point_address}" selected>${student.pickup_point_address}</option>
 				                  	</select>
 				                  	</div>
 				                  	 <br/><font color="Red" size="+1"></font>
@@ -125,7 +125,7 @@ $(document).ready(function () {
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Route No:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	 <select name="drop_route_no" class="student_txtbx_height_right_ddl" onchange="doAjaxPost_drop_route_no()" id="drop_route_id">
-					               <option value="">--Select Drop Route No--</option>
+					               <option value="${student.drop_route_no}">${student.drop_route_no}</option>
 					               <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}" selected>${route_no}</option>
 			                  </c:forEach>

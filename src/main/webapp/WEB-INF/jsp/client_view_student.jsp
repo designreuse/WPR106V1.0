@@ -184,7 +184,7 @@
 									 <td valign="top" align="left" width="30%" title="Drop Point Address">${studentlist.drop_point_address}			 </td>
 									 <td valign="top" align="left" width="1%" title="Kg Drop ">${studentlist.kg_drop}</td>
 									 <td align="left">
-										<div class="arrow" title="Show all Details"></div><a href="#" title="Edit" ><img src="resources/images/edit-29.png" alt="Edit" width="20" height="15"/></a><a href="<c:out value="client_edit_student?student_roll_no=${studentlist.student_roll_no}"/>" ></a>
+										<div class="arrow" title="Show all Details"></div><a href="<c:out value="client_edit_student?student_roll_no=${studentlist.student_roll_no}&org_name=${studentlist.org_name}&branch=${studentlist.branch}"/>" ><img src="resources/images/edit-29.png" alt="Edit" width="20" height="15"/></a>
 										</td>
 								</tr>
 							    	
