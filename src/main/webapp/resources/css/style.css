@@ -213,8 +213,9 @@ background: -moz-linear-gradient(top, #ccc, #000); /* for firefox 3.6+ */
 }
 
 .headings {
-	padding-bottom:25px ;
-	padding-top: 0px ;
+	width:100%;
+	padding-bottom:10px ;
+	padding-top: 20px ;
 	border: 1px solid #CACACA;
 	text-shadow: 1px 1px 1px #fff;
 	/* background: #EAEAEA url(../images/bg_heading.png) repeat-x top; */
@@ -227,7 +228,7 @@ background: -moz-linear-gradient(top, #ccc, #000); /* for firefox 3.6+ */
 	-moz-border-radius-topright: 10px;
 	-moz-border-radius-topleft: 10px;
 	letter-spacing: -1px;
-	height: 35px;
+	height: 25px;
 }
 .headings h2 {
 	padding-top: 0px;
@@ -1290,4 +1291,7 @@ input[type="password"]:focus {
 	-moz-box-shadow: inset 0px 0px 10px 0px #eee;
 	box-shadow: inset 0px 0px 10px 0px #eee;
 	background:#fff;
+}
+.tdfixedwidth{
+	overflow:hidden;
 }

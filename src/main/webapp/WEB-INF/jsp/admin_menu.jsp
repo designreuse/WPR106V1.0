@@ -7,8 +7,8 @@
 <link href="<c:url value="/resources/css/inner-clr.css" />" rel="stylesheet" type="text/css" />
 <!-- <script type='text/javascript' src='http://code.jquery.com/jquery-1.4.3.min.js'></script> -->
      <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
+<!-- <link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/> -->
     <!--[if lt IE 9]>
       <script src="js/html5shim.js"></script>
     <![endif]-->

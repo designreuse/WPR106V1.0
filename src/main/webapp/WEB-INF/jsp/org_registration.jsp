@@ -2,22 +2,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
-<link href="<c:url value="/resources/css/newstyles/style.css" />" rel="stylesheet"  type="text/css" />
-<!-- <script type="text/javascript" src="resources/js/jquery-1.3.2.js"></script> -->
-<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
-    <!--[if lt IE 9]>
-      <script src="js/html5shim.js"></script>
-    <![endif]-->
-      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
-      
-      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
-      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
-      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
-      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
-      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
-      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
 
 
 <script id="script_typeid">
@@ -39,7 +23,7 @@
       <tr>
         <td valign="top" align="left">
         	
-	            <div class="headingsnew altheading">
+	            <div class="headings altheading">
 	              <h2>Organization Registration</h2>
 	            </div>
             
