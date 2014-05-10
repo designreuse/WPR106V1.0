@@ -352,8 +352,9 @@ public class AddUserDAO{
 	     		return 0;
 	}
 	
+	// Delete User Info Admin Side
 	
-	public int deleteUser(String org_id)
+	public int deleteUser(String username)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -368,13 +369,13 @@ public class AddUserDAO{
 		try
 		{
 			
-			String cmd ="select org_id from tbl_user where org_id='"+org_id+"'";
+			String cmd ="select org_id from tbl_user where username='"+username+"'";
 	    	 String Desc="Delete report ";
 	    	 resultSet=statement.executeQuery(cmd);
 				
 				if(resultSet.next())
 					Desc=Desc+resultSet.getString(1);
-				statement.execute("delete from tbl_user where org_id='"+org_id+"'");
+				statement.execute("delete from tbl_user where username='"+username+"'");
 				
 				flag=1;
 				
@@ -395,6 +396,8 @@ public class AddUserDAO{
 		   		else
 		   			return 0;
 	}
+	
+	// Find User Info Admin Side
 	
 	public List<AddUser> finduser( String org_name,String branch, String firstname, String lastname, String email){
 		Connection con = null;

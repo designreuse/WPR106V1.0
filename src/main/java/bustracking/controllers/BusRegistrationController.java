@@ -183,10 +183,12 @@ public class BusRegistrationController {
 		
 	}
 	
-	/*@RequestMapping(value="/delete_bus", method=RequestMethod.GET)
-	public String removeBus(@RequestParam("bus_id") String bus_id,ModelMap model, Principal principal) {
+	// delete Vehicle Information
 	
-		int status=busDAO.deleteBus(bus_id);
+	@RequestMapping(value="/delete_bus", method=RequestMethod.GET)
+	public String removeBus(@RequestParam("vechicle_reg_no") String vechicle_reg_no,ModelMap model, Principal principal) {
+	
+		int status=busDAO.deleteBus(vechicle_reg_no);
 		
 		if(status==1)
 		{
@@ -200,7 +202,7 @@ public class BusRegistrationController {
 		}
 		
 		return "view_bus_details";
-	}*/
+	}
 	
 
 	@RequestMapping(value="/findbus",method=RequestMethod.GET)

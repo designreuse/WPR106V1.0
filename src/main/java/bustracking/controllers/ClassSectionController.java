@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import bustracking.dao.ClassSectionDAO;
+import bustracking.dao.MainDAO;
 import bustracking.dao.OrgRegistrationDAO;
 import bustracking.forms.ClassSectionForm;
 import bustracking.forms.OrgRegistrationForm;
@@ -30,6 +31,7 @@ import bustracking.model.BusRegistration;
 import bustracking.model.StudentRegistration;
 import bustracking.forms.BusRegistrationForm;
 import bustracking.dao.BusRegistrationDAO;
+import bustracking.dao.MainDAO;
 
 @Controller
 @SessionAttributes({"class_section"})
@@ -43,6 +45,9 @@ public class ClassSectionController
 	
 	@Autowired
 	BusRegistrationDAO busDAO;
+	
+	@Autowired
+	MainDAO mainDAO;
 	
 	@RequestMapping(value="/addclass", method = RequestMethod.GET)
 	public String get_insert_form(HttpSession session,ModelMap model, Principal principal ) {
@@ -192,6 +197,25 @@ public class ClassSectionController
 		}
 		
 		return "view_ClassAndSection";
+	}
+	
+	// Delete Class and Section
+	
+	@RequestMapping(value="/delete_class", method=RequestMethod.GET)
+	public String removeBus(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("class_standard") String class_std,@RequestParam("section") String section,ModelMap model, Principal principal) {
+	
+		int status=classSectionDAO.deleteclass(org_name, branch, class_std, section);
+		
+		if(status==1)
+		{
+        
+			ClassSectionForm classSectionForm=new ClassSectionForm();
+			classSectionForm.setClassSections(classSectionDAO.get_classsection());
+			model.addAttribute("classSectionForm",classSectionForm);
+		
+		}
+		
+		return "view_bus_details";
 	}
 	
 

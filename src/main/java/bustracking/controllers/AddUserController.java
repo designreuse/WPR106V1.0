@@ -99,6 +99,8 @@ public class AddUserController{
 	return returnText;
 	}
 	
+	// Add User Information Admin Side
+	
 @RequestMapping(value="/adduser", method=RequestMethod.POST)
 public String adduser(HttpServletRequest request,HttpSession session,@ModelAttribute("AddUser") @Valid AddUser user, BindingResult result,ModelMap model){
     session.setAttribute("adminuser", user);
@@ -129,6 +131,8 @@ public String adduser(HttpServletRequest request,HttpSession session,@ModelAttri
 	}
 }
 
+// View User Information Admin Side
+
 @RequestMapping(value="/viewuser", method=RequestMethod.GET)
 public String viewuser(ModelMap model, Principal principal){
 	
@@ -137,6 +141,8 @@ public String viewuser(ModelMap model, Principal principal){
 	model.addAttribute("adduserform",adduserform);
 	return "view_adminuser";
 }
+
+// Edit User Information Admin Side 
 
 @RequestMapping(value="/edituser",method=RequestMethod.GET)
 public String edituser(HttpServletRequest request,@RequestParam("username")String username,ModelMap model,OrgRegistration orgregistration)
@@ -149,6 +155,7 @@ public String edituser(HttpServletRequest request,@RequestParam("username")Strin
 	
 }
 
+//Update User Information Admin Side
 
 @RequestMapping(value="/updateuser",method=RequestMethod.POST)
 
@@ -175,11 +182,13 @@ public String updateuser(HttpServletRequest request,@ModelAttribute ("AddUser") 
 }
 
 
+// Delete the User information Admin Side
+
 @RequestMapping(value="/deleteuser", method=RequestMethod.GET)
-public String removeStudent(@RequestParam("org_id") String org_id, ModelMap model, Principal principal)
+public String removeStudent(@RequestParam("username") String username, ModelMap model, Principal principal)
 {
 
-	int status=userDAO.deleteUser(org_id);
+	int status=userDAO.deleteUser(username);
 	
 	if(status==1)
 	{
@@ -193,6 +202,8 @@ public String removeStudent(@RequestParam("org_id") String org_id, ModelMap mode
 	return "view_adminuser";
 
 }
+
+// Find User Admin Side
 
 @RequestMapping(value="/finduser",method=RequestMethod.GET)
 public String findorg(HttpServletRequest request,
@@ -220,6 +231,8 @@ public String findorg(HttpServletRequest request,
 	 return "search_user";
 	}
 }
+
+// Find User Admin Side Search
 
 @RequestMapping(value="/finduserInSearch",method=RequestMethod.GET)
 public String finduserInSearch(HttpServletRequest request,@RequestParam("org_name") String org_name, @RequestParam("branch")String branch,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,ModelMap model)

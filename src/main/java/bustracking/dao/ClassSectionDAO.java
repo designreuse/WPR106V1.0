@@ -268,6 +268,49 @@ public List<String> getclass_for_edit(String org_name,String branch){
 			
 	}
 	
+	// Delete Class and Section
+	
+	public int deleteclass(String org_name,String branch,String class_std,String section){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		int flag=0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try{
+			
+	    	 String cmd ="select * from tbl_class where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') and class='"+class_std+"' and section='"+section+"'";
+	    	 String Desc="Delete report ";
+	    	 resultSet=statement.executeQuery(cmd);
+				
+				if(resultSet.next())
+					Desc=Desc+resultSet.getString(1);
+				statement.execute("delete from tbl_class where where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') and class='"+class_std+"' and section='"+section+"'");
+				
+				flag=1;
+				
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	flag=0;
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		   		if(flag==1)
+		   			return 1;
+		   		else
+		   			return 0;
+		}
+	
 	
 	
 	public void releaseConnection(Connection con){

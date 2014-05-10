@@ -130,12 +130,13 @@ public String updateorg(HttpServletRequest request,@ModelAttribute ("OrgRegistra
 		
 }
 
+// Delete organization
 
 @RequestMapping(value="/deleteorg", method=RequestMethod.GET)
-public String removeStudent(@RequestParam("registration_no") String registration_no, ModelMap model, Principal principal)
+public String removeStudent(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch, ModelMap model, Principal principal)
 {
 
-	int status=orgDAO.deleteorganization(registration_no);
+	int status=orgDAO.deleteorganization(org_name,branch);
 	
 	if(status==1)
 	{

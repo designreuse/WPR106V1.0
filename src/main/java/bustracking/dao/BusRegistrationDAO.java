@@ -525,7 +525,10 @@ public List<String> getStudent_route_no(String org_id){
 	    return busRegistrations;
 		
 	}
-	public int deleteBus(String bus_id){
+	
+	// Delete Vehicle information
+	
+	public int deleteBus(String vechicle_reg_no){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -538,13 +541,13 @@ public List<String> getStudent_route_no(String org_id){
 		}
 		try{
 			
-	    	 String cmd ="select gps_id from tbl_bus where bus_id='"+bus_id+"'";
+	    	 String cmd ="select  from tbl_vechicle where vechicle_reg_no='"+vechicle_reg_no+"'";
 	    	 String Desc="Delete report ";
 	    	 resultSet=statement.executeQuery(cmd);
 				
 				if(resultSet.next())
 					Desc=Desc+resultSet.getString(1);
-				statement.execute("delete from tbl_bus where bus_id='"+bus_id+"'");
+				statement.execute("delete from tbl_vechicle where vechicle_reg_no='"+vechicle_reg_no+"'");
 				
 				flag=1;
 				

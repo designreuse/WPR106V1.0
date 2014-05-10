@@ -339,9 +339,9 @@ public class OrgRegistrationDAO{
 	}
 	
 	
+	// Delete Organization Information
 	
-	
-	public int deleteorganization(String registration_no){
+	public int deleteorganization(String org_name,String branch){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -354,13 +354,13 @@ public class OrgRegistrationDAO{
 		}
 		try{
 			
-	    	 String cmd ="select org_id from tbl_org where registration_no='"+registration_no+"'";
+	    	 String cmd ="select * from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"'";
 	    	 String Desc="Delete report ";
 	    	 resultSet=statement.executeQuery(cmd);
 				
 				if(resultSet.next())
 					Desc=Desc+resultSet.getString(1);
-				statement.execute("delete from tbl_org where registration_no='"+registration_no+"'");
+				statement.execute("delete from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"'");
 				
 				flag=1;
 				
@@ -381,6 +381,7 @@ public class OrgRegistrationDAO{
 		   		else
 		   			return 0;
 		}
+	
 	
 	public List<OrgRegistration> findOrganization(String org_name, String branch,String city, String country){
 		Connection con = null;
