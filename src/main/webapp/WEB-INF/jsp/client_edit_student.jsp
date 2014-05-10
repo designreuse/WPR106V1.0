@@ -1,6 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -29,6 +29,27 @@
         }
  
     </script>
+    <script id="script_e1">
+    $(document).ready(function() {
+        $("#pickup_route_id").select2();
+    });
+</script>
+<script id="script_e1">
+    $(document).ready(function() {
+        $("#drop_route_id").select2();
+    });
+</script>
+<script id="script_e1">
+    $(document).ready(function() {
+        $("#pickup_location_id").select2();
+    });
+</script>
+<script id="script_e1">
+    $(document).ready(function() {
+        $("#drop_location_id").select2();
+    });
+</script>
+
 <script type="text/javascript">
 $(document).ready(function () {
 	//called when key is pressed in textbox
@@ -102,7 +123,7 @@ $(document).ready(function () {
 								 <tr class="row2">
 						         	<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Pick Route No:</td>
 						            <td valign="top" align="left" class="input_txt">
-						            	<select name="pickup_route_no" class="student_txtbx_height_right_ddl" id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()">
+						            	<select name="pickup_route_no"  id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()" style="width:220px">
 					               <option value="${student.pickup_route_no}">${student.pickup_route_no}</option>
 					               <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}" selected>${route_no}</option>
@@ -114,7 +135,7 @@ $(document).ready(function () {
 								<tr class="row1">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Pick Point Address :</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<div id="pickup_address" style="height:8px;"><select class="student_txtbx_height_right_ddl" name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')">
+				                  	<div id="pickup_address" style="height:8px;"><select  name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')" style="width:220px">
 						    	<option value="${student.pickup_point_address}" selected>${student.pickup_point_address}</option>
 				                  	</select>
 				                  	</div>
@@ -124,7 +145,7 @@ $(document).ready(function () {
 								<tr class="row2">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Route No:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	 <select name="drop_route_no" class="student_txtbx_height_right_ddl" onchange="doAjaxPost_drop_route_no()" id="drop_route_id">
+				                  	 <select name="drop_route_no"  onchange="doAjaxPost_drop_route_no()" id="drop_route_id" style="width:220px">
 					               <option value="${student.drop_route_no}">${student.drop_route_no}</option>
 					               <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}" selected>${route_no}</option>
@@ -137,7 +158,7 @@ $(document).ready(function () {
 				                <tr class="row1">
 				                 	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Point Address:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<div id="drop_address" style="height:8px;"><select class="student_txtbx_height_right_ddl" name="drop_point_address" id="drop_location_id" onblur="Validate1('bid')">
+				                  	<div id="drop_address" style="height:8px;"><select  name="drop_point_address" id="drop_location_id" onblur="Validate1('bid')" style="width:220px">
 							    <option value="${student.drop_point_address}" selected>${student.drop_point_address}</option>
 				                  	</select>
 				                  	</div>
