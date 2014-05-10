@@ -1,21 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
-    <!--[if lt IE 9]>
-      <script src="js/html5shim.js"></script>
-    <![endif]-->
-      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
-      
-      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
-      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
-      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
-      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
-      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
-      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
-      <style type="text/css">
+<style type="text/css">
         body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
         #report { border-collapse:collapse;}
         #report h4 { margin:0px; padding:0px;}
@@ -35,39 +21,13 @@
             $("#report tr:not(.odd)").hide();
             $("#report tr:first-child").show();
             
-            $("#report tr.odd").click(function(){
+            $("#report tr.odd").dblclick(function(){
                 $(this).next("tr").toggle();
                 $(this).find(".arrow").toggleClass("up");
             });
             //$("#report").jExpand();
         });
-    </script>        
-<script id="script_e1">
-    $(document).ready(function() {
-        $("#e1").select2();
-    });
-</script>
-
-<script id="script_e2">
-    $(document).ready(function() {
-        $("#e2").select2();
-    });
-</script>
-<script id="script_e3">
-    $(document).ready(function() {
-        $("#e3").select2();
-    });
-</script>
-<script id="script_e4">
-    $(document).ready(function() {
-        $("#e4").select2();
-    });
-</script>
-<script id="script_e5">
-    $(document).ready(function() {
-        $("#e5").select2();
-    });
-</script>
+    </script> 
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -79,21 +39,7 @@
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2>Student View 
-			        <br/></h2>
-			          <div class="buttonswitchpanel">
-			          <div class='buttonsheader'>
-						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
-						<a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
-						<a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
-						<!-- popups -->
-						<!-- <a href="#join_form" id="join_pop" ><img title="Show"src="resources/images/fulltbl.png" style="height:25px;width:35px;"/></a> -->
-						
-						<a  href='#' > <img title="Download"src="resources/images/download.png" style="height:25px;width:35px;"/></a>
-						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
-						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
-						</div></div>
-			          
-			        </div>
+			        <br/></h2>			        </div>
 			    
 
 
@@ -159,7 +105,7 @@
 							<tr > <th valign="top" align="left">Roll Number</th>
 							<th valign="top" align="left">First Name</th>
 							
-							<th valign="top" align="left">Calss&Sec</th>
+							<th valign="top" align="left">Calss & Sec</th>
 							<th valign="top" align="left">Pick RteNo</th>
 							<th valign="top" align="left" >PicK Address</th>
 							<th valign="top" align="left">Drop RteNo</th>
@@ -189,16 +135,18 @@
 								</tr>
 							    	
 							<tr >
-										<td valign="top" align="left" colspan="3"><ul><li><span style="color:#3bb9ff;">Student First Name:</span>${studentlist.first_name}</li>
-										<li><span style="color:#3bb9ff;">Student Last Name:</span>${studentlist.last_name}</li><li><span style="color:#3bb9ff;">Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span><c:choose>
+										<td valign="top" align="left" colspan="4"><ul><li><span style="color:#3bb9ff;">Student First Name:</span><span style="color:#666;">${studentlist.first_name}</span></li>
+										<li><span style="color:#3bb9ff;">Student Last Name:</span><span style="color:#666;">${studentlist.last_name}</span></li><li><span style="color:#3bb9ff;">Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
+										<span style="color:#666;"><c:choose>
 									 <c:when test="${studentlist.gender=='M'}">
 									 <c:out value="Male"></c:out></c:when>
 									 <c:when test="${studentlist.gender=='F'}">
 									 <c:out value="FeMale"></c:out>
 									 </c:when>
-									 </c:choose></li><li><span style="color:#3bb9ff;">Class & Section &nbsp;&nbsp;&nbsp;&nbsp;:</span>${studentlist.class_standard}&amp;${studentlist.section}</li></ul></td>
-										<td valign="top" align="left" colspan="6" ><ul><li><span style="color:#3bb9ff;">Parents Name&nbsp;&nbsp;:</span>${studentlist.parent_name1} &amp;${studentlist.parent_name2}</li><li><span style="color:#3bb9ff;">Parent Number:</span>${studentlist.parent_mobile1} &amp;${studentlist.parent_mobile2} </li>
-										<li><span style="color:#3bb9ff;">Parents Email&nbsp;&nbsp;&nbsp;:</span>${studentlist.parent_email1}&amp;${studentlist.parent_email2}</li></ul></td>
+									 </c:choose></span></li><li><span style="color:#3bb9ff;">Class & Section &nbsp;&nbsp;&nbsp;&nbsp;:</span><span style="color:#666;">${studentlist.class_standard}&amp;${studentlist.section}</span></li></ul></td>
+										<td valign="top" align="left" colspan="6" ><ul><li><span style="color:#3bb9ff;">Parents Name&nbsp;&nbsp;:</span><span style="color:#666;">${studentlist.parent_name1} &amp;${studentlist.parent_name2}</span></li><li>
+										<span style="color:#3bb9ff;">Parent Number:</span><span style="color:#666;">${studentlist.parent_mobile1} &amp;${studentlist.parent_mobile2} </span></li>
+										<li><span style="color:#3bb9ff;">Parents Email&nbsp;&nbsp;&nbsp;:</span><span style="color:#666;">${studentlist.parent_email1}&amp;${studentlist.parent_email2}</span></li></ul></td>
 										</tr>
 							    	</c:forEach>
 							    </c:if>
