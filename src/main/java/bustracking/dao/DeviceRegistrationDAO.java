@@ -196,6 +196,46 @@ public class DeviceRegistrationDAO {
 	    return deviceRegistrations;
 		
 	}
+	//find device 10/05/2014
+	
+	public List<DeviceRegistration> find_devices(String device_imei_number, String device_sim_number,String adminip,String create_user_id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<DeviceRegistration> deviceRegistrations=new ArrayList<DeviceRegistration>();
+		try{
+			String cmd_sql="Select * from tbl_device_configuration where device_imei_number='"+device_imei_number+"' or device_sim_number='"+device_sim_number+"' or adminip='"+adminip+"' or create_user_id='"+create_user_id+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(new DeviceRegistration(resultSet.getString("manufacturer"), resultSet.getString("model_no"),resultSet.getString("carrier"),resultSet.getString("sim_card_number"),resultSet.getString("device_procured_date"),resultSet.getString("device_invoice_number"),resultSet.getString("device_imei_number"),resultSet.getString("device_tested"),resultSet.getString("sim_procured_date"),resultSet.getString("sim_invoice_number"),resultSet.getString("sim_card_tested"),resultSet.getString("device_sim_paired"),resultSet.getString("is_assigned"),resultSet.getString("password"),resultSet.getString("device_status"),resultSet.getString("port_no"),resultSet.getString("comments"),resultSet.getString("apn"),resultSet.getString("adminip"),resultSet.getString("configuration_date"),resultSet.getString("create_user_id")));
+			}
+			
+			
+			
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
 	
 	//Get Device IMEI Number
 	

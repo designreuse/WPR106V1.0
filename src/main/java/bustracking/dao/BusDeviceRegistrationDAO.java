@@ -24,6 +24,8 @@ public class BusDeviceRegistrationDAO {
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
+
+	// insert bus device
 	
 	public int insertBusDeviceRegistration(BusDeviceRegistration busDeviceRegistration){
 	Connection con = null;
@@ -55,7 +57,7 @@ public class BusDeviceRegistrationDAO {
     return 1;
 	
 }
-	
+	//max id bus device
 
 	public Long getMax_BusDeviceReg(){
 		Connection con = null;
@@ -89,6 +91,7 @@ public class BusDeviceRegistrationDAO {
 		
 	}
 	
+	//view bus device
 	
 	public List<BusDeviceRegistration> getBusdeviceregistration(){
 		Connection con = null;
@@ -120,7 +123,39 @@ public class BusDeviceRegistrationDAO {
 	    return busDeviceRegistrations;
 		
 	}
+	//Search admin device
 	
+	
+		public List<BusDeviceRegistration> SearchBusdevice(String device_imei_number, String device_sim_number,String adminip,String create_user_id){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<BusDeviceRegistration> busDeviceRegistrations = new ArrayList<BusDeviceRegistration>();
+			try{
+				resultSet = statement.executeQuery("select * from tbl_vechicle where device_imei_number='"+device_imei_number+"' or device_sim_number='"+device_sim_number+"' or adminip='"+adminip+"' or create_user_id='"+create_user_id+"'");
+				while(resultSet.next()){
+					busDeviceRegistrations.add(new BusDeviceRegistration(resultSet.getString("vechicle_reg_no"), resultSet.getString("device_imei_number")));
+				}
+			
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return busDeviceRegistrations;
+			
+		}
 	public List<BusDeviceRegistration> getBusdeviceregistration_byid(String device_id){
 		Connection con = null;
 		Statement statement = null;
@@ -230,40 +265,6 @@ public class BusDeviceRegistrationDAO {
 		   		else
 		   			return 0;
 		}
-	public List<BusDeviceRegistration> findbusdevice( String bus_id,String driver_id, String device_id){
-		Connection con = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		try {
-			con = dataSource.getConnection();
-			statement = con.createStatement();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		List<BusDeviceRegistration> busDeviceRegistrations = new ArrayList<BusDeviceRegistration>();
-	    try{
-	    	String cmd="select * from tbl_device_bus where  bus_id='"+bus_id+"' or driver_id='"+driver_id+"' or device_id='"+device_id+"'";
-			resultSet = statement.executeQuery(cmd);
-			System.out.println(cmd);			
-			while(resultSet.next()){
-				
-				busDeviceRegistrations.add(new BusDeviceRegistration(resultSet.getString("org_id"), resultSet.getString("bus_id"), resultSet.getString("device_id"),resultSet.getString("bus_reg_no"),resultSet.getString("device_imei_number"),resultSet.getString("device_sim_number"),resultSet.getString("driver_id"), resultSet.getString("description"),resultSet.getString("isactive"),resultSet.getString("creation_time")));
-			}
-	    }catch(Exception e){
-	    	System.out.println(e.toString());
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);
-	    }finally{
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);	    	
-	    }
-	    return busDeviceRegistrations;
-		
-	}
-	
-	
 	
 	
 	public void releaseConnection(Connection con){
