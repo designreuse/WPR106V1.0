@@ -535,8 +535,9 @@ public class StudentRegistrationDAO {
 	     		return 0;
 	}
 	
+	// Delete Student Information
 	
-	public int deleteStudent(int student_roll_no){
+	public int deleteStudent(String student_roll_no){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -549,7 +550,7 @@ public class StudentRegistrationDAO {
 		}
 		try{
 			
-	    	 String cmd ="select name from tbl_student where student_roll_no='"+student_roll_no+"'";
+	    	 String cmd ="select first_name from tbl_student where student_roll_no='"+student_roll_no+"'";
 	    	 String Desc="Delete report ";
 	    	 resultSet=statement.executeQuery(cmd);
 				

@@ -253,7 +253,7 @@ public class OrgBusinessRuleDAO {
 	//Delete Business Rules
 	//***************************************************************************************************************
 	
-	public int deletebusinessrulesadmin(String org_id,String org_name,String branch)
+	public int deletebusinessrulesadmin(String org_name,String branch)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -267,15 +267,15 @@ public class OrgBusinessRuleDAO {
 		}
 		try
 		{
-			String cmd ="select org_id from tbl_business_rule where org_name='"+org_name+"' and branch='"+branch+"'";
+			String cmd ="select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"'";
 			System.out.println(cmd);
 	    	 String Desc="Delete report ";
 	    	 resultSet=statement.executeQuery(cmd);
 				
 				if(resultSet.next())
 					Desc=Desc+resultSet.getString(1);
-				statement.execute("delete from tbl_business_rule where org_id='"+org_id+"'");
-				System.out.println("delete from tbl_business_rule where org_id='"+org_id+"'");
+				statement.execute("delete from tbl_business_rule where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')");
+				System.out.println("delete from tbl_business_rule where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')");
 
 				flag=1;
 				
@@ -299,6 +299,10 @@ public class OrgBusinessRuleDAO {
 	//***************************************************************************************************************
 	//Operations Over
 	//***************************************************************************************************************
+	
+	
+	
+	
 	public void releaseConnection(Connection con){
 		try{if(con != null)
 			con.close();

@@ -194,10 +194,10 @@ public class OrgBusinessRuleController{
 //Delete Admin Business Rules
 	
 	@RequestMapping(value="/deleteadminbrules", method=RequestMethod.GET)
-	public String deleteadminbrules(@RequestParam("org_id") String org_id,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch, ModelMap model, Principal principal)
+	public String deleteadminbrules(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch, ModelMap model, Principal principal)
 	{
 
-		int status=businessRuleDAO.deletebusinessrulesadmin(org_id,org_name,branch);
+		int status=businessRuleDAO.deletebusinessrulesadmin(org_name,branch);
 		
 		if(status==1)
 		{

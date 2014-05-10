@@ -339,8 +339,11 @@ public class StudentRegistrationController {
 		return "view_student_details";
 		
 	}
+	
+	// Delete Student Admin Side
+	
 	@RequestMapping(value="/delete_student", method=RequestMethod.GET)
-	public String removeStudent(@RequestParam("student_roll_no") int student_roll_no,ModelMap model, Principal principal) {
+	public String removeStudent(@RequestParam("student_roll_no") String student_roll_no,ModelMap model, Principal principal) {
 	
 		int status=studentDAO.deleteStudent(student_roll_no);
 		
