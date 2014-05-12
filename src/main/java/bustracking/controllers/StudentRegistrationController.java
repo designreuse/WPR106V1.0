@@ -111,7 +111,7 @@ public class StudentRegistrationController {
 		List <String> branch=new ArrayList<String>();
 		branch=busDAO.getBus_id(org_name);
 		
-		returnText=returnText+"<select name='branch' id='bid' onchange='doAjaxPost1()' class='student_txtbx_height_right_ddl'>";
+		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select name='branch' id='bid' onchange='doAjaxPost1()' >";
 		returnText+="<option value='' selected>--Select Branch--</option>";
 		for(String bname:branch)
 		{
@@ -132,7 +132,7 @@ public class StudentRegistrationController {
 		
 		studroute=studentDAO.getStud_route(org_name,branch);
 		
-		returnText=returnText+"<select name='pickup_route_no' id='pickup_route_id'  onchange='doAjaxPost_pickup_route_no()' class='student_txtbx_height_right_ddl'>";
+		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#pickup_route_id').select2(); });</script><select name='pickup_route_no' id='pickup_route_id'  onchange='doAjaxPost_pickup_route_no()' style='width:220px'>";
 		returnText+="<option value='' selected>--Select Pickup Route No--</option>";
 		
 		for(String sr:studroute)
@@ -145,7 +145,7 @@ public class StudentRegistrationController {
 
 	   returnText=returnText+"<split>";
 	   
-	   returnText=returnText+"<select name='drop_route_no' id='drop_route_id'  onchange='doAjaxPost_drop_route_no()' class='student_txtbx_height_right_ddl'>";
+	   returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#drop_route_id').select2(); });</script><select name='drop_route_no' id='drop_route_id'  onchange='doAjaxPost_drop_route_no()' style='width:220px'>";
 		returnText+="<option value='' selected>--Select Drop Route No--</option>";
 		
 		for(String sr:studroute)
@@ -161,7 +161,7 @@ public class StudentRegistrationController {
 	   
 	   studclass=studentDAO.getStud_class(org_name, branch);
 	 
-	   returnText=returnText+"<select name='class_standard' id='class_standard_id' onchange='doAjaxPost_section()' class='student_txtbx_height_right_ddl'>";
+	   returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#class_standard_id').select2(); });</script><select name='class_standard' id='class_standard_id' onchange='doAjaxPost_section()' style='width:220px'>";
 		returnText+="<option value='' selected>--Select Class--</option>";
 		
 		for(String srclass:studclass)
@@ -188,7 +188,7 @@ public class StudentRegistrationController {
 		List<String> studsection=new ArrayList<String>();
 		studsection=studentDAO.getStud_section(org_name, branch, class_standard);
 		
-		returnText=returnText+"<select name='section' id='section_id' class='student_txtbx_height_right_ddl'>";
+		returnText=returnText+"<script id='script_section_id'>$(document).ready(function() { $('#section_id').select2(); });</script><select name='section' id='section_id' style='width:220px'>";
 		returnText+="<option value='' selected>--Select Section--</option>";
 		for(String section:studsection)
 		{
@@ -209,7 +209,7 @@ public class StudentRegistrationController {
 		List <String> pickup_location=new ArrayList<String>();
 		pickup_location=busDAO.getPickupStop_location(pickup_route_no);
 		
-		returnText=returnText+"<select name='pickup_point_address' id='pickup_location_id'  class='student_txtbx_height_right_ddl'>";
+		returnText=returnText+"<script id='script_section_id'>$(document).ready(function() { $('#pickup_location_id').select2(); });</script><select name='pickup_point_address' id='pickup_location_id' style='width:220:px'>";
 		returnText+="<option value='' selected>--Select PickUp Location--</option>";
 		for(String pickup_locationname:pickup_location)
 		{
@@ -230,7 +230,7 @@ public class StudentRegistrationController {
 		List <String> drop_location=new ArrayList<String>();
 		drop_location=busDAO.getDropStop_location(drop_route_no);
 		
-		returnText=returnText+"<select name='drop_point_address' id='drop_location_id'  class='student_txtbx_height_right_ddl'>";
+		returnText=returnText+"<script id='script_section_id'>$(document).ready(function() { $('#drop_location_id').select2(); });</script><select name='drop_point_address' id='drop_location_id' style='width:220px'>";
 		returnText+="<option value='' selected>--Select Drop Location--</option>";
 		for(String drop_locationname:drop_location)
 		{

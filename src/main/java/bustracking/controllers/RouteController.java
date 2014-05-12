@@ -97,7 +97,7 @@ public class RouteController
 		List <String> studroute=new ArrayList<String>();
 		studroute=studentDAO.getStud_route(org_name,branch);
 		
-		returnText=returnText+"<select name='route_no' id='imei' class='input_txtbx_height'>";
+		returnText=returnText+"<script id='script_imei'>$(document).ready(function() { $('#imei').select2(); });</script><select name='route_no' id='imei' style='width:220px'>";
 		returnText+="<option value='' selected>--Select Route No--</option>";
 		for(String sr:studroute)
 		{
@@ -249,7 +249,7 @@ public class RouteController
 		List <String> branch=new ArrayList<String>();
 		branch=busDAO.getBus_id(org_name);
 		
-		returnText=returnText+"<select name='branch' id='bid' onchange='doAjaxPost1()' class='input_txtbx_height'>";
+		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select name='branch' id='bid' onchange='doAjaxPost1()' style='width:220px'>";
 		returnText+="<option value='' selected>--Select Branch--</option>";
 		for(String bname:branch)
 		{
