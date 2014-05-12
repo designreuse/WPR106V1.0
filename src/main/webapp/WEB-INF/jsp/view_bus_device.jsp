@@ -126,7 +126,10 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headingsnew altheading">
-			          <h2>Device Informations<br/></h2>
+			          <h2>Device Informations<br/></h2><div class="searchdiv">
+                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                          Open Search
+                        </a></div>
 			          
 			          
 			        </div>

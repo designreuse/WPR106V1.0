@@ -17,7 +17,10 @@
 	<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2> Vehicle Information</h2>
+			          <h2> Vehicle Information</h2><div class="searchdiv">
+                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                          Open Search
+                        </a></div>
 			        </div>
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
     	<c:if test="${success==true}">

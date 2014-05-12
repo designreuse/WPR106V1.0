@@ -61,9 +61,9 @@
 
 <div class="glossymenu">
 <div class="buttonswitchpanel_search">
-			          <div class='buttonsheader'>
-						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
-						<a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
+			          <!-- <div class='buttonsheader'> -->
+						&nbsp;<a  href='javascript:history.back();' class="otherspressable back_button" >Back</a>
+						<!-- <a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a> -->
 						<!-- <a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
 						popups
 						<a href="#join_form" id="join_pop" ><img title="Show"src="resources/images/fulltbl.png" style="height:25px;width:35px;"/></a>
@@ -72,9 +72,9 @@
 						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
 						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
 						 -->
-						 <a href="#" onClick="ddaccordion.expandall('submenuheader'); return false"><img src="resources/images/plus.png" style="margin:0 0 0 -2px;"title="Expand All"/></a>
-<a href="#" onClick="ddaccordion.collapseall('submenuheader'); return false"><img src="resources/images/minus.png"   title="Collapse All"/> </a>
-						 </div></div>
+						 <a href="#" class="otherspressable expand_button" onClick="ddaccordion.expandall('submenuheader'); return false">Expand All</a>
+						 <a href="#" class="otherspressable collapse_button" onClick="ddaccordion.collapseall('submenuheader'); return false">Collapse All</a>
+						 <!-- </div> --></div>
 
 <a class="menuitem"  href="welcome" style="padding-left:35px;" >Home</a>
 <!-- style="background: #3bb9ff;" -->

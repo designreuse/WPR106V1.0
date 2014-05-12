@@ -371,7 +371,7 @@ function toggle1(b,id1){
 
 	}
 
-function toggle(a,id){
+/*function toggle(a,id){
 	
 	var div=document.getElementById(id);
 	if(div.style.display=='none'){
@@ -384,6 +384,22 @@ function toggle(a,id){
 		$("#div").slideUp("slow");
 	div.style.display='none';
 	a.innerHTML='<img src="resources/images/search-blue-icon.png" style="height:25px;width:35px;" title="Open Search"/>';
+	}
+
+	}*/
+function toggle(a,id){
+	
+	var div=document.getElementById(id);
+	if(div.style.display=='none'){
+		$("#div").slideDown("slow");
+	div.style.display='block';
+	a.innerHTML='Close Search';
+
+	}
+	else{
+		$("#div").slideUp("slow");
+	div.style.display='none';
+	a.innerHTML='Open Search';
 	}
 
 	}

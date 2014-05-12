@@ -17,7 +17,11 @@
 	<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			         <h2> View Users</h2>
+			         <h2> View Users</h2><div class="searchdiv">
+                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                          Open Search
+                        </a></div>
+                    
 			        </div>
 			    
 			    
