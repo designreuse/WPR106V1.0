@@ -6,7 +6,7 @@
 <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/inner-clr.css" />" rel="stylesheet" type="text/css" />
 <!-- <script type='text/javascript' src='http://code.jquery.com/jquery-1.4.3.min.js'></script> -->
-     <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+    <!--  <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script> -->
 <!-- <link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/> -->
     <!--[if lt IE 9]>
@@ -167,6 +167,7 @@
 </div>
 </c:if>
 
+
   <c:if test="${menu=='ROLE_ADMIN'}">       
 <a class="menuitem submenuheader"  href="#" >Vehicle / Route Information</a>
 <div class="submenu">
@@ -227,7 +228,7 @@
 	 --><li><a href="#">Driver List</a></li>
 	<li><a href="#">Pick Up Report</a> </li>
 	<li><a href="#">Drop Report</a></li>
-	<li><a href="#">Over Speeding Report </a></li>
+	<li><a href="clientoverspeedingreport">Over Speeding Report </a></li>
 	
 	</ul>
 </div>

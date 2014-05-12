@@ -78,21 +78,21 @@
           						<td valign="top" align="left" width="13%">Action</td>          						
         					</tr></table>
     	<div class="Panel_One_Inner">
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%"class="order-table table">
 							<c:if test="${fn:length(orgBusinessRuleForm.orgBusinessRules) gt 0 }">
         					
         					<c:forEach items="${orgBusinessRuleForm.orgBusinessRules}" var="vieworgBusinessRules" varStatus="status">
         				       <tr class="row1">
         				       
-        				       <td valign="top" align="left" width="10%">${vieworgBusinessRules.org_name}</td>
-					         	<td valign="top" align="left" width="3%">${vieworgBusinessRules.branch}</td>
-					         	<td valign="top" align="center" width="8%">${vieworgBusinessRules.google_map_traffic}</td>
-          						<td valign="top" align="center" width="13%">${vieworgBusinessRules.pickup_start_time } &#47; ${vieworgBusinessRules.pickup_end_time }</td>          						
-          						<td valign="top" align="center" width="13%">${vieworgBusinessRules.drop_start_time } &#47; ${vieworgBusinessRules.drop_end_time }</td>
-          						<td valign="top" align="center" width="14%">${vieworgBusinessRules.kg_start_time } &#47; ${vieworgBusinessRules.kg_end_time }</td>
-          						<td valign="top" align="center" width="15%">${vieworgBusinessRules.speed_limit }</td>
-          						<td valign="top" align="left" width="2%">${vieworgBusinessRules.sms_options }</td> 
-        				        <td valign="top" align="right" width="17%">
+        				       <td valign="top" align="left" style="overflow:hidden;"width="10%">${vieworgBusinessRules.org_name}</td>
+					         	<td valign="top" align="left" style="overflow:hidden;"width="3%">${vieworgBusinessRules.branch}</td>
+					         	<td valign="top" align="center" style="overflow:hidden;"width="8%">${vieworgBusinessRules.google_map_traffic}</td>
+          						<td valign="top" align="center" style="overflow:hidden;"width="13%">${vieworgBusinessRules.pickup_start_time } &#47; ${vieworgBusinessRules.pickup_end_time }</td>          						
+          						<td valign="top" align="center" style="overflow:hidden;"width="13%">${vieworgBusinessRules.drop_start_time } &#47; ${vieworgBusinessRules.drop_end_time }</td>
+          						<td valign="top" align="center" style="overflow:hidden;"width="14%">${vieworgBusinessRules.kg_start_time } &#47; ${vieworgBusinessRules.kg_end_time }</td>
+          						<td valign="top" align="center" style="overflow:hidden;"width="15%">${vieworgBusinessRules.speed_limit }</td>
+          						<td valign="top" align="left" style="overflow:hidden;"width="2%">${vieworgBusinessRules.sms_options }</td> 
+        				        <td valign="top" align="right" style="overflow:hidden;"width="17%">
 							    <a href="<c:out value="editbusinessrulesadmin?org_name=${vieworgBusinessRules.org_name}&branch=${vieworgBusinessRules.branch}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 							    <a href="<c:out value="deleteadminbrules?org_name=${vieworgBusinessRules.org_name}&branch=${vieworgBusinessRules.branch}"/>" onclick="return confirm('Are you sure want to delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									

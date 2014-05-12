@@ -117,18 +117,18 @@
           						
         					</tr></table>
 							<div class="Panel_One_Inner">
-							 <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
+							 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%" class="order-table table">
 							<c:if test="${fn:length(busregistrationform.busregistration) gt 0 }">
         					<c:forEach items="${busregistrationform.busregistration}" var="BusRegistration" varStatus="status">
         				       					<tr class="row1">
-							       		<td valign="top" align="left" width="15%">${BusRegistration.org_name}</td>
-											<td valign="top" align="left" width="10%">${BusRegistration.branch}</td>
-											<td valign="top" align="left" width="10%">${BusRegistration.vechicle_reg_no}</td>
-											<td valign="top" align="left" width="15%">${BusRegistration.device_imei_number}</td>
-											<td valign="top" align="left" width="12%">${BusRegistration.driver_name}</td>
-											<td valign="top" align="left" width="10%">${BusRegistration.driver_licence_no}</td>
-											<td valign="top" align="left" width="15%">${BusRegistration.driver_licence_exp_date}</td>
-											<td valign="top" align="left" width="25%">
+							       		<td valign="top" align="left" style="overflow:hidden;"width="15%">${BusRegistration.org_name}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%">${BusRegistration.branch}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%">${BusRegistration.vechicle_reg_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${BusRegistration.device_imei_number}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="12%">${BusRegistration.driver_name}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%">${BusRegistration.driver_licence_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${BusRegistration.driver_licence_exp_date}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="25%">
 										
 												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_bus?vechicle_reg_no=${BusRegistration.vechicle_reg_no}"/>" style="padding-right:10px;">Edit</a>
 												

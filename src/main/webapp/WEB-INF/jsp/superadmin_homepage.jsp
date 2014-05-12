@@ -11,7 +11,7 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Admin   Home<br/></h2>
+			          <h2>Admin   Home</h2>
 			        </div>
 			    
 

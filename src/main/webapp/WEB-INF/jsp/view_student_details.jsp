@@ -1,8 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-
-
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -93,16 +91,16 @@
         					</tr>
         				</table>
 							<div class="Panel_One_Inner">    
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%" class="order-table table">
 								<c:if test="${fn:length(studentregistrationform.studentregistration) gt 0 }">
         					    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
         				       			<tr class="row1">
-					     		     	<td valign="top" align="left"  width="15%">${studentRegistration.org_name}</td>
-					     		     	<td valign="top" align="left"  width="15%">${studentRegistration.branch}</td>
-									    <td valign="top" align="left" width="15%">${studentRegistration.student_roll_no}</td>
-									    <td valign="top" align="left" width="15%">${studentRegistration.first_name}</td>
-									    <td valign="top" align="left" width="15%">${studentRegistration.last_name}</td>
-										<td valign="top" align="left" width="25%">
+					     		     	<td valign="top" align="left"  style="overflow:hidden;"width="15%">${studentRegistration.org_name}</td>
+					     		     	<td valign="top" align="left"  style="overflow:hidden;"width="15%">${studentRegistration.branch}</td>
+									    <td valign="top" align="left" style="overflow:hidden;"width="15%">${studentRegistration.student_roll_no}</td>
+									    <td valign="top" align="left" style="overflow:hidden;"width="15%">${studentRegistration.first_name}</td>
+									    <td valign="top" align="left" style="overflow:hidden;"width="15%">${studentRegistration.last_name}</td>
+										<td valign="top" align="left" style="overflow:hidden;"width="25%">
 										<a href="<c:out value="edit_student?student_roll_no=${studentRegistration.student_roll_no}&org_name=${studentRegistration.org_name}&branch=${studentRegistration.branch}"/>" ><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 										<a href="<c:out value="delete_student?student_roll_no=${studentRegistration.student_roll_no}"/>" onclick="return confirm('Are you sure want to delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 								        <td>

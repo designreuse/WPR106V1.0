@@ -1,37 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
-    <!--[if lt IE 9]>
-      <script src="js/html5shim.js"></script>
-    <![endif]-->
-      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
-      
-      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
-      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
-      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
-      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
-      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
-      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
 
-
-<script id="script_e1">
-    $(document).ready(function() {
-        $("#e1").select2();
-    });
-</script>
-
-<script id="script_e2">
-    $(document).ready(function() {
-        $("#e2").select2();
-    });
-</script>
-     
-
-        
-  
   <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -45,14 +15,10 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Business Rules Information<span style="margin:3% 0 0 55%; padding:2px;">
-			          <a href="#" onclick="window.history.back();"><img title="Back"src="resources/images/back.png" style="height:20px;width:50px;"/></a>
-			          <a href="#" onclick="toggle(this,'div');return false">
-			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:20px;width:50px;"/></a>
-			          
-			          <a href="#" onclick="toggle1(this,'divfilter');return false">
-			          <img title="Open Search"src="resources/images/filter.png" style="height:20px;width:50px;"/></a>
-			          </span></h2>
+			          <h2>Business Rules Information</h2><div class="searchdiv">
+                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                          Open Search
+                        </a></div>
 			        </div>
 			    				
 <div style="display:none" id="div">
@@ -83,7 +49,7 @@
 							    </c:forEach>
 							    </select></td>
 							    <td align="center" valign="middle" width="30%">
-							    <input type="submit" class="clicky" value="Search" ></td>
+							    <input type="submit" class="btn" value="Search" ></td>
 							 
 							  </tr>
 							</table>
@@ -112,22 +78,23 @@
           						<td valign="top" align="left" width="13%">Action</td>          						
         					</tr></table>
     	<div class="Panel_One_Inner">
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%"class="order-table table">
 							<c:if test="${fn:length(orgBusinessRuleForm.orgBusinessRules) gt 0 }">
         					
         					<c:forEach items="${orgBusinessRuleForm.orgBusinessRules}" var="vieworgBusinessRules" varStatus="status">
         				       <tr class="row1">
-        				       <td valign="top" align="left" width="10%">${vieworgBusinessRules.org_name}</td>
-					         	<td valign="top" align="left" width="3%">${vieworgBusinessRules.branch}</td>
-					         	<td valign="top" align="center" width="8%">${vieworgBusinessRules.google_map_traffic}</td>
-          						<td valign="top" align="center" width="13%">${vieworgBusinessRules.pickup_start_time } &#47; ${vieworgBusinessRules.pickup_end_time }</td>          						
-          						<td valign="top" align="center" width="13%">${vieworgBusinessRules.drop_start_time } &#47; ${vieworgBusinessRules.drop_end_time }</td>
-          						<td valign="top" align="center" width="14%">${vieworgBusinessRules.kg_start_time } &#47; ${vieworgBusinessRules.kg_end_time }</td>
-          						<td valign="top" align="center" width="15%">${vieworgBusinessRules.speed_limit }</td>
-          						<td valign="top" align="left" width="2%">${vieworgBusinessRules.sms_options }</td> 
-        				        <td valign="top" align="right" width="17%">
-							    <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_bus?bus_id=${BusRegistration.bus_id}"/>" style="padding-right:10px;">Edit</a>
-							    <a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_bus?bus_id=${BusRegistration.bus_id}}"/>" onclick="return confirmation()">Remove</a>
+        				       
+        				       <td valign="top" align="left" style="overflow:hidden;"width="10%">${vieworgBusinessRules.org_name}</td>
+					         	<td valign="top" align="left" style="overflow:hidden;"width="3%">${vieworgBusinessRules.branch}</td>
+					         	<td valign="top" align="center" style="overflow:hidden;"width="8%">${vieworgBusinessRules.google_map_traffic}</td>
+          						<td valign="top" align="center" style="overflow:hidden;"width="13%">${vieworgBusinessRules.pickup_start_time } &#47; ${vieworgBusinessRules.pickup_end_time }</td>          						
+          						<td valign="top" align="center" style="overflow:hidden;"width="13%">${vieworgBusinessRules.drop_start_time } &#47; ${vieworgBusinessRules.drop_end_time }</td>
+          						<td valign="top" align="center" style="overflow:hidden;"width="14%">${vieworgBusinessRules.kg_start_time } &#47; ${vieworgBusinessRules.kg_end_time }</td>
+          						<td valign="top" align="center" style="overflow:hidden;"width="15%">${vieworgBusinessRules.speed_limit }</td>
+          						<td valign="top" align="left" style="overflow:hidden;"width="2%">${vieworgBusinessRules.sms_options }</td> 
+        				        <td valign="top" align="right" style="overflow:hidden;"width="17%">
+							    <a href="<c:out value="editbusinessrulesadmin?org_name=${vieworgBusinessRules.org_name}&branch=${vieworgBusinessRules.branch}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
+							    <a href="<c:out value="deleteadminbrules?org_name=${vieworgBusinessRules.org_name}&branch=${vieworgBusinessRules.branch}"/>" onclick="return confirm('Are you sure want to delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>
@@ -151,12 +118,8 @@
         				</td>
         				</tr>
         				</table></div></div>
-<script>
-function goBack()
-  {
-  window.history.back()
-  }
-</script>
 
-
-<jsp:include page="footer.jsp"></jsp:include>
+<table width="100%"><tr>
+<td>
+<jsp:include page="footer.jsp"></jsp:include></td></tr>
+</table>

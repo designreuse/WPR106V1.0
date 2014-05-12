@@ -919,14 +919,14 @@ padding-left: 10px;
 #tabs {
   overflow: hidden;
   width: 100%;
-  margin:-195px 0 0 0 ;
+  margin:0px 0 0 0 ;
   padding: 0;
   list-style: none;
 }
 
 #tabs li {
   float: left;
-  margin: 0 .5em 0 0;
+  margin: 0 0 0 0;
   
 }
 
@@ -950,8 +950,8 @@ padding-left: 10px;
 
   /* Opera 11.10+ */
   background: -o-linear-gradient(top, #3bb9ff, #0066cc);
-    
-  padding: .7em 3.5em;
+    height:20px;
+  padding:5px 25px;
   float: left;
   text-decoration: none;
   color: #fff;
@@ -992,9 +992,10 @@ padding-left: 10px;
   position:absolute;
   z-index: 1;
   top: 0;
-  right: -.5em;  
+  right: -0.3em;  
   bottom: 0;
   width: 1em;
+  
    background-color: #3bb9ff;
   
   background-repeat: repeat-x;
@@ -1827,6 +1828,7 @@ background:-webkit-gradient(linear, 0 0, 0 100%, from(#ccc), to(#fff));
 	position:absolute;
 	display:block;
 	padding-top:8px;
+	align:center;
 	top:0px;
 	left:-37px;
 	font-size:16px;
@@ -1868,6 +1870,7 @@ background:-webkit-gradient(linear, 0 0, 0 100%, from(#ccc), to(#fff));
 
 .back_button::before {
 	content:url('images/backnew.png');
+	/* margin:0 0 0 3px; */
 }
 
 /*
@@ -1876,11 +1879,13 @@ Third button
 
 .expand_button::before {
 	content:url('images/plusnew.png');
+	align:center;
 }
 
 
 .collapse_button::before {
 	content:url('images/minusnew.png');
+	align:center;
 }
 .searchdiv{
 	margin:-43px 0 0 910px;

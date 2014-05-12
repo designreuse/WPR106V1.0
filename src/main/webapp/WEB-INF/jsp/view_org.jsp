@@ -84,7 +84,7 @@
 	<input type="text" id="search" name="search" placeholder="Enter Text To Filter" class="light-table-filter" data-table="order-table" placeholder="Filter"/>
 	</div>
 </div></div>
-							<table cellpadding="0" cellspacing="0" border="1" width="100%">
+							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								<!-- <td valign="middle" align="center" width="15%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="19.8%"> Organization Name </td>					         	
@@ -100,19 +100,19 @@
 							<div class="Panel_One_Inner">
 							
 							
-				        <table cellpadding="0" cellspacing="0" border="1" width="100%" class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%"class="order-table table">
 							
         					<c:if test="${fn:length(orgregistrationform.orgregistration) gt 0 }">
         					<c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration" varStatus="status">
         				       					<tr class="row1">
 							       		<%-- <td valign="middle" align="center" width="15%"><input type="checkbox" value="${orgRegistration.org_name}" name="chkUser"></td> --%>
-					     		     	<td valign="top" align="left" width="20%">${orgRegistration.org_name}</td>					     		     
+					     		     	<td valign="top" align="left" style="overflow:hidden;"width="20%">${orgRegistration.org_name}</td>					     		     
 					     		     
-											<td valign="top" align="left" width="15%">${orgRegistration.branch}</td>
-											<td valign="top" align="left" width="15%">${orgRegistration.city}</td>
-											<td valign="top" align="left" width="15%">${orgRegistration.country}</td>
-											<td valign="top" align="left" width="13%">${orgRegistration.type_of_organization}</td>
-											<td valign="top" align="left" width="5.8%">
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${orgRegistration.branch}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${orgRegistration.city}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${orgRegistration.country}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="13%">${orgRegistration.type_of_organization}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="5.8%">
 											<c:choose>
 											<c:when test="${orgRegistration.is_active==1}">
 											<c:out value="Active"></c:out>
@@ -126,7 +126,7 @@
 											</c:choose>
 											</td>
 											
-											<td valign="top" align="left" width="8.6%">
+											<td valign="top" align="left" style="overflow:hidden;"width="8.6%">
 										
 												<a href="<c:out value="editorg?org_name=${orgRegistration.org_name}&branch=${orgRegistration.branch}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 												

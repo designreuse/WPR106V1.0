@@ -1,5 +1,9 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 
 <script id="script_orgid">
@@ -10,7 +14,7 @@
 
 <script id="script_bid">
     $(document).ready(function() {
-        $("#info").select2();
+        $("#bid").select2();
     });
 </script>
 
@@ -44,7 +48,7 @@
                         		<tr class="row2">
 				                  <td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span>Organization Name:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	 <select class="org_input_cmbbx" name="org_name" id="orgid" onchange="doAjaxPost()" onblur="Validate('orgid')">
+				                  	 <select  style="width:220px;"name="org_name" id="orgid" onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="Selected">-- Select Organization--</option>
 							    <c:forEach items="${orgname}" var="orgname" varStatus="status">
         				        <option value="${orgname}" <%-- <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if> --%>>${orgname}</option>
@@ -57,7 +61,8 @@
 								 <tr class="row1">
 						         	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Branch :</td>
 						            <td valign="top" align="left" class="input_txt">
-						            	<div id="info" style="height:8px; " ><select class="org_input_cmbbx" name="branch" id="bid" onblur="Validate1('bid')">
+						            	<div id="info" style="height:8px; " >
+						            	<select   style="width:220px;"name="branch" id="bid" onblur="Validate1('bid')">
 							    <option value="Selected">-- Select branch--</option>
 							   <%--  <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
         				        <option value="${OrgRegistration.org_id}" <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if>>${OrgRegistration.branch}</option>
@@ -72,7 +77,7 @@
 								<tr class="row1">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Device IMEI No : </td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<select class="org_input_cmbbx" name="device_imei_number" id="imei" onblur="Validate2('imei')">
+				                  	<select   style="width:220px;"name="device_imei_number" id="imei" onblur="Validate2('imei')">
 							    <option value="" selected>-- Select IMEI No--</option>
 							     <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceregistration" varStatus="status">
         				        <option value="${deviceregistration.device_imei_number}">${deviceregistration.device_imei_number}</option>
@@ -244,11 +249,8 @@ function check(){
 <jsp:include page="footer.jsp"></jsp:include>
 				                
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
+
 
 
 <script>

@@ -3,48 +3,6 @@
 <!-- ###################################DDDL################################### -->
   
   <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-<link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/>
-    <!--[if lt IE 9]>
-      <script src="js/html5shim.js"></script>
-    <![endif]-->
-      <script src="http://ivaynberg.github.io/select2/js/json2.js"></script>
-      
-      <script src="http://ivaynberg.github.io/select2/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
-      <script src="http://ivaynberg.github.io/select2/js/jquery.mousewheel.js"></script>
-      <script src="http://ivaynberg.github.io/select2/prettify/prettify.min.js"></script>
-      <script src="http://ivaynberg.github.io/select2/bootstrap/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
-      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
-      <script src="http://ivaynberg.github.io/select2/select2-2.1/select2.js"></script>
-
-
-<script id="script_e1">
-    $(document).ready(function() {
-        $("#e1").select2();
-    });
-</script>
-
-<script id="script_e2">
-    $(document).ready(function() {
-        $("#e2").select2();
-    });
-</script>
-<script id="script_e3">
-    $(document).ready(function() {
-        $("#e3").select2();
-    });
-</script>
-<script id="script_e4">
-    $(document).ready(function() {
-        $("#e4").select2();
-    });
-</script>
-<script id="script_e5">
-    $(document).ready(function() {
-        $("#e5").select2();
-    });
-</script>
 
   <!-- ######################################DDDL END HERE@############################################## -->
   
@@ -59,14 +17,10 @@
 	<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2> Vehicle Information
-			          <span style="margin:3% 0 0 65%; padding:2px;">
-			          <a href="#" onclick="toggle(this,'div');return false">
-			          <img title="Open Search"src="resources/images/search-blue-icon.png" style="height:20px;width:50px;"/></a>
-			          
-			          <a href="#" onclick="toggle1(this,'divfilter');return false">
-			          <img title="Open Search"src="resources/images/filter.png" style="height:20px;width:50px;"/></a>
-			          </span></h2>
+			          <h2> Vehicle Information</h2><div class="searchdiv">
+                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                          Open Search
+                        </a></div>
 			        </div>
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
     	<c:if test="${success==true}">
@@ -130,7 +84,8 @@
 							    </select>
 							    </td>
 							    
-							    <td align="left" valign="middle" width="20%"><br/><input type="submit" class="submit_btn" value="Search" name="find"></td>
+							    <td align="left" valign="middle" width="20%"><br/>
+							    <input type="submit" class="btn" value="Search" ></td>
 							 
 							  </tr>
 							
@@ -162,27 +117,27 @@
           						
         					</tr></table>
 							<div class="Panel_One_Inner">
-							 <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
+							 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%" class="order-table table">
 							<c:if test="${fn:length(busregistrationform.busregistration) gt 0 }">
         					<c:forEach items="${busregistrationform.busregistration}" var="BusRegistration" varStatus="status">
         				       					<tr class="row1">
-							       		<td valign="top" align="left" width="15%">${BusRegistration.org_name}</td>
-											<td valign="top" align="left" width="10%">${BusRegistration.branch}</td>
-											<td valign="top" align="left" width="10%">${BusRegistration.vechicle_reg_no}</td>
-											<td valign="top" align="left" width="15%">${BusRegistration.device_imei_number}</td>
-											<td valign="top" align="left" width="12%">${BusRegistration.driver_name}</td>
-											<td valign="top" align="left" width="10%">${BusRegistration.driver_licence_no}</td>
-											<td valign="top" align="left" width="15%">${BusRegistration.driver_licence_exp_date}</td>
-											<td valign="top" align="left" width="25%">
+							       		<td valign="top" align="left" style="overflow:hidden;"width="15%">${BusRegistration.org_name}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%">${BusRegistration.branch}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%">${BusRegistration.vechicle_reg_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${BusRegistration.device_imei_number}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="12%">${BusRegistration.driver_name}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%">${BusRegistration.driver_licence_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${BusRegistration.driver_licence_exp_date}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="25%">
 										
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_bus?org_id=${BusRegistration.org_id}"/>" style="padding-right:10px;">Edit</a>
+												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_bus?vechicle_reg_no=${BusRegistration.vechicle_reg_no}"/>" style="padding-right:10px;">Edit</a>
 												
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_bus?org_id=${BusRegistration.org_id}}"/>" onclick="return confirmation()">Remove</a>
+											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_bus?org_id=${BusRegistration.vechicle_reg_no}}"/>" onclick="return confirmation()">Remove</a>
 									
 											</td>
 								</tr>
 							    	</c:forEach></c:if>
-							    <c:if test="${fn:length(adduserform.adduser) == 0}">	
+							    <c:if test="${fn:length(busregistrationform.busregistration) == 0}">	
 							    	<tr class="row1">
 							    	
 							    	</tr>

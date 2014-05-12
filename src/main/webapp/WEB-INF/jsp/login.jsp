@@ -37,21 +37,24 @@
 	<header id="header" class="5grid-layout" >
 		
 				<form name='f' action="<c:url value='j_spring_security_check' />" method='POST'>
-	<div class="Login_panel" style="margin-top:10px;"><br/>
-<div class="label_align">Email <span style="margin: 0 0 0 30% ;"> Password</span></div>
-
-<input type="text" value="" name="j_username" class="text_align"/>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" value="" name="j_password"/>
-<input type="submit" class="button_submit" value="Login"/>
-<input type="reset" class="button_submit" value="Reset"/><br/>
-<span style="margin:0 0 0 64.7%;"><input type="checkbox" value="1" class="checkbox_login" name="" />keep me logged in 
-<a href="#" style="color:#fff; text-decoration: underline;margin:0 0 0 4% ;" >Forgot your password?</a></span>
-<br/><br/>
+	<div class="Login_panel" style="margin-top:10px;padding-top:15px;color:#fff;">
+	<table cellpadding="3" cellspacing="0" border="0" width="100%"><tr>
+	<td  align="right" width="65%"></td><td width="5%" align="left" style="color:#fff;">
+Email </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
+<tr>
+<td  align="right"></td>
+<td align="left"><input type="text" value="" name="j_username" /></td>
+<td><input type="password" value="" name="j_password"/></td><td>
+<input type="submit" class="submit_btn" value="Login"/></td><td>
+<input type="reset" class="submit_btn" value="Reset"/></td></tr>
+<tr><td  align="right"></td><td style="color:#fff;"><input type="checkbox" value="1" class="checkbox_login" name="" />keep me logged in </td>
+<td >
+<a href="#"  ><font color="white">Forgot your password?</font></a></td>
+<td></td><td></td></tr></table>
 </div>
 <div class="Login_side_contact_outline" id="contact-form">
 <h1 >
-   <img src="resources/images/contact.png" width="360" height="60"/>
+   <img src="resources/images/contact.png" width="360" height="50"/>
 </h1>
 <br/>
 			<input type="text" name="name" id="fname" placeholder="First Name" autocomplete="off" tabindex="1" class="txtinput_small">

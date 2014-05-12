@@ -175,7 +175,7 @@ background: -moz-linear-gradient(top, #ccc, #000); /* for firefox 3.6+ */
 .report_table{
 	width:100%;
 	height: auto;
-	margin:-32.9% 0 0 0 ;
+	margin:0% 0 0 0 ;
 	
 }
 .margin_table_client {

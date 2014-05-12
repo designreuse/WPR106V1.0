@@ -90,18 +90,18 @@
 							<div class="Panel_One_Inner">
 							
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%" class="order-table table">
 							<c:if test="${fn:length(classSectionForm.classSections) gt 0 }">
         					<c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
         				       					<tr class="row1">
 							       		
-					     		     	<td valign="top" align="left" width="15%">${classSection.org_name}</td>					     		     
+					     		     	<td valign="top" align="left" style="overflow:hidden;"width="15%">${classSection.org_name}</td>					     		     
 					     		     
-											<td valign="top" align="left" width="15%">${classSection.branch}</td>
-											<td valign="top" align="left" width="15%">${classSection.class_std}</td>
-											<td valign="top" align="left" width="15%">${classSection.section}</td>
-											<td valign="top" align="left" width="15%">${classSection.service}</td>
-											<td valign="top" align="left" width="25%">
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${classSection.branch}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${classSection.class_std}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${classSection.section}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%">${classSection.service}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="25%">
 										
 										<a href="<c:out value="editclass?org_name=${classSection.org_name}&branch=${classSection.branch}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 												
