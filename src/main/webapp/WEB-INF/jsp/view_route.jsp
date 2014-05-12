@@ -13,6 +13,10 @@
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2> Route Information</h2>
+			          <div class="searchdiv">
+                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                          Open Search
+                        </a></div>
 			        </div>						
     	<table width="100%" border="0" cellspacing="0" cellpadding="0">
     	
@@ -125,7 +129,7 @@
 											<td valign="top" align="left" width="25%">				
 										
 										  <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a>
-										    <a href="<c:out value="editroute?route_no=${route.route_no}&trip=${route.trip}"/>" style="padding-right:10px;">Edit</a>
+										    <a href="<c:out value="editroute?route_no=${route.route_no}"/>" style="padding-right:10px;">Edit</a>
 											
 											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirmation()">Remove</a>
 									
@@ -133,6 +137,7 @@
 								</tr>
 							    	</c:forEach>
 							    </c:if>
+							    
 							     <c:if test="${fn:length(routeViewForm.route_views) == 0}">	
 							    	<tr class="row1">
 							    	<td colspan="7" width="100%"><center><b>No Routes Found!!!</b></center></td>
@@ -232,7 +237,7 @@ function selectall(field)
 										  <a href="#" title="" id="addScnt"><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a>
 										    <a href="<c:out value="editroute?route_no=${route.route_no}"/>" style="padding-right:10px;">Edit</a>
 											
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirmation()">Remove</a>
+											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirmation('Are you sure want to Delete?')">Remove</a>
 									
 											</td>
 								</tr>
