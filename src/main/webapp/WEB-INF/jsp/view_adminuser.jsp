@@ -139,7 +139,7 @@
 										
 												<a href="<c:out value="edituser?username=${addUser.username}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 												
-											<a href="<c:out value="deleteuser?org_name=${addUser.org_name}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
+											<a href="<c:out value="deleteuser?username=${addUser.username}"/>" onclick="return confirmation('Are you sure want to Delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>
