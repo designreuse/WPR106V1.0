@@ -33,6 +33,7 @@ import bustracking.forms.StudentRegistrationForm;
 import bustracking.model.AddUser;
 import bustracking.model.OrgRegistration;
 import bustracking.model.Route;
+import bustracking.model.Route_view;
 
 import com.google.code.geocoder.Geocoder;
 import com.google.code.geocoder.GeocoderRequestBuilder;
@@ -171,7 +172,9 @@ public class RouteController
 				route.setTrip(request.getParameter("stop_pick["+i+"]"));
 				route.setBus_arrival_time(request.getParameter("particular_stop_pickup_time["+i+"]"));
 				routeDAO.insert_route(route);
+				
 			}
+			
 			System.out.println(route);
 			 
 				
@@ -192,6 +195,8 @@ public class RouteController
 		//this.setInfo(route, route.getRoute_to());
 		
 		//model.addAttribute("org_id",orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
+		
+		routeDAO.insert_message_log(request.getParameter("route_no"));
 		
 		RouteViewForm routeViewForm=new RouteViewForm();
 		routeViewForm.setRoute_views(routeDAO.getRoutes());
@@ -240,6 +245,14 @@ public class RouteController
 	}
 	
 	
+	// Message Log Entry
+	
+	public void setmessagelog(Route_view route_view,String route_no){
+		
+	
+	}
+	
+
 	//Ajax for org name and branch
 	
 	@RequestMapping(value="/route_reg_ajax",method=RequestMethod.POST)

@@ -1,15 +1,23 @@
 package bustracking.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.mail.search.DateTerm;
 import javax.sql.DataSource;
+
+import org.apache.velocity.runtime.directive.Stop;
+import org.joda.time.DateTimeZone;
+import org.joda.time.LocalDate;
 
 import bustracking.model.AddUser;
 import bustracking.model.BusDeviceRegistration;
+import bustracking.model.BusRegistration;
 import bustracking.model.Route;
 import bustracking.model.OrgRegistration;
 import bustracking.model.Route_view;
@@ -90,7 +98,7 @@ public class RouteDAO {
 	}
 	
 	// Message Log Entry For Each Route
-	public List<Route_view> getStops(){
+	public List<Route_view> getStops(String route_no){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -102,9 +110,9 @@ public class RouteDAO {
 		}
 		List<Route_view> stops=new ArrayList<Route_view>();
 		try{
-			resultSet = statement.executeQuery("select t2.vechicle_reg_no,t1.route_no,t1.stop_id from tbl_bus_route as t1 join tbl_vechicle as t2 on t1.route_no=t2.route_no where t1.route_no='VC21';");
+			resultSet = statement.executeQuery("select t2.vechicle_reg_no,t1.route_no,t1.stop_id from tbl_bus_route as t1 join tbl_vechicle as t2 on t1.route_no=t2.route_no where t1.route_no='"+route_no+"'");
 			while(resultSet.next()){
-		     stops.add(new Route_view(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address")));
+		     stops.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no")));
 			}
 		
 	    }catch(Exception e){
@@ -118,6 +126,62 @@ public class RouteDAO {
 	    	releaseConnection(con);	    	
 	    }
 	    return stops;
+	}
+	
+	// Insert Into Message Log
+	
+	public int insert_message_log(String route_no){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet=null;
+		int flag=0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Route_view> stops=new ArrayList<Route_view>();
+		try{
+			resultSet = statement.executeQuery("select t2.vechicle_reg_no,t1.route_no,t1.stop_id from tbl_bus_route as t1 join tbl_vechicle as t2 on t1.route_no=t2.route_no where t1.route_no='"+route_no+"'");
+			while(resultSet.next()){
+		     stops.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no")));
+			}
+			System.out.println("inserting...");
+			DateTimeZone dateTimeZone=DateTimeZone.forID("Asia/Kolkata");
+			LocalDate localDate=new LocalDate();
+			
+			
+			for (Route_view route_view: stops) {
+				PreparedStatement preparedStatement=con.prepareStatement("Insert into tbl_message_log(vechicle_reg_no,route_no,stop_id,last_message_send_pick,last_message_send_drop,last_message_send_kg_pick,last_message_send_kg_drop,reached) values(?,?,?,?,?,?,?,?)");
+				preparedStatement.setString(1,route_view.getBus_reg_no());
+				preparedStatement.setString(2,route_view.getRoute_no());
+	        	preparedStatement.setString(3,route_view.getStop_id());
+	        	preparedStatement.setString(4,localDate.toString());
+	        	preparedStatement.setString(5,localDate.toString());
+	        	preparedStatement.setString(6,localDate.toString());
+	        	preparedStatement.setString(7,localDate.toString());
+	        	preparedStatement.setString(8,"0");
+	        	preparedStatement.execute();
+				flag=1;
+			}
+			
+			
+		 }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    	flag=0;
+	    }finally{
+	    	
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+		if(flag==1)
+    		return 1;
+    	else
+    		return 0;
+	    
 		
 	}
 	

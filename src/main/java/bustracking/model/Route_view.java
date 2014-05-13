@@ -76,13 +76,19 @@ public class Route_view
 		this.bus_arrival_time = bus_arrival_time;
 	}
 
-
+	// Constructor For Message Log table
+	public Route_view(String route_no, String stop_id, String bus_reg_no) {
+		super();
+		this.route_no = route_no;
+		this.stop_id = stop_id;
+		this.bus_reg_no = bus_reg_no;
+	}
+	
 	
 	public String getOrg_name() {
 		return org_name;
 	}
 
-	
 	public void setOrg_name(String org_name) {
 		this.org_name = org_name;
 	}
@@ -155,9 +161,6 @@ public class Route_view
 		this.bus_arrival_time = bus_arrival_time;
 	}
 	
-	
-	
-	
-	
+
 	
 }
