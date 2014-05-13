@@ -40,7 +40,7 @@ public class SchedulerService {
 	//@Scheduled(fixedRate=5000)
 	@Scheduled(cron="*/5 * * * * ?")
 	public void doSchedule() {
-		logger.debug("Start schedule");
+		/*logger.debug("Start schedule");
 		
 		for (int i = 0; i < 5; i++) {
 			logger.debug("Delegate to worker " + i);
@@ -61,7 +61,7 @@ public class SchedulerService {
 			
         }
 		
-		logger.debug("End schedule");
+		logger.debug("End schedule");*/
 	}
 	
 

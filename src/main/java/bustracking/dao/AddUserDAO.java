@@ -197,7 +197,7 @@ public class AddUserDAO{
 	    return MaxID;
 		
 	}
-	public boolean check_user_name(AddUser addUser){
+	public boolean check_user_name(String username){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -211,7 +211,7 @@ public class AddUserDAO{
 		int count=0;
 		try{
 			
-			resultSet = statement.executeQuery("select * from tbl_user where username='"+addUser.getUsername()+"'");
+			resultSet = statement.executeQuery("select username from tbl_user where username='"+username+"'");
 			if(resultSet.next())
 			{
 				count=1;

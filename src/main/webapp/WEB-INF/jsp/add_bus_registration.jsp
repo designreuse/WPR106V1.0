@@ -221,7 +221,7 @@ function licence(licence_id){
 		alert("Driver Licence Expiry Date is required");
 		return false;
 	} 
-} */
+}   */
 </script>
 <script>
 function check(){

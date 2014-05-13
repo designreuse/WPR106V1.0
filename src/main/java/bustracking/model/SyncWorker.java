@@ -16,7 +16,7 @@ public class SyncWorker implements Worker {
 	protected static Logger logger = LoggerFactory.getLogger("service");
 
 	public void work() {
-		String threadName = Thread.currentThread().getName();
+		/*String threadName = Thread.currentThread().getName();
 		logger.info("   " + threadName + " syncro has  began working.");
 		System.out.println("Began working");
         try {
@@ -28,7 +28,7 @@ public class SyncWorker implements Worker {
             Thread.currentThread().interrupt();
         }
         logger.info("   " + threadName + " has completed work.");
-        System.out.println("completed");
+        System.out.println("completed");*/
 	}
 	
 }

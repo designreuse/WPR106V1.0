@@ -108,7 +108,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Password </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="password"  onblur="passcheck('pass')" id="pass" name="password" />
+				                  	<input type="password"  onblur="passcheck('pass')" id="pass" name="password" onfocus="doAjaxcheckuser()"/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="AddUser.password"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                  
@@ -393,4 +393,31 @@ alert("Please Select a branch");
 }
 }
 </script>
+<script type="text/javascript">
+function doAjaxcheckuser() {  
+	/* alert("hi"); */
+	var email = $('#eid').val();
+	
+	/* alert(orgname); */
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/check_username",  
+		    data: "email=" + email,
+		    success: function(response){  
+		    	
+		    	
+/* document.getElementById("branch").value=response; */
+$('#info').html(response);
 
+/* var select = document.getElementById("bid");
+var option = document.createElement('option');
+option.text = option.value = response;
+select.add(option, 0); */
+/* alert("shgjasgdjs"); */
+   },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+		</script>

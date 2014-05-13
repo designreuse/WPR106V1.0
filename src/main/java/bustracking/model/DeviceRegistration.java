@@ -58,6 +58,54 @@ public class DeviceRegistration
 	private String configuration_date;
 	
 	private String create_user_id;
+	
+private String myid;
+	
+	private String status;
+	
+	private String updated_on;
+	
+	private String res;
+
+	public String getMyid() {
+		return myid;
+	}
+
+
+	public void setMyid(String myid) {
+		myid = myid;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public String getUpdated_on() {
+		return updated_on;
+	}
+
+
+	public void setUpdated_on(String updated_on) {
+		this.updated_on = updated_on;
+	}
+
+
+	public String getRes() {
+		return res;
+	}
+
+
+	public void setRes(String res) {
+		this.res = res;
+	}
+
 
 	public DeviceRegistration() {
 		super();

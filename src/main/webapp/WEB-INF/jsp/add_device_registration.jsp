@@ -2,6 +2,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 
      <div id="GPS_View_container">
@@ -92,6 +97,7 @@
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Sim Card Number :</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" width="60%" id="simno_id" onblur="simno('simno_id')" oninput="validatenum1()" name="sim_card_number" value="${organisation.email_id}" />
+				                  	
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.email_id"></form:errors></font>
 				                  </td>
 				               
@@ -118,7 +124,7 @@
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Invoice Number:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" name="device_invoice_number" class="org_input_txtbx_height1" id="invoiceid" onblur="deviceinvoice('invoiceid')" oninput="validatenum2()">
+				                  	<input type="text" name="device_invoice_number" class="org_input_txtbx_height1" id="invoice_id" onblur="deviceinvoice('invoiceid')" oninput="validatenum2()">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  </td>
 									<td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Invoice Number:</td>
@@ -257,14 +263,25 @@
                  <tr><td width="50%">
                   
                    
-                   </td><td><input type="submit" class="pressableButton blue" value="Submit"/></td></tr> 
+
+
+                    <!-- </td><td><input type="submit" class="submit_btn" value="Submit"/></td></tr>   -->
+
+                <!--   </td><td><input type="submit" class="pressableButton blue" value="Submit"/></td></tr> --> 
+
+
+                   </td><td><input type="submit" class="pressableButton blue" value="Submit" onclick="return check('this')"/></td></tr> 
+
                    
                  </table>
                   </td>
                 
                   </tr>
 				        </table></td></tr></table></td></tr></table></td></tr></table>
-                  
+                  <c:if test="${simnoexists=='SimCard Number already exists!'}"><script>alert("Sim Card Number already exists");</script></c:if>
+                  <c:if test="${dinvoicenoexists=='Device Invoice Number already exists!'}"><script>alert("Device Invoice Number already exists");</script></c:if>
+                  <c:if test="${sinvoicenoexists=='Sim Invoice Number already exists!'}"><script>alert("Sim Invoice Number already exists");</script></c:if>
+                  <c:if test="${imeinoexists=='Device Imei Number already exists!'}"><script>alert("Device Imei Number already exists");</script></c:if>
                   </form></div></div>
                   
               
@@ -369,7 +386,7 @@ function com(comments_id){
 		}
 }
 
-function port(port_id){
+/* function port(port_id){
 	if(document.getElementById("port_id").value==''){
 		alert("Port Number is required");
 		return false;
@@ -388,7 +405,7 @@ function gprscheck(gprs_id){
 		alert("GPRS is required");
 		return false;
 	}
-}
+} */
 
 function confirm(confirm_id){
 	if(document.getElementById("confirm_id").value==''){
@@ -397,19 +414,19 @@ function confirm(confirm_id){
 	}
 }
 
-function cdate(datepicker2){
+/*  function cdate(datepicker2){
 	if(document.getElementById("datepicker2").value==''){
 		alert("Configuration Date is required");
 		return false;
 	}
-}
+} 
 
 function usercheck(userid){
 	if(document.getElementById("userid").value==''){
 		alert("User Id is required");
 		return false;
 	}
-}
+} */
 
 function validatenum1(){
     var textInput = document.getElementById("simno_id").value;
@@ -417,7 +434,7 @@ function validatenum1(){
     document.getElementById("simno_id").value = textInput;
 }
 
-function validatenum2(){
+/* function validatenum2(){
     var textInput = document.getElementById("invoice_id").value;
     textInput = textInput.replace(/[^0-9]/g, "");
     document.getElementById("invoice_id").value = textInput;
@@ -428,18 +445,18 @@ function validatenum3(){
     textInput = textInput.replace(/[^0-9]/g, "");
     document.getElementById("sim_invoice_id").value = textInput;
 }
-
+ */
 function validatenum4(){
     var textInput = document.getElementById("imei_id").value;
     textInput = textInput.replace(/[^0-9]/g, "");
     document.getElementById("imei_id").value = textInput;
 }
 
-function validatenum5(){
+/* function validatenum5(){
     var textInput = document.getElementById("port_id").value;
     textInput = textInput.replace(/[^0-9]/g, "");
     document.getElementById("port_id").value = textInput;
-}
+} */
 
 function Validate1(apn_id)
 {
@@ -480,6 +497,8 @@ select.add(option, 0); */
 		  });  
 		}  
 		</script>
+		
+		
 	
 <script>
 $(function() {
@@ -491,7 +510,7 @@ $(function() {
 	});
 	
 $(function() {
-	$( "#datepicker2").datepicker({dateFormat:'yy-mm-dd'});
+	$( "#txtDate").datepicker({dateFormat:'yy-mm-dd'});
 	});
 </script>	
 		
@@ -527,5 +546,47 @@ date = (+dd) ;
 month =(+mm) + (+1);
 document.getElementById('txtDate').value = month + '/' + date + '/' + dt.getFullYear();
 
+}
+</script>
+<script>
+function check(){
+if(document.getElementById("simno_id").value==''){
+		alert("Sim Card Number is required");
+		return false;
+}
+else if(document.getElementById("datepicker").value==''){
+	alert("Device Procured Date is required");
+	return false;
+}
+else if(document.getElementById("datepicker1").value==''){
+	alert("Sim Procured Date is required");
+	return false;
+}
+else if(document.getElementById("invoice_id").value==''){
+	alert("Device Invoice Number is required");
+	return false;
+}
+else if(document.getElementById("sim_invoice_id").value==''){
+	alert("Sim Invoice Number is required");
+	return false;
+}
+else if(document.getElementById("imei_id").value==''){
+	alert("Device Imei Number is required");
+	return false;
+}
+else if(document.getElementById("passid").value==''){
+	alert("Password is required");
+	return false;
+}
+else if(document.getElementById("comments_id").value==''){
+	alert("Comments is required");
+	return false;
+}
+else if(document.getElementById("confirm_id").value==''){
+	alert("Configuration Conformation is required");
+	return false;
+}	
+	
+	
 }
 </script>

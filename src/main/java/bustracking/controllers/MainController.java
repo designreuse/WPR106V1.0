@@ -717,4 +717,17 @@ else{
 		return "admin_settings";
 	}
 	
+	
+	@RequestMapping(value="/sendMessage",method=RequestMethod.GET)
+	public void send_message()
+	{
+		System.out.println("Request Get going to send sms!!!!");
+		 String requestUrl1="http://203.212.70.200/smpp/sendsms?username=apitbpdemo&password=del12345@12&to=9659885881&from=track&text=Testing&udh=&dlr-mask=19&dlr-url=http://118.95.103.206:8080/BusTrackingApp/deviceregistration?myid=44&status=%25d&updated_on=%25t&res=%252";
+		 
+		 System.out.println("Open Connection");
+
+	}
+	
+	
+	
   }

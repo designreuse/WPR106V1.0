@@ -119,7 +119,7 @@ public String adduser(HttpServletRequest request,HttpSession session,@ModelAttri
 		return "add_adminuser";
 	}
 	else{
-		if(userDAO.check_email(user))
+		/*if(userDAO.check_email(user))
 			userDAO.insert_user(user);
 		else
 		{
@@ -135,7 +135,7 @@ public String adduser(HttpServletRequest request,HttpSession session,@ModelAttri
 			model.addAttribute("userexists","Username already exists!");
 			return "add_adminuser";
 			
-		}
+		}*/
 		
 		AddUserForm adduserform=new AddUserForm();
 		adduserform.setAdduser(userDAO.getAdduser());
@@ -268,7 +268,16 @@ public String finduserInSearch(HttpServletRequest request,@RequestParam("org_nam
 	 return "search_user";
 	}
 }
+@RequestMapping(value="/check_username", method=RequestMethod.POST)
+public @ResponseBody String uname_check_ajax(HttpServletRequest request,HttpSession session,Model model, Principal prinicpal){
+	if(request.getParameter("email").equals(""))
+		return "";
 	
+	if(userDAO.check_user_name(request.getParameter("username")))
+		return "Username Already Registered<br/>";
+	else
+		return "";
+}	
 	
 	
 /*@RequestMapping(value="/userdetails", method=RequestMethod.GET)

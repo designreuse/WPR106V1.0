@@ -1,4 +1,4 @@
-package bustracking.dao;
+ package bustracking.dao;
 
 import java.net.InetAddress;
 import java.sql.Connection;
@@ -11,9 +11,13 @@ import java.util.Date;
 import java.util.List;
 import javax.sql.DataSource;
 
+//import org.junit.runner.Request;
 
+
+import bustracking.model.AddUser;
 import bustracking.model.DeviceFail;
 import bustracking.model.DeviceRegistration;
+import bustracking.model.MessageSender;
 
 
 public class DeviceRegistrationDAO {
@@ -97,6 +101,212 @@ public class DeviceRegistrationDAO {
 	        return busRegistrations;
 	    }
 	
+	
+	/*public String sms(DeviceRegistration device){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		String role="";
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		try{
+			
+			String computername=InetAddress.getLocalHost().getHostName();
+			System.out.println(computername);
+
+		    System.out.println("currenttime"+getCurrentTimeStamp()+device.getSim_card_tested());
+		    
+		    
+		    
+		    System.out.println("Device Configuring");
+			PreparedStatement preparedStatement=con.prepareStatement("insert into tbl_device_config_changes_history(manufacturer,model_no,carrier,sim_card_number,device_procured_date,device_invoice_number,device_imei_number,device_tested,sim_procured_date,sim_invoice_number,sim_card_tested,device_sim_paired,is_assigned,password,device_status,port_no,comments,apn,adminip,configuration_date,create_user_id,create_timestamp,create_user_system_name,modified_user_id,modified_timestamp,modified_user_syste_name) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	
+			preparedStatement.setString(1,device.getManufacturer());
+			preparedStatement.setString(2,device.getModel_no());
+			preparedStatement.setString(3,device.getCarrier());
+			preparedStatement.setString(4,device.getSim_card_number());
+			preparedStatement.setString(5,device.getDevice_procured_date());
+			preparedStatement.setString(6,device.getDevice_invoice_number());
+			preparedStatement.setString(7,device.getDevice_imei_number());
+			preparedStatement.setString(8,device.getDevice_tested());
+			preparedStatement.setString(9,device.getSim_procured_date());
+			preparedStatement.setString(10,device.getSim_invoice_number());
+			preparedStatement.setString(11,device.getSim_card_tested());
+			preparedStatement.setString(12,device.getDevice_sim_paired());
+			preparedStatement.setString(13,device.getIs_assigned());
+			preparedStatement.setString(14,device.getPassword());
+			preparedStatement.setString(15,device.getDevice_status());
+			preparedStatement.setString(16,device.getPort_no());
+			preparedStatement.setString(17,device.getComments());
+			preparedStatement.setString(18,device.getApn());
+			preparedStatement.setString(19,device.getAdminip());
+			preparedStatement.setString(20,device.getConfiguration_date());
+			preparedStatement.setString(21,device.getCreate_user_id());
+			preparedStatement.setTimestamp(22, getCurrentTimeStamp());
+			preparedStatement.setString(23,computername);
+			preparedStatement.setString(24,"aaaa");
+			preparedStatement.setString(25,"2014-04-26 12:00:14");
+			preparedStatement.setString(26,"PC");
+			preparedStatement.execute();
+			
+			
+			PreparedStatement preparedStatement1=con.prepareStatement("insert into sms_track(sim_card_number,message,status,updated_on,res) values(?,?,?,?,?)");
+			preparedStatement1.setString(1,device.getSim_card_number());
+			preparedStatement1.setString(2,"begin"+device.getPassword());
+			preparedStatement1.setString(3,"NULL");
+			preparedStatement1.setString(4,"NULL");
+			preparedStatement1.setString(5,"NULL");
+			preparedStatement1.execute();
+			
+			
+		    	System.out.println("Message Sending");
+				System.out.println("Message send to "+device.getSim_card_number());
+				System.out.println("sdasdas"+getmyid());
+				System.out.println("myid"+this.getmyid());
+				
+				
+				MessageSender.sendMessage1("9659885881", "begin"+device.getPassword(), this.getmyid());
+				
+				
+		    
+		    String cmd1="UPDATE sms_track SET status='"+device.getStatus()+"' , updated_on='"+device.getUpdated_on()+"', res='"+device.getRes()+"' WHERE myid='"+this.getmyid()+"'";
+		    System.out.println(cmd1);
+	    	statement.execute(cmd1);
+		    
+		    PreparedStatement preparedStatement2=con.prepareStatement("insert into sms_track(sim_card_number,message,status,updated_on,res) values(?,?,?,?,?)");
+			preparedStatement2.setString(1,device.getSim_card_number());
+			preparedStatement2.setString(2,"apn"+device.getPassword()+ " " +device.getApn());
+			preparedStatement2.setString(3,"NULL");
+			preparedStatement2.setString(4,"NULL");
+			preparedStatement2.setString(5,"NULL");
+			preparedStatement2.execute();
+			
+		    MessageSender.sendMessage1(device.getSim_card_number(), "apn"+device.getPassword()+" "+device.getApn(), device.getMyid());
+		    
+		    String cmd2="UPDATE sms_track SET status='"+device.getStatus()+"' , updated_on='"+device.getUpdated_on()+"', res='"+device.getRes()+"' WHERE myid='"+device.getMyid()+"'";
+		    System.out.println(cmd2);
+	    	statement.execute(cmd2);
+		    
+		    PreparedStatement preparedStatement3=con.prepareStatement("insert into sms_track(sim_card_number,message,status,updated_on,res) values(?,?,?,?,?)");
+			preparedStatement3.setString(1,device.getSim_card_number());
+			preparedStatement3.setString(2,"adminip"+device.getPassword()+ " " +device.getAdminip()+ " " + device.getPort_no());
+			preparedStatement3.setString(3,"NULL");
+			preparedStatement3.setString(4,"NULL");
+			preparedStatement3.setString(5,"NULL");
+			preparedStatement3.execute();
+			
+		    MessageSender.sendMessage1(device.getSim_card_number(), "adminip"+device.getPassword()+ " " +device.getAdminip()+ " "+ device.getPort_no(), device.getMyid());
+		   
+		    String cmd3="UPDATE sms_track SET status='"+device.getStatus()+"' , updated_on='"+device.getUpdated_on()+"', res='"+device.getRes()+"' WHERE myid='"+device.getMyid()+"'";
+		    System.out.println(cmd3);
+	    	statement.execute(cmd3);
+		    
+		    PreparedStatement preparedStatement4=con.prepareStatement("insert into sms_track(sim_card_number,message,status,updated_on,res) values(?,?,?,?,?)");
+			preparedStatement4.setString(1,device.getSim_card_number());
+			preparedStatement4.setString(2,"GPRS"+device.getPassword());
+			preparedStatement4.setString(3,"NULL");
+			preparedStatement4.setString(4,"NULL");
+			preparedStatement4.setString(5,"NULL");
+			preparedStatement4.execute();
+		    
+		    MessageSender.sendMessage1(device.getSim_card_number(), "GPRS"+device.getPassword(), device.getMyid());
+		    
+		    String cmd4="UPDATE sms_track SET status='"+device.getStatus()+"' , updated_on='"+device.getUpdated_on()+"', res='"+device.getRes()+"' WHERE myid='"+device.getMyid()+"'";
+		    System.out.println(cmd4);
+	    	statement.execute(cmd4);
+		    
+		    PreparedStatement preparedStatement5=con.prepareStatement("insert into sms_track(sim_card_number,message,status,updated_on,res) values(?,?,?,?,?)");
+			preparedStatement5.setString(1,device.getSim_card_number());
+			preparedStatement5.setString(2,"load"+device.getPassword());
+			preparedStatement5.setString(3,"NULL");
+			preparedStatement5.setString(4,"NULL");
+			preparedStatement5.setString(5,"NULL");
+			preparedStatement5.execute();
+		    
+		    MessageSender.sendMessage1(device.getSim_card_number(), "load"+device.getPassword(), device.getMyid());
+		    
+		    String cmd5="UPDATE sms_track SET status='"+device.getStatus()+"' , updated_on='"+device.getUpdated_on()+"', res='"+device.getRes()+"' WHERE myid='"+device.getMyid()+"'";
+		    System.out.println(cmd5);
+	    	statement.execute(cmd5);
+		    
+		    PreparedStatement preparedStatement6=con.prepareStatement("insert into sms_track(sim_card_number,message,status,updated_on,res) values(?,?,?,?,?)");
+			preparedStatement6.setString(1,device.getSim_card_number());
+			preparedStatement6.setString(2,"fix030s***n"+device.getPassword());
+			preparedStatement6.setString(3,"NULL");
+			preparedStatement6.setString(4,"NULL");
+			preparedStatement6.setString(5,"NULL");
+			preparedStatement6.execute();
+		    
+		    MessageSender.sendMessage1(device.getSim_card_number(), "fix030s***n"+device.getPassword(), device.getMyid());
+		    
+		    
+		    
+		    String cmd6="UPDATE sms_track SET status='"+device.getStatus()+"' , updated_on='"+device.getUpdated_on()+"', res='"+device.getRes()+"' WHERE myid='"+device.getMyid()+"'";
+		    System.out.println(cmd6);
+	    	statement.execute(cmd6);
+	    	
+	    	String cmd="UPDATE tbl_device_configuration SET configuration_date='"+device.getConfiguration_date()+"' , is_assigned='"+device.getIs_assigned()+"'  WHERE device_imei_number='"+device.getDevice_imei_number()+"'";
+	    	System.out.println(cmd);
+	    	statement.execute(cmd);
+	    	
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return role;
+		
+		
+		
+		
+	}*/
+	
+	public String getmyid(){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		String deviceid="";
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		try{
+			
+			String cmd_sql="select max(myid) as myid from sms_track";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceid=resultSet.getString("myid");
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceid;
+		
+	}
 	public String insert_device(DeviceRegistration deviceRegistration,String user_id){
 		Connection con = null;
 		Statement statement = null;
@@ -198,6 +408,695 @@ public class DeviceRegistrationDAO {
 	}
 	//find device 10/05/2014
 	
+
+	public List<String> get_imei(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select sim_invoice_number from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("sim_invoice_number"));
+			}
+			
+			
+			
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_simdate(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select sim_procured_date from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("sim_procured_date"));
+			}
+			
+			
+			
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_simcardno(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select sim_card_number from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("sim_card_number"));
+			}
+			
+			
+			
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	public List<String> get_modelno(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select model_no from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("model_no"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_devicedate(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select device_procured_date from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("device_procured_date"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_deviceinvoice(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select device_invoice_number from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("device_invoice_number"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_pass(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select password from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("password"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_comments(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select comments from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("comments"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_manu(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select manufacturer from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("manufacturer"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_carrier(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select carrier from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("carrier"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	public List<String> get_stested(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select sim_card_tested from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("sim_card_tested"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_dspaired(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select device_sim_paired from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("device_sim_paired"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_status(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select device_status from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("device_status"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_assigned(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select is_assigned from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("is_assigned"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public List<String> get_dtested(String device_imei_number){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> deviceRegistrations=new ArrayList<String>();
+		try{
+			String cmd_sql="Select device_tested from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				deviceRegistrations.add(resultSet.getString("device_tested"));
+			}
+			
+			}catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return deviceRegistrations;
+		
+	}
+	
+	public boolean check_simcard_no(DeviceRegistration simno){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		int count=0;
+		try{
+			
+			resultSet = statement.executeQuery("select * from tbl_device_configuration where sim_card_number='"+simno.getSim_card_number()+"'");
+			if(resultSet.next())
+			{
+				count=1;
+			}
+			
+			
+		
+	    }catch(Exception e){
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    if(count==1)
+	    	return false;
+	    else
+	    	return true;
+	    
+		
+	}
+	
+	public boolean check_device_invoice(DeviceRegistration dinvoiceno){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		int count=0;
+		try{
+			
+			resultSet = statement.executeQuery("select * from tbl_device_configuration where device_invoice_number='"+dinvoiceno.getDevice_invoice_number()+"'");
+			if(resultSet.next())
+			{
+				count=1;
+			}
+			
+			
+		
+	    }catch(Exception e){
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    if(count==1)
+	    	return false;
+	    else
+	    	return true;
+	    
+		
+	}
+	
+	public boolean check_sim_invoice(DeviceRegistration sinvoiceno){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		int count=0;
+		try{
+			
+			resultSet = statement.executeQuery("select * from tbl_device_configuration where sim_invoice_number='"+sinvoiceno.getSim_invoice_number()+"'");
+			if(resultSet.next())
+			{
+				count=1;
+			}
+			
+			
+		
+	    }catch(Exception e){
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    if(count==1)
+	    	return false;
+	    else
+	    	return true;
+	    
+		
+	}
+	
+	public boolean check_imei_no(DeviceRegistration imeino){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		int count=0;
+		try{
+			
+			resultSet = statement.executeQuery("select * from tbl_device_configuration where device_imei_number='"+imeino.getDevice_imei_number()+"'");
+			if(resultSet.next())
+			{
+				count=1;
+			}
+			
+			
+		
+	    }catch(Exception e){
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    if(count==1)
+	    	return false;
+	    else
+	    	return true;
+	    
+		
+	}
+
 	public List<DeviceRegistration> find_devices(String device_imei_number, String device_sim_number,String adminip,String create_user_id){
 		Connection con = null;
 		Statement statement = null;
@@ -237,6 +1136,7 @@ public class DeviceRegistrationDAO {
 	}
 	
 	
+
 	//Get Device IMEI Number
 	
 	public List<DeviceRegistration> getDevice_imei_no(){
