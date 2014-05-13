@@ -33,9 +33,9 @@ public class FleetHomepageDAO {
 		}
 		List<FleetHomepage> fleetHomepages=new ArrayList<FleetHomepage>();
 	    try{
-			resultSet = statement.executeQuery("select vechicle_reg_no,address,speed,bus_tracking_timestamp,device_imei_number from (select t1.*,t2.device_imei_number from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no order by bus_tracking_timestamp desc ) x group by vechicle_reg_no");
+			resultSet = statement.executeQuery("select device_status,vechicle_reg_no,address,speed,bus_tracking_timestamp,device_imei_number from (select t1.*,t2.device_imei_number,t2.device_status from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no order by bus_tracking_timestamp desc ) x group by vechicle_reg_no");
 			while(resultSet.next()){
-				fleetHomepages.add(new FleetHomepage(resultSet.getString("vechicle_reg_no"),resultSet.getString("address"),resultSet.getString("speed"),resultSet.getString("bus_tracking_timestamp"),resultSet.getString("device_imei_number")));
+				fleetHomepages.add(new FleetHomepage(resultSet.getString("device_status"),resultSet.getString("vechicle_reg_no"),resultSet.getString("address"),resultSet.getString("speed"),resultSet.getString("bus_tracking_timestamp"),resultSet.getString("device_imei_number")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
