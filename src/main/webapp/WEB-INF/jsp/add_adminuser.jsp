@@ -89,7 +89,7 @@
 				                  <span class="err">*</span> Email </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" onblur="emailcheck('eid')"  value="${adminuser.email}"/>
-				                 <c:if test="${emailexists=='Email already exists!'}"><script>alert("Emailid already exists");</script></c:if>
+				                
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row2">
@@ -98,7 +98,7 @@
 				                  <span class="err">*</span> User Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="uname"  name="username" onblur="user('uname')"  value="${adminuser.username}"/>
-				                  	<br/> <c:if test="${userexists=='Username already exists!'}"><script>alert("Username already exists");</script></c:if> 
+				                  	<br/> 
 				                  	<%--  <font color="Red" size="+1"><c:out value="${userexists}"/><form:errors path="AddUser.username"></form:errors></font> --%> 
 				                  
 				                  </td><td width="15%"></td>
@@ -149,6 +149,8 @@
          	</td>
   		</tr>
  	</table>
+ 	 <c:if test="${emailexists=='Email already exists!'}"><script>alert("Emailid already exists");</script></c:if>
+ 	 <c:if test="${userexists=='Username already exists!'}"><script>alert("Username already exists");</script></c:if>
 </form></div>
     
 </div>

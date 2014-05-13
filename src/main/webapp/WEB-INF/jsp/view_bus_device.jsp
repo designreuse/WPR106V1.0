@@ -203,7 +203,7 @@
 	<input type="text" id="search" name="search" placeholder="Enter Text To Filter" class="light-table-filter" data-table="order-table" placeholder="Filter"/>
 	</div>
 </div></div>
-						<table cellpadding="0" cellspacing="0" border="1" width="100%">
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								
          						<td valign="top" align="left" width="20%">Device IMEI</td>
@@ -219,7 +219,7 @@
 						<div class="Panel_One_Inner">
 						
     	
-				        <table cellpadding="0" cellspacing="0" border="1" width="100%" class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
 							<c:if test="${fn:length(deviceRegistrationForm.deviceRegistrations) gt 0 }">
         					<c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations" varStatus="status">
         				       					<tr class="row1">
