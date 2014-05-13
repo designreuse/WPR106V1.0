@@ -154,7 +154,7 @@ public class BusRegistrationDAO {
 		}
 		List<String> busRegister = new ArrayList<String>();
 	    try{
-	    	String cmd="SELECT DISTINCT org_name FROM tbl_organization";
+	    	String cmd="SELECT DISTINCT org_name FROM tbl_organization where is_active='1'";
 	    	//System.out.println(org_name);
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);
@@ -190,7 +190,7 @@ public class BusRegistrationDAO {
 		}
 		List<String> busRegister = new ArrayList<String>();
 	    try{
-	    	String cmd="SELECT DISTINCT org_name FROM tbl_organization WHERE type_of_organization='School' OR type_of_organization='College' OR type_of_organization='School and College'";
+	    	String cmd="SELECT DISTINCT org_name FROM tbl_organization WHERE (type_of_organization='School' OR type_of_organization='College' OR type_of_organization='School and College') and (is_active='1')";
 	    	
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);
