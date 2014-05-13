@@ -165,7 +165,7 @@ function validateAlpha(){
 function toTitleCase(fname)
 {
 	if(document.getElementById("fname").value==''){
-		alert("First Name is required");
+		confirm("First Name is required");
 		return false;
 	}
 	else
@@ -185,7 +185,7 @@ function validateAlpha1(){
 function toTitleCase1(lname)
 {
 	if(document.getElementById("lname").value==''){
-		alert("Last Name is required");
+		confirm("Last Name is required");
 		return false;
 	}
 	else
@@ -222,15 +222,15 @@ function doAjaxPost_for_orgname() {
 <script>
 function check(){
 if(document.getElementById("fname").value==''){
-	alert("First Name is required");
+	confirm("First Name is required");
 	return false;
 }
 else if(document.getElementById("lname").value==''){
-	alert("Last Name is required");
+	confirm("Last Name is required");
 	return false;
 }
 if(document.getElementById("eid").value==''){
-	alert("Email Address is required");
+	confirm("Email Address is required");
 		return false;
 
 		}
@@ -239,7 +239,7 @@ if(document.getElementById("eid").value==''){
 		
 function emailcheck(eid){
 	if(document.getElementById("eid").value==''){
-		alert("Email Address is required");
+		confirm("Email Address is required");
 			return false;
 			
 	}
@@ -258,7 +258,7 @@ function emailcheck(eid){
 
 function user(uname){
 	if(document.getElementById("uname").value==''){
-		alert("Username is required");
+		confirm("Username is required");
 			return false;
 			
 	}
@@ -266,7 +266,7 @@ function user(uname){
 
 function passcheck(pass){
 	if(document.getElementById("pass").value==''){
-		alert("Password is required");
+		confirm("Password is required");
 			return false;
 			
 	}
@@ -274,7 +274,7 @@ function passcheck(pass){
 
 function repasscheck(repass){
 	if(document.getElementById("repass").value==''){
-		alert("Confirm Password is required");
+		confirm("Confirm Password is required");
 			return false;
 			
 	}
@@ -291,15 +291,15 @@ function repasscheck(repass){
  <script>
 function check(){
 if(document.getElementById("fname").value==''){
-	alert("First Name is required");
+	confirm("First Name is required");
 	return false;
 }
 else if(document.getElementById("lname").value==''){
-	alert("Last Name is required");
+	confirm("Last Name is required");
 	return false;
 }
 if(document.getElementById("eid").value==''){
-	alert("Email Address is required");
+	confirm("Email Address is required");
 		return false;
 		
 }
@@ -314,19 +314,19 @@ if(document.getElementById("eid").value!='')
 		   }
 	   }
 if(document.getElementById("uname").value==''){
-	alert("User Name is required");
+	confirm("User Name is required");
 		return false;
 		
 }
 
 if(document.getElementById("pass").value==''){
-	alert("Password is required");
+	confirm("Password is required");
 		return false;
 		
 }
 
 if(document.getElementById("repass").value==''){
-	alert("Confirm Password is required");
+	confirm("Confirm Password is required");
 		return false;
 		
 }
