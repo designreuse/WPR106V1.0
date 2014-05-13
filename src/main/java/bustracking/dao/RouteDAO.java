@@ -56,6 +56,9 @@ public class RouteDAO {
 
 	}
 */
+	
+	// Insert Route Information 
+	
 	public int insert_route(Route route) {
 		Connection con = null;
 		Statement statement = null;
@@ -86,7 +89,39 @@ public class RouteDAO {
 		return status;
 	}
 	
+	// Message Log Entry For Each Route
+	public List<Route_view> getStops(){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Route_view> stops=new ArrayList<Route_view>();
+		try{
+			resultSet = statement.executeQuery("select t2.vechicle_reg_no,t1.route_no,t1.stop_id from tbl_bus_route as t1 join tbl_vechicle as t2 on t1.route_no=t2.route_no where t1.route_no='VC21';");
+			while(resultSet.next()){
+		     stops.add(new Route_view(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address")));
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return stops;
+		
+	}
 	
+	// View the Route Information Admin Side
 	public List<Route_view> getRoutes(){
 		Connection con = null;
 		Statement statement = null;

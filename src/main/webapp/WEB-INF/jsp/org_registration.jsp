@@ -38,25 +38,26 @@
 				                  <td valign="middle" width="20%"align="left" class="txtinput"><span class="err">*</span> Organization Name :</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  <input type="hidden" value="${org_id}" name="org_id"/>
-									<input type="text" class="org_input_txtbx_height1"  id="oname" name="org_name" oninput="validateAlpha();" onblur="toTitleCase('oname')" value="${organisation.org_name}"/>
+									<input type="text" class="org_input_txtbx_height1"  id="oname" name="org_name" oninput="validateAlpha();" onblur="toTitleCase('oname')"  value="${organisation.org_name}"/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font>
 				                  </td>	
 				                  
 				                  <td valign="middle" width="27.5%" align="left" class="input_txtlabel"><span class="err">*</span> Office Fax:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="office_fax_id"  name="office_fax" onblur="faxcheck('office_fax_id')" oninput="validatenum();" value="${organisation.office_fax}" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="office_fax_id"  name="office_fax" onblur="faxcheck('office_fax_id')" oninput="validatenum();"  value="${organisation.office_fax}" />
 				                  	
 				                  </td>			                   
 				              </tr>
 				              <tr class="row2">
 				              <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Branch:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                	<input type="text" class="org_input_txtbx_height1"  id="branchid" name="branch"  oninput="validateAlpha1();" onblur="toTitleCase1('branchid')" value="${organisation.branch}" />
-				                   <br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.address"></form:errors></font>
+				                	<input type="text" class="org_input_txtbx_height1"  id="branchid" name="branch"  oninput="validateAlpha1();" onblur="toTitleCase1('branchid')"  value="${organisation.branch}" />
+				                	<font color="Red" size="+1"><span id="info"></span></font>
+				                   <br/>
 				                  </td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Email ID:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" width="60%" onblur="emailcheck('email')" id="email" name="email_id" value="${organisation.email_id}" />
+				                  	<input type="text" class="org_input_txtbx_height1" width="60%" onblur="emailcheck('email')" id="email" name="email_id" value="${organisation.email_id}" onfocus="doAjaxcheckunique()"/>
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.email_id"></form:errors></font>
 				                  </td>
 				               
@@ -67,7 +68,7 @@
 				                  <td valign="top" align="left" class="input_txt" >
 				                 <%--  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_address_id" name="address" value="${organisation.address}" />
 				                   --%>
-				                   <textarea class="textareanew"  rows="3" cols="7" style="width:220px;height:50px;" onblur="toTitleCase5('addr_id')" id="addr_id" name="address">${organisation.address}</textarea>
+				                   <textarea class="textareanew"  rows="3" cols="7" style="width:220px;height:50px;" onblur="toTitleCase5('addr_id')" id="addr_id" name="address" onfocus="doAjaxcheckunique()">${organisation.address}</textarea>
 				                   	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.address"></form:errors></font>
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Name:</td>
@@ -147,7 +148,7 @@
 				                <tr class="row2">
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Type Of Organization:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<select name="type_of_organization"  onblur="Validate('typeid')" id="typeid" style="width:220px;">
+				                  	<select name="type_of_organization"  onblur="Validate('typeid')" onchange="fleetmanagement()" id="typeid" style="width:220px;">
 				                  	<option value="">-- Select Organization--</option>
 				                  	<option>School</option>
 				                  	<option>College</option>
@@ -201,7 +202,7 @@
                    
                    <input type="reset" class="pressableButton blue" value="Reset" onclick="window.location.href='orgregistration'"></td>
                  <td>
-                   <input type="button" class="pressableButton blue" onclick="window.location.href='orgregistration'" value="Cancel"></td>
+                   <input type="button" class="pressableButton blue" onclick="window.location.href='welcome'" value="Cancel"></td>
                    </tr>
                  </table>
                   </td>
@@ -665,6 +666,7 @@ if(document.getElementById("tno_id").value!=''){
 
 }
 </script><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
 <script>
 function Validate(typeid)
 {
@@ -678,5 +680,60 @@ alert("Please Select a Type Of Organization");
 }
 }
 </script>
+
+
+<script type="text/javascript">
+function fleetmanagement(){
+	var type=document.getElementById('typeid').value;
+
+	if(type=='Fleet Management'){
+		document.getElementById('chairmanid').style.display='none';
+		document.getElementById('cno_id').style.display='none';
+		document.getElementById('principalid').style.display='none';
+		document.getElementById('pno_id').style.display='none';
+	}
+	else{
+		document.getElementById('chairmanid').style.display='block';
+		document.getElementById('cno_id').style.display='block';
+		document.getElementById('principalid').style.display='block';
+		document.getElementById('pno_id').style.display='block';
+	}
+}
+
+
+</script>
+
+
+<!--Check Unique For Orgname and branch  -->
+<script type="text/javascript">
+function doAjaxcheckunique() {  
+	/* alert("hi"); */
+	var orgname = $('#oname').val();
+	var branch=$('#branchid').val();
+	/* alert(orgname); */
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/check_unique",  
+		    data: "org_name=" + orgname+"&branch="+branch,
+		    success: function(response){  
+		    	
+		    	
+/* document.getElementById("branch").value=response; */
+$('#info').html(response);
+
+/* var select = document.getElementById("bid");
+var option = document.createElement('option');
+option.text = option.value = response;
+select.add(option, 0); */
+/* alert("shgjasgdjs"); */
+   },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+		</script>
+
+
 <jsp:include page="footer.jsp"></jsp:include>
 

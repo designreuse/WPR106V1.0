@@ -225,7 +225,7 @@ public class OrgRegistrationDAO{
 	    return orgregistrationform;
 		
 	}
-	 public boolean checkUnique(String org_id)
+	 public boolean checkUnique(String org_name,String branch)
 	   {
 		   
 		   Connection con = null;
@@ -240,7 +240,7 @@ public class OrgRegistrationDAO{
 	         boolean result=false;
 	          try 
 	          {
-				resultSet = statement.executeQuery("select * from tbl_organization where org_id='"+org_id+"'");
+				resultSet = statement.executeQuery("select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"'");
 			    if(resultSet.next())
 			    {
 			    	result=true;
@@ -262,6 +262,7 @@ public class OrgRegistrationDAO{
 		    return result;
 		   
 	   }
+	 
 	public List<OrgRegistration> getOrgregistration_id(String org_name,String branch)
 	{
 		Connection con = null;

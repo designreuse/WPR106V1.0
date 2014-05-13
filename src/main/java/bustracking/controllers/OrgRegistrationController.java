@@ -60,25 +60,25 @@ public String PrintWelcome(HttpSession session,Model model, Principal prinicpal)
 	return "org_registration";
 }
 
-@RequestMapping(value="/check_unique", method=RequestMethod.POST)
-public @ResponseBody String org_id_unique_check_ajax(HttpServletRequest request,HttpSession session,Model model, Principal prinicpal){
-	if(request.getParameter("org_unique_id").equals(""))
-		return "";
-	
-	if(orgDAO.checkUnique(request.getParameter("org_unique_id")))
-		return "Organisation Id Already Exists<br/>";
-	else
-		return "";
-}
+
 
 @RequestMapping(value="/orgregistration", method=RequestMethod.POST)
-public String orgregistration(HttpSession session,@ModelAttribute("OrgRegistration") @Valid OrgRegistration org,BindingResult result, ModelMap model)
+public String orgregistration(HttpServletRequest request,HttpSession session,@ModelAttribute("OrgRegistration") @Valid OrgRegistration org,BindingResult result, ModelMap model)
 {
 	session.setAttribute("organisation",org);
 	if(result.hasErrors())
 	{
 		return "org_registration";
 	}
+	/*else{
+		if(orgDAO.checkUnique(request.getParameter("org_name"),request.getParameter("branch")))
+	       orgDAO.insert_organisation(org);
+		else
+		{
+			model.addAttribute("branchexists","organization & branch already exists!");
+			return "org_registration";
+		}
+	}*/
 	orgDAO.insert_organisation(org);
 	OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
 	orgregistrationform.setOrgregistration(orgDAO.getOrgregistration());
@@ -232,6 +232,15 @@ String ajax_process_owner(HttpSession session,
 }
 
 
-
+@RequestMapping(value="/check_unique", method=RequestMethod.POST)
+public @ResponseBody String org_id_unique_check_ajax(HttpServletRequest request,HttpSession session,Model model, Principal prinicpal){
+	if(request.getParameter("org_name").equals("")&&request.getParameter("branch").equals(""))
+		return "";
+	
+	if(orgDAO.checkUnique(request.getParameter("org_name"),request.getParameter("branch")))
+		return "Already Registered<br/>";
+	else
+		return "";
+}
 
 }
