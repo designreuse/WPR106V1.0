@@ -236,6 +236,46 @@ public class AddUserDAO{
 		
 	}
 	
+	public boolean check_email(AddUser user){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		int count=0;
+		try{
+			
+			resultSet = statement.executeQuery("select * from tbl_user where email='"+user.getEmail()+"'");
+			if(resultSet.next())
+			{
+				count=1;
+			}
+			
+			
+		
+	    }catch(Exception e){
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    if(count==1)
+	    	return false;
+	    else
+	    	return true;
+	    
+		
+	}
+	
+	
 	
 	public List<AddUser> getAdduser(){
 		Connection con = null;

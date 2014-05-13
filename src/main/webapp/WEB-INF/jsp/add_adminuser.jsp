@@ -53,7 +53,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Branch </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                 <div id="info" style="height:8px; " > 
+				                 <div id="info"> 
 				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid" onblur="Validate1('bid')">
 							    <option value="">-- Select branch--</option>
 							  <%--  <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
@@ -64,7 +64,7 @@
         				       </div> 
 				                  </td><td width="15%"></td>
 				                </tr>
-				                <tr class="row2" style="border:none;"><td></td><td></td><td></td><td></td><td></td></tr>
+				                <!-- <tr class="row2" style="border:none;"><td></td><td></td><td></td><td></td><td></td></tr> -->
 				                <tr class="row1">
 				                <td width="15%"></td>
 				                  <td valign="middle" align="left" class="input_txtlabel">
@@ -89,6 +89,7 @@
 				                  <span class="err">*</span> Email </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" onblur="emailcheck('eid')"  value="${adminuser.email}"/>
+				                 <c:if test="${emailexists=='Email already exists!'}"><script>alert("Emailid already exists");</script></c:if>
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row2">
@@ -97,7 +98,8 @@
 				                  <span class="err">*</span> User Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="uname"  name="username" onblur="user('uname')"  value="${adminuser.username}"/>
-				                  	<br/><font color="Red" size="+1"><c:out value="${userexists}"/><form:errors path="AddUser.username"></form:errors></font>
+				                  	<br/> <c:if test="${userexists=='Username already exists!'}"><script>alert("Username already exists");</script></c:if> 
+				                  	<%--  <font color="Red" size="+1"><c:out value="${userexists}"/><form:errors path="AddUser.username"></form:errors></font> --%> 
 				                  
 				                  </td><td width="15%"></td>
 				                </tr>

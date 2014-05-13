@@ -110,20 +110,33 @@ public String adduser(HttpServletRequest request,HttpSession session,@ModelAttri
 	model.addAttribute("orgRegistrationForm",orgRegistrationForm);
 	
 	user.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
-	
+	List <String> orgname=new ArrayList<String>();
+	orgname=busDAO.getorgname();
+	model.addAttribute("orgname",orgname);
 	if(result.hasErrors()){
 		AddUserForm adduserform=new AddUserForm();
 		model.addAttribute("adduserform",adduserform);
 		return "add_adminuser";
 	}
 	else{
+		if(userDAO.check_email(user))
+			userDAO.insert_user(user);
+		else
+		{
+			model.addAttribute("emailexists","Email already exists!");
+			return "add_adminuser";
+			
+		}
+		
 		if(userDAO.check_user_name(user))		
 			userDAO.insert_user(user);
 		else
 		{
 			model.addAttribute("userexists","Username already exists!");
 			return "add_adminuser";
+			
 		}
+		
 		AddUserForm adduserform=new AddUserForm();
 		adduserform.setAdduser(userDAO.getAdduser());
 		model.addAttribute("adduserform",adduserform);

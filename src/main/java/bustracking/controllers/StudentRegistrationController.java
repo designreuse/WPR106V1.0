@@ -146,7 +146,7 @@ public class StudentRegistrationController {
 	   returnText=returnText+"<split>";
 	   
 	   returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#drop_route_id').select2(); });</script><select name='drop_route_no' id='drop_route_id'  onchange='doAjaxPost_drop_route_no()' style='width:220px'>";
-		returnText+="<option value='' selected>--Select Drop Route No--</option>";
+ 		returnText+="<option value='' selected>--Select Drop Route No--</option>";
 		
 		for(String sr:studroute)
 		{

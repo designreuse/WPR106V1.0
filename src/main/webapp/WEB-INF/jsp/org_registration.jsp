@@ -220,7 +220,7 @@ function validateAlpha(){
 function toTitleCase(oname)
 {
 	if(document.getElementById("oname").value==''){
-		alert("Organization Name is required");
+		confirm("Organization Name is required");
 		return false;
 	}
 	else {
