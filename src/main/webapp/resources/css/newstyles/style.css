@@ -1182,9 +1182,9 @@ a#login_pop:hover, a#join_pop:hover {
     top: 50%;
     visibility: hidden;
     z-index: 10;
-    width:97%;
-    height:80%;
-	overflow:scroll;
+    width:auto;
+    height:auto;
+
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -1916,4 +1916,93 @@ Third button
 	margin:-43px 0 0 910px;
 	width:auto;
 	height:auto;
+}
+
+
+.ThreeDee{
+font-family: Garamond, serif;
+line-height: 1em;
+color: #3bbaff;
+font-weight:bold;
+font-size: 28px;
+text-shadow:0px 0px 0 rgb(35,162,231),0px 1px 0 rgb(20,147,216),0px 2px 0 rgb(6,133,202),0px 3px 0 rgb(-9,118,187),0px 4px 0 rgb(-23,104,173),0px 5px 0 rgb(-38,89,158), 0px 6px 0 rgb(-52,75,144),0px 7px 6px rgba(0,0,0,0.6),0px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);}
+
+.textfld123{
+	outline: none;
+	padding: 0px;
+	height:29px;
+	width: 220px;
+	font-family: Helvetica, Arial, "Sans Serif";
+	font-size: 13px;
+	color: #666;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #eee;
+	-moz-box-shadow: inset 0px 0px 10px 0px #eee;
+	box-shadow: inset 0px 0px 10px 0px #eee;
+	background:#fff;
+}
+
+.textfld123:focus {
+	border-color: #3bb9ff;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #ddd;
+	-moz-box-shadow: inset 0px 0px 10px 0px #ddd;
+	box-shadow: inset 0px 0px 10px 0px #86D4FE;
+}
+
+input[type=checkbox].css-checkbox {
+
+display:none;
+
+}
+
+
+input[type=checkbox].css-checkbox + label.css-label {
+
+padding-left:20px;
+		
+height:20px; 
+					
+display:inline-block;
+						
+line-height:20px;
+							
+background-repeat:no-repeat;
+							
+background-position: 0 0;
+							
+font-size:12px;
+							
+vertical-align:middle;
+							
+cursor:pointer;
+
+						
+}
+
+						
+input[type=checkbox].css-checkbox:checked + label.css-label {
+
+background-position: 0 -20px;
+
+}
+	
+label.css-label {
+
+background-image:url('images/check1.png');
+
+-webkit-touch-callout: none;
+
+-webkit-user-select: none;
+
+-khtml-user-select: none;
+
+-moz-user-select: none;
+	
+-ms-user-select: none;
+		
+user-select: none;
+
 }

@@ -1279,7 +1279,7 @@ input[type="password"]:focus {
 .textareanew{
 	outline: none;
 	padding: 13px;
-	
+	width:220px;
 	font-family: Helvetica, Arial, "Sans Serif";
 	font-size: 13px;
 	color: #666;
@@ -1291,6 +1291,13 @@ input[type="password"]:focus {
 	-moz-box-shadow: inset 0px 0px 10px 0px #eee;
 	box-shadow: inset 0px 0px 10px 0px #eee;
 	background:#fff;
+}
+
+.textareanew:focus {
+	border-color: #3bb9ff;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #ddd;
+	-moz-box-shadow: inset 0px 0px 10px 0px #ddd;
+	box-shadow: inset 0px 0px 10px 0px #86D4FE;
 }
 .tdfixedwidth{
 	overflow:hidden;

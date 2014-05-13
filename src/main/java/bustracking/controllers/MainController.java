@@ -30,6 +30,7 @@ import bustracking.dao.ClientHomeDAO;
 import bustracking.dao.FleetHomepageDAO;
 import bustracking.dao.MainDAO;
 import bustracking.dao.OrgBusinessRuleDAO;
+import bustracking.dao.OrgRegistrationDAO;
 import bustracking.dao.RouteDAO;
 import bustracking.dao.TrackingInfoDAO;
 import bustracking.forms.BusDeviceRegistrationForm;
@@ -38,6 +39,7 @@ import bustracking.forms.BusRegistrationForm;
 import bustracking.forms.ClientHomeForm;
 import bustracking.forms.FleetHomepageForm;
 import bustracking.forms.OrgBusinessRuleForm;
+import bustracking.forms.OrgRegistrationForm;
 import bustracking.forms.RouteViewForm;
 import bustracking.forms.SuperAdminHomeForm;
 
@@ -55,6 +57,14 @@ public class MainController {
 	
 	@Autowired  
 	MainDAO mainDAO; 
+	
+
+	@Autowired
+	OrgRegistrationDAO orgRegistrationDAO;
+	
+	@Autowired
+	BusRegistrationDAO busDAO;
+	
 	@Autowired  
 	ClientHomeDAO clientHomeDAO; 
 	
@@ -137,7 +147,18 @@ else{
 		
 		return "client_home";
 	}
-	
+	@RequestMapping(value="/holidayadmin", method = RequestMethod.GET)
+	public String holidayadmin(HttpServletRequest request,ModelMap model, Principal principal ) {
+		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
+		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
+		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
+		
+		List <String> orgname_for_school=new ArrayList<String>();
+		orgname_for_school=busDAO.getorgname_for_school();
+		model.addAttribute("orgname_for_school",orgname_for_school);
+		
+		return "holidayAdmin";
+	}
 	
 	/*@RequestMapping(value="/clientviewroutedetails", method = RequestMethod.GET)
 	public String clientviewroutedetails(HttpServletRequest request,ModelMap model, Principal principal ) {
