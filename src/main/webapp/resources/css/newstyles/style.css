@@ -1671,7 +1671,7 @@ background:-webkit-gradient(linear, 0 0, 0 100%, from(#ccc), to(#fff));
 	text-decoration:none;
 	color:#fff;
 	position:relative;
-	padding:10.5px 8px;
+	padding:10.4px 8px;
 	border-left:solid 1px #2ab7ec;
 	margin-left:35px;
 	background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
@@ -1887,6 +1887,31 @@ Third button
 	content:url('images/minusnew.png');
 	align:center;
 }
+
+
+.mailreport::before {
+	content:url('images/mail.png');
+	align:center;
+}
+
+
+.printreport::before {
+	content:url('images/print1.png');
+	align:center;
+}
+
+
+.downloadreoprt::before {
+	content:url('images/download.png');
+	align:center;
+}
+
+
+.showreport::before {
+	content:url('images/show1.png');
+	align:center;
+}
+
 .searchdiv{
 	margin:-43px 0 0 910px;
 	width:auto;

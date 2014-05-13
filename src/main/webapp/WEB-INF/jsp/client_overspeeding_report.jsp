@@ -42,8 +42,10 @@
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="70%">
-							  <input type="submit" class="pressableButton blue" value="Search" ></td>
-							 
+							  <!-- <input type="submit" class="searchpressable" value="Search" ></td>
+							  --><a href="submit();" class="searchpressable" >
+                        Search
+                        </a>
 							  </tr>
 							</table>
 							</form>
@@ -77,23 +79,18 @@
     <div id="tab1">...</div>
     <div id="tab2">
     <table width="100%"cellpadding="0" cellspacing="0" border="0" class="">
+   
     <tr><td align="center">
-    <table  width="80%"cellpadding="0" cellspacing="0" border="0" class="">
-    <tr><tr><td >From Date</td><td ><input type="text" class="input_txtbx_height1" id="inp_id" name="from_date" /></td>
-    <td >From Time</td><td ><input type="text" class="input_txtbx_height1" id="inp_id" name="from_date" /></td></tr>
-    
-    <tr><td >To Date</td><td ><input type="text" class="input_txtbx_height1" id="inp_id" name="from_date" /></td>
-    <td >To Time</td><td ><input type="text" class="input_txtbx_height1" id="inp_id" name="from_date" /></td></tr>
-     <!-- <tr><td ><input type="button" class="submit_btn" value="Show"/></td><td ></td><td ></td></tr> -->
-    </table></td></tr>
-    <tr><td align="center"><br/>
-    <table width="50%"cellpadding="2" cellspacing="0" border="0" class="">
-    <tr><td><input type="button" class="submit_btn" value="Show"/></td><td><input type="button" class="submit_btn" value="Download"/></td>
-    <td><input type="button" class="submit_btn" value="Print"/></td><td><input type="button" class="submit_btn" value="Email"/></td></tr>
+    <table width="40%"cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
+    <tr><td><a href="" class="searchpressable showreport" >show</a></td>
+    <td><a href="" class="searchpressable downloadreoprt">Download</a></td>
+    <td><a href="" class="searchpressable printreport" >Print</a></td>
+    <td>
+    <a href="" class="searchpressable mailreport" >Email</a></td></tr>
     
     </table>
     </td></tr>
-    <tr><td>
+    <tr><td><br/>
     <table width="100%" cellpadding="0" cellspacing="0" border="0" class="">
     <tr ><td align="left" width="30%"><div class="report_table_inner">
     <table width="100%" cellpadding="0" cellspacing="0" border="1" bordercolor="#ccc" >

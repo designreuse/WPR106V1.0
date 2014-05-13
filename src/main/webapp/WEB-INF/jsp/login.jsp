@@ -23,6 +23,56 @@
 	margin: 16px;
 	border-radius:15px;
 	
+	
+}
+.txtfld{
+	outline: none;
+	padding: 10px;
+	height:25px;
+	width: 190px;
+	font-family: Helvetica, Arial, "Sans Serif";
+	font-size: 13px;
+	color: #666;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #eee;
+	-moz-box-shadow: inset 0px 0px 10px 0px #eee;
+	box-shadow: inset 0px 0px 10px 0px #eee;
+	background:#fff;
+}
+
+.txtfld:focus {
+	border-color: #3bb9ff;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #ddd;
+	-moz-box-shadow: inset 0px 0px 10px 0px #ddd;
+	box-shadow: inset 0px 0px 10px 0px #86D4FE;
+}
+
+.pass{
+	outline: none;
+	padding-left: 10px;
+	height:25px;
+	width: 190px;
+	font-family: Helvetica, Arial, "Sans Serif";
+	font-size: 13px;
+	color: #666;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #eee;
+	-moz-box-shadow: inset 0px 0px 10px 0px #eee;
+	box-shadow: inset 0px 0px 10px 0px #eee;
+	background:#fff;
+}
+
+.pass:focus {
+	border-color: #3bb9ff;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #ddd;
+	-moz-box-shadow: inset 0px 0px 10px 0px #ddd;
+	box-shadow: inset 0px 0px 10px 0px #86D4FE;
 }
 </style>
 </head>
@@ -43,18 +93,18 @@
 Email </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 <tr>
 <td  align="right"></td>
-<td align="left"><input type="text" value="" name="j_username" /></td>
-<td><input type="password" value="" name="j_password"/></td><td>
+<td align="left" width="15%"><input type="text" class="txtfld"value="" name="j_username" /></td>
+<td><input type="password" value=""class="pass" name="j_password"/></td><td>
 <input type="submit" class="submit_btn" value="Login"/></td><td>
 <input type="reset" class="submit_btn" value="Reset"/></td></tr>
-<tr><td  align="right"></td><td style="color:#fff;"><input type="checkbox" value="1" class="checkbox_login" name="" />keep me logged in </td>
+<tr><td  align="right"></td><td style="color:#fff;"><input type="checkbox" value="1" class="txtfld" name="" />keep me logged in </td>
 <td >
 <a href="#"  ><font color="white">Forgot your password?</font></a></td>
 <td></td><td></td></tr></table>
 </div>
 <div class="Login_side_contact_outline" id="contact-form">
 <h1 >
-   <img src="resources/images/contact.png" width="360" height="50"/>
+   <img src="resources/images/contact.png" width="360" height="35"/>
 </h1>
 <br/>
 			<input type="text" name="name" id="fname" placeholder="First Name" autocomplete="off" tabindex="1" class="txtinput_small">
