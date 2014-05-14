@@ -33,9 +33,9 @@
  
 <form action="findbus" method="GET">
 							 
-							<table width="100%" border="1" cellspacing="0" cellpadding="0">
-							  <tr>
-							    <td align="left" valign="middle" width="15%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Organization Name &nbsp;<br/><font color="#ccc">.</font></span>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							  <tr >
+							    <td align="left" valign="middle" width="15%" ><span style="line-height:6px;">&nbsp; Organization Name &nbsp;<br/><font color="#ccc">.</font></span>
 							    <br/>
 							    <select   id="e1"style="width:300px;" name="org_name">
 							       <option value="">Select None</option>
@@ -45,7 +45,7 @@
 							    </select>
 							    </td>
 							    
-								<td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Branch &nbsp;<br/><font color="#ccc">.</font></span>
+								<td align="left" valign="middle" width="10%" ><span style="line-height:6px;">&nbsp; Branch &nbsp;<br/><font color="#ccc">.</font></span>
 								<br/>
 							    <select   id="e2"style="width:300px;" name="branch">
 							     <option value="">Select None</option>
@@ -54,7 +54,7 @@
 							    </c:forEach>
 							    </select>
 								</td>
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Bus Registration No &nbsp;<br/><font color="#ccc">.</font></span>
+							    <td align="left" valign="middle" width="10%" ><span style="line-height:6px;">&nbsp;Bus Registration No &nbsp;<br/><font color="#ccc">.</font></span>
 							    <br/>
 							    <select   id="e3"style="width:300px;" name="vechicle_reg_no">
 							     <option value="">Select None</option>
@@ -66,10 +66,10 @@
 							    
 							  </tr>
 							  
-                                 <tr><td><font color="#ccc">.</font></td>
+                                 <tr><td><font color="#ccc">.</font></td></tr>
                                  <tr>
 							  <tr >
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:5px;">&nbsp;Device IMEI No: &nbsp;<br/><font color="#ccc">.</font></span>
+							    <td align="left" valign="middle" width="10%" ><span style="line-height:2px;">&nbsp;Device IMEI No: &nbsp;<br/><font color="#ccc">.</font></span>
 							    <br/>
 							    <select   id="e4"style="width:300px;" name="device_imei_number">
 							      <option value="">Select None</option>
@@ -102,14 +102,14 @@
 							
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-								<td valign="top" align="left" width="15%"> Organization</td>
+								<td valign="top" align="left" width="18%"> Organization</td>
          						<td valign="top" align="left" width="10%"> Branch</td>
          						<td valign="top" align="left" width="10%"> Bus Reg No</td>
-         						<td valign="top" align="left" width="15%"> Device IMEI No</td>
+         						<td valign="top" align="left" width="13%"> Device IMEI No</td>
          						<td valign="top" align="left" width="12%"> Driver Name</td>
 					         	<td valign="top" align="left" width="10%"> Licence No</td>
-					         	<td valign="top" align="left" width="15%"> Licence Exp Date</td>
-					        	<td valign="top" align="left" width="25%"> Action</td>
+					         	<td valign="top" align="left" width="14%"> Licence Exp Date</td>
+					        	<td valign="top" align="left" width="10%"> Action</td>
           						
         					</tr></table>
 							<div class="Panel_One_Inner">
@@ -117,18 +117,19 @@
 							<c:if test="${fn:length(busregistrationform.busregistration) gt 0 }">
         					<c:forEach items="${busregistrationform.busregistration}" var="BusRegistration" varStatus="status">
         				       					<tr class="row1">
-							       		<td valign="top" align="left" style="overflow:hidden;"width="15%">${BusRegistration.org_name}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="10%">${BusRegistration.branch}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="10%">${BusRegistration.vechicle_reg_no}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="15%">${BusRegistration.device_imei_number}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="12%">${BusRegistration.driver_name}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="10%">${BusRegistration.driver_licence_no}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="15%">${BusRegistration.driver_licence_exp_date}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="25%">
+							       		<td valign="top" align="left" style="overflow:hidden;"width="18%" title="${BusRegistration.org_name}">${BusRegistration.org_name}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%" title="${BusRegistration.branch}">${BusRegistration.branch}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%" title="${BusRegistration.vechicle_reg_no}">${BusRegistration.vechicle_reg_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="13%" title="${BusRegistration.device_imei_number}">${BusRegistration.device_imei_number}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="12%" title="${BusRegistration.driver_name}">${BusRegistration.driver_name}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%" title="${BusRegistration.driver_licence_no}">${BusRegistration.driver_licence_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="14%" title="${BusRegistration.driver_licence_exp_date}">${BusRegistration.driver_licence_exp_date}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%" >
 										
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_bus?vechicle_reg_no=${BusRegistration.vechicle_reg_no}"/>" style="padding-right:10px;">Edit</a>
-												
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_bus?vechicle_reg_no=${BusRegistration.vechicle_reg_no}}"/>" onclick="return confirmation('Are you sure want to delete?')">Remove</a>
+												<a href="<c:out value="edit_bus?vechicle_reg_no=${BusRegistration.vechicle_reg_no}"/>">
+										    <img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
+											<a href="<c:out value="delete_bus?vechicle_reg_no=${BusRegistration.vechicle_reg_no}}"/>" onclick="return confirmation('Are you sure want to delete?')">
+											<img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>

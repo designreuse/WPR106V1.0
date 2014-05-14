@@ -28,40 +28,40 @@
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							  <td align="left" valign="middle" width="10%" class="input_txtlabel"> Org Name &nbsp;<br/>
-							    <select   id="e1"style="width:250px;" name="org_name">
+							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Organization Name &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e1"style="width:300px;" name="org_name">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${routeViewForm.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.org_name}">${route1.org_name}</option>
 							    </c:forEach>
 							    </select></td>
-							  <td align="left" valign="middle" width="10%" class="input_txtlabel">Bus Reg No &nbsp;<br/>
-							    <select   id="e3"style="width:250px;" name="vechicle_reg_no">
+							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Bus Registration No &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e3"style="width:300px;" name="vechicle_reg_no">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${routeViewForm.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.bus_reg_no}">${route1.bus_reg_no}</option>
 							    </c:forEach>
 							    </select></td>
-							  <td align="left" valign="middle" width="10%" class="input_txtlabel"> Branch &nbsp;<br/>
-							    <select   id="e2"style="width:250px;" name="branch">
+							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Branch &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e2"style="width:300px;" name="branch">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${routeViewForm.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.branch}">${route1.branch}</option>
 							    </c:forEach>
 							    </select></td>
 							  
-							  </tr>
+							  </tr><tr><td><font color="#ccc">.</font></td></tr>
 							  <tr>
-							  <td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp; Rout No &nbsp;<br/>
-							    <select   id="e4"style="width:250px;" name="route_no">
+							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Rout No &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e4"style="width:300px;" name="route_no">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${routeViewForm.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.route_no}">${route1.route_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp; Trip &nbsp;<br/>
-							    <select   id="e5"style="width:250px;" name="trip">
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Trip &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e5"style="width:300px;" name="trip">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${routeViewForm.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.trip}">${route1.trip}</option>
@@ -69,8 +69,10 @@
 							    </select></td>
 							    
 							    
-							    <td align="left" valign="middle" width="20%">
-							    <input type="submit" class="btn" value="Search"></td>
+							    
+							    <td align="right" valign="middle" width="20%"><br>
+							    <input type="submit" class="btn" value="Search" ></td>
+							    <td width="10%"><font color="#ccc" >.</font></td>
 							 
 							  </tr>
 							</table>
@@ -91,47 +93,45 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 									<!-- 	<td valign="top" align="left" width="18%"> Bus Id</td> -->
-					         	<td valign="top" align="left" width="15%"> 	Org Name</td>
-					         	<td valign="top" align="left" width="15%">Branch</td>
+					         	<td valign="top" align="left" width="17.5%"> 	Organization Name</td>
+					         	<td valign="top" align="left" width="12%">Branch</td>
 					       	 	<td valign="top" align="left" width="10%"> Bus Reg No</td>
-					       	 	<td valign="top" align="left" width="10%"> 	Route No</td>
+					       	 	<td valign="top" align="left" width="13%"> 	Route No</td>
           						<td valign="top" align="left" width="10%"> Trip</td>
-          						<td valign="top" align="left" width="25%"> Bus_Stop_Address</td>
-          						<td valign="top" align="left" width="25%"> Operations</td>
+          						<td valign="top" align="left" width="25%"> Bus Stop Address</td>
+          						<td valign="top" align="left" width="10%"> Action</td>
           						
           						
         					</tr></table>
 							
 							<div class="Panel_One_Inner">
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%"style="table-layout: fixed;width:100%" class="order-table table">
 							
         					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         					
-        				       					<tr class="row1">
-        				            		<td valign="center" align="center" width="15%">${route.org_name}</td>
-					     		     	<td valign="top" align="left" width="15%">${route.branch}</td> 
-											<td valign="top" align="left" width="10%">${route.bus_reg_no}</td>
-											<td valign="top" align="left" width="10%">${route.route_no}</td>
-											<td valign="top" align="left" width="10%"><c:choose><c:when test="${route.trip==0}">
-											<c:out value="Pick Up"></c:out>
+        				       				<tr class="row1">
+        				            		<td valign="middle" align="left"style="overflow:hidden;" width="17%">${route.org_name}</td>
+					     		     		<td valign="top" align="left" style="overflow:hidden;"width="12%">${route.branch}</td> 
+											<td valign="top" align="left" style="overflow:hidden;"width="10%">${route.bus_reg_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="13%">${route.route_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%"><c:choose>
+											<c:when test="${route.trip==0}">
+											<c:out value="Pick Up" ></c:out>
 											</c:when>
 											<c:when test="${route.trip==1}">
-											<c:out value="Drop"></c:out>
+											<c:out value="Drop" ></c:out>
 											</c:when>
 											<c:otherwise>
 											<c:out value="KG Drop"></c:out>
 											</c:otherwise>
 											</c:choose>
 </td>
-											<td valign="top" align="left" width="25%">${route.bus_stop_address}</td>
-											<td valign="top" align="left" width="25%">				
-										
-										  <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a>
-										    <a href="<c:out value="editroute?route_no=${route.route_no}"/>" style="padding-right:10px;">Edit</a>
-											
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirmation()">Remove</a>
+											<td valign="top" align="left"style="overflow:hidden;" width="25%" title="${route.bus_stop_address}">${route.bus_stop_address}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%">	
+										    <a href="<c:out value="editroute?route_no=${route.route_no}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
+											<a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>

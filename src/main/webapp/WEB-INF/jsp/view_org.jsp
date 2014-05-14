@@ -57,7 +57,7 @@
 							    </select></td>
 							    
                                  </tr>
-                                 <tr><td><font color="#ccc">.</font></td>
+                                 <tr><td><font color="#ccc">.</font></td></tr>
                                  <tr>							   
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Country&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select name="country" id="e4"style="width:300px;">
