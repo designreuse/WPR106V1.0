@@ -98,7 +98,7 @@
 				                  <span class="err">*</span> User Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="uname"  name="username" onblur="user('uname')"  value="${adminuser.username}"/>
-				                  	<br/> 
+				                  	<br/> <font color="Red" size="+1"><span id="info1"></span></font>
 				                  	<%--  <font color="Red" size="+1"><c:out value="${userexists}"/><form:errors path="AddUser.username"></form:errors></font> --%> 
 				                  
 				                  </td><td width="15%"></td>
@@ -395,19 +395,19 @@ alert("Please Select a branch");
 </script>
 <script type="text/javascript">
 function doAjaxcheckuser() {  
-	/* alert("hi"); */
-	var email = $('#eid').val();
+	 alert("hi"); 
+	var name = $('#uname').val();
 	
-	/* alert(orgname); */
+	 alert(name); 
 	 $.ajax({  
 		    type: "POST",  
 		    url: "/BusTrackingApp/check_username",  
-		    data: "email=" + email,
+		    data: "username=" + name,
 		    success: function(response){  
 		    	
 		    	
 /* document.getElementById("branch").value=response; */
-$('#info').html(response);
+$('#info1').html(response);
 
 /* var select = document.getElementById("bid");
 var option = document.createElement('option');

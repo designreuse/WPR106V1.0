@@ -270,7 +270,7 @@ public String finduserInSearch(HttpServletRequest request,@RequestParam("org_nam
 }
 @RequestMapping(value="/check_username", method=RequestMethod.POST)
 public @ResponseBody String uname_check_ajax(HttpServletRequest request,HttpSession session,Model model, Principal prinicpal){
-	if(request.getParameter("email").equals(""))
+	if(request.getParameter("username").equals(""))
 		return "";
 	
 	if(userDAO.check_user_name(request.getParameter("username")))

@@ -212,6 +212,7 @@ public class AddUserDAO{
 		try{
 			
 			resultSet = statement.executeQuery("select username from tbl_user where username='"+username+"'");
+			
 			if(resultSet.next())
 			{
 				count=1;
