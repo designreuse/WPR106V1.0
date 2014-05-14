@@ -398,9 +398,13 @@ alert("Please Select a branch");
 
 <script type="text/javascript">
 function doAjaxcheckuser() {  
-	 
+
+	/*  alert("hi"); */ 
+
 	var name = $('#uname').val();
 	
+	/*  alert(name); */ 
+
 	 $.ajax({  
 		    type: "POST",  
 		    url: "/BusTrackingApp/check_username",  
@@ -410,7 +414,7 @@ function doAjaxcheckuser() {
 		    	
 /* document.getElementById("branch").value=response; */
 $('#info1').html(response);
-
+/* alert(response); */
 /* var select = document.getElementById("bid");
 var option = document.createElement('option');
 option.text = option.value = response;

@@ -47,6 +47,23 @@ public class DeviceRegistrationController
 	
 	}
 	
+	@RequestMapping(value="/changepassword", method=RequestMethod.GET)
+	public String changepassword(HttpSession session,ModelMap model, Principal principal){
+		
+		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
+		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+		
+		List <String> carriername=new ArrayList<String>();
+		carriername=deviceRegistrationDAO.getcarriername();
+		model.addAttribute("carriername",carriername);
+			
+	return "add_device_setup";
+	}
+	
+	
+	
+	
 	
 	@RequestMapping(value="/insert_device_dlr", method = RequestMethod.GET)
 	public String device_insert_form1(HttpServletRequest req,@RequestParam("myid") String myid,@RequestParam("status") String status,@RequestParam("updated_on") String updated_on,@RequestParam("res") String reString,HttpSession session,ModelMap model, Principal principal ) {
@@ -399,11 +416,11 @@ public class DeviceRegistrationController
 		
 		if(result.hasErrors())
 		{
-			return "add_device_registration";
+			return "add_device_setup";
 		}
 		else
 		{	
-			if(deviceRegistrationDAO.check_simcard_no(deviceRegistration))
+			/*if(deviceRegistrationDAO.check_simcard_no(deviceRegistration))
 				deviceRegistrationDAO.insert_device(deviceRegistration,principal.getName());
 			else
 			{
@@ -437,9 +454,9 @@ public class DeviceRegistrationController
 				model.addAttribute("imeinoexists","Device Imei Number already exists!");
 				return "add_device_registration";
 				
-			}
+			}*/
 			
-			
+			deviceRegistrationDAO.insert_device(deviceRegistration);
 			DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
 			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
 			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
@@ -451,7 +468,7 @@ public class DeviceRegistrationController
  
 	}
 	
-	/*@RequestMapping(value="/deviceregistration", method = RequestMethod.POST)
+	@RequestMapping(value="/deviceconfiguration", method = RequestMethod.POST)
 	public String configure_device(HttpServletRequest req,HttpServletResponse response,HttpSession session,@ModelAttribute("DeviceRegistration") @Valid DeviceRegistration device,BindingResult result,ModelMap model, Principal principal ) {
 	 
 		String stat=req.getParameter("status");
@@ -476,5 +493,5 @@ public class DeviceRegistrationController
 		
 		return "add_device_registration";
 	}
-	*/
+	
 }

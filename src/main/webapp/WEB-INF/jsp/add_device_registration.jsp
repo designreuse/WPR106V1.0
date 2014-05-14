@@ -15,7 +15,7 @@
 
 
 
-<form action="deviceregistration" method="POST" onload="addDate();">
+<form action="deviceconfiguration" method="POST" onload="addDate();">
 
                   
 <table class="margin_table">
@@ -52,10 +52,11 @@
 				                  <input type="hidden" value="" name="org_id"/>
 									<%-- <input type="text" class="org_input_txtbx_height1" id="manuid" onblur="toTitleCase('manuid')" name="manufacturer" oninput="validateAlpha()" value=""/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font> --%>
-				                   <select name="manufacturer"  id="manuid" style="width:220px;"onblur="Validate('manuidid')" >  
+				                 <div id="info9"> <select name="manufacturer"  id="manuid" style="width:220px;"onblur="Validate('manuidid')" >  
                                    <option value="Selected">--Select Manufacturer Name--</option>
-                                   <option value="cobal">Cobal</option>
+                                   <option value="coban">Coban</option>
                                    </select>
+                                   </div> 
 				                  </td>	
 				                  
 				                  <td valign="middle"  width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Card Carrier:</td>
@@ -64,7 +65,7 @@
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
 				                 --%>
 
-				                 
+		<div id="info10">		                 
       <select name="carrier" style="width:220px;" id="carrierid" onblur="Validate('carrierid')" onchange="doAjaxPost()">  
       <option value="Selected">--Select Carrier--</option>
        <c:forEach items="${carriername}" var="carriername" varStatus="status">
@@ -85,20 +86,22 @@
       <%
  }
      %> --%>
-      </select> 			                   </td>			                   
+      </select></div> 			                   </td>			                   
 				              </tr>
 				              <tr class="row2">
 				              <td width="10%"></td>
 				              <td valign="middle" align="left"  width="20%"  class="txtinput"><span class="err">*</span> Device Model Number:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="modelid" onblur="modelcheck('modelid')" name="model_no" value="${organisation.address}" />
+				                	<div id="info4"><input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="modelid" onblur="modelcheck('modelid')" name="model_no" value="${organisation.address}" />
 				                   <br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.address"></form:errors></font>
+				                 </div>
 				                  </td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Sim Card Number :</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" width="60%" id="simno_id" onblur="simno('simno_id')" oninput="validatenum1()" name="sim_card_number" value="${organisation.email_id}" />
+				                  <div id="info3">	<input type="text" class="org_input_txtbx_height1" width="60%" id="simno_id" onblur="simno('simno_id')" oninput="validatenum1()" name="sim_card_number" value="${organisation.email_id}" />
 				                  	
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.email_id"></form:errors></font>
+				                  </div>
 				                  </td>
 				               
 				                  
@@ -109,13 +112,15 @@
 				                 <%--  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_address_id" name="address" value="${organisation.address}" />
 				                   --%>
 				                  <%--  <textarea class="input_txtarea_height1"  rows="3" cols="4" style="width:200px;height:50px;" id="org_address" name="address">${organisation.address}</textarea> --%>
-				                  <input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')" class="org_input_txtbx_height1">
+				                <div id="info5"><input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')" class="org_input_txtbx_height1">
 				                   	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.address"></form:errors></font>
+				                  </div>
 				                  </td>
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Procured Date:</td>
 				                  <td valign="center" align="left" class="input_txt" width="60%" >
-				                  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${organisation.contact_person_name}" />
+				                  	<div id="info2"><input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${organisation.contact_person_name}" />
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                  </div>
 				                  </td>
 				                 
 				                </tr>
@@ -124,47 +129,54 @@
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Invoice Number:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" name="device_invoice_number" class="org_input_txtbx_height1" id="invoice_id" onblur="deviceinvoice('invoiceid')" oninput="validatenum2()">
+				                  <div id="info6">	<input type="text" name="device_invoice_number" class="org_input_txtbx_height1" id="invoice_id" onblur="deviceinvoice('invoiceid')" oninput="validatenum2()">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
+				                  </div>
 				                  </td>
 									<td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Invoice Number:</td>
 				                  <td valign="center" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="sim_invoice_id" onblur="siminvoice('sim_invoice_id')" oninput="validatenum3()" name="sim_invoice_number" value="${organisation.contact_person_name}" />
+				                <div id="info1">	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="sim_invoice_id" onblur="siminvoice('sim_invoice_id')" oninput="validatenum3()" name="sim_invoice_number" value="${organisation.contact_person_name}" />
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                  </div>  
 				                  </td>
 				                </tr>
 				                <tr class="row1">
 				                <td width="10%"></td>
 				                 <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span>  Device IMEI Number:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	 <input type="text" name="device_imei_number" class="org_input_txtbx_height1" id="imei_id" onblur="deviceimei('imei_id')" oninput="validatenum4()">
+				                  	 <%-- <input type="text" name="device_imei_number" class="org_input_txtbx_height1" id="imei_id" onblur="deviceimei('imei_id')" oninput="validatenum4()">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
+				                   --%>
 				                  
-				                  
-				                  
+				                  <select   style="width:220px;"name="device_imei_number" id="imei" onblur="Validate2('imei')" onchange="doAjaxPost1()" >
+							    <option value="" selected>-- Select IMEI No--</option>
+							     <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceregistration" varStatus="status">
+        				        <option value="${deviceregistration.device_imei_number}">${deviceregistration.device_imei_number}</option>
+			                  </c:forEach>
+			                  </select>
   
 				                   </td>
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim tested ?:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	<input type="radio" id="id_yes_active" name="sim_card_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <div id="info12">	<input type="radio" id="id_yes_active" name="sim_card_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="sim_card_tested" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                  	<br/></div><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
 				                  </td>
 				                </tr>
 				                <tr class="row2">
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Tested:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	<input type="radio" id="id_yes_active" name="device_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <div id="info11">	<input type="radio" id="id_yes_active" name="device_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="device_tested" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
+				                  	<br/></div><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Device-Sim Paired ? :</td>
 				                  <td valign="top" align="left" class="input_txt"  >
-				                  	<input type="radio" id="id_yes_active" name="device_sim_paired" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<div id="info13"><input type="radio" id="id_yes_active" name="device_sim_paired" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                  	<br/></div><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
 				                  </td>
 				                
 				                </tr>
@@ -172,16 +184,16 @@
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Status:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	<input type="radio" id="id_yes_active" name="device_status" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<div id="info14"><input type="radio" id="id_yes_active" name="device_status" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="device_status" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
+				                  	<br/></div><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Is Assigned? :</td>
 				                  <td valign="top" align="left" class="input_txt"  >
-				                  	<input type="radio" id="id_yes_active" name="is_assigned" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<div id="info15"><input type="radio" id="id_yes_active" name="is_assigned" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="is_assigned" checked value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                  	<br/></div><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
 				                  </td>
 				                
 				                </tr>
@@ -189,15 +201,16 @@
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Password:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" onblur="passcheck('passid')">
+				                  <div id="info7">	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" onblur="passcheck('passid')">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
+				                  </div>
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Comments:</td>
 				                  <td valign="top" align="left" class="input_txt"  >
-				                  	<textarea  name="comments" class="textareanew" rows="3" style="width:220px;"id="comments_id" onblur="com('comments_id')"></textarea>
+				                  <div id="info8"><textarea  name="comments" class="textareanew" rows="3" style="width:220px;"id="comments_id" onblur="com('comments_id')"></textarea>
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font> </td>
-				                
+				                </div>
 				                </tr>
 				                
 				                      <tr class="row1">
@@ -590,3 +603,36 @@ else if(document.getElementById("confirm_id").value==''){
 	
 }
 </script>
+
+<script type="text/javascript">
+function doAjaxPost1() {  
+	/* alert("hi"); */
+	var imeino = $('#imei').val();
+	
+	/* alert(orgname); */
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/imei_ajax",  
+		    data: "device_imei_number="+imeino,
+		    success: function(response){  
+		var two_drop=response.split("<split>");
+		    	
+$('#info1').html(two_drop[0]);
+$('#info2').html(two_drop[1]);
+$('#info3').html(two_drop[2]);
+$('#info4').html(two_drop[3]);
+$('#info5').html(two_drop[4]);
+$('#info6').html(two_drop[5]);
+$('#info7').html(two_drop[6]);
+$('#info8').html(two_drop[7]);
+$('#info9').html(two_drop[8]);
+$('#info10').html(two_drop[9]);
+$('#info11').html(two_drop[10]);
+
+   },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+		</script>

@@ -102,7 +102,7 @@ public class DeviceRegistrationDAO {
 	    }
 	
 	
-	/*public String sms(DeviceRegistration device){
+	public String sms(DeviceRegistration device){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -270,7 +270,7 @@ public class DeviceRegistrationDAO {
 		
 		
 		
-	}*/
+	}
 	
 	public String getmyid(){
 		Connection con = null;
@@ -307,7 +307,7 @@ public class DeviceRegistrationDAO {
 	    return deviceid;
 		
 	}
-	public String insert_device(DeviceRegistration deviceRegistration,String user_id){
+	public String insert_device(DeviceRegistration deviceRegistration){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -344,11 +344,11 @@ public class DeviceRegistrationDAO {
 			preparedStatement.setString(13,deviceRegistration.getIs_assigned());
 			preparedStatement.setString(14,deviceRegistration.getPassword());
 			preparedStatement.setString(15,deviceRegistration.getDevice_status());
-			preparedStatement.setString(16,deviceRegistration.getPort_no());
+			preparedStatement.setInt(16,9000);
 			preparedStatement.setString(17,deviceRegistration.getComments());
 			preparedStatement.setString(18,deviceRegistration.getApn());
-			preparedStatement.setString(19,deviceRegistration.getAdminip());
-			preparedStatement.setString(20,deviceRegistration.getConfiguration_date());
+			preparedStatement.setString(19,"50.62.213.127");
+			preparedStatement.setString(20,"NULL");
 			preparedStatement.setString(21,deviceRegistration.getCreate_user_id());
 			preparedStatement.setTimestamp(22, getCurrentTimeStamp());
 			preparedStatement.setString(23,computername);

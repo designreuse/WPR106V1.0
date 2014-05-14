@@ -59,12 +59,6 @@ public class AddUserController{
 	}
 	
 
-	@RequestMapping(value="/changepassword", method=RequestMethod.GET)
-	public String changepassword(HttpSession session,ModelMap model, Principal principal){
-		
-		
-	return "add_device_setup";
-	}
 	
 	@RequestMapping(value="/adduser", method=RequestMethod.GET)
 	public String printWelcome(HttpSession session,ModelMap model, Principal principal){
