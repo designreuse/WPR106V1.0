@@ -225,6 +225,8 @@ public class OrgRegistrationDAO{
 	    return orgregistrationform;
 		
 	}
+	
+	// Check Unique Organization and branch
 	 public boolean checkUnique(String org_name,String branch)
 	   {
 		   

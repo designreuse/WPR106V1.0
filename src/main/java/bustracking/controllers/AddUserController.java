@@ -268,6 +268,9 @@ public String finduserInSearch(HttpServletRequest request,@RequestParam("org_nam
 	 return "search_user";
 	}
 }
+
+// Check Username Exists
+
 @RequestMapping(value="/check_username", method=RequestMethod.POST)
 public @ResponseBody String uname_check_ajax(HttpServletRequest request,HttpSession session,Model model, Principal prinicpal){
 	if(request.getParameter("username").equals(""))
@@ -280,6 +283,19 @@ public @ResponseBody String uname_check_ajax(HttpServletRequest request,HttpSess
 }	
 	
 	
+// Check Email Exists
+
+@RequestMapping(value="/check_email", method=RequestMethod.POST)
+public @ResponseBody String email_check_ajax(HttpServletRequest request,HttpSession session,Model model, Principal prinicpal){
+	if(request.getParameter("email").equals(""))
+		return "";
+	
+	if(userDAO.check_email(request.getParameter("email")))
+		return "Email Already Registered<br/>";
+	else
+		return "";
+}	
+
 /*@RequestMapping(value="/userdetails", method=RequestMethod.GET)
 	public String userdetails(HttpServletRequest request,@RequestParam("admin_reg_no") String admin_reg_no,ModelMap model,AddUser adduser)
 	{

@@ -8,6 +8,29 @@
 
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+<!-- DropDown Scripts -->
+<script id="script_orgid">
+    $(document).ready(function() {
+        $("#orgid").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#bid").select2();
+    });
+</script>
+
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#route_id").select2();
+    });
+</script>
+
+
+<!-- Date Picker -->
 <script>
 $(function() {
 $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
@@ -33,6 +56,8 @@ $('.datetimeinput').timepicker();
 	</script> 
 	
 	
+	
+	<!-- Branch Dependent DropDown  -->
 	<script type="text/javascript">
 function doAjaxPost() {  
 	/* alert("hi"); */
@@ -59,6 +84,7 @@ select.add(option, 0); */
 		  });  
 		}  
 		</script>
+		
 <style>
 #map-canvas {
 	height: 100%;
@@ -140,7 +166,7 @@ p {
 									class="err">*</span> Organization Name :</td>
 								<td valign="top" align="left" class="input_txt" width="70%">
 
-								<select name="org_name" class="input_txtbx_height" id="orgid" onchange="doAjaxPost()" onblur="Validate('orgid')">
+								<select style="width:220px;margin-top:-4px;" name="org_name" id="orgid" onchange="doAjaxPost()" onblur="Validate('orgid')">
 								<option value="Selected">-- Select Organization--</option>
 								<c:forEach items="${orgname}" var="orgname" varStatus="status">
         				        <option value="${orgname}" <%-- <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if> --%>>${orgname}</option>
@@ -149,12 +175,12 @@ p {
 								</select>
 								</td>
 							</tr>
-							<tr class="row1">
+							<tr class="row2">
 								<td valign="middle" align="right" class="input_txt" width="30%"><span
 									class="err">*</span> Branch :</td>
 								<td valign="top" align="left" class="input_txt" width="70%">
-					  <div id="info" style="height:8px; " >
-								<select name="branch" class="input_txtbx_height" id="bid" onchange="doAjaxPost1()" onblur="Validate1('bid')"> 
+					  <div id="info" style="height:8px;" >
+								<select name="branch" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost1()" onblur="Validate1('bid')" disabled="disabled"> 
 								<option value="Selected">-- Select branch--</option>
 								<%-- <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
         				        <option value="${OrgRegistration.branch}">${OrgRegistration.branch}</option>
@@ -173,11 +199,11 @@ p {
 									placeholder="Stop ID" /><br />
 								</td>
 							</tr> -->
-							<tr class="row2">
+							<tr class="row1">
 								<td valign="middle" align="right" class="input_txt" width="30%"><span
 									class="err">*</span> Route No :</td>
-								<td valign="top" align="left" class="input_txt" width="70%" >
-								<div id="info1"><select class="input_txtbx_height" name="route_no" id="imei" onblur="Validate2('imei')">
+								<td valign="middle" align="left" class="input_txt" width="70%" >
+								<div id="info1" style="height:8px;"><select style="width:220px;margin-top:-4px;" name="route_no" id="route_id" onblur="Validate2('route_id')" disabled="disabled">
 							    <option value="" selected>-- Select Route No--</option>
 							     <%-- <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration" varStatus="status">
         				        <option value="${BusRegistration.route_no}">${BusRegistration.route_no}</option>
@@ -222,7 +248,7 @@ p {
 								</td>
 							</tr>
 							--%>
-							<tr class="row2" style="margin-top:20px;">
+							<tr class="row1" style="margin-top:20px;">
 								<td valign="middle" align="right" class="input_txt" ><span
 									class="err">*</span>&nbsp;&nbsp;<a href="#" id="addScnt" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;"> Add Bus Stops :</a><input type="hidden" id="number_of_stops" name="number_of_stops"></td>
 								<td valign="top" align="left" class="input_txt" width="70%" id="p_scents">
@@ -248,10 +274,10 @@ p {
                   <td valign="top" align="left">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="submit_btn" value="Register" ></td>
+                  <td><input type="submit" class="btn" value="Register" ></td>
                   
                   <td> 
-                   <input type="button" class="submit_btn" onclick="window.location.href='welcome'" value="Cancel">
+                   <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
                   </tr>
                   </table>

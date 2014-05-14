@@ -366,7 +366,7 @@ public class RouteDAO {
 	
 	
 
-	/*public int updateRoute(Route route)
+	public int updateRoute(Route route)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -379,8 +379,8 @@ public class RouteDAO {
 			e1.printStackTrace();
 		}
 	    try{
-	    	String cmd="UPDATE tbl_route SET bus_id='"+route.getBus_id()+"',route_id='"+route.getRoute_id()+"',stop_id='"+route.getStop_id()+"',pickup_or_drop='"+route.getPickup_drop_stop()+"',route_from='"+route.getRoute_from()+"',route_to='"+route.getRoute_to()+"',stop_name'"+route.getStop_name()+"',stop_pickup_time='"+route.getStop_pickup_time()+"',stop_drop_time='"+route.getStop_drop_time()+"',date_time='"+route.getDate_time()+"'WHERE route_id='"+route.getRoute_id()+"';";
-	    	String Desc="Update Route "+route.getRoute_id();
+	    	String cmd="UPDATE tbl_route SET stop_id='"+route.getStop_id()+"',trip='"+route.getTrip()+"',latitude='"+route.getLatitude()+"',longitude='"+route.getLatitude()+"',address='"+route.getAddress()+"',bus_arrival_time='"+route.getBus_arrival_time()+"' WHERE route_no='"+route.getRoute_no()+"'";
+	    	String Desc="Update Route "+route.getRoute_no();
 	    	System.out.println(cmd);
 	    	statement.execute(cmd);
 	    	flag=1;
@@ -400,7 +400,7 @@ public class RouteDAO {
 	     		return 1;
 	     	else
 	     		return 0;
-	}*/
+	}
 	
 	
 	

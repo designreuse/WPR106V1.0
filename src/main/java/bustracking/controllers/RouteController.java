@@ -98,7 +98,7 @@ public class RouteController
 		List <String> studroute=new ArrayList<String>();
 		studroute=studentDAO.getStud_route(org_name,branch);
 		
-		returnText=returnText+"<script id='script_imei'>$(document).ready(function() { $('#imei').select2(); });</script><select name='route_no' id='imei' style='width:220px'>";
+		returnText=returnText+"<script id='script_route_id'>$(document).ready(function() { $('#route_id').select2(); });</script><select name='route_no' id='route_id' style='width:220px'>";
 		returnText+="<option value='' selected>--Select Route No--</option>";
 		for(String sr:studroute)
 		{
@@ -179,6 +179,7 @@ public class RouteController
 			 
 				
 		}
+		
 		/*
 			if(request.getParameter("stop_pick["+k+"]").equals("0"))
 				System.out.println(request.getParameter("stop_pick["+k+"]"));
@@ -244,15 +245,80 @@ public class RouteController
 		
 	}
 	
+	// Update Route Information
 	
-	// Message Log Entry
-	
-	public void setmessagelog(Route_view route_view,String route_no){
+	@RequestMapping(value="/update_route_stop", method = RequestMethod.POST)
+
+	public String update_route(HttpServletRequest request,ModelMap model,Route route, Principal principal ) {
 		
+	 //this.setInfo(route, route.getRoute_from(),"both",request.getParameter("route_pick_time"),request.getParameter("route_drop_time"));
+		
+		//System.out.println(request.getParameter("stop[]"));
+		String[] stop_locations=new String[100];
+		String[] stop_pick_drop=new String[100];
+		String[] stop_timings=new String[100];
+		int stop_count=Integer.parseInt(request.getParameter("number_of_stops"));
+		System.out.println(stop_count);
+		stop_locations=request.getParameterValues("stop[0]");
+		System.out.println(stop_locations);
+		stop_pick_drop=request.getParameterValues("stop_pick[0]");
+		System.out.println(stop_pick_drop);
+		stop_timings=request.getParameterValues("particular_stop_pickup_time[0]");
+		System.out.println(stop_timings);
+		//setting the route values
+		  
+		String stop_location;
+		for (int i=0;i<=stop_count;i++)
+		{
+			System.out.println("request.getParameter(stop["+i+"])");
+			if(!request.getParameter("stop["+i+"]").equals(""))
+			{
+				stop_location=request.getParameter("stop["+i+"]");
+				//route.setStop_id(request.getParameter(""));
+				route.setAddress(stop_location);
+				route.setLatitude(getLat(stop_location));
+				route.setLongitude(getLong(stop_location));
+				route.setTrip(request.getParameter("stop_pick["+i+"]"));
+				route.setBus_arrival_time(request.getParameter("particular_stop_pickup_time["+i+"]"));
+				routeDAO.updateRoute(route);
+				
+			}
+			
+			System.out.println(route);
+			 
+				
+		}
+		
+		/*
+			if(request.getParameter("stop_pick["+k+"]").equals("0"))
+				System.out.println(request.getParameter("stop_pick["+k+"]"));
+			this.setInfo(route, stop_location);
+		if(request.getParameter("stop_pick["+k+"]").equals("1"))
+			this.setInfo(route, stop_location);
+		if(request.getParameter("stop_pick["+k+"]").equals("2"))
+			this.setInfo(route, stop_location);
+		k++;
+		*/
 	
+		//System.out.println(request.getParameter("stop_pick["+k+"]"));
+		//route.setStop_id("S"+(k+1));
+		//this.setInfo(route, route.getRoute_to());
+		
+		//model.addAttribute("org_id",orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
+		
+		
+		
+		RouteViewForm routeViewForm=new RouteViewForm();
+		routeViewForm.setRoute_views(routeDAO.getRoutes());
+		model.addAttribute("routeViewForm",routeViewForm);
+		
+		
+		return "view_route";
 	}
 	
-
+	
+	
+	
 	//Ajax for org name and branch
 	
 	@RequestMapping(value="/route_reg_ajax",method=RequestMethod.POST)
@@ -318,7 +384,7 @@ public String viewuser(ModelMap model, Principal principal){
 	return "view_route";
 }*/
 
-// Admin Side Edit 
+// Admin Side Edit Route Information 
 
 
 @RequestMapping(value="/editroute",method=RequestMethod.GET)

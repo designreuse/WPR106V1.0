@@ -197,6 +197,9 @@ public class AddUserDAO{
 	    return MaxID;
 		
 	}
+	
+	// Check Username Already Exists
+	
 	public boolean check_user_name(String username){
 		Connection con = null;
 		Statement statement = null;
@@ -207,15 +210,15 @@ public class AddUserDAO{
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		
-		int count=0;
+		boolean result=false;
+	
 		try{
 			
 			resultSet = statement.executeQuery("select username from tbl_user where username='"+username+"'");
 			
 			if(resultSet.next())
 			{
-				count=1;
+				result=true;
 			}
 			
 			
@@ -229,15 +232,14 @@ public class AddUserDAO{
 	    	releaseStatement(statement);
 	    	releaseConnection(con);	    	
 	    }
-	    if(count==1)
-	    	return false;
-	    else
-	    	return true;
+	    
+	    	return result;
 	    
 		
 	}
 	
-	public boolean check_email(AddUser user){
+	// Check Email Already Exists
+	public boolean check_email(String email){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -248,13 +250,13 @@ public class AddUserDAO{
 			e1.printStackTrace();
 		}
 		
-		int count=0;
+		boolean result=false;
 		try{
 			
-			resultSet = statement.executeQuery("select * from tbl_user where email='"+user.getEmail()+"'");
+			resultSet = statement.executeQuery("select * from tbl_user where email='"+email+"'");
 			if(resultSet.next())
 			{
-				count=1;
+				result=true;
 			}
 			
 			
@@ -268,10 +270,8 @@ public class AddUserDAO{
 	    	releaseStatement(statement);
 	    	releaseConnection(con);	    	
 	    }
-	    if(count==1)
-	    	return false;
-	    else
-	    	return true;
+	    
+	    	return result;
 	    
 		
 	}
