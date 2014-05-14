@@ -28,36 +28,41 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							
 							  <tr>
-							    <td align="left" valign="middle" width="15%" class="input_txtlabel">&nbsp;Org Name &nbsp;<br/>
-							    <select   id="e1"style="width:250px;" name="org_name">
+							    <td align="left" valign="middle" width="15%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Organization Name &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e1"style="width:300px;" name="org_name">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${classSectionForm.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.org_name}">${classSection1.org_name}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel">Branch  &nbsp;<br/>
-							    <select   id="e2"style="width:250px;" name="branch">
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Branch  &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e2"style="width:300px;" name="branch">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${classSectionForm.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.branch}">${classSection1.branch}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel">Class  &nbsp;<br/>
-							    <select   id="e3"style="width:250px;" name="class_std">
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Class   &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e3"style="width:300px;" name="class_std">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${classSectionForm.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.class_std}">${classSection1.class_std}</option>
 							    </c:forEach>
 							    </select></td>
-							    </tr><tr>							   
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel">Section  &nbsp;<br/>
-							    <select   id="e4"style="width:250px;" name="section">
+							    </tr>
+							    <tr><td><font color="#ccc">.</font></td></tr>
+							    <tr>							   
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Section   &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e4"style="width:300px;" name="section">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${classSectionForm.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.section}">${classSection1.section}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="left" valign="middle" width="20%"><input type="submit" class="pressableButton blue" value="Search" ></td>
+							   <td><font color="#ccc">.</font></td>
+							    <td align="right" valign="middle" width="20%"><br>
+							    <input type="submit" class="btn" value="Search" ></td>
+							    <td width="10%"><font color="#ccc" >.</font></td>
 
 							  </tr>
 							</table>
@@ -78,12 +83,12 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								
-         						<td valign="top" align="left" width="15%"> Organization Name</td>					         	
+         						<td valign="top" align="left" width="20.5%"> Organization Name</td>					         	
 					         	<td valign="top" align="left" width="15%"> Branch </td>
-          						<td valign="top" align="left" width="15%">Class</td>
+          						<td valign="top" align="left" width="15.5%">Class</td>
           						<td valign="top" align="left" width="15%"> Section</td>
-          						<td valign="top" align="left" width="15%">service</td>
-          						<td valign="top" align="left" width="25%">Operation</td>
+          						<td valign="top" align="left" width="8%">Service</td>
+          						<td valign="top" align="left" width="9%">Action</td>
           						
           						
         					</tr></table>
@@ -95,17 +100,17 @@
         					<c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
         				       					<tr class="row1">
 							       		
-					     		     	<td valign="top" align="left" style="overflow:hidden;"width="15%">${classSection.org_name}</td>					     		     
+					     		     	<td valign="top" align="left" style="overflow:hidden;"width="20.75%" title="${classSection.org_name}">${classSection.org_name}</td>					     		     
 					     		     
-											<td valign="top" align="left" style="overflow:hidden;"width="15%">${classSection.branch}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="15%">${classSection.class_std}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="15%">${classSection.section}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="15%">${classSection.service}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="25%">
+											<td valign="top" align="left" style="overflow:hidden;"width="15%" title="${classSection.branch}">${classSection.branch}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15.75%" title="${classSection.class_std}">${classSection.class_std}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%" title="${classSection.section}">${classSection.section}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="8%" title="${classSection.service}">${classSection.service}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="8%" >
 										
-										<a href="<c:out value="editclass?org_name=${classSection.org_name}&branch=${classSection.branch}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
+										<a href="<c:out value="editclass?org_name=${classSection.org_name}&branch=${classSection.branch}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 												
-										<a href="<c:out value="deleteclass?org_name=${orgRegistration.org_name}&branch=${classSection.branch}&class=${classSection.class_standard}&section=${classSection.section}"/>" onclick="return confirmation('Are you sure want to Delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
+										<a href="<c:out value="deleteclass?org_name=${orgRegistration.org_name}&branch=${classSection.branch}&class=${classSection.class_std}&section=${classSection.section}"/>" onclick="return confirmation('Are you sure want to Delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>

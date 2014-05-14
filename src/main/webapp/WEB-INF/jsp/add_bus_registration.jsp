@@ -115,12 +115,12 @@
                   <td valign="top" align="left">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="submit_btn"  value="Register" onclick="return check('this')"></td>
+                  <td><input type="submit" class="btn"  value="Register" onclick="return check('this')"></td>
                   <td> 
-                   <input type="reset" class="submit_btn" value="Reset" onclick="window.location.href='busregistration'">
+                   <input type="reset" class="btn" value="Reset" onclick="window.location.href='busregistration'">
                   </td>
                   <td> 
-                   <input type="button" class="submit_btn" onclick="window.location.href='welcome'" value="Cancel">
+                   <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
                   </tr>
                   </table>
@@ -132,13 +132,6 @@
   		</tr>
  	</table></div></td></tr></table>
 </form></div></div>
-<script language="JavaScript">
-function CreateGroup()
-{
-	document.update.action = 'index.php?do=creategroup&type=1';
-	document.update.submit();
-}
-</script>
 <script>
 function Validate(orgid)
 {
@@ -246,10 +239,6 @@ function check(){
 }
 </script>
 
-<jsp:include page="footer.jsp"></jsp:include>
-				                
-
-
 
 
 
@@ -282,6 +271,10 @@ $('#info').html(response);
 		}  
 		</script>
 		
+
+<jsp:include page="footer.jsp"></jsp:include>
+				                
+
 
 
 

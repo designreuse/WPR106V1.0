@@ -1189,19 +1189,20 @@ font-size:11px; font-style:italic; color:#ff0000;
 #GPS_View_container {
     width:100%;
     height:auto;
-    /* border:2px solid green; */
-}
+     /* border:2px solid green; */}
 #GPS_View_menu {
     width:22%;
+    min-height:500px;
     float:left;
     overflow:auto;
-    
+    /* border:1px solid blue; */
 }
 #GPS_View_table {
     width:78%;
-    height:auto;
+    min-height:700px;
     float:left;
     overflow: auto;
+    /* border:1px solid red;  */
     
 }
 

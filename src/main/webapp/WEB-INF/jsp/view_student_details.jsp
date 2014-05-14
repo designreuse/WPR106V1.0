@@ -23,46 +23,48 @@
 			        <form action="findstudents" method="GET">
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							  	<td align="left" valign="middle" width="15%"> Organization Name<br/>
-							    <select id="e1" style="width:250px;" name="org_name">
+							  	<td align="left" valign="middle" width="15%"><span style="line-height:8px;">&nbsp; Organization Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select id="e1" style="width:300px;" name="org_name">
 							     <option value="">Select None</option>
 							    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.org_name}">${studentRegistration.org_name}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="left" valign="middle" width="15%">  Branch<br/>
-							    <select   id="e2"style="width:250px;" name="branch">
+							    <td align="left" valign="middle" width="15%"> <span style="line-height:8px;">&nbsp; Branch&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e2"style="width:300px;" name="branch">
 							     <option value="">Select None</option>
 							    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.branch}">${studentRegistration.branch}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="left" valign="middle" width="15%">Student Roll No<br/>
-							    <select   id="e3"style="width:250px;" name="student_roll_no">
+							    <td align="left" valign="middle" width="15%"><span style="line-height:8px;">&nbsp;Student Roll No&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e3"style="width:300px;" name="student_roll_no">
 							     <option value="">Select None</option>
 							    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.student_roll_no}">${studentRegistration.student_roll_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    
-							  </tr>
+							  </tr><tr><td><font color="#ccc">.</font></td></tr>
 							  <tr>
-							  	<td align="left" valign="middle" width="15%">&nbsp; First Name<br/>
-							    <select   id="e4"style="width:250px;" name="first_name">
+							  	<td align="left" valign="middle" width="15%"><span style="line-height:8px;">&nbsp; First Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e4"style="width:300px;" name="first_name">
 							     <option value="">Select None</option>
 							    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.first_name}">${studentRegistration.first_name}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="left" valign="middle" width="10%">&nbsp;Last Name<br/>
-							    <select   id="e5"style="width:250px;" name="last_name">
+							    <td align="left" valign="middle" width="10%"><span style="line-height:8px;">&nbsp;Last Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e5"style="width:300px;" name="last_name">
 							     <option value="">Select None</option>
 							    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.last_name}">${studentRegistration.last_name}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="left" valign="middle" width="20%">
-							    <input type="submit" class="pressableButton blue" value="Search" ></td>
+							    
+							    <td align="right" valign="middle" width="20%"><br>
+							    <input type="submit" class="btn" value="Search" ></td>
+							    <td width="10%"><font color="#ccc" >.</font></td>
 							 
 							  </tr>
 							</table>
@@ -81,12 +83,12 @@
 </div></div>
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-					         	<td valign="top" align="left" width="15%"> Organization Name</td>
+					         	<td valign="top" align="left" width="20%"> Organization Name</td>
 					         	<td valign="top" align="left" width="15%"> Branch</td>
 					         	<td valign="top" align="left" width="15%"> Roll No</td>
 					         	<td valign="top" align="left" width="15%"> First Name</td>
 					         	<td valign="top" align="left" width="15%"> Last Name</td>
-          						<td valign="top" align="left" width="25%">Operation</td>
+          						<td valign="top" align="left" width="8%">Action</td>
           						
         					</tr>
         				</table>
@@ -95,13 +97,13 @@
 								<c:if test="${fn:length(studentregistrationform.studentregistration) gt 0 }">
         					    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
         				       			<tr class="row1">
-					     		     	<td valign="top" align="left"  style="overflow:hidden;"width="15%">${studentRegistration.org_name}</td>
-					     		     	<td valign="top" align="left"  style="overflow:hidden;"width="15%">${studentRegistration.branch}</td>
-									    <td valign="top" align="left" style="overflow:hidden;"width="15%">${studentRegistration.student_roll_no}</td>
-									    <td valign="top" align="left" style="overflow:hidden;"width="15%">${studentRegistration.first_name}</td>
-									    <td valign="top" align="left" style="overflow:hidden;"width="15%">${studentRegistration.last_name}</td>
-										<td valign="top" align="left" style="overflow:hidden;"width="25%">
-										<a href="<c:out value="edit_student?student_roll_no=${studentRegistration.student_roll_no}&org_name=${studentRegistration.org_name}&branch=${studentRegistration.branch}"/>" ><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
+					     		     	<td valign="top" align="left"  style="overflow:hidden;"width="23%" title="${studentRegistration.org_name}">${studentRegistration.org_name}</td>
+					     		     	<td valign="top" align="left"  style="overflow:hidden;"width="17.3%"title="${studentRegistration.branch}">${studentRegistration.branch}</td>
+									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.student_roll_no}">${studentRegistration.student_roll_no}</td>
+									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.first_name}">${studentRegistration.first_name}</td>
+									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.last_name}">${studentRegistration.last_name}</td>
+										<td valign="top" align="left" style="overflow:hidden;"width="8%">
+										<a href="<c:out value="edit_student?student_roll_no=${studentRegistration.student_roll_no}&org_name=${studentRegistration.org_name}&branch=${studentRegistration.branch}"/>" ><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 										<a href="<c:out value="delete_student?student_roll_no=${studentRegistration.student_roll_no}"/>" onclick="return confirm('Are you sure want to delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 								        <td>
 								     </tr>

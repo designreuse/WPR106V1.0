@@ -92,7 +92,7 @@ public class ClassSectionDAO
 			
 			while(resultSet.next())
 			{
-				classSections.add(new ClassSection(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("class_std"),resultSet.getString("section"),resultSet.getString("service")));
+				classSections.add(new ClassSection(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("class"),resultSet.getString("section"),resultSet.getString("service")));
 			}
 			
 		 }catch(Exception e){

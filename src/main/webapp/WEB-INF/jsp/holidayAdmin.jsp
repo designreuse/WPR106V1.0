@@ -1,10 +1,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<style>#div {display: none}
+</style>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 
 <script id="script_bid">
@@ -19,21 +19,6 @@
     });
 </script>
 
-<script id="script_bid">
-    $(document).ready(function() {
-        $("#inp_id").select2();
-    });
-</script>
-<script id="script_bid">
-    $(document).ready(function() {
-        $("#inp_id1").select2();
-    });
-</script>
-<script id="script_bid">
-    $(document).ready(function() {
-        $("#service").select2();
-    });
-</script>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -95,11 +80,11 @@ select.add(option, 0); */
 			                 </select>
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.org_id"></form:errors></font>
 				                  </td>
-				               </tr>
-				                
+				               </tr></table>
+				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
                         		<tr class="row2"><td width="25%"></td> 
-                        		<td valign="middle" align="left" class="input_txt" ><span class="err">*</span> Branch<br/><span style="color:#f5f5f5;">.</span></td><td width="1%">:</td>
-				                  <td valign="top" align="left" class="input_txt">
+                        		<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Branch<br/><span style="color:#f5f5f5;">.</span></td><td width="1%">:</td>
+				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	
 				                  	 <div id="info" style="height:8px; " > 
 				                  	 	<select  style="width:220px;"name="branch" id="bid" onblur="Validate1('bid')">
@@ -109,15 +94,28 @@ select.add(option, 0); */
 				                  <font color="Red" size="+1"><form:errors path="ClassSection.branch"></form:errors></font>
 				                  </td>
 				                 
-				                </tr> 
+				                </tr></table> <table cellpadding="0" cellspacing="0" border="0" width="100%" >
 						 <tr class="row1"><td width="25%"></td>
 				                <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Number of Days </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<input type="text" value="" name="no_of_days"/>
 				                  	
+				                  	<label><input type="radio" name="group1" class="radio1" data-divclass="div1">Only One Day</label>
+<label><input type="radio" name="group1" class="radio2" data-divclass="div2"> More than One Day</label>
+
+
+
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.class_std"></form:errors></font></td>
-				                </tr>
-				                
+				                </tr></table>
+				                <div id="div" class="div1 content"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
+				                <tr class="row2"><td width="25%"></td>
+					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Holiday Date</td><td width="1%">:</td>
+				                  	<td valign="top" align="left" class="input_txt" width="60%">
+				                  	<input type="text" value="" id="datepicker"name="fromdate"/>
+				                  	
+				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                    
+				                     </tr></table></div>
+				                     <div id="div" class="div2 content"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				                <tr class="row2"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> From Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
@@ -125,30 +123,31 @@ select.add(option, 0); */
 				                  	
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
-				                     </tr>
+				                     </tr></table><table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				                     <tr class="row1"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> To Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<input type="text" value="" id="datepicker1"name="todate"/>			                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
-				                     </tr>
+				                     </tr></table></div>
+				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				               <tr class="row2"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Description</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  <textarea name="description" class="textareanew"></textarea>		                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
-				                     </tr>
-				                
+				                     </tr></table>
+				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
                 <tr class="row1" ><td width="25%"></td>
-				              <td valign="top" align="left"><input type="text" name="start_time" class="timepicker" placeholder="h:mm PM" data-default-time="false"></td>
+				              <td valign="top" align="left"></td>
                  <td width="1%"></td>
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="pressableButton blue" value="Register"></td>
+                  <td><input type="submit" class="btn" value="Register"></td>
                   
                   <td> 
-                   <input type="button" class="pressableButton blue" onclick="window.location.href='welcome'" value="Cancel">
+                   <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
                   
                   </tr>
@@ -165,14 +164,20 @@ select.add(option, 0); */
 </form>
 </div></div>
 
+<!-- <script src="//code.jquery.com/jquery-1.9.1.js"></script> -->
+
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script>
 $(function() {
 	$("#datepicker").datepicker({ minDate: 0});
 	$("#datepicker1").datepicker({ minDate: 0});
 	
 });
-
-
 </script>
-
+<script>
+$('[type="radio"]').click(function () {
+    $('.content').hide();
+    $('.' + $(this).data("divclass")).show();
+});
+</script>
 <jsp:include page="footer.jsp"></jsp:include>

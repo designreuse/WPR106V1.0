@@ -25,10 +25,9 @@
 						<div class="searchpanel">
 						<form action="findBusinessRules" method="GET">
 							 
-							<table >
+							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							  <tr>
-							    <td align="left" valign="middle" width="10%">Org Name :</td>
-							    <td align="left" valign="middle" width="10%">
+							    <td align="left" valign="middle" width="10%"><span style="line-height:8px;">&nbsp;Organization Name :&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    
 							     <select   id="e1"style="width:300px;" name="org_name">
 							      
@@ -36,19 +35,14 @@
 							    <option value="${vieworgBusinessRules1.org_name}">${vieworgBusinessRules1.org_name}</option>
 							    </c:forEach>
 							    </select>
-
-							    
-
-<!-- <input type="text" id="firstname" name="firstname" value=""> -->
 							    </td>
-							    <td align="left" valign="middle" width="8%">&nbsp;Branch:</td>
-							     <td align="left" valign="middle" width="10%">
-							       <select style="width:300px;"  id="e2" name="branch" >
+							    <td align="left" valign="middle" width="8%"><span style="line-height:8px;">&nbsp;Branch:&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select style="width:300px;"  id="e2" name="branch" >
 							    <c:forEach items="${orgBusinessRuleForm.orgBusinessRules}" var="vieworgBusinessRules1" varStatus="status">
 							    <option value="${vieworgBusinessRules1.branch}">${vieworgBusinessRules1.branch}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="center" valign="middle" width="30%">
+							    <td align="center" valign="middle" width="30%"><br/>
 							    <input type="submit" class="btn" value="Search" ></td>
 							 
 							  </tr>
@@ -67,15 +61,15 @@
         				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								
-         						<td valign="top" align="left" width="1%">Organization</td>
-					         	<td valign="top" align="left" width="2%">Branch</td>
-					         	<td valign="top" align="left" width="2%">UseMap</td>
-          						<td valign="top" align="left" width="12%">PickUp Start/end</td>          						
-          						<td valign="top" align="left" width="11%">Drop Start/end</td>
-          						<td valign="top" align="left" width="13%">KGDrop Start/end</td>
-          						<td valign="top" align="left" width="9%">Speed Limit</td>
-          						<td valign="top" align="left" width="9%">SMS Option</td>          						
-          						<td valign="top" align="left" width="13%">Action</td>          						
+         						<td valign="top" align="left" width="23.50%"><span style="line-height:12px;font-weight:bold;"><br/>Organization Name</span></td>
+					         	<td valign="top" align="left" width="14%"><span style="line-height:12px;font-weight:bold;"><br/>Branch</span></td>
+					         	<td valign="top" align="left" width="4%"><span style="line-height:12px;font-weight:bold;"><br/>Use<br/>Map</span></td>
+          						<td valign="top" align="left" width="13%"><span style="line-height:12px;font-weight:bold;"><br/>PickUp <br/>Start/end</span></td>          						
+          						<td valign="top" align="left" width="13%"><span style="line-height:12px;font-weight:bold;"><br/>Drop <br/>Start/end</span></td>
+          						<td valign="top" align="left" width="13%"><span style="line-height:12px;font-weight:bold;"><br/>KGDrop <br/>Start/end</span></td>
+          						<td valign="top" align="left" width="7%"><span style="line-height:12px;font-weight:bold;">Speed<br/> Limit<br/>(kmph)</span></td>
+          						<td valign="top" align="left" width="5%"><span style="line-height:12px;font-weight:bold;"><br/>SMS <br/>Option</span></td>          						
+          						<td valign="top" align="left" width="7%">Action</td>          						
         					</tr></table>
     	<div class="Panel_One_Inner">
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%"class="order-table table">
@@ -84,16 +78,16 @@
         					<c:forEach items="${orgBusinessRuleForm.orgBusinessRules}" var="vieworgBusinessRules" varStatus="status">
         				       <tr class="row1">
         				       
-        				       <td valign="top" align="left" style="overflow:hidden;"width="10%">${vieworgBusinessRules.org_name}</td>
-					         	<td valign="top" align="left" style="overflow:hidden;"width="3%">${vieworgBusinessRules.branch}</td>
-					         	<td valign="top" align="center" style="overflow:hidden;"width="8%">${vieworgBusinessRules.google_map_traffic}</td>
-          						<td valign="top" align="center" style="overflow:hidden;"width="13%">${vieworgBusinessRules.pickup_start_time } &#47; ${vieworgBusinessRules.pickup_end_time }</td>          						
-          						<td valign="top" align="center" style="overflow:hidden;"width="13%">${vieworgBusinessRules.drop_start_time } &#47; ${vieworgBusinessRules.drop_end_time }</td>
+        				       <td valign="top" align="left" style="overflow:hidden;"width="24.5%">${vieworgBusinessRules.org_name}</td>
+					         	<td valign="top" align="left" style="overflow:hidden;"width="14.5%">${vieworgBusinessRules.branch}</td>
+					         	<td valign="top" align="center" style="overflow:hidden;"width="5%">${vieworgBusinessRules.google_map_traffic}</td>
+          						<td valign="top" align="center" style="overflow:hidden;"width="14%">${vieworgBusinessRules.pickup_start_time } &#47; ${vieworgBusinessRules.pickup_end_time }</td>          						
+          						<td valign="top" align="center" style="overflow:hidden;"width="14%">${vieworgBusinessRules.drop_start_time } &#47; ${vieworgBusinessRules.drop_end_time }</td>
           						<td valign="top" align="center" style="overflow:hidden;"width="14%">${vieworgBusinessRules.kg_start_time } &#47; ${vieworgBusinessRules.kg_end_time }</td>
-          						<td valign="top" align="center" style="overflow:hidden;"width="15%">${vieworgBusinessRules.speed_limit }</td>
-          						<td valign="top" align="left" style="overflow:hidden;"width="2%">${vieworgBusinessRules.sms_options }</td> 
-        				        <td valign="top" align="right" style="overflow:hidden;"width="17%">
-							    <a href="<c:out value="editbusinessrulesadmin?org_name=${vieworgBusinessRules.org_name}&branch=${vieworgBusinessRules.branch}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
+          						<td valign="top" align="center" style="overflow:hidden;"width="8%">${vieworgBusinessRules.speed_limit }</td>
+          						<td valign="top" align="left" style="overflow:hidden;"width="6%">${vieworgBusinessRules.sms_options }</td> 
+        				        <td valign="top" align="right" style="overflow:hidden;"width="7.5%">
+							    <a href="<c:out value="editbusinessrulesadmin?org_name=${vieworgBusinessRules.org_name}&branch=${vieworgBusinessRules.branch}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 							    <a href="<c:out value="deleteadminbrules?org_name=${vieworgBusinessRules.org_name}&branch=${vieworgBusinessRules.branch}"/>" onclick="return confirm('Are you sure want to delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>

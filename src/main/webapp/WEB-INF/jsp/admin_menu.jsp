@@ -60,21 +60,6 @@
 			<div class="wrapperMenuSide">
 
 <div class="glossymenu">
-<div class="buttonswitchpanel_search">
-			          <!-- <div class='buttonsheader'> -->
-						&nbsp;<a  href='javascript:history.back();' class="otherspressable back_button" >Back</a>
-						<!-- <a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a> -->
-						<!-- <a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
-						popups
-						<a href="#join_form" id="join_pop" ><img title="Show"src="resources/images/fulltbl.png" style="height:25px;width:35px;"/></a>
-						
-						<a  href='#' > <img title="Download"src="resources/images/download.png" style="height:25px;width:35px;"/></a>
-						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
-						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
-						 -->
-						 <a href="#" class="otherspressable expand_button" onClick="ddaccordion.expandall('submenuheader'); return false">Expand All</a>
-						 <a href="#" class="otherspressable collapse_button" onClick="ddaccordion.collapseall('submenuheader'); return false">Collapse All</a>
-						 <!-- </div> --></div>
 
 <a class="menuitem"  href="welcome" style="padding-left:35px;" >Home</a>
 <!-- style="background: #3bb9ff;" -->
@@ -242,6 +227,22 @@
 	</ul>
 </div>
 </c:if>
+<div class="buttonswitchpanel_search">
+			          <!-- <div class='buttonsheader'> -->
+						&nbsp;<a  href='javascript:history.back();' class="otherspressable back_button" >Back</a>
+						<!-- <a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a> -->
+						<!-- <a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
+						popups
+						<a href="#join_form" id="join_pop" ><img title="Show"src="resources/images/fulltbl.png" style="height:25px;width:35px;"/></a>
+						
+						<a  href='#' > <img title="Download"src="resources/images/download.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
+						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
+						 -->&nbsp;
+						 <a href="#" class="otherspressable expand_button" onClick="ddaccordion.expandall('submenuheader'); return false">Expand All</a>&nbsp;
+						 <a href="#" class="otherspressable collapse_button" onClick="ddaccordion.collapseall('submenuheader'); return false">Collapse All</a>
+						 <!-- </div> --></div>
+						 <br/>
 
 </div>
 
