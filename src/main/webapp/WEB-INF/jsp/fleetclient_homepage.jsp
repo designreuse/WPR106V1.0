@@ -12,21 +12,34 @@
 						
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title" >
-						
-         						<td valign="top" align="left" width="15%" style="padding-left:30px;"> Vehicle Reg.No</td>					         	
+								<td valign="top" align="left" width="10%"> Device Status</td>	
+         						<td valign="top" align="left" width="15%" > Vehicle Reg.No</td>					         	
 					         	<td valign="top" align="left" width="30%"> Current Location</td>
           						<td valign="top" align="center" width="15%"> Current Speed</td>
           						<td valign="top" align="center" width="15%"> Last Updated</td>
           						<td valign="top" align="center" width="25%"> Live Track</td>
-
-
-
 								</tr>
 
-								<!-- Display Admin Userd here  Suresh--> 
+								<!-- Display Admin User id here  Suresh--> 
 									<c:forEach items="${fleetHomepageForm.fleetHomepages}" var="fleetHomepages" varStatus="status">
 							       		<tr class="row1" onmouseover="mouse_event(this,'row_hover');" onmouseout="mouse_event(this,'row1');">
-								           	<td valign="top" align="left"  width="15%"  style="padding-left:30px;">${fleetHomepages.vehicle_no}</td>
+							       			<td valign="top" align="left"  width="10%"  style="padding-left:30px;" align="center">
+								          <c:choose>
+								          <c:when test="${fleetHomepages.device_status eq 0}">
+								          <img src="resources/images/Map_Markers/red_round_button.png" title="Not Responding" style="width:15px;height:15px;"/>
+								          </c:when>
+								          <c:when test="${fleetHomepages.device_status eq 1}">
+								          <img src="resources/images/Map_Markers/green_round_button.png" title="Traceable" style="width:15px;height:15px;"/>
+								          </c:when>
+								          <c:otherwise>
+								          <img src="resources/images/Map_Markers/yellow_round_button.jpg" title="No GPS Signal" style="width:15px;height:15px;"/>
+								         
+								          </c:otherwise>
+								          </c:choose>
+								          </td>
+								          
+								          
+								           	<td valign="top" align="left"  width="15%">${fleetHomepages.vehicle_no}</td>
 											<td valign="top" align="left" width="30%">${fleetHomepages.address}</td>
 											<td valign="top" align="center" width="15%">${fleetHomepages.speed}</td>
 											<td valign="top" align="center" width="15%">${fleetHomepages.date_time}</td>
