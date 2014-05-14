@@ -83,7 +83,7 @@ select.add(option, 0); */
     						<tr class="row2">
 				                  <td valign="middle" align="right" class="input_txt" width="40%" ><span class="err">*</span> Organization :</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
-				                  	<select  style="width:220px;"name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
+				                  	<select  style="width:220px;" name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
         				        <option value="${orgname_for_school}" >${orgname_for_school}</option>
@@ -93,12 +93,11 @@ select.add(option, 0); */
 				                  </td>
 				               </tr>
 				                
-                        		<tr class="row2">
-                        		<td valign="middle" align="right" class="input_txt" "><span class="err">*</span> Branch:</td>
-				                  <td valign="top" align="left" class="input_txt">
-				                  	
-				                  	 <div id="info" style="height:8px; " > 
-				                  	 	<select  style="width:220px;"name="branch" id="bid" onblur="Validate1('bid')">
+                        		<tr class="row1">
+                        		<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Branch:</td>
+				                  <td valign="top" align="left" class="input_txt" width="60%">
+				                  	<div id="info" style="height:8px;" > 
+				                  	 	<select  style="width:220px;"name="branch" id="bid" onblur="Validate1('bid')" disabled="disabled">
 							    <option value="">-- Select branch--</option>
 							  </select>
         				       </div> 
@@ -106,7 +105,7 @@ select.add(option, 0); */
 				                  </td>
 				                 
 				                </tr> 
-						  <tr class="row1">
+						  <tr class="row2">
 				                <td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Class :</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
@@ -130,7 +129,7 @@ select.add(option, 0); */
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.class_std"></form:errors></font></td>
 				                </tr>
 				                
-				                <tr class="row2">
+				                <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Section:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<select  style="width:220px;"id="inp_id1" name="section" value="${class_section.section}">
@@ -165,7 +164,7 @@ select.add(option, 0); */
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
 				                     </tr>
-				                     <tr class="row1">
+				                     <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Services:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<select name="service" style="width:220px;"id="service">

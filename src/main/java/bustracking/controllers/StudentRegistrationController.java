@@ -111,7 +111,7 @@ public class StudentRegistrationController {
 		List <String> branch=new ArrayList<String>();
 		branch=busDAO.getBus_id(org_name);
 		
-		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select name='branch' id='bid' onchange='doAjaxPost1()' >";
+		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select name='branch' id='bid' onchange='doAjaxPost1()' style='width:220px' >";
 		returnText+="<option value='' selected>--Select Branch--</option>";
 		for(String bname:branch)
 		{
@@ -209,7 +209,7 @@ public class StudentRegistrationController {
 		List <String> pickup_location=new ArrayList<String>();
 		pickup_location=busDAO.getPickupStop_location(pickup_route_no);
 		
-		returnText=returnText+"<script id='script_section_id'>$(document).ready(function() { $('#pickup_location_id').select2(); });</script><select name='pickup_point_address' id='pickup_location_id' style='width:220:px'>";
+		returnText=returnText+"<script id='script_section_id'>$(document).ready(function() { $('#pickup_location_id').select2(); });</script><select name='pickup_point_address' id='pickup_location_id' style='width:220px'>";
 		returnText+="<option value='' selected>--Select PickUp Location--</option>";
 		for(String pickup_locationname:pickup_location)
 		{

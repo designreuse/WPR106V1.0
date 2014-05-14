@@ -89,7 +89,7 @@
 				                  <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span> Drop Point Address</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<div id="drop_address" style="height:8px;">
-				                  	<select  name="drop_point_address" style="width:220px;"id="drop_location_id" onblur="Validate1('bid')">
+				                  	<select  name="drop_point_address" style="width:220px;"id="drop_location_id" onblur="Validate1('bid')" disabled="disabled">
 							    <option value="Selected">-- Select Drop Location--</option>
 				                  	</select>
 				                  	</div>
@@ -101,13 +101,13 @@
                         		<td valign="middle" align="left" class="input_txt" ><span class="err">*</span>Branch <br/>.</td>:</td><td width="0.5%">:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<div id="info" style="height:8px;">
-				                  	<select  style="width:220px;"onchange="doAjaxPost1()" name="branch" id="bid" onblur="Validate1('bid')">
+				                  	<select  style="width:220px;"onchange="doAjaxPost1()" name="branch" id="bid" onblur="Validate1('bid')" disabled="disabled">
 							    <option value="Selected">-- Select branch--</option>
 				                  	</select><br/>
 				                  	</div>
 				                  	</td>
 				                 <td valign="middle" align="left" class="input_txt"><span class="err">*</span> KG Drop </td><td width="0.5%">:</td>
-				                  <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <td valign="middle" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="checkbox"  id="inp_id" name="kg_drop" value="${studentDetails.pickup_location}" />
 				                  	
 				                  </td>
@@ -196,7 +196,7 @@
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Pickup Route No </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	 <div id="info1">
-				                  	 <select style="width:220px;"name="pickup_route_no"  id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()">
+				                  	 <select style="width:220px;"name="pickup_route_no"  id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()" disabled="disabled">
 					               <option value="" selected>--Select PickUp Route No--</option>
 					               <%-- <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}">${route_no}</option> 
@@ -216,7 +216,7 @@
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Pickup Point Address </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	 <div id="pickup_address" style="height:8px;">
-				                  	 <select  name="pickup_point_address" style="width:220px;"id="pickup_location_id" onblur="Validate1('bid')">
+				                  	 <select  name="pickup_point_address" style="width:220px;"id="pickup_location_id" onblur="Validate1('bid')" disabled="disabled">
 							    <option value="Selected">-- Select PickUp Location--</option>
 				                  	</select>
 				                  	</div>
@@ -225,7 +225,7 @@
 				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Class</td><td width="0.5%">:</td>
 					               <td valign="middle" align="left" class="input_txt">
 					               <div id="info3">
-					                <select name="class_standard" id="class_standard_id"style="width:220px;" onchange="doAjaxPost_section()" >
+					                <select name="class_standard" id="class_standard_id"style="width:220px;" onchange="doAjaxPost_section()" disabled="disabled" >
 					               <option value="" selected>--Select Class--</option>
 					               <%-- <c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
         				        <option value="${classSection.class_std}">${classSection.class_std}</option>
@@ -238,7 +238,7 @@
 				                    <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Drop Route No </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	 <div id="info2"><select style="width:220px;" name="drop_route_no"  onchange="doAjaxPost_drop_route_no()" id="drop_route_id">
+				                  	 <div id="info2"><select style="width:220px;" name="drop_route_no"  onchange="doAjaxPost_drop_route_no()" id="drop_route_id" disabled="disabled">
 					               <option value="" selected>--Select Drop Route No--</option>
 					               <%-- <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}">${route_no}</option>
@@ -250,7 +250,7 @@
 				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Section</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
 					              <div id="info_section"> 
-					              <select style="width:220px;"name="section" id="section_id" >
+					              <select style="width:220px;"name="section" id="section_id" disabled="disabled">
 					               <option value="" selected>--Select Section--</option>
 					               <%-- <c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
         				        <option value="${classSection.section}">${classSection.section}</option>
@@ -348,7 +348,7 @@ $('#info3').html(two_drop[2]);
 
 <script type="text/javascript">
 function doAjaxPost_section() { 
-	alert("calling!!!");
+	//alert("calling!!!");
 	var orgname = $('#orgid').val();
 	var branch=$('#bid').val();
 	var classstandard=$('#class_standard_id').val();

@@ -257,6 +257,7 @@ public class RouteController
 		String[] stop_locations=new String[100];
 		String[] stop_pick_drop=new String[100];
 		String[] stop_timings=new String[100];
+		System.out.println("working...");
 		int stop_count=Integer.parseInt(request.getParameter("number_of_stops"));
 		System.out.println(stop_count);
 		stop_locations=request.getParameterValues("stop[0]");
@@ -270,10 +271,14 @@ public class RouteController
 		String stop_location;
 		for (int i=0;i<=stop_count;i++)
 		{
+			String locations=request.getParameter("stop["+i+"]");
+			System.out.println(locations);
 			System.out.println("request.getParameter(stop["+i+"])");
 			if(!request.getParameter("stop["+i+"]").equals(""))
 			{
+				System.out.println("inside loop");
 				stop_location=request.getParameter("stop["+i+"]");
+				System.out.println(stop_location);
 				//route.setStop_id(request.getParameter(""));
 				route.setAddress(stop_location);
 				route.setLatitude(getLat(stop_location));
