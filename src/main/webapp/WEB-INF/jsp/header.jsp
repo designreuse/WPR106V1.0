@@ -15,7 +15,7 @@
 <script type="text/javascript"	src="<c:url value="/resources/js/WelcomeScreenNew/menu_jquery.js" />"></script>
 <script type="text/javascript"	src="<c:url value="/resources/js/ddaccordion.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/ddlevelsmenu.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/clock.js" />"></script>
+
 <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/inner-clr.css" />" rel="stylesheet" type="text/css" />
 

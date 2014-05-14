@@ -395,12 +395,13 @@ ul.pagination li.page a:hover {
 	background: url(../images/bg_buttons.png) repeat-x top;
 	border: 1px solid #0D87AE!important;
 	color: #fff;
-	font-size: 11px;
+	font-size: 12px;
 	padding: 7px 10px;
-	boirder-radius: 7px;
+	border-radius: 2px;
 	-moz-border-radius: 7px;
-	font-weight: 700;
+	font-weight:normal;
 	border: none;
+	font-style:normal;
 }
 .btn:hover {
 	background: url(../images/bg_buttons.png) 0 -50px;
@@ -1248,9 +1249,9 @@ input[type="text"]{
 
 input[type="text"]:focus {
 	border-color: #3bb9ff;
-	-webkit-box-shadow: inset 0px 0px 10px 0px #ddd;
-	-moz-box-shadow: inset 0px 0px 10px 0px #ddd;
-	box-shadow: inset 0px 0px 10px 0px #86D4FE;
+	-webkit-box-shadow: inset 0px 0px 5px 0px #ddd;
+	-moz-box-shadow: inset 0px 0px 5px 0px #ddd;
+	box-shadow: inset 0px 0px 5px 0px #86D4FE;
 }
 input[type="password"]{
 	outline: none;

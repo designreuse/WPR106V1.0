@@ -140,7 +140,7 @@ select.add(option, 0); */
 				                     </tr>
 				                
                 <tr class="row1" ><td width="25%"></td>
-				              <td valign="top" align="left"></td>
+				              <td valign="top" align="left"><input type="text" name="start_time" class="timepicker" placeholder="h:mm PM" data-default-time="false"></td>
                  <td width="1%"></td>
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">
@@ -169,6 +169,7 @@ select.add(option, 0); */
 $(function() {
 	$("#datepicker").datepicker({ minDate: 0});
 	$("#datepicker1").datepicker({ minDate: 0});
+	
 });
 
 

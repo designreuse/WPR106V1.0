@@ -23,15 +23,7 @@
                         </a></div>
 			        </div>
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    	<c:if test="${success==true}">
-        <tr>
-        <td valign="top" align="left" style="padding:5px 0 10px 0;">&nbsp;
-            <div id="success_statusbar" class="status success">
-            <p class="closestatus"><a title="Close" href="viewuser">x</a></p>
-            <p><img alt="Success" src="resources/images/icons/icon_success.png"><span>Success!</span>.</p>
-          </div>
-      </tr>
-    </c:if> 
+    	
 <tr>
 
 <td>
@@ -41,11 +33,11 @@
  
 <form action="findbus" method="GET">
 							 
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<table width="100%" border="1" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="15%" class="input_txtlabel"> Organization Name &nbsp;
+							    <td align="left" valign="middle" width="15%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Organization Name &nbsp;<br/><font color="#ccc">.</font></span>
 							    <br/>
-							    <select   id="e1"style="width:250px;" name="org_name">
+							    <select   id="e1"style="width:300px;" name="org_name">
 							       <option value="">Select None</option>
 							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.org_name}">${BusRegistration1.org_name}</option>
@@ -53,18 +45,18 @@
 							    </select>
 							    </td>
 							    
-								<td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp; Branch &nbsp;
+								<td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Branch &nbsp;<br/><font color="#ccc">.</font></span>
 								<br/>
-							    <select   id="e2"style="width:250px;" name="branch">
+							    <select   id="e2"style="width:300px;" name="branch">
 							     <option value="">Select None</option>
 							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.branch}">${BusRegistration1.branch}</option>
 							    </c:forEach>
 							    </select>
 								</td>
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp;Bus Registration No &nbsp;
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Bus Registration No &nbsp;<br/><font color="#ccc">.</font></span>
 							    <br/>
-							    <select   id="e3"style="width:250px;" name="vechicle_reg_no">
+							    <select   id="e3"style="width:300px;" name="vechicle_reg_no">
 							     <option value="">Select None</option>
 							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.vechicle_reg_no}">${BusRegistration1.vechicle_reg_no}</option>
@@ -73,10 +65,13 @@
 							    </td>
 							    
 							  </tr>
+							  
+                                 <tr><td><font color="#ccc">.</font></td>
+                                 <tr>
 							  <tr >
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp;Device IMEI No: &nbsp;
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:5px;">&nbsp;Device IMEI No: &nbsp;<br/><font color="#ccc">.</font></span>
 							    <br/>
-							    <select   id="e4"style="width:250px;" name="device_imei_number">
+							    <select   id="e4"style="width:300px;" name="device_imei_number">
 							      <option value="">Select None</option>
 							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.device_imei_number}">${BusRegistration1.device_imei_number}</option>
@@ -84,9 +79,10 @@
 							    </select>
 							    </td>
 							    
-							    <td align="left" valign="middle" width="20%"><br/>
+							     <td><font color="#ccc">.</font></td>
+							    <td align="right" valign="middle" width="20%"><br>
 							    <input type="submit" class="btn" value="Search" ></td>
-							 
+							    <td width="10%"><font color="#ccc" >.</font></td>
 							  </tr>
 							
 							</table>
