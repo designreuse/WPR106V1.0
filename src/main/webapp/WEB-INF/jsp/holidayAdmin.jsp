@@ -119,7 +119,7 @@ select.add(option, 0); */
 				                <tr class="row2"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> From Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<input type="text" value="" id="datepicker"name="fromdate"/>
+				                  	<input type="text" value="" id="datepicker2"name="fromdate"/>
 				                  	
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
@@ -171,7 +171,7 @@ select.add(option, 0); */
 $(function() {
 	$("#datepicker").datepicker({ minDate: 0});
 	$("#datepicker1").datepicker({ minDate: 0});
-	
+	$("#datepicker2").datepicker({ minDate: 0});
 });
 </script>
 <script>

@@ -6,9 +6,32 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 
+<script id="script_e3">
+    $(document).ready(function() {
+        $("#carrierid").select2();
+    });
+</script>
+<script id="script_e3">
+    $(document).ready(function() {
+        $("#manuid").select2();
+    });
+</script>
+<script id="script_e3">
+    $(document).ready(function() {
+        $("#imei").select2();
+    });
+</script>
+
+<script id="script_e3">
+    $(document).ready(function() {
+        $("#apn_id").select2();
+    });
+</script>
+
+<jsp:include page="header.jsp"></jsp:include>
      <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table"> 
@@ -49,7 +72,7 @@
     							<td width="20%"></td>
 				                  <td valign="middle" width="24%"  align="left" class="txtinput"><span class="err">*</span>  Device Manufacturer Name:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  <input type="hidden" value="" name="org_id"/>
+				                  <input type="hidden" value="" id="e1"name="org_id"/>
 									<%-- <input type="text" class="org_input_txtbx_height1" id="manuid" onblur="toTitleCase('manuid')" name="manufacturer" oninput="validateAlpha()" value=""/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font> --%>
 				                 <div id="info9"> <select name="manufacturer"  id="manuid" style="width:220px;"onblur="Validate('manuidid')" >  
@@ -254,11 +277,11 @@
                    --> <tr><td width="50%">
                    Device Sim Configure
                    
-                   </td><td><input type="checkbox" class="org_input_txtbx_height1" name="device_sim_configure"/></td></tr>
+                   </td><td><input type="radio"  name="device_sim_configure" value="yes"/> yes  <input type="radio"  name="device_sim_configure" value="no"/> No</td></tr>
                    <tr><td width="50%">
                   
                    
-                   </td><td><input type="button" class="pressableButton blue" value="Configure"/></td></tr>
+                   </td><td><input type="button" class="btn" value="Configure"/></td></tr>
                    
                    <tr><td width="50%">
                    Configuration Conformation
@@ -283,7 +306,7 @@
                 <!--   </td><td><input type="submit" class="pressableButton blue" value="Submit"/></td></tr> --> 
 
 
-                   </td><td><input type="submit" class="pressableButton blue" value="Submit" onclick="return check('this')"/></td></tr> 
+                   </td><td><input type="submit" class="btn" value="Submit" onclick="return check('this')"/></td></tr> 
 
                    
                  </table>
@@ -298,7 +321,6 @@
                   </form></div></div>
                   
               
-<jsp:include page="footer.jsp"></jsp:include>
 <script>
 function validateAlpha(){
     var textInput = document.getElementById("manuid").value;
@@ -511,22 +533,8 @@ select.add(option, 0); */
 		}  
 		</script>
 		
-		
-	
-<script>
-$(function() {
-$( "#datepicker").datepicker({dateFormat:'yy-mm-dd'});
-});
 
-$(function() {
-	$( "#datepicker1").datepicker({dateFormat:'yy-mm-dd'});
-	});
 	
-$(function() {
-	$( "#txtDate").datepicker({dateFormat:'yy-mm-dd'});
-	});
-</script>	
-		
 <!-- 		<script>
 function addDate(){
 date = new Date();
@@ -636,3 +644,22 @@ $('#info11').html(two_drop[10]);
 		  });  
 		}  
 		</script>
+		
+				
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>		
+<script>
+$(function() {
+$( "#datepicker").datepicker({dateFormat:'yy-mm-dd'});
+});
+
+$(function() {
+	$( "#datepicker1").datepicker({dateFormat:'yy-mm-dd'});
+	});
+	
+$(function() {
+	$( "#txtDate").datepicker({dateFormat:'yy-mm-dd'});
+	});
+</script>	
+
+
+<jsp:include page="footer.jsp"></jsp:include>
