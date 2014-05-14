@@ -3,124 +3,122 @@ package bustracking.model;
 public class Trackinginfo
 {
 	private String org_id;
-	public Trackinginfo(String latitude, String langitude) {
-		super();
-		this.latitude = latitude;
-		this.langitude = langitude;
-	}
-	private String route_id;
-	private String device_id;
-	private String time_stamp;
-	private String pickup_stop_id;
-	private String drop_stop_id;
+	
+	private String vechicle_reg_no;
+	
 	private String latitude;
-	private String langitude;
-	private String speed_kph;
-	private String heading;
-	private String altitude;
+	
+	private String longitude;
+	
+	private String bus_arrival_time;
+	
+	private String speed;
+	
+	private String exceed_speed_limit;
+	
+	private String bus_tracking_time;
+	
 	private String address;
-	private String message_sent;
+	
+	private String flag;
+
+	public Trackinginfo(String org_id, String vechicle_reg_no, String latitude,
+			String longitude, String bus_arrival_time, String speed,
+			String exceed_speed_limit, String bus_tracking_time,
+			String address, String flag) {
+		super();
+		this.org_id = org_id;
+		this.vechicle_reg_no = vechicle_reg_no;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.bus_arrival_time = bus_arrival_time;
+		this.speed = speed;
+		this.exceed_speed_limit = exceed_speed_limit;
+		this.bus_tracking_time = bus_tracking_time;
+		this.address = address;
+		this.flag = flag;
+	}
+
 	public String getOrg_id() {
 		return org_id;
 	}
+
 	public void setOrg_id(String org_id) {
 		this.org_id = org_id;
 	}
-	public String getRoute_id() {
-		return route_id;
+
+	public String getVechicle_reg_no() {
+		return vechicle_reg_no;
 	}
-	public void setRoute_id(String route_id) {
-		this.route_id = route_id;
+
+	public void setVechicle_reg_no(String vechicle_reg_no) {
+		this.vechicle_reg_no = vechicle_reg_no;
 	}
-	public String getDevice_id() {
-		return device_id;
-	}
-	public void setDevice_id(String device_id) {
-		this.device_id = device_id;
-	}
-	public String getTime_stamp() {
-		return time_stamp;
-	}
-	public void setTime_stamp(String time_stamp) {
-		this.time_stamp = time_stamp;
-	}
-	public String getPickup_stop_id() {
-		return pickup_stop_id;
-	}
-	public void setPickup_stop_id(String pickup_stop_id) {
-		this.pickup_stop_id = pickup_stop_id;
-	}
-	public String getDrop_stop_id() {
-		return drop_stop_id;
-	}
-	public void setDrop_stop_id(String drop_stop_id) {
-		this.drop_stop_id = drop_stop_id;
-	}
+
 	public String getLatitude() {
 		return latitude;
 	}
+
 	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
-	public String getLangitude() {
-		return langitude;
+
+	public String getLongitude() {
+		return longitude;
 	}
-	public void setLangitude(String langitude) {
-		this.langitude = langitude;
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
-	public String getSpeed_kph() {
-		return speed_kph;
+
+	public String getBus_arrival_time() {
+		return bus_arrival_time;
 	}
-	public void setSpeed_kph(String speed_kph) {
-		this.speed_kph = speed_kph;
+
+	public void setBus_arrival_time(String bus_arrival_time) {
+		this.bus_arrival_time = bus_arrival_time;
 	}
-	public String getHeading() {
-		return heading;
+
+	public String getSpeed() {
+		return speed;
 	}
-	public void setHeading(String heading) {
-		this.heading = heading;
+
+	public void setSpeed(String speed) {
+		this.speed = speed;
 	}
-	public String getAltitude() {
-		return altitude;
+
+	public String getExceed_speed_limit() {
+		return exceed_speed_limit;
 	}
-	public void setAltitude(String altitude) {
-		this.altitude = altitude;
+
+	public void setExceed_speed_limit(String exceed_speed_limit) {
+		this.exceed_speed_limit = exceed_speed_limit;
 	}
+
+	public String getBus_tracking_time() {
+		return bus_tracking_time;
+	}
+
+	public void setBus_tracking_time(String bus_tracking_time) {
+		this.bus_tracking_time = bus_tracking_time;
+	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getMessage_sent() {
-		return message_sent;
+
+	public String getFlag() {
+		return flag;
 	}
-	public void setMessage_sent(String message_sent) {
-		this.message_sent = message_sent;
+
+	public void setFlag(String flag) {
+		this.flag = flag;
 	}
-	public Trackinginfo(String org_id, String route_id, String device_id,
-			String time_stamp, String pickup_stop_id, String drop_stop_id,
-			String latitude, String langitude, String speed_kph,
-			String heading, String altitude, String address, String message_sent) {
-		super();
-		this.org_id = org_id;
-		this.route_id = route_id;
-		this.device_id = device_id;
-		this.time_stamp = time_stamp;
-		this.pickup_stop_id = pickup_stop_id;
-		this.drop_stop_id = drop_stop_id;
-		this.latitude = latitude;
-		this.langitude = langitude;
-		this.speed_kph = speed_kph;
-		this.heading = heading;
-		this.altitude = altitude;
-		this.address = address;
-		this.message_sent = message_sent;
-	}
-	public Trackinginfo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	
 }

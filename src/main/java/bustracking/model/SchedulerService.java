@@ -40,28 +40,27 @@ public class SchedulerService {
 	//@Scheduled(fixedRate=5000)
 	@Scheduled(cron="*/5 * * * * ?")
 	public void doSchedule() {
-		/*logger.debug("Start schedule");
+logger.debug("Start schedule");
 		
-		for (int i = 0; i < 5; i++) {
-			logger.debug("Delegate to worker " + i);
+		/*for (int i = 0; i < 5; i++) {
+		*/	logger.debug("Delegate to worker ");
 		
-		worker.work();
+			worker.work();
 			try
 			{
 				System.out.println("Start sending..!!");
-			//	messageSending.collectinfo();
-			//messageSender.sendSMS("6315896007","Test Message");
+				messageSending.doProcess();
 				System.out.println("calling function!!!");
-			System.out.println("Send");
+ 			System.out.println("Send");
 			}
 			catch(Exception ex)
 			{
 				System.out.println(ex.toString());
 			}
 			
-        }
+        /*}*/
 		
-		logger.debug("End schedule");*/
+		logger.debug("End schedule");
 	}
 	
 

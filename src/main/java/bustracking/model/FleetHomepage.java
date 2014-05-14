@@ -3,6 +3,8 @@ package bustracking.model;
 
 public class FleetHomepage {
 
+	private String device_status;
+	
 	private String vehicle_no;
 	
 	private String address;
@@ -13,14 +15,24 @@ public class FleetHomepage {
 	
 	private String device_imei_number;
 
-	public FleetHomepage(String vehicle_no, String address, String speed,
+	public FleetHomepage(String device_status,String vehicle_no, String address, String speed,
 			String date_time, String device_imei_number) {
 		super();
+		
+		this.device_status=device_status;
 		this.vehicle_no = vehicle_no;
 		this.address = address;
 		this.speed = speed;
 		this.date_time = date_time;
 		this.device_imei_number = device_imei_number;
+	}
+
+	public String getDevice_status() {
+		return device_status;
+	}
+
+	public void setDevice_status(String device_status) {
+		this.device_status = device_status;
 	}
 
 	public String getVehicle_no() {

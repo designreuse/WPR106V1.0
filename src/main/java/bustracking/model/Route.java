@@ -5,11 +5,96 @@ public class Route
 	private String org_id;
 	private String route_no;
 	private String stop_id;
+	
+	private String tracking_date;
+	
+	public String getTracking_date() {
+		return tracking_date;
+	}
+
+	public void setTracking_date(String tracking_date) {
+		this.tracking_date = tracking_date;
+	}
 	private String trip;
 	private String address;
 	private String latitude;
 	private String longitude;
 	private String bus_arrival_time;
+	private String speed;
+	
+	public Route(String org_id, String route_no, String stop_id,
+			String tracking_date, String trip, String latitude,
+			String longitude, String bus_arrival_time, String speed) {
+		super();
+		this.org_id = org_id;
+		this.route_no = route_no;
+		this.stop_id = stop_id;
+		this.tracking_date = tracking_date;
+		this.trip = trip;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.bus_arrival_time = bus_arrival_time;
+		this.speed = speed;
+	}
+
+	//Variable for message control
+	
+	public String getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(String speed) {
+		this.speed = speed;
+	}
+	private String last_message_send_pick;
+	private String last_message_send_drop;
+	private String last_message_send_kg_pick;
+	private String last_message_send_kg_drop;
+	
+	
+	
+	
+	public Route(String org_id, String route_no, String stop_id, String trip,
+			String latitude, String longitude, String last_message_send_pick,
+			String last_message_send_drop, String last_message_send_kg_pick,
+			String last_message_send_kg_drop) {
+		super();
+		this.org_id = org_id;
+		this.route_no = route_no;
+		this.stop_id = stop_id;
+		this.trip = trip;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.last_message_send_pick = last_message_send_pick;
+		this.last_message_send_drop = last_message_send_drop;
+		this.last_message_send_kg_pick = last_message_send_kg_pick;
+		this.last_message_send_kg_drop = last_message_send_kg_drop;
+	}
+	
+	public String getLast_message_send_kg_pick() {
+		return last_message_send_kg_pick;
+	}
+	public void setLast_message_send_kg_pick(String last_message_send_kg_pick) {
+		this.last_message_send_kg_pick = last_message_send_kg_pick;
+	}
+	public String getLast_message_send_kg_drop() {
+		return last_message_send_kg_drop;
+	}
+	public void setLast_message_send_kg_drop(String last_message_send_kg_drop) {
+		this.last_message_send_kg_drop = last_message_send_kg_drop;
+	}
+	public String getLast_message_send_pick() {
+		return last_message_send_pick;
+	}
+	public void setLast_message_send_pick(String last_message_send_pick) {
+		this.last_message_send_pick = last_message_send_pick;
+	}
+	public String getLast_message_send_drop() {
+		return last_message_send_drop;
+	}
+	public void setLast_message_send_drop(String last_message_send_drop) {
+		this.last_message_send_drop = last_message_send_drop;
+	}
 	public Route() {
 		super();
 		// TODO Auto-generated constructor stub
