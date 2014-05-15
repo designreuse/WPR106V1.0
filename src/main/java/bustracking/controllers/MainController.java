@@ -300,7 +300,7 @@ else{
 	public String clientsmsparent(HttpServletRequest request,ModelMap model, Principal principal ) {
 		
 		
-		return "client_sms_parent";
+		return "client_smstoparent";
 	}
 	
 

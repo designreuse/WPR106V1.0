@@ -72,7 +72,7 @@
     							<td width="20%"></td>
 				                  <td valign="middle" width="24%"  align="left" class="txtinput"><span class="err">*</span>  Device Manufacturer Name:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  <input type="hidden" value="" id="e1"name="org_id"/>
+
 									<%-- <input type="text" class="org_input_txtbx_height1" id="manuid" onblur="toTitleCase('manuid')" name="manufacturer" oninput="validateAlpha()" value=""/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font> --%>
 				                 <div id="info9"> <select name="manufacturer"  id="manuid" style="width:220px;"onblur="Validate('manuidid')" >  
@@ -81,7 +81,6 @@
                                    </select>
                                    </div> 
 				                  </td>	
-				                  
 				                  <td valign="middle"  width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Card Carrier:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<%-- <input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_contact_person_name_id" onkeypress="return onlyAlphabets(event,this);" name="contact_person_name" value="${organisation.contact_person_name}" />
