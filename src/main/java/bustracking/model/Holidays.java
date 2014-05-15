@@ -37,5 +37,10 @@ public class Holidays{
 		this.holiday_reason = holiday_reason;
 	}
 	
+	public Holidays() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 }

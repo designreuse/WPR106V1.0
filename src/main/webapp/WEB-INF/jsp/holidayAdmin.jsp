@@ -51,7 +51,7 @@ select.add(option, 0); */
 		</script>
 
 
-<form action="insert_class_section" method="POST">
+<form action="insert_holidays" method="POST">
 <table class="margin_table">
 
       <tr>
@@ -99,8 +99,8 @@ select.add(option, 0); */
 				                <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Number of Days </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
-				                  	<label><input type="radio" name="group1" class="radio1" data-divclass="div1">Only One Day</label>
-<label><input type="radio" name="group1" class="radio2" data-divclass="div2"> More than One Day</label>
+				                  	<label><input type="radio" name="no_days" class="radio1" data-divclass="div1">Only One Day</label>
+<label><input type="radio" name="no_days" class="radio2" data-divclass="div2"> More than One Day</label>
 
 
 
@@ -110,7 +110,7 @@ select.add(option, 0); */
 				                <tr class="row2"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Holiday Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<input type="text" value="" id="datepicker"name="fromdate"/>
+				                  	<input type="text" value="" id="datepicker" name="holiday_date"/>
 				                  	
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
@@ -134,7 +134,7 @@ select.add(option, 0); */
 				               <tr class="row2"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Description</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  <textarea name="description" class="textareanew"></textarea>		                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  <textarea name="holiday_reason" class="textareanew"></textarea>		                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
 				                     </tr></table>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
