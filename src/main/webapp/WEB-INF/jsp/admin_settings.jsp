@@ -247,9 +247,9 @@ $('#timepicker6').timepicker({
                 	 
                   	<table cellpadding="0" cellspacing="0" border="0" style="width:30%;margin:0 0 0 30%;">
                   <tr>
-                  <td width="1%"><input type="submit" class="btn" value="Register" ></td>
+                  <td width="1%" valign="middle"><input type="submit" class="btn" value="Register" ></td>
                   
-                  <td width="1%" align="left"> 
+                  <td width="1%" align="left" valign="middle"> 
                    <input type="button" class="btn" value="Cancel" onclick="window.location.href='welcome'">
                   </td>
                   </tr>

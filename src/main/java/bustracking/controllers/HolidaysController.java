@@ -109,6 +109,9 @@ public class HolidaysController{
 		return "holidayAdmin";
 	}
 	
+	
+	// Number of Days Between Dates
+	
 	public int numberOfDays(String fromDate,String toDate)
 	   {    
 	       java.util.Calendar cal1 = new java.util.GregorianCalendar();
