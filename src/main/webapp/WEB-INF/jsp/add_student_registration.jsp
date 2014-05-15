@@ -267,12 +267,14 @@
                  <td valign="top">
                   <table cellpadding="0" cellspacing="0" border="0" >
                   <tr>
-                  <td ><input type="submit" class="pressableButton blue" value="Register" onclick=""></td>
+                  <td ><input type="submit" class="btn" value="Register" onclick=""></td>
                   <td> 
-                   
+                 
+                   <input type="reset" class="btn" value="Reset" >
+                 
                   </td>
                   <td> 
-                   <input type="button" class="pressableButton blue " onclick="window.location.href='welcome'" value="Cancel">
+                   <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
                   
                   </tr>

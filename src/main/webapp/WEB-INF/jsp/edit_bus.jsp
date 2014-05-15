@@ -175,10 +175,10 @@
 				          </table>
 				           <table width="100%">
 				                  <tr>
-				                   <td width="50%" align="right"><input type="submit" class="submit_btn" value="Update" ></td>
+				                   <td width="50%" align="right"><input type="submit" class="btn" value="Update" ></td>
 				                   <td>&nbsp;&nbsp;</td>
 				                    
-				                    <td><input type="reset" class="submit_btn" value="Cancel"  onclick="window.location.href='viewbus'"></td>
+				                    <td><input type="reset" class="btn" value="Cancel"  onclick="window.location.href='viewbus'"></td>
 				                  </tr>
 				                  </table>
 				          </div>

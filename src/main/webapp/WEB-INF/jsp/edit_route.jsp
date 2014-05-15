@@ -179,9 +179,9 @@ p {
 				               <td valign="top" align="justify">
 				               <table>
 				             <tr> 
-                 <td valign="top" align="left"><input type="submit" class="submit_btn1" value="Update" ></td>
+                 <td valign="top" align="left"><input type="submit" class="btn" value="Update" ></td>
                
-                  <td valign="top" align="left"><input type="button" class="submit_btn1" onclick="window.location.href='viewroute'"value="Cancel"></td></tr></table>
+                  <td valign="top" align="left"><input type="button" class="btn" onclick="window.location.href='viewroute'"value="Cancel"></td></tr></table>
                   </td>
                  </table></div>
                  </td>

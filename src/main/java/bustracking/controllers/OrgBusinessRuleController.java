@@ -65,7 +65,7 @@ public class OrgBusinessRuleController{
 		List <String> branch=new ArrayList<String>();
 		branch=busDAO.getBus_id(orgBusinessRule.getOrg_name());
 		
-		returnText=returnText+"<select id='bid' name='branch' class='org_input_cmbbx'>";
+		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select id='bid' name='branch' style='width:220px'>";
 		returnText+="<option value='' selected>--Select Branch--</option>";
 		for(String bname:branch)
 		{

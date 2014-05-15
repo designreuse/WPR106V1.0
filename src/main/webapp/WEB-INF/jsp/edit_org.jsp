@@ -198,10 +198,10 @@
 				                
 	                            <tr class="row1">
 	                            	<td valign="middle" align="left"   class="input_txtlabel"></td>
-				                   <td valign="middle" align="right" class="input_txt"><input id="inp_id" type="submit" class="pressableButton blue" value="Update" ></td>
+				                   <td valign="middle" align="right" class="input_txt"><input id="inp_id" type="submit" class="btn" value="Update" ></td>
 				                   
 				                    
-				                    <td valign="middle" align="right" class="input_txt"><input type="reset" class="pressableButton blue" value="Cancel"  onclick="window.location.href='vieworg'"></td>
+				                    <td valign="middle" align="right" class="input_txt"><input type="reset" class="btn" value="Cancel"  onclick="window.location.href='vieworg'"></td>
 				                	<td valign="middle" align="left"   class="input_txtlabel"></td>
 				                  </tr>
 				                  </table>

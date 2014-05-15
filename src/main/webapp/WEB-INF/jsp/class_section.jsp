@@ -184,10 +184,10 @@ select.add(option, 0); */
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="pressableButton blue" value="Register"></td>
-                  
+                  <td><input type="submit" class="btn" value="Register"></td>
+                  <!-- <td><input type="reset" class="btn" value="Reset"></td> -->
                   <td> 
-                   <input type="button" class="pressableButton blue" onclick="window.location.href='welcome'" value="Cancel">
+                   <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
                   
                   </tr>

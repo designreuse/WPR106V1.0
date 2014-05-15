@@ -147,18 +147,8 @@ else{
 		
 		return "client_home";
 	}
-	@RequestMapping(value="/holidayadmin", method = RequestMethod.GET)
-	public String holidayadmin(HttpServletRequest request,ModelMap model, Principal principal ) {
-		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
-		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
-		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
-		
-		List <String> orgname_for_school=new ArrayList<String>();
-		orgname_for_school=busDAO.getorgname_for_school();
-		model.addAttribute("orgname_for_school",orgname_for_school);
-		
-		return "holidayAdmin";
-	}
+	
+	
 	
 	/*@RequestMapping(value="/clientviewroutedetails", method = RequestMethod.GET)
 	public String clientviewroutedetails(HttpServletRequest request,ModelMap model, Principal principal ) {

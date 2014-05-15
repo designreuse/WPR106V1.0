@@ -66,8 +66,8 @@ $('#timepicker1').timepicker({
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Branch</td></td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt">
-												<div id="info" style="height:8px; " > 
-													<select name="branch" style="width:220px;"id="bid" onblur="Validate1('bid')">
+												<div id="info" style="height:8px;" > 
+													<select name="branch" style="width:220px;"id="bid" onblur="Validate1('bid')" disabled="disabled">
 							    <option value="">-- Select branch--</option>
 							  <%--  <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
         				        <option value="${OrgRegistration.org_id}" <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if>>${OrgRegistration.branch}</option>
@@ -185,7 +185,7 @@ $('#timepicker1').timepicker({
 													class="err">*</span>Is Saturday Working Day? 
 												 </td></td><td width="0%">:</td>
 												 <td valign="top" align="left" class="input_txt">
-												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="saturday"  />
+												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="saturday" />
 												<span class="err" id="errmsg"></span> <br />
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.contact_no"></form:errors></font>
 												</td>
@@ -204,10 +204,10 @@ $('#timepicker1').timepicker({
                 	 
                   	<table cellpadding="0" cellspacing="0" border="0" style="width:30%;margin:0 0 0 30%;">
                   <tr>
-                  <td width="1%"><input type="submit" class="pressableButton blue" value="Register" ></td>
+                  <td width="1%"><input type="submit" class="btn" value="Register" ></td>
                   
                   <td width="1%" align="left"> 
-                   <input type="button" class="pressableButton blue " value="Cancel" onclick="window.location.href='welcome'">
+                   <input type="button" class="btn" value="Cancel" onclick="window.location.href='welcome'">
                   </td>
                   </tr>
                   </table></td>

@@ -136,7 +136,7 @@
 				                <tr class="row1">
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Pin code:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	<input type="text" class="org_input_txtbx_height1"  id="pinid" name="pincode" onblur="pincheck('pinid')" oninput="validatenum1();" value="${organisation.pincode}" />
+				                  	<input type="text" class="org_input_txtbx_height1"  id="pinid" name="pincode" onblur="pincheck('pinid')" oninput="validatenum1();" maxlength="6" value="${organisation.pincode}" />
 				                  	<br/><font color="Red" size="+1"><span id="errmsg"></span><span id="unique_error"></span><form:errors path="OrgRegistration.pincode"></form:errors></font>
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Transport Officer Name:</td>
@@ -197,12 +197,12 @@
 				 <table>
                    <tr align="right">
                    <td></td>
-                   <td ><input type="submit" class="pressableButton blue" value="Register" onclick="return check('this')"></td>
+                   <td ><input type="submit" class="btn" value="Register" onclick="return check('this')"></td>
                    <td>
                    
-                   <input type="reset" class="pressableButton blue" value="Reset" onclick="window.location.href='orgregistration'"></td>
+                   <input type="reset" class="btn" value="Reset" ></td>
                  <td>
-                   <input type="button" class="pressableButton blue" onclick="window.location.href='welcome'" value="Cancel"></td>
+                   <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel"></td>
                    </tr>
                  </table>
                   </td>

@@ -106,10 +106,10 @@
 				                </tr>
                         		<tr class="row1">
                         		<td>&nbsp;&nbsp;</td>
-				                   <td align="right" ><input type="submit" class="pressableButton blue" value="Update" ></td>
+				                   <td align="right" ><input type="submit" class="btn" value="Update" ></td>
 				                   
 				                    <td colspan="1"></td>
-				                    <td><input type="reset" class="pressableButton blue" value="Cancel"  onclick="window.location.href='viewuser'"></td>
+				                    <td><input type="reset" class="btn" value="Cancel"  onclick="window.location.href='viewuser'"></td>
 				                  </tr>
                         	
 				        </table>

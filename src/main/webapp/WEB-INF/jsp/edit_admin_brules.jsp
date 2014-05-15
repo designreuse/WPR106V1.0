@@ -22,8 +22,8 @@
 										<c:set value="${orgBusinessRuleForm.orgBusinessRules[0]}" var="orgbrulesadmin"></c:set>
 										<table cellpadding="0" cellspacing="0" border="0" width="100%">
 											<tr class="row1">
-												<td valign="middle" align="right" class="input_txt" width="40%">
-												<input type="text" value="${orgbrulesadmin.org_id}" name="org_id" />
+												 <td valign="middle" align="right" class="input_txt" width="40%">
+												<%-- <input type="text" value="${orgbrulesadmin.org_id}" name="org_id" /> --%>
 												<span class="err">*</span> Organization Name :</td>
 												<td valign="top" align="left" class="input_txt">
 												<input type="hidden" value="${orgbrulesadmin.org_name}" />${orgbrulesadmin.org_name}
@@ -141,7 +141,7 @@
 												 <input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="saturday" checked />
 												 </c:when>
 												 <c:when test="${orgbrulesadmin.saturday=='off'}">
-												 <input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="saturday"  />
+												 <input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="saturday" checked />
 												 </c:when>
 												 </c:choose>
 												
@@ -157,7 +157,7 @@
 												 <input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="sms_sending" checked />
 												 </c:when>
 												 <c:when test="${orgbrulesadmin.sms_sending=='off'}">
-												 <input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="sms_sending"  />
+												 <input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="sms_sending"  checked/>
 												 </c:when>
 												 </c:choose>
 												
@@ -169,10 +169,10 @@
                 	  <td valign="top" align="left">
                   	<table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="submit_btn" value="Register" ></td>
+                  <td><input type="submit" class="btn" value="Register" ></td>
                   
                   <td> 
-                   <input type="button" class="submit_btn " value="Cancel" onclick="window.location.href='welcome'">
+                   <input type="button" class="btn " value="Cancel" onclick="window.location.href='welcome'">
                   </td>
                   </tr>
                   </table></td>

@@ -25,6 +25,7 @@ public class AddUserDAO{
 	{
 		this.dataSource= dataSource;
 	}
+	
 	public int insert_user(AddUser user)
 	{
 		Connection con=null;
