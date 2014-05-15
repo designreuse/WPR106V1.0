@@ -34,7 +34,7 @@
 							    
 							      <td align="left" valign="middle" width="10%">&nbsp;&nbsp;To Date:<br/><input type="text" name="driver_id" style="margin:4px 0 0 0;"></td>
 							   <td align="center" valign="middle" width="10%">
-							  <input type="submit" class="pressableButton blue" value="Search" ></td>
+							  <input type="submit" class="btn" value="Search" ></td>
 							 
 							  </tr>
 							</table>

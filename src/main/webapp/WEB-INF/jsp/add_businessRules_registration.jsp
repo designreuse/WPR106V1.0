@@ -176,10 +176,10 @@
                 	  <td valign="top" align="left">
                   	<table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="submit_btn" value="Register" ></td>
+                  <td><input type="submit" class="btn" value="Register" ></td>
                   
                   <td> 
-                   <input type="button" class="submit_btn " value="Cancel" onclick="window.location.href='welcome'">
+                   <input type="button" class="btn " value="Cancel" onclick="window.location.href='welcome'">
                   </td>
                   </tr>
                   </table></td>

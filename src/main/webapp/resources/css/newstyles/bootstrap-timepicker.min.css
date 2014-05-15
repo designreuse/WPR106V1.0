@@ -12,7 +12,7 @@
  .bootstrap-timepicker .add-on{cursor:pointer}
  .bootstrap-timepicker .add-on i{display:inline-block;width:16px;height:16px}
  .bootstrap-timepicker-widget.dropdown-menu{padding:2px 3px 2px 2px}
- .bootstrap-timepicker-widget.dropdown-menu.open{display:inline-block}
+ .bootstrap-timepicker-widget.dropdown-menu.open{display:inline-block; margin:-15% 0 0 25%;position:absolute;}
  .bootstrap-timepicker-widget.dropdown-menu:before{
  border-bottom:7px solid rgba(0,0,0,0.2);
  border-left:7px solid transparent;

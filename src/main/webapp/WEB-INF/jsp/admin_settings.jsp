@@ -3,10 +3,44 @@
  <script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
 <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css">
 <link rel="stylesheet" type="text/css" href="resources/css/newstyles/bootstrap-timepicker.min.css">
- <script type='text/javascript' src="http://jdewit.github.com/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+ <script type='text/javascript' src="resources/js/bootstrap-timepicker.min.js"></script>
 <script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
 $('#timepicker1').timepicker({
+    defaultTime: 'current',
+    minuteStep: 1,
+    /* disableFocus: true, */
+    /* template: 'dropdown', */
+    format: 'HH:mm',
+    pickDate: false,
+    pickSeconds: false,
+    pick12HourFormat: false   
+});
+$('#timepicker2').timepicker({
+    defaultTime: 'current',
+    minuteStep: 1,
+    disableFocus: true,
+    template: 'dropdown'
+});
+$('#timepicker3').timepicker({
+    defaultTime: 'current',
+    minuteStep: 1,
+    disableFocus: true,
+    template: 'dropdown'
+});
+$('#timepicker4').timepicker({
+    defaultTime: 'current',
+    minuteStep: 1,
+    disableFocus: true,
+    template: 'dropdown'
+});
+$('#timepicker5').timepicker({
+    defaultTime: 'current',
+    minuteStep: 1,
+    disableFocus: true,
+    template: 'dropdown'
+});
+$('#timepicker6').timepicker({
     defaultTime: 'current',
     minuteStep: 1,
     disableFocus: true,
@@ -22,7 +56,7 @@ $('#timepicker1').timepicker({
     });
 </script>
 
-<script id="script_e4">
+<script id="script_bid">
     $(document).ready(function() {
         $("#bid").select2();
     });
@@ -64,14 +98,12 @@ $('#timepicker1').timepicker({
 
 											<tr class="row2"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span> Branch</td></td><td width="0%">:</td>
+													class="err">*</span> Branch</td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt">
 												<div id="info" style="height:8px;" > 
-													<select name="branch" style="width:220px;"id="bid" onblur="Validate1('bid')" disabled="disabled">
-							    <option value="">-- Select branch--</option>
-							  <%--  <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
-        				        <option value="${OrgRegistration.org_id}" <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if>>${OrgRegistration.branch}</option>
-			                  </c:forEach> --%>
+													<select name="branch" style="width:220px;" id="bid" onblur="Validate1('bid')" >
+							    					<option value="">-- Select branch--</option>
+							  
 			                 
         				      </select>
         				       </div> </td><td valign="middle" align="left"  width="20%"></td>
@@ -87,18 +119,20 @@ $('#timepicker1').timepicker({
 											</tr>
 											<tr class="row2"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span>Pickup Start Time</td></td><td width="0%">:</td>
+													class="err">*</span>Pickup Start Time</td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt">
 												<!-- <input type="text" class="input_txtbx_driver" id="inp_id" name="license_type" /> -->
-												<input type="text" class="input_txtbx_br" id="inp_id"
+												<div class="input-append bootstrap-timepicker">
+												<input type="text" class="input_txtbx_br"  id="timepicker2"
 													name="pickup_start_time"  />
+													<span class="add-on"><i class="icon-time"></i></span></div>
 												<br/>
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.license_type"></form:errors></font>
 												</td><td valign="middle" align="left"  width="20%"></td>
 											</tr>
 											<tr class="row1"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span>Pickup end time </td></td><td width="0%">:</td>
+													class="err">*</span>Pickup end time </td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt"><!-- <input
 													type="text" class="input_txtbx_br" id="inp_id"
 													name="pickup_end_time" /> -->
@@ -111,48 +145,57 @@ $('#timepicker1').timepicker({
 											</tr>
 											<tr class="row2"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span>Drop Start Time </td></td><td width="0%">:</td>
-												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx_br" id="datepicker"
-													name="drop_start_time" value="${driverdetails.license_expired_date}"/> <br />
+													class="err">*</span>Drop Start Time </td><td width="0%">:</td>
+												<td valign="top" align="left" class="input_txt">
+												<div class="input-append bootstrap-timepicker"><input
+													type="text" class="input_txtbx_br"  id="timepicker3"
+													name="drop_start_time" value="${driverdetails.license_expired_date}"/>
+													<span class="add-on"><i class="icon-time"></i></span>
+													</div> <br />
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.license_expired_date"></form:errors></font>
 												</td><td valign="middle" align="left"  width="20%"></td>
 											</tr>
 											<tr class="row1"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span>Drop end Time </td></td><td width="0%">:</td>
+													class="err">*</span>Drop end Time </td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt">
 												<%-- <textarea rows="*" cols="*" class="input_txtArea_driver" name="address" value="${license_expired_date.address}"></textarea>
-												 --%><input
-													type="text" class="input_txtbx_br" id="datepicker"
+												 --%><div class="input-append bootstrap-timepicker">
+												 <input
+													type="text" class="input_txtbx_br"  id="timepicker4"
 													name="drop_end_time" value="${driverdetails.license_expired_date}"/>	
+													<span class="add-on"><i class="icon-time"></i></span></div>
 													<br />
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.address"></form:errors></font>
 												</td><td valign="middle" align="left"  width="20%"></td>
 											</tr>
 											<tr class="row2"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span>KG Drop Start Time</td></td><td width="0%">:</td>
-												<td valign="top" align="left" class="input_txt"> <input
-													type="text" class="input_txtbx_br" id="inp_id"
+													class="err">*</span>KG Drop Start Time</td><td width="0%">:</td>
+												<td valign="top" align="left" class="input_txt"><div class="input-append bootstrap-timepicker">
+												 <input
+													type="text" class="input_txtbx_br"  id="timepicker5"
 													name="kg_start_time" />
+													<span class="add-on"><i class="icon-time"></i></span></div>
 												<br />
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.driver_status"></form:errors></font>
 												</td><td valign="middle" align="left"  width="20%"></td>
 											</tr>
 											<tr class="row1"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span>KG Drop end Time</td></td><td width="0%">:</td>
-												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx_br" id="inp_id"
+													class="err">*</span>KG Drop end Time</td><td width="0%">:</td>
+												<td valign="top" align="left" class="input_txt"><div class="input-append bootstrap-timepicker">
+												<input
+													type="text" class="input_txtbx_br"  id="timepicker6"
 													name="kg_end_time" />	
+													<span class="add-on"><i class="icon-time"></i></span></div>
 									             <br />
 												
 												</td><td valign="middle" align="left"  width="20%"></td>
 											</tr>
 											<tr class="row2"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span>Speed Limit  </td></td><td width="0%">:</td>
+													class="err">*</span>Speed Limit  </td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx_br" id="inp_id"
 													name="speed_limit" />
@@ -162,7 +205,7 @@ $('#timepicker1').timepicker({
 											</tr>
 											<tr class="row1"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span>SMS Option</td></td><td width="0%">:</td>
+													class="err">*</span>SMS Option</td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt">
 												 <input type="radio" name="sms_options" value="yes" checked/>Yes&nbsp;&nbsp;
 									             <input type="radio" name="sms_options" value="no"/>NO&nbsp;&nbsp;
@@ -172,7 +215,7 @@ $('#timepicker1').timepicker({
 											</tr>
 											<tr class="row2"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span>Alert Time Interval</td></td><td width="0%">:</td>
+													class="err">*</span>Alert Time Interval</td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt"> <input
 													type="text" class="input_txtbx_br" id="inp_id"
 													name="alert_time_interval" /> 
@@ -183,7 +226,7 @@ $('#timepicker1').timepicker({
 											<tr class="row1"><td valign="middle" align="left"  width="20%"></td>
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span>Is Saturday Working Day? 
-												 </td></td><td width="0%">:</td>
+												 </td><td width="0%">:</td>
 												 <td valign="top" align="left" class="input_txt">
 												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="saturday" />
 												<span class="err" id="errmsg"></span> <br />
@@ -193,7 +236,7 @@ $('#timepicker1').timepicker({
 											</tr>
 											<tr class="row2"><td valign="middle" align="left"  width="20%"></td>
 											<td valign="top" align="left" class="input_txt"> <span
-													class="err"></span>SMS sending</td></td><td width="0%">:</td>
+													class="err"></span>SMS sending</td><td width="0%">:</td>
 													<td valign="top" align="left" class="input_txt">
 												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="sms_sending"  />
 												<span class="err" id="errmsg"></span> <br />
@@ -254,6 +297,4 @@ select.add(option, 0); */
 <!-- <script type='text/javascript'	src='http://code.jquery.com/jquery-1.4.3.min.js'></script> -->
 <jsp:include page="footer.jsp"></jsp:include>
 
-						
-						
-						
+					

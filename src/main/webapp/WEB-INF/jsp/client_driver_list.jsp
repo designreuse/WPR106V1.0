@@ -55,7 +55,7 @@
 							    </c:forEach>
 							    </select></td>
 							    <td align="center" valign="middle" width="10%">
-							  <input type="submit" class="pressableButton blue" value="Search" >
+							  <input type="submit" class="btn" value="Search" >
 							  </td>
 							 
 							  </tr>

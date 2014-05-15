@@ -82,7 +82,7 @@
 							    </select></td>
 							    
 							  <td align="center" valign="middle" width="30%">
-							  <input type="submit" class="pressableButton blue" value="Search" ></td>
+							  <input type="submit" class="btn" value="Search" ></td>
 							 
 							  </tr>
 							</table>

@@ -205,16 +205,16 @@
 				                  <td valign="center" align="left" class="input_txt" width="60%" >
 				                <td colspan="4" valign="top" align="center" width="60%"  class="input_txt">
 				                <tr><td>
-      </td>
+     
 				  <table>
                    <tr align="left">
                    <td></td>
-                   <td ><input type="submit" class="pressableButton blue" value="Register" ></td>
+                   <td ><input type="submit" class="btn" value="Register" ></td>
                    <td>
                    
                    <!-- <input type="reset" class="submit_btn" value="Reset" onclick="window.location.href='orgregistration'"></td> -->
                  <td>
-                   <input type="button" class="pressableButton blue" onclick="window.location.href='orgregistration'" value="Cancel"></td>
+                   <input type="button" class="btn" onclick="window.location.href='orgregistration'" value="Cancel"></td>
                    </tr>
                  </table>
                   </td>

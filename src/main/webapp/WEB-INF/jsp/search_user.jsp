@@ -36,8 +36,8 @@
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="30%" class="input_txtlabel">&nbsp;Organization Name<br/>
-							    <select   id="e1"style="width:250px;" name="org_name">
+							    <td align="left" valign="middle" width="25%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Organization Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e1"style="width:300px;" name="org_name">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.org_name}">${addUser1.org_name}</option>
@@ -46,8 +46,8 @@
 							    </td>
 							    
 							    
-							    <td align="left" valign="middle" width="30%">Branch<br/>
-							    <select   id="e2"style="width:250px;" name="branch">
+							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;Branch&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e2"style="width:300px;" name="branch">
 									<option value="">Select None</option>							      
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.branch}">${addUser1.branch}</option>
@@ -57,8 +57,8 @@
 							    
 							  </td>
 							  
-							    <td align="left" valign="middle" width="30%">First Name<br/>
-							    <select   id="e3"style="width:250px;" name="firstname">
+							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;First Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e3"style="width:300px;" name="firstname">
 								<option value="">Select None</option>							      
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.firstname}">${addUser1.firstname}</option>
@@ -68,18 +68,20 @@
 							    </td>
 							     
 							  </tr>
+							  <tr><td><font color="#ccc">.</font></td>
+                                 <tr>	
 							  <tr >
 							    
-							    <td align="left" valign="middle" width="30%">Last Name<br/>
-							    	<select   id="e4"style="width:250px;" name="lastname">
+							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;Last Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    	<select   id="e4"style="width:300px;" name="lastname">
 							    <option value="">Select None</option>  
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.lastname}">${addUser1.lastname}</option>
 							    </c:forEach>
 							    </select></td>
 							    
-							    <td align="left" valign="middle" width="30%">Email<br/>
-							    <select   id="e5"style="width:250px;" name="email">
+							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;Email&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e5"style="width:300px;" name="email">
 							      <option value="">Select None</option>
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.email}">${addUser1.email}</option>
@@ -87,9 +89,9 @@
 							    </select>
 							    </td>
 							  
-							    <td align="left" valign="middle" width="30%">
-							    <input type="submit" class="pressableButton blue" value="Search" ></td>
-							 
+							    <td align="right" valign="middle" width="25%"><br/>
+							    <input type="submit" class="btn" value="Search" ></td>
+							    <td width="25%"><font color="#ccc" >.</font></td>
 							  </tr>
 							
 							</table>
@@ -137,9 +139,10 @@
 											
 											<td valign="top" align="left" width="7%">
 										
-												<a href="<c:out value="edituser?username=${addUser.username}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
-												
-											<a href="<c:out value="deleteuser?org_name=${addUser.org_name}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
+												<a href="<c:out value="edituser?username=${addUser.username}"/>" >
+												<img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
+												<a href="<c:out value="deleteuser?username=${addUser.username}"/>" onclick="return confirmation('Are you sure want to Delete?')">
+												<img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>
@@ -165,19 +168,7 @@
         				</table></div></div>
         				
         				
-        				
-<script>
 
-function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete the User ?");
-	if (answer){
-		return true;
-	}
-	else{
-		return false;
-	}
-}
-</script>
 
 <script language="javascript">
 

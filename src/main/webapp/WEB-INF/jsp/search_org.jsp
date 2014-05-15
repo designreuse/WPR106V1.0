@@ -32,7 +32,7 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							
 							  <tr>
-							    <td align="left" valign="middle" width="15%" class="input_txtlabel">&nbsp;Organization Name &nbsp;<br/>
+							    <td align="left" valign="middle" width="15%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Organization Name &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select name="org_name" id="e1"style="width:300px;">
 							    <option value="">Select None</option>
 							    <c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration1" varStatus="status">
@@ -40,7 +40,7 @@
 							    </c:forEach>
 							    </select></td>
 							    
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel">Branch  &nbsp;<br/>
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">Branch  &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select name="branch" id="e2"style="width:300px;">
 							    <option value="">Select None</option>
 							    <c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration1" varStatus="status">
@@ -48,7 +48,7 @@
 							    </c:forEach>
 							    </select></td>
 							    
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp;City&nbsp;<br/>
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;City&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select name="city" id="e3"style="width:300px;">
 							    <option value="">Select None</option>
 							    <c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration1" varStatus="status">
@@ -56,8 +56,10 @@
 							    </c:forEach>
 							    </select></td>
 							    
-                                 </tr><tr>							   
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel">&nbsp;Country&nbsp;<br/>
+                                 </tr>
+                                 <tr><td><font color="#ccc">.</font></td></tr>
+                                 <tr>							   
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Country&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select name="country" id="e4"style="width:300px;">
 							    <option value="">Select None</option>
 							    <c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration1" varStatus="status">
@@ -65,10 +67,10 @@
 							    </c:forEach>
 							    </select></td>
 							    
-							    
-							    <td align="center" valign="middle" width="20%">
-							    <input type="submit" class="pressableButton blue" value="Search" ></td>
-							
+							    <td><font color="#ccc">.</font></td>
+							    <td align="right" valign="middle" width="20%"><br>
+							    <input type="submit" class="btn" value="Search" ></td>
+							    <td width="10%"><font color="#ccc" >.</font></td>
 							  </tr>
 							</table>
 							</form>
@@ -89,8 +91,8 @@
 								<!-- <td valign="middle" align="center" width="15%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="19.8%"> Organization Name </td>					         	
 					         	<td valign="top" align="left" width="15%"> Branch</td>
-          						<td valign="top" align="left" width="15%"> City</td>
-          						<td valign="top" align="left" width="15%"> Country</td>
+          						<td valign="top" align="left" width="14.5%"> City</td>
+          						<td valign="top" align="left" width="14.5%"> Country</td>
           						<td valign="top" align="left" width="12.5%"> Org Type</td>
           						<td valign="top" align="left" width="1%"> Status</td>
           						<td valign="top" align="left" width="9.5%"> Action</td>
@@ -106,19 +108,19 @@
         					<c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration" varStatus="status">
         				       					<tr class="row1">
 							       		<%-- <td valign="middle" align="center" width="15%"><input type="checkbox" value="${orgRegistration.org_name}" name="chkUser"></td> --%>
-					     		     	<td valign="top" align="left" style="overflow:hidden;"width="20%">${orgRegistration.org_name}</td>					     		     
+					     		     	<td valign="top" align="left" style="overflow:hidden;"width="20%" title="${orgRegistration.org_name}">${orgRegistration.org_name}</td>					     		     
 					     		     
-											<td valign="top" align="left" style="overflow:hidden;"width="15%">${orgRegistration.branch}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="15%">${orgRegistration.city}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="15%">${orgRegistration.country}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="13%">${orgRegistration.type_of_organization}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="5.8%">
+											<td valign="top" align="left" style="overflow:hidden;"width="15%" title="${orgRegistration.branch}">${orgRegistration.branch}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%" title="${orgRegistration.city}">${orgRegistration.city}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15%" title="${orgRegistration.country}">${orgRegistration.country}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="13%" title="${orgRegistration.type_of_organization}">${orgRegistration.type_of_organization}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="5.8%" >
 											<c:choose>
 											<c:when test="${orgRegistration.is_active==1}">
 											<c:out value="Active"></c:out>
 											</c:when>
 											<c:when test="${orgRegistration.is_active==0}">
-											<c:out value="Not Active"></c:out>
+											<c:out value="Inactive"></c:out>
 											</c:when>
 											<c:otherwise>
 											<c:out value=""></c:out>
@@ -126,11 +128,11 @@
 											</c:choose>
 											</td>
 											
-											<td valign="top" align="left" style="overflow:hidden;"width="8.6%">
-										
-												<a href="<c:out value="editorg?org_name=${orgRegistration.org_name}&branch=${orgRegistration.branch}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
-												
-											<a href="<c:out value="deleteorg?org_id=${orgRegistration.org_id}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
+											<td valign="top" align="left" style="overflow:hidden;"width="8.6%" >
+										    <a href="<c:out value="editorg?org_name=${orgRegistration.org_name}&branch=${orgRegistration.branch}"/>">
+										    <img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
+											<a href="<c:out value="deleteorg?org_name=${orgRegistration.org_name}&branch=${orgRegistration.branch}"/>" onclick="return confirmation('Are you sure Want to Delete?')">
+											<img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>
