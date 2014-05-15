@@ -313,12 +313,18 @@ else{
 		return "client_business_rules";
 	}
 	
-
+/*################################################Holiday###############################################################*/
 
 
 	@RequestMapping(value="/clientholiday", method = RequestMethod.GET)
 	public String clientholiday(HttpServletRequest request,ModelMap model, Principal principal ) {
+		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
+		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
+		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
 		
+		List <String> orgname_for_school=new ArrayList<String>();
+		orgname_for_school=busDAO.getorgname_for_school();
+		model.addAttribute("orgname_for_school",orgname_for_school);
 		
 		return "client_holiday";
 	}

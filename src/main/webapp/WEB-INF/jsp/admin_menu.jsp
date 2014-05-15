@@ -183,7 +183,7 @@
 <a class="menuitem submenuheader" href="#" >SMS</a>
 <div class="submenu">
 	<ul>
-	<li><a href="#">SMS To Parent</a></li>
+	<li><a href="clientsmsparent">SMS To Parent</a></li>
 	<li><a href="#">Track SMS</a></li>
 	<!-- <li><a href="clientsmsparent">SMS To Parent</a></li>
 	<li><a href="clienttracksms">Track SMS</a></li> -->
@@ -200,7 +200,7 @@
 </c:if>
  <c:if test="${menu=='ROLE_ADMIN'}">
 <!-- <a class="menuitem " href="clientholiday" style="padding-left:35px;">Holidays</a> -->
-<a class="menuitem " href="#" style="padding-left:35px;">Holidays</a>
+<a class="menuitem " href="clientholiday" style="padding-left:35px;">Holidays</a>
 </c:if>
  <c:if test="${menu=='ROLE_ADMIN'}">
 <a class="menuitem submenuheader" href="#" >Reports</a>
@@ -226,7 +226,7 @@
 	<li><a href="#">Device view</a></li>
 	</ul>
 </div>
-</c:if>
+</c:if><!-- <span style="line-height:0px;"> <br/><font color="#fff">.</font></span> -->
 <div class="buttonswitchpanel_search">
 			          <!-- <div class='buttonsheader'> -->
 						&nbsp;<a  href='javascript:history.back();' class="otherspressable back_button" >Back</a>
@@ -242,7 +242,7 @@
 						 <a href="#" class="otherspressable expand_button" onClick="ddaccordion.expandall('submenuheader'); return false">Expand All</a>&nbsp;
 						 <a href="#" class="otherspressable collapse_button" onClick="ddaccordion.collapseall('submenuheader'); return false">Collapse All</a>
 						 <!-- </div> --></div>
-						 <br/>
+						 
 
 </div>
 
@@ -253,4 +253,4 @@
  	</div></td>
 </tr>
 </table> 
-
+ 

@@ -35,18 +35,18 @@
         <td valign="top" align="left">
         	
 	            <div class="headings altheading">
-	               <h2>Class and Section</h2> 
+	               <h2>SMS To Parents</h2> 
 	               
 	            </div>
             
               <table cellpadding="0" cellspacing="0" border="0" width="100%" >
               
   				<tr>
-    				<td align="left" valign="top" width="100%" style="padding-right:25px;">
+    				<td align="left" valign="top" width="100%" >
     				
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    						<tr class="row2">
-				                  <td valign="middle" align="right" class="input_txt" width="40%" ><span class="err">*</span> Route :</td>
+    						<tr class="row2"><td valign="middle" align="right" class="input_txt" width="29%" ></td>
+				                  <td valign="middle" align="left" class="input_txt" width="10%" ><span class="err">*</span> Route </td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	<select  style="width:220px;" name="org_name" id="orgid"   onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
@@ -57,20 +57,21 @@
 				                  </td>
 				               </tr>
 				                
-                        		<tr class="row1">
-                        		<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span>Shift</td>
+                        		<tr class="row1"><td valign="middle" align="right" class="input_txt" width="29%" ></td>
+                        		<td valign="middle" align="left" class="input_txt" width="10%"><span class="err">*</span>Shift</td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
-				                  	<div id="info" style="height:8px;" > 
-				                  	 	<select  style="width:220px;"name="branch" id="bid"  disabled="disabled">
-							    <option value="shift here">-- Shift here--</option>
-							  </select>
-        				       </div> 
+				                  	
+							<select  style="width:220px;" name="org_name" id="bid"   onblur="Validate('orgid')">
+							    <option value="">-- Select Organization--</option>
+        				        <option value="Routes here" >Shift here</option>
+			                  
+			                 </select>        				       
 				                  <font color="Red" size="+1"><form:errors path="ClassSection.branch"></form:errors></font>
 				                  </td>
 				                 
 				                </tr> 
-						  <tr class="row2">
-				                <td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Trip :</td>
+						  <tr class="row2"><td valign="middle" align="right" class="input_txt" width="29%" ></td>
+				                <td valign="middle" align="left" class="input_txt" width="10%"><span class="err">*</span> Trip </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
 				                  	<option value="Pickup">Pick up</option>
@@ -82,8 +83,8 @@
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.class_std"></form:errors></font></td>
 				                </tr>
 				                
-				                <tr class="row1">
-					            	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Section:</td>
+				                <tr class="row1"><td valign="middle" align="right" class="input_txt" width="29%" ></td>
+					            	<td valign="middle" align="left" class="input_txt" width="10%"><span class="err">*</span> Message</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<textarea name="" class="textareanew" ></textarea>
 				                  	
@@ -93,13 +94,13 @@
 				                     
 				               
 				                
-                <tr class="row1" >
-				              <td valign="top" align="left"></td>
+                <tr class="row1" ><td valign="middle" align="right" class="input_txt" width="29%" ></td>
+				              <td valign="top" align="left"></td><td width="1%"></td>
                  
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="btn" value="Send"></td>
+                  <td><input type="submit" class="btn" value="Send Message"></td>
                   
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
@@ -118,11 +119,4 @@
  	</table>
 </form>
 </div></div>
-<script language="JavaScript">
-function CreateGroup()
-{
-	document.update.action = 'index.php?do=creategroup&type=1';
-	document.update.submit();
-}
-</script>
 <jsp:include page="footer.jsp"></jsp:include>
