@@ -132,13 +132,11 @@ ul.login-list li p {
 	margin:auto;
 }
 #header {
-	height:140px;
-	
-	
-background: #999; /* for non-css3 browsers */
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#000000'); /* for IE */
-background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#000)); /* for webkit browsers */
-background: -moz-linear-gradient(top, #ccc, #000); /* for firefox 3.6+ */
+height:100px;
+background: #3bb9ff; /* for non-css3 browsers */
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#666'); /* for IE */
+background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#666)); /* for webkit browsers */
+background: -moz-linear-gradient(top, #ccc, #666); /* for firefox 3.6+ */
 }
 /* New CSS */
 #right_content {
@@ -216,6 +214,7 @@ background: -moz-linear-gradient(top, #ccc, #000); /* for firefox 3.6+ */
 	width:100%;
 	padding-bottom:10px ;
 	padding-top: 20px ;
+	color:#fff;
 	border: 1px solid #CACACA;
 	text-shadow: 1px 1px 1px #fff;
 	/* background: #EAEAEA url(../images/bg_heading.png) repeat-x top; */
@@ -231,9 +230,11 @@ background: -moz-linear-gradient(top, #ccc, #000); /* for firefox 3.6+ */
 	height: 25px;
 }
 .headings h2 {
+	letter-spacing:2px;
 	padding-top: 0px;
 	padding-left: 10px;
 	font-size: 17px;
+	color:#fff;
 }
 .headingsnew {
 	padding-bottom: 15px ;
@@ -408,6 +409,7 @@ ul.pagination li.page a:hover {
 	border: 1px solid #005977;
 	cursor: pointer;
 }
+
 .select_bttn {
 	padding: 7px 10px;
 	border: 1px solid #ccc;
@@ -595,19 +597,19 @@ background-color: #3bb9ff;
   background-repeat: repeat-x;
 
   /* Safari 4-5, Chrome 1-9 */
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3bb9ff), to(#0066cc));
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#666), to(#ccc));
 
   /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(top, #3bb9ff, #0066cc);
+  background: -webkit-linear-gradient(top, #666, #ccc);
 
   /* Firefox 3.6+ */
-  background: -moz-linear-gradient(top, #3bb9ff, #0066cc);
+  background: -moz-linear-gradient(top, #666, #ccc);
 
   /* IE 10 */
-  background: -ms-linear-gradient(top, #3bb9ff, #0066cc);
+  background: -ms-linear-gradient(top, #666, #ccc);
 
   /* Opera 11.10+ */
-  background: -o-linear-gradient(top, #3bb9ff, #0066cc);
+  background: -o-linear-gradient(top, #666, #ccc);
 
 	width:78px;
 	height:40px;
@@ -1191,18 +1193,18 @@ font-size:11px; font-style:italic; color:#ff0000;
     height:auto;
      /* border:2px solid green; */}
 #GPS_View_menu {
-    width:22%;
+    width:21%;
     min-height:500px;
     float:left;
     overflow:auto;
-    /* border:1px solid blue; */
+    /*  border:1px solid blue; */
 }
 #GPS_View_table {
-    width:78%;
+    width:79%;
     min-height:700px;
     float:left;
     overflow: auto;
-    /* border:1px solid red;  */
+   /*  border:1px solid red;  */ 
     
 }
 

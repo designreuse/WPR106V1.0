@@ -14,10 +14,10 @@
     <![endif]-->
       <script src="resources/js/json2.js"></script>
       
-      <script src="resources/js/jquery-ui-1.8.20.custom.min.js"></script> <!-- for sortable example -->
+      <!-- <script src="resources/js/jquery-ui-1.8.20.custom.min.js"></script>  --><!-- for sortable example -->
       <script src="resources/js/jquery.mousewheel.js"></script>
       <script src="resources/js/prettify.min.js"></script>
-      <script src="resources/js/bootstrap.min.js"></script>
+      <!-- <script src="resources/js/bootstrap.min.js"></script> -->
       <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
       <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
       <script src="resources/js/select2.js"></script>
@@ -229,7 +229,7 @@
 </c:if><!-- <span style="line-height:0px;"> <br/><font color="#fff">.</font></span> -->
 <div class="buttonswitchpanel_search">
 			          <!-- <div class='buttonsheader'> -->
-						&nbsp;<a  href='javascript:history.back();' class="otherspressable back_button" >Back</a>
+						<a  href='javascript:history.back();' class="otherspressable back_button" >Back</a>
 						<!-- <a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a> -->
 						<!-- <a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
 						popups
@@ -238,10 +238,11 @@
 						<a  href='#' > <img title="Download"src="resources/images/download.png" style="height:25px;width:35px;"/></a>
 						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
 						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
-						 -->&nbsp;
+						 -->
 						 <a href="#" class="otherspressable expand_button" onClick="ddaccordion.expandall('submenuheader'); return false">Expand All</a>&nbsp;
 						 <a href="#" class="otherspressable collapse_button" onClick="ddaccordion.collapseall('submenuheader'); return false">Collapse All</a>
 						 <!-- </div> --></div>
+						 <br/>
 						 
 
 </div>
