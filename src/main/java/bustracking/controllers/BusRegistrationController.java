@@ -193,8 +193,6 @@ public class BusRegistrationController {
 		if(status==1)
 		{
         
-
-		
         BusRegistrationForm busregistrationform= new BusRegistrationForm();
 		busregistrationform.setBusregistration(busDAO.getBusregistration());
 		model.addAttribute("busregistrationform",busregistrationform);

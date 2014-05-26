@@ -202,7 +202,7 @@ public class ClassSectionController
 	// Delete Class and Section
 	
 	@RequestMapping(value="/delete_class", method=RequestMethod.GET)
-	public String removeBus(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("class_standard") String class_std,@RequestParam("section") String section,ModelMap model, Principal principal) {
+	public String removeBus(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("class_std") String class_std,@RequestParam("section") String section,ModelMap model, Principal principal) {
 	
 		int status=classSectionDAO.deleteclass(org_name, branch, class_std, section);
 		
@@ -215,7 +215,7 @@ public class ClassSectionController
 		
 		}
 		
-		return "view_bus_details";
+		return "view_ClassAndSection";
 	}
 	
 

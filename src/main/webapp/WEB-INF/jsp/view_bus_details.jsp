@@ -128,7 +128,7 @@
 										
 												<a href="<c:out value="edit_bus?vechicle_reg_no=${BusRegistration.vechicle_reg_no}"/>">
 										    <img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
-											<a href="<c:out value="delete_bus?vechicle_reg_no=${BusRegistration.vechicle_reg_no}}"/>" onclick="return confirmation('Are you sure want to delete?')">
+											<a href="<c:out value="delete_bus?vechicle_reg_no=${BusRegistration.vechicle_reg_no}"/>" onclick="return confirmation('Are you sure want to delete?')">
 											<img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>

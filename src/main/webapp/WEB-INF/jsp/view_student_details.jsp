@@ -126,3 +126,15 @@
         					</td>
         					</tr>
         					</table></div></div><jsp:include page="footer.jsp"></jsp:include>
+        					<script>
+
+function confirmation() {
+	var answer = confirm("Are you Sure You Want to Delete the Student ?");
+	if (answer){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+</script>

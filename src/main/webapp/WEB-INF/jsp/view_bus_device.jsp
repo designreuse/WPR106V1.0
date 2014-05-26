@@ -249,9 +249,9 @@
 											</td>
 											<td valign="top" align="left" width="9%">
 										
-												<a href="<c:out value="edit_bus_device?device_id=${deviceRegistrations.device_id}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
+												<a href="<c:out value="edit_device?device_imei_number=${deviceRegistrations.device_imei_number}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 												
-											<a href="<c:out value="delete_bus_device?device_id=${deviceRegistrations.device_id}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
+											<a href="<c:out value="delete_device?device_imei_number=${deviceRegistrations.device_imei_number}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>
@@ -276,3 +276,15 @@
         			</div></div>
 
 <jsp:include page="footer.jsp"></jsp:include>
+<script>
+
+function confirmation() {
+	var answer = confirm("Are you Sure You Want to Delete the Device ?");
+	if (answer){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+</script>

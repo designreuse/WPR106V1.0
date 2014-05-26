@@ -208,19 +208,21 @@
      
 				  <table>
                    <tr align="left">
-                   <td></td>
+                   <td width="20%"></td>
                    <td ><input type="submit" class="btn" value="Register" ></td>
                    <td>
                    
                    <!-- <input type="reset" class="submit_btn" value="Reset" onclick="window.location.href='orgregistration'"></td> -->
                  <td>
-                   <input type="button" class="btn" onclick="window.location.href='orgregistration'" value="Cancel"></td>
+                   <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel"></td>
                    </tr>
                  </table>
                   </td>
                 
                   </tr>
-				        </table></td></tr></table></td></tr></table></td></tr></table>
+				        </table></td></tr></table></td></tr></table>
+				        
+				        </td></tr></table>
                   
                   </form></div></div>
 

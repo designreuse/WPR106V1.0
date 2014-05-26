@@ -110,7 +110,7 @@
 										
 										<a href="<c:out value="editclass?org_name=${classSection.org_name}&branch=${classSection.branch}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 												
-										<a href="<c:out value="deleteclass?org_name=${orgRegistration.org_name}&branch=${classSection.branch}&class=${classSection.class_std}&section=${classSection.section}"/>" onclick="return confirmation('Are you sure want to Delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
+										<a href="<c:out value="delete_class?org_name=${classSection.org_name}&branch=${classSection.branch}&class=${classSection.class_std}&section=${classSection.section}"/>" onclick="return confirmation('Are you sure want to Delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>
@@ -138,7 +138,7 @@
 <script>
 
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete the Organization ?");
+	var answer = confirm("Are you Sure You Want to Delete the Class ?");
 	if (answer){
 		return true;
 	}

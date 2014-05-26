@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import bustracking.dao.DeviceRegistrationDAO;
 import bustracking.forms.BusDeviceRegistrationForm;
+import bustracking.forms.BusRegistrationForm;
 import bustracking.forms.DeviceRegistrationForm;
 import bustracking.model.BusRegistration;
 import bustracking.model.DeviceRegistration;
@@ -78,22 +79,58 @@ public class DeviceRegistrationController
 	
 	}
 	
+	// Edit Device Information
 	
-	/*@RequestMapping(value="/deviceedit", method = RequestMethod.GET)
-	public String edit_device(HttpServletRequest req,HttpSession session,@ModelAttribute("DeviceRegistration") @Valid DeviceRegistration deviceRegistration,@RequestParam("device_imei_number")String device_imei_number,BindingResult result,ModelMap model, Principal principal ) {
+	@RequestMapping(value="/edit_device", method = RequestMethod.GET)
+	public String edit_device(@RequestParam("device_imei_number")String device_imei_number,@ModelAttribute("DeviceRegistration") DeviceRegistration deviceRegistration,BindingResult result,ModelMap model, Principal principal ) {
 	
-	
+		List <String> carriername=new ArrayList<String>();
+		carriername=deviceRegistrationDAO.getcarriername();
+		model.addAttribute("carriername",carriername);
 		
-			
+		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
+		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.getDevice(device_imei_number));
+		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+			return "edit_device";
+	}
+	
+	// Update Device Information
+	
+	@RequestMapping(value="/update_device", method=RequestMethod.POST)
+	public String updateBus(HttpServletRequest request,@ModelAttribute("DeviceRegistration")DeviceRegistration deviceregistration,
+			BindingResult result,ModelMap model,Principal principal)
+	{
+		
+		
+		int status = deviceRegistrationDAO.updateDevice(deviceregistration);
+		System.out.println(status);
+		
+		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
+		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+		
+		return "view_bus_device";
+		
+	}
+	
+	// Delete Device information
+	
+	@RequestMapping(value="/delete_device", method=RequestMethod.GET)
+	public String removeDevice(@RequestParam("device_imei_number") String device_imei_number,ModelMap model, Principal principal) {
+	
+		int status=deviceRegistrationDAO.deleteDevice(device_imei_number);
+		
+		if(status==1)
+		{
+        
 			DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
-			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_imei(device_imei_number));
+			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
 			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
-			
-			return "add_device_registration";
-	
 		
- 
-	}*/
+		}
+		
+		return "view_bus_device";
+	}
 	
 	@RequestMapping(value="/imei_ajax",method=RequestMethod.POST)
 	public @ResponseBody String device_edit(@RequestParam("device_imei_number") String device_imei_number,ModelMap model) {

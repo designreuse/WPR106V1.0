@@ -124,7 +124,7 @@ private String myid;
 	public DeviceRegistration(String manufacturer, String model_no,
 			String carrier, String sim_card_number,
 			String device_procured_date, String device_invoice_number,
-			String device_imei_no, String device_tested,
+			String device_imei_number, String device_tested,
 			String sim_procured_date, String sim_invoice_number,
 			String sim_card_tested, String device_sim_paired,
 			String is_assigned, String password, String device_status,
@@ -137,7 +137,7 @@ private String myid;
 		this.sim_card_number = sim_card_number;
 		this.device_procured_date = device_procured_date;
 		this.device_invoice_number = device_invoice_number;
-		this.device_imei_number = device_imei_no;
+		this.device_imei_number = device_imei_number;
 		this.device_tested = device_tested;
 		this.sim_procured_date = sim_procured_date;
 		this.sim_invoice_number = sim_invoice_number;

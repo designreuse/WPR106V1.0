@@ -369,6 +369,9 @@ public class DeviceRegistrationDAO {
 	    return role;
 		
 	}
+	
+	// View Devices
+	
 	public List<DeviceRegistration> get_devices(){
 		Connection con = null;
 		Statement statement = null;
@@ -1174,6 +1177,130 @@ public class DeviceRegistrationDAO {
 	    return device_imei;
 	}
 	
+	// Edit Device
+	
+public List<DeviceRegistration> getDevice(String device_imei_number){
+		
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<DeviceRegistration> device_imei=new ArrayList<DeviceRegistration>();
+		try{
+			String cmd_sql="Select * from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			while(resultSet.next())
+			{
+				device_imei.add(new DeviceRegistration(resultSet.getString("manufacturer"),resultSet.getString("model_no"),resultSet.getString("carrier"),resultSet.getString("sim_card_number"),resultSet.getString("device_procured_date"),resultSet.getString("device_invoice_number"), resultSet.getString("device_imei_number"), resultSet.getString("device_tested"), resultSet.getString("sim_procured_date"), resultSet.getString("sim_invoice_number"),resultSet.getString("sim_card_tested"), resultSet.getString("device_sim_paired"),resultSet.getString("is_assigned"), resultSet.getString("password"),resultSet.getString("device_status"),resultSet.getString("port_no"),resultSet.getString("comments"),resultSet.getString("apn"), resultSet.getString("adminip"), resultSet.getString("configuration_date"),resultSet.getString("create_user_id")));
+		
+			}
+		}
+			catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return device_imei;
+	}
+	
+    // Update Device
+
+public int updateDevice(DeviceRegistration device)
+{
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet=null;
+	int flag=0;
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+    try{
+    	
+    	String computername=InetAddress.getLocalHost().getHostName();
+    	
+    	String cmd="UPDATE tbl_device_configuration SET manufacturer='"+device.getManufacturer()+"',model_no='"+device.getModel_no()+"',carrier='"+device.getCarrier()+"',sim_card_number='"+device.getSim_card_number()+"',device_procured_date='"+device.getDevice_procured_date()+"',device_invoice_number='"+device.getDevice_invoice_number()+"',device_tested='"+device.getDevice_tested()+"',sim_procured_date='"+device.getSim_procured_date()+"',sim_invoice_number='"+device.getSim_invoice_number()+"',sim_card_tested='"+device.getSim_card_tested()+"',device_sim_paired='"+device.getDevice_sim_paired()+"',is_assigned='"+device.getIs_assigned()+"',password='"+device.getPassword()+"',device_status='"+device.getDevice_status()+"',comments='"+device.getComments()+"',apn='"+device.getApn()+"',create_user_id='"+device.getCreate_user_id()+"',user_system_name='"+computername+"' WHERE device_imei_number='"+device.getDevice_imei_number()+"'";
+    	//String Desc="Update user "+user.getAdmin_reg_no();
+    	System.out.println(cmd);
+    	statement.execute(cmd);
+    	flag=1;
+    }
+    	 catch(Exception e){
+ 	    	System.out.println(e.toString());
+ 	    	releaseStatement(statement);
+ 	    	releaseConnection(con);
+ 	    	flag=0;
+ 	    	//return 0;
+ 	    }finally{
+ 	     	releaseStatement(statement);
+ 	    	releaseConnection(con);	    
+ 	    	
+ 	    }
+ 	    if(flag==1)
+     		return 1;
+     	else
+     		return 0;
+}
+
+
+	// Delete Devices
+
+public int deleteDevice(String device_imei_number)
+{
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet=null;
+	int flag=0;
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	try
+	{
+		
+		String cmd ="select * from tbl_device_configuration where device_imei_number='"+device_imei_number+"'";
+    	 String Desc="Delete report ";
+    	 resultSet=statement.executeQuery(cmd);
+			
+			if(resultSet.next())
+				Desc=Desc+resultSet.getString(1);
+			statement.execute("delete from tbl_device_configuration where device_imei_number='"+device_imei_number+"'");
+			
+			flag=1;
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	flag=0;
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	   		if(flag==1)
+	   			return 1;
+	   		else
+	   			return 0;
+}
 	
 	public void releaseConnection(Connection con){
 		try{if(con != null)

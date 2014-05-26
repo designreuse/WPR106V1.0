@@ -289,7 +289,7 @@ public List<String> getclass_for_edit(String org_name,String branch){
 				
 				if(resultSet.next())
 					Desc=Desc+resultSet.getString(1);
-				statement.execute("delete from tbl_class where where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') and class='"+class_std+"' and section='"+section+"'");
+				statement.execute("delete from tbl_class where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') and class='"+class_std+"' and section='"+section+"'");
 				
 				flag=1;
 				
