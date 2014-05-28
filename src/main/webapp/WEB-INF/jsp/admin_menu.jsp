@@ -128,7 +128,7 @@
 <a class="menuitem submenuheader" href="#" >Business Rules</a>	
 <div class="submenu">
 	<ul>
-	<li><a href="business_rule?submenuheader=6">Business Rules Registration</a></li>
+	<!-- <li><a href="business_rule?submenuheader=6">Business Rules Registration</a></li> -->
 	<li><a href="view_business_rule?submenuheader=6">Business Rules View</a></li>
 		</ul>
 
@@ -202,7 +202,8 @@
  <c:if test="${menu=='ROLE_ADMIN'}">
 
 <!-- <a class="menuitem " href="clientbusinessrules" style="padding-left:35px;">Business Rules</a> -->
-<a class="menuitem " href="#" style="padding-left:35px;">Business Rules</a>
+<a class="menuitem " href="client_view_businessrule" style="padding-left:35px;">Business Rules</a>
+
 </c:if>
  <c:if test="${menu=='ROLE_ADMIN'}">
 <!-- <a class="menuitem " href="clientholiday" style="padding-left:35px;">Holidays</a> -->

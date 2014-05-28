@@ -339,7 +339,7 @@ public class OrgBusinessRuleDAO {
 		{	
 				try{
 					
-					String cmd="Select t1.org_name,t1.branch,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_id='"+org_id+"'";
+					String cmd="Select t1.org_name,t1.branch,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where t2.org_id='"+org_id+"'";
 					resultSet=statement.executeQuery(cmd);
 					while(resultSet.next())
 					{
@@ -386,7 +386,7 @@ public class OrgBusinessRuleDAO {
 			}
 			List<OrgBusinessRule> businessRules=new ArrayList<OrgBusinessRule>();
 			try{
-				String sql="Select t1.org_name,t1.branch,t2.org_id,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_id='"+org_id+"'";
+				String sql="Select t1.org_name,t1.branch,t2.org_id,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where t2.org_id='"+org_id+"'";
 				resultSet=statement.executeQuery(sql);
 			System.out.println(sql);
 				

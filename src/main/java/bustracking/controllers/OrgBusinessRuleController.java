@@ -217,6 +217,19 @@ public class OrgBusinessRuleController{
 
 	}
 
+	//view business rules in client side
+	
+	
+		@RequestMapping(value="/client_view_businessrule", method=RequestMethod.GET)
+		public String clientview_business_rule(ModelMap model, Principal principal){
+			
+			OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
+			orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules_client(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
+			return "client_business_rules";
+		}
+	
+	
 	// Change the Rules in Client Side
 	
 	@RequestMapping(value="/change_setting",method=RequestMethod.GET)
