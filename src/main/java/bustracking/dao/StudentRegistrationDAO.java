@@ -388,7 +388,7 @@ public class StudentRegistrationDAO {
 
 	//Client Side Edit For Student
 	
-	public List<StudentRegistration> getStudent_roll_no(String student_roll_no){
+	public List<StudentRegistration> getStudent_roll_no(String student_roll_no,String org_id){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -400,7 +400,7 @@ public class StudentRegistrationDAO {
 		}
 		List<StudentRegistration> studentregistration = new ArrayList<StudentRegistration>();
 	    try{
-	    	String cmd="select * from tbl_student where student_roll_no='"+student_roll_no+"'";
+	    	String cmd="select * from tbl_student where student_roll_no='"+student_roll_no+"' and org_id='"+org_id+"'";
 	    	System.out.println(student_roll_no);
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);
@@ -425,7 +425,7 @@ public class StudentRegistrationDAO {
 	
 	// Client Side Update for Student
 	
-	public int clientupdateStudent(StudentRegistration student)
+	public int clientupdateStudent(StudentRegistration student,String org_id)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -437,7 +437,7 @@ public class StudentRegistrationDAO {
 			e1.printStackTrace();
 		}
 	    try{
-	    	String cmd="UPDATE tbl_student SET pickup_route_no='"+student.getPickup_route_no()+"', pickup_point_address='"+student.getPickup_point_address()+"',drop_route_no='"+student.getDrop_route_no()+"',drop_point_address='"+student.getDrop_point_address()+"',parent_name1='"+student.getParent_name1()+"',parent_name2='"+student.getParent_name2()+"',parent_mobile1='"+student.getParent_mobile1()+"',parent_mobile2='"+student.getParent_mobile2()+"',parent_email1='"+student.getParent_email1()+"',parent_email2='"+student.getParent_email2()+"' WHERE student_roll_no='"+student.getStudent_roll_no()+"'";
+	    	String cmd="UPDATE tbl_student SET pickup_route_no='"+student.getPickup_route_no()+"', pickup_point_address='"+student.getPickup_point_address()+"',drop_route_no='"+student.getDrop_route_no()+"',drop_point_address='"+student.getDrop_point_address()+"',parent_name1='"+student.getParent_name1()+"',parent_name2='"+student.getParent_name2()+"',parent_mobile1='"+student.getParent_mobile1()+"',parent_mobile2='"+student.getParent_mobile2()+"',parent_email1='"+student.getParent_email1()+"',parent_email2='"+student.getParent_email2()+"' WHERE student_roll_no='"+student.getStudent_roll_no()+"' and org_id='"+org_id+"'";
 	    	System.out.println(cmd);
 	    	statement.execute(cmd);
 	    	flag=1;

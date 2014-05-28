@@ -97,7 +97,7 @@ $(document).ready(function () {
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
     						<tr class="row1">
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Student Roll No:</td>
-				                  <td valign="top" align="left" class="input_txt"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="hidden" name="student_roll_no" value="${student.student_roll_no}"/>${student.student_roll_no}
 				                  	<br/><font color="Red" size="+1"></font>
 				                  </td>
@@ -105,7 +105,7 @@ $(document).ready(function () {
 				                </tr>
 				                <tr class="row2">
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Student First Name:</td>
-				                  <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <td valign="top" align="left" class="input_txt">
 				                  	 <input type="hidden" class="input_txtbx1" id="inp_id" name="student_first_name" value="${student.first_name}" />${student.first_name}
 				                  	<br/><font color="Red" size="+1"></font>
 				                  </td>
@@ -113,7 +113,7 @@ $(document).ready(function () {
 				                </tr>
                         		<tr class="row1">
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Student Last Name :</td>
-				                  <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="hidden" class="student_txtbx_height_right" id="inp_id" name="student_last_name" value="${student.last_name}"/>${student.last_name}
 				                  	<br/><font color="Red" size="+1"></font>
 				                  </td>
@@ -168,20 +168,20 @@ $(document).ready(function () {
 				                 <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian Name/Parent Name 1:</td>
 					                <td valign="top" align="left" class="input_txt">
-					                <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_name1" value="${student.parent_name1}" />
+					                <input type="text"  id="inp_id" name="parent_name1" value="${student.parent_name1}" />
 					                <br/><font color="Red" size="+1"></font></td>
 					                
 					              </tr>
 				                <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Name 2:</td>
-					                <td valign="top" align="left" class="input_txt"><input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_name2" value="${student.parent_name2}" />
+					                <td valign="top" align="left" class="input_txt"><input type="text"  id="inp_id" name="parent_name2" value="${student.parent_name2}" />
 					                <br/><font color="Red" size="+1"></font></td>
 					             </tr>
 					              			                
 					             <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Mobile 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					              <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_mobile1" value="${student.parent_mobile1}"/>
+					              <input type="text" id="inp_id" name="parent_mobile1" value="${student.parent_mobile1}"/>
 					             <br/>          
 					               <font color="Red" size="+1"></font>
 					               </td>
@@ -189,7 +189,7 @@ $(document).ready(function () {
 				                <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Mobile 2:</td>
 					               <td valign="top" align="left" class="input_txt">
-					              <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_mobile2" value="${student.parent_mobile2}"/>
+					              <input type="text" id="inp_id" name="parent_mobile2" value="${student.parent_mobile2}"/>
 					             <br/>          
 					               <font color="Red" size="+1"></font>
 					               
@@ -199,7 +199,7 @@ $(document).ready(function () {
 				                <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Email 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					              <input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_email1" value="${student.parent_email1}"/>
+					              <input type="text" id="inp_id" name="parent_email1" value="${student.parent_email1}"/>
 					             <br/>          
 					               <font color="Red" size="+1"></font>
 					               
@@ -210,7 +210,7 @@ $(document).ready(function () {
 				              	<tr class="row1">
 					            	 <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Guardian/Parent Email 2</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="student_txtbx_height_right" id="inp_id" name="parent_email2" value="${student.parent_email2}"/>
+				                  	<input type="text" id="inp_id" name="parent_email2" value="${student.parent_email2}"/>
 				                  	
 				                  </td>
 					            </tr>

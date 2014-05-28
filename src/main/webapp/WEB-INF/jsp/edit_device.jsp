@@ -10,16 +10,17 @@
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
 
-<form action="deviceregistration" method="POST">  
+<form action="update_device" method="POST">  
 <table class="margin_table">
       
       <tr>
         <td valign="top" align="left">
         	
 	            <div class="headings altheading">
-	              <h2>Device/Sim Setup</h2>
+	              <h2>Edit Device/Sim Setup</h2>
 	            </div>
-            
+            <div class="contentbox">
+            <c:set value="${deviceRegistrationForm.deviceRegistrations[0]}" var="device"/>
                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
   				<tr>
     				<td align="left" valign="top" width="100%" >
@@ -46,7 +47,7 @@
 									<%-- <input type="text" class="org_input_txtbx_height1" id="manuid" onblur="toTitleCase('manuid')" name="manufacturer" oninput="validateAlpha()" value=""/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font> --%>
 				                   <select name="manufacturer"  id="manuid" style="width:220px;"onblur="Validate('manuidid')" >  
-                                   <option value="Selected">--Select Manufacturer Name--</option>
+                                   <option value="${device.manufacturer}" selected>${device.manufacturer}</option>
                                    <option value="cobal">Cobal</option>
                                    </select>
 				                  </td>	
@@ -59,7 +60,7 @@
 
 				                 
       <select name="carrier" style="width:220px;" id="carrierid" onblur="Validate('carrierid')" onchange="doAjaxPost1()">  
-      <option value="Selected">--Select Carrier--</option>
+      <option value="${device.carrier}" selected>${device.carrier}</option>
        <c:forEach items="${carriername}" var="carriername" varStatus="status">
         				        <option value="${carriername}" <%-- <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if> --%>>${carriername}</option>
 			                  </c:forEach>
@@ -84,12 +85,12 @@
 				              <td width="10%"></td>
 				              <td valign="middle" align="left"  width="20%"  class="txtinput"><span class="err">*</span> Device Model Number:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="modelid" onblur="modelcheck('modelid')" name="model_no" value="${organisation.address}" />
+				                	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="modelid" onblur="modelcheck('modelid')" name="model_no" value="${device.model_no}" />
 				                   <br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.address"></form:errors></font>
 				                  </td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Sim Card Number :</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" width="60%" id="simno_id" onblur="simno('simno_id')" oninput="validatenum1()" name="sim_card_number" value="${organisation.email_id}" />
+				                  	<input type="text" class="org_input_txtbx_height1" width="60%" id="simno_id" onblur="simno('simno_id')" oninput="validatenum1()" name="sim_card_number" value="${device.sim_card_number}" />
 				                  	
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.email_id"></form:errors></font>
 				                  </td>
@@ -102,12 +103,12 @@
 				                 <%--  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_address_id" name="address" value="${organisation.address}" />
 				                   --%>
 				                  <%--  <textarea class="input_txtarea_height1"  rows="3" cols="4" style="width:200px;height:50px;" id="org_address" name="address">${organisation.address}</textarea> --%>
-				                  <input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')" class="org_input_txtbx_height1">
+				                  <input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')" class="org_input_txtbx_height1" value="${device.device_procured_date}">
 				                   	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.address"></form:errors></font>
 				                  </td>
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Procured Date:</td>
 				                  <td valign="center" align="left" class="input_txt" width="60%" >
-				                  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${organisation.contact_person_name}" />
+				                  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${device.sim_procured_date}" />
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
 				                  </td>
 				                 
@@ -117,12 +118,12 @@
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Invoice Number:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" name="device_invoice_number" class="org_input_txtbx_height1" id="invoice_id" onblur="deviceinvoice('invoiceid')" oninput="validatenum2()">
+				                  	<input type="text" name="device_invoice_number" class="org_input_txtbx_height1" id="invoice_id" onblur="deviceinvoice('invoiceid')" oninput="validatenum2()" value="${device.device_invoice_number}">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  </td>
 									<td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Invoice Number:</td>
 				                  <td valign="center" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="sim_invoice_id" onblur="siminvoice('sim_invoice_id')" oninput="validatenum3()" name="sim_invoice_number" value="${organisation.contact_person_name}" />
+				                  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="sim_invoice_id" onblur="siminvoice('sim_invoice_id')" oninput="validatenum3()" name="sim_invoice_number" value="${device.sim_invoice_number}" />
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
 				                  </td>
 				                </tr>
@@ -130,7 +131,7 @@
 				                <td width="10%"></td>
 				                 <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span>  Device IMEI Number:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	 <input type="text" name="device_imei_number" class="org_input_txtbx_height1" id="imei_id" onblur="deviceimei('imei_id')" oninput="validatenum4()">
+				                  	 <input type="text" name="device_imei_number" class="org_input_txtbx_height1" id="imei_id" onblur="deviceimei('imei_id')" oninput="validatenum4()" value="${device.device_imei_number}">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  
 				                  
@@ -139,25 +140,55 @@
 				                   </td>
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim tested ?:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	<input type="radio" id="id_yes_active" name="sim_card_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <c:choose>
+				                  <c:when test="${device.sim_card_tested==0}">
+				                  <input type="radio" id="id_yes_active" name="sim_card_tested" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="sim_card_tested" value="0" checked="checked">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                  </c:when>
+				                  <c:when test="${device.sim_card_tested==1}">
+				                  <input type="radio" id="id_yes_active" name="sim_card_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="sim_card_tested" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                 </c:when>
+				                  </c:choose>
+				                  	
 				                  </td>
 				                </tr>
 				                <tr class="row2">
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Tested:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	<input type="radio" id="id_yes_active" name="device_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <c:choose>
+				                  <c:when test="${device.device_tested==1}">
+				                  <input type="radio" id="id_yes_active" name="device_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="device_tested" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
+				                  </c:when>
+				                  <c:when test="${device.device_tested==0}">
+				                  <input type="radio" id="id_yes_active" name="device_tested" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="device_tested" value="0" checked="checked">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
+				                  </c:when>
+				                  </c:choose>
+				                  	
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Device-Sim Paired ? :</td>
 				                  <td valign="top" align="left" class="input_txt"  >
-				                  	<input type="radio" id="id_yes_active" name="device_sim_paired" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <c:choose>
+				                  <c:when test="${device.device_sim_paired==0}">
+				                  <input type="radio" id="id_yes_active" name="device_sim_paired" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                  </c:when>
+				                  <c:when test="${device.device_sim_paired==1}">
+				                  <input type="radio" id="id_yes_active" name="device_sim_paired" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                  </c:when>
+				                  </c:choose>
+				                  	
 				                  </td>
 				                
 				                </tr>
@@ -165,16 +196,35 @@
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Status:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	<input type="radio" id="id_yes_active" name="device_status" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <c:choose>
+				                  <c:when test="${device.device_status==1}"><input type="radio" id="id_yes_active" name="device_status" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="device_status" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
+				                  	</c:when>
+				                  <c:when test="${device.device_status==0}">
+				                  <input type="radio" id="id_yes_active" name="device_status" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="device_status" value="0" checked="checked">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
+				                  	</c:when>
+				                  </c:choose>
+				                  	
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Is Assigned? :</td>
 				                  <td valign="top" align="left" class="input_txt"  >
-				                  	<input type="radio" id="id_yes_active" name="is_assigned" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <c:choose>
+				                  <c:when test="${device.is_assigned==0}">
+				                  <input type="radio" id="id_yes_active" name="is_assigned" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="is_assigned" checked value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                  </c:when>
+				                  <c:when test="${device.is_assigned==1}">
+				                  <input type="radio" id="id_yes_active" name="is_assigned" checked="checked" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="is_assigned" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
+				                  </c:when>
+				                  </c:choose>
+				                  	
 				                  </td>
 				                
 				                </tr>
@@ -182,13 +232,13 @@
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Password:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" onblur="passcheck('passid')">
+				                  	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" onblur="passcheck('passid')" value="${device.password}">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Comments:</td>
 				                  <td valign="top" align="left" class="input_txt"  >
-				                  	<textarea  name="comments" class="textareanew" rows="3" style="width:220px;"id="comments_id" onblur="com('comments_id')"></textarea>
+				                  	<textarea  name="comments" class="textareanew" rows="3" style="width:220px;"id="comments_id" onblur="com('comments_id')" >${device.comments}</textarea>
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font> </td>
 				                
 				                </tr>
@@ -198,7 +248,7 @@
 				                      <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>APN:</td>
 				                      <td valign="top" align="left" class="input_txt"  ><div id="info" >
       <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;">  
-      <option value="" selected>--Select APN--</option>  
+      <option value="${device.apn}" selected>${device.apn}</option>  
       </select> 
       </div> </td>
       <td><input type="hidden" class="org_input_txtbx_height1" name="create_user_id" id="userid" onblur="usercheck('userid')" value="<sec:authentication property="principal.username" />" /></td></tr>
@@ -214,14 +264,14 @@
                    
                    <!-- <input type="reset" class="submit_btn" value="Reset" onclick="window.location.href='orgregistration'"></td> -->
                  <td>
-                   <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel"></td>
+                   <input type="button" class="btn" onclick="window.location.href='view_devices'" value="Cancel"></td>
                    </tr>
                  </table>
                   </td>
                 
                   </tr>
 				        </table></td></tr></table></td></tr></table>
-				        
+				        </div>
 				        </td></tr></table>
                   
                   </form></div></div>

@@ -55,7 +55,7 @@
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2>Driver List<br/></h2>
-			          <div class="buttonswitchpanel">
+			         <!--  <div class="buttonswitchpanel">
 			          <div class='buttonsheader'>
 						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
 						<a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
@@ -64,7 +64,7 @@
 						<a  href='#' > <img title="Download"src="resources/images/download.png" style="height:25px;width:35px;"/></a>
 						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
 						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
-						</div></div>
+						</div></div> -->
 			          
 			        </div>
 			    

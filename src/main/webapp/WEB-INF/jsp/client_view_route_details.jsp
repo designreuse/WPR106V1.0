@@ -12,7 +12,10 @@
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2>Vehicle Route View<br/></h2>
-			          
+			          <div class="searchdiv">
+                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                          Open Search
+                        </a></div>	
 			        </div>
 			    
 

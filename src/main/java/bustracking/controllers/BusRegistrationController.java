@@ -203,6 +203,8 @@ public class BusRegistrationController {
 	}
 	
 
+	// Search Bus Information
+	
 	@RequestMapping(value="/findbus",method=RequestMethod.GET)
 	public String findBus1(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("device_imei_number") String device_imei_number,ModelMap model)
 	{

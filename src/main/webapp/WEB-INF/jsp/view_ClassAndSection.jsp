@@ -14,7 +14,7 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Class &amp; Section View</h2><div class="searchdiv">
+			          <h2>Class &amp; Section Information</h2><div class="searchdiv">
                         <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
                           Open Search
                         </a></div>
@@ -110,7 +110,7 @@
 										
 										<a href="<c:out value="editclass?org_name=${classSection.org_name}&branch=${classSection.branch}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 												
-										<a href="<c:out value="delete_class?org_name=${classSection.org_name}&branch=${classSection.branch}&class=${classSection.class_std}&section=${classSection.section}"/>" onclick="return confirmation('Are you sure want to Delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
+										<a href="<c:out value="delete_class?org_name=${classSection.org_name}&branch=${classSection.branch}&class_std=${classSection.class_std}&section=${classSection.section}"/>" onclick="return confirmation('Are you sure want to Delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
 								</tr>

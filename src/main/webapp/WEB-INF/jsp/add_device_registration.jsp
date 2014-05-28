@@ -46,7 +46,7 @@
       <tr>
         <td valign="top" align="left">
         	
-	            <div class="headingsnew altheading">
+	            <div class="headings altheading">
 	              <h2>Device/Sim Configuration</h2>
 	            </div>
             

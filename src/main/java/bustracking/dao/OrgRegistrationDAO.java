@@ -65,8 +65,25 @@ public class OrgRegistrationDAO{
 			
 			
 			preparedStatement.execute();
-			
 	
+	       /*PreparedStatement preparedStatement2=con.prepareStatement("Insert into tbl_business_rule(org_id,google_map_traffic,pickup_start_time,pickup_end_time,drop_start_time,drop_end_time,kg_start_time,kg_end_time,speed_limit,sms_options,alert_time_interval,saturday,sms_sending)values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		   preparedStatement2.setString(1, org.getOrg_id());
+		   preparedStatement2.setString(2,"off");
+		   preparedStatement2.setString(3,"07:00");
+		   preparedStatement2.setString(4,"09:00");
+		   preparedStatement2.setString(5, "16:00");
+		   preparedStatement2.setString(6,"18:00");
+		   preparedStatement2.setString(7, "07:00");
+		   preparedStatement2.setString(8, "13:00");
+		   preparedStatement2.setString(9, "50");
+		   preparedStatement2.setString(10,"delay");
+		   preparedStatement2.setString(11, "off");
+		   preparedStatement2.setString(12, "10");
+		   preparedStatement2.setString(13, "off");
+		   preparedStatement2.execute();*/
+		   
+		   
+			
 			flag=1;
 		}
 		catch(Exception e){

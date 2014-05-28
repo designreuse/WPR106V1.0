@@ -39,7 +39,10 @@
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2>Student View 
-			        <br/></h2>			        </div>
+			        <br/></h2>	<div class="searchdiv">
+                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                          Open Search
+                        </a></div>			        </div>
 			    
 
 
@@ -80,7 +83,7 @@
 							    <option value="${studentlist2.parent_mobile1}">${studentlist2.parent_mobile1}</option>
 							    </c:forEach>
 							    </select></td>
-							    
+							    <td align="center" valign="middle"></td>
 							  <td align="center" valign="middle" width="30%">
 							  <input type="submit" class="btn" value="Search" ></td>
 							 
@@ -130,7 +133,7 @@
 									 <td valign="top" align="left" width="30%" title="Drop Point Address">${studentlist.drop_point_address}			 </td>
 									 <td valign="top" align="left" width="1%" title="Kg Drop ">${studentlist.kg_drop}</td>
 									 <td align="left">
-										<div class="arrow" title="Show all Details"></div><a href="<c:out value="client_edit_student?student_roll_no=${studentlist.student_roll_no}&org_name=${studentlist.org_name}&branch=${studentlist.branch}"/>" ><img src="resources/images/edit-29.png" alt="Edit" width="20" height="15"/></a>
+										<div class="arrow" title="Double click to Show all Details"></div><a href="<c:out value="client_edit_student?student_roll_no=${studentlist.student_roll_no}&org_name=${studentlist.org_name}&branch=${studentlist.branch}"/>" ><img src="resources/images/edit-29.png" alt="Edit" width="20" height="15"/></a>
 										</td>
 								</tr>
 							    	

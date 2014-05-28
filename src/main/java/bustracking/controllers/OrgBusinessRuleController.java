@@ -32,6 +32,7 @@ import bustracking.forms.AddUserForm;
 import bustracking.forms.ClassSectionForm;
 import bustracking.forms.OrgBusinessRuleForm;
 import bustracking.dao.BusRegistrationDAO;
+import bustracking.dao.MainDAO;
 import bustracking.dao.OrgBusinessRuleDAO;
 import bustracking.dao.OrgRegistrationDAO;
 
@@ -44,6 +45,8 @@ public class OrgBusinessRuleController{
 	BusRegistrationDAO busDAO; 	
 	@Autowired
 	OrgBusinessRuleDAO businessRuleDAO;
+	@Autowired
+	MainDAO mainDAO;
 	
 	//add business rules admin 
 	@RequestMapping(value="/business_rule", method=RequestMethod.GET)
@@ -174,12 +177,13 @@ public class OrgBusinessRuleController{
 		
 		return "edit_admin_brules";
 	}
-//Update Businesss Rules Admin Side
+
+	//Update Businesss Rules Admin Side
 	
 	@RequestMapping(value="/updatebrulesadmin",method=RequestMethod.POST)
-	public String updateclass(HttpServletRequest request,@Valid OrgBusinessRule orgBusinessRule,BindingResult result,ModelMap model)
+	public String updateclass(HttpServletRequest request,@ModelAttribute("OrgBusinessRule") OrgBusinessRule businessRule,BindingResult result,ModelMap model)
 	{
-		int status=businessRuleDAO.update_orgbusinessrules(orgBusinessRule);
+		int status=businessRuleDAO.update_orgbusinessrules(businessRule);
 		if(status==1)
 		{
 			OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
@@ -213,6 +217,37 @@ public class OrgBusinessRuleController{
 
 	}
 
+	// Change the Rules in Client Side
+	
+	@RequestMapping(value="/change_setting",method=RequestMethod.GET)
+	public String clienteditbusinessrules(HttpServletRequest request,ModelMap model,Principal principal)
+	{
+			
+		OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
+		orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.client_changebusinessrules(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("orgBusinessRuleForm",orgBusinessRuleForm);
+		
+		return "client_edit_businessrules";
+	}
+	
+	//Update Businesss Rules in Client Side
+	
+		@RequestMapping(value="/updatechangesettings",method=RequestMethod.POST)
+		public String clienteditclass(HttpServletRequest request,@ModelAttribute("OrgBusinessRule") OrgBusinessRule businessRule,BindingResult result,ModelMap model,Principal principal)
+		{
+			int status=businessRuleDAO.client_updatebusinessrules(businessRule,mainDAO.getOrg_id(principal.getName()));
+			if(status==1)
+			{
+				OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
+				orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules_client(mainDAO.getOrg_id(principal.getName())));
+				model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
+				
+			}
+			
+			return "client_business_rules";
+		}
+		
+	//
 	
 }
 

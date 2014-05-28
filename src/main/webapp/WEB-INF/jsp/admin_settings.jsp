@@ -50,6 +50,11 @@ jQuery(function () {
         $("#bid").select2();
     });
 </script>
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#sms_option_id").select2();
+    });
+</script>
 
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
@@ -88,7 +93,7 @@ jQuery(function () {
 													class="err">*</span> Branch</td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt">
 												<div id="info" style="height:8px;" > 
-													<select name="branch" style="width:220px;" id="bid" onblur="Validate1('bid')" >
+													<select name="branch" style="width:220px;" id="bid" onblur="Validate1('bid')" disabled="disabled" >
 							    					<option value="">-- Select branch--</option>
 							  
 			                 
@@ -99,7 +104,8 @@ jQuery(function () {
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Use Google Map With traffic?</td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt">
-												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="google_map_traffic"  />
+												<input type="radio" value="on"  id="inp_contact_no" name="google_map_traffic"/> &nbsp; ON &nbsp;&nbsp;&nbsp;
+												<input type="radio" value="off" id="inp_contact_no" name="google_map_traffic"  checked /> &nbsp; OFF 
 												<span class="err" id="errmsg"></span> <br />
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.contact_no"></form:errors></font>
 												</td><td valign="middle" align="left"  width="20%"></td>
@@ -199,9 +205,11 @@ jQuery(function () {
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span>SMS Option</td><td width="0%">:</td>
 												<td valign="top" align="left" class="input_txt">
-												 <input type="radio" name="sms_options" value="yes" checked/>Yes&nbsp;&nbsp;
-									             <input type="radio" name="sms_options" value="no"/>NO&nbsp;&nbsp;
-												  <br />
+												 <select  name="sms_options" id="sms_option_id" style="width:220px;">
+												 <option value="only delay">Only Delay Time</option>
+												 <option value="before reach">Before Reaching Stop</option>
+												 </select>
+												<br />
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.driver_status"></form:errors></font>
 												</td><td valign="middle" align="left"  width="20%"></td>
 											</tr>
@@ -220,7 +228,8 @@ jQuery(function () {
 													class="err">*</span>Is Saturday Working Day? 
 												 </td><td width="0%">:</td>
 												 <td valign="top" align="left" class="input_txt">
-												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="saturday" />
+												<input type="radio" value="on" id="inp_contact_no" name="saturday"/> &nbsp; ON &nbsp;&nbsp;&nbsp;
+												 <input type="radio" value="off" id="inp_contact_no" name="saturday" checked /> &nbsp; OFF
 												<span class="err" id="errmsg"></span> <br />
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.contact_no"></form:errors></font>
 												</td>
@@ -230,7 +239,8 @@ jQuery(function () {
 											<td valign="top" align="left" class="input_txt"> <span
 													class="err"></span>SMS sending</td><td width="0%">:</td>
 													<td valign="top" align="left" class="input_txt">
-												<input type="Checkbox" class="input_txtbx_br" id="inp_contact_no" name="sms_sending"  />
+												<input type="radio" value="on" id="inp_contact_no" name="sms_sending" />&nbsp; ON &nbsp;&nbsp;&nbsp;
+												 <input type="radio" value="off" id="inp_contact_no" name="sms_sending" checked/>&nbsp; OFF
 												<span class="err" id="errmsg"></span> <br />
 												<font color="Red" size="+1"><form:errors path="DriverRegistration.contact_no"></form:errors></font>
 												</td><td valign="middle" align="left"  width="20%"></td>

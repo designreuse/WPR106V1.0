@@ -135,7 +135,13 @@
 </div>	
 </c:if>
  <c:if test="${menu=='ROLE_SUPERADMIN'}">
-<a class="menuitem" href="holidayadmin" style="padding-left:35px;">Holidays</a>
+<a class="menuitem submenuheader">Holidays</a>
+<div class="submenu">
+<ul>
+	<li><a href="holidayadmin">Holidays Entry</a></li>
+	<li><a href="holidayviewadmin">Holidays Information</a></li>
+	</ul>
+	</div>
 </c:if>
  <c:if test="${menu=='ROLE_SUPERADMIN'}">
 <a class="menuitem" href="#" style="padding-left:35px;">Reports</a>
@@ -200,7 +206,13 @@
 </c:if>
  <c:if test="${menu=='ROLE_ADMIN'}">
 <!-- <a class="menuitem " href="clientholiday" style="padding-left:35px;">Holidays</a> -->
-<a class="menuitem " href="clientholiday" style="padding-left:35px;">Holidays</a>
+<a class="menuitem submenuheader">Holidays</a>
+<div class="submenu">
+<ul>
+	<li><a href="clientholiday">Holidays Entry</a></li>
+	<li><a href="clientviewholiday">Holidays Information</a></li>
+	</ul>
+	</div>
 </c:if>
  <c:if test="${menu=='ROLE_ADMIN'}">
 <a class="menuitem submenuheader" href="#" >Reports</a>

@@ -32,6 +32,7 @@ import bustracking.dao.OrgRegistrationDAO;
 import bustracking.model.AddUser;
 import bustracking.model.OrgRegistration;
 import bustracking.model.StudentRegistration;
+import bustracking.model.OrgBusinessRule;
 import bustracking.forms.*;
 import bustracking.dao.*;
 
@@ -46,6 +47,8 @@ public class OrgRegistrationController{
 	@Autowired
 	AddUserDAO addUserDAO;
 	
+	@Autowired
+	OrgBusinessRuleDAO orgBusinessRuleDAO;
 
 	
 @RequestMapping(value="/orgregistration", method=RequestMethod.GET)
@@ -63,7 +66,7 @@ public String PrintWelcome(HttpSession session,Model model, Principal prinicpal)
 
 
 @RequestMapping(value="/orgregistration", method=RequestMethod.POST)
-public String orgregistration(HttpServletRequest request,HttpSession session,@ModelAttribute("OrgRegistration") @Valid OrgRegistration org,BindingResult result, ModelMap model)
+public String orgregistration(HttpServletRequest request,HttpSession session,@ModelAttribute("OrgBusinessRule") OrgBusinessRule businessRule,@ModelAttribute("OrgRegistration") @Valid OrgRegistration org,BindingResult result, ModelMap model)
 {
 	session.setAttribute("organisation",org);
 	if(result.hasErrors())
@@ -79,7 +82,30 @@ public String orgregistration(HttpServletRequest request,HttpSession session,@Mo
 			return "org_registration";
 		}
 	}*/
+	
+	
+	
+	// Insert Organization
 	orgDAO.insert_organisation(org);
+	
+	// Get Organization id For Business rule
+		businessRule.setOrg_id(orgDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
+		   businessRule.setGoogle_map_traffic("off");
+		   businessRule.setPickup_start_time("07:00");
+		  businessRule.setPickup_end_time("09:00");
+		   businessRule.setDrop_start_time("16:00");
+		   businessRule.setDrop_end_time("18:00");
+		   businessRule.setKg_start_time("07:00");
+		   businessRule.setKg_end_time("13:00");
+		   businessRule.setSpeed_limit("50");
+		   businessRule.setSms_options("delay");
+		   businessRule.setSaturday("off");
+		   businessRule.setAlert_time_interval("10");
+		  businessRule.setSms_sending("off");
+	// Insert Default Setting of Organization
+	orgBusinessRuleDAO.insert_organisation(businessRule);
+	
+	
 	OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
 	orgregistrationform.setOrgregistration(orgDAO.getOrgregistration());
 	model.addAttribute("orgregistrationform", orgregistrationform);

@@ -35,7 +35,7 @@
             $("#report tr:not(.odd)").hide();
             $("#report tr:first-child").show();
             
-            $("#report tr.odd").click(function(){
+            $("#report tr.odd").dblclick(function(){
                 $(this).next("tr").toggle();
                 $(this).find(".arrow").toggleClass("up");
             });
@@ -80,18 +80,18 @@
 			        <div class="headings altheading">
 			          <h2>Student View 
 			        <br/></h2>
-			          <div class="buttonswitchpanel">
+			          <!-- <div class="buttonswitchpanel">
 			          <div class='buttonsheader'>
 						<a  href='javascript:history.back();' > <img title="Back"src="resources/images/back.png" style="height:25px;width:45px;"/></a>
 						<a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a>
 						<a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
-						<!-- popups -->
-						<!-- <a href="#join_form" id="join_pop" ><img title="Show"src="resources/images/fulltbl.png" style="height:25px;width:35px;"/></a> -->
+						popups
+						<a href="#join_form" id="join_pop" ><img title="Show"src="resources/images/fulltbl.png" style="height:25px;width:35px;"/></a>
 						
 						<a  href='#' > <img title="Download"src="resources/images/download.png" style="height:25px;width:35px;"/></a>
 						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
 						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
-						</div></div>
+						</div></div> -->
 			          
 			        </div>
 			    
@@ -184,21 +184,23 @@
 									 <td valign="top" align="left" width="30%" title="Drop Point Address">${studentlist.drop_point_address}			 </td>
 									 <td valign="top" align="left" width="1%" title="Kg Drop ">${studentlist.kg_drop}</td>
 									 <td align="left">
-										<div class="arrow" title="Show all Details"></div><a href="#" title="Edit" ><img src="resources/images/edit-29.png" alt="Edit" width="20" height="15"/></a><a href="<c:out value="client_edit_student?student_roll_no=${studentlist.student_roll_no}"/>" ></a>
+										<div class="arrow" title="Double click to Show all Details"></div><a href="#" title="Edit" ><img src="resources/images/edit-29.png" alt="Edit" width="20" height="15"/></a><a href="<c:out value="client_edit_student?student_roll_no=${studentlist.student_roll_no}"/>" ></a>
 										</td>
 								</tr>
 							    	
 							<tr >
-										<td valign="top" align="left" colspan="3"><ul><li><span style="color:#3bb9ff;">Student First Name:</span>${studentlist.first_name}</li>
-										<li><span style="color:#3bb9ff;">Student Last Name:</span>${studentlist.last_name}</li><li><span style="color:#3bb9ff;">Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span><c:choose>
+										<td valign="top" align="left" colspan="3"><ul><li><span style="color:#3bb9ff;">Student First Name:</span><span style="color:#666;">${studentlist.first_name}</span></li>
+										<li><span style="color:#3bb9ff;">Student Last Name:</span><span style="color:#666;">${studentlist.last_name}</span></li><li><span style="color:#3bb9ff;">Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
+										<span style="color:#666;"><c:choose>
 									 <c:when test="${studentlist.gender=='M'}">
 									 <c:out value="Male"></c:out></c:when>
 									 <c:when test="${studentlist.gender=='F'}">
 									 <c:out value="FeMale"></c:out>
 									 </c:when>
-									 </c:choose></li><li><span style="color:#3bb9ff;">Class & Section &nbsp;&nbsp;&nbsp;&nbsp;:</span>${studentlist.class_standard}&amp;${studentlist.section}</li></ul></td>
-										<td valign="top" align="left" colspan="6" ><ul><li><span style="color:#3bb9ff;">Parents Name&nbsp;&nbsp;:</span>${studentlist.parent_name1} &amp;${studentlist.parent_name2}</li><li><span style="color:#3bb9ff;">Parent Number:</span>${studentlist.parent_mobile1} &amp;${studentlist.parent_mobile2} </li>
-										<li><span style="color:#3bb9ff;">Parents Email&nbsp;&nbsp;&nbsp;:</span>${studentlist.parent_email1}&amp;${studentlist.parent_email2}</li></ul></td>
+									 </c:choose></span></li><li><span style="color:#3bb9ff;">Class & Section &nbsp;&nbsp;&nbsp;&nbsp;:</span><span style="color:#666;">${studentlist.class_standard}&amp;${studentlist.section}</span></li></ul></td>
+										<td valign="top" align="left" colspan="6" ><ul><li><span style="color:#3bb9ff;">Parents Name&nbsp;&nbsp;:</span><span style="color:#666;">${studentlist.parent_name1} &amp;${studentlist.parent_name2}</span></li>
+										<li><span style="color:#3bb9ff;">Parent Number:</span><span style="color:#666;">${studentlist.parent_mobile1} &amp;${studentlist.parent_mobile2}</span> </li>
+										<li><span style="color:#3bb9ff;">Parents Email&nbsp;&nbsp;&nbsp;:</span><span style="color:#666;">${studentlist.parent_email1}&amp;${studentlist.parent_email2}</span></li></ul></td>
 										</tr>
 							    	</c:forEach>
 							    </c:if>

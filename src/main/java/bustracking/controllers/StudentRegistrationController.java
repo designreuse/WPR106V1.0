@@ -359,7 +359,7 @@ public class StudentRegistrationController {
 		return "view_student_details";
 	}
 	
-	
+	// Search student in Admin side.
 	@RequestMapping(value="/findstudents",method=RequestMethod.GET)
 	public String findstudents(HttpServletRequest request,
 			@RequestParam("org_name") String org_name,
@@ -392,14 +392,14 @@ public class StudentRegistrationController {
 		
 	
 	@RequestMapping(value="/search_student_details", method=RequestMethod.GET)
-	public String searchdetails(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,ModelMap model,StudentRegistration studentRegistration)
+	public String searchdetails(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,ModelMap model,StudentRegistration studentRegistration,Principal principal)
 	{
 		
 		
         StudentRegistrationForm studentregistrationform = new StudentRegistrationForm();
 	
 		//busRegistrationForm.setBusregistration(busDAO.getBus_id(bus_id));
-		studentregistrationform.setStudentregistration(studentDAO.getStudent_roll_no(student_roll_no));
+		studentregistrationform.setStudentregistration(studentDAO.getStudent_roll_no(student_roll_no,mainDAO.getOrg_id(principal.getName())));
 		model.addAttribute("studentregistrationform", studentregistrationform);
 		model.addAttribute("currentuser",request.getSession().getAttribute("currentuser"));
 		
@@ -471,7 +471,7 @@ public class StudentRegistrationController {
 		
 		
 		StudentRegistrationForm studentregistrationform = new StudentRegistrationForm();
-		studentregistrationform.setStudentregistration(studentDAO.getStudent_roll_no(student_roll_no));
+		studentregistrationform.setStudentregistration(studentDAO.getStudent_roll_no(student_roll_no,mainDAO.getOrg_id(principal.getName())));
  		model.addAttribute("studentregistrationform", studentregistrationform);
  		
  		List <String> route_no=new ArrayList<String>();
@@ -488,7 +488,7 @@ public class StudentRegistrationController {
 			BindingResult result,ModelMap model,Principal principal)
 	{
 	
-		int status =studentDAO.clientupdateStudent(studentRegistration);
+		int status =studentDAO.clientupdateStudent(studentRegistration,mainDAO.getOrg_id(principal.getName()));
 		System.out.println(status);
 		if(status==1){
 			StudentRegistrationForm studentRegistrationForm=new StudentRegistrationForm();

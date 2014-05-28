@@ -51,7 +51,7 @@ select.add(option, 0); */
 		</script>
 
 
-<form action="insert_class_section" method="POST">
+<form action="client_insert_holiday" method="POST">
 <table class="margin_table">
 
       <tr>
@@ -110,7 +110,7 @@ select.add(option, 0); */
 				                <tr class="row2"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Holiday Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<input type="text" value="" id="datepicker"name="fromdate"/>
+				                  	<input type="text" value="" id="datepicker" name="holiday_date"/>
 				                  	
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
@@ -119,7 +119,7 @@ select.add(option, 0); */
 				                <tr class="row2"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> From Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<input type="text" value="" id="datepicker2"name="fromdate"/>
+				                  	<input type="text" value="" id="datepicker2" name="fromdate"/>
 				                  	
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
@@ -127,14 +127,14 @@ select.add(option, 0); */
 				                     <tr class="row1"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> To Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<input type="text" value="" id="datepicker1"name="todate"/>			                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  	<input type="text" value="" id="datepicker1" name="todate"/>			                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
 				                     </tr></table></div>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				               <tr class="row2"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Description</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  <textarea name="description" class="textareanew"></textarea>		                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  <textarea name="holiday_reason" class="textareanew"></textarea>		                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
 				                     </tr></table>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >

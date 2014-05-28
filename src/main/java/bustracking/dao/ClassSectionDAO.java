@@ -245,7 +245,7 @@ public List<String> getclass_for_edit(String org_name,String branch){
 		
 		try{
 			
-			String sql="UPDATE tbl_class SET service='"+class_standard.getService()+"' where class='"+class_standard.getClass_std()+"' and section='"+class_standard.getSection()+"'";
+			String sql="UPDATE tbl_class SET service='"+class_standard.getService()+"' where org_id=(select org_id from tbl_organization where org_name='"+class_standard.getOrg_name()+"' and branch='"+class_standard.getBranch()+"') and class='"+class_standard.getClass_std()+"' and section='"+class_standard.getSection()+"'";
 			statement.execute(sql);
 			System.out.println(sql);
 			flag=1;
@@ -284,6 +284,7 @@ public List<String> getclass_for_edit(String org_name,String branch){
 		try{
 			
 	    	 String cmd ="select * from tbl_class where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') and class='"+class_std+"' and section='"+section+"'";
+	    	 System.out.println(cmd);
 	    	 String Desc="Delete report ";
 	    	 resultSet=statement.executeQuery(cmd);
 				

@@ -2,17 +2,19 @@ package bustracking.forms;
 
 import java.util.*;
 
+import bustracking.model.Holidays;
+
 public class HolidaysForm{
 	
- public List<HolidaysForm> holidaysForms;
+ public List<Holidays> holidays;
 
 
- public List<HolidaysForm> getHolidaysForms() {
-	return holidaysForms;
+ public List<Holidays> getHolidays() {
+	return holidays;
 }
 
-public void setHolidaysForms(List<HolidaysForm> holidaysForms) {
-	this.holidaysForms = holidaysForms;
+public void setHolidaysForms(List<Holidays> holidays) {
+	this.holidays = holidays;
 }
  
  

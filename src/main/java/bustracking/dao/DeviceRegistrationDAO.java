@@ -1113,7 +1113,7 @@ public class DeviceRegistrationDAO {
 		}
 		List<DeviceRegistration> deviceRegistrations=new ArrayList<DeviceRegistration>();
 		try{
-			String cmd_sql="Select * from tbl_device_configuration where device_imei_number='"+device_imei_number+"' or device_sim_number='"+device_sim_number+"' or adminip='"+adminip+"' or create_user_id='"+create_user_id+"'";
+			String cmd_sql="Select * from tbl_device_configuration where device_imei_number='"+device_imei_number+"' or sim_card_number='"+device_sim_number+"' or adminip='"+adminip+"' or create_user_id='"+create_user_id+"'";
 			resultSet=statement.executeQuery(cmd_sql);
 			
 			while(resultSet.next())

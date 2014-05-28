@@ -62,7 +62,7 @@
 					               <option value="Attendance" >Attendance</option>
 				                  	<option value="Tracking" >Tracking</option>
 				                  	<option value="Both" >Both</option>
-				                  	<option value="Attendance" >None Of These</option>
+				                  	<option value="None Of These" >None Of These</option>
         				        </select>
 				                  	 
 				                  	 <br/><font color="Red" size="+1"></font>

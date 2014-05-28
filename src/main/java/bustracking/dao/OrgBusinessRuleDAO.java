@@ -55,6 +55,22 @@ public class OrgBusinessRuleDAO {
 			preparedStatement.setString(13,orgBusinessRule.getSms_sending());
 			preparedStatement.execute();
 			
+			/*PreparedStatement preparedStatement2=con.prepareStatement("Insert into tbl_business_rule(org_id,google_map_traffic,pickup_start_time,pickup_end_time,drop_start_time,drop_end_time,kg_start_time,kg_end_time,speed_limit,sms_options,alert_time_interval,saturday,sms_sending)values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			   preparedStatement2.setString(1, orgBusinessRule.getOrg_id());
+			   preparedStatement2.setString(2,"off");
+			   preparedStatement2.setString(3,"07:00");
+			   preparedStatement2.setString(4,"09:00");
+			   preparedStatement2.setString(5,"16:00");
+			   preparedStatement2.setString(6,"18:00");
+			   preparedStatement2.setString(7,"07:00");
+			   preparedStatement2.setString(8,"13:00");
+			   preparedStatement2.setString(9,"50");
+			   preparedStatement2.setString(10,"delay");
+			   preparedStatement2.setString(11,"off");
+			   preparedStatement2.setString(12,"10");
+			   preparedStatement2.setString(13,"off");
+			   preparedStatement2.execute();*/
+			
 				
 	
 			flag=1;
@@ -167,7 +183,7 @@ public class OrgBusinessRuleDAO {
 	//***************************************************************************************************************
 	//edit rules
 	//***************************************************************************************************************
-	public List<OrgBusinessRule> edit_orgbusinessrules(String org_name , String branch){
+	public List<OrgBusinessRule> edit_orgbusinessrules(String org_name,String branch){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -181,7 +197,7 @@ public class OrgBusinessRuleDAO {
 		}
 		List<OrgBusinessRule> businessRules=new ArrayList<OrgBusinessRule>();
 		try{
-			String sql="Select t1.org_name,t1.branch,t2.org_id,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_name='"+org_name+"' and branch='"+branch+"';";
+			String sql="Select t1.org_name,t1.branch,t2.org_id,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_name='"+org_name+"' and branch='"+branch+"'";
 			resultSet=statement.executeQuery(sql);
 		System.out.println(sql);
 			
@@ -207,47 +223,52 @@ public class OrgBusinessRuleDAO {
 	    return businessRules;
 		
 	}
-//***************************************************************************************************************
-//Update Admin business rules
-//***************************************************************************************************************	
-	public int update_orgbusinessrules(OrgBusinessRule orgBusinessRule){
-		Connection con = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		
-		int flag=0;
-		try {
-			con = dataSource.getConnection();
-			statement = con.createStatement();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		
-		try{
-			
-			String sql="UPDATE tbl_business_rule SET google_map_traffic='"+orgBusinessRule.getGoogle_map_traffic()+"',pickup_start_time='"+orgBusinessRule.getPickup_start_time()+"',pickup_end_time='"+orgBusinessRule.getPickup_end_time()+"',drop_start_time='"+orgBusinessRule.getDrop_start_time()+"',drop_end_time='"+orgBusinessRule.getDrop_end_time()+"',kg_start_time='"+orgBusinessRule.getKg_start_time()+"',kg_end_time='"+orgBusinessRule.getKg_end_time()+"',speed_limit='"+orgBusinessRule.getSpeed_limit()+"',sms_options='"+orgBusinessRule.getSms_options()+"',alert_time_interval='"+orgBusinessRule.getAlert_time_interval()+"',saturday='"+orgBusinessRule.getSaturday()+"',sms_sending='"+orgBusinessRule.getSms_sending()+"' where org_id='"+orgBusinessRule.getOrg_id()+"'";
-			statement.execute(sql);
-			
-			System.out.println(sql);
-			flag=1;
-			
-		}catch(Exception e){
-	    	System.out.println(e.toString());
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);
-	    }finally{
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);	    	
-	    }
-		
-		if(flag==1)
-			return 1;
-		else
-			return 0;
-			
-	}
+	
+	
+	//***************************************************************************************************************
+			//Update Admin business rules
+			//***************************************************************************************************************	
+				public int update_orgbusinessrules(OrgBusinessRule businessRule){
+					Connection con = null;
+					Statement statement = null;
+					ResultSet resultSet = null;
+					
+					int flag=0;
+					try {
+						con = dataSource.getConnection();
+						statement = con.createStatement();
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+					
+					try{
+						
+						String sql="UPDATE tbl_business_rule SET google_map_traffic='"+businessRule.getGoogle_map_traffic()+"',pickup_start_time='"+businessRule.getPickup_start_time()+"',pickup_end_time='"+businessRule.getPickup_end_time()+"',drop_start_time='"+businessRule.getDrop_start_time()+"',drop_end_time='"+businessRule.getDrop_end_time()+"',kg_start_time='"+businessRule.getKg_start_time()+"',kg_end_time='"+businessRule.getKg_end_time()+"',speed_limit='"+businessRule.getSpeed_limit()+"',sms_options='"+businessRule.getSms_options()+"',alert_time_interval='"+businessRule.getAlert_time_interval()+"',saturday='"+businessRule.getSaturday()+"',sms_sending='"+businessRule.getSms_sending()+"' where org_id=(select org_id from tbl_organization where org_name='"+businessRule.getOrg_name()+"' and branch='"+businessRule.getBranch()+"')";
+						statement.execute(sql);
+						
+						System.out.println(sql);
+						flag=1;
+						
+					}catch(Exception e){
+				    	System.out.println(e.toString());
+				    	releaseResultSet(resultSet);
+				    	releaseStatement(statement);
+				    	releaseConnection(con);
+				    }finally{
+				    	releaseResultSet(resultSet);
+				    	releaseStatement(statement);
+				    	releaseConnection(con);	    	
+				    }
+					
+					if(flag==1)
+						return 1;
+					else
+						return 0;
+						
+				}
+				
+	
+
 	
 	//***************************************************************************************************************
 	//Delete Business Rules
@@ -296,13 +317,148 @@ public class OrgBusinessRuleDAO {
 		   		else
 		   			return 0;
 	}
+	
+	
+
 	//***************************************************************************************************************
-	//Operations Over
+	//View business rule in client side
 	//***************************************************************************************************************
+	public List<OrgBusinessRule> getOrgBusinessRules_client(String org_id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet=null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} 
+		catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<OrgBusinessRule> orgBusinessRules=new ArrayList<OrgBusinessRule>();
+		{	
+				try{
+					
+					String cmd="Select t1.org_name,t1.branch,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_id='"+org_id+"'";
+					resultSet=statement.executeQuery(cmd);
+					while(resultSet.next())
+					{
+						orgBusinessRules.add(new OrgBusinessRule(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("google_map_traffic"),
+								resultSet.getString("pickup_start_time"),resultSet.getString("pickup_end_time"),resultSet.getString("drop_start_time"),resultSet.getString("drop_end_time"),
+								resultSet.getString("kg_start_time"),resultSet.getString("kg_end_time"),resultSet.getString("speed_limit"),
+								resultSet.getString("sms_options"),resultSet.getString("alert_time_interval"), resultSet.getString("saturday"),
+								resultSet.getString("sms_sending")));
+					
+					}
+				}
+
+					catch(Exception e){
+				        System.out.println(e.toString());
+				        	releaseResultSet(resultSet);
+				        	releaseStatement(statement);
+				        	releaseConnection(con);
+				        }finally{
+				        	releaseResultSet(resultSet);
+				        	releaseStatement(statement);
+				        	releaseConnection(con);	    	
+				        }
+		}
+		return orgBusinessRules;
+	
+	}
 	
 	
 	
+	//***************************************************************************************************************
+		//edit rules in client side
+		//***************************************************************************************************************
+		public List<OrgBusinessRule> client_changebusinessrules(String org_id){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			
+			int result=0;
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<OrgBusinessRule> businessRules=new ArrayList<OrgBusinessRule>();
+			try{
+				String sql="Select t1.org_name,t1.branch,t2.org_id,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_id='"+org_id+"'";
+				resultSet=statement.executeQuery(sql);
+			System.out.println(sql);
+				
+				while(resultSet.next())
+				{
+					businessRules.add(new OrgBusinessRule(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("google_map_traffic"),
+							resultSet.getString("pickup_start_time"),resultSet.getString("pickup_end_time"),resultSet.getString("drop_start_time"),resultSet.getString("drop_end_time"),
+							resultSet.getString("kg_start_time"),resultSet.getString("kg_end_time"),resultSet.getString("speed_limit"),
+							resultSet.getString("sms_options"),resultSet.getString("alert_time_interval"), resultSet.getString("saturday"),
+							resultSet.getString("sms_sending")));
+				}
+				
+			}catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return businessRules;
+			
+		}
 	
+		//***************************************************************************************************************
+		//Update business rules in client side
+		//***************************************************************************************************************	
+			public int client_updatebusinessrules(OrgBusinessRule businessRule,String org_id){
+				Connection con = null;
+				Statement statement = null;
+				ResultSet resultSet = null;
+				
+				int flag=0;
+				try {
+					con = dataSource.getConnection();
+					statement = con.createStatement();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
+				try{
+					
+					String sql="UPDATE tbl_business_rule SET pickup_start_time='"+businessRule.getPickup_start_time()+"',pickup_end_time='"+businessRule.getPickup_end_time()+"',drop_start_time='"+businessRule.getDrop_start_time()+"',drop_end_time='"+businessRule.getDrop_end_time()+"',kg_start_time='"+businessRule.getKg_start_time()+"',kg_end_time='"+businessRule.getKg_end_time()+"',saturday='"+businessRule.getSaturday()+"' where org_id='"+org_id+"'";
+					statement.execute(sql);
+					
+					System.out.println(sql);
+					flag=1;
+					
+				}catch(Exception e){
+			    	System.out.println(e.toString());
+			    	releaseResultSet(resultSet);
+			    	releaseStatement(statement);
+			    	releaseConnection(con);
+			    }finally{
+			    	releaseResultSet(resultSet);
+			    	releaseStatement(statement);
+			    	releaseConnection(con);	    	
+			    }
+				
+				if(flag==1)
+					return 1;
+				else
+					return 0;
+					
+			}
+		
+		//***************************************************************************************************************
+		//Operations Over
+		//***************************************************************************************************************
+		
 	public void releaseConnection(Connection con){
 		try{if(con != null)
 			con.close();

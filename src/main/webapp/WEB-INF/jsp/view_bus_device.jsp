@@ -125,7 +125,7 @@
 			
       		<tr>
         		<td valign="top" align="left">
-			        <div class="headingsnew altheading">
+			        <div class="headings altheading">
 			          <h2>Device Informations<br/></h2><div class="searchdiv">
                         <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
                           Open Search
@@ -188,7 +188,7 @@
 							    </select></td>
 							    
 							    <td align="center" valign="middle" width="20%">
-							    <input type="submit" class="pressableButton blue" value="Search"></td>
+							    <input type="submit" class="btn" value="Search"></td>
 							 
 							 
 							  </tr>

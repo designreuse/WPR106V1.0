@@ -503,7 +503,7 @@ public List<String> getStudent_route_no(String org_id){
 		}
 		List<BusRegistration> busRegistrations = new ArrayList<BusRegistration>();
 	    try{
-	    	String cmd="SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"' or vechicle_reg_no='"+vechicle_reg_no+"'";
+	    	String cmd="SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"' or vechicle_reg_no='"+vechicle_reg_no+"' or device_imei_number='"+device_imei_number+"'";
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);			
 			while(resultSet.next()){
@@ -541,7 +541,7 @@ public List<String> getStudent_route_no(String org_id){
 		}
 		try{
 			
-	    	 String cmd ="select  from tbl_vechicle where vechicle_reg_no='"+vechicle_reg_no+"'";
+	    	 String cmd ="select * from tbl_vechicle where vechicle_reg_no='"+vechicle_reg_no+"'";
 	    	 String Desc="Delete report ";
 	    	 resultSet=statement.executeQuery(cmd);
 				
