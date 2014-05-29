@@ -1,0 +1,60 @@
+package bustracking.model;
+
+public class Smsparent{
+	
+	private String route;
+	
+	private String shift;
+	
+	private String trip;
+	
+	private String message;
+
+	public Smsparent() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Smsparent(String route, String shift, String trip, String message) {
+		super();
+		this.route = route;
+		this.shift = shift;
+		this.trip = trip;
+		this.message = message;
+	}
+
+	public String getRoute() {
+		return route;
+	}
+
+	public void setRoute(String route) {
+		this.route = route;
+	}
+
+	public String getShift() {
+		return shift;
+	}
+
+	public void setShift(String shift) {
+		this.shift = shift;
+	}
+
+	public String getTrip() {
+		return trip;
+	}
+
+	public void setTrip(String trip) {
+		this.trip = trip;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	
+	
+}

@@ -9,10 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.aspectj.weaver.NewConstructorTypeMunger;
 import org.aspectj.weaver.ltw.LTWWorld;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -317,7 +321,22 @@ else{
 	
 	}
 	
-
+	@RequestMapping(value="/smsparent", method = RequestMethod.POST)
+	public String sms_route(HttpServletRequest req,HttpServletResponse response,HttpSession session,@ModelAttribute("Smsparent") @Valid Smsparent parent, String org_id, BindingResult result,ModelMap model, Principal principal ) {
+	 
+		
+		
+		
+		
+		mainDAO.sms_parent(parent);
+	    /*SmsparentForm smsparentForm=new SmsparentForm();
+	 // smsparentForm.setSmsparent(mainDAO.sms_parent(parent));
+		
+		model.addAttribute("smsparentForm",smsparentForm);	*/
+		
+		
+		return "client_smstoparent";
+	}
 
 	@RequestMapping(value="/clienttracksms", method = RequestMethod.GET)
 	public String clienttracksms(HttpServletRequest request,ModelMap model, Principal principal ) {

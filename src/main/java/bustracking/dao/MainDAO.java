@@ -195,11 +195,11 @@ public class MainDAO {
 			
 		}
 		
-		private void Messageparent(Smsparent parent) {
+		public String sms_parent(Smsparent parent){
 			Connection con = null;
 			Statement statement = null;
 			ResultSet resultSet = null;
-
+			String role="";
 			try {
 				con = dataSource.getConnection();
 				statement = con.createStatement();
@@ -241,63 +241,11 @@ public class MainDAO {
 				releaseStatement(statement);
 				releaseConnection(con);
 			}
+			return role;
 		}
 		
 		
-		public String smsparent(Smsparent sms){
-			Connection con = null;
-			Statement statement = null;
-			ResultSet resultSet = null;
-			String role="";
-			try {
-				con = dataSource.getConnection();
-				statement = con.createStatement();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			
-			try{
-				
-				
-				PreparedStatement preparedStatement1=con.prepareStatement("insert into sms_track(sim_card_number,message,status,updated_on,res) values(?,?,?,?,?)");
-				preparedStatement1.setString(1,"");
-				preparedStatement1.setString(2,"");
-				preparedStatement1.setString(3,"NULL");
-				preparedStatement1.setString(4,"NULL");
-				preparedStatement1.setString(5,"NULL");
-				preparedStatement1.execute();
-				
-			
-					
-					
-					//MessageSender.sendMessage1("9659885881", "begin"+device.getPassword(), this.getmyid());
-					
-					
-			    
-			   /* String cmd1="UPDATE sms_track SET status='"+device.getStatus()+"' , updated_on='"+device.getUpdated_on()+"', res='"+device.getRes()+"' WHERE myid='"+this.getmyid()+"'";
-			    System.out.println(cmd1);
-		    	statement.execute(cmd1);*/
-			    
-			    
-		    	
-				
-		    }catch(Exception e){
-		    	System.out.println(e.toString());
-		    	releaseResultSet(resultSet);
-		    	releaseStatement(statement);
-		    	releaseConnection(con);
-		    }finally{
-		    	releaseResultSet(resultSet);
-		    	releaseStatement(statement);
-		    	releaseConnection(con);	    	
-		    }
-		    return role;
-			
-			
-			
-			
-		}
-
+	
 		public List<String> get_route(String trip, String org_id){
 			Connection con = null;
 			Statement statement = null;

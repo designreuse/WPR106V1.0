@@ -27,7 +27,7 @@
 
 
 
-<form action="insert_class_section" method="POST">
+<form action="smsparent" method="POST">
 <table class="margin_table">
 
       <tr>
