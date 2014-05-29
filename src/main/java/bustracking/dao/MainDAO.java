@@ -209,7 +209,7 @@ public class MainDAO {
 
 			try {
 
-				String mobile_number = "select * from tbl_student where pickup_route='"+ parent.getRoute() + "'";
+				String mobile_number = "select * from tbl_student where pickup_route_no='"+ parent.getRoute() + "'";
 				resultSet = statement.executeQuery(mobile_number);
 				while (resultSet.next()) {
 					//logger.info("Message Sending....");
