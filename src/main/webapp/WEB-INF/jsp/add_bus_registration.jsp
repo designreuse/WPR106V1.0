@@ -61,7 +61,7 @@
 						         	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Branch :</td>
 						            <td valign="top" align="left" class="input_txt">
 						            	<div id="info" style="height:8px; " >
-						            	<select   style="width:220px;"name="branch" id="bid" onblur="Validate1('bid')">
+						            	<select   style="width:220px;"name="branch" id="bid" onblur="Validate1('bid')" disabled="disabled">
 							    <option value="Selected">-- Select branch--</option>
 							   <%--  <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
         				        <option value="${OrgRegistration.org_id}" <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if>>${OrgRegistration.branch}</option>

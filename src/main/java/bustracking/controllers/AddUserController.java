@@ -96,8 +96,8 @@ public class AddUserController{
 	
 	// Add User Information Admin Side
 	
-@RequestMapping(value="/adduser", method=RequestMethod.POST)
-public String adduser(HttpServletRequest request,HttpSession session,@ModelAttribute("AddUser") @Valid AddUser user, BindingResult result,ModelMap model){
+	@RequestMapping(value="/adduser", method=RequestMethod.POST)
+	public String adduser(HttpServletRequest request,HttpSession session,@ModelAttribute("AddUser") @Valid AddUser user, BindingResult result,ModelMap model){
     session.setAttribute("adminuser", user);
     
     OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
@@ -131,6 +131,8 @@ public String adduser(HttpServletRequest request,HttpSession session,@ModelAttri
 			return "add_adminuser";
 			
 		}*/
+		
+		userDAO.insert_user(user);
 		
 		AddUserForm adduserform=new AddUserForm();
 		adduserform.setAdduser(userDAO.getAdduser());

@@ -36,18 +36,19 @@
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="25%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Organization Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
-							    <select   id="e1"style="width:300px;" name="org_name">
+							    <td align="left" valign="middle" width="20%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Organization Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e1" style="width:280px;" name="org_name">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.org_name}">${addUser1.org_name}</option>
 							    </c:forEach>
 							    </select>
+							    
 							    </td>
 							    
 							    
 							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;Branch&nbsp;<br/><font color="#ccc">.</font></span><br/>
-							    <select   id="e2"style="width:300px;" name="branch">
+							    <select   id="e2"style="width:280px;" name="branch">
 									<option value="">Select None</option>							      
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.branch}">${addUser1.branch}</option>
@@ -58,7 +59,7 @@
 							  </td>
 							  
 							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;First Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
-							    <select   id="e3"style="width:300px;" name="firstname">
+							    <select   id="e3"style="width:280px;" name="firstname">
 								<option value="">Select None</option>							      
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.firstname}">${addUser1.firstname}</option>
@@ -73,14 +74,14 @@
 							  <tr >
 							    
 							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;Last Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
-							    	<select   id="e4"style="width:300px;" name="lastname">
+							    	<select   id="e4"style="width:280px;" name="lastname">
 							    <option value="">Select None</option>  
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.lastname}">${addUser1.lastname}</option>
 							    </c:forEach>
 							    </select></td>
 							    
-							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;Email&nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e5"style="width:300px;" name="email">
 							      <option value="">Select None</option>
 							    <c:forEach items="${adduserform.adduser}" var="addUser1" varStatus="status">

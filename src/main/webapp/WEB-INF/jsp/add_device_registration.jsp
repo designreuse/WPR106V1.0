@@ -222,7 +222,7 @@
 				                <tr class="row2">
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Password:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  <div id="info7">	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" onblur="passcheck('passid')">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  </div>

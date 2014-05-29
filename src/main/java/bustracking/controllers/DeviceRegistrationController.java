@@ -380,7 +380,7 @@ public class DeviceRegistrationController
 		List <String> branch=new ArrayList<String>();
 		branch=deviceRegistrationDAO.getapn(devicereg.getCarrier());
 		
-		returnText=returnText+"<select id='apn_id'  class='org_input_cmbbx'>";
+		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#apn_id').select2();});</script><select id='apn_id' name='apn' style='width:220px'>";
 		returnText+="<option value='' selected>--Select APN--</option>";
 		for(String bname:branch)
 		{
@@ -504,6 +504,8 @@ public class DeviceRegistrationController
 		
  
 	}
+	
+	// Insert Device Configuration
 	
 	@RequestMapping(value="/deviceconfiguration", method = RequestMethod.POST)
 	public String configure_device(HttpServletRequest req,HttpServletResponse response,HttpSession session,@ModelAttribute("DeviceRegistration") @Valid DeviceRegistration device,BindingResult result,ModelMap model, Principal principal ) {

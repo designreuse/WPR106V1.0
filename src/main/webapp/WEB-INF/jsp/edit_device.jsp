@@ -4,14 +4,28 @@
 <!-- ###################################DDDL################################### -->
   
   	<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#carrierid").select2();
+    });
+</script>
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#manuid").select2();
+    });
+</script>
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#apn_id").select2();
+    });
+</script>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
 
 <form action="update_device" method="POST">  
-<table class="margin_table">
+<table class="margin_table" >
       
       <tr>
         <td valign="top" align="left">
@@ -19,7 +33,7 @@
 	            <div class="headings altheading">
 	              <h2>Edit Device/Sim Setup</h2>
 	            </div>
-            <div class="contentbox">
+            <div class="contentbox"style="height:600px" > 
             <c:set value="${deviceRegistrationForm.deviceRegistrations[0]}" var="device"/>
                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
   				<tr>
@@ -107,7 +121,7 @@
 				                   	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.address"></form:errors></font>
 				                  </td>
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Procured Date:</td>
-				                  <td valign="center" align="left" class="input_txt" width="60%" >
+				                  <td valign="middle" align="left" class="input_txt" width="60%" >
 				                  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${device.sim_procured_date}" />
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
 				                  </td>
@@ -252,29 +266,25 @@
       </select> 
       </div> </td>
       <td><input type="hidden" class="org_input_txtbx_height1" name="create_user_id" id="userid" onblur="usercheck('userid')" value="<sec:authentication property="principal.username" />" /></td></tr>
-				                  <td valign="center" align="left" class="input_txt" width="60%" >
-				                <td colspan="4" valign="top" align="center" width="60%"  class="input_txt">
-				                <tr><td>
-     
-				  <table>
-                   <tr align="left">
-                   <td width="20%"></td>
-                   <td ><input type="submit" class="btn" value="Register" ></td>
-                   <td>
-                   
-                   <!-- <input type="reset" class="submit_btn" value="Reset" onclick="window.location.href='orgregistration'"></td> -->
-                 <td>
+				                  
+				 
+				 <tr class="row2">
+                   <table border="0" width="100%">
+                   <tr>
+                   <td width="30%"></td>
+                   <td align="right" width="20%"><input type="submit" class="btn" value="Save Changes" ></td>
+                 <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                    <input type="button" class="btn" onclick="window.location.href='view_devices'" value="Cancel"></td>
                    </tr>
+                   </table>
+                   </tr>
+                   
                  </table>
-                  </td>
-                
-                  </tr>
-				        </table></td></tr></table></td></tr></table>
-				        </div>
-				        </td></tr></table>
                   
-                  </form></div></div>
+				        </table></td></tr></table></div></td></tr></table>
+				        </form></div>
+				        
+                 </div>
 
 
 

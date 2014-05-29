@@ -4,14 +4,28 @@
 <!-- ###################################DDDL################################### -->
   
   	<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#carrierid").select2();
+    });
+</script>
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#manuid").select2();
+    });
+</script>
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#apn_id").select2();
+    });
+</script>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
 
 <form action="deviceregistration" method="POST">  
-<table class="margin_table">
+<table class="margin_table" border="0"  style="height:600px">
       
       <tr>
         <td valign="top" align="left">
@@ -45,9 +59,9 @@
 				                  <input type="hidden" value="" name="org_id"/>
 									<%-- <input type="text" class="org_input_txtbx_height1" id="manuid" onblur="toTitleCase('manuid')" name="manufacturer" oninput="validateAlpha()" value=""/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font> --%>
-				                   <select name="manufacturer"  id="manuid" style="width:220px;"onblur="Validate('manuidid')" >  
+				                   <select name="manufacturer"  id="manuid" style="width:220px;" onblur="Validate('manuidid')" >  
                                    <option value="Selected">--Select Manufacturer Name--</option>
-                                   <option value="cobal">Cobal</option>
+                                   <option value="cobal">Coban</option>
                                    </select>
 				                  </td>	
 				                  
@@ -181,7 +195,7 @@
 				                <tr class="row2">
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Password:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" onblur="passcheck('passid')">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  </td>
@@ -197,32 +211,33 @@
 				                      <td width="10%"></td>
 				                      <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>APN:</td>
 				                      <td valign="top" align="left" class="input_txt"  ><div id="info" >
-      <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;">  
+      <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;" disabled="disabled">  
       <option value="" selected>--Select APN--</option>  
       </select> 
       </div> </td>
       <td><input type="hidden" class="org_input_txtbx_height1" name="create_user_id" id="userid" onblur="usercheck('userid')" value="<sec:authentication property="principal.username" />" /></td></tr>
-				                  <td valign="center" align="left" class="input_txt" width="60%" >
-				                <td colspan="4" valign="top" align="center" width="60%"  class="input_txt">
-				                <tr><td>
+				                
      
-				  <table>
-                   <tr align="left">
-                   <td width="20%"></td>
-                   <td ><input type="submit" class="btn" value="Register" ></td>
-                   <td>
-                   
-                   <!-- <input type="reset" class="submit_btn" value="Reset" onclick="window.location.href='orgregistration'"></td> -->
-                 <td>
+				  
+                   <tr class="row2">
+                   <table border="0" width="100%">
+                   <tr>
+                   <td width="30%"></td>
+                   <td align="right" width="20%"><input type="submit" class="btn" value="Register" ></td>
+                 <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel"></td>
                    </tr>
-                 </table>
-                  </td>
-                
-                  </tr>
+                   </table>
+                   
+                   </tr>
+                 
+                  
 				        </table></td></tr></table></td></tr></table>
 				        
-				        </td></tr></table>
+				        </td></tr>
+				        
+				        </table>
+				        
                   
                   </form></div></div>
 
