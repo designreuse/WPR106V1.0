@@ -1,6 +1,9 @@
 package bustracking.dao;
 
+import java.net.InetAddress;
+import java.security.Principal;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,8 +12,14 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import bustracking.forms.SuperAdminHomeForm;
+import bustracking.model.DeviceRegistration;
+import bustracking.model.MessageSender;
+import bustracking.model.Route;
 import bustracking.model.Route_view;
+import bustracking.model.Smsparent;
 import bustracking.model.SuperAdminHome;
+
+
 
 
 /*import bustracking.model.DeviceFail;*/
@@ -185,7 +194,150 @@ public class MainDAO {
 		    return route_views;
 			
 		}
+		
+		private void Messageparent(Smsparent parent) {
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
 
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+
+			try {
+
+				String mobile_number = "select * from tbl_student where pickup_route='"+ parent.getRoute() + "'";
+				resultSet = statement.executeQuery(mobile_number);
+				while (resultSet.next()) {
+					//logger.info("Message Sending....");
+					//logger.info("MESSAGE SEND TO: "+ resultSet.getString("parent_mobile1"));
+					
+					PreparedStatement preparedStatement1=con.prepareStatement("insert into sms_track(sim_card_number,message,status,updated_on,res) values(?,?,?,?,?)");
+					preparedStatement1.setString(1,resultSet.getString("parent_mobile1"));
+					preparedStatement1.setString(2,parent.getMessage());
+					preparedStatement1.setString(3,"NULL");
+					preparedStatement1.setString(4,"NULL");
+					preparedStatement1.setString(5,"NULL");
+					preparedStatement1.execute();
+					
+					
+					MessageSender.sendMessage(resultSet.getString("parent_mobile1"),parent.getMessage());
+					
+
+				}
+				resultSet.close();
+			} catch (Exception e) {
+				System.out.println(e.toString
+
+				());
+				releaseStatement(statement);
+				releaseConnection(con);
+
+			} finally {
+
+				releaseStatement(statement);
+				releaseConnection(con);
+			}
+		}
+		
+		
+		public String smsparent(Smsparent sms){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			String role="";
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+			try{
+				
+				
+				PreparedStatement preparedStatement1=con.prepareStatement("insert into sms_track(sim_card_number,message,status,updated_on,res) values(?,?,?,?,?)");
+				preparedStatement1.setString(1,"");
+				preparedStatement1.setString(2,"");
+				preparedStatement1.setString(3,"NULL");
+				preparedStatement1.setString(4,"NULL");
+				preparedStatement1.setString(5,"NULL");
+				preparedStatement1.execute();
+				
+			
+					
+					
+					//MessageSender.sendMessage1("9659885881", "begin"+device.getPassword(), this.getmyid());
+					
+					
+			    
+			   /* String cmd1="UPDATE sms_track SET status='"+device.getStatus()+"' , updated_on='"+device.getUpdated_on()+"', res='"+device.getRes()+"' WHERE myid='"+this.getmyid()+"'";
+			    System.out.println(cmd1);
+		    	statement.execute(cmd1);*/
+			    
+			    
+		    	
+				
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return role;
+			
+			
+			
+			
+		}
+
+		public List<String> get_route(String trip, String org_id){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<String> route=new ArrayList<String>();
+			try{
+				
+				String cmd_sql="Select route_no from tbl_bus_route where trip='"+trip+"' AND org_id='"+org_id+"'";
+				resultSet=statement.executeQuery(cmd_sql);
+				
+				while(resultSet.next())
+				{
+					route.add(resultSet.getString("route_no"));
+				}
+				
+				
+				
+				
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return route;
+			
+		}
+		
+		
 		
 	/*public List<DeviceFail> getdevicefails(){
 		Connection con = null;

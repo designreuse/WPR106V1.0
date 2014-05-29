@@ -2,7 +2,7 @@ package bustracking.forms;
 
 
 import java.util.*;
-import bustracking.model.AddUser;;
+import bustracking.model.AddUser;
 
 public class AddUserForm{
 	

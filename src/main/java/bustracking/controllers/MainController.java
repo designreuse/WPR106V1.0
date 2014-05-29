@@ -37,10 +37,12 @@ import bustracking.forms.BusDeviceRegistrationForm;
 /*import bustracking.forms.DeviceFailForm;*/
 import bustracking.forms.BusRegistrationForm;
 import bustracking.forms.ClientHomeForm;
+import bustracking.forms.DeviceRegistrationForm;
 import bustracking.forms.FleetHomepageForm;
 import bustracking.forms.OrgBusinessRuleForm;
 import bustracking.forms.OrgRegistrationForm;
 import bustracking.forms.RouteViewForm;
+import bustracking.forms.SmsparentForm;
 import bustracking.forms.SuperAdminHomeForm;
 
 import bustracking.forms.LatLongForm;
@@ -287,13 +289,34 @@ else{
 
 
 	@RequestMapping(value="/clientsmsparent", method = RequestMethod.GET)
-	public String clientsmsparent(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String clientsmsparent(HttpServletRequest request,String trip, String org_id, ModelMap model, Principal principal ) {
 		
 		
 		return "client_smstoparent";
 	}
 	
 
+	@RequestMapping(value="/trip_ajax",method=RequestMethod.POST)
+	public @ResponseBody String trip(@RequestParam("trip") String trip,ModelMap model, Principal principal) {
+		String returnText="";
+		List <String> route=new ArrayList<String>();
+		route=mainDAO.get_route(trip,mainDAO.getOrg_id(principal.getName()));
+		String a=mainDAO.getOrg_id(principal.getName());
+		System.out.println("orgid"+a);
+		returnText=returnText+"<script id='script_bid'> $(document).ready(function() {$('#route').select2(); });</script><select style='width:220px;' name='route' id='route' >";
+		returnText+="<option value='none' selected>--Select Route--</option>";
+		for(String bname:route)
+		{
+			 
+			returnText+="<option value='"+bname+"'>"+bname+"</option>";
+		}			
+		
+		
+		return returnText;
+		
+	
+	}
+	
 
 
 	@RequestMapping(value="/clienttracksms", method = RequestMethod.GET)
