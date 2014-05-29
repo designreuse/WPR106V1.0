@@ -190,7 +190,7 @@
 <div class="submenu">
 	<ul>
 	<li><a href="clientsmsparent">SMS To Parent</a></li>
-	<li><a href="#">Track SMS</a></li>
+	<li><a href="tracksms">Track SMS</a></li>
 	<!-- <li><a href="clientsmsparent">SMS To Parent</a></li>
 	<li><a href="clienttracksms">Track SMS</a></li> -->
 	

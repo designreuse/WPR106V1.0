@@ -338,11 +338,11 @@ else{
 		return "client_smstoparent";
 	}
 
-	@RequestMapping(value="/clienttracksms", method = RequestMethod.GET)
+	@RequestMapping(value="/tracksms", method = RequestMethod.GET)
 	public String clienttracksms(HttpServletRequest request,ModelMap model, Principal principal ) {
 		
 		
-		return "client_track_sms";
+		return "tracksms";
 	}
 	
 
