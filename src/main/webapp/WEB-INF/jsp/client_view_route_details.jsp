@@ -30,7 +30,7 @@
 							   <td align="left" valign="middle" width="8%">&nbsp;Route No:<br/>
 							    <select   id="e3"style="width:250px;" name="route_no">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${routeViewForm.route_views}" var="clientrouteview1" varStatus="status">
+							    <c:forEach items="${routeViewForm1.route_views}" var="clientrouteview1" varStatus="status">
 							    <option value="${clientrouteview1.route_no}">${clientrouteview1.route_no}</option>
 							    </c:forEach>
 							    </select></td>

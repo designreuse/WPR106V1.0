@@ -35,7 +35,7 @@
 							    <td align="left" valign="middle" width="15%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Organization Name &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select name="org_name" id="e1"style="width:300px;">
 							    <option value="">Select None</option>
-							    <c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration1" varStatus="status">
+							    <c:forEach items="${orgregistrationform1.orgregistration}" var="orgRegistration1" varStatus="status">
 							    <option value="${orgRegistration1.org_name}">${orgRegistration1.org_name}</option>
 							    </c:forEach>
 							    </select></td>
@@ -43,7 +43,7 @@
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">Branch  &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select name="branch" id="e2"style="width:300px;">
 							    <option value="">Select None</option>
-							    <c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration1" varStatus="status">
+							    <c:forEach items="${orgregistrationform1.orgregistration}" var="orgRegistration1" varStatus="status">
 							    <option value="${orgRegistration1.branch}">${orgRegistration1.branch}</option>
 							    </c:forEach>
 							    </select></td>
@@ -51,7 +51,7 @@
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;City&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select name="city" id="e3"style="width:300px;">
 							    <option value="">Select None</option>
-							    <c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration1" varStatus="status">
+							    <c:forEach items="${orgregistrationform1.orgregistration}" var="orgRegistration1" varStatus="status">
 							    <option value="${orgRegistration1.city}">${orgRegistration1.city}</option>
 							    </c:forEach>
 							    </select></td>
@@ -62,7 +62,7 @@
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Country&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select name="country" id="e4"style="width:300px;">
 							    <option value="">Select None</option>
-							    <c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration1" varStatus="status">
+							    <c:forEach items="${orgregistrationform1.orgregistration}" var="orgRegistration1" varStatus="status">
 							    <option value="${orgRegistration1.country}">${orgRegistration1.country}</option>
 							    </c:forEach>
 							    </select></td>

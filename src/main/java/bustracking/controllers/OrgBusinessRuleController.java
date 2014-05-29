@@ -105,6 +105,11 @@ public class OrgBusinessRuleController{
 		OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
 		orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
 		model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
+		
+		OrgBusinessRuleForm orgBusinessRuleForm1=new OrgBusinessRuleForm();
+		orgBusinessRuleForm1.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
+		model.addAttribute("orgBusinessRuleForm1", orgBusinessRuleForm1);
+		
 		return "view_business_rules";
 	}
 	
@@ -126,10 +131,14 @@ public class OrgBusinessRuleController{
 			System.out.println(org_name);
 			OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
 			orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.findRules(org_name, branch));
-        model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
+            model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
+            
+            OrgBusinessRuleForm orgBusinessRuleForm1=new OrgBusinessRuleForm();
+    		orgBusinessRuleForm1.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
+    		model.addAttribute("orgBusinessRuleForm1", orgBusinessRuleForm1);
         
         
-		return "search_business_rules";
+		return "view_business_rules";
 		}
 		
 	}
@@ -154,8 +163,11 @@ public class OrgBusinessRuleController{
 			orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.findRules(org_name, branch));
 			model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
 	    
-	    
-		return "search_business_rules";
+			OrgBusinessRuleForm orgBusinessRuleForm1=new OrgBusinessRuleForm();
+			orgBusinessRuleForm1.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
+			model.addAttribute("orgBusinessRuleForm1", orgBusinessRuleForm1);
+			
+		return "view_business_rules";
 		}
 		
 	}

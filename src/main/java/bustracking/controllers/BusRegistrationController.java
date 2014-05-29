@@ -130,6 +130,11 @@ public class BusRegistrationController {
 		BusRegistrationForm busregistrationform= new BusRegistrationForm();
 		busregistrationform.setBusregistration(busDAO.getBusregistration());
 		model.addAttribute("busregistrationform",busregistrationform);
+		
+		BusRegistrationForm busregistrationform1= new BusRegistrationForm();
+		busregistrationform1.setBusregistration(busDAO.getBusregistration());
+		model.addAttribute("busregistrationform1",busregistrationform1);
+		
 		return "view_bus_details";
 	}
 	
@@ -222,7 +227,12 @@ public class BusRegistrationController {
 		BusRegistrationForm busregistrationform = new BusRegistrationForm();
 		busregistrationform.setBusregistration(busDAO.findBus( org_name, branch, vechicle_reg_no, device_imei_number));
         model.addAttribute("busregistrationform", busregistrationform);        
-		return "search_bus";
+        
+        BusRegistrationForm busregistrationform1= new BusRegistrationForm();
+		busregistrationform1.setBusregistration(busDAO.getBusregistration());
+		model.addAttribute("busregistrationform1",busregistrationform1);
+        
+		return "view_bus_details";
 		}
 		
 	}
@@ -244,8 +254,11 @@ public class BusRegistrationController {
 		busregistrationform.setBusregistration(busDAO.findBus( org_name, branch, vechicle_reg_no, device_imei_number));
         model.addAttribute("busregistrationform", busregistrationform);
         
+        BusRegistrationForm busregistrationform1= new BusRegistrationForm();
+		busregistrationform1.setBusregistration(busDAO.getBusregistration());
+		model.addAttribute("busregistrationform1",busregistrationform1);
         
-		return "search_bus";
+		return "view_bus_details";
 		}
 		
 	}

@@ -31,7 +31,7 @@
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Date   &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e3"style="width:260px;" name="holiday_date">
 							 	<option value="">Select None</option>     
-							   <c:forEach items="${holidaysForm.holidays}" var="holidays" varStatus="status">
+							   <c:forEach items="${holidaysForm1.holidays}" var="holidays" varStatus="status">
 							    <option value="${holidays.holiday_date}">${holidays.holiday_date}</option>
 							    </c:forEach>
 							    </select></td>

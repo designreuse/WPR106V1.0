@@ -26,21 +26,21 @@
 							  	<td align="left" valign="middle" width="15%"><span style="line-height:8px;">&nbsp; Organization Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select id="e1" style="width:300px;" name="org_name">
 							     <option value="">Select None</option>
-							    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
+							    <c:forEach items="${studentregistrationform1.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.org_name}">${studentRegistration.org_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="15%"> <span style="line-height:8px;">&nbsp; Branch&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e2"style="width:300px;" name="branch">
 							     <option value="">Select None</option>
-							    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
+							    <c:forEach items="${studentregistrationform1.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.branch}">${studentRegistration.branch}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="15%"><span style="line-height:8px;">&nbsp;Student Roll No&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e3"style="width:300px;" name="student_roll_no">
 							     <option value="">Select None</option>
-							    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
+							    <c:forEach items="${studentregistrationform1.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.student_roll_no}">${studentRegistration.student_roll_no}</option>
 							    </c:forEach>
 							    </select></td>
@@ -50,14 +50,14 @@
 							  	<td align="left" valign="middle" width="15%"><span style="line-height:8px;">&nbsp; First Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e4"style="width:300px;" name="first_name">
 							     <option value="">Select None</option>
-							    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
+							    <c:forEach items="${studentregistrationform1.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.first_name}">${studentRegistration.first_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%"><span style="line-height:8px;">&nbsp;Last Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e5"style="width:300px;" name="last_name">
 							     <option value="">Select None</option>
-							    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
+							    <c:forEach items="${studentregistrationform1.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.last_name}">${studentRegistration.last_name}</option>
 							    </c:forEach>
 							    </select></td>

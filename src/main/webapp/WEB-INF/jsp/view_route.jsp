@@ -31,21 +31,21 @@
 							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Organization Name &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e1"style="width:300px;" name="org_name">
 							 	<option value="">Select None</option>     
-							   <c:forEach items="${routeViewForm.route_views}" var="route1" varStatus="status">
+							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.org_name}">${route1.org_name}</option>
 							    </c:forEach>
 							    </select></td>
 							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Bus Registration No &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e3"style="width:300px;" name="vechicle_reg_no">
 							 	<option value="">Select None</option>     
-							   <c:forEach items="${routeViewForm.route_views}" var="route1" varStatus="status">
+							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.bus_reg_no}">${route1.bus_reg_no}</option>
 							    </c:forEach>
 							    </select></td>
 							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Branch &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e2"style="width:300px;" name="branch">
 							 	<option value="">Select None</option>     
-							   <c:forEach items="${routeViewForm.route_views}" var="route1" varStatus="status">
+							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.branch}">${route1.branch}</option>
 							    </c:forEach>
 							    </select></td>
@@ -53,18 +53,28 @@
 							  </tr><tr><td><font color="#ccc">.</font></td></tr>
 							  <tr>
 							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Rout No &nbsp;<br/><font color="#ccc">.</font></span><br/>
-							    <select   id="e4"style="width:300px;" name="route_no">
+							    <select   id="e4" style="width:300px;" name="route_no">
 							 	<option value="">Select None</option>     
-							   <c:forEach items="${routeViewForm.route_views}" var="route1" varStatus="status">
-							    <option value="${route1.route_no}">${route1.route_no}</option>
-							    </c:forEach>
+							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
+							  <option value="${route1.route_no}">${route1.route_no}</option>
+							  </c:forEach>
 							    </select></td>
 							    
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Trip &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e5"style="width:300px;" name="trip">
 							 	<option value="">Select None</option>     
-							   <c:forEach items="${routeViewForm.route_views}" var="route1" varStatus="status">
-							    <option value="${route1.trip}">${route1.trip}</option>
+							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
+							    <c:choose>
+							   <c:when test="${route1.trip==0}">
+							    <option value="0">pickup</option>
+							   </c:when>
+							   <c:when test="${route1.trip==1}">
+							    <option value="1">Drop</option>
+							   </c:when>
+							   <c:when test="${route1.trip==2}">
+							    <option value="2">KG Drop</option>
+							   </c:when>
+							   </c:choose>
 							    </c:forEach>
 							    </select></td>
 							    

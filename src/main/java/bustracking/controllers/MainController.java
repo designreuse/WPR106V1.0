@@ -120,6 +120,11 @@ else{
 			ClientHomeForm clientHomeForm= new ClientHomeForm();
 			clientHomeForm.setClienthome(clientHomeDAO.getClienthome(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("clientHomeForm",clientHomeForm);
+			
+			ClientHomeForm clientHomeForm1= new ClientHomeForm();
+			clientHomeForm1.setClienthome(clientHomeDAO.getClienthome(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("clientHomeForm1",clientHomeForm1);
+			
 			return "client_home";
 		}
  
@@ -236,8 +241,16 @@ else{
 		BusRegistrationForm busRegistrationForm=new BusRegistrationForm();
 		busRegistrationForm.setBusregistration(busRegistrationDAO.getBusregistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
 		model.addAttribute("busRegistrationForm",busRegistrationForm);
+		
+		BusRegistrationForm busRegistrationForm1=new BusRegistrationForm();
+		busRegistrationForm1.setBusregistration(busRegistrationDAO.getBusregistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("busRegistrationForm1",busRegistrationForm1);
+		
 		return "client_driver_list";
+		
 	}
+	
+	// Find the Deriver List in Client Side
 	
 	@RequestMapping(value="/finddriverClient",method=RequestMethod.GET)
 	public String finddriverClient(HttpServletRequest request,@RequestParam("driver_name") String driver_name,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("driver_licence_number") String driver_licence_number,ModelMap model, Principal principal)
@@ -255,8 +268,13 @@ else{
 			
 		BusRegistrationForm busregistrationform = new BusRegistrationForm();
 		busregistrationform.setBusregistration(busRegistrationDAO.clientdriverlistsearch(mainDAO.getOrg_id(principal.getName()),driver_name,vechicle_reg_no, driver_licence_number));
-        model.addAttribute("busregistrationform", busregistrationform);        
-		return "search_client_driver_list";
+        model.addAttribute("busregistrationform", busregistrationform);    
+        
+        BusRegistrationForm busRegistrationForm1=new BusRegistrationForm();
+		busRegistrationForm1.setBusregistration(busRegistrationDAO.getBusregistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("busRegistrationForm1",busRegistrationForm1);
+        
+		return "client_driver_list";
 		}
 		
 	}
@@ -446,26 +464,7 @@ else{
 		
 		
 	}
-	//*******************************************************************************************************************
-	//find route client side
-	//*******************************************************************************************************************
-	@RequestMapping(value="/clientfindroutedetails", method = RequestMethod.GET)
-	public String clientfindroutedetails(HttpServletRequest request,@RequestParam("route_no") String route_no,@RequestParam("trip") String trip,ModelMap model, Principal principal ) {
-		if(route_no=="" && trip==""){
-			RouteViewForm routeViewForm=new RouteViewForm();
-			routeViewForm.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));
-			model.addAttribute("routeViewForm",routeViewForm);
-			return "client_view_route_details";
-		}
-		else{
-			RouteViewForm routeViewForm=new RouteViewForm();
-			routeViewForm.setRoute_views(mainDAO.searchRouteclient(mainDAO.getOrg_id(principal.getName()),route_no,trip));
-			model.addAttribute("routeViewForm",routeViewForm);
-			return "client_search_route_details";
-		}
-		
-		
-	}
+	
 	
 	@RequestMapping(value="/calculate", method = RequestMethod.POST)
 	public String calculate(HttpServletRequest request,ModelMap model, Principal principal ) {
@@ -765,6 +764,18 @@ else{
 
 	}
 	
+	//Search Operation in Client Home
 	
+	@RequestMapping(value="/findclienthome", method = RequestMethod.GET)
+	public String findclienthome(HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,ModelMap model, Principal principal ) {
+	ClientHomeForm clientHomeForm= new ClientHomeForm();
+	clientHomeForm.setClienthome(clientHomeDAO.findclienthome(mainDAO.getOrg_id(principal.getName()), vechicle_reg_no));
+	model.addAttribute("clientHomeForm",clientHomeForm);
 	
+	ClientHomeForm clientHomeForm1= new ClientHomeForm();
+	clientHomeForm1.setClienthome(clientHomeDAO.getClienthome(mainDAO.getOrg_id(principal.getName())));
+	model.addAttribute("clientHomeForm1",clientHomeForm1);
+	
+	return "client_home";
+	}
   }

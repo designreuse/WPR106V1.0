@@ -291,6 +291,11 @@ public class StudentRegistrationController {
 		StudentRegistrationForm studentregistrationform= new StudentRegistrationForm();
 		studentregistrationform.setStudentregistration(studentDAO.getstudentregistration());
 		model.addAttribute("studentregistrationform",studentregistrationform);
+		
+		StudentRegistrationForm studentregistrationform1 = new StudentRegistrationForm();
+        studentregistrationform1.setStudentregistration(studentDAO.getstudentregistration());
+		model.addAttribute("studentregistrationform1", studentregistrationform1);
+		
 		return "view_student_details";
 	}
 	
@@ -383,8 +388,11 @@ public class StudentRegistrationController {
         studentregistrationform.setStudentregistration(studentDAO.findStudent(org_name,branch,student_roll_no,first_name,last_name));
 		model.addAttribute("studentregistrationform", studentregistrationform);
        
+		StudentRegistrationForm studentregistrationform1 = new StudentRegistrationForm();
+        studentregistrationform1.setStudentregistration(studentDAO.getstudentregistration());
+		model.addAttribute("studentregistrationform1", studentregistrationform1);
         
-		return "search_student";
+		return "view_student_details";
 		}
 		
 	}
@@ -406,7 +414,8 @@ public class StudentRegistrationController {
 		return "search_student_details";
 	}
 	
-//client find student
+//client Side find student
+	
 	@RequestMapping(value="/findstudentsclient",method=RequestMethod.GET)
 	public String findstudentsclient(HttpServletRequest request,
 			@RequestParam("student_roll_no") String student_roll_no,
@@ -429,8 +438,11 @@ public class StudentRegistrationController {
 		studentRegistrationForm.setStudentregistration(studentDAO.findStudent_by_org_id_client(mainDAO.getOrg_id(principal.getName()),student_roll_no,first_name,last_name,parent_mobile1));
 		model.addAttribute("studentRegistrationForm", studentRegistrationForm);
        
+		StudentRegistrationForm studentRegistrationForm1=new StudentRegistrationForm();
+		studentRegistrationForm1.setStudentregistration(studentDAO.getStudentRegistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("studentRegistrationForm1",studentRegistrationForm1);
         
-		return "client_search_student";
+		return "client_view_student";
 		}
 		
 	}
@@ -461,6 +473,11 @@ public class StudentRegistrationController {
 		StudentRegistrationForm studentRegistrationForm=new StudentRegistrationForm();
 		studentRegistrationForm.setStudentregistration(studentDAO.getStudentRegistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
 		model.addAttribute("studentRegistrationForm",studentRegistrationForm);
+		
+		StudentRegistrationForm studentRegistrationForm1=new StudentRegistrationForm();
+		studentRegistrationForm1.setStudentregistration(studentDAO.getStudentRegistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("studentRegistrationForm1",studentRegistrationForm1);
+		
 		return "client_view_student";
 	}
 

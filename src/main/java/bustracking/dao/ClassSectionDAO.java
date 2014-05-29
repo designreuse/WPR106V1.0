@@ -70,7 +70,7 @@ public class ClassSectionDAO
 	}
 	
 	
-	
+	// View Class and Section in Admin Side
 	
 	public List<ClassSection> get_classsection(){
 		Connection con = null;
@@ -109,6 +109,9 @@ public class ClassSectionDAO
 		
 	}
 	
+	
+	
+	
 	//Get Class For Edit operation in Admin Side
 	
 public List<String> getclass_for_edit(String org_name,String branch){
@@ -124,7 +127,7 @@ public List<String> getclass_for_edit(String org_name,String branch){
 		}
 		List<String> class_std = new ArrayList<String>();
 		try{
-			resultSet = statement.executeQuery("SELECT class FROM tbl_class WHERE org_id=(SELECT org_id FROM tbl_organization WHERE org_name='"+org_name+"' and branch='"+branch+"')");
+			resultSet = statement.executeQuery("SELECT class FROM tbl_class WHERE org_id=(SELECT org_id FROM tbl_organization WHERE org_name='"+org_name+"' and branch='"+branch+"') group by class");
 			while(resultSet.next()){
 				class_std.add(resultSet.getString("class"));
 				

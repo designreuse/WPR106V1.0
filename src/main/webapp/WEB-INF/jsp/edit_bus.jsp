@@ -2,7 +2,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
   
-   
+ <script id="script_bid">
+    $(document).ready(function() {
+        $("#imei").select2();
+    });
+</script>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -45,7 +49,7 @@
 				                </tr> 
 								<tr class="row1">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Device IMEI No : </td>
-				                  	<td valign="top" align="left" class="input_txt"><select class="org_input_cmbbx" name="device_imei_number" id="imei" onblur="Validate2('imei')">
+				                  	<td valign="top" align="left" class="input_txt"><select name="device_imei_number" id="imei" onblur="Validate2('imei')">
 							    <option value="${BusRegistration.device_imei_number}" selected>${BusRegistration.device_imei_number}</option>
 							     <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceregistration" varStatus="status">
         				        <option value="${deviceregistration.device_imei_number}">${deviceregistration.device_imei_number}</option>

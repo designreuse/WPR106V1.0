@@ -61,7 +61,7 @@
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font> --%>
 				                   <select name="manufacturer"  id="manuid" style="width:220px;" onblur="Validate('manuidid')" >  
                                    <option value="Selected">--Select Manufacturer Name--</option>
-                                   <option value="cobal">Coban</option>
+                                   <option value="coban">Coban</option>
                                    </select>
 				                  </td>	
 				                  

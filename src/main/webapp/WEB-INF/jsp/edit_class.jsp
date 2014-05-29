@@ -2,6 +2,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 
+<script id="script_bid">
+    $(document).ready(function() {
+        $("#service_id").select2();
+    });
+</script>
+
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -56,8 +62,8 @@
 				                </tr> 
 								<tr class="row2">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Services:</td>
-				                  	<td valign="top" align="left" class="input_txt">
-				                  	 <select name="service" class="org_input_cmbbx" id="service_id">
+				                  	<td valign="top" align="left" class="input_txt" style="width:220px;">
+				                  	 <select name="service" id="service_id">
 					               <option value="${class_section.service}" selected>${class_section.service}</option>
 					               <option value="Attendance" >Attendance</option>
 				                  	<option value="Tracking" >Tracking</option>

@@ -55,7 +55,7 @@ public class RouteController
 	RouteDAO routeDAO;
 	
 	@Autowired  
-		MainDAO mainDAO; 
+	MainDAO mainDAO; 
 		
 	@Autowired
 	
@@ -112,12 +112,18 @@ public class RouteController
 	
 	}
 	
+	// View Route Information In Admin Side
+	
 	@RequestMapping(value="/viewroute", method=RequestMethod.GET)
 	public String viewroute(HttpServletRequest request,ModelMap model, Principal principal){
 		
 		RouteViewForm routeViewForm=new RouteViewForm();
 		routeViewForm.setRoute_views(routeDAO.getRoutes());
 		model.addAttribute("routeViewForm",routeViewForm);
+		
+		RouteViewForm routeViewForm1=new RouteViewForm();
+		routeViewForm1.setRoute_views(routeDAO.getRoutes());
+		model.addAttribute("routeViewForm1",routeViewForm1);
 		
 		return "view_route";
 	}
@@ -126,14 +132,41 @@ public class RouteController
 	
 	@RequestMapping(value="/clientviewroutedetails", method = RequestMethod.GET)
 	public String driverlist(HttpServletRequest request,ModelMap model, Principal principal ) {
+		
 		RouteViewForm routeViewForm=new RouteViewForm();
 		routeViewForm.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));
 		model.addAttribute("routeViewForm",routeViewForm);
 		
+		RouteViewForm routeViewForm1=new RouteViewForm();
+		routeViewForm1.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("routeViewForm1",routeViewForm1);
+		
 		return "client_view_route_details";
 	}
 	
-	
+	//*******************************************************************************************************************
+		//find route client side
+		//*******************************************************************************************************************
+		@RequestMapping(value="/clientfindroutedetails", method = RequestMethod.GET)
+		public String clientfindroutedetails(HttpServletRequest request,@RequestParam("route_no") String route_no,@RequestParam("trip") String trip,ModelMap model, Principal principal ) {
+			if(route_no=="" && trip==""){
+				RouteViewForm routeViewForm=new RouteViewForm();
+				routeViewForm.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));
+				model.addAttribute("routeViewForm",routeViewForm);
+				return "client_view_route_details";
+			}
+			else{
+				RouteViewForm routeViewForm=new RouteViewForm();
+				routeViewForm.setRoute_views(mainDAO.searchRouteclient(mainDAO.getOrg_id(principal.getName()),route_no,trip));
+				model.addAttribute("routeViewForm",routeViewForm);
+				
+				RouteViewForm routeViewForm1=new RouteViewForm();
+				routeViewForm1.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));
+				model.addAttribute("routeViewForm1",routeViewForm1);
+				
+				return "client_view_route_details";
+			}
+		}
 	
 @RequestMapping(value="/insert_route_stop", method = RequestMethod.POST)
 
@@ -370,7 +403,11 @@ public String findroute(HttpServletRequest request,
 		routeViewForm.setRoute_views(routeDAO.findroute(org_name,branch,vechicle_reg_no,route_no,trip));
 		model.addAttribute("routeViewForm",routeViewForm);
 		
-	 return "search_route";
+		RouteViewForm routeViewForm1=new RouteViewForm();
+		routeViewForm1.setRoute_views(routeDAO.getRoutes());
+		model.addAttribute("routeViewForm1",routeViewForm1);
+		
+	 return "view_route";
 	}
 }
 

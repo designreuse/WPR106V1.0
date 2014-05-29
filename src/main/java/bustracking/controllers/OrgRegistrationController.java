@@ -122,6 +122,10 @@ public String vieworg(ModelMap model,Principal prinicipal)
 	orgregistrationform.setOrgregistration(orgDAO.getOrgregistration());
 	model.addAttribute("orgregistrationform", orgregistrationform);
 	
+	OrgRegistrationForm orgregistrationform1= new OrgRegistrationForm();
+	orgregistrationform1.setOrgregistration(orgDAO.getOrgregistration());
+	model.addAttribute("orgregistrationform1", orgregistrationform1);
+	
 	return "view_org";
 	
 }
@@ -194,7 +198,12 @@ public String findorg(HttpServletRequest request,@RequestParam("org_name")String
 	OrgRegistrationForm orgregistrationform= new OrgRegistrationForm();
 	orgregistrationform.setOrgregistration(orgDAO.findOrganization(org_name, branch, city,country));
 	model.addAttribute("orgregistrationform",orgregistrationform);
-	return "search_org";
+	
+	OrgRegistrationForm orgregistrationform1= new OrgRegistrationForm();
+	orgregistrationform1.setOrgregistration(orgDAO.getOrgregistration());
+	model.addAttribute("orgregistrationform1", orgregistrationform1);
+	
+	return "view_org";
 	}
 }
 
@@ -215,7 +224,12 @@ public String findorgInSearch(HttpServletRequest request,@RequestParam("org_name
 	OrgRegistrationForm orgregistrationform= new OrgRegistrationForm();
 	orgregistrationform.setOrgregistration(orgDAO.findOrganization(org_name, branch, city,country));
 	model.addAttribute("orgregistrationform",orgregistrationform);
-	return "search_org";
+	
+	OrgRegistrationForm orgregistrationform1= new OrgRegistrationForm();
+	orgregistrationform1.setOrgregistration(orgDAO.getOrgregistration());
+	model.addAttribute("orgregistrationform1", orgregistrationform1);
+	
+	return "view_org";
 	}
 }
 	

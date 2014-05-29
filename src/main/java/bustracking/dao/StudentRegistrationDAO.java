@@ -191,7 +191,7 @@ public class StudentRegistrationDAO {
 			}
 			ArrayList<String> studclassRegistrations = new ArrayList<String>();
 		    try{
-		    	String cmd="select class from tbl_class  where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')";
+		    	String cmd="select class from tbl_class  where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') group by class";
 		    	//System.out.println(org_id);
 				resultSet = statement.executeQuery(cmd);
 				System.out.println(cmd);

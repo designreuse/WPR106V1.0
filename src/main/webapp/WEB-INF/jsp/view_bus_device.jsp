@@ -160,7 +160,7 @@
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel">IMEI No:<br/>
 							    <select name="device_imei_number" id="e3"style="width:250px;">
 							    <option value="">Select None</option>
-							    <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
+							    <c:forEach items="${deviceRegistrationForm1.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
 							    <option value="${deviceRegistrations1.device_imei_number}">${deviceRegistrations1.device_imei_number}</option>
 							    </c:forEach>
 							    </select></td>
@@ -168,21 +168,21 @@
 							    <td align="left" valign="middle" width="10%">&nbsp;Sim No :&nbsp;<br/>
 							    <select name="sim_card_number" id="e4"style="width:250px;">
 							    <option value="">Select None</option>
-							    <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
+							    <c:forEach items="${deviceRegistrationForm1.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
 							    <option value="${deviceRegistrations1.sim_card_number}">${deviceRegistrations1.sim_card_number}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel">Admin Ip:&nbsp;<br/>
 							    <select name="adminip" id="e5"style="width:250px;">
 							    <option value="">Select None</option>
-							    <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
+							    <c:forEach items="${deviceRegistrationForm1.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
 							    <option value="${deviceRegistrations1.adminip}">${deviceRegistrations1.adminip}</option>
 							    </c:forEach>
 							    </select></td></tr><tr>
 							    <td align="left" valign="middle" width="8%">&nbsp;Created By :&nbsp;&nbsp;&nbsp;<br/>
 							    <select name="create_user_id" id="e6"style="width:250px;">
 							    <option value="">Select None</option>
-							    <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
+							    <c:forEach items="${deviceRegistrationForm1.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
 							    <option value="${deviceRegistrations1.create_user_id}">${deviceRegistrations1.create_user_id}</option>
 							    </c:forEach>
 							    </select></td>

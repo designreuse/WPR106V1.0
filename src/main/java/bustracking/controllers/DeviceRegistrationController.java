@@ -404,6 +404,10 @@ public class DeviceRegistrationController
 		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
 		//System.out.println("deviceregistrationno"+deviceRegistrationForm.getDeviceRegistrations().get(0).getDevice_imei_number());
 		
+		DeviceRegistrationForm deviceRegistrationForm1=new DeviceRegistrationForm();
+		deviceRegistrationForm1.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+		model.addAttribute("deviceRegistrationForm1",deviceRegistrationForm1);
+		
 			return "view_bus_device";
 		
  
@@ -430,7 +434,11 @@ public class DeviceRegistrationController
 			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.find_devices(device_imei_number, device_sim_number, adminip,create_user_id));
 			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
 		    
-			return "search_bus_device";
+			DeviceRegistrationForm deviceRegistrationForm1=new DeviceRegistrationForm();
+			deviceRegistrationForm1.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+			model.addAttribute("deviceRegistrationForm1",deviceRegistrationForm1);
+			
+			return "view_bus_device";
 
 		
 		}

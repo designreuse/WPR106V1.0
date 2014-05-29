@@ -186,6 +186,7 @@ public class RouteDAO {
 	}
 	
 	// View the Route Information Admin Side
+	
 	public List<Route_view> getRoutes(){
 		Connection con = null;
 		Statement statement = null;
@@ -218,6 +219,10 @@ public class RouteDAO {
 	}
 
 
+	
+	
+	
+	
 	public List<BusDeviceRegistration> getBusids(){
 		Connection con = null;
 		Statement statement = null;
@@ -265,7 +270,7 @@ public class RouteDAO {
 		}
 		List<Route_view> route_view = new ArrayList<Route_view>();
 	    try{
-	    	String cmd="select t3.org_name,t3.branch,t1.vechicle_reg_no,t2.org_id,t2.route_no,t2.stop_id,t2.trip,t2.address from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no join tbl_organization as t3 on t3.org_id=t2.org_id where t3.org_name='"+org_name+"' or t3.branch='"+branch+"' or t1.vechicle_reg_no='"+vechicle_reg_no+"' or t2.route_no='"+route_no+"' or t2.trip='"+trip+"'";
+	    	String cmd="select t3.org_name,t3.branch,t1.vechicle_reg_no,t2.org_id,t2.route_no,t2.stop_id,t2.trip,t2.address from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no join tbl_organization as t3 on t3.org_id=t2.org_id where t3.org_name='"+org_name+"' or t3.branch='"+branch+"' or t1.vechicle_reg_no='"+vechicle_reg_no+"' or t2.route_no='"+route_no+"' or t2.trip='"+trip+"' ";
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);			
 			while(resultSet.next()){

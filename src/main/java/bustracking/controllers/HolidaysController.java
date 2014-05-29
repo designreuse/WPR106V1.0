@@ -168,6 +168,11 @@ public class HolidaysController{
 			HolidaysForm holidaysForm=new HolidaysForm();
 			holidaysForm.setHolidaysForms(holidaysDAO.getHolidays());
 			model.addAttribute("holidaysForm",holidaysForm);
+			
+			HolidaysForm holidaysForm1=new HolidaysForm();
+			holidaysForm1.setHolidaysForms(holidaysDAO.getHolidays());
+			model.addAttribute("holidaysForm1",holidaysForm1);
+			   
 			return "view_holidays";
 		}
 	   
@@ -188,14 +193,14 @@ public class HolidaysController{
 		   }
 		   else{
 			
-		   HolidaysForm holidaysForm=new HolidaysForm();
-		   holidaysForm.setHolidaysForms(holidaysDAO.getHolidays());
-		   model.addAttribute("holidaysForm",holidaysForm);
-			   
 		   HolidaysForm holidaysForm1=new HolidaysForm();
-		   holidaysForm1.setHolidaysForms(holidaysDAO.findHolidays(org_name, branch, holiday_date));
-		   model.addAttribute("holidaysForm1",holidaysForm1);		   
-		   return "search_holidays";
+		   holidaysForm1.setHolidaysForms(holidaysDAO.getHolidays());
+		   model.addAttribute("holidaysForm1",holidaysForm1);
+			   
+		   HolidaysForm holidaysForm=new HolidaysForm();
+		   holidaysForm.setHolidaysForms(holidaysDAO.findHolidays(org_name, branch, holiday_date));
+		   model.addAttribute("holidaysForm",holidaysForm);		   
+		   return "view_holidays";
 	   
 		   }
 	   }
@@ -274,6 +279,11 @@ public class HolidaysController{
 			HolidaysForm holidaysForm=new HolidaysForm();
 			holidaysForm.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("holidaysForm",holidaysForm);
+			
+			HolidaysForm holidaysForm1=new HolidaysForm();
+			holidaysForm1.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("holidaysForm1",holidaysForm1);
+			
 			return "client_viewholidays";
 		}
 	   
@@ -313,9 +323,10 @@ public class HolidaysController{
 		   model.addAttribute("holidaysForm",holidaysForm);
 			   
 		   HolidaysForm holidaysForm1=new HolidaysForm();
-		   holidaysForm1.setHolidaysForms(holidaysDAO.clientfindHolidays(holiday_date,mainDAO.getOrg_id(principal.getName())));
-		   model.addAttribute("holidaysForm1",holidaysForm1);			   
-		   return "client_search_holidays";
+			holidaysForm1.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("holidaysForm1",holidaysForm1);
+		   
+		   return "client_viewholidays";
 	   
 		   }
 	   }

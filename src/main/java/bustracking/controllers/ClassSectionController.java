@@ -75,6 +75,10 @@ public class ClassSectionController
 		classSectionForm.setClassSections(classSectionDAO.get_classsection());
 		model.addAttribute("classSectionForm",classSectionForm);
 		
+		ClassSectionForm classSectionForm1=new ClassSectionForm();
+		classSectionForm1.setClassSections(classSectionDAO.get_classsection());
+		model.addAttribute("classSectionForm1",classSectionForm1);
+		
 		return "view_ClassAndSection";
 		
  
@@ -135,6 +139,7 @@ public class ClassSectionController
 	   returnText=returnText+"</select>";		 
 	return returnText;
 	}
+	
 	//find class and section 06/05/2014
 	@RequestMapping(value="/findclass",method=RequestMethod.GET)
 	public String findroute(HttpServletRequest request,
@@ -160,7 +165,11 @@ public class ClassSectionController
 			classSectionForm.setClassSections(classSectionDAO.view_classsection(org_name,branch,class_std,section));
 			model.addAttribute("classSectionForm",classSectionForm);
 			
-			return "search_ClassAndSection";
+			ClassSectionForm classSectionForm1=new ClassSectionForm();
+			classSectionForm1.setClassSections(classSectionDAO.get_classsection());
+			model.addAttribute("classSectionForm1",classSectionForm1);
+			
+			return "view_ClassAndSection";
 			
 		}
 	}

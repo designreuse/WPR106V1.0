@@ -149,6 +149,11 @@ public String viewuser(ModelMap model, Principal principal){
 	AddUserForm adduserform=new AddUserForm();
 	adduserform.setAdduser(userDAO.getAdduser());
 	model.addAttribute("adduserform",adduserform);
+	
+	AddUserForm adduserform1=new AddUserForm();
+	adduserform1.setAdduser(userDAO.getAdduser());
+	model.addAttribute("adduserform1",adduserform1);
+	
 	return "view_adminuser";
 }
 
@@ -229,6 +234,7 @@ public String findorg(HttpServletRequest request,
 		adduserform.setAdduser(userDAO.getAdduser());
 		model.addAttribute("adduserform",adduserform);
         
+		
 		return "view_adminuser";
 	}
 	else
@@ -238,7 +244,11 @@ public String findorg(HttpServletRequest request,
 		adduserform.setAdduser(userDAO.finduser(org_name,branch,firstname,lastname,email));
 		model.addAttribute("adduserform",adduserform);
 
-	 return "search_user";
+		AddUserForm adduserform1=new AddUserForm();
+		adduserform1.setAdduser(userDAO.getAdduser());
+		model.addAttribute("adduserform1",adduserform1);
+		
+	 return "view_adminuser";
 	}
 }
 

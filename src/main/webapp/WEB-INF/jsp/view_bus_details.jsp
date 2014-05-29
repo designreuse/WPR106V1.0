@@ -39,7 +39,7 @@
 							    <br/>
 							    <select   id="e1"style="width:300px;" name="org_name">
 							       <option value="">Select None</option>
-							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.org_name}">${BusRegistration1.org_name}</option>
 							    </c:forEach>
 							    </select>
@@ -49,7 +49,7 @@
 								<br/>
 							    <select   id="e2"style="width:300px;" name="branch">
 							     <option value="">Select None</option>
-							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.branch}">${BusRegistration1.branch}</option>
 							    </c:forEach>
 							    </select>
@@ -58,7 +58,7 @@
 							    <br/>
 							    <select   id="e3"style="width:300px;" name="vechicle_reg_no">
 							     <option value="">Select None</option>
-							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.vechicle_reg_no}">${BusRegistration1.vechicle_reg_no}</option>
 							    </c:forEach>
 							    </select>
@@ -73,7 +73,7 @@
 							    <br/>
 							    <select   id="e4"style="width:300px;" name="device_imei_number">
 							      <option value="">Select None</option>
-							    <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration1" varStatus="status">
+							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.device_imei_number}">${BusRegistration1.device_imei_number}</option>
 							    </c:forEach>
 							    </select>

@@ -31,14 +31,14 @@
 							    
 							     <select   id="e1"style="width:300px;" name="org_name">
 							      
-							    <c:forEach items="${orgBusinessRuleForm.orgBusinessRules}" var="vieworgBusinessRules1" varStatus="status">
+							    <c:forEach items="${orgBusinessRuleForm1.orgBusinessRules}" var="vieworgBusinessRules1" varStatus="status">
 							    <option value="${vieworgBusinessRules1.org_name}">${vieworgBusinessRules1.org_name}</option>
 							    </c:forEach>
 							    </select>
 							    </td>
 							    <td align="left" valign="middle" width="8%"><span style="line-height:8px;">&nbsp;Branch:&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select style="width:300px;"  id="e2" name="branch" >
-							    <c:forEach items="${orgBusinessRuleForm.orgBusinessRules}" var="vieworgBusinessRules1" varStatus="status">
+							    <c:forEach items="${orgBusinessRuleForm1.orgBusinessRules}" var="vieworgBusinessRules1" varStatus="status">
 							    <option value="${vieworgBusinessRules1.branch}">${vieworgBusinessRules1.branch}</option>
 							    </c:forEach>
 							    </select></td>

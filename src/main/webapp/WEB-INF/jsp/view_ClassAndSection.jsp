@@ -31,21 +31,21 @@
 							    <td align="left" valign="middle" width="15%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Organization Name &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e1"style="width:300px;" name="org_name">
 							 	<option value="">Select None</option>     
-							   <c:forEach items="${classSectionForm.classSections}" var="classSection1" varStatus="status">
+							   <c:forEach items="${classSectionForm1.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.org_name}">${classSection1.org_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Branch  &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e2"style="width:300px;" name="branch">
 							 	<option value="">Select None</option>     
-							   <c:forEach items="${classSectionForm.classSections}" var="classSection1" varStatus="status">
+							   <c:forEach items="${classSectionForm1.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.branch}">${classSection1.branch}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Class   &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e3"style="width:300px;" name="class_std">
 							 	<option value="">Select None</option>     
-							   <c:forEach items="${classSectionForm.classSections}" var="classSection1" varStatus="status">
+							   <c:forEach items="${classSectionForm1.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.class_std}">${classSection1.class_std}</option>
 							    </c:forEach>
 							    </select></td>
@@ -55,7 +55,7 @@
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Section   &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e4"style="width:300px;" name="section">
 							 	<option value="">Select None</option>     
-							   <c:forEach items="${classSectionForm.classSections}" var="classSection1" varStatus="status">
+							   <c:forEach items="${classSectionForm1.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.section}">${classSection1.section}</option>
 							    </c:forEach>
 							    </select></td>

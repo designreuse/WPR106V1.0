@@ -56,21 +56,21 @@
 							   <td align="left" valign="middle" width="8%">Roll No:<br/>
 							    <select  id="e1"style="width:250px;" name="student_roll_no">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${studentRegistrationForm.studentregistration}" var="studentlist2" varStatus="status">
+							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
 							    <option value="${studentlist2.student_roll_no}">${studentlist2.student_roll_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">First Name:<br/>
 							    <select  id="e2"style="width:250px;" name="first_name">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${studentRegistrationForm.studentregistration}" var="studentlist2" varStatus="status">
+							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
 							    <option value="${studentlist2.first_name}">${studentlist2.first_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">Last Name:<br/>
 							    <select  id="e3"style="width:250px;" name="last_name">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${studentRegistrationForm.studentregistration}" var="studentlist2" varStatus="status">
+							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
 							    <option value="${studentlist2.last_name}">${studentlist2.last_name}</option>
 							    </c:forEach>
 							    </select></td>
@@ -79,7 +79,7 @@
 							     <td align="left" valign="middle" width="10%">Parent Mobile No<br/>
 							     <select  id="e4"style="width:250px;" name="parent_mobile1">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${studentRegistrationForm.studentregistration}" var="studentlist2" varStatus="status">
+							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
 							    <option value="${studentlist2.parent_mobile1}">${studentlist2.parent_mobile1}</option>
 							    </c:forEach>
 							    </select></td>

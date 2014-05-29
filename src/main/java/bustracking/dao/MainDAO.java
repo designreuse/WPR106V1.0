@@ -246,7 +246,7 @@ public class MainDAO {
 		}
 		
 		
-	
+	// SMS to Parent page
 		public List<String> get_route(String trip, String org_id){
 			Connection con = null;
 			Statement statement = null;
@@ -261,7 +261,7 @@ public class MainDAO {
 			List<String> route=new ArrayList<String>();
 			try{
 				
-				String cmd_sql="Select route_no from tbl_bus_route where trip='"+trip+"' AND org_id='"+org_id+"'";
+				String cmd_sql="Select route_no from tbl_bus_route where trip='"+trip+"' AND org_id='"+org_id+"' group by route_no";
 				resultSet=statement.executeQuery(cmd_sql);
 				
 				while(resultSet.next())

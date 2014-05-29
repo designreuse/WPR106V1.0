@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 
 import bustracking.model.ClientHome;
 import bustracking.model.OrgRegistration;
+import bustracking.model.SuperAdminHome;
 
 
 public class ClientHomeDAO{
@@ -57,6 +58,40 @@ public class ClientHomeDAO{
 	    return clienthome;
 		
 	}
+	
+	// Search operation For Client home
+	
+public List<ClientHome> findclienthome( String org_id , String vechicle_reg_no){
+		
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<ClientHome> clientHome=new ArrayList<ClientHome>();
+	    try{
+			resultSet = statement.executeQuery("SELECT * from tbl_vechicle_tracking_history where bus_tracking_timestamp in (select max(bus_tracking_timestamp) from tbl_vechicle_tracking_history where org_id='"+org_id+"' and vechicle_reg_no='"+vechicle_reg_no+"' group by vechicle_reg_no) order by vechicle_reg_no desc,bus_tracking_timestamp desc;");
+			while(resultSet.next()){
+				clientHome.add(new ClientHome(resultSet.getString("vechicle_reg_no"),resultSet.getString("address"),resultSet.getString("speed"), resultSet.getString("bus_tracking_timestamp")));
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return clientHome;
+	}
+	
+	
 	
 	public void releaseConnection(Connection con){
 		try{if(con != null)

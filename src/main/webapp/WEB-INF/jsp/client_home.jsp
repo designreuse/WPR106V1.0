@@ -31,13 +31,13 @@
     <tr>
     <td>
 						<div style="display:none" id="div"><div class="searchpanel">
-<form action="findadminhome" method="GET">
+<form action="findclienthome" method="GET">
  
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr><td align="left" valign="middle" width="30%">Vehicle Number:<br/>
-							    <select   id="e1"style="width:250px;" name="org_name">
+							    <select   id="e1"style="width:250px;" name="vechicle_reg_no">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${clientHomeForm.clienthome}" var="clienthome2" varStatus="status">
+							    <c:forEach items="${clientHomeForm1.clienthome}" var="clienthome2" varStatus="status">
 							    <option value="${clienthome2.vechicle_reg_no}">${clienthome2.vechicle_reg_no}</option>
 							    </c:forEach>
 							    </select></td>
