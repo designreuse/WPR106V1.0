@@ -328,12 +328,11 @@ else{
 		
 		
 		
-		mainDAO.sms_parent(parent);
-	    /*SmsparentForm smsparentForm=new SmsparentForm();
-	 // smsparentForm.setSmsparent(mainDAO.sms_parent(parent));
-		
-		model.addAttribute("smsparentForm",smsparentForm);	*/
-		
+	   mainDAO.sms_parent(parent);
+	  /* SmsparentForm smsparentForm=new SmsparentForm();
+	   smsparentForm.setSmsparent(mainDAO.getSmsparent());
+	   model.addAttribute("smsparentForm",smsparentForm);	
+		*/
 		
 		return "client_smstoparent";
 	}
