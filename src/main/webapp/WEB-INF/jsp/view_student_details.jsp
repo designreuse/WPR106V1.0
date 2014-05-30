@@ -13,9 +13,11 @@
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2> Student Information</h2><div class="searchdiv">
-                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                        <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a></div>
+                        </a>
+                        &nbsp;&nbsp;<a  href='viewstudent' class="btn" >Go Back</a>
+						</div>
 			        </div>
 			        
 <div style="display:none" id="div"><div class="searchpanel">

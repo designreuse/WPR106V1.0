@@ -242,8 +242,8 @@
 </c:if><!-- <span style="line-height:0px;"> <br/><font color="#fff">.</font></span> -->
 <div class="buttonswitchpanel_search">
 			          <!-- <div class='buttonsheader'> -->
-						<a  href='javascript:history.back();' class="otherspressable back_button" >Back</a>
-						<!-- <a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a> -->
+						<!-- <a  href='javascript:history.back();' class="otherspressable back_button" >Back</a>
+						 --><!-- <a href="#" onclick="toggle(this,'div');return false"><img title="Open Search"src="resources/images/search-blue-icon.png" style="height:25px;width:35px;"/></a> -->
 						<!-- <a href="#" onclick="toggle1(this,'divfilter');return false"><img title="Open filter"src="resources/images/filter.png" style="height:25px;width:35px;"/></a>
 						popups
 						<a href="#join_form" id="join_pop" ><img title="Show"src="resources/images/fulltbl.png" style="height:25px;width:35px;"/></a>

@@ -56,10 +56,12 @@ function toggleBounce() {
 
 	<!-- <div id="main"> -->
 		<div id="header">
-			<div class="logo" style="height:40px;width:auto">
+			<div class="school_div"><img style="width: 250px;height:100px;" src="resources/images/school_bus.png"/></div>
+			<div class="logo" style="background-color:none;height:50px;width:auto;border:solid 1px black;margin-right:250px;margin-top:10px;border-radius:5px;box-shadow:inset 0px 0px 7px #eee;padding:10px; ">
 				<!-- <img src="resources/images/logo123.png" width="250px" height="70px"/> -->
 				<span class="Three-DeePjtHeader">Bus Tracking App</span>
 			</div>
+			
 			<div class="top_link">
 				<table border="0" cellspacing="0" cellpadding="0">
 					<tr>

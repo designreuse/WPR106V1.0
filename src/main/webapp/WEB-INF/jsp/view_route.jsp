@@ -1,6 +1,33 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<style type="text/css">
+        /* body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
+        #report { border-collapse:collapse;}
+        #report h4 { margin:0px; padding:0px;}
+        #report img { float:right;}
+        
+        #report th { background:#3bb9ff url(header_bkg.png) repeat-x scroll center left; color:#fff; padding:0px 2px; text-align:left;}
+        #report td { background:#eee none repeat-x scroll center left; color:#fff; padding:0px 2px; }
+         */#report tr.odd td { background:#fff ;color:#666; cursor:pointer; }
+        #report div.arrow { background:transparent url(resources/images/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;float:right;}
+        #report div.up { background-position:0px 0px;}
+        #report ul { margin:10px 0 10px 40px; padding:0px;}
+    </style>
+    
+    <script type="text/javascript">  
+        $(document).ready(function(){
+            $("#report tr:odd").addClass("odd");
+            $("#report tr:not(.odd)").hide();
+            $("#report tr:first-child").show();
+            
+            $("#report tr.odd").dblclick(function(){
+                $(this).next("tr").toggle();
+                $(this).find(".arrow").toggleClass("up");
+            });
+            //$("#report").jExpand();
+        });
+    </script> 
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -14,9 +41,11 @@
 			        <div class="headings altheading">
 			          <h2> Route Information</h2>
 			          <div class="searchdiv">
-                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                        <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a></div>
+                        </a>
+                        &nbsp;&nbsp;<a  href='viewroute' class="btn" >Go Back</a>
+						</div>
 			        </div>						
     	<table width="100%" border="0" cellspacing="0" cellpadding="0">
     	
@@ -103,12 +132,12 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 									<!-- 	<td valign="top" align="left" width="18%"> Bus Id</td> -->
-					         	<td valign="top" align="left" width="17.5%"> 	Organization Name</td>
-					         	<td valign="top" align="left" width="12%">Branch</td>
+					         	<td valign="top" align="left" width="24%"> 	Organization Name</td>
+					         	<td valign="top" align="left" width="14%">Branch</td>
 					       	 	<td valign="top" align="left" width="10%"> Bus Reg No</td>
-					       	 	<td valign="top" align="left" width="13%"> 	Route No</td>
-          						<td valign="top" align="left" width="10%"> Trip</td>
-          						<td valign="top" align="left" width="25%"> No. of Stops</td>
+					       	 	<td valign="top" align="left" width="10%"> RouteNo</td>
+          						<td valign="top" align="left" width="6%"> Trip</td>
+          						<td valign="top" align="left" width="10%"> No. of Stops</td>
           						<td valign="top" align="left" width="10%"> Action</td>
           						
           						
@@ -116,43 +145,37 @@
 							
 							<div class="Panel_One_Inner">
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%"style="table-layout: fixed;width:100%" class="order-table table">
-							
+				        <table cellpadding="0" cellspacing="0" border="0"id="report" style="width:1050px" class="order-table table">
+							<tr><td colspan="7"style="overflow:hidden;width:1050px">.</td></tr>
         					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         					
         				       				<tr class="row1">
-        				            		<td valign="middle" align="left"style="overflow:hidden;" width="17%">${route.org_name}</td>
-					     		     		<td valign="top" align="left" style="overflow:hidden;"width="12%">${route.branch}</td> 
-											<td valign="top" align="left" style="overflow:hidden;"width="10%">${route.bus_reg_no}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="13%">${route.route_no}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="10%"><c:choose>
-											<c:when test="${route.trip==0}">
-											<c:out value="Pick Up" ></c:out>
-											</c:when>
-											<c:when test="${route.trip==1}">
-											<c:out value="Drop" ></c:out>
-											</c:when>
-											<c:otherwise>
-											<c:out value="KG Drop"></c:out>
+        				            		<td valign="middle" align="left"style="overflow:hidden; width:260px">${route.org_name}</td>
+					     		     		<td valign="top" align="left" style="overflow:hidden;width:150px">${route.branch}</td> 
+											<td valign="top" align="left" style="overflow:hidden;width:110px">${route.bus_reg_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;width:85px">${route.route_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;width:70px"><span style="line-space:20px;"><c:choose>
+											<c:when test="${route.trip==0}">&nbsp;	<c:out value="Pick Up" ></c:out></c:when>
+											<c:when test="${route.trip==1}">&nbsp;<c:out value="Drop" ></c:out></c:when><c:otherwise>
+											&nbsp;<c:out value="KG Drop"></c:out>
 											</c:otherwise>
-											</c:choose>
-</td>
-											<td valign="top" align="left"style="overflow:hidden;" width="25%" title="${route.no_of_stops}">${route.no_of_stops}</td>
-											<td align="left">
-										<div class="arrow" title="Double click to Show all Details"></div>
-										</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="10%">	
+											</c:choose></span>
+											</td>
+											<td valign="top" align="left"style="overflow:hidden; width:100px" title="${route.no_of_stops}">${route.no_of_stops}</td>
+											
+											<td valign="top" align="left" style="overflow:hidden;width:80px">	
+											
 										    <a href="<c:out value="editroute?route_no=${route.route_no}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 											<a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
-									
+											<div class="arrow" title="Double click to Show all Details"></div>
 											</td>
 								</tr>
-								<tr>
+								<tr class="row2">
 								
-								<td valign="top" align="left"><span>Stop ID:</span><span>${route.stop_id}</span></td>
-								<td valign="top" align="left"><span>Bus Stop Address:</span><span>${route.bus_stop_address}</span></td>
-								<td valign="top" align="left"><span>Bus Arrival Time:</span><span>${route.bus_arrival_time}</span></td>
+								<td valign="top" align="left" style="overflow:hidden;width:260px"><span>Stop ID:</span><span>${route.stop_id}</span></td>
+								<td valign="top" align="left"style="overflow:hidden;width:425px" colspan="4"><span>Bus Stop Address:</span><span>${route.bus_stop_address}</span></td>
+								<td valign="top" align="left" style="overflow:hidden;width:180px" colspan="2"><span>Bus Arrival Time:</span><span>${route.bus_arrival_time}</span></td>
 								
 								</tr>
 							    	</c:forEach>
@@ -160,7 +183,7 @@
 							    
 							     <c:if test="${fn:length(routeViewForm.route_views) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Routes Found!!!</b></center></td>
+							    	<td colspan="7" ><center><b>No Routes Found!!!</b></center></td>
 							    	</tr>
 							    	</c:if>
         				</table>
@@ -257,7 +280,7 @@ function selectall(field)
 										  <a href="#" title="" id="addScnt"><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a>
 										    <a href="<c:out value="editroute?route_no=${route.route_no}"/>" style="padding-right:10px;">Edit</a>
 											
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirmation('Are you sure want to Delete?')">Remove</a>
+											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirm('Are you sure want to Delete?')">Remove</a>
 									
 											</td>
 								</tr>

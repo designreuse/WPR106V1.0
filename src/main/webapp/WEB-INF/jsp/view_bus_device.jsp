@@ -127,9 +127,10 @@
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2>Device Informations<br/></h2><div class="searchdiv">
-                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                        <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a></div>
+                        </a>&nbsp;&nbsp;<a  href='view_devices' class="btn" >Go Back</a>
+						</div>
 			          
 			          
 			        </div>

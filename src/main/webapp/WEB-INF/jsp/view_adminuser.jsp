@@ -18,9 +18,10 @@
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			         <h2> View Users</h2><div class="searchdiv">
-                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                        <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a></div>
+                        </a>&nbsp;&nbsp;<a  href='viewuser' class="btn" >Go Back</a>
+						</div>
                     
 			        </div>
 			    
@@ -142,7 +143,7 @@
 										
 												<a href="<c:out value="edituser?username=${addUser.username}"/>" >
 												<img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
-												<a href="<c:out value="deleteuser?username=${addUser.username}"/>" onclick="return confirmation('Are you sure want to Delete?')">
+												<a href="<c:out value="deleteuser?username=${addUser.username}"/>" onclick="return confirm('Are you sure want to Delete?')">
 												<img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
