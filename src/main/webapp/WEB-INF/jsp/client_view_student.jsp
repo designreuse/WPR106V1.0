@@ -137,7 +137,7 @@
 										</td>
 								</tr>
 							    	
-							<tr >
+							<tr>
 										<td valign="top" align="left" colspan="4"><ul><li><span style="color:#3bb9ff;">Student First Name:</span><span style="color:#666;">${studentlist.first_name}</span></li>
 										<li><span style="color:#3bb9ff;">Student Last Name:</span><span style="color:#666;">${studentlist.last_name}</span></li><li><span style="color:#3bb9ff;">Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
 										<span style="color:#666;"><c:choose>

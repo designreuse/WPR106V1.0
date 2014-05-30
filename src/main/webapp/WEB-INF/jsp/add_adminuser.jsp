@@ -56,11 +56,7 @@
 				                 <div id="info"> 
 				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid" onblur="Validate1('bid')" disabled="disabled">
 							   <option value="">-- Select branch--</option>
-							  <%--  <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
-        				        <option value="${OrgRegistration.org_id}" <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if>>${OrgRegistration.branch}</option>
-			                  </c:forEach> --%>
-			                 
-        				      </select>
+							 </select>
         				       </div> 
 				                  </td><td width="15%"></td>
 				                </tr>

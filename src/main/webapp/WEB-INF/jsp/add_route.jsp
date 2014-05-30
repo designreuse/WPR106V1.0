@@ -302,6 +302,7 @@ $(function() {
 	
         var scntDiv = $('#p_scents');
         var i = $('#p_scents p').size();
+        //alert(i);
         var j=0;
         $('#addScnt').live('click', function() {
         	//alert(i);

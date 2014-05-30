@@ -22,6 +22,7 @@ public class Route
 	private String bus_arrival_time;
 	private String speed;
 	
+	
 	public Route(String org_id, String route_no, String stop_id,
 			String tracking_date, String trip, String latitude,
 			String longitude, String bus_arrival_time, String speed) {
@@ -160,6 +161,7 @@ public class Route
 	public void setBus_arrival_time(String bus_arrival_time) {
 		this.bus_arrival_time = bus_arrival_time;
 	}
+
 	
 	
 	

@@ -162,7 +162,7 @@ p {
 							
 							<tr class="row2">
 							<td valign="middle" align="right" class="input_txt" width="30%"><span
-									class="err">*</span><!-- <a href="#" id="addScnt" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;">Stops :</a> --> Stops :<input type="hidden" id="number_of_stops" name="number_of_stops" onload=""></td>
+									class="err">*</span><!-- <a href="#" id="addScnt" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;"> Add Bus Stops :</a> -->Stops<input type="hidden" id="number_of_stops" name="number_of_stops" onload=""></td>
 								<%-- <c:forEach items="${routeForm.route_views}" var="route"> --%>
 								<td valign="middle" align="left" class="input_txt" id="p_scents" >
 								
@@ -244,25 +244,24 @@ $(function() {
  <script type="text/javascript">
 $(document).ready(function() {
 	var scntDiv = $('#p_scents');
-	var i = $('#p_scents p').size();
-	alert(i);
+	var i =$('#p_scents p').size();
+	
 	var n='${fn:length(routeForm.route_views)}';
 	
-	alert(n);
-	
-	for(i;i<n-1;i++)
 	'<c:forEach items="${routeForm.route_views}" var="route">';	
 	
 	//$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:400px;background-color:#E5E5E5;"><label for="p_scnts"><input type="text"  size="20" class="input_txtbx_height" id="stop_info_'+i+'" name="stop['+i+']" value="${route.bus_stop_address}" /></label><br/><br/><input type="radio"  name="stop_pick['+i+']" id="stop_pick_'+i+'" value="0" checked>Pick up<input type="radio"  name="stop_pick['+i+']" value="1" id="stop_drop_'+i+'">Drop<input type="radio"  name="stop_pick['+i+']" value="2" id="stop_both_'+i+'">KG Drop<br><br><input type="text" name="particular_stop_pickup_time['+i+']" id="datepicker" class="input_txtbx_height" value="${route.bus_arrival_time}" style="width=100px;/><br><br>&nbsp;&nbsp;&nbsp;<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
-	$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:400px;background-color:#E5E5E5;"><label for="p_scnts"><input type="text"  size="20" class="input_txtbx_height" id="stop_info_'+i+'" name="stop['+i+']" value="${route.bus_stop_address}" /></label><br/><br/><c:choose><c:when test="${route.trip==0}"><input type="radio"  name="stop_pick['+i+']" id="stop_pick_'+i+'" value="0" checked>Pick up<input type="radio"  name="stop_pick['+i+']" value="1" id="stop_drop_'+i+'">Drop<input type="radio"  name="stop_pick['+i+']" value="2" id="stop_both_'+i+'">KG Drop</c:when><c:when test="${route.trip==1}"><input type="radio"  name="stop_drop['+i+']" id="stop_pick_'+i+'" value="0" >Pick up<input type="radio"  name="stop_drop['+i+']" value="1" id="stop_drop_'+i+'" checked>Drop<input type="radio"  name="stop_drop['+i+']" value="2" id="stop_both_'+i+'">KG Drop</c:when><c:otherwise><input type="radio"  name="stop_kgdrop['+i+']" id="stop_pick_'+i+'" value="0" >Pick up<input type="radio"  name="stop_kgdrop['+i+']" value="1" id="stop_drop_'+i+'">Drop<input type="radio"  name="stop_kgdrop['+i+']" value="2" id="stop_both_'+i+'" checked>KG Drop</c:otherwise></c:choose><br><br><input type="text" name="particular_stop_pickup_time['+i+']" id="datepicker" class="input_txtbx_height" value="${route.bus_arrival_time}" style="width=100px;/><br/><br/>&nbsp;&nbsp;&nbsp;<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
+	alert("innser"+i);
+	$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:400px;background-color:#E5E5E5;"><label for="p_scnts">"'+i+'"<input type="text"  size="20" class="input_txtbx_height" id="stop_info_'+i+'" name="stop['+i+']" value="${route.bus_stop_address}" /></label><br/><br/><c:choose><c:when test="${route.trip==0}"><input type="radio"  name="stop_pick['+i+']" id="stop_pick_'+i+'" value="0" checked>Pick up<input type="radio"  name="stop_pick['+i+']" value="1" id="stop_drop_'+i+'">Drop<input type="radio"  name="stop_pick['+i+']" value="2" id="stop_both_'+i+'">KG Drop</c:when><c:when test="${route.trip==1}"><input type="radio"  name="stop_drop['+i+']" id="stop_pick_'+i+'" value="0" >Pick up<input type="radio"  name="stop_drop['+i+']" value="1" id="stop_drop_'+i+'" checked>Drop<input type="radio"  name="stop_drop['+i+']" value="2" id="stop_both_'+i+'">KG Drop</c:when><c:otherwise><input type="radio"  name="stop_kgdrop['+i+']" id="stop_pick_'+i+'" value="0" >Pick up<input type="radio"  name="stop_kgdrop['+i+']" value="1" id="stop_drop_'+i+'">Drop<input type="radio"  name="stop_kgdrop['+i+']" value="2" id="stop_both_'+i+'" checked>KG Drop</c:otherwise></c:choose><br><br><input type="text" name="particular_stop_pickup_time['+i+']" id="datepicker" value="${route.bus_arrival_time}" style="width=100px;/><br/><br/>&nbsp;&nbsp;&nbsp;<a href="#" id="remScnt"></a><br/><br/>&nbsp;&nbsp;&nbsp;<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
 	
 	document.getElementById("number_of_stops").value=i;
+	
 	var autocomplete_stop = new google.maps.places.Autocomplete(document.getElementById("stop_info_"+i));
 	
 	i=i+1;
 	'</c:forEach>';
-	
 });
+
 
 $('#remScnt').live('click', function() { 
        $(this).parents('p').remove();

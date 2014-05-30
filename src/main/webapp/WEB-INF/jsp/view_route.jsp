@@ -36,7 +36,7 @@
 							    </c:forEach>
 							    </select></td>
 							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Bus Registration No &nbsp;<br/><font color="#ccc">.</font></span><br/>
-							    <select   id="e3"style="width:300px;" name="vechicle_reg_no">
+							    <select id="e3"style="width:300px;" name="vechicle_reg_no">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.bus_reg_no}">${route1.bus_reg_no}</option>
@@ -108,7 +108,7 @@
 					       	 	<td valign="top" align="left" width="10%"> Bus Reg No</td>
 					       	 	<td valign="top" align="left" width="13%"> 	Route No</td>
           						<td valign="top" align="left" width="10%"> Trip</td>
-          						<td valign="top" align="left" width="25%"> Bus Stop Address</td>
+          						<td valign="top" align="left" width="25%"> No. of Stops</td>
           						<td valign="top" align="left" width="10%"> Action</td>
           						
           						
@@ -138,12 +138,22 @@
 											</c:otherwise>
 											</c:choose>
 </td>
-											<td valign="top" align="left"style="overflow:hidden;" width="25%" title="${route.bus_stop_address}">${route.bus_stop_address}</td>
+											<td valign="top" align="left"style="overflow:hidden;" width="25%" title="${route.no_of_stops}">${route.no_of_stops}</td>
+											<td align="left">
+										<div class="arrow" title="Double click to Show all Details"></div>
+										</td>
 											<td valign="top" align="left" style="overflow:hidden;"width="10%">	
 										    <a href="<c:out value="editroute?route_no=${route.route_no}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 											<a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 									
 											</td>
+								</tr>
+								<tr>
+								
+								<td valign="top" align="left"><span>Stop ID:</span><span>${route.stop_id}</span></td>
+								<td valign="top" align="left"><span>Bus Stop Address:</span><span>${route.bus_stop_address}</span></td>
+								<td valign="top" align="left"><span>Bus Arrival Time:</span><span>${route.bus_arrival_time}</span></td>
+								
 								</tr>
 							    	</c:forEach>
 							    </c:if>

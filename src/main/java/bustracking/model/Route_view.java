@@ -19,6 +19,8 @@ public class Route_view
 	private String bus_stop_address;
 	
 	private String bus_arrival_time;
+	
+	private String no_of_stops;
 
 	public Route_view() {
 		super();
@@ -150,6 +152,17 @@ public class Route_view
 	}
 
 
+public String getNo_of_stops() {
+		return no_of_stops;
+	}
+
+
+
+	public void setNo_of_stops(String no_of_stops) {
+		this.no_of_stops = no_of_stops;
+	}
+
+
 
 	public String getBus_arrival_time() {
 		return bus_arrival_time;
@@ -161,6 +174,43 @@ public class Route_view
 		this.bus_arrival_time = bus_arrival_time;
 	}
 	
+
+	// Constructor For View Routes in admin side
+
+	public Route_view(String org_name, String branch, String org_id,
+			String route_no, String stop_id, String bus_reg_no, String trip,
+			String bus_stop_address, String bus_arrival_time, String no_of_stops) {
+		super();
+		this.org_name = org_name;
+		this.branch = branch;
+		this.org_id = org_id;
+		this.route_no = route_no;
+		this.stop_id = stop_id;
+		this.bus_reg_no = bus_reg_no;
+		this.trip = trip;
+		this.bus_stop_address = bus_stop_address;
+		this.bus_arrival_time = bus_arrival_time;
+		this.no_of_stops = no_of_stops;
+	}
+
+
+   // Constructor for Search operations in Route
+	
+	public Route_view(String org_name, String branch, String org_id,
+			String route_no, String stop_id, String bus_reg_no, String trip,
+			String bus_stop_address, String bus_arrival_time) {
+		super();
+		this.org_name = org_name;
+		this.branch = branch;
+		this.org_id = org_id;
+		this.route_no = route_no;
+		this.stop_id = stop_id;
+		this.bus_reg_no = bus_reg_no;
+		this.trip = trip;
+		this.bus_stop_address = bus_stop_address;
+		this.bus_arrival_time = bus_arrival_time;
+	}
+
 
 	
 }
