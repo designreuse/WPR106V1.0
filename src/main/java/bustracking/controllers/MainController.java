@@ -347,10 +347,7 @@ else{
 		
 		
 	   mainDAO.sms_parent(parent);
-	  /* SmsparentForm smsparentForm=new SmsparentForm();
-	   smsparentForm.setSmsparent(mainDAO.getSmsparent());
-	   model.addAttribute("smsparentForm",smsparentForm);	
-		*/
+	  /* 	*/
 		
 		return "client_smstoparent";
 	}
