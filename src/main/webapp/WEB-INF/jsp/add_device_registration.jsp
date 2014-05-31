@@ -5,9 +5,56 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+ --><script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+  <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
+  <script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+	 $(document).ready( function() {
+		    var now = new Date();
+		 
+		    var day = ("0" + now.getDate()).slice(-2);
+		    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+		    var today = now.getFullYear()+"/"+(month)+"/"+(day) ;
+
+
+		   $('#datePickertest').val(today);
+		    
+		    
+		});
+jQuery(function () {
+    jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    
+    jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
+	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+
+	jQuery("#startDate").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#startDate1").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#endDate").on("dp.change",function (e) {
+    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	jQuery("#endDate1").on("dp.change",function (e) {
+	    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	
+});
+});//]]>  
+
+</script>
+	
+
 
 <script id="script_e3">
     $(document).ready(function() {
@@ -131,18 +178,30 @@
 				              <tr class="row1"><td width="10%"></td>
 				              <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Procured Date:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                 <%--  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_address_id" name="address" value="${organisation.address}" />
-				                   --%>
-				                  <%--  <textarea class="input_txtarea_height1"  rows="3" cols="4" style="width:200px;height:50px;" id="org_address" name="address">${organisation.address}</textarea> --%>
-				                <div id="info5"><input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')" class="org_input_txtbx_height1">
+				                	<div class='input-group date' id='endDate' >
+												<input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')"  style="height:27px;width:190px;float:left;">
+				                  				<!-- <input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
+												 --><span class="add-on" style="margin-top:0px;float:left">
+												<img src="resources/images/date.png" width="24" height="35"/>
+        										</span>
+					</div>
+				                	<!-- <div id="info5"><input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')" class="org_input_txtbx_height1"> -->
 				                   	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.address"></form:errors></font>
-				                  </div>
+				                  <!-- </div> -->
 				                  </td>
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Procured Date:</td>
 				                  <td valign="center" align="left" class="input_txt" width="60%" >
-				                  	<div id="info2"><input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${organisation.contact_person_name}" />
+				                  	<div class='input-group date' id='endDate1' >
+												<input type="text"  onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${organisation.contact_person_name}" style="height:27px;width:190px;float:left;">
+				                  				<!-- <input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
+												 --><span class="add-on" style="margin-top:0px;float:left">
+												<img src="resources/images/date.png" width="24" height="35"/>
+        										</span>
+					</div>
+				                  	
+				                  	<%-- <div id="info2"><input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${organisation.contact_person_name}" />
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
-				                  </div>
+				                  </div> --%>
 				                  </td>
 				                 
 				                </tr>
@@ -289,7 +348,7 @@
                    <tr><td width="50%">
                   Configure Date
                    
-                   </td><td><input type="text" class="org_input_txtbx_height1" name="configuration_date" id="txtDate" placeholder="" onblur="cdate('datepicker2')"/>
+                   </td><td><input type="text"  name="configuration_date" id="datePickertest" />
                    </td></tr>
                    <tr><td width="50%">
                     User Id
@@ -643,22 +702,6 @@ $('#info11').html(two_drop[10]);
 		  });  
 		}  
 		</script>
-		
-				
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>		
-<script>
-$(function() {
-$( "#datepicker").datepicker({dateFormat:'yy-mm-dd'});
-});
-
-$(function() {
-	$( "#datepicker1").datepicker({dateFormat:'yy-mm-dd'});
-	});
 	
-$(function() {
-	$( "#txtDate").datepicker({dateFormat:'yy-mm-dd'});
-	});
-</script>	
-
 
 <jsp:include page="footer.jsp"></jsp:include>
