@@ -167,15 +167,19 @@
 											<td valign="top" align="left" style="overflow:hidden;width:80px">	
 											
 										    <a href="<c:out value="editroute?route_no=${route.route_no}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
-											<a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
+											<a href="<c:out value="deleteroute?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}&vechicle_reg_no=${route.bus_reg_no}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 											<div class="arrow" title="Double click to Show all Details"></div>
 											</td>
 								</tr>
 								<tr class="row2">
 								
+								<c:forEach items="${routeViewForm2.route_views}" var="route" varStatus="status">
+								
 								<td valign="top" align="left" style="overflow:hidden;width:260px"><span>Stop ID:</span><span>${route.stop_id}</span></td>
 								<td valign="top" align="left"style="overflow:hidden;width:425px" colspan="4"><span>Bus Stop Address:</span><span>${route.bus_stop_address}</span></td>
 								<td valign="top" align="left" style="overflow:hidden;width:180px" colspan="2"><span>Bus Arrival Time:</span><span>${route.bus_arrival_time}</span></td>
+								
+								</c:forEach>
 								
 								</tr>
 							    	</c:forEach>

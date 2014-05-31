@@ -97,7 +97,7 @@ public class RouteDAO {
 		return status;
 	}
 	
-	// Message Log Entry For Each Route
+	// Message Log Entry Route
 	public List<Route_view> getStops(String route_no){
 		Connection con = null;
 		Statement statement = null;
@@ -218,7 +218,38 @@ public class RouteDAO {
 		
 	}
 
-
+	// Show full Details of Route
+	
+	public List<Route_view> getRoutes_for_detail_view(){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Route_view> routes=new ArrayList<Route_view>();
+		try{
+			resultSet = statement.executeQuery("select t3.org_name,t3.branch,t1.vechicle_reg_no,t2.org_id,t2.route_no,t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time,(select count(t2.stop_id) from tbl_bus_route as t2 where t2.route_no=t1.route_no) as no_of_stops from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no join tbl_organization as t3 on t3.org_id=t2.org_id");
+			while(resultSet.next()){
+		     routes.add(new Route_view(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time"),resultSet.getString("no_of_stops")));
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return routes;
+		
+	}
 	
 	
 	
@@ -372,7 +403,7 @@ public class RouteDAO {
 	
    // Delete Route while Update Information
 	
-	public int deleteRoute_while_update(Route route)
+	public int deleteRoute_while_update(Route_view route)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -387,9 +418,11 @@ public class RouteDAO {
 	    try{
 	    	
 	    	
-	    	String cmd="DELETE FROM tbl_bus_route where route_no='"+route.getRoute_no()+"'";
+	    	String cmd="DELETE FROM tbl_bus_route where route_no='"+route.getRoute_no()+"' and org_id=(select org_id from tbl_organization where org_name='"+route.getOrg_name()+"' and branch='"+route.getBranch()+"')";
 	    	System.out.println(cmd);
 	    	statement.execute(cmd);
+	    	
+	    	String cmd1="DELETE FROM tbl_message_log where route_no='"+route.getRoute_no()+"' and org_id=(select org_id from tbl_organization where org_name='"+route.getOrg_name()+"' and branch='"+route.getBranch()+"')";
 	    	
 	    	flag=1;
 	    }
@@ -428,10 +461,61 @@ public class RouteDAO {
 	    try{
 	    	
 	    	String cmd1="insert into tbl_bus_route(org_id,route_no,stop_id,trip,latitude,longitude,address,bus_arrival_time) values('"+route.getOrg_id()+"','"+route.getRoute_no()+ "','"+route.getStop_id()+"','"+route.getTrip()+"','"+route.getLatitude()+ "','"+ route.getLongitude()+ "','"+route.getAddress()+ "','"+ route.getBus_arrival_time()+"')";
-	    	String Desc="Update Route "+route.getRoute_no();
+	    	String Desc="Insert Route "+route.getRoute_no();
 	    	System.out.println(cmd1);
 	    	statement.execute(cmd1);
 	    	flag=1;
+	    }
+	    	 catch(Exception e){
+	 	    	System.out.println(e.toString());
+	 	    	releaseStatement(statement);
+	 	    	releaseConnection(con);
+	 	    	flag=0;
+	 	    	//return 0;
+	 	    }finally{
+	 	     	releaseStatement(statement);
+	 	    	releaseConnection(con);	    
+	 	    	
+	 	    }
+	 	    if(flag==1)
+	     		return 1;
+	     	else
+	     		return 0;
+	}
+	
+	
+	// Delete Route Information
+	
+	public int deleteRoute(String route_no,String org_name,String branch,String vechicle_reg_no)
+	{
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet=null;
+		int flag=0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+	    try{
+	    	String cmd1="Select * FROM tbl_bus_route where route_no='"+route_no+"' and org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')";
+	    	System.out.println(cmd1);
+	    	resultSet=statement.executeQuery(cmd1);
+	    	
+	    	if(resultSet.next()){
+	    	String cmd="DELETE FROM tbl_bus_route where route_no='"+route_no+"' and org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')";
+	    	System.out.println(cmd);
+	    	statement.execute(cmd);
+	    	
+	    	String cmd2="DELETE FROM tbl_message_log where route_no='"+route_no+"' and vechicle_reg_no='"+vechicle_reg_no+"'";
+	    	System.out.println(cmd);
+	    	statement.execute(cmd2);
+	    	flag=1;
+	    	
+	    	}
+	    	
+	    
 	    }
 	    	 catch(Exception e){
 	 	    	System.out.println(e.toString());

@@ -775,4 +775,17 @@ else{
 	
 	return "client_home";
 	}
+	
+	// Admin Side Reports For SMS
+	
+	@RequestMapping(value="/admin_reports", method=RequestMethod.GET)
+	public String adminreports(ModelMap model) {
+		
+		List <String> orgname_for_school=new ArrayList<String>();
+		orgname_for_school=busDAO.getorgname_for_school();
+		model.addAttribute("orgname_for_school",orgname_for_school);
+		
+		return "admin_reports";
+	}
+	
   }

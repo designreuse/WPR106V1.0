@@ -135,23 +135,29 @@
 </div>	
 </c:if>
  <c:if test="${menu=='ROLE_SUPERADMIN'}">
-<a class="menuitem submenuheader">Holidays</a>
+<a class="menuitem submenuheader" href="#">Holidays</a>
 <div class="submenu">
 <ul>
-	<li><a href="holidayadmin">Holidays Entry</a></li>
-	<li><a href="holidayviewadmin">Holidays Information</a></li>
+	<li><a href="holidayadmin?submenuheader=7">Holidays Entry</a></li>
+	<li><a href="holidayviewadmin?submenuheader=7">Holidays Information</a></li>
 	</ul>
 	</div>
 </c:if>
  <c:if test="${menu=='ROLE_SUPERADMIN'}">
-<a class="menuitem" href="#" style="padding-left:35px;">Reports</a>
+<a class="menuitem submenuheader" href="#">Reports</a>
+<div class="submenu">
+	<ul>
+	<li><a href="admin_reports?submenuheader=8">SMS Report</a></li>
+		</ul>
+</div>
+
 </c:if>
 <c:if test="${menu=='ROLE_SUPERADMIN'}">
 <a class="menuitem submenuheader" href="#" >Tracking</a>
 <div class="submenu">
 	<ul>
-	<li><a href="viewmap?submenuheader=7">Live Track</a></li>
-	<li><a href="view_map_history?submenuheader=7">Tracking History</a></li>
+	<li><a href="viewmap?submenuheader=9">Live Track</a></li>
+	<li><a href="view_map_history?submenuheader=9">Tracking History</a></li>
 	
 		</ul>
 

@@ -125,6 +125,10 @@ public class RouteController
 		routeViewForm1.setRoute_views(routeDAO.getRoutes());
 		model.addAttribute("routeViewForm1",routeViewForm1);
 		
+		RouteViewForm routeViewForm2=new RouteViewForm();
+		routeViewForm2.setRoute_views(routeDAO.getRoutes_for_detail_view());
+		model.addAttribute("routeViewForm2",routeViewForm2);
+		
 		
 		return "view_route";
 	}
@@ -283,7 +287,7 @@ public class RouteController
 	
 	@RequestMapping(value="/update_route_stop", method = RequestMethod.POST)
 
-	public String update_route(HttpServletRequest request,ModelMap model,Route route, Principal principal ) {
+	public String update_route(HttpServletRequest request,ModelMap model,Route_view route,Route updateroute, Principal principal ) {
 		
 	 
 route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
@@ -305,6 +309,7 @@ route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),re
 		
 		routeDAO.deleteRoute_while_update(route);
 		
+		
 		//setting the route values
 		  route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
 		  
@@ -316,17 +321,17 @@ route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),re
 			{
 				stop_location=request.getParameter("stop["+i+"]");
 				route.setStop_id("S"+i);
-				route.setAddress(stop_location);
-				route.setLatitude(getLat(stop_location));
-				route.setLongitude(getLong(stop_location));
-				route.setTrip(request.getParameter("stop_pick["+i+"]"));
-				route.setBus_arrival_time(request.getParameter("particular_stop_pickup_time["+i+"]"));
-				routeDAO.updateRoute(route);
+				updateroute.setAddress(stop_location);
+				updateroute.setLatitude(getLat(stop_location));
+				updateroute.setLongitude(getLong(stop_location));
+				updateroute.setTrip(request.getParameter("stop_pick["+i+"]"));
+				updateroute.setBus_arrival_time(request.getParameter("particular_stop_pickup_time["+i+"]"));
+				routeDAO.updateRoute(updateroute);
 				
 			}
 			
 			System.out.println(route);
-			 
+			routeDAO.insert_message_log(request.getParameter("route_no"));
 				
 		}
 		
@@ -338,7 +343,23 @@ route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),re
 		return "view_route";
 	}
 	
+	// Delete Route Information 
 	
+	@RequestMapping(value="/deleteroute",method=RequestMethod.GET)
+	public String deleteroute(@RequestParam("route_no") String route_no,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("vechicle_reg_no") String vechicle_reg_no,ModelMap model,Principal principal){
+		
+		int status=routeDAO.deleteRoute(route_no,org_name,branch,vechicle_reg_no);
+		
+		if(status==1)
+		{
+			
+			RouteViewForm routeViewForm=new RouteViewForm();
+			routeViewForm.setRoute_views(routeDAO.getRoutes());
+			model.addAttribute("routeViewForm",routeViewForm);
+		}
+		
+		return "view_route";
+	}
 	
 	
 	//Ajax for org name and branch
