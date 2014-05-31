@@ -40,9 +40,10 @@
 			        <div class="headings altheading">
 			          <h2>Student View 
 			        <br/></h2>	<div class="searchdiv">
-                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                        <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a></div>			        </div>
+                        </a>&nbsp;&nbsp;<a  href='clientviewstudent' class="btn" >Go Back</a>
+						</div>			        </div>
 			    
 
 

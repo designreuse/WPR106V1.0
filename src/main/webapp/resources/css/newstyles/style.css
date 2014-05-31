@@ -883,19 +883,21 @@ border: none;
   background: #003366;
   background-repeat: repeat-x;
   /* Safari 4-5, Chrome 1-9 */
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0066cc), to(#003366));
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8099B2), to(#fff));
 
   /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(top, #0066cc, #003366);
+  background: -webkit-linear-gradient(top, #8099B2, #fff);
 
   /* Firefox 3.6+ */
-  background: -moz-linear-gradient(top, #0066cc, #003366);
+  background: -moz-linear-gradient(top, #8099B2, #fff);
 
   /* IE 10 */
-  background: -ms-linear-gradient(top, #0066cc, #003366);
+  background: -ms-linear-gradient(top, #8099B2, #fff);
 
   /* Opera 11.10+ */
-  background: -o-linear-gradient(top, #0066cc, #003366);
+  background: -o-linear-gradient(top, #8099B2, #fff);
+  color:#000;
+  border:1px solid #999;
 }
 
 .glossymenu div.submenu{ /*DIV that contains each sub menu*/
@@ -2056,6 +2058,14 @@ Third button
 	height:auto;
 	text-shadow:none;
 	font-weight:bold;
+}
+.searchdiv_client{
+	margin:-53px 0 0 810px;
+	width:auto;
+	height:auto;
+	text-shadow:none;
+	font-weight:bold;
+	/* border:2px solid red; */
 }
 .Three-DeePjtHeader{
 	font-family: Garamond, serif;

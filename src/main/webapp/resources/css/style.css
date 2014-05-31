@@ -394,7 +394,7 @@ ul.pagination li.page a:hover {
 	border: 1px solid #005977;
 }
 .btn, .btnalt {
-	background: url(../images/bg_buttons.png) repeat-x top;
+	background: url(../images/bg_buttons.png) 0 -50px;
 	border: 1px solid #0D87AE!important;
 	color: #fff;
 	font-size: 12px;
@@ -406,11 +406,28 @@ ul.pagination li.page a:hover {
 	font-style:normal;
 }
 .btn:hover {
-	background: url(../images/bg_buttons.png) 0 -50px;
+	background: url(../images/bg_buttons.png) repeat-x top;
 	border: 1px solid #005977;
 	cursor: pointer;
 }
-
+.btn1, .btn1alt {
+	background: url(../images/bg_buttons.png) 0 -50px;
+	border: 1px solid #0D87AE!important;
+	color: #fff;
+	font-size: 12px;
+	padding: 7px 10px;
+	border-radius: 2px;
+	-moz-border-radius: 7px;
+	font-weight:normal;
+	border: none;
+	font-style:normal;
+	
+}
+.btn1:hover {
+	background: url(../images/bg_buttons.png) repeat-x top;
+	border: 1px solid #005977;
+	cursor: pointer;
+}
 .select_bttn {
 	padding: 7px 10px;
 	border: 1px solid #ccc;

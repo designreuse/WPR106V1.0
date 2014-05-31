@@ -13,9 +13,9 @@
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2>Client Home</h2><div class="searchdiv">
-                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                        <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a></div>
+                        </a>&nbsp;&nbsp;&nbsp;&nbsp;<a  href='welcome' class="btn" >Go Back</a></div>
 			        </div>
 			        
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0">

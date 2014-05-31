@@ -1,7 +1,39 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<!-- <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+ --><script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+  <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
+  <script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+jQuery(function () {
+    jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    
+    jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
+	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
 
+	jQuery("#startDate").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#startDate1").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#endDate").on("dp.change",function (e) {
+    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	jQuery("#endDate1").on("dp.change",function (e) {
+	    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	
+});
+});//]]>  
+
+</script>
+ 
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -10,7 +42,11 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Vehicle Information<br/></h2>
+			          <h2>Vehicle Information</h2><div class="searchdiv_client">
+                        <a href="#" class="btn1" onclick="toggle(this,'div');return false">
+                          Open Search
+                        </a>&nbsp;&nbsp;<a  href='clientbusnodetails' class="btn1" >Go Back</a>
+						<br/></div>
 			          
 			          
 			        </div>
@@ -30,9 +66,21 @@
 							    <option value="${driverlist.vechicle_reg_no}">${driverlist.vechicle_reg_no}</option>
 							    </c:forEach>
 							    </select></td>
-							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;From Date:<br/><input type="text" name="driver_id" style="margin:4px 0 0 0;"></td>
+							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;From Date:<br/>
+							    <span class='input-group date' id='endDate' >
+												<input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
+												<span class="add-on" style="margin-top:0px;float:left">
+												<img src="resources/images/date.png" width="25" height="25"/>
+        										</span>
+					</span></td>
 							    
-							      <td align="left" valign="middle" width="10%">&nbsp;&nbsp;To Date:<br/><input type="text" name="driver_id" style="margin:4px 0 0 0;"></td>
+							      <td align="left" valign="middle" width="10%">&nbsp;&nbsp;To Date:<br/>
+							      <span class='input-group date' id='endDate1' >
+												<input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
+												<span class="add-on" style="margin-top:0px;float:left">
+												<img src="resources/images/date.png" width="25" height="25"/>
+        										</span>
+					</span></td>
 							   <td align="center" valign="middle" width="10%">
 							  <input type="submit" class="btn" value="Search" ></td>
 							 

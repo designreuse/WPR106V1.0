@@ -15,9 +15,11 @@
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2>Holidays Information</h2><div class="searchdiv">
-                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                        <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a></div> 
+                        </a>
+                        &nbsp;&nbsp;<a  href='clientviewholiday' class="btn" >Go Back</a>
+						</div> 
 			        </div>
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0" >
     	<tr>
@@ -28,7 +30,8 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							
 							  <tr>
-							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Date   &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel">
+							    <span style="line-height:8px;">&nbsp;Date   &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e3"style="width:260px;" name="holiday_date">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${holidaysForm1.holidays}" var="holidays" varStatus="status">
