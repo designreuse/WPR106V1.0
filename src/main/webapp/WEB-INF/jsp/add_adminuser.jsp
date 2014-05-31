@@ -128,7 +128,7 @@
                   <td valign="top" align="left">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="btn"  value="Register" onclick="return check('this')"></td>
+                  <td><input type="submit" class="btn"  value="Save" onclick="return check('this')"></td>
                   <td> 
                    <input type="reset" class="btn" value="Reset">
                   </td>

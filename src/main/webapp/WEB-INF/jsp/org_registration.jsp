@@ -197,7 +197,7 @@
 				 <table>
                    <tr align="right">
                    <td></td>
-                   <td ><input type="submit" class="btn" value="Register" onclick="return check('this')"></td>
+                   <td ><input type="submit" class="btn" value="Save" onclick="return check('this')"></td>
                    <td>
                    
                    <input type="reset" class="btn" value="Reset" ></td>
@@ -208,7 +208,7 @@
                   </td>
                 
                   </tr>
-				        </table></td></tr></table></td></tr></table></table>
+				        </table><br/><br/><br/><br/></td></tr></table></td></tr></table></table>
 </form>
 </div></div>
 <script>

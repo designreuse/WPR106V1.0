@@ -223,7 +223,7 @@
                    <table border="0" width="100%">
                    <tr>
                    <td width="30%"></td>
-                   <td align="right" width="20%"><input type="submit" class="btn" value="Register" ></td>
+                   <td align="right" width="20%"><input type="submit" class="btn" value="Save" ></td>
                  <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel"></td>
                    </tr>
@@ -232,7 +232,7 @@
                    </tr>
                  
                   
-				        </table></td></tr></table></td></tr></table>
+				        </table></td></tr></table><br/><br/><br/></td></tr></table>
 				        
 				        </td></tr>
 				        
