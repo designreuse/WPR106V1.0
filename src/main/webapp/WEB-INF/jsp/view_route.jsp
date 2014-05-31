@@ -18,10 +18,10 @@
     <script type="text/javascript">  
         $(document).ready(function(){
             $("#report tr:odd").addClass("odd");
-            $("#report tr:not(.odd)").hide();
+            $("#report tr:not(.click_row)").hide();
             $("#report tr:first-child").show();
             
-            $("#report tr.odd").dblclick(function(){
+            $("#report tr.click_row").dblclick(function(){
                 $(this).next("tr").toggle();
                 $(this).find(".arrow").toggleClass("up");
             });
@@ -150,7 +150,7 @@
         					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         					
-        				       				<tr class="row1">
+        				       				<tr class="click_row">
         				            		<td valign="middle" align="left"style="overflow:hidden; width:260px">${route.org_name}</td>
 					     		     		<td valign="top" align="left" style="overflow:hidden;width:150px">${route.branch}</td> 
 											<td valign="top" align="left" style="overflow:hidden;width:110px">${route.bus_reg_no}</td>
@@ -175,10 +175,11 @@
 								
 								<c:forEach items="${routeViewForm2.route_views}" var="route" varStatus="status">
 								
-								<td valign="top" align="left" style="overflow:hidden;width:260px"><span>Stop ID:</span><span>${route.stop_id}</span></td>
-								<td valign="top" align="left"style="overflow:hidden;width:425px" colspan="4"><span>Bus Stop Address:</span><span>${route.bus_stop_address}</span></td>
+								<td valign="top" align="left" style="overflow:hidden;width:100%" colspan="7">
+								<table><tr><td><span>Stop ID:</span><span>${route.stop_id}</span></td><td><span>Bus Stop Address:</span><span>${route.bus_stop_address}</span></td><td><span>Bus Arrival Time:</span><span>${route.bus_arrival_time}</span></td></tr></table></td>
+								<%-- <td valign="top" align="left"style="overflow:hidden;width:425px" colspan="4"><span>Bus Stop Address:</span><span>${route.bus_stop_address}</span></td>
 								<td valign="top" align="left" style="overflow:hidden;width:180px" colspan="2"><span>Bus Arrival Time:</span><span>${route.bus_arrival_time}</span></td>
-								
+								 --%>
 								</c:forEach>
 								
 								</tr>

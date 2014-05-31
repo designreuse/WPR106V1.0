@@ -59,6 +59,14 @@ public class DeviceRegistration
 	
 	private String create_user_id;
 	
+	private String modified_user_id;
+	
+	private String modified_time_stamp;
+	
+	private String modified_user_system_name;
+	
+	
+	
 private String myid;
 	
 	private String status;
@@ -66,6 +74,40 @@ private String myid;
 	private String updated_on;
 	
 	private String res;
+
+	
+	
+	
+	
+	public String getModified_user_id() {
+		return modified_user_id;
+	}
+
+
+	public void setModified_user_id(String modified_user_id) {
+		this.modified_user_id = modified_user_id;
+	}
+
+
+	public String getModified_time_stamp() {
+		return modified_time_stamp;
+	}
+
+
+	public void setModified_time_stamp(String modified_time_stamp) {
+		this.modified_time_stamp = modified_time_stamp;
+	}
+
+
+	public String getModified_user_system_name() {
+		return modified_user_system_name;
+	}
+
+
+	public void setModified_user_system_name(String modified_user_system_name) {
+		this.modified_user_system_name = modified_user_system_name;
+	}
+
 
 	public String getMyid() {
 		return myid;
@@ -119,6 +161,45 @@ private String myid;
 		this.device_imei_number = device_imei_number;
 	}
 
+
+
+	public DeviceRegistration(String manufacturer, String model_no,
+			String carrier, String sim_card_number,
+			String device_procured_date, String device_invoice_number,
+			String device_imei_number, String device_tested,
+			String sim_procured_date, String sim_invoice_number,
+			String sim_card_tested, String device_sim_paired,
+			String is_assigned, String password, String device_status,
+			String port_no, String comments, String apn, String adminip,
+			String configuration_date, String create_user_id,
+			String modified_user_id, String modified_time_stamp,
+			String modified_user_system_name) {
+		super();
+		this.manufacturer = manufacturer;
+		this.model_no = model_no;
+		this.carrier = carrier;
+		this.sim_card_number = sim_card_number;
+		this.device_procured_date = device_procured_date;
+		this.device_invoice_number = device_invoice_number;
+		this.device_imei_number = device_imei_number;
+		this.device_tested = device_tested;
+		this.sim_procured_date = sim_procured_date;
+		this.sim_invoice_number = sim_invoice_number;
+		this.sim_card_tested = sim_card_tested;
+		this.device_sim_paired = device_sim_paired;
+		this.is_assigned = is_assigned;
+		this.password = password;
+		this.device_status = device_status;
+		this.port_no = port_no;
+		this.comments = comments;
+		this.apn = apn;
+		this.adminip = adminip;
+		this.configuration_date = configuration_date;
+		this.create_user_id = create_user_id;
+		this.modified_user_id = modified_user_id;
+		this.modified_time_stamp = modified_time_stamp;
+		this.modified_user_system_name = modified_user_system_name;
+	}
 
 
 	public DeviceRegistration(String manufacturer, String model_no,

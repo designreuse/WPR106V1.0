@@ -502,6 +502,8 @@ public class DeviceRegistrationController
 			}*/
 			
 			deviceRegistrationDAO.insert_device(deviceRegistration);
+			
+			
 			DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
 			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
 			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
