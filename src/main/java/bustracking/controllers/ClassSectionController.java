@@ -112,6 +112,9 @@ public class ClassSectionController
 		classSectionForm.setClassSections(classSectionDAO.get_classsection());
 		model.addAttribute("classSectionForm",classSectionForm);
 		
+		ClassSectionForm classSectionForm1=new ClassSectionForm();
+		classSectionForm1.setClassSections(classSectionDAO.get_classsection());
+		model.addAttribute("classSectionForm1",classSectionForm1);
 		
 		return "view_ClassAndSection";
 		
@@ -203,6 +206,10 @@ public class ClassSectionController
 			ClassSectionForm classSectionForm=new ClassSectionForm();
 			classSectionForm.setClassSections(classSectionDAO.get_classsection());
 			model.addAttribute("classSectionForm",classSectionForm);
+		
+			ClassSectionForm classSectionForm1=new ClassSectionForm();
+			classSectionForm1.setClassSections(classSectionDAO.get_classsection());
+			model.addAttribute("classSectionForm1",classSectionForm1);
 		}
 		
 		return "view_ClassAndSection";

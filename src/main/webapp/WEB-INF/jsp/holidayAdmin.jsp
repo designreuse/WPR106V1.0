@@ -2,10 +2,64 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<style>#div {display: none}
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+ -->
+ <style>#div {display: none}
 </style>
-<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<!-- <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+ -->
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+  <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
+  <script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+	 $(document).ready( function() {
+		    var now = new Date();
+		 
+		    var day = ("0" + now.getDate()).slice(-2);
+		    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+		    var today = now.getFullYear()+"/"+(month)+"/"+(day) ;
+
+
+		   $('#datePickertest').val(today);
+		    
+		    
+		});
+jQuery(function () {
+    jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    
+    jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
+	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+
+	jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate2').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    
+	jQuery("#startDate").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#startDate1").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#startDate").on("dp.change",function (e) {
+	    jQuery('#endDate2').data("DateTimePicker").setMinDate(e.date);});
+	
+	jQuery("#endDate").on("dp.change",function (e) {
+    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	jQuery("#endDate1").on("dp.change",function (e) {
+	    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	
+});
+});//]]>  
+
+</script>
+	
 
 <script id="script_bid">
     $(document).ready(function() {
@@ -69,7 +123,7 @@ select.add(option, 0); */
     				<td align="left" valign="top" width="100%" style="padding-right:25px;">
     				
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    						<tr class="row1"><td width="25%"></td>
+    						<tr class="row1"><td width="25%" class="input_txt"></td>
 				                  <td valign="middle" align="left" class="input_txt" width="14%" ><span class="err">*</span> Organization Name</td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	<select  style="width:220px;"name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
@@ -82,7 +136,7 @@ select.add(option, 0); */
 				                  </td>
 				               </tr></table>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-                        		<tr class="row2"><td width="25%"></td> 
+                        		<tr class="row2"><td width="25%" class="input_txt"></td> 
                         		<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Branch<br/><span style="color:#f5f5f5;">.</span></td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	
@@ -95,50 +149,64 @@ select.add(option, 0); */
 				                  </td>
 				                 
 				                </tr></table> <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-						 <tr class="row1"><td width="25%"></td>
+						 <tr class="row1"><td width="25%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Number of Days </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
-				                  	<label><input type="radio" name="no_days" class="radio1" data-divclass="div1">Only One Day</label>
-<label><input type="radio" name="no_days" class="radio2" data-divclass="div2"> More than One Day</label>
-
-
-
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.class_std"></form:errors></font></td>
+				                  	<label><input type="radio" name="no_days" class="radio1" data-divclass="div1">Only One Day</label> <label><input type="radio" name="no_days" class="radio2" data-divclass="div2"> More than One Day</label>
+								<br/><font color="Red" size="+1"><form:errors path="ClassSection.class_std"></form:errors></font></td>
 				                </tr></table>
+				                
 				                <div id="div" class="div1 content"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
-				                <tr class="row2"><td width="25%"></td>
+				                <tr class="row2"><td width="25%" class="input_txt"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Holiday Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<input type="text" value="" id="datepicker" name="holiday_date"/>
 				                  	
+				                  	<div class='input-group date' id='endDate' style="float:left;">
+				                  	<input type="text" value="" name="holiday_date"/>
+				                  	<span class="add-on" style="margin-top:-15px;">
+												<img src="resources/images/date.png" width="24" height="35"/>
+        										</span>
+        										</div>
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
 				                     </tr></table></div>
 				                     <div id="div" class="div2 content"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
-				                <tr class="row2"><td width="25%"></td>
+				                <tr class="row2"><td width="25%" class="input_txt"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> From Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<input type="text" value="" id="datepicker2"name="fromdate"/>
 				                  	
+				                  	<div class='input-group date' id='endDate1' style="float:left;">
+				                  	<input type="text" value="" name="fromdate"/>
+				                  	<span class="add-on" style="margin-top:-15px;">
+												<img src="resources/images/date.png" width="24" height="35"/>
+        										</span>
+        										</div>
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
 				                     </tr></table><table cellpadding="0" cellspacing="0" border="0" width="100%" >
-				                     <tr class="row1"><td width="25%"></td>
+				                     <tr class="row1"><td width="25%" class="input_txt"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> To Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<input type="text" value="" id="datepicker1"name="todate"/>			                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  	
+				                  	<div class='input-group date' id='endDate2' style="float:left;">
+				                  	<input type="text" value="" name="todate"/>	
+				                  	<span class="add-on" style="margin-top:-15px;">
+												<img src="resources/images/date.png" width="24" height="35"/>
+        										</span>
+        										</div>
+				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
 				                     </tr></table></div>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-				               <tr class="row2"><td width="25%"></td>
+				               <tr class="row2"><td width="25%" class="input_txt"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Description</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  <textarea name="holiday_reason" class="textareanew"></textarea>		                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
 				                    
 				                     </tr></table>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-                <tr class="row1" ><td width="25%"></td>
+                <tr class="row1" ><td width="25%" class="input_txt"></td>
 				              <td valign="top" align="left"></td>
                  <td width="1%"></td>
                   <td valign="top" align="justify">
@@ -169,9 +237,9 @@ select.add(option, 0); */
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script>
 $(function() {
-	$("#datepicker").datepicker({ minDate: 0});
-	$("#datepicker1").datepicker({ minDate: 0});
-	$("#datepicker2").datepicker({ minDate: 0});
+	$("#datepicker").datepicker({ format: 'YYYY/MM/dd', minDate: 0});
+	$("#datepicker1").datepicker({ format: 'YYYY/MM/dd', minDate: 0});
+	$("#datepicker2").datepicker({ format: 'YYYY/MM/dd', minDate: 0});
 });
 </script>
 <script>

@@ -110,6 +110,11 @@ public String orgregistration(HttpServletRequest request,HttpSession session,@Mo
 	orgregistrationform.setOrgregistration(orgDAO.getOrgregistration());
 	model.addAttribute("orgregistrationform", orgregistrationform);
 	session.removeAttribute("organisation");
+	
+	OrgRegistrationForm orgregistrationform1= new OrgRegistrationForm();
+	orgregistrationform1.setOrgregistration(orgDAO.getOrgregistration());
+	model.addAttribute("orgregistrationform1", orgregistrationform1);
+	
 	return "view_org";
 }
 
@@ -154,6 +159,9 @@ public String updateorg(HttpServletRequest request,@ModelAttribute ("OrgRegistra
 			orgregistrationform.setOrgregistration(orgDAO.getOrgregistration());
 			model.addAttribute("orgregistrationform",orgregistrationform);
 			
+			OrgRegistrationForm orgregistrationform1= new OrgRegistrationForm();
+			orgregistrationform1.setOrgregistration(orgDAO.getOrgregistration());
+			model.addAttribute("orgregistrationform1", orgregistrationform1);
 		}
 		
 		return "view_org";
@@ -175,6 +183,10 @@ public String removeStudent(@RequestParam("org_name") String org_name,@RequestPa
     OrgRegistrationForm orgregistrationform= new OrgRegistrationForm();
 	orgregistrationform.setOrgregistration(orgDAO.getOrgregistration());
 	model.addAttribute("orgregistrationform",orgregistrationform);
+	
+	OrgRegistrationForm orgregistrationform1= new OrgRegistrationForm();
+	orgregistrationform1.setOrgregistration(orgDAO.getOrgregistration());
+	model.addAttribute("orgregistrationform1", orgregistrationform1);
 	}
 	
 	return "view_org";

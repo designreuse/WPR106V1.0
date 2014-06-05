@@ -61,7 +61,7 @@ jQuery(function () {
     <div id="GPS_View_table">
 
 <form action="deviceregistration" method="POST">  
-<table class="margin_table" border="0"  style="height:600px">
+<table class="margin_table" border="0"  style="height:700px">
       
       <tr>
         <td valign="top" align="left">

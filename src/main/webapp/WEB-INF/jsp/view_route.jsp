@@ -35,8 +35,7 @@
 
 	<table class="margin_table">
       		
-			
-      		<tr>
+		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2> Route Information</h2>
@@ -132,12 +131,12 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 									<!-- 	<td valign="top" align="left" width="18%"> Bus Id</td> -->
-					         	<td valign="top" align="left" width="24%"> 	Organization Name</td>
+					         	<td valign="top" align="left" width="20%"> 	Organization Name</td>
 					         	<td valign="top" align="left" width="14%">Branch</td>
 					       	 	<td valign="top" align="left" width="10%"> Bus Reg No</td>
 					       	 	<td valign="top" align="left" width="10%"> RouteNo</td>
-          						<td valign="top" align="left" width="6%"> Trip</td>
-          						<td valign="top" align="left" width="10%"> No. of Stops</td>
+          						<td valign="top" align="left" width="7%"> Trip</td>
+          						<td valign="top" align="left" width="9%"> No. of Stops</td>
           						<td valign="top" align="left" width="10%"> Action</td>
           						
           						
@@ -145,16 +144,16 @@
 							
 							<div class="Panel_One_Inner">
 							
-				        <table cellpadding="0" cellspacing="0" border="0"id="report" style="width:1050px" class="order-table table">
-							<tr><td colspan="7"style="overflow:hidden;width:1050px">.</td></tr>
+				        <table cellpadding="0" cellspacing="0" border="0" id="report" style="width:1050px" class="order-table table">
+							<tr><td colspan="7"style="overflow:hidden;width:1050px"></td></tr>
         					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         					
         				       				<tr class="click_row">
-        				            		<td valign="middle" align="left"style="overflow:hidden; width:260px">${route.org_name}</td>
+        				            		<td valign="middle" align="left"style="overflow:hidden; width:210px">${route.org_name}</td>
 					     		     		<td valign="top" align="left" style="overflow:hidden;width:150px">${route.branch}</td> 
 											<td valign="top" align="left" style="overflow:hidden;width:110px">${route.bus_reg_no}</td>
-											<td valign="top" align="left" style="overflow:hidden;width:85px">${route.route_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;width:90px">${route.route_no}</td>
 											<td valign="top" align="left" style="overflow:hidden;width:70px"><span style="line-space:20px;"><c:choose>
 											<c:when test="${route.trip==0}">&nbsp;	<c:out value="Pick Up" ></c:out></c:when>
 											<c:when test="${route.trip==1}">&nbsp;<c:out value="Drop" ></c:out></c:when><c:otherwise>
@@ -162,27 +161,19 @@
 											</c:otherwise>
 											</c:choose></span>
 											</td>
-											<td valign="top" align="left"style="overflow:hidden; width:100px" title="${route.no_of_stops}">${route.no_of_stops}</td>
+											<td valign="top" align="left"style="overflow:hidden; width:90px" title="${route.no_of_stops}">${route.no_of_stops}</td>
 											
-											<td valign="top" align="left" style="overflow:hidden;width:80px">	
-											
-										    <a href="<c:out value="editroute?route_no=${route.route_no}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
+											<td valign="top" align="left" style="overflow:hidden;width:90px">	
+											<a href="<c:out value="showfulldetails?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}"/>">Stops</a>&nbsp;|&nbsp;&nbsp;
+										    <a href="<c:out value="editroute?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}&vechicle_reg_no=${route.bus_reg_no}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 											<a href="<c:out value="deleteroute?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}&vechicle_reg_no=${route.bus_reg_no}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
-											<div class="arrow" title="Double click to Show all Details"></div>
+																					
+				
+											
+											
 											</td>
 								</tr>
-								<tr class="row2">
 								
-								<c:forEach items="${routeViewForm2.route_views}" var="route" varStatus="status">
-								
-								<td valign="top" align="left" style="overflow:hidden;width:100%" colspan="7">
-								<table><tr><td><span>Stop ID:</span><span>${route.stop_id}</span></td><td><span>Bus Stop Address:</span><span>${route.bus_stop_address}</span></td><td><span>Bus Arrival Time:</span><span>${route.bus_arrival_time}</span></td></tr></table></td>
-								<%-- <td valign="top" align="left"style="overflow:hidden;width:425px" colspan="4"><span>Bus Stop Address:</span><span>${route.bus_stop_address}</span></td>
-								<td valign="top" align="left" style="overflow:hidden;width:180px" colspan="2"><span>Bus Arrival Time:</span><span>${route.bus_arrival_time}</span></td>
-								 --%>
-								</c:forEach>
-								
-								</tr>
 							    	</c:forEach>
 							    </c:if>
 							    
@@ -239,74 +230,7 @@ function selectall(field)
 </script>
   		 
 <jsp:include page="footer.jsp"></jsp:include>
-<a href="#x" class="overlay" id="join_form"></a>
-        <div class="popup">
-            <h2>Student Details</h2>
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-							<tr class="titlepop">
-									<!-- 	<td valign="top" align="left" width="18%"> Bus Id</td> -->
-					         	<td valign="top" align="left" width="15%"> 	Org Name</td>
-					         	<td valign="top" align="left" width="15%">Branch</td>
-					       	 	<td valign="top" align="left" width="10%"> Bus Reg No</td>
-					       	 	<td valign="top" align="left" width="10%"> 	Route No</td>
-          						<td valign="top" align="left" width="10%"> Trip</td>
-          						<td valign="top" align="left" width="25%"> Bus_Stop_Address</td>
-          						<td valign="top" align="left" width="25%"> Operations</td>
-          						
-          						
-        					</tr></table>
-							
-							<div class="Panel_One_Inner">
-							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="order-table table">
-							
-        					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
-        					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
-        					
-        				       					<tr class="row1">
-        				            		<td valign="center" align="center" width="15%">${route.org_name}</td>
-					     		     	<td valign="top" align="left" width="15%">${route.branch}</td> 
-											<td valign="top" align="left" width="10%">${route.bus_reg_no}</td>
-											<td valign="top" align="left" width="10%"><a href="#join_form" id="join_pop" class="iconbutton star" >${route.route_no}</a></td>
-											<td valign="top" align="left" width="10%"><c:choose><c:when test="${route.trip==0}">
-											<c:out value="Pick Up"></c:out>
-											</c:when>
-											<c:when test="${route.trip==1}">
-											<c:out value="Drop"></c:out>
-											</c:when>
-											<c:otherwise>
-											<c:out value="KG Drop"></c:out>
-											</c:otherwise>
-											</c:choose>
-</td>
-											<td valign="top" align="left" width="25%">${route.bus_stop_address}</td>
-											<td valign="top" align="left" width="25%">				
-										
-										  <a href="#" title="" id="addScnt"><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a>
-										    <a href="<c:out value="editroute?route_no=${route.route_no}"/>" style="padding-right:10px;">Edit</a>
-											
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteuser?route_no=${route.route_no}"/>" onclick="return confirm('Are you sure want to Delete?')">Remove</a>
-									
-											</td>
-								</tr>
-							    	</c:forEach>
-							    </c:if>
-							     <c:if test="${fn:length(routeViewForm.route_views) == 0}">	
-							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Routes Found!!!</b></center></td>
-							    	</tr>
-							    	</c:if>
-        				</table>
-        				</div>
-        				<table cellpadding="0" cellspacing="0" border="0" width="100%">
-							<tr class="title">
-								
-          						<td valign="top" align="right" width="100%"> &#9660;</td>
-          						
-          						
-        					</tr></table>
-        				<a class="close" href="#close"></a>
-        </div>
+
         <script
 	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 <script type="text/javascript">
@@ -342,3 +266,13 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
+<script type="text/javascript">
+
+$( "#dialog" ).dialog({ autoOpen: false });
+$( "#join_form" ).click(function() {
+  $( "#dialog" ).dialog( "open" );
+});
+</script>
+
+							

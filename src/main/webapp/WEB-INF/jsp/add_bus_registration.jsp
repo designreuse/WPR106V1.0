@@ -243,7 +243,7 @@ function check(){
 
 <script>
 $(function() {
-	$("#datepicker").datepicker({ minDate: 0});
+	$("#datepicker").datepicker({format: 'yyyy/MM/dd', minDate: 0});
 });
 
 

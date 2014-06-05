@@ -185,7 +185,7 @@
 	<li><a href="clientstudentdata">Student Data</a></li>
 	<li><a href="clientstudentroutemap">Student Route Map</a></li> -->
 	<li><a href="clientviewstudent">Student List</a></li>
-	<li><a href="#">Student Data</a></li>
+	<!-- <li><a href="#">Student Data</a></li> -->
 	<!-- <li><a href="#">Student Route Map</a></li> -->
 	
 	</ul>
@@ -229,9 +229,9 @@
 	<li><a href="clientpickupreport">Pick Up Report</a> </li>
 	<li><a href="clientdropreport">Drop Report</a></li>
 	<li><a href="clientoverspeedingreport">Over Speeding Report </a></li>
-	 --><li><a href="#">Driver List</a></li>
-	<li><a href="#">Pick Up Report</a> </li>
-	<li><a href="#">Drop Report</a></li>
+	 --><li><a href="clientdriverlistreport">Driver List</a></li>
+	<li><a href="clientpickupreport">Pick Up Report</a> </li>
+	<li><a href="clientdropreport">Drop Report</a></li>
 	<li><a href="clientoverspeedingreport">Over Speeding Report </a></li>
 	
 	</ul>

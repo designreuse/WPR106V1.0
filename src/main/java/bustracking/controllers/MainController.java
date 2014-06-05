@@ -386,32 +386,6 @@ else{
 	}
 	
 
-
-
-	@RequestMapping(value="/clientpickupreport", method = RequestMethod.GET)
-	public String client_pickup_report(HttpServletRequest request,ModelMap model, Principal principal ) {
-		
-		
-		return "client_pickup_report";
-	}
-	
-
-
-
-	@RequestMapping(value="/clientdropreport", method = RequestMethod.GET)
-	public String clientdropreport(HttpServletRequest request,ModelMap model, Principal principal ) {
-		
-		
-		return "client_drop_report";
-	}
-
-	@RequestMapping(value="/clientoverspeedingreport", method = RequestMethod.GET)
-	public String clientoverspeedingreport(HttpServletRequest request,ModelMap model, Principal principal ) {
-		
-		
-		return "client_overspeeding_report";
-	}
-
 	@RequestMapping(value="/clientdeviceview", method = RequestMethod.GET)
 	public String clientdeviceview(HttpServletRequest request,ModelMap model, Principal principal ) {
 		
@@ -776,16 +750,6 @@ else{
 	return "client_home";
 	}
 	
-	// Admin Side Reports For SMS
 	
-	@RequestMapping(value="/admin_reports", method=RequestMethod.GET)
-	public String adminreports(ModelMap model) {
-		
-		List <String> orgname_for_school=new ArrayList<String>();
-		orgname_for_school=busDAO.getorgname_for_school();
-		model.addAttribute("orgname_for_school",orgname_for_school);
-		
-		return "admin_reports";
-	}
 	
   }

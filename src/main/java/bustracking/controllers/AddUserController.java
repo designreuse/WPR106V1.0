@@ -137,6 +137,11 @@ public class AddUserController{
 		AddUserForm adduserform=new AddUserForm();
 		adduserform.setAdduser(userDAO.getAdduser());
 		model.addAttribute("adduserform",adduserform);
+		
+		AddUserForm adduserform1=new AddUserForm();
+		adduserform1.setAdduser(userDAO.getAdduser());
+		model.addAttribute("adduserform1",adduserform1);
+		
     return "view_adminuser";
 	}
 }
@@ -190,6 +195,10 @@ public String updateuser(HttpServletRequest request,@ModelAttribute ("AddUser") 
 			AddUserForm adduserform=new AddUserForm();
 			adduserform.setAdduser(userDAO.getAdduser());
 			model.addAttribute("adduserform",adduserform);
+			
+			AddUserForm adduserform1=new AddUserForm();
+			adduserform1.setAdduser(userDAO.getAdduser());
+			model.addAttribute("adduserform1",adduserform1);
 		}
 	
 		return "view_adminuser";
@@ -212,7 +221,12 @@ public String removeStudent(@RequestParam("username") String username, ModelMap 
 	AddUserForm adduserform=new AddUserForm();
 	adduserform.setAdduser(userDAO.getAdduser());
 	model.addAttribute("adduserform",adduserform);
+	
+	AddUserForm adduserform1=new AddUserForm();
+	adduserform1.setAdduser(userDAO.getAdduser());
+	model.addAttribute("adduserform1",adduserform1);
 	}
+	
 	
 	return "view_adminuser";
 

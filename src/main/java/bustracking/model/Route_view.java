@@ -51,11 +51,11 @@ public class Route_view
 
 	//Constructor for Client Side view
 	
-	public Route_view(String route_no, String stop_id, String bus_reg_no,
+	public Route_view(String route_no, String no_of_stops, String bus_reg_no,
 			String trip, String bus_stop_address, String bus_arrival_time) {
 		super();
 		this.route_no = route_no;
-		this.stop_id = stop_id;
+		this.no_of_stops = no_of_stops;
 		this.bus_reg_no = bus_reg_no;
 		this.trip = trip;
 		this.bus_stop_address = bus_stop_address;
@@ -206,6 +206,18 @@ public String getNo_of_stops() {
 		this.route_no = route_no;
 		this.stop_id = stop_id;
 		this.bus_reg_no = bus_reg_no;
+		this.trip = trip;
+		this.bus_stop_address = bus_stop_address;
+		this.bus_arrival_time = bus_arrival_time;
+	}
+
+// Constructor for Show Full Information
+
+	public Route_view(String route_no, String stop_id, String trip,
+			String bus_stop_address, String bus_arrival_time) {
+		super();
+		this.route_no = route_no;
+		this.stop_id = stop_id;
 		this.trip = trip;
 		this.bus_stop_address = bus_stop_address;
 		this.bus_arrival_time = bus_arrival_time;

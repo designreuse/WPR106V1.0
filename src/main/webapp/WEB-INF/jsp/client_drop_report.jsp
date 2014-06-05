@@ -1,10 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- ###################################DDDL################################### -->
-  
-<!--   	<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script> -->
+<!--  	<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script> -->
 
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
    <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
@@ -36,20 +35,11 @@ jQuery(function () {
 });//]]>  
 
 </script>
+   
 
 
    <!-- ######################################DDDL END HERE@############################################## -->
-  <script id="script_orgid">
-    $(document).ready(function() {
-        $("#orgid").select2();
-    });
-</script>
-
-<script id="script_bid">
-    $(document).ready(function() {
-        $("#bid").select2();
-    });
-</script>
+  
  <jsp:include page="header.jsp"></jsp:include> 
 
 
@@ -67,78 +57,54 @@ jQuery(function () {
 			    
 			    
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+			       
     	
-	<tr>
-
+	<tr style="height:20px">
+		
 		<td>
-			
+				<table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%" class="order-table table">
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%" class="order-table table">
-							
-        					
-        				      <tr style="height:50px">
-							     <td valign="middle" align="left" class="input_txtlabel" width="15%">
-				                  <span class="err">*</span>Organization Name</td><td>:</td>
-				                  <td valign="middle" align="left" class="input_txt">
-				                <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option value="">-- Select Organization--</option>
-        				        <c:forEach items="${orgname_for_school}" var="orgname" varStatus="status">
-        				        <option value="${orgname}" >${orgname}</option>
-			                     </c:forEach>
-			                      </select>
-				              </td>
-				              <td valign="middle" align="left" class="input_txtlabel">
-				                  <span class="err">*</span> Branch </td><td>:</td>
-				                  <td valign="middle" align="left" class="input_txt">
-				                 <div id="info"> 
-				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid" onblur="Validate1('bid')" disabled="disabled">
-							   <option value="">-- Select branch--</option>
-							  </select>
-        				       </div> 
-				                  </td>
-				              
-					       </tr>
-							    
-							    
-							  <tr>
+						
+        					<tr style="height:20px">
 							    	<td valign="middle" align="left" class="input_txtlabel">
-				                  <span class="err">*</span> From Date </td><td>:</td>
+				                  <span class="err">*</span>Route No</td><td>:</td>
 				                  
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<span class='input-group date' id='endDate' >
-				                  	<input type="text" class="org_input_txtbx_height1" id="fromdate"  onblur="toTitleCase('fdate')" value="${adminuser.firstname }" name="fromdate" />
-				                  	<span class="add-on" style="margin:0 125px 0 0px;float:right">
-									<img src="resources/images/date.png" width="25" height="45"/>
-        							</span>
-				                  	</span>
+				                  	
+				                  	<input type="text" class="org_input_txtbx_height1" id="route_no"  onblur="toTitleCase('fdate')" value="${adminuser.firstname }" name="route_no" />
+				                  
 				                  	</td>
 				                  	
 				                  	
 				                  	<td valign="middle" align="left" class="input_txtlabel">
-				                  <span class="err">*</span> To Date </td><td>:</td>
+				                  <span class="err">*</span> Date </td><td>:</td>
 				                  
-				                  <td valign="top" align="left" class="input_txt">
-				                  <span class='input-group date' id='endDate1' >
-				                  	<input type="text" class="org_input_txtbx_height1" id="todate"  onblur="toTitleCase('tdate'')" value="${adminuser.firstname }" name="todate" />
-				                  	 <span class="add-on" style="margin:0 125px 0 0px;float:right">
+				                   <td valign="top" align="left" class="input_txt">
+				                   <span class='input-group date' id='endDate' >
+				                  <input type="text" class="org_input_txtbx_height1" id="date"  onblur="toTitleCase('tdate'')" value="${adminuser.firstname }" name="date" />
+				                  <span class="add-on" style="margin:0 380px 0 0px;float:right">
 									<img src="resources/images/date.png" width="25" height="45"/>
-        							</span></span>
-				                  	</td>
+        							</span>
+				                  	</span>
+				                  </td>
+				                  	
 				                  	
 							   </tr>
 						</table>
+        				</td>
+        				</tr>
         				
-        			
-        				<table width="40%"cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
-    <tr><td><a href="" class="searchpressable showreport" >show</a></td>
+        				<tr style="height:20px">
+        			<td>
+        				<table width="40%" cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
+    <tr style="height:20px"><td><a href="" class="searchpressable showreport" >show</a></td>
     <td><a href="" class="searchpressable downloadreoprt">Download</a></td>
     <td><a href="javascript:void(processPrint());" class="searchpressable printreport" >Print</a></td>
     <td>
     <a href="" class="searchpressable mailreport" >Email</a></td></tr>
-    
-    </table>
-        				</td>
-        				</tr>
+   
+    </table> </td> </tr>
+        				
         			<tr>
         			<td>
         			<table width="100%" cellpadding="0" cellspacing="0" border="0" class="">

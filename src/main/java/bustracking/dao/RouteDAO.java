@@ -143,7 +143,7 @@ public class RouteDAO {
 		}
 		List<Route_view> stops=new ArrayList<Route_view>();
 		try{
-			resultSet = statement.executeQuery("select t2.vechicle_reg_no,t1.route_no,t1.stop_id from tbl_bus_route as t1 join tbl_vechicle as t2 on t1.route_no=t2.route_no where t1.route_no='"+route_no+"'");
+			resultSet = statement.executeQuery("select t2.vechicle_reg_no,t1.route_no,t1.stop_id from tbl_bus_route as t1 join tbl_vechicle as t2 on t1.route_no=t2.route_no where t2.route_no='"+route_no+"'");
 			while(resultSet.next()){
 		     stops.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no")));
 			}
@@ -220,7 +220,7 @@ public class RouteDAO {
 
 	// Show full Details of Route
 	
-	public List<Route_view> getRoutes_for_detail_view(){
+	public List<Route_view> getRoutes_for_detail_view(String route_no,String org_name,String branch){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -232,9 +232,9 @@ public class RouteDAO {
 		}
 		List<Route_view> routes=new ArrayList<Route_view>();
 		try{
-			resultSet = statement.executeQuery("select t3.org_name,t3.branch,t1.vechicle_reg_no,t2.org_id,t2.route_no,t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time,(select count(t2.stop_id) from tbl_bus_route as t2 where t2.route_no=t1.route_no) as no_of_stops from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no join tbl_organization as t3 on t3.org_id=t2.org_id");
+			resultSet = statement.executeQuery("Select  org_id,route_no,trip,stop_id,address,bus_arrival_time from tbl_bus_route where route_no='"+route_no+"' and org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch ='"+branch+"')");
 			while(resultSet.next()){
-		     routes.add(new Route_view(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time"),resultSet.getString("no_of_stops")));
+		     routes.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time")));
 			}
 		
 	    }catch(Exception e){
@@ -337,9 +337,9 @@ public class RouteDAO {
 		List<Route_view> route_views = new ArrayList<Route_view>();
 		try{
 			System.out.println("welcome Route View");
-			resultSet = statement.executeQuery("SELECT t1.vechicle_reg_no,t2.route_no, t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no where t2.org_id='"+org_id+"'");
+			resultSet = statement.executeQuery("SELECT t1.vechicle_reg_no,t2.route_no,t2.trip,t2.address,t2.bus_arrival_time,(select count(t2.stop_id) from tbl_bus_route as t2 where t2.route_no=t1.route_no) as no_of_stops from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no where t2.org_id='"+org_id+"' group by route_no");
 			while(resultSet.next()){
-				route_views.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time")));
+				route_views.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("no_of_stops"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time")));
 				
 			}
 		
@@ -357,9 +357,48 @@ public class RouteDAO {
 		
 	}
 
+	// Show full details client side
+	
+	public List<Route_view> getRoute_for_full_details(String route_no){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Route_view> route_views = new ArrayList<Route_view>();
+		try{
+			System.out.println("welcome Route View");
+			resultSet = statement.executeQuery("SELECT route_no,trip,address,bus_arrival_time,stop_id from tbl_bus_route where route_no='"+route_no+"'");
+			while(resultSet.next()){
+				route_views.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time")));
+				
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return route_views;
+		
+	}
+
+	
+	
+	
+	
 	// Admin Side Edit Route
 	
-	public List<Route_view> getRoutesView(String route_no)
+	public List<Route_view> getRoutesView(String route_no,String org_name,String branch)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -375,7 +414,7 @@ public class RouteDAO {
 		{
 		try
 		{
-			String cmd="select t1.org_name,t1.branch,t2.* from tbl_organization as t1 join tbl_bus_route as t2 on t1.org_id=t2.org_id where t2.route_no='"+route_no+"'";
+			String cmd="select t1.org_name,t1.branch,t2.* from tbl_organization as t1 join tbl_bus_route as t2 on t1.org_id=t2.org_id where t2.route_no='"+route_no+"' and t2.org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')";
 			resultSet = statement.executeQuery(cmd);
 			while(resultSet.next())
 			{
@@ -408,7 +447,7 @@ public class RouteDAO {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet=null;
-		int flag=0;
+		int flag=0; 
 		try {
 			con = dataSource.getConnection();
 			statement = con.createStatement();
@@ -422,7 +461,9 @@ public class RouteDAO {
 	    	System.out.println(cmd);
 	    	statement.execute(cmd);
 	    	
-	    	String cmd1="DELETE FROM tbl_message_log where route_no='"+route.getRoute_no()+"' and org_id=(select org_id from tbl_organization where org_name='"+route.getOrg_name()+"' and branch='"+route.getBranch()+"')";
+	    	String cmd1="DELETE FROM tbl_message_log where route_no='"+route.getRoute_no()+"'";
+	    	System.out.println(cmd1);
+	    	statement.execute(cmd1);
 	    	
 	    	flag=1;
 	    }
@@ -446,7 +487,7 @@ public class RouteDAO {
 	
 	//Update Route Information
 	
-	public int updateRoute(Route route)
+	public int updateRoute(Route updateroute)
 	{
 		Connection con = null;
 		Statement statement = null;
@@ -460,8 +501,8 @@ public class RouteDAO {
 		}
 	    try{
 	    	
-	    	String cmd1="insert into tbl_bus_route(org_id,route_no,stop_id,trip,latitude,longitude,address,bus_arrival_time) values('"+route.getOrg_id()+"','"+route.getRoute_no()+ "','"+route.getStop_id()+"','"+route.getTrip()+"','"+route.getLatitude()+ "','"+ route.getLongitude()+ "','"+route.getAddress()+ "','"+ route.getBus_arrival_time()+"')";
-	    	String Desc="Insert Route "+route.getRoute_no();
+	    	String cmd1="insert into tbl_bus_route(org_id,route_no,stop_id,trip,latitude,longitude,address,bus_arrival_time) values('"+updateroute.getOrg_id()+"','"+updateroute.getRoute_no()+ "','"+updateroute.getStop_id()+"','"+updateroute.getTrip()+"','"+updateroute.getLatitude()+ "','"+ updateroute.getLongitude()+ "','"+updateroute.getAddress()+ "','"+ updateroute.getBus_arrival_time()+"')";
+	    	String Desc="Insert Route "+updateroute.getRoute_no();
 	    	System.out.println(cmd1);
 	    	statement.execute(cmd1);
 	    	flag=1;

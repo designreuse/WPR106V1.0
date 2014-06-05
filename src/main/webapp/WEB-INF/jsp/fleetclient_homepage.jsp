@@ -1,14 +1,14 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="fleet_header.jsp"></jsp:include>
 	<form name="" action="" method=POST>		
-		<table class="margin_table_fleet">
+		<table class="margin_table_fleet" style="width:100%">
 
 			<tr>
 				<td valign="top" align="left"><div>
-						<div class="headings altheading">
+						<div class="headings altheading" style="width:100%">
 							<h2>Home Page</h2>
 						</div>
-						<div class="contentbox" style="width:100%;" >
+						<div class="contentbox" style="width:100%">
 						
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title" >

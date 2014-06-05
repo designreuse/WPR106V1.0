@@ -126,13 +126,26 @@ public class RouteController
 		model.addAttribute("routeViewForm1",routeViewForm1);
 		
 		RouteViewForm routeViewForm2=new RouteViewForm();
-		routeViewForm2.setRoute_views(routeDAO.getRoutes_for_detail_view());
+		routeViewForm2.setRoute_views(routeDAO.getRoutes());
 		model.addAttribute("routeViewForm2",routeViewForm2);
-		
 		
 		return "view_route";
 	}
 
+	// Show Full Information For particular route admin side
+	
+	@RequestMapping(value="/showfulldetails",method=RequestMethod.GET)
+	public String showfulldetailsforroute(@RequestParam("route_no") String route_no,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model,Principal principal){
+		
+	RouteViewForm routeViewForm=new RouteViewForm();
+	routeViewForm.setRoute_views(routeDAO.getRoutes_for_detail_view(route_no,org_name,branch));
+	model.addAttribute("routeViewForm",routeViewForm);
+	
+	return "show_route_full_details";
+	}
+	
+	
+	
 	//Client Side View
 	
 	@RequestMapping(value="/clientviewroutedetails", method = RequestMethod.GET)
@@ -146,8 +159,23 @@ public class RouteController
 		routeViewForm1.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));
 		model.addAttribute("routeViewForm1",routeViewForm1);
 		
+		
+		
 		return "client_view_route_details";
 	}
+	
+	// Show Full Information For particular route client side
+	
+	@RequestMapping(value="/showfulldetailsclient",method=RequestMethod.GET)
+	public String showfulldetailsroute(@RequestParam("route_no") String route_no,ModelMap model,Principal principal){
+		
+	RouteViewForm routeViewForm2=new RouteViewForm();
+	routeViewForm2.setRoute_views(routeDAO.getRoute_for_full_details(route_no));
+	model.addAttribute("routeViewForm2",routeViewForm2);
+	
+	return "client_view_route_details";
+	}
+	
 	
 	//*******************************************************************************************************************
 		//find route client side
@@ -241,6 +269,11 @@ public class RouteController
 		routeViewForm.setRoute_views(routeDAO.getRoutes());
 		model.addAttribute("routeViewForm",routeViewForm);
 		
+		RouteViewForm routeViewForm1=new RouteViewForm();
+		routeViewForm1.setRoute_views(routeDAO.getRoutes());
+		model.addAttribute("routeViewForm1",routeViewForm1);
+		
+		
 		
 		return "view_route";
 	}
@@ -290,7 +323,7 @@ public class RouteController
 	public String update_route(HttpServletRequest request,ModelMap model,Route_view route,Route updateroute, Principal principal ) {
 		
 	 
-route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
+updateroute.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
 		
 		//this.setInfo(route, route.getRoute_from(),"both",request.getParameter("route_pick_time"),request.getParameter("route_drop_time"));
 		System.out.println(request.getParameter("org_name"));
@@ -311,7 +344,7 @@ route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),re
 		
 		
 		//setting the route values
-		  route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
+		  updateroute.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
 		  
 		String stop_location;
 		for (int i=0;i<=stop_count;i++)
@@ -320,7 +353,7 @@ route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),re
 			if(!request.getParameter("stop["+i+"]").equals(""))
 			{
 				stop_location=request.getParameter("stop["+i+"]");
-				route.setStop_id("S"+i);
+				updateroute.setStop_id("S"+i);
 				updateroute.setAddress(stop_location);
 				updateroute.setLatitude(getLat(stop_location));
 				updateroute.setLongitude(getLong(stop_location));
@@ -331,14 +364,21 @@ route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),re
 			}
 			
 			System.out.println(route);
-			routeDAO.insert_message_log(request.getParameter("route_no"));
+			
 				
 		}
+		
+		routeDAO.insert_message_log(request.getParameter("route_no"));
 		
 		RouteViewForm routeViewForm=new RouteViewForm();
 		routeViewForm.setRoute_views(routeDAO.getRoutes());
 		model.addAttribute("routeViewForm",routeViewForm);
 		
+		RouteViewForm routeViewForm1=new RouteViewForm();
+		routeViewForm1.setRoute_views(routeDAO.getRoutes());
+		model.addAttribute("routeViewForm1",routeViewForm1);
+		
+	
 		
 		return "view_route";
 	}
@@ -356,6 +396,12 @@ route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),re
 			RouteViewForm routeViewForm=new RouteViewForm();
 			routeViewForm.setRoute_views(routeDAO.getRoutes());
 			model.addAttribute("routeViewForm",routeViewForm);
+		
+			RouteViewForm routeViewForm1=new RouteViewForm();
+			routeViewForm1.setRoute_views(routeDAO.getRoutes());
+			model.addAttribute("routeViewForm1",routeViewForm1);
+			
+			
 		}
 		
 		return "view_route";
@@ -435,11 +481,11 @@ public String viewuser(ModelMap model, Principal principal){
 
 
 @RequestMapping(value="/editroute",method=RequestMethod.GET)
-public String edituser(HttpServletRequest request,@RequestParam("route_no")String route_no,ModelMap model,OrgRegistration orgregistration)
+public String edituser(HttpServletRequest request,@RequestParam("route_no")String route_no,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model,OrgRegistration orgregistration)
 {
 	
 	RouteViewForm routeForm= new RouteViewForm();
-	routeForm.setRoute_views(routeDAO.getRoutesView(route_no));
+	routeForm.setRoute_views(routeDAO.getRoutesView(route_no,org_name,branch));
 	model.addAttribute("routeForm",routeForm);
 	
 	return "edit_route";

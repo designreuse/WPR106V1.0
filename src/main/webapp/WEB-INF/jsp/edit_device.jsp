@@ -146,7 +146,7 @@ jQuery(function () {
 				                </tr>
 				              <tr class="row1"><td width="10%"></td>
 				              <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Procured Date:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                 <div class='input-group date' id='endDate' >
 												<input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')" value="${device.device_procured_date}"  style="height:27px;width:190px;float:left;">
 				                  				<!-- <input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
@@ -159,8 +159,8 @@ jQuery(function () {
 				                  </td>
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Procured Date:</td>
 				                  <td valign="middle" align="left" class="input_txt" width="60%" >
-				                  	<div class='input-group date' id='endDate' >
-												<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${device.sim_procured_date}" />
+				                  	<div class='input-group date' id='endDate1' >
+												<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${device.sim_procured_date}" style="height:27px;width:190px;float:left;" />
 				                  	
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="24" height="35"/>
@@ -236,8 +236,8 @@ jQuery(function () {
 				                  <td valign="top" align="left" class="input_txt"  >
 				                  <c:choose>
 				                  <c:when test="${device.device_sim_paired==0}">
-				                  <input type="radio" id="id_yes_active" name="device_sim_paired" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <input type="radio" id="id_yes_active" name="device_sim_paired" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0" checked>&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
 				                  </c:when>
 				                  <c:when test="${device.device_sim_paired==1}">
@@ -289,7 +289,7 @@ jQuery(function () {
 				                <tr class="row2">
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Password:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" onblur="passcheck('passid')" value="${device.password}">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  </td>
@@ -309,6 +309,7 @@ jQuery(function () {
       <option value="${device.apn}" selected>${device.apn}</option>  
       </select> 
       </div> </td>
+     <td> <input type="hidden" name="create_timestamp" id="create_timestamp_id" value="${device.create_timestamp}"/></td>
       <td><input type="hidden" class="org_input_txtbx_height1" name="create_user_id" id="userid" onblur="usercheck('userid')" value="<sec:authentication property="principal.username" />" /></td></tr>
 				                  
 				 

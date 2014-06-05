@@ -272,12 +272,16 @@ public class StudentRegistrationController {
 		{
 			
 			studentDAO.setstudentregistration(student,principal);
+			
 			StudentRegistrationForm studentregistrationform= new StudentRegistrationForm();
 			studentregistrationform.setStudentregistration(studentDAO.getstudentregistration());
 			model.addAttribute("studentregistrationform",studentregistrationform);
 			
 			
-		    
+			StudentRegistrationForm studentregistrationform1 = new StudentRegistrationForm();
+	        studentregistrationform1.setStudentregistration(studentDAO.getstudentregistration());
+			model.addAttribute("studentregistrationform1", studentregistrationform1);
+			
 		    System.out.println("name"+request.getParameter("org_name"));
 		    System.out.println("branch"+request.getParameter("branch"));
 			return "view_student_details";
@@ -339,6 +343,9 @@ public class StudentRegistrationController {
 			studentregistrationform.setStudentregistration(studentDAO.getstudentregistration());
 			model.addAttribute("studentregistrationform",studentregistrationform);
 			
+			StudentRegistrationForm studentregistrationform1 = new StudentRegistrationForm();
+	        studentregistrationform1.setStudentregistration(studentDAO.getstudentregistration());
+			model.addAttribute("studentregistrationform1", studentregistrationform1);
 		}
 		
 		return "view_student_details";
@@ -511,6 +518,10 @@ public class StudentRegistrationController {
 			StudentRegistrationForm studentRegistrationForm=new StudentRegistrationForm();
 			studentRegistrationForm.setStudentregistration(studentDAO.getStudentRegistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("studentRegistrationForm",studentRegistrationForm);
+		
+			StudentRegistrationForm studentRegistrationForm1=new StudentRegistrationForm();
+			studentRegistrationForm1.setStudentregistration(studentDAO.getStudentRegistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("studentRegistrationForm1",studentRegistrationForm1);
 		}
 		
 		

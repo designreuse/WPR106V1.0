@@ -1,6 +1,33 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<style type="text/css">
+        /* body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
+        #report { border-collapse:collapse;}
+        #report h4 { margin:0px; padding:0px;}
+        #report img { float:right;}
+        
+        #report th { background:#3bb9ff url(header_bkg.png) repeat-x scroll center left; color:#fff; padding:0px 2px; text-align:left;}
+        #report td { background:#eee none repeat-x scroll center left; color:#fff; padding:0px 2px; }
+         */#report tr.odd td { background:#fff ;color:#666; cursor:pointer; }
+        #report div.arrow { background:transparent url(resources/images/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;float:right;}
+        #report div.up { background-position:0px 0px;}
+        #report ul { margin:10px 0 10px 40px; padding:0px;}
+    </style>
+    
+    <script type="text/javascript">  
+        $(document).ready(function(){
+            $("#report tr:odd").addClass("odd");
+            $("#report tr:not(.click_row)").hide();
+            $("#report tr:first-child").show();
+            
+            $("#report tr.click_row").dblclick(function(){
+                $(this).next("tr").toggle();
+                $(this).find(".arrow").toggleClass("up");
+            });
+            //$("#report").jExpand();
+        });
+    </script> 
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -61,10 +88,9 @@
 							<tr class="title">
 								<td valign="top" align="left" width="13%">Vechicle Reg No</td>					
 					         	<td valign="top" align="left" width="10%">Route No</td>
-          						<td valign="top" align="left" width="8%">Stop Id</td>
-          						<td valign="top" align="left" width="45%">Stop Location</td>
-          						<td valign="top" align="left" width="15%">Stop Arrival Time</td>
-          						<td valign="top" align="left" width="15%">Trip</td>
+          						<td valign="top" align="left" width="10%">Trip</td>
+          						<td valign="top" align="left" width="10%">Number of Stops</td>
+          						<td width="8%"></td>
           						
         					</tr>  </table>
 						<div class="Panel_One_Inner">
@@ -72,11 +98,8 @@
 							<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="clientrouteview" varStatus="status">
         				       		<tr class="row1">	
-        				       				<td valign="top" align="left" width="15%">${clientrouteview.bus_reg_no}</td>						       		
+        				       				<td valign="top" align="left" width="13%">${clientrouteview.bus_reg_no}</td>						       		
 											<td valign="top" align="left" width="10%">${clientrouteview.route_no}</td>
-											<td valign="top" align="left" width="8%">${clientrouteview.stop_id}</td>
-											<td valign="top" align="left" width="50%">${clientrouteview.bus_stop_address}</td>
-											<td valign="top" align="left" width="15%">${clientrouteview.bus_arrival_time}</td>
 											<td valign="top" align="left" width="10%"><c:choose>
 											<c:when test="${clientrouteview.trip==0}">
 											<c:out value="PickUp"></c:out>											
@@ -88,7 +111,34 @@
 											<c:out value="KG Drop"></c:out>											
 											</c:when>
 											</c:choose></td>
+											<td valign="top" align="left" width="10%">${clientrouteview.no_of_stops}</td>
+											<td valign="top" align="left" width="8%">
+											<%-- <a href="<c:out value="showfulldetailsclient?route_no=${route.route_no}"/>" >Show Full Details</a> --%>
+											<div class="arrow" title="Double click to Show all Details"></div>
+											</td>
 								</tr>
+								
+								<tr class="row2">
+								
+								<c:forEach items="${routeViewForm2.route_views}" var="route" varStatus="status">
+								
+								<td valign="top" align="left" style="overflow:hidden;height:auto" colspan="7">
+								
+								<table>
+								<tr>
+								<td>
+								<span>Stop ID:</span><span>${route.stop_id}</span></td><td><span>Bus Stop Address:</span><span>${route.bus_stop_address}</span></td><td><span>Bus Arrival Time:</span><span>${route.bus_arrival_time}</span>
+								</td>
+								</tr>
+								</table>
+								
+								</td>
+								
+								</c:forEach>
+								
+								</tr>
+								
+								
 							    	</c:forEach>
 							    </c:if>
 							    <c:if test="${fn:length(routeViewForm.route_views) == 0}">	

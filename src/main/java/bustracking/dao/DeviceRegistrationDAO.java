@@ -258,7 +258,7 @@ public class DeviceRegistrationDAO {
 	    	
 	    	// Update Device Configuration history Table
 	    	
-	    	String cmd_configure_history="UPDATE tbl_device_config_changes_history SET configuration_date='"+device.getConfiguration_date()+"', device_sim_paired='"+device.getDevice_sim_paired()+"', modified_user_id='"+device.getModified_user_id()+"',modified_timestamp='"+getCurrentTimeStamp()+"',modified_user_system_name='"+computername+"' WHERE device_imei_number='"+device.getDevice_imei_number()+"'";
+	    	String cmd_configure_history="UPDATE tbl_device_config_changes_history SET configuration_date='"+device.getConfiguration_date()+"', device_sim_paired='"+device.getDevice_sim_paired()+"', modified_user_id='"+device.getModified_user_id()+"',modified_timestamp='"+getCurrentTimeStamp()+"',modified_user_system_name='"+computername+"' WHERE create_timestamp='"+device.getCreate_timestamp()+"' and device_imei_number='"+device.getDevice_imei_number()+"'";
 	    	System.out.println(cmd_configure_history);
 	    	statement.execute(cmd_configure_history);
 	    	
@@ -287,7 +287,7 @@ public class DeviceRegistrationDAO {
 			preparedStatement.setString(19,"50.62.213.127");
 			preparedStatement.setString(20,device.getConfiguration_date());
 			preparedStatement.setString(21,device.getCreate_user_id());
-			preparedStatement.setTimestamp(22, getCurrentTimeStamp());
+			preparedStatement.setTimestamp(22, device.getCreate_timestamp());
 			preparedStatement.setString(23,computername);
 			preparedStatement.setString(24,"NULL");
 			preparedStatement.setString(25,"0000-00-00 00:00:00");
@@ -1268,7 +1268,7 @@ public List<DeviceRegistration> getDevice(String device_imei_number){
 			
 			while(resultSet.next())
 			{
-				device_imei.add(new DeviceRegistration(resultSet.getString("manufacturer"),resultSet.getString("model_no"),resultSet.getString("carrier"),resultSet.getString("sim_card_number"),resultSet.getString("device_procured_date"),resultSet.getString("device_invoice_number"), resultSet.getString("device_imei_number"), resultSet.getString("device_tested"), resultSet.getString("sim_procured_date"), resultSet.getString("sim_invoice_number"),resultSet.getString("sim_card_tested"), resultSet.getString("device_sim_paired"),resultSet.getString("is_assigned"), resultSet.getString("password"),resultSet.getString("device_status"),resultSet.getString("port_no"),resultSet.getString("comments"),resultSet.getString("apn"), resultSet.getString("adminip"), resultSet.getString("configuration_date"),resultSet.getString("create_user_id")));
+				device_imei.add(new DeviceRegistration(resultSet.getString("manufacturer"),resultSet.getString("model_no"),resultSet.getString("carrier"),resultSet.getString("sim_card_number"),resultSet.getString("device_procured_date"),resultSet.getString("device_invoice_number"), resultSet.getString("device_imei_number"), resultSet.getString("device_tested"), resultSet.getString("sim_procured_date"), resultSet.getString("sim_invoice_number"),resultSet.getString("sim_card_tested"), resultSet.getString("device_sim_paired"),resultSet.getString("is_assigned"), resultSet.getString("password"),resultSet.getString("device_status"),resultSet.getString("port_no"),resultSet.getString("comments"),resultSet.getString("apn"), resultSet.getString("adminip"), resultSet.getString("configuration_date"),resultSet.getString("create_user_id"),resultSet.getTimestamp("create_timestamp"),resultSet.getString("user_system_name")));
 		
 			}
 		}
@@ -1303,15 +1303,48 @@ public int updateDevice(DeviceRegistration device)
     	
     	String computername=InetAddress.getLocalHost().getHostName();
     	
-    	String cmd="UPDATE tbl_device_configuration SET manufacturer='"+device.getManufacturer()+"',model_no='"+device.getModel_no()+"',carrier='"+device.getCarrier()+"',sim_card_number='"+device.getSim_card_number()+"',device_procured_date='"+device.getDevice_procured_date()+"',device_invoice_number='"+device.getDevice_invoice_number()+"',device_tested='"+device.getDevice_tested()+"',sim_procured_date='"+device.getSim_procured_date()+"',sim_invoice_number='"+device.getSim_invoice_number()+"',sim_card_tested='"+device.getSim_card_tested()+"',device_sim_paired='"+device.getDevice_sim_paired()+"',is_assigned='"+device.getIs_assigned()+"',password='"+device.getPassword()+"',device_status='"+device.getDevice_status()+"',comments='"+device.getComments()+"',apn='"+device.getApn()+"',create_user_id='"+device.getCreate_user_id()+"',create_timestamp='"+getCurrentTimeStamp()+"',user_system_name='"+computername+"' WHERE device_imei_number='"+device.getDevice_imei_number()+"'";
+    	String cmd="UPDATE tbl_device_configuration SET manufacturer='"+device.getManufacturer()+"',model_no='"+device.getModel_no()+"',carrier='"+device.getCarrier()+"',sim_card_number='"+device.getSim_card_number()+"',device_procured_date='"+device.getDevice_procured_date()+"',device_invoice_number='"+device.getDevice_invoice_number()+"',device_tested='"+device.getDevice_tested()+"',sim_procured_date='"+device.getSim_procured_date()+"',sim_invoice_number='"+device.getSim_invoice_number()+"',sim_card_tested='"+device.getSim_card_tested()+"',device_sim_paired='"+device.getDevice_sim_paired()+"',is_assigned='"+device.getIs_assigned()+"',password='"+device.getPassword()+"',device_status='"+device.getDevice_status()+"',comments='"+device.getComments()+"',apn='"+device.getApn()+"',create_user_id='"+device.getCreate_user_id()+"',create_timestamp='"+device.getCreate_timestamp()+"',user_system_name='"+computername+"' WHERE device_imei_number='"+device.getDevice_imei_number()+"'";
     	//String Desc="Update user "+user.getAdmin_reg_no();
     	System.out.println(cmd);
     	statement.execute(cmd);
     	flag=1;
-    	String cmd1="UPDATE tbl_device_config_changes_history SET manufacturer='"+device.getManufacturer()+"',model_no='"+device.getModel_no()+"',carrier='"+device.getCarrier()+"',sim_card_number='"+device.getSim_card_number()+"',device_procured_date='"+device.getDevice_procured_date()+"',device_invoice_number='"+device.getDevice_invoice_number()+"',device_tested='"+device.getDevice_tested()+"',sim_procured_date='"+device.getSim_procured_date()+"',sim_invoice_number='"+device.getSim_invoice_number()+"',sim_card_tested='"+device.getSim_card_tested()+"',device_sim_paired='"+device.getDevice_sim_paired()+"',is_assigned='"+device.getIs_assigned()+"',password='"+device.getPassword()+"',device_status='"+device.getDevice_status()+"',comments='"+device.getComments()+"',apn='"+device.getApn()+"',create_user_id='"+device.getCreate_user_id()+"',create_timestamp='"+getCurrentTimeStamp()+"',create_user_system_name='"+computername+"',modified_user_id='"+device.getModified_user_id()+"',modified_timestamp='"+getCurrentTimeStamp()+"',modified_user_system_name='"+computername+"' WHERE device_imei_number='"+device.getDevice_imei_number()+"'";
+    	
+    	String cmd1="UPDATE tbl_device_config_changes_history SET manufacturer='"+device.getManufacturer()+"',model_no='"+device.getModel_no()+"',carrier='"+device.getCarrier()+"',sim_card_number='"+device.getSim_card_number()+"',device_procured_date='"+device.getDevice_procured_date()+"',device_invoice_number='"+device.getDevice_invoice_number()+"',device_tested='"+device.getDevice_tested()+"',sim_procured_date='"+device.getSim_procured_date()+"',sim_invoice_number='"+device.getSim_invoice_number()+"',sim_card_tested='"+device.getSim_card_tested()+"',device_sim_paired='"+device.getDevice_sim_paired()+"',is_assigned='"+device.getIs_assigned()+"',password='"+device.getPassword()+"',device_status='"+device.getDevice_status()+"',comments='"+device.getComments()+"',apn='"+device.getApn()+"',create_user_id='"+device.getCreate_user_id()+"',create_user_system_name='"+computername+"',modified_user_id='"+device.getCreate_user_id()+"',modified_timestamp='"+getCurrentTimeStamp()+"',modified_user_system_name='"+computername+"' WHERE create_timestamp='"+device.getCreate_timestamp()+"' and device_imei_number='"+device.getDevice_imei_number()+"'";
     	System.out.println(cmd1);
     	statement.execute(cmd1);
     	
+    	// Insert into Device configuration history table
+    	/*
+        PreparedStatement preparedStatement=con.prepareStatement("insert into tbl_device_config_changes_history(manufacturer,model_no,carrier,sim_card_number,device_procured_date,device_invoice_number,device_imei_number,device_tested,sim_procured_date,sim_invoice_number,sim_card_tested,device_sim_paired,is_assigned,password,device_status,port_no,comments,apn,adminip,configuration_date,create_user_id,create_timestamp,create_user_system_name,modified_user_id,modified_timestamp,modified_user_system_name) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			
+			preparedStatement.setString(1,device.getManufacturer());
+			preparedStatement.setString(2,device.getModel_no());
+			preparedStatement.setString(3,device.getCarrier());
+			preparedStatement.setString(4,device.getSim_card_number());
+			preparedStatement.setString(5,device.getDevice_procured_date());
+			preparedStatement.setString(6,device.getDevice_invoice_number());
+			preparedStatement.setString(7,device.getDevice_imei_number());
+			preparedStatement.setString(8,device.getDevice_tested());
+			preparedStatement.setString(9,device.getSim_procured_date());
+			preparedStatement.setString(10,device.getSim_invoice_number());
+			preparedStatement.setString(11,device.getSim_card_tested());
+			preparedStatement.setString(12,device.getDevice_sim_paired());
+			preparedStatement.setString(13,device.getIs_assigned());
+			preparedStatement.setString(14,device.getPassword());
+			preparedStatement.setString(15,device.getDevice_status());
+			preparedStatement.setString(16,"9000");
+			preparedStatement.setString(17,device.getComments());
+			preparedStatement.setString(18,device.getApn());
+			preparedStatement.setString(19,"50.62.213.127");
+			preparedStatement.setString(20,device.getConfiguration_date());
+			preparedStatement.setString(21,device.getCreate_user_id());
+			preparedStatement.setTimestamp(22,device.getCreate_timestamp());
+			preparedStatement.setString(23,computername);
+			preparedStatement.setString(24,"NULL");
+			preparedStatement.setString(25,"0000-00-00 00:00:00");
+			preparedStatement.setString(26,"NULL");
+			preparedStatement.execute();
+    	*/
     }
     	 catch(Exception e){
  	    	System.out.println(e.toString());

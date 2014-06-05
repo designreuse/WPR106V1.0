@@ -70,7 +70,7 @@
 	               <h2>Student Registration</h2> 
 	            </div>
             
-              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
+              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="height:600px">
   				<tr>
     				<td align="left" valign="top" width="100%">
     				

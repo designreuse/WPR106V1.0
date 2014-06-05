@@ -202,6 +202,10 @@ public class OrgBusinessRuleController{
 			orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
 			model.addAttribute("orgBusinessRuleForm", orgBusinessRuleForm);
 			
+			OrgBusinessRuleForm orgBusinessRuleForm1=new OrgBusinessRuleForm();
+			orgBusinessRuleForm1.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
+			model.addAttribute("orgBusinessRuleForm1", orgBusinessRuleForm1);
+			
 		}
 		
 		return "view_business_rules";

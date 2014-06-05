@@ -70,7 +70,7 @@
 							<div id="filter_box">
 
 	<div class="wrapperFilter">
-		<img src="resources/images/filter.png" width="25" height="27"title="Search" align="center"/>
+		<img class="btn" width="25" height="27" title="Search" align="center"/>
 	<input type="text" id="search" name="search" placeholder="Enter Text To Filter" class="light-table-filter" data-table="order-table" placeholder="Filter"/>
 	</div>
 </div></div>                        

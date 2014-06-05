@@ -103,54 +103,53 @@
 	</div>
 </div></div>
     						
-        					<div class="Panel_One_Inner">
         					   			
-				        <table cellpadding="0" cellspacing="0" border="1" width="100%" class="order-table table" id="report" style="border: 1px solid #ccc;">
-							<tr > <th valign="top" align="left">Roll Number</th>
-							<th valign="top" align="left">First Name</th>
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" id="report" >
+							<tr  class="headings altheading"> <td valign="top" align="left" width="8%" style="color:#000;font-size:medium;">Roll NO</td>
+							<td valign="top" align="left" width="10%" style="color:#000;font-size:medium;">First Name</td>
 							
-							<th valign="top" align="left">Calss & Sec</th>
-							<th valign="top" align="left">Pick RteNo</th>
-							<th valign="top" align="left" >PicK Address</th>
-							<th valign="top" align="left">Drop RteNo</th>
-							<th valign="top" align="left">Drop Address</th>
-							<th valign="top" align="left">KG Drop</th>
-							<th valign="top" align="left">Action</th>
+							<td valign="top" align="left" width="8%" style="color:#000;font-size:medium;">Calss & Sec</td>
+							<td valign="top" align="left" width="8%" style="color:#000;font-size:medium;">Pick RteNo</td>
+							<td valign="top" align="left" width="15%" style="color:#000;font-size:medium;">PicK Address</td>
+							<td valign="top" align="left" width="8%" style="color:#000;font-size:medium;">Drop RteNo</td>
+							<td valign="top" align="left" width="15%" style="color:#000;font-size:medium;">Drop Address</td>
+							<td valign="top" align="left" width="8%" style="color:#000;font-size:medium;">KG Drop</td>
+							<td valign="top" align="left" width="10%" style="color:#000;font-size:medium;">Action</td>
           						 </tr>
 							       		<c:if test="${fn:length(studentRegistrationForm.studentregistration) gt 0 }">
         					<c:forEach items="${studentRegistrationForm.studentregistration}" var="studentlist" varStatus="status">
         				    
         				    
         					<tr class="row1" >
-							       	 <td valign="top" align="left"  width="1%" title="Student Roll Number">${studentlist.student_roll_no}</td>
-									 <td valign="top" align="left" width="11%" title="First Name">${studentlist.first_name}</td>
+							       	 <td valign="top" align="left"  width="8%" title="Student Roll Number">${studentlist.student_roll_no}</td>
+									 <td valign="top" align="left" width="10%" title="First Name">${studentlist.first_name}</td>
 									 
 									 
-									  <td valign="top" align="left" width="1%" title="Class & Section">${studentlist.class_standard}&amp;${studentlist.section}</td>
+									  <td valign="top" align="left" width="8%" title="Class & Section">${studentlist.class_standard}&amp;${studentlist.section}</td>
 									 <%-- <td valign="top" align="center" width="7%">${studentlist.section}</td> --%>
-									 <td valign="top" align="left" width="1%" title="Pickup Route Number">${studentlist.pickup_route_no}</td>
+									 <td valign="top" align="left" width="8%" title="Pickup Route Number">${studentlist.pickup_route_no}</td>
 									 <td valign="top" align="left" width="30%" title="Pickup Point Address">${studentlist.pickup_point_address}</td>
-									 <td valign="top" align="left" width="1%" title="Drop Route Number">	${studentlist.drop_route_no}		 </td>
+									 <td valign="top" align="left" width="8%" title="Drop Route Number">	${studentlist.drop_route_no}		 </td>
 									 <td valign="top" align="left" width="30%" title="Drop Point Address">${studentlist.drop_point_address}			 </td>
-									 <td valign="top" align="left" width="1%" title="Kg Drop ">${studentlist.kg_drop}</td>
+									 <td valign="top" align="left" width="8%" title="Kg Drop ">${studentlist.kg_drop}</td>
 									 <td align="left">
-										<div class="arrow" title="Double click to Show all Details"></div><a href="<c:out value="client_edit_student?student_roll_no=${studentlist.student_roll_no}&org_name=${studentlist.org_name}&branch=${studentlist.branch}"/>" ><img src="resources/images/edit-29.png" alt="Edit" width="20" height="15"/></a>
+										<div class="arrow" title="Double click to Show all Details"></div><a href="<c:out value="client_edit_student?student_roll_no=${studentlist.student_roll_no}&org_name=${studentlist.org_name}&branch=${studentlist.branch}"/>" title="Edit" ><img src="resources/images/edit-29.png" alt="Edit" width="20" height="15"/></a>
 										</td>
 								</tr>
 							    	
-							<tr>
-										<td valign="top" align="left" colspan="4"><ul><li><span style="color:#3bb9ff;">Student First Name:</span><span style="color:#666;">${studentlist.first_name}</span></li>
-										<li><span style="color:#3bb9ff;">Student Last Name:</span><span style="color:#666;">${studentlist.last_name}</span></li><li><span style="color:#3bb9ff;">Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
-										<span style="color:#666;"><c:choose>
+							<tr class="row1">
+										<td valign="top" align="left" colspan="4"><ul><li><span style="color:#000;">Student First Name:&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000;">${studentlist.first_name}</span></li>
+										<li><span style="color:#000;">Student Last Name:&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000;">${studentlist.last_name}</span></li><li><span style="color:#000;">Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span style="color:#000;"><c:choose>
 									 <c:when test="${studentlist.gender=='M'}">
 									 <c:out value="Male"></c:out></c:when>
 									 <c:when test="${studentlist.gender=='F'}">
 									 <c:out value="FeMale"></c:out>
 									 </c:when>
-									 </c:choose></span></li><li><span style="color:#3bb9ff;">Class & Section &nbsp;&nbsp;&nbsp;&nbsp;:</span><span style="color:#666;">${studentlist.class_standard}&amp;${studentlist.section}</span></li></ul></td>
-										<td valign="top" align="left" colspan="6" ><ul><li><span style="color:#3bb9ff;">Parents Name&nbsp;&nbsp;:</span><span style="color:#666;">${studentlist.parent_name1} &amp;${studentlist.parent_name2}</span></li><li>
-										<span style="color:#3bb9ff;">Parent Number:</span><span style="color:#666;">${studentlist.parent_mobile1} &amp;${studentlist.parent_mobile2} </span></li>
-										<li><span style="color:#3bb9ff;">Parents Email&nbsp;&nbsp;&nbsp;:</span><span style="color:#666;">${studentlist.parent_email1}&amp;${studentlist.parent_email2}</span></li></ul></td>
+									 </c:choose></span></li><li><span style="color:#000;">Class & Section &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000;">${studentlist.class_standard}&amp;${studentlist.section}</span></li></ul></td>
+										<td valign="top" align="left" colspan="6" ><ul><li><span style="color:#000;">Parents Name&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000;">${studentlist.parent_name1} &amp;${studentlist.parent_name2}</span></li><li>
+										<span style="color:#000;">Parent Number:&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000;">${studentlist.parent_mobile1} &amp;${studentlist.parent_mobile2} </span></li>
+										<li><span style="color:#000;">Parents Email&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000;">${studentlist.parent_email1}&amp;${studentlist.parent_email2}</span></li></ul></td>
 										</tr>
 							    	</c:forEach>
 							    </c:if>
@@ -163,7 +162,7 @@
         				 </table>
         				
         				
-        				</div>
+        				
         			<%-- 	<table cellpadding="0" cellspacing="0" border="1" width="100%">
 							<tr class="title">
 													

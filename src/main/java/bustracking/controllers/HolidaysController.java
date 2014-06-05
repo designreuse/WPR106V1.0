@@ -111,7 +111,9 @@ public class HolidaysController{
 			holidaysDAO.insert_holiday(holidays);
 		}
 				
-			
+		HolidaysForm holidaysForm=new HolidaysForm();
+		holidaysForm.setHolidaysForms(holidaysDAO.getHolidays());
+		model.addAttribute("holidaysForm",holidaysForm);
 		
 		
 		return "view_holidays";
@@ -199,7 +201,8 @@ public class HolidaysController{
 			   
 		   HolidaysForm holidaysForm=new HolidaysForm();
 		   holidaysForm.setHolidaysForms(holidaysDAO.findHolidays(org_name, branch, holiday_date));
-		   model.addAttribute("holidaysForm",holidaysForm);		   
+		   model.addAttribute("holidaysForm",holidaysForm);		
+		   
 		   return "view_holidays";
 	   
 		   }

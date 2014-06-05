@@ -179,10 +179,15 @@ public class BusRegistrationController {
 		System.out.println("bus id"+busregistration.getVechicle_reg_no());
 		int status = busDAO.updatebus(busregistration, busregistration.getVechicle_reg_no(),principal.getName());
 		System.out.println(status);
-		
+		if(status==1){
 		BusRegistrationForm busregistrationform= new BusRegistrationForm();
 		busregistrationform.setBusregistration(busDAO.getBusregistration());
 		model.addAttribute("busregistrationform",busregistrationform);
+		
+		BusRegistrationForm busregistrationform1= new BusRegistrationForm();
+		busregistrationform1.setBusregistration(busDAO.getBusregistration());
+		model.addAttribute("busregistrationform1",busregistrationform1);
+		}
 		
 		return "view_bus_details";
 		
@@ -202,6 +207,9 @@ public class BusRegistrationController {
 		busregistrationform.setBusregistration(busDAO.getBusregistration());
 		model.addAttribute("busregistrationform",busregistrationform);
 		
+		BusRegistrationForm busregistrationform1= new BusRegistrationForm();
+		busregistrationform1.setBusregistration(busDAO.getBusregistration());
+		model.addAttribute("busregistrationform1",busregistrationform1);
 		}
 		
 		return "view_bus_details";

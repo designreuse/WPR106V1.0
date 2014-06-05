@@ -25,6 +25,7 @@ import bustracking.forms.BusRegistrationForm;
 import bustracking.forms.DeviceRegistrationForm;
 import bustracking.model.BusRegistration;
 import bustracking.model.DeviceRegistration;
+import bustracking.dao.MainDAO;
 
 import java.net.*;
 
@@ -33,6 +34,10 @@ public class DeviceRegistrationController
 {
 	@Autowired
 	DeviceRegistrationDAO deviceRegistrationDAO;
+	
+	@Autowired
+	
+	MainDAO mainDAO;
 	
 	@RequestMapping(value="/insert_device", method = RequestMethod.GET)
 	public String device_insert_form(HttpSession session,ModelMap model, Principal principal ) {
@@ -44,7 +49,7 @@ public class DeviceRegistrationController
 		List <String> carriername=new ArrayList<String>();
 		carriername=deviceRegistrationDAO.getcarriername();
 		model.addAttribute("carriername",carriername);
-			return "add_device_registration";
+		return "add_device_registration";
 	
 	}
 	
@@ -88,6 +93,9 @@ public class DeviceRegistrationController
 		carriername=deviceRegistrationDAO.getcarriername();
 		model.addAttribute("carriername",carriername);
 		
+		deviceRegistration.setCreate_user_id(principal.getName());
+		deviceRegistration.setModified_user_id(principal.getName());
+		
 		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
 		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.getDevice(device_imei_number));
 		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
@@ -105,9 +113,16 @@ public class DeviceRegistrationController
 		int status = deviceRegistrationDAO.updateDevice(deviceregistration);
 		System.out.println(status);
 		
+		deviceregistration.setCreate_user_id(principal.getName());
+		deviceregistration.setModified_user_id(principal.getName());
+		
 		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
 		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
 		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+		
+		DeviceRegistrationForm deviceRegistrationForm1=new DeviceRegistrationForm();
+		deviceRegistrationForm1.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+		model.addAttribute("deviceRegistrationForm1",deviceRegistrationForm1);
 		
 		return "view_bus_device";
 		
@@ -126,6 +141,10 @@ public class DeviceRegistrationController
 			DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
 			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
 			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+		
+			DeviceRegistrationForm deviceRegistrationForm1=new DeviceRegistrationForm();
+			deviceRegistrationForm1.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+			model.addAttribute("deviceRegistrationForm1",deviceRegistrationForm1);
 		
 		}
 		
@@ -508,6 +527,9 @@ public class DeviceRegistrationController
 			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
 			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
 			
+			DeviceRegistrationForm deviceRegistrationForm1=new DeviceRegistrationForm();
+			deviceRegistrationForm1.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+			model.addAttribute("deviceRegistrationForm1",deviceRegistrationForm1);
 			
 			return "view_bus_device";
 		}
@@ -528,6 +550,8 @@ public class DeviceRegistrationController
 		req.getQueryString();
 		System.out.println("queries"+req.getQueryString());
 		
+		device.setCreate_user_id(principal.getName());
+		device.setModified_user_id(principal.getName());
 		
 		deviceRegistrationDAO.sms(device);
 	    DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
