@@ -110,12 +110,15 @@ public class MainController {
 		else if(role.equals("ROLE_FCLIENT"))
 		{
 		    FleetHomepageForm fleetHomepageForm=new FleetHomepageForm();
-		    fleetHomepageForm.setFleetHomepages(fleetHomepageDAO.getFleethomedetails());
+		    
+		    System.out.println("Fleet Org_id:"+mainDAO.getOrg_id(principal.getName()));
+		    
+		    fleetHomepageForm.setFleetHomepages(fleetHomepageDAO.getFleethomedetails(mainDAO.getOrg_id(principal.getName()),principal.getName()));
 		    model.addAttribute("fleetHomepageForm",fleetHomepageForm);
 			return "fleetclient_homepage";
-			
+				
 		}
-else{
+		else{
 			
 			ClientHomeForm clientHomeForm= new ClientHomeForm();
 			clientHomeForm.setClienthome(clientHomeDAO.getClienthome(mainDAO.getOrg_id(principal.getName())));
@@ -352,14 +355,7 @@ else{
 		return "client_smstoparent";
 	}
 
-	@RequestMapping(value="/tracksms", method = RequestMethod.GET)
-	public String clienttracksms(HttpServletRequest request,ModelMap model, Principal principal ) {
-		
-		
-		return "tracksms";
-	}
 	
-
 
 
 	@RequestMapping(value="/clientbusinessrules", method = RequestMethod.GET)
@@ -513,6 +509,10 @@ else{
 		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
 		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);			
 		
+		List <String> orgname=new ArrayList<String>();
+		orgname=busDAO.getorgname();
+		model.addAttribute("orgname",orgname);
+		
 		LatLongForm latLongForm=new LatLongForm();
 		//latLongForm.setLatLongs(trackingInfoDAO.getTrackingInfo("359710042476300"),'');		
 		model.addAttribute("latLongForm",latLongForm);	
@@ -522,8 +522,29 @@ else{
 	    Date date=new Date();
 	    
 	    model.addAttribute("click_time",sdf.format(date));
-		return "view_map";
+		return "adminTrack";
  
+	}
+	
+	
+	// Vechicle reg no for Live Tracking Map Ajax
+	
+	@RequestMapping(value="/vechicle_reg_no",method=RequestMethod.POST)
+	public @ResponseBody String bus_reg(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model ) {
+	
+		String returnText="";
+			List <String> vechicle_reg_no=new ArrayList<String>();
+		vechicle_reg_no=mainDAO.get_vechicle_no(org_name, branch);
+		
+		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#device').select2(); });</script><select id='device' name='device_id' onchange='doAction(this.value);' style='width:220px;'>";
+		returnText+="<option value='' selected>--Select vechicle--</option>";
+		for(String vechicle_no:vechicle_reg_no)
+		{
+			returnText+="<option value='"+vechicle_no+"'>"+vechicle_no+"</option>";
+			}			
+		  
+	   returnText=returnText+"</select>";		 
+	return returnText;
 	}
 	
 	
@@ -554,16 +575,44 @@ else{
 		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
 		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
 		
+		List <String> orgname=new ArrayList<String>();
+		orgname=busDAO.getorgname();
+		model.addAttribute("orgname",orgname);
 		
 		LatLongForm latLongForm=new LatLongForm();
 		//latLongForm.setLatLongs(trackingInfoDAO.getTrackingInfo("359710042476300"),'');
 		
 		model.addAttribute("latLongForm",latLongForm);
 		model.addAttribute("first",1);
+		
 		return "view_map_history";
  
 	}
 	
+	// Admin Tracking History
+	
+	@RequestMapping(value="/admin_view_map_history", method = RequestMethod.GET)
+	public String admin_view_map_history(HttpSession session,ModelMap model) {
+		
+	
+	
+		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
+		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
+		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
+		
+		List <String> orgname=new ArrayList<String>();
+		orgname=busDAO.getorgname();
+		model.addAttribute("orgname",orgname);
+		
+		LatLongForm latLongForm=new LatLongForm();
+		//latLongForm.setLatLongs(trackingInfoDAO.getTrackingInfo("359710042476300"),'');
+		
+		model.addAttribute("latLongForm",latLongForm);
+		model.addAttribute("first",1);
+		
+		return "admin_view_map_history";
+ 
+	}
 	
 	
 	@RequestMapping(value="/viewmap_with_id", method = RequestMethod.GET)
@@ -590,6 +639,38 @@ else{
 		return "view_map";
  
 	}
+	
+	@RequestMapping(value="/adminviewmap_with_id", method = RequestMethod.GET)
+	public String adminview_map_reload(@RequestParam("id") String device,HttpSession session,ModelMap model) {
+		
+	
+		System.out.println("came");
+		
+		List <String> orgname=new ArrayList<String>();
+		orgname=busDAO.getorgname();
+		model.addAttribute("orgname",orgname);
+		
+		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
+		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
+		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
+		
+		
+		LatLongForm latLongForm=new LatLongForm();
+		//latLongForm.setLatLongs(trackingInfoDAO.getTrackingInfo("359710042476300"),'');
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    TimeZone.setDefault(TimeZone.getTimeZone("IST"));
+	    Date date=new Date();
+	    
+	    model.addAttribute("click_time",sdf.format(date));
+		model.addAttribute("latLongForm",latLongForm);
+		model.addAttribute("device_id","");
+		model.addAttribute("id",device);
+		
+		return "adminTrack";
+ 
+	}
+	
+	
 	
 	
 	@RequestMapping(value="/viewmap", method = RequestMethod.POST)

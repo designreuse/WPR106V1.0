@@ -229,7 +229,7 @@ public class MessageSending{
 	 * Used to insert the log details for message
 	 * triggered from our application
 	 */
-	public boolean Insert_into_sms_tracking(String org_id,String student_roll_no) {
+	public boolean Insert_into_sms_tracking(String org_id,String student_roll_no,String mobile_no) {
 		Connection con = null;
 		Statement statement = null;
 		boolean status = false;
@@ -243,11 +243,11 @@ public class MessageSending{
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			TimeZone.setDefault(TimeZone.getTimeZone("IST"));
 			Date date = new Date();
-			String insert_history_info = "insert into tbl_sms_tracking(org_id,student_roll_no,sms_trigger_time_stamp,status) values('"
+			String insert_history_info = "insert into tbl_sms_tracking(org_id,student_roll_no,mobile_number,sms_trigger_time_stamp,status) values('"
 					+ org_id
 					+ "','"
 					+ student_roll_no
-					+ "','"
+					+ "','"+mobile_no+"','"
 					+ sdf.format(date) + "','Send')";
 			statement.execute(insert_history_info);
 		} catch (Exception e) {
@@ -453,7 +453,7 @@ public class MessageSending{
 				logger.info("Message Sending....");
 				logger.info("MESSAGE SEND TO: "+ resultSet.getString("parent_mobile1"));
 				MessageSender.sendMessage(resultSet.getString("parent_mobile1"),"You will reach Bus Stop "+route.getStop_id()+" in 10 mins");
-				Insert_into_sms_tracking(resultSet.getString("org_id"),resultSet.getString("student_roll_no"));
+				Insert_into_sms_tracking(resultSet.getString("org_id"),resultSet.getString("student_roll_no"),resultSet.getString("parent_mobile1"));
 
 			}
 			resultSet.close();

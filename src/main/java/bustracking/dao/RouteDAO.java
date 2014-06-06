@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.mail.search.DateTerm;
@@ -150,6 +151,8 @@ public class RouteDAO {
 			System.out.println("inserting...");
 			DateTimeZone dateTimeZone=DateTimeZone.forID("Asia/Kolkata");
 			LocalDate localDate=new LocalDate();
+			localDate=localDate.minusDays(1);
+			
 			
 			
 			for (Route_view route_view: stops) {

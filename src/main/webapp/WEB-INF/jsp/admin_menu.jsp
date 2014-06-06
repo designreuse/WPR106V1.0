@@ -81,7 +81,7 @@
 <div class="submenu">
 	<ul>
 	<li><a href="changepassword?submenuheader=1">Device/Sim Setup</a></li>
-	<li><a href="insert_device?submenuheader=1">Device/Sim Configuration</a></li>
+	<!-- <li><a href="insert_device?submenuheader=1">Device/Sim Configuration</a></li> -->	
 	<li><a href="view_devices?submenuheader=1">Device Information</a></li>	
 	</ul>
 </div>
@@ -157,7 +157,7 @@
 <div class="submenu">
 	<ul>
 	<li><a href="viewmap?submenuheader=9">Live Track</a></li>
-	<li><a href="view_map_history?submenuheader=9">Tracking History</a></li>
+	<li><a href="admin_view_map_history?submenuheader=9">Tracking History</a></li>
 	
 		</ul>
 
@@ -225,13 +225,12 @@
 <a class="menuitem submenuheader" href="#" >Reports</a>
 <div class="submenu">
 	<ul>
-	<!-- <li><a href="driverlist">Driver List</a></li>
+	
+	 
+	 <!-- <li><a href="clientdriverlistreport">Driver List</a></li>
 	<li><a href="clientpickupreport">Pick Up Report</a> </li>
-	<li><a href="clientdropreport">Drop Report</a></li>
-	<li><a href="clientoverspeedingreport">Over Speeding Report </a></li>
-	 --><li><a href="clientdriverlistreport">Driver List</a></li>
-	<li><a href="clientpickupreport">Pick Up Report</a> </li>
-	<li><a href="clientdropreport">Drop Report</a></li>
+	<li><a href="clientdropreport">Drop Report</a></li> -->
+	
 	<li><a href="clientoverspeedingreport">Over Speeding Report </a></li>
 	
 	</ul>

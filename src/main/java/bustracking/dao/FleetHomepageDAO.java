@@ -21,7 +21,7 @@ public class FleetHomepageDAO {
 	
 	
 	
-	public List<FleetHomepage> getFleethomedetails(){
+	public List<FleetHomepage> getFleethomedetails(String org_id,String user){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -33,7 +33,12 @@ public class FleetHomepageDAO {
 		}
 		List<FleetHomepage> fleetHomepages=new ArrayList<FleetHomepage>();
 	    try{
-			resultSet = statement.executeQuery("select device_status,vechicle_reg_no,address,speed,bus_tracking_timestamp,device_imei_number from (select t1.*,t2.device_imei_number,t2.device_status from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no order by bus_tracking_timestamp desc ) x group by vechicle_reg_no");
+			String cmd_livetrack="select device_status,vechicle_reg_no,address,speed,bus_tracking_timestamp,device_imei_number from (select t1.*,t2.device_imei_number,t2.device_status from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no where t1.org_id='"+org_id+"' order by bus_tracking_timestamp desc ) x group by vechicle_reg_no";
+	    	if(user.equals("admin"))
+				cmd_livetrack="select device_status,vechicle_reg_no,address,speed,bus_tracking_timestamp,device_imei_number from (select t1.*,t2.device_imei_number,t2.device_status from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no order by bus_tracking_timestamp desc ) x group by vechicle_reg_no";
+	    	resultSet = statement.executeQuery(cmd_livetrack);
+			
+			System.out.println("Query Live:"+cmd_livetrack);
 			while(resultSet.next()){
 				fleetHomepages.add(new FleetHomepage(resultSet.getString("device_status"),resultSet.getString("vechicle_reg_no"),resultSet.getString("address"),resultSet.getString("speed"),resultSet.getString("bus_tracking_timestamp"),resultSet.getString("device_imei_number")));
 			}

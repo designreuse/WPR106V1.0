@@ -77,12 +77,27 @@
                         
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-								<td valign="top" align="left" width="13%">Date</td>					
-					         	<td valign="top" align="left" width="10%">Mobile Number</td>
-          						<td valign="top" align="left" width="8%">Status</td>
-          						
-          						
-        					</tr>  </table>
+								<td valign="top" align="left" width="10%">Student Roll No</td>		
+									<td valign="top" align="left" width="10%">Mobile Number</td>
+									<td valign="top" align="left" width="10%">Date/Time</td>					
+					         		<td valign="top" align="left" width="10%">Status</td>
+          								
+        					</tr>
+        					<c:forEach items="${reportForm.reports}" var="smsreport" varStatus="status">
+        				  
+        					<tr class="row1">
+        					   	<td valign="top" align="left" width="10%">${smsreport.student_roll_no }</td>					
+					         	<td valign="top" align="left" width="10%">${smsreport.mobile_number}</td>
+          						<td valign="top" align="left" width="10%">${smsreport.sms_trigger_time }</td>
+          						<td valign="top" align="left" width="10%">${smsreport.status }</td>
+          							
+        					</tr>
+        					</c:forEach>
+        					  </table>
+        					
+        					
+        					
+        					
         					</td>
         					</tr>
         					</table>

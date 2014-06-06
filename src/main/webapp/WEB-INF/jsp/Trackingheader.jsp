@@ -118,10 +118,10 @@ function toggleBounce() {
 
 	<div id="main">
 	<div id="header">
-			<div class="school_div"><img style="width: 240px;height:100px;" src="resources/images/truck.png"/></div>
+			<div class="school_div"><img style="wid<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>th: 240px;height:100px;" src="resources/images/truck.png"/></div>
 			<div class="logo" style="background-color:none;height:50px;width:auto;border:solid 1px black;margin-right:250px;margin-top:10px;border-radius:5px;box-shadow:inset 0px 0px 7px #eee;padding:10px; ">
 				<!-- <img src="resources/images/logo123.png" width="250px" height="70px"/> -->
-				<span class="Three-DeePjtHeader">Fleet Management</span>
+				<span class="Three-DeePjtHeader"> Tracking </span>
 			</div>
 			
 			<div class="top_link">
@@ -156,16 +156,7 @@ function toggleBounce() {
 				            		<span><img src="<c:url value="/resources/images/icon_01.png" />" alt="" style="padding:5px 5px 0 0;" />Home</span>
 				            	</a>
 				            </li>
-				                <li style="float:left;">
-				            	<a href="view_map_history" class="select" rel="ddsubmenu7">
-				            		<span><img src="<c:url value="/resources/images/icon_06.png" />" alt="" style="padding:5px 5px 0 0;" />Tracking</span>
-				            	</a>
-				            </li>
-				            <li style="float:left;">
-				            	<a href="#" class="select" rel="ddsubmenu7">
-				            		<span><img src="<c:url value="/resources/images/icon_06.png" />" alt="" style="padding:5px 5px 0 0;" />Reports</span>
-				            	</a>
-				            </li>
+				              
 				            </ul>
 					<div class="menu_r"></div>
 					<div class="clear"></div>

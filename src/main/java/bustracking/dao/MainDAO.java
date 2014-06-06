@@ -286,6 +286,46 @@ public class MainDAO {
 			
 		}
 		
+		// Get Vechicle no for admin tracking map
+		
+		public List<String> get_vechicle_no(String org_name, String branch){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<String> vechicle_no=new ArrayList<String>();
+			try{
+				
+				String cmd_sql="Select vechicle_reg_no from tbl_vechicle where org_id=( select org_id from tbl_organization where org_name='"+org_name+"' AND  branch='"+branch+"')";
+				resultSet=statement.executeQuery(cmd_sql);
+				
+				while(resultSet.next())
+				{
+					vechicle_no.add(resultSet.getString("vechicle_reg_no"));
+				}
+				
+				
+				
+				
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return vechicle_no;
+			
+		}
 		
 		
 	/*public List<DeviceFail> getdevicefails(){

@@ -23,6 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import bustracking.dao.BusRegistrationDAO;
 import bustracking.dao.MainDAO;
+import bustracking.dao.ReportsDAO;
+
+import bustracking.forms.ReportForm;
+import bustracking.model.Report;
 
 
 
@@ -33,6 +37,12 @@ public class ReportsController{
 	
 	@Autowired
 	BusRegistrationDAO busDAO;
+	
+	@Autowired
+	MainDAO mainDAO;
+	
+	@Autowired
+	ReportsDAO reportsDAO;
 
 	
 	// Admin Side Reports For SMS
@@ -47,7 +57,16 @@ public class ReportsController{
 			return "admin_reports";
 		}
 	
-	
+		@RequestMapping(value="/tracksms", method = RequestMethod.GET)
+		public String clienttracksms(HttpServletRequest request,ModelMap model, Principal principal ) {
+			
+			ReportForm reportForm=new ReportForm();
+			reportForm.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("reportForm",reportForm);
+			return "tracksms";
+		}
+		
+
 
 		@RequestMapping(value="/clientdriverlistreport",method=RequestMethod.GET)
 		public String Driverreport(ModelMap model,Principal principal){

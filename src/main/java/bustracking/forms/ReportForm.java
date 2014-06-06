@@ -6,7 +6,7 @@ import bustracking.model.Report;
 
 public class ReportForm{
 	
-	public List<Report> reports;
+	private List<Report> reports;
 
 	public List<Report> getReports() {
 		return reports;
@@ -15,6 +15,7 @@ public class ReportForm{
 	public void setReports(List<Report> reports) {
 		this.reports = reports;
 	}
+
 	
 	
 }
