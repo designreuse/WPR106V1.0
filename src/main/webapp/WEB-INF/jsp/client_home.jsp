@@ -83,7 +83,7 @@
 											<td valign="top" align="left" width="35%">${clienthome1.address}</td>
 											<td valign="top" align="left" width="15%">${clienthome1.speed}</td>
 											<td valign="top" align="left" width="15%">${clienthome1.bus_tracking_timestamp}</td>
-											<td valign="top" align="left" width="10%"><a href="client_live_track?id=${clienthome1.vechicle_reg_no}">Track</a></td>
+											<td valign="top" align="left" width="10%"><a href="client_live_track?id=${clienthome1.device_imei_number}">Track</a></td>
 											
 											<%-- <td valign="top" align="left" width="25%">
 										

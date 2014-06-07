@@ -153,7 +153,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							    <td align="left" valign="middle" width="10%">
 							   <select name="device_id" class="input_cmbbx">
 							   <option>--Select Device--</option>
-							   <c:forEach items="${busDeviceRegistrationForm.busDeviceRegistrations}" var="busDeviceRegistrations">
+							   <c:forEach items="${busDeviceRegistrationForm1.busDeviceRegistrations}" var="busDeviceRegistrations">
 							   <option <c:if test="${device==busDeviceRegistrations.device_imei_number}"><c:out value="selected"/></c:if> value="${busDeviceRegistrations.device_imei_number}">${busDeviceRegistrations.bus_reg_id}</option>
 							   
 							   </c:forEach>
@@ -161,8 +161,8 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							    </td>
 							    <td align="right" valign="middle" width="8%">Date :&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date }"></td>
-							    <td align="center" valign="middle" width="30%"><input type="submit" class="submit_btn" value="Show" name="find"></td>
-							 <td align="center" valign="middle" width="30%"><input type="reset" class="submit_btn" value="Cancel"></td>
+							    <td align="center" valign="middle" width="30%"><input type="submit" class="btn" value="Show" name="find"></td>
+							 <td align="center" valign="middle" width="30%"><input type="reset" class="btn" value="Cancel"></td>
 							  </tr>
 							</table>
 

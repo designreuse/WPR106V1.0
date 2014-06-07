@@ -11,7 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
 
+import org.joda.time.chrono.BuddhistChronology;
+
 import bustracking.forms.SuperAdminHomeForm;
+import bustracking.model.BusDeviceRegistration;
+import bustracking.model.BusRegistration;
 import bustracking.model.DeviceRegistration;
 import bustracking.model.MessageSender;
 import bustracking.model.Route;
@@ -288,7 +292,7 @@ public class MainDAO {
 		
 		// Get Vechicle no for admin tracking map
 		
-		public List<String> get_vechicle_no(String org_name, String branch){
+		public List<BusDeviceRegistration> get_vechicle_no(String org_name, String branch){
 			Connection con = null;
 			Statement statement = null;
 			ResultSet resultSet = null;
@@ -299,15 +303,15 @@ public class MainDAO {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			List<String> vechicle_no=new ArrayList<String>();
+			List<BusDeviceRegistration> vechicle_no=new ArrayList<BusDeviceRegistration>();
 			try{
 				
-				String cmd_sql="Select vechicle_reg_no from tbl_vechicle where org_id=( select org_id from tbl_organization where org_name='"+org_name+"' AND  branch='"+branch+"')";
+				String cmd_sql="Select vechicle_reg_no,device_imei_number from tbl_vechicle where org_id=( select org_id from tbl_organization where org_name='"+org_name+"' AND  branch='"+branch+"')";
 				resultSet=statement.executeQuery(cmd_sql);
 				
 				while(resultSet.next())
 				{
-					vechicle_no.add(resultSet.getString("vechicle_reg_no"));
+					vechicle_no.add(new BusDeviceRegistration(resultSet.getString("vechicle_reg_no"),resultSet.getString("device_imei_number")));
 				}
 				
 				
@@ -329,31 +333,24 @@ public class MainDAO {
 		
 		// Get Vechicle no For Client Tracking History
 		
-		public List<String> get_vechicle_no_for_client(String org_id){
+		
+		public List<BusDeviceRegistration> get_vechicle_no_for_client(String org_id){
 			Connection con = null;
 			Statement statement = null;
 			ResultSet resultSet = null;
-			
 			try {
 				con = dataSource.getConnection();
 				statement = con.createStatement();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			List<String> vechicle_no=new ArrayList<String>();
+			List<BusDeviceRegistration> busDeviceRegistrations = new ArrayList<BusDeviceRegistration>();
 			try{
-				
-				String cmd_sql="Select vechicle_reg_no from tbl_vechicle where org_id='"+org_id+"'";
-				resultSet=statement.executeQuery(cmd_sql);
-				
-				while(resultSet.next())
-				{
-					vechicle_no.add(resultSet.getString("vechicle_reg_no"));
+				resultSet = statement.executeQuery("Select vechicle_reg_no,device_imei_number from tbl_vechicle where org_id='"+org_id+"'");
+				while(resultSet.next()){
+					busDeviceRegistrations.add(new BusDeviceRegistration(resultSet.getString("vechicle_reg_no"), resultSet.getString("device_imei_number")));
 				}
-				
-				
-				
-				
+			
 		    }catch(Exception e){
 		    	System.out.println(e.toString());
 		    	releaseResultSet(resultSet);
@@ -364,9 +361,11 @@ public class MainDAO {
 		    	releaseStatement(statement);
 		    	releaseConnection(con);	    	
 		    }
-		    return vechicle_no;
+		    return busDeviceRegistrations;
 			
 		}
+		
+		
 		
 		
 		

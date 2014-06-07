@@ -40,9 +40,9 @@ public class ClientHomeDAO{
 		List<ClientHome> clienthome = new ArrayList<ClientHome>();
 		try{
 			
-			resultSet = statement.executeQuery("SELECT * from tbl_vechicle_tracking_history where bus_tracking_timestamp in (select max(bus_tracking_timestamp) from tbl_vechicle_tracking_history where org_id='"+org_id+"' group by vechicle_reg_no) order by vechicle_reg_no desc,bus_tracking_timestamp desc;");
+			resultSet = statement.executeQuery("select device_status,vechicle_reg_no,address,speed,bus_tracking_timestamp,device_imei_number from (select t1.*,t2.device_imei_number,t2.device_status from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no where t1.org_id='"+org_id+"' order by bus_tracking_timestamp desc ) x group by vechicle_reg_no");
 			while(resultSet.next()){
-				clienthome.add(new ClientHome(resultSet.getString("vechicle_reg_no"),resultSet.getString("address"),resultSet.getString("speed"),resultSet.getString("bus_tracking_timestamp")));
+				clienthome.add(new ClientHome(resultSet.getString("vechicle_reg_no"),resultSet.getString("address"),resultSet.getString("speed"),resultSet.getString("bus_tracking_timestamp"),resultSet.getString("device_imei_number")));
 			}
 		
 	    }catch(Exception e){
@@ -76,7 +76,7 @@ public List<ClientHome> findclienthome( String org_id , String vechicle_reg_no){
 	    try{
 			resultSet = statement.executeQuery("SELECT * from tbl_vechicle_tracking_history where bus_tracking_timestamp in (select max(bus_tracking_timestamp) from tbl_vechicle_tracking_history where org_id='"+org_id+"' and vechicle_reg_no='"+vechicle_reg_no+"' group by vechicle_reg_no) order by vechicle_reg_no desc,bus_tracking_timestamp desc;");
 			while(resultSet.next()){
-				clientHome.add(new ClientHome(resultSet.getString("vechicle_reg_no"),resultSet.getString("address"),resultSet.getString("speed"), resultSet.getString("bus_tracking_timestamp")));
+				clientHome.add(new ClientHome(resultSet.getString("vechicle_reg_no"),resultSet.getString("address"),resultSet.getString("speed"), resultSet.getString("bus_tracking_timestamp"),resultSet.getString("device_imei_number")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());

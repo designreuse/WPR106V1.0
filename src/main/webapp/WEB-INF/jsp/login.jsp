@@ -123,7 +123,7 @@ Email </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 </div>
 </form>
 <div class="syrees_copy_rights">© Copyright 2014, All rights reserved, Deemsys Inc.<br/>
-Phone: 00 91 96327 19800 - Fax: 000-111-0000</div><br/>
+Phone: 00 91 98422 11989 - Fax: 000-111-0000</div><br/>
 <div class="Login_page_footer_link"><span style="padding-left:220px;float:center;">Contact Us | Terms of Use | Privacy Policy | Email-Us | Directions | Site Map</span></div>
 
 </header>

@@ -153,8 +153,9 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							    <td align="left" valign="middle" width="10%">
 							   <select name="device_id" class="input_cmbbx">
 							   <option>--Select Device--</option>
-							   <c:forEach items="${device_id}" var="device">
-							   <option value="${device}">${device}</option>
+							   <c:forEach items="${busDeviceRegistrationForm1.busDeviceRegistrations}" var="busDeviceRegistrations">
+							   <option <c:if test="${device==busDeviceRegistrations.device_imei_number}"><c:out value="selected"/></c:if> value="${busDeviceRegistrations.device_imei_number}">${busDeviceRegistrations.bus_reg_id}</option>
+							   
 							   </c:forEach>
 							    </select>
 							    </td>

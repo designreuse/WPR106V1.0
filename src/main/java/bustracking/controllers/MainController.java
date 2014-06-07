@@ -527,21 +527,21 @@ public class MainController {
  
 	}
 	
-	
-	// Vechicle reg no for Live Tracking Map Ajax
+
+	// Vechicle reg no for Live Tracking Map Ajax // AAJJAAXX
 	
 	@RequestMapping(value="/vechicle_reg_no",method=RequestMethod.POST)
 	public @ResponseBody String bus_reg(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model ) {
 	
 		String returnText="";
-			List <String> vechicle_reg_no=new ArrayList<String>();
+			List <BusDeviceRegistration> vechicle_reg_no=new ArrayList<BusDeviceRegistration>();
 		vechicle_reg_no=mainDAO.get_vechicle_no(org_name, branch);
 		
 		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#device').select2(); });</script><select id='device' name='device_id' onchange='doAction(this.value);' style='width:220px;'>";
 		returnText+="<option value='' selected>--Select vechicle--</option>";
-		for(String vechicle_no:vechicle_reg_no)
+		for(BusDeviceRegistration vechicle_no:vechicle_reg_no)
 		{
-			returnText+="<option value='"+vechicle_no+"'>"+vechicle_no+"</option>";
+			returnText+="<option value='"+vechicle_no.getDevice_imei_number()+"'>"+vechicle_no.getBus_reg_id()+"</option>";
 			}			
 		  
 	   returnText=returnText+"</select>";		 
@@ -599,9 +599,9 @@ public class MainController {
 		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
 		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
 		
-		List<String> device_id=new ArrayList<String>();
-		device_id=mainDAO.get_vechicle_no_for_client(mainDAO.getOrg_id(principal.getName()));
-		model.addAttribute("device_id",device_id);
+		BusDeviceRegistrationForm busDeviceRegistrationForm1=new BusDeviceRegistrationForm();
+		busDeviceRegistrationForm1.setBusDeviceRegistrations(mainDAO.get_vechicle_no_for_client(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("busDeviceRegistrationForm1",busDeviceRegistrationForm1);
 		
 		LatLongForm latLongForm=new LatLongForm();
 		//latLongForm.setLatLongs(trackingInfoDAO.getTrackingInfo("359710042476300"),'');
@@ -624,9 +624,10 @@ public class MainController {
 			busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
 			model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
 			
-			List<String> device_id=new ArrayList<String>();
-			device_id=mainDAO.get_vechicle_no_for_client(mainDAO.getOrg_id(principal.getName()));
-			model.addAttribute("device_id",device_id);
+			BusDeviceRegistrationForm busDeviceRegistrationForm1=new BusDeviceRegistrationForm();
+			busDeviceRegistrationForm1.setBusDeviceRegistrations(mainDAO.get_vechicle_no_for_client(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("busDeviceRegistrationForm1",busDeviceRegistrationForm1);
+			
 			
 			LatLongForm latLongForm=new LatLongForm();
 			System.out.println("Selected Date:"+request.getParameter("date").toString());
@@ -649,7 +650,7 @@ public class MainController {
 	
 	
 	@RequestMapping(value="/view_map_history", method = RequestMethod.GET)
-	public String view_map_history(HttpSession session,ModelMap model) {
+	public String view_map_history(HttpSession session,ModelMap model,Principal principal) {
 		
 	
 	
@@ -660,6 +661,10 @@ public class MainController {
 		List <String> orgname=new ArrayList<String>();
 		orgname=busDAO.getorgname();
 		model.addAttribute("orgname",orgname);
+		
+		BusDeviceRegistrationForm busDeviceRegistrationForm1=new BusDeviceRegistrationForm();
+		busDeviceRegistrationForm1.setBusDeviceRegistrations(mainDAO.get_vechicle_no_for_client(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("busDeviceRegistrationForm1",busDeviceRegistrationForm1);
 		
 		LatLongForm latLongForm=new LatLongForm();
 		//latLongForm.setLatLongs(trackingInfoDAO.getTrackingInfo("359710042476300"),'');
@@ -789,13 +794,18 @@ public class MainController {
 	
 	
 	@RequestMapping(value="/viewmap", method = RequestMethod.POST)
-	public String view_particular_device(HttpServletRequest request,HttpSession session,ModelMap model) {
+	public String view_particular_device(HttpServletRequest request,HttpSession session,ModelMap model,Principal principal) {
 		
 	
 	
 		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
 		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
 		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
+		
+		BusDeviceRegistrationForm busDeviceRegistrationForm1=new BusDeviceRegistrationForm();
+		busDeviceRegistrationForm1.setBusDeviceRegistrations(mainDAO.get_vechicle_no_for_client(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("busDeviceRegistrationForm1",busDeviceRegistrationForm1);
+		
 		
 		
 		LatLongForm latLongForm=new LatLongForm();

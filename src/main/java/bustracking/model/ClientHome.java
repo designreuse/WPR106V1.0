@@ -11,7 +11,16 @@ public class ClientHome
 	private String vechicle_reg_no;
 	private String address;
 	private String bus_tracking_timestamp;
+	private String device_imei_number;
 	
+	public String getDevice_imei_number() {
+		return device_imei_number;
+	}
+
+	public void setDevice_imei_number(String device_imei_number) {
+		this.device_imei_number = device_imei_number;
+	}
+
 	public ClientHome() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -77,7 +86,7 @@ public class ClientHome
 	
 	public ClientHome(String vechicle_reg_no,
 			String address, String speed,
-			String bus_tracking_timestamp) {
+			String bus_tracking_timestamp,String device_imei_number) {
 		super();
 	
 		this.vechicle_reg_no = vechicle_reg_no;
@@ -85,6 +94,7 @@ public class ClientHome
 		
 		this.speed = speed;
 		this.bus_tracking_timestamp = bus_tracking_timestamp;
+		this.device_imei_number=device_imei_number;
 	}
 	
 	
