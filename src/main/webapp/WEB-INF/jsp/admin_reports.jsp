@@ -13,11 +13,11 @@
 $(window).load(function(){
 jQuery(function () {
     jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: true});
     
     jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
 	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
-	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: true});
 
 	jQuery("#startDate").on("dp.change",function (e) {
     jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
@@ -72,7 +72,7 @@ jQuery(function () {
 
 		<td>
 			
-							
+						<form action="adminsmstrack" method="GET">
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%" class="order-table table">
 							
         					
@@ -126,17 +126,19 @@ jQuery(function () {
 				                  	</td>
 				                  	
 							   </tr>
+							   
+							   <tr><td><input type="submit" class="btn" value="Show" class="btn" > </td>
+    <td><input type="submit" class="btn" value="Download" class="btn"> </td>
 						</table>
-        				
+        				</form>
         			
-        				<table width="40%"cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
-    <tr><td><a href="" class="searchpressable showreport" >show</a></td>
-    <td><a href="" class="searchpressable downloadreoprt">Download</a></td>
-    <td><a href="javascript:void(processPrint());" class="searchpressable printreport" >Print</a></td>
-    <td>
-    <a href="" class="searchpressable mailreport" >Email</a></td></tr>
+        				<!-- <table width="40%"cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
     
-    </table>
+     <td><a href="javascript:void(processPrint());" class="searchpressable printreport" >Print</a></td>
+    <td>
+    <a href="" class="searchpressable mailreport" >Email</a></td></tr> 
+    
+    </table> -->
         				</td>
         				</tr>
         			<tr>
@@ -144,10 +146,27 @@ jQuery(function () {
         			<table width="100%" cellpadding="0" cellspacing="0" border="0" class="">
         			<tr><td><div class="report_table_innertop" id="printMe">
         			<table>
-        			<tr>
-        			
-        			
-        			</tr>
+        			<tr class="title">
+        						<td valign="top" align="left" width="10%">Organization</td>
+        						<td valign="top" align="left" width="10%">Branch</td>
+								<td valign="top" align="left" width="10%">Student Roll No</td>		
+									<td valign="top" align="left" width="10%">Mobile Number</td>
+									<td valign="top" align="left" width="10%">Date/Time</td>					
+					         		<td valign="top" align="left" width="10%">Status</td>
+          								
+        					</tr>
+        					<c:forEach items="${reportForm.reports}" var="adminsmsreport" varStatus="status">
+        				  
+        					<tr class="row1">
+        					<td valign="top" align="left" width="10%">${adminsmsreport.org_name}</td>
+        					<td valign="top" align="left" width="10%">${adminsmsreport.branch}</td>
+        					   	<td valign="top" align="left" width="10%">${adminsmsreport.student_roll_no }</td>					
+					         	<td valign="top" align="left" width="10%">${adminsmsreport.mobile_number}</td>
+          						<td valign="top" align="left" width="10%">${adminsmsreport.sms_trigger_time }</td>
+          						<td valign="top" align="left" width="10%">${adminsmsreport.status }</td>
+          							
+        					</tr>
+        					</c:forEach>
         			</table>
         			</div></td></tr>
         			</table>

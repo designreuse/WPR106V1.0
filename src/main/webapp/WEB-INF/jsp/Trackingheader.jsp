@@ -118,14 +118,14 @@ function toggleBounce() {
 
 	<div id="main">
 	<div id="header">
-			<div class="school_div"><img style="wid<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>th: 240px;height:100px;" src="resources/images/truck.png"/></div>
+			<div class="school_div"><img style="width:240px; height:100px;" src="resources/images/map_logo.png"/></div>
 			<div class="logo" style="background-color:none;height:50px;width:auto;border:solid 1px black;margin-right:250px;margin-top:10px;border-radius:5px;box-shadow:inset 0px 0px 7px #eee;padding:10px; ">
 				<!-- <img src="resources/images/logo123.png" width="250px" height="70px"/> -->
 				<span class="Three-DeePjtHeader"> Tracking </span>
 			</div>
 			
 			<div class="top_link">
-				<table border="0" cellspacing="0" cellpadding="0">
+				<table border="0">
 					<tr>
 						<td rowspan="2" align="right" valign="middle">&nbsp;</td>
 						<td align="right" valign="middle"><div class="date">
@@ -135,8 +135,7 @@ function toggleBounce() {
 					</tr>
 					<tr>
 						<td align="right" valign="middle"><span class="cart_txt">Welcome
-								<sec:authentication property="principal.username" />&nbsp;&nbsp;|&nbsp;&nbsp;<a
-								href="<c:url value="/j_spring_security_logout" />">Logout</a> </span>
+								<sec:authentication property="principal.username" />&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<c:url value="/j_spring_security_logout" />">Logout</a> </span>
 						</td>
 					</tr>
 				</table>
@@ -148,10 +147,10 @@ function toggleBounce() {
 			<div id="ddtopmenubar">
 				<div class="menu_container"align="left">
 					<div class="menu_l"></div>
-					<ul class="menu" >
 					<!-- 	participant menus -->
-						
-						 <li  style="float:left;">
+						<ul>
+						<li></li>
+						 <li  style="float:left;padding-top: 5px;padding-left: 5px;">
 				            	<a href="welcome" class="select" rel="ddsubmenu6">
 				            		<span><img src="<c:url value="/resources/images/icon_01.png" />" alt="" style="padding:5px 5px 0 0;" />Home</span>
 				            	</a>

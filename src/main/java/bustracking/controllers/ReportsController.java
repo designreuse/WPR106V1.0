@@ -54,7 +54,11 @@ public class ReportsController{
 			orgname_for_school=busDAO.getorgname_for_school();
 			model.addAttribute("orgname_for_school",orgname_for_school);
 			
-			return "admin_reports";
+			ReportForm reportForm=new ReportForm();
+			reportForm.setReports(reportsDAO.getsmsreport_for_download());
+			model.addAttribute("reportForm",reportForm);
+			
+			return "admin_sms_report";
 		}
 	
 		@RequestMapping(value="/tracksms", method = RequestMethod.GET)
@@ -66,7 +70,47 @@ public class ReportsController{
 			return "tracksms";
 		}
 		
+		// SMS Report Generate in Admin Side
+		
+		@RequestMapping(value="/adminsmsreport", method = RequestMethod.GET)
+		public String admintracksms(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("fromdate") String fromdate,@RequestParam("todate") String todate,@RequestParam("student_roll_no") String student_roll_no,HttpServletRequest request,ModelMap model, Principal principal ) {
+			
+			List <String> orgname_for_school=new ArrayList<String>();
+			orgname_for_school=busDAO.getorgname_for_school();
+			model.addAttribute("orgname_for_school",orgname_for_school);
+			
+			ReportForm reportForm=new ReportForm();
+			reportForm.setReports(reportsDAO.getsmsreport(org_name, branch,student_roll_no,fromdate, todate));
+			model.addAttribute("reportForm",reportForm);
+			
+			return "admin_sms_report";
+		}
+		
+		// Get Student Roll No
+		
 
+		@RequestMapping(value="/student_roll_no",method=RequestMethod.POST)
+		public @ResponseBody String trip(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model, Principal principal) {
+			
+			String returnText="";
+			List <String> student_roll_no=new ArrayList<String>();
+			student_roll_no=reportsDAO.get_student_roll_no(org_name, branch);
+			
+			
+			returnText=returnText+"<script id='script_bid'> $(document).ready(function() {$('#student_roll_no').select2(); });</script><select name='student_roll_no' id='student_roll_no'>";
+			returnText+="<option value='none' selected>--Select Student--</option>";
+			for(String student_no:student_roll_no)
+			{
+				 
+				returnText+="<option value='"+student_no+"'>"+student_no+"</option>";
+			}			
+			
+			returnText+="</select>";
+			return returnText;
+			
+		
+		}
+		
 
 		@RequestMapping(value="/clientdriverlistreport",method=RequestMethod.GET)
 		public String Driverreport(ModelMap model,Principal principal){

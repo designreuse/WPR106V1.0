@@ -1,23 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
-<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-<script id="script_orgid">
-    $(document).ready(function() {
-        $("#orgid").select2();
-    });
-</script>
-
-<script id="script_bid">
-    $(document).ready(function() {
-        $("#bid").select2();
-    });
-</script>
-<script id="script_device">
-$(document).ready(function() { 
-	$("#device").select2(); 
-	});
-	</script> 
 <jsp:include page="Trackingheader.jsp"></jsp:include>
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
 <script type="text/javascript" src="resources/js/jquery-1.4.2.min.js"></script>
@@ -56,8 +39,7 @@ $(function() {
 $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 });
 </script>
-
-<script type="text/javascript">
+    <script type="text/javascript">
    
   					var geocoder;
  					var map;
@@ -161,36 +143,25 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 				</script>
 				
 			
-<form name="grid" action="adminviewmaphistory" method="POST" id="form1">
+<form name="grid" action="clientviewmaphistory" method="POST" id="form1">
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding:20px;">
 							  <tr style="border:solid 1px black;">
-							  <td align="right" valign="middle" width="20%">Organization:&nbsp;&nbsp;</td>
+							    <td align="left" valign="middle" width="10%"></td>
+							    <td align="left" valign="middle" width="10%"></td>
+							    <td align="right" valign="middle" width="8%">Vehicle:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
-							     <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option value="">-- Select Organization--</option>
-        				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
-        				        <option value="${orgname}" >${orgname}</option>
-			                  </c:forEach>
-			                 </select></td>
-			                 <td align="right" valign="middle" width="10%">Branch:&nbsp;&nbsp;</td>
-							    <td align="left" valign="middle" width="10%">
-							    <span id="info"> 
-				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()" disabled="disabled">
-							   <option value="">-- Select branch--</option>
-							 </select>
-        				       </span> </td></tr><tr>
-							    <td align="right" valign="middle" width="20%">Vehicle Reg no:&nbsp;&nbsp;</td>
-							    <td align="left" valign="middle" width="10%">
-							   <span id="info1">
-							   <select name="device_id" id="device"  style='width:220px;'>
-							   <option value="">-- Select Vechicle --</option>
-						   		</select></span>
+							   <select name="device_id" class="input_cmbbx">
+							   <option>--Select Device--</option>
+							   <c:forEach items="${device_id}" var="device">
+							   <option value="${device}">${device}</option>
+							   </c:forEach>
+							    </select>
 							    </td>
-							    <td align="right" valign="middle" width="10%">Date :&nbsp;&nbsp;</td>
-							    <td align="left" valign="middle" width="8%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date}"></td>
-							    <td align="center" valign="middle" width="8%"><input type="submit" class="btn" value="Show" name="find"></td>
-							 <td align="center" valign="middle" width="8%"><input type="reset" class="btn" value="Reset"></td>
+							    <td align="right" valign="middle" width="8%">Date :&nbsp;&nbsp;</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date }"></td>
+							    <td align="center" valign="middle" width="30%"><input type="submit" class="btn" value="Show" name="find"></td>
+							 <td align="center" valign="middle" width="30%"><input type="reset" class="btn" value="Reset"></td>
 							  </tr>
 							</table>
 
@@ -202,52 +173,6 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 	
 	</div>
 </form>
-
-<script type="text/javascript">
-function doAjaxPost() {  
-	/* alert("hi"); */
-	var orgname = $('#orgid').val();
-	/* alert(orgname); */
-	 $.ajax({  
-		    type: "POST",  
-		    url: "/BusTrackingApp/vechicle_reg_ajax",  
-		    data: "org_name=" + orgname,
-		    success: function(response){  
-		    	
-		    	
-/* document.getElementById("branch").value=response; */
-$('#info').html(response);
-
-   },  
-		    error: function(e){  
-		      alert('Error: ' + e);  
-		    }  
-		  });  
-		}  
-		</script>
-		<script type="text/javascript">
-function doAjaxPost_vechicle() {  
-	/* alert("hi"); */
-	var orgname = $('#orgid').val();
-	var branch=$('#bid').val();
-	/* alert(orgname); */
-	 $.ajax({  
-		    type: "POST",  
-		    url: "/BusTrackingApp/vechicle_reg_no",  
-		    data: "org_name=" + orgname+"&branch="+branch ,
-		    success: function(response){  
-		    	
-		    	
-/* document.getElementById("branch").value=response; */
-$('#info1').html(response);
-
-   },  
-		    error: function(e){  
-		      alert('Error: ' + e);  
-		    }  
-		  });  
-		}  
-		</script>
 
 
 <jsp:include page="footer.jsp"></jsp:include>

@@ -9,6 +9,10 @@ public class Report{
 	
 	private String org_id;
 	
+	private String org_name;
+	
+	private String branch;
+	
 	public Report(String org_id, String student_roll_no,
 			String sms_trigger_time, String status, String mobile_number) {
 		super();
@@ -18,6 +22,32 @@ public class Report{
 		this.status = status;
 		this.mobile_number = mobile_number;
 	}
+
+	
+	
+	public String getOrg_name() {
+		return org_name;
+	}
+
+
+
+	public void setOrg_name(String org_name) {
+		this.org_name = org_name;
+	}
+
+
+
+	public String getBranch() {
+		return branch;
+	}
+
+
+
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
+
+
 
 	public String getMobile_number() {
 		return mobile_number;
@@ -67,7 +97,22 @@ public class Report{
 		this.status = status;
 	}
 
-	
+	// Constructor for Admin Side SMS Report
+
+	public Report(String org_id, String org_name, String branch,
+			String student_roll_no, String sms_trigger_time, String status,
+			String mobile_number) {
+		super();
+		this.org_id = org_id;
+		this.org_name = org_name;
+		this.branch = branch;
+		this.student_roll_no = student_roll_no;
+		this.sms_trigger_time = sms_trigger_time;
+		this.status = status;
+		this.mobile_number = mobile_number;
+	}
+
+
 
 	public Report() {
 		super();

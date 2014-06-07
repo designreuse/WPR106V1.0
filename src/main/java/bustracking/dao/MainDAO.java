@@ -327,6 +327,48 @@ public class MainDAO {
 			
 		}
 		
+		// Get Vechicle no For Client Tracking History
+		
+		public List<String> get_vechicle_no_for_client(String org_id){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<String> vechicle_no=new ArrayList<String>();
+			try{
+				
+				String cmd_sql="Select vechicle_reg_no from tbl_vechicle where org_id='"+org_id+"'";
+				resultSet=statement.executeQuery(cmd_sql);
+				
+				while(resultSet.next())
+				{
+					vechicle_no.add(resultSet.getString("vechicle_reg_no"));
+				}
+				
+				
+				
+				
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return vechicle_no;
+			
+		}
+		
+		
 		
 	/*public List<DeviceFail> getdevicefails(){
 		Connection con = null;

@@ -83,6 +83,26 @@ public class AddUserController{
 			List <String> branch=new ArrayList<String>();
 		branch=busDAO.getBus_id(org_name);
 		
+		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select id='bid' name='branch'  style='width:220px;'>";
+		returnText+="<option value='' selected>--Select Branch--</option>";
+		for(String bname:branch)
+		{
+			returnText+="<option value='"+bname+"'>"+bname+"</option>";
+			}			
+		  
+	   returnText=returnText+"</select>";		 
+	return returnText;
+	}
+	
+	//Get Vechicle No
+	
+	@RequestMapping(value="/vechicle_reg_ajax",method=RequestMethod.POST)
+	public @ResponseBody String vechicle_reg(@RequestParam("org_name") String org_name,ModelMap model ) {
+	
+		String returnText="";
+			List <String> branch=new ArrayList<String>();
+		branch=busDAO.getBus_id(org_name);
+		
 		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select id='bid' name='branch' onchange='doAjaxPost_vechicle()' style='width:220px;'>";
 		returnText+="<option value='' selected>--Select Branch--</option>";
 		for(String bname:branch)
@@ -93,6 +113,26 @@ public class AddUserController{
 	   returnText=returnText+"</select>";		 
 	return returnText;
 	}
+	
+	//Get Student Roll no
+	
+		@RequestMapping(value="/student_roll_no_ajax",method=RequestMethod.POST)
+		public @ResponseBody String student_roll(@RequestParam("org_name") String org_name,ModelMap model ) {
+		
+			String returnText="";
+				List <String> branch=new ArrayList<String>();
+			branch=busDAO.getBus_id(org_name);
+			
+			returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select id='bid' name='branch' onchange='doAjaxPost_student_roll_no()' style='width:220px;'>";
+			returnText+="<option value='' selected>--Select Branch--</option>";
+			for(String bname:branch)
+			{
+				returnText+="<option value='"+bname+"'>"+bname+"</option>";
+				}			
+			  
+		   returnText=returnText+"</select>";		 
+		return returnText;
+		}
 	
 	// Add User Information Admin Side
 	

@@ -1,23 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false" %>
-
-<script id="script_orgid">
-    $(document).ready(function() {
-        $("#orgid").select2();
-    });
-</script>
-
-<script id="script_bid">
-    $(document).ready(function() {
-        $("#bid").select2();
-    });
-</script>
-<script id="script_device">
-$(document).ready(function() { 
-	$("#device").select2(); 
-	});
-	</script> 
-	
 <jsp:include page="Trackingheader.jsp"></jsp:include>
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
 <script type="text/javascript" src="resources/js/jquery_ui.js"></script>
@@ -246,38 +228,13 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding:20px;">
 							  <tr style="border:solid 1px black;">
-							    <td align="left" valign="middle" width="10%">
-							    	     <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option value="">-- Select Organization--</option>
-        				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
-        				        <option value="${orgname}" >${orgname}</option>
-			                  </c:forEach>
-			                 </select>
-							    
-							    </td>
-							    <td align="left" valign="middle" width="10%">
-							    
-							    <div id="info"> 
-				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()" disabled="disabled">
-							   <option value="">-- Select branch--</option>
-							 </select>
-        				       </div> 
-							    </td>
-							    <td align="right" valign="middle" width="8%">Vehicle :&nbsp;&nbsp;
-							    <span id="info1">
-							   <select name="device_id" id="device"  onchange="doAction(this.value);" style='width:220px;'>
-							   <option value="KA04MH2391">KA04MH2391</option>
-<%-- 							   <option <c:if test="${id==busDeviceRegistrations.device_imei_number}"><c:out value="selected"/></c:if> value="${busDeviceRegistrations.device_imei_number}">${busDeviceRegistrations.bus_reg_id} </option>
- --%>							   
- 						</select></span>
-							    
-							    
-							    
-							    </td>
+							    <td align="left" valign="middle" width="10%"></td>
+							    <td align="left" valign="middle" width="10%"></td>
+							    <td align="right" valign="middle" width="8%"><c:if test="${device_id==''}">Vehicle :&nbsp;&nbsp;</c:if></td>
 							    <td align="left" valign="middle" width="10%">
 							    <input type="hidden" id="hidden_id" value="${device_id}"/>
 							    <input type="hidden" id="hidden_click_time" value="${click_time}"/>
-							   <%--  <c:if test="${device_id==''}">
+							    <c:if test="${device_id==''}">
 							   <select name="device_id" id="device"  onchange="doAction(this.value);" class="input_cmbbx">
 							   
 							   <c:forEach items="${busDeviceRegistrationForm.busDeviceRegistrations}" var="busDeviceRegistrations">
@@ -285,7 +242,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							   
 							   </c:forEach>
 							    </select>
-							    </c:if> --%>
+							    </c:if>
 							    </td>
 							    <!-- <td align="right" valign="middle" width="8%">Date :&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" id="datepicker" name="date" class="input_txtbx1"></td>
@@ -305,52 +262,8 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 <script type="text/javascript"><!--
     function doAction(val){
         //Forward browser to new url
-        window.location="adminviewmap_with_id?id="+val;
+        window.location="viewmap_with_id?id="+val;
     }
 </script>
-<script type="text/javascript">
-function doAjaxPost() {  
-	/* alert("hi"); */
-	var orgname = $('#orgid').val();
-	/* alert(orgname); */
-	 $.ajax({  
-		    type: "POST",  
-		    url: "/BusTrackingApp/vechicle_reg_ajax",  
-		    data: "org_name=" + orgname,
-		    success: function(response){  
-		    	
-		    	
-/* document.getElementById("branch").value=response; */
-$('#info').html(response);
 
-   },  
-		    error: function(e){  
-		      alert('Error: ' + e);  
-		    }  
-		  });  
-		}  
-		</script>
-		<script type="text/javascript">
-function doAjaxPost_vechicle() {  
-	/* alert("hi"); */
-	var orgname = $('#orgid').val();
-	var branch=$('#bid').val();
-	/* alert(orgname); */
-	 $.ajax({  
-		    type: "POST",  
-		    url: "/BusTrackingApp/vechicle_reg_no",  
-		    data: "org_name=" + orgname+"&branch="+branch ,
-		    success: function(response){  
-		    	
-		    	
-/* document.getElementById("branch").value=response; */
-$('#info1').html(response);
-
-   },  
-		    error: function(e){  
-		      alert('Error: ' + e);  
-		    }  
-		  });  
-		}  
-		</script>
 <jsp:include page="footer.jsp"></jsp:include>

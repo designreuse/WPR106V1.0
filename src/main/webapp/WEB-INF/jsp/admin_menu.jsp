@@ -237,11 +237,11 @@
 </div>
 </c:if>
  <c:if test="${menu=='ROLE_ADMIN'}">
-<a class="menuitem submenuheader" href="#" >Live Devices</a>
+<a class="menuitem submenuheader" href="#" >Tracking</a>
 <div class="submenu">
 		<ul>
 	<!-- <li><a href="clientdeviceview">Device view</a></li> -->
-	<li><a href="#">Device view</a></li>
+	<li><a href="client_view_map_history">Tracking History</a></li>
 	</ul>
 </div>
 </c:if><!-- <span style="line-height:0px;"> <br/><font color="#fff">.</font></span> -->

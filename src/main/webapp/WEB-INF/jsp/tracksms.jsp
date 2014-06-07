@@ -40,7 +40,7 @@
 			        <div class="headings altheading">
 			          <h2>TRACK SMS
 			        <br/></h2>	<div class="searchdiv">
-                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
+                        <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
                         </a></div>			        </div>
                         
