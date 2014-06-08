@@ -297,11 +297,12 @@ public class MessageSending{
 						.getString("sms_options"), resultSet
 						.getString("alert_time_interval"), resultSet
 						.getString("saturday"), resultSet
-						.getString("sms_sending")));
+						.getString("sms_sending"),
+						resultSet.getString("average_speed")));
 			}
 
 		} catch (Exception e) {
-			logger.info(e.toString());
+			logger.info("yes error here"+e.toString());
 			releaseStatement(statement);
 			releaseConnection(con);
 		} finally {
@@ -447,7 +448,7 @@ public class MessageSending{
 
 		try {
 
-			String cmd_student_number = "select * from tbl_student where pickup_route='"+ route.getRoute_no() + "'";
+			String cmd_student_number = "select * from tbl_student where pickup_route_no='"+ route.getRoute_no() + "'";
 			resultSet = statement.executeQuery(cmd_student_number);
 			while (resultSet.next()) {
 				logger.info("Message Sending....");
@@ -499,17 +500,18 @@ public class MessageSending{
 					//Get Business rule information from tbl_business_rule table
 					logger.info("Collect business Rule info....");
 					businessRules=getBusinessRule(trackinginfo.getOrg_id());
+					System.out.println("Collected Businees rules");
 					//Check business rules
 					switch(checkBusinessRules(businessRules.get(0)))
 					{
 					case 1: logger.info("Do Calculation for Pickup");
-							doCalculation(trackinginfo,0);
+							doCalculation(trackinginfo,0,businessRules.get(0));
 							break;
 					case 2: logger.info("Do Calculation for Drop");
-							doCalculation(trackinginfo,1);
+							doCalculation(trackinginfo,1,businessRules.get(0));
 							break;
 					case 3: logger.info("Do Calculation for KG");
-							doCalculation(trackinginfo,2);
+							doCalculation(trackinginfo,2,businessRules.get(0));
 							break;
 					default:logger.info("Failed to satisfy business rules");
 							break;								
@@ -579,7 +581,7 @@ public class MessageSending{
 		LocalTime kg_end_time=LocalTime.parse(businessRule.getKg_end_time());
 		
 		//Check Message Sending Enable
-		if(businessRule.getSms_sending().equals("no"))
+		if(businessRule.getSms_sending().equals("off"))
 		{
 			logger.info("Message Setting fail!!");
 			status=0;
@@ -638,7 +640,7 @@ public class MessageSending{
 	 * @trip pickup/drop/KGdrop
 	 */
 	@SuppressWarnings("static-access")
-	public void doCalculation(Trackinginfo trackinginfo,int trip)
+	public void doCalculation(Trackinginfo trackinginfo,int trip,OrgBusinessRule businessRule)
 	{
 		List<Route> stopInfoListForCalculation=new ArrayList<Route>();
 		
@@ -649,6 +651,17 @@ public class MessageSending{
 		double timetaken=0.0;
 		Double doub = new Double("99999.0");
 		double last_distance;
+		double average_speed;
+		double alert_minute;
+		
+		System.out.println("Average speed/Alert time");
+		average_speed=doub.parseDouble(businessRule.getAverage_speed());
+		alert_minute=doub.parseDouble(businessRule.getAlert_time_interval());
+		
+		System.out.println(average_speed);
+		System.out.println(alert_minute);
+		
+		
 		//Collect a list of not reached stops
 		logger.info("Collect route information...");
 		stopInfoListForCalculation=getCurrentStopInfo(trackinginfo.getVechicle_reg_no(), trip);
@@ -702,9 +715,9 @@ public class MessageSending{
 					/*----------Check here start here --------------------*/////////////
 					logger.info("Last distance is greater than current distance");
 					logger.info("Bus towards stop!!!"+route.getStop_id());
-					timetaken=current_distance/20;
+					timetaken=current_distance/average_speed;
 					logger.info("Time taken to reach:"+timetaken*60+" minutes");
-					if(timetaken*60<1.5)//Checking whether the time taken to reach stop is 10 mints
+					if(timetaken*60<alert_minute)//Checking whether the time taken to reach stop is 10 mints
 					{
 						messageSendRouteList.add(route);
 					}					

@@ -93,6 +93,13 @@
           							
         					</tr>
         					</c:forEach>
+        					<tr>
+        					<td valign="top" align="right" style="padding:20px;" colspan="6">
+        					<form action="export_clientsmstrack" method="post">
+        					<input type="submit" class="btn" value="Export to excel"/>
+        				</form>
+        					</td></tr>
+        					
         					  </table>
         					
         					

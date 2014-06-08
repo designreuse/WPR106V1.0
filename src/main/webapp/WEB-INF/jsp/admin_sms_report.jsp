@@ -56,22 +56,21 @@ jQuery(function () {
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
-<table cellpadding="0" cellspacing="0" border="0" width="100%" class="margin_table" > 
-      		
-			
-      		<tr>
+<table class="margin_table" > 
+     		<tr>
         		<td valign="top" align="left">
         		<div class="headings altheading">
-			          <h2>Track SMS</h2><div class="searchdiv">
+			          <h2>Track SMS</h2>
+			          <div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
                         </a></div>
 			        </div>
-                
+               
 <div style="display:none" id="div"><div class="searchpanel">
 <form action="adminsmsreport" method="GET">
 							 
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 							
         				    <tr style="height:20px;">
 							  <td valign="middle" align="left" class="input_txtlabel" width="15%">
@@ -154,6 +153,14 @@ jQuery(function () {
           							
         					</tr>
         					</c:forEach>
+        					<tr>
+        					<td valign="top" align="right" style="padding:20px;" colspan="6">
+        					<form action="export_adminsmstrack" method="post">
+        					<input type="submit" class="btn" value="Export to excel"/>
+        				</form>
+        					</td></tr>
+        					
+        					
         					  </table>
         					
         					

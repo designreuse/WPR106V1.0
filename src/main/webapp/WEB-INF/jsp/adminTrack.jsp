@@ -266,7 +266,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							    <td align="right" valign="middle" width="8%">Vehicle :&nbsp;&nbsp;
 							    <span id="info1">
 							   <select name="device_id" id="device"  onchange="doAction(this.value);" style='width:220px;'>
-							   <option value="KA04MH2391">KA04MH2391</option>
+							   <option value="--Select device--">Select device</option>
 <%-- 							   <option <c:if test="${id==busDeviceRegistrations.device_imei_number}"><c:out value="selected"/></c:if> value="${busDeviceRegistrations.device_imei_number}">${busDeviceRegistrations.bus_reg_id} </option>
  --%>							   
  						</select></span>

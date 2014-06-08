@@ -232,6 +232,14 @@ jQuery(function () {
 												
 												</td>
 												</tr>
+												<tr class="row1">
+												<td valign="middle" align="right" class="input_txt"><span
+													class="err">*</span>Average Speed  :</td>
+												<td valign="top" align="left" class="input_txt"><input
+													type="text" class="input_txtbx_br" id="inp_id"
+													name="average_speed"  value="${orgbrulesadmin.average_speed}" />
+												</td>
+											</tr>
 											<tr class="row1">
 												<td valign="top" align="right"></td>
 											

@@ -18,7 +18,14 @@ public class OrgBusinessRule{
 	private String google_map_traffic;
 	private String saturday;
 	private String alert_time_interval;
+	private String average_speed;
 	
+	public String getAverage_speed() {
+		return average_speed;
+	}
+	public void setAverage_speed(String average_speed) {
+		this.average_speed = average_speed;
+	}
 	public String getSaturday() {
 		return saturday;
 	}
@@ -117,7 +124,7 @@ public class OrgBusinessRule{
 	
 	public OrgBusinessRule(String org_id,String google_map_traffic,String pickup_start_time, String pickup_end_time,
 			String drop_start_time, String drop_end_time,String kg_start_time,String kg_end_time ,String speed_limit,
-			String sms_options,String alert_time_interval,String saturday,String sms_sending) {
+			String sms_options,String alert_time_interval,String saturday,String sms_sending,String average_speed) {
 		super();
 		this.org_id = org_id;
 		this.google_map_traffic=google_map_traffic;
@@ -132,11 +139,12 @@ public class OrgBusinessRule{
 		this.kg_end_time=kg_end_time;
 		this.saturday=saturday;
 		this.alert_time_interval=alert_time_interval;
+		this.average_speed=average_speed;
 	}
 	
 	public OrgBusinessRule(String org_name,String branch,String google_map_traffic,String pickup_start_time,
 			String pickup_end_time,	String drop_start_time, String drop_end_time,String kg_start_time,String kg_end_time ,
-			String speed_limit,	String sms_options,String alert_time_interval,String saturday,String sms_sending) {
+			String speed_limit,	String sms_options,String alert_time_interval,String saturday,String sms_sending,String average_speed) {
 		super();
 		
 		this.org_name=org_name;
@@ -153,10 +161,11 @@ public class OrgBusinessRule{
 		this.kg_end_time=kg_end_time;
 		this.saturday=saturday;
 		this.alert_time_interval=alert_time_interval;
+		this.average_speed=average_speed;
 	}
 	public OrgBusinessRule(String org_id,String org_name,String branch,String google_map_traffic,String pickup_start_time,
 			String pickup_end_time,	String drop_start_time, String drop_end_time,String kg_start_time,String kg_end_time ,
-			String speed_limit,	String sms_options,String alert_time_interval,String saturday,String sms_sending) {
+			String speed_limit,	String sms_options,String alert_time_interval,String saturday,String sms_sending,String average_speed) {
 		super();
 		this.org_id=org_id;
 		this.org_name=org_name;
@@ -173,6 +182,7 @@ public class OrgBusinessRule{
 		this.kg_end_time=kg_end_time;
 		this.saturday=saturday;
 		this.alert_time_interval=alert_time_interval;
+		this.average_speed=average_speed;
 	}
 	
 	public OrgBusinessRule() {

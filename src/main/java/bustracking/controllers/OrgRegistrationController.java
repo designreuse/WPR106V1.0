@@ -102,6 +102,7 @@ public String orgregistration(HttpServletRequest request,HttpSession session,@Mo
 		   businessRule.setSaturday("off");
 		   businessRule.setAlert_time_interval("10");
 		  businessRule.setSms_sending("off");
+		  businessRule.setAverage_speed("20");
 	// Insert Default Setting of Organization
 	orgBusinessRuleDAO.insert_organisation(businessRule);
 	

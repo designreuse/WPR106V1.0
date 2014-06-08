@@ -775,17 +775,13 @@ public class MainController {
 		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
 		
 		
-		LatLongForm latLongForm=new LatLongForm();
-		//latLongForm.setLatLongs(trackingInfoDAO.getTrackingInfo("359710042476300"),'');
+	
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	    TimeZone.setDefault(TimeZone.getTimeZone("IST"));
 	    Date date=new Date();
 	    
 	    model.addAttribute("click_time",sdf.format(date));
-		model.addAttribute("latLongForm",latLongForm);
-		model.addAttribute("device_id","");
-		model.addAttribute("id",device);
-		
+		model.addAttribute("device_id",device);
 		return "adminTrack";
  
 	}

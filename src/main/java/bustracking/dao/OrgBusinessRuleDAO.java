@@ -39,7 +39,7 @@ public class OrgBusinessRuleDAO {
 		
 		try{
 			
-			PreparedStatement preparedStatement=con.prepareStatement("insert into tbl_business_rule(org_id,google_map_traffic,pickup_start_time,pickup_end_time,drop_start_time,drop_end_time,kg_start_time,kg_end_time,speed_limit,sms_options,alert_time_interval,saturday,sms_sending) values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement preparedStatement=con.prepareStatement("insert into tbl_business_rule(org_id,google_map_traffic,pickup_start_time,pickup_end_time,drop_start_time,drop_end_time,kg_start_time,kg_end_time,speed_limit,sms_options,alert_time_interval,saturday,sms_sending,average_speed) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1,orgBusinessRule.getOrg_id());
 			preparedStatement.setString(2,orgBusinessRule.getGoogle_map_traffic());
 			preparedStatement.setString(3,orgBusinessRule.getPickup_start_time());
@@ -53,6 +53,7 @@ public class OrgBusinessRuleDAO {
 			preparedStatement.setString(11,orgBusinessRule.getAlert_time_interval());
 			preparedStatement.setString(12,orgBusinessRule.getSaturday());
 			preparedStatement.setString(13,orgBusinessRule.getSms_sending());
+			preparedStatement.setString(14,orgBusinessRule.getAverage_speed());
 			preparedStatement.execute();
 			
 			/*PreparedStatement preparedStatement2=con.prepareStatement("Insert into tbl_business_rule(org_id,google_map_traffic,pickup_start_time,pickup_end_time,drop_start_time,drop_end_time,kg_start_time,kg_end_time,speed_limit,sms_options,alert_time_interval,saturday,sms_sending)values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -113,7 +114,7 @@ public class OrgBusinessRuleDAO {
 		{	
 				try{
 					System.out.println("this is another hai");
-					String cmd="Select t1.org_name,t1.branch,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id;";
+					String cmd="Select t1.org_name,t1.branch,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending,t2.average_speed from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id;";
 					resultSet=statement.executeQuery(cmd);
 					while(resultSet.next())
 					{
@@ -121,7 +122,7 @@ public class OrgBusinessRuleDAO {
 								resultSet.getString("pickup_start_time"),resultSet.getString("pickup_end_time"),resultSet.getString("drop_start_time"),resultSet.getString("drop_end_time"),
 								resultSet.getString("kg_start_time"),resultSet.getString("kg_end_time"),resultSet.getString("speed_limit"),
 								resultSet.getString("sms_options"),resultSet.getString("alert_time_interval"), resultSet.getString("saturday"),
-								resultSet.getString("sms_sending")));
+								resultSet.getString("sms_sending"),resultSet.getString("average_speed")));
 					
 					}
 				}
@@ -155,7 +156,7 @@ public class OrgBusinessRuleDAO {
 		}
 		List<OrgBusinessRule> orgBusinessRules = new ArrayList<OrgBusinessRule>();
 	    try{
-	    	String cmd="Select t1.org_name,t1.branch,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"';";
+	    	String cmd="Select t1.org_name,t1.branch,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending,t2.average_speed from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"';";
 			
 	    	resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);			
@@ -165,7 +166,7 @@ public class OrgBusinessRuleDAO {
 						resultSet.getString("pickup_start_time"),resultSet.getString("pickup_end_time"),resultSet.getString("drop_start_time"),resultSet.getString("drop_end_time"),
 						resultSet.getString("kg_start_time"),resultSet.getString("kg_end_time"),resultSet.getString("speed_limit"),
 						resultSet.getString("sms_options"),resultSet.getString("alert_time_interval"), resultSet.getString("saturday"),
-						resultSet.getString("sms_sending")));
+						resultSet.getString("sms_sending"),resultSet.getString("average_speed")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -197,7 +198,7 @@ public class OrgBusinessRuleDAO {
 		}
 		List<OrgBusinessRule> businessRules=new ArrayList<OrgBusinessRule>();
 		try{
-			String sql="Select t1.org_name,t1.branch,t2.org_id,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_name='"+org_name+"' and branch='"+branch+"'";
+			String sql="Select t1.org_name,t1.branch,t2.org_id,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending,t2.average_speed from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where org_name='"+org_name+"' and branch='"+branch+"'";
 			resultSet=statement.executeQuery(sql);
 		System.out.println(sql);
 			
@@ -207,7 +208,7 @@ public class OrgBusinessRuleDAO {
 						resultSet.getString("pickup_start_time"),resultSet.getString("pickup_end_time"),resultSet.getString("drop_start_time"),resultSet.getString("drop_end_time"),
 						resultSet.getString("kg_start_time"),resultSet.getString("kg_end_time"),resultSet.getString("speed_limit"),
 						resultSet.getString("sms_options"),resultSet.getString("alert_time_interval"), resultSet.getString("saturday"),
-						resultSet.getString("sms_sending")));
+						resultSet.getString("sms_sending"),resultSet.getString("average_speed")));
 			}
 			
 		}catch(Exception e){
@@ -243,7 +244,7 @@ public class OrgBusinessRuleDAO {
 					
 					try{
 						
-						String sql="UPDATE tbl_business_rule SET google_map_traffic='"+businessRule.getGoogle_map_traffic()+"',pickup_start_time='"+businessRule.getPickup_start_time()+"',pickup_end_time='"+businessRule.getPickup_end_time()+"',drop_start_time='"+businessRule.getDrop_start_time()+"',drop_end_time='"+businessRule.getDrop_end_time()+"',kg_start_time='"+businessRule.getKg_start_time()+"',kg_end_time='"+businessRule.getKg_end_time()+"',speed_limit='"+businessRule.getSpeed_limit()+"',sms_options='"+businessRule.getSms_options()+"',alert_time_interval='"+businessRule.getAlert_time_interval()+"',saturday='"+businessRule.getSaturday()+"',sms_sending='"+businessRule.getSms_sending()+"' where org_id=(select org_id from tbl_organization where org_name='"+businessRule.getOrg_name()+"' and branch='"+businessRule.getBranch()+"')";
+						String sql="UPDATE tbl_business_rule SET google_map_traffic='"+businessRule.getGoogle_map_traffic()+"',pickup_start_time='"+businessRule.getPickup_start_time()+"',pickup_end_time='"+businessRule.getPickup_end_time()+"',drop_start_time='"+businessRule.getDrop_start_time()+"',drop_end_time='"+businessRule.getDrop_end_time()+"',kg_start_time='"+businessRule.getKg_start_time()+"',kg_end_time='"+businessRule.getKg_end_time()+"',speed_limit='"+businessRule.getSpeed_limit()+"',sms_options='"+businessRule.getSms_options()+"',alert_time_interval='"+businessRule.getAlert_time_interval()+"',saturday='"+businessRule.getSaturday()+"',sms_sending='"+businessRule.getSms_sending()+"',average_speed='"+businessRule.getAverage_speed()+"' where org_id=(select org_id from tbl_organization where org_name='"+businessRule.getOrg_name()+"' and branch='"+businessRule.getBranch()+"')";
 						statement.execute(sql);
 						
 						System.out.println(sql);
@@ -339,7 +340,7 @@ public class OrgBusinessRuleDAO {
 		{	
 				try{
 					
-					String cmd="Select t1.org_name,t1.branch,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where t2.org_id='"+org_id+"'";
+					String cmd="Select t1.org_name,t1.branch,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending,t2.average_speed from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where t2.org_id='"+org_id+"'";
 					resultSet=statement.executeQuery(cmd);
 					while(resultSet.next())
 					{
@@ -347,7 +348,7 @@ public class OrgBusinessRuleDAO {
 								resultSet.getString("pickup_start_time"),resultSet.getString("pickup_end_time"),resultSet.getString("drop_start_time"),resultSet.getString("drop_end_time"),
 								resultSet.getString("kg_start_time"),resultSet.getString("kg_end_time"),resultSet.getString("speed_limit"),
 								resultSet.getString("sms_options"),resultSet.getString("alert_time_interval"), resultSet.getString("saturday"),
-								resultSet.getString("sms_sending")));
+								resultSet.getString("sms_sending"),resultSet.getString("average_speed")));
 					
 					}
 				}
@@ -386,7 +387,7 @@ public class OrgBusinessRuleDAO {
 			}
 			List<OrgBusinessRule> businessRules=new ArrayList<OrgBusinessRule>();
 			try{
-				String sql="Select t1.org_name,t1.branch,t2.org_id,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where t2.org_id='"+org_id+"'";
+				String sql="Select t1.org_name,t1.branch,t2.org_id,t2.google_map_traffic,t2.pickup_start_time,t2.pickup_end_time,t2.drop_start_time,t2.drop_end_time,t2.kg_start_time,t2.kg_end_time,t2.speed_limit,t2.sms_options,t2.alert_time_interval,t2.saturday,t2.sms_sending,t2.average_speed from tbl_organization as t1 join tbl_business_rule as t2 ON t1.org_id=t2.org_id where t2.org_id='"+org_id+"'";
 				resultSet=statement.executeQuery(sql);
 			System.out.println(sql);
 				
@@ -396,7 +397,7 @@ public class OrgBusinessRuleDAO {
 							resultSet.getString("pickup_start_time"),resultSet.getString("pickup_end_time"),resultSet.getString("drop_start_time"),resultSet.getString("drop_end_time"),
 							resultSet.getString("kg_start_time"),resultSet.getString("kg_end_time"),resultSet.getString("speed_limit"),
 							resultSet.getString("sms_options"),resultSet.getString("alert_time_interval"), resultSet.getString("saturday"),
-							resultSet.getString("sms_sending")));
+							resultSet.getString("sms_sending"),resultSet.getString("average_speed")));
 				}
 				
 			}catch(Exception e){
@@ -431,7 +432,7 @@ public class OrgBusinessRuleDAO {
 				
 				try{
 					
-					String sql="UPDATE tbl_business_rule SET pickup_start_time='"+businessRule.getPickup_start_time()+"',pickup_end_time='"+businessRule.getPickup_end_time()+"',drop_start_time='"+businessRule.getDrop_start_time()+"',drop_end_time='"+businessRule.getDrop_end_time()+"',kg_start_time='"+businessRule.getKg_start_time()+"',kg_end_time='"+businessRule.getKg_end_time()+"',saturday='"+businessRule.getSaturday()+"' where org_id='"+org_id+"'";
+					String sql="UPDATE tbl_business_rule SET pickup_start_time='"+businessRule.getPickup_start_time()+"',pickup_end_time='"+businessRule.getPickup_end_time()+"',drop_start_time='"+businessRule.getDrop_start_time()+"',drop_end_time='"+businessRule.getDrop_end_time()+"',kg_start_time='"+businessRule.getKg_start_time()+"',kg_end_time='"+businessRule.getKg_end_time()+"',saturday='"+businessRule.getSaturday()+"',average_speed='"+businessRule.getAverage_speed()+"' where org_id='"+org_id+"'";
 					statement.execute(sql);
 					
 					System.out.println(sql);

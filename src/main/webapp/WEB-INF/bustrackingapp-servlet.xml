@@ -26,7 +26,12 @@
     <bean id="applicationProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     	<property name="location" value="classpath:application.properties"/>
 	</bean>
-	
+	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+     <property name="location">
+         <value>/WEB-INF/spring-excel-views.xml</value>
+     </property>
+     <property name="order" value="0" />
+  </bean>
     <bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">

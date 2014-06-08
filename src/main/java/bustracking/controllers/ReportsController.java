@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import bustracking.dao.BusRegistrationDAO;
 import bustracking.dao.MainDAO;
@@ -145,5 +146,58 @@ public class ReportsController{
 		
 			return "client_overspeeding_report";
 		}
+		
+		//Download admin sms tracking 
+		@RequestMapping(value="/export_adminsmstrack", method = RequestMethod.POST)
+		public ModelAndView adminsmstrack_export(HttpServletResponse response,HttpServletRequest request,ModelMap model, Principal principal ) {
+		
+			
+			
+			//Field going to be used in the document
+			String[] fields={"Organisation","Branch","Student Roll no","Mobile number","Date/Time","Status"};
+			
+			List<Report> reports=new ArrayList<Report>();
+			
+			//Must set this line to download
+			response.setHeader("Content-Disposition","attachment;filename=AdminSMSReport.xls");
+			
+			//Fill the report
+			reports=reportsDAO.getsmsreport_for_download();
+			
+			ModelAndView modelAndView=new ModelAndView("reportsDAO","reports",reports);
+			
+			modelAndView.addObject("fields",fields);
+			modelAndView.addObject("content","admin_sms_track");
+		
+			return modelAndView ;
+			
+			
+		}
+		@RequestMapping(value="/export_clientsmstrack", method = RequestMethod.POST)
+		public ModelAndView clientsmstrack_export(HttpServletResponse response,HttpServletRequest request,ModelMap model, Principal principal ) {
+		
+			
+			
+			//Field going to be used in the document
+			String[] fields={"Student Roll no","Mobile number","Date/Time","Status"};
+			
+			List<Report> reports=new ArrayList<Report>();
+			
+			//Must set this line to download
+			response.setHeader("Content-Disposition","attachment;filename=ClientSMSReport.xls");
+			
+			//Fill the report
+			reports=reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName()));
+			
+			ModelAndView modelAndView=new ModelAndView("reportsDAO","reports",reports);
+			
+			modelAndView.addObject("fields",fields);
+			modelAndView.addObject("content","client_sms_track");
+		
+			return modelAndView ;
+			
+			
+		}
+		
 	
 }

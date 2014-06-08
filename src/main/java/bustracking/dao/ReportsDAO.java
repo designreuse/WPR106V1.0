@@ -1,5 +1,6 @@
 package bustracking.dao;
 
+import java.awt.Font;
 import java.net.InetAddress;
 import java.security.Principal;
 import java.sql.Connection;
@@ -9,7 +10,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.springframework.web.servlet.view.document.AbstractExcelView;
 
 import bustracking.forms.SuperAdminHomeForm;
 import bustracking.model.DeviceRegistration;
@@ -28,7 +42,7 @@ import bustracking.forms.ReportForm;
 /*import bustracking.model.DeviceFail;*/
 
 
-public class ReportsDAO {
+public class ReportsDAO extends AbstractExcelView{
 	private DataSource dataSource;
 	 
 	public void setDataSource(DataSource dataSource) {
@@ -184,6 +198,114 @@ public class ReportsDAO {
 	    return student_roll_no;
 		
 	}
+	
+	
+	//For admin sms track excel export
+	/**
+	 * Excel Sheet Generation
+	 */
+	@Override
+	protected void buildExcelDocument(Map model, HSSFWorkbook workbook,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+		HSSFSheet excelSheet = workbook.createSheet("Report");
+		excelSheet.setDefaultColumnWidth(20);
+		  
+		//Style 1
+		CellStyle style = workbook.createCellStyle();
+	        HSSFFont font = workbook.createFont();
+	        font.setFontName("Arial");
+	        style.setFillForegroundColor(HSSFColor.BLUE_GREY.index);
+	        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+	        style.setWrapText(true);
+	        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+	        font.setColor(HSSFColor.WHITE.index);
+	        style.setFont(font);
+		
+	    //Style2
+	        CellStyle style2 = workbook.createCellStyle();
+	        HSSFFont font2 = workbook.createFont();
+	        font2.setFontName("Arial");
+	        style2.setFillForegroundColor(HSSFColor.YELLOW.index);
+	        style2.setFillPattern(CellStyle.SOLID_FOREGROUND);
+	        style2.setWrapText(true);
+	        font2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+	        font2.setColor(HSSFColor.WHITE.index);
+	        style2.setFont(font2); 
+		
+		@SuppressWarnings("unchecked")
+		List<Report> reports = (List<Report>) model.get("reports");
+		String[] fields=(String[])model.get("fields");
+		String content=(String) model.get("content");
+
+        setExcelHeader(excelSheet,style,fields);
+		
+        if(content.equals("admin_sms_track"))
+        	setExcelRows_admin_sms_track(excelSheet,reports,fields,style2);
+        else if(content.equals("client_sms_track"))
+           setExcelRows_client_sms_track(excelSheet, reports, fields, style2);
+		
+	}
+	
+	
+	public void setExcelHeader(HSSFSheet excelSheet,CellStyle style,String[] fields) {
+		HSSFRow excelHeader = excelSheet.createRow(0);	
+		int i=0;
+		for (String field : fields) {
+			
+				excelHeader.createCell(i).setCellValue(field);
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			
+		
+	
+	}
+	
+	
+	//End
+	
+	public void setExcelRows_admin_sms_track(HSSFSheet excelSheet, List<Report> reports,String[] fields,CellStyle style2){
+		int record = 1;
+		int i=0;
+		for (Report report:reports){	
+			i=0;
+			HSSFRow excelRow = excelSheet.createRow(record++);
+				//excelRow.setRowStyle((HSSFCellStyle) style2);
+				excelRow.createCell(i).setCellValue(report.getOrg_name());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getBranch());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getStudent_roll_no());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getMobile_number());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getSms_trigger_time());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getStatus());
+
+		}
+	}
+	
+	public void setExcelRows_client_sms_track(HSSFSheet excelSheet, List<Report> reports,String[] fields,CellStyle style2){
+		int record = 1;
+		int i=0;
+		for (Report report:reports){	
+			i=0;
+			HSSFRow excelRow = excelSheet.createRow(record++);
+				//excelRow.setRowStyle((HSSFCellStyle) style2);
+				excelRow.createCell(i).setCellValue(report.getStudent_roll_no());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getMobile_number());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getSms_trigger_time());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getStatus());
+
+		}
+	}
+	
 	
 	
 	public void releaseConnection(Connection con){
