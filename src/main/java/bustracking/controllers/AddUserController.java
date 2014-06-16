@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -39,7 +40,7 @@ import bustracking.forms.BusRegistrationForm;
 
 
 @Controller
-@SessionAttributes({"adminuser"})
+@SessionAttributes({"adminuser","org_name","branch","vehicle_reg_imei"})
 public class AddUserController{
 	
 	@Autowired
@@ -97,13 +98,15 @@ public class AddUserController{
 	//Get Vechicle No
 	
 	@RequestMapping(value="/vechicle_reg_ajax",method=RequestMethod.POST)
-	public @ResponseBody String vechicle_reg(@RequestParam("org_name") String org_name,ModelMap model ) {
+	public @ResponseBody String vechicle_reg(HttpSession session,@RequestParam("org_name") String org_name,ModelMap model ) {
 	
 		String returnText="";
 			List <String> branch=new ArrayList<String>();
 		branch=busDAO.getBus_id(org_name);
 		
-		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select id='bid' name='branch' onchange='doAjaxPost_vechicle()' style='width:220px;'>";
+		session.setAttribute("org_name",org_name);
+		
+		returnText=returnText+" <select id='bid' class='input_cmbbx' name='branch' onchange='doAjaxPost_vechicle()' style='width:220px;'>";
 		returnText+="<option value='' selected>--Select Branch--</option>";
 		for(String bname:branch)
 		{

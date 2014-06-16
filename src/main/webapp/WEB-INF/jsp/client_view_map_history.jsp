@@ -56,6 +56,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 					var speed=new Array();
 					var address=new Array();
 					var date=new Array();
+					var exceed_speed=new Array();
 					var length=0;
 					var i=0;
 					length='<c:out value="${fn:length(latLongForm.latLongs)}"></c:out>';
@@ -70,12 +71,21 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 					speed[i] = '<c:out value="${info.speed}"></c:out>';
 					address[i] = '<c:out value="${info.address}"></c:out>';
 					date[i] = '<c:out value="${info.date}"></c:out>';
+					exceed_speed[i]='<c:out value="${info.exceed_speed}"></c:out>';
 					i++;
 					
 					'</c:forEach>';
 
 					function initialize() {
 						/* geocoder = new google.maps.Geocoder();*/
+						var image_red = {
+								    url: 'resources/images/Map_Markers/map_icon_red.png',
+								    // This marker is 20 pixels wide by 32 pixels tall.
+								  
+								  
+								  };
+						
+						
 						if(length==0)
 							{
 							var mapOptions = {
@@ -116,7 +126,20 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 
 							var latlong = new google.maps.LatLng(lat_array[i],
 									long_array[i]);
-							
+							if(exceed_speed[i]==1)
+							{
+							var marker = new google.maps.Marker({
+								map : map,
+								draggable : false,
+								animation : google.maps.Animation.DROP,
+								position : latlong,
+								text:"Date   : "+date[i]+"<br/>Address: "+address[i]+"<br/>Speed  : "+speed[i]+" KPH (Running Over Speed)",
+								icon: image_red
+							});
+						
+							}
+						else
+							{
 							var marker = new google.maps.Marker({
 								map : map,
 								draggable : false,
@@ -124,7 +147,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 								position : latlong,
 								text:"Date   : "+date[i]+"<br/>Address: "+address[i]+"<br/>Speed  : "+speed[i]+" KPH"
 							});
-							
+							}
 							google.maps.event.addListener(marker, 'mouseover',
 									function() {
 										infowindow.setContent(this.text);
@@ -135,6 +158,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 										
 										infowindow.close();
 									});
+						
 						}
 					}
 

@@ -6,17 +6,30 @@ public class LatLong{
 	private String speed;
 	private String address;
 	private String date;
+	private String exceed_speed;
+	
+	
+	public String getExceed_speed() {
+		return exceed_speed;
+	}
+	public void setExceed_speed(String exceed_speed) {
+		this.exceed_speed = exceed_speed;
+	}
 	public String getSpeed() {
 		return speed;
 	}
+	
+	
+	
 	public LatLong(String latitude, String longitude, String speed,
-			String address, String date) {
+			String address, String date, String exceed_speed) {
 		super();
 		Latitude = latitude;
 		Longitude = longitude;
 		this.speed = speed;
 		this.address = address;
 		this.date = date;
+		this.exceed_speed = exceed_speed;
 	}
 	public void setSpeed(String speed) {
 		this.speed = speed;

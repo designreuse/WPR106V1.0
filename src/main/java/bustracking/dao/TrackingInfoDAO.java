@@ -70,7 +70,7 @@ public class TrackingInfoDAO {
 			
 	    	while(resultSet.next()){
 				//trackinginfo.add(new Trackinginfo(resultSet.getString("latitude"),resultSet.getString("langitude")));
-				latLongs.add(new LatLong(resultSet.getString("latitude"), resultSet.getString("longitude"),resultSet.getString("speed"),resultSet.getString("address"),resultSet.getString("bus_tracking_timestamp")));
+				latLongs.add(new LatLong(resultSet.getString("latitude"), resultSet.getString("longitude"),resultSet.getString("speed"),resultSet.getString("address"),resultSet.getString("bus_tracking_timestamp"),resultSet.getString("exceed_speed_limit")));
 				//latLongs.get(0).getLatitude();
 			}
 	    }catch(Exception e){
@@ -79,7 +79,6 @@ public class TrackingInfoDAO {
 	    	releaseStatement(statement);
 	    	releaseConnection(con);
 	    }finally{
-	    	releaseResultSet(resultSet);
 	    	releaseStatement(statement);
 	    	releaseConnection(con);	    	
 	    }
@@ -103,7 +102,7 @@ public class TrackingInfoDAO {
 	    		
 	    	while(resultSet.next()){
 				//trackinginfo.add(new Trackinginfo(resultSet.getString("latitude"),resultSet.getString("langitude")));
-				latLongs.add(new LatLong(resultSet.getString("latitude"), resultSet.getString("longitude"),resultSet.getString("speed"),resultSet.getString("address"),resultSet.getString("bus_tracking_timestamp")));
+				latLongs.add(new LatLong(resultSet.getString("latitude"), resultSet.getString("longitude"),resultSet.getString("speed"),resultSet.getString("address"),resultSet.getString("bus_tracking_timestamp"),resultSet.getString("exceed_speed_limit")));
 				//latLongs.get(0).getLatitude();
 			}
 	    }catch(Exception e){

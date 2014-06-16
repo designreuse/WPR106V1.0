@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page isELIgnored="false" %>
 
 <script id="script_orgid">
@@ -70,6 +71,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 					var speed=new Array();
 					var address=new Array();
 					var date=new Array();
+					var exceed_speed=new Array();
 					
 					
 					
@@ -100,6 +102,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							speed[i] =data.latLongs[i].speed;
 							address[i] =data.latLongs[i].address;
 							date[i] = data.latLongs[i].date;
+							exceed_speed=data.latLongs[i].exceed_speed;
 							}
 						if(lat_array.length==0)
 							alert("No Locations Found!!");
@@ -136,7 +139,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 								  
 								  };
 						 var image_red = {
-								    url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2%7CCC0000',
+								    url: 'resources/images/Map_Markers/map_icon_red.png'
 								    // This marker is 20 pixels wide by 32 pixels tall.
 								  
 								  
@@ -167,11 +170,31 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 										infowindow.setContent(this.text);
 										infowindow.open(map,this);
 									});
+							
 							google.maps.event.addListener(marker, 'mouseout', function() {
-
-								infowindow.close();
+							infowindow.close();
 
 							});
+							}
+							else if(exceed_speed[i]==1)
+							{
+								var marker = new google.maps.Marker({
+									map : map,
+									draggable : false,
+									position : latlong,
+									text:"Date   : "+date[i]+"<br/>Address: "+address[i]+"<br/>Speed  : "+speed[i]+" KPH (Running over speed)",
+									icon:image_red
+									
+								});
+								google.maps.event.addListener(marker, 'mouseover',
+										function() {
+											infowindow.setContent(this.text);
+											infowindow.open(map,this);
+										});
+								google.maps.event.addListener(marker, 'mouseout', function() {
+									infowindow.close();
+
+									});
 								}
 							else
 							{
@@ -187,6 +210,10 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 										infowindow.setContent(this.text);
 										infowindow.open(map,this);
 									});
+							google.maps.event.addListener(marker, 'mouseout', function() {
+								infowindow.close();
+
+								});
 							}
 							
 						}
@@ -247,29 +274,54 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding:20px;">
 							  <tr style="border:solid 1px black;">
 							    <td align="left" valign="middle" width="10%">
-							    	     <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
+							    	     Select Organization:&nbsp;&nbsp; <select class="input_cmbbx" name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
-        				        <option value="${orgname}" >${orgname}</option>
+        				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if>>${orgname}</option>
 			                  </c:forEach>
 			                 </select>
 							    
 							    </td>
 							    <td align="left" valign="middle" width="10%">
-							    
-							    <div id="info"> 
-				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()" disabled="disabled">
-							   <option value="">-- Select branch--</option>
-							 </select>
-        				       </div> 
+							    Select branch:&nbsp;&nbsp;
+							    <span id="info"> 
+							   <c:choose>
+							  	  <c:when test="${fn:length(branch_array) gt 0}">
+				                 	<select class="input_cmbbx" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost_vechicle()">
+				                 	<option value="null">--Select Branch--</option>
+							  		<c:forEach items="${branch_array}" var="orgReg" >
+							  		<option value="${orgReg}" <c:if test="${orgReg==branch}"><c:out value="Selected"/></c:if>>${orgReg}</option>
+							  		</c:forEach>
+								    </select>
+								 </c:when>
+								 <c:otherwise>
+									 <select class="input_cmbbx" style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()" disabled="disabled">
+							  		<option value="">-- Select branch--</option>
+								    </select>
+								 </c:otherwise>
+								</c:choose>	
+        				       </span> 
 							    </td>
-							    <td align="right" valign="middle" width="8%">Vehicle :&nbsp;&nbsp;
+							    <td align="right" valign="middle" width="8%">Select Vehicle:&nbsp;&nbsp; 
 							    <span id="info1">
-							   <select name="device_id" id="device"  onchange="doAction(this.value);" style='width:220px;'>
-							   <option value="--Select device--">Select device</option>
-<%-- 							   <option <c:if test="${id==busDeviceRegistrations.device_imei_number}"><c:out value="selected"/></c:if> value="${busDeviceRegistrations.device_imei_number}">${busDeviceRegistrations.bus_reg_id} </option>
- --%>							   
- 						</select></span>
+							<c:choose>
+							  <c:when test="${fn:length(vehicle_array.busDeviceRegistrations) gt 0}">
+							    <select class="input_cmbbx" name="device_id" id="device"  onchange="doAction(this.value);" style='width:220px;'>
+							     <option value="--Select device--">Select device</option>
+							     <c:forEach items="${vehicle_array.busDeviceRegistrations}" var="vehicle" >
+							  		<option value="${vehicle.device_imei_number}" <c:if test="${vehicle.device_imei_number==vec_imei}"><c:out value="Selected"/></c:if>>${vehicle.bus_reg_id}</option>
+							  		</c:forEach>
+							     
+							     
+							    </select>
+							  </c:when>	
+							  <c:otherwise>
+							  		<select class="input_cmbbx" name="device_id" id="device"  onchange="doAction(this.value);" disabled style='width:220px;'>
+							     <option value="">--Select Vechicle--</option>
+							    </select>
+							    </c:otherwise>
+							    </c:choose>	
+							</span>
 							    
 							    
 							    
@@ -292,6 +344,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							    <td align="center" valign="middle" width="30%"><input type="submit" class="submit_btn" value="Show" name="find"></td>
 							 <td align="center" valign="middle" width="30%"><input type="button" class="submit_btn" value="Cancel"></td> -->
 							  </tr>
+							  
 							</table>
 
 	<div id="right_content">
@@ -305,7 +358,10 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 <script type="text/javascript"><!--
     function doAction(val){
         //Forward browser to new url
-        window.location="adminviewmap_with_id?id="+val;
+        var org_name=document.getElementById("orgid").value;
+        var branch=document.getElementById("bid").value;
+       
+        window.location="adminviewmap_with_id?org_name="+org_name+"&branch="+branch+"&id="+val;
     }
 </script>
 <script type="text/javascript">

@@ -56,7 +56,7 @@ import bustracking.model.*;
 
 import bustracking.model.XMLWriter;
 @Controller
-@SessionAttributes({"sample","listsize","menu","role"})
+@SessionAttributes({"sample","listsize","menu","role","org_name","branch","vec_imei"})
 public class MainController {
 	@Autowired
 	RouteDAO routeDAO;
@@ -504,7 +504,10 @@ public class MainController {
 	public String view_map(HttpSession session,ModelMap model) {
 		
 	
-	
+		session.removeAttribute("org_name");
+		session.removeAttribute("branch");
+		session.removeAttribute("vec_imei");
+		
 		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
 		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
 		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);			
@@ -537,7 +540,7 @@ public class MainController {
 			List <BusDeviceRegistration> vechicle_reg_no=new ArrayList<BusDeviceRegistration>();
 		vechicle_reg_no=mainDAO.get_vechicle_no(org_name, branch);
 		
-		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#device').select2(); });</script><select id='device' name='device_id' onchange='doAction(this.value);' style='width:220px;'>";
+		returnText=returnText+"<select id='device' class='input_cmbbx' name='device_id' onchange='doAction(this.value);' style='width:220px;'>";
 		returnText+="<option value='' selected>--Select vechicle--</option>";
 		for(BusDeviceRegistration vechicle_no:vechicle_reg_no)
 		{
@@ -761,14 +764,26 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/adminviewmap_with_id", method = RequestMethod.GET)
-	public String adminview_map_reload(@RequestParam("id") String device,HttpSession session,ModelMap model) {
+	public String adminview_map_reload(@RequestParam("org_name") String org_name,@RequestParam("branch") String bid,@RequestParam("id") String device,HttpSession session,ModelMap model) {
 		
 	
 		System.out.println("came");
 		
 		List <String> orgname=new ArrayList<String>();
 		orgname=busDAO.getorgname();
+		
+		session.setAttribute("org_name",org_name);
+		session.setAttribute("branch",bid);
+		session.setAttribute("vec_imei",device);
+		
 		model.addAttribute("orgname",orgname);
+		model.addAttribute("branch_array",busDAO.getBus_id(org_name));
+		
+		BusDeviceRegistrationForm busDeviceRegistrationForm1=new BusDeviceRegistrationForm();
+		busDeviceRegistrationForm1.setBusDeviceRegistrations(mainDAO.get_vechicle_no(org_name, bid));
+		
+		model.addAttribute("vehicle_array",busDeviceRegistrationForm1);
+		
 		
 		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
 		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());

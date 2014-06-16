@@ -19,16 +19,23 @@ public class MessageSender {
         public static void sendMessage(String recipient,String Message) {
                 try {
                         
-                        String username = "apitbpdemo";
-                        String password = "del12345@12";
+                       //String username = "apitbpdemo";
+                       // String password = "del12345@12";
                        
+
+                       String username = "info@holycrossengineeringcollege.com";
+                       String password = "tSE4A7qY";
+                	
                         System.out.print(username);
                         System.out.println(password);
                         System.out.println(recipient);
                         System.out.println(Message);
-                        Message=Message.replace(" ", "%20");
-                        String requestUrl  = "http://203.212.70.200/smpp/sendsms?username="+username+"&password="+password+"&to="+recipient+"&from=track&text="+Message+"";
+                        Message=Message.replace(" ", "+");
+                       // String requestUrl  = "http://203.212.70.200/smpp/sendsms?username="+username+"&password="+password+"&to="+recipient+"&from=track&text="+Message+"";
 
+                        String requestUrl="http://api.cutesms.in/sms.aspx?a=submit&un="+username+"&pw="+password+"&to="+recipient+"&msg="+Message+"";
+                        
+                        
                         URL url = new URL(requestUrl);
                    
                         

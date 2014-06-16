@@ -52,6 +52,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 					var speed=new Array();
 					var address=new Array();
 					var date=new Array();
+					var exceed_speed=new Array();
 					
 					
 					
@@ -82,6 +83,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							speed[i] =data.latLongs[i].speed;
 							address[i] =data.latLongs[i].address;
 							date[i] = data.latLongs[i].date;
+							exceed_speed=data.latLongs[i].exceed_speed;
 							}
 						if(lat_array.length==0)
 							alert("No Locations Found!!");
@@ -118,7 +120,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 								  
 								  };
 						 var image_red = {
-								    url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2%7CCC0000',
+								    url: 'resources/images/Map_Markers/map_icon_red.png',
 								    // This marker is 20 pixels wide by 32 pixels tall.
 								  
 								  
@@ -144,6 +146,31 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 								icon:image_green
 								
 															});
+							
+							}
+							else if(exceed_speed[i]==1)
+							{
+								var marker = new google.maps.Marker({
+									map : map,
+									draggable : false,
+									position : latlong,
+									text:"Date   : "+date[i]+"<br/>Address: "+address[i]+"<br/>Speed  : "+speed[i]+" KPH (Running over speed)",
+									icon:image_red
+									
+								});
+								
+							}
+							else
+							{
+							var marker = new google.maps.Marker({
+								map : map,
+								draggable : false,
+								position : latlong,
+								text:"Date   : "+date[i]+"<br/>Address: "+address[i]+"<br/>Speed  : "+speed[i]+" KPH",
+								
+							});
+							
+							}
 							google.maps.event.addListener(marker, 'mouseover',
 									function() {
 										infowindow.setContent(this.text);
@@ -154,22 +181,6 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 								infowindow.close();
 
 							});
-								}
-							else
-							{
-							var marker = new google.maps.Marker({
-								map : map,
-								draggable : false,
-								position : latlong,
-								text:"Date   : "+date[i]+"<br/>Address: "+address[i]+"<br/>Speed  : "+speed[i]+" KPH",
-								
-							});
-							google.maps.event.addListener(marker, 'mouseover',
-									function() {
-										infowindow.setContent(this.text);
-										infowindow.open(map,this);
-									});
-							}
 							
 						}
 					}

@@ -696,7 +696,7 @@ public class MessageSending{
 				logger.info("Have Not reached stop...");
 				distance_to_not_reachedstop=distance(doub.parseDouble(trackinginfo.getLatitude()),doub.parseDouble(notReachedStopForCalculation.get(0).getLatitude()),doub.parseDouble(trackinginfo.getLongitude()),doub.parseDouble(notReachedStopForCalculation.get(0).getLongitude()));
 				
-				if(distance_to_not_reachedstop<0.05)
+				if(distance_to_not_reachedstop<=0.2)
 				{
 					System.out.println("Stop "+notReachedStopForCalculation.get(0).getStop_id()+" Reached Successfully");
 					Update_as_reached(notReachedStopForCalculation.get(0));

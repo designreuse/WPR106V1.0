@@ -74,6 +74,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 					var speed=new Array();
 					var address=new Array();
 					var date=new Array();
+					var exceed_speed=new Array();
 					var length=0;
 					var i=0;
 					length='<c:out value="${fn:length(latLongForm.latLongs)}"></c:out>';
@@ -88,12 +89,19 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 					speed[i] = '<c:out value="${info.speed}"></c:out>';
 					address[i] = '<c:out value="${info.address}"></c:out>';
 					date[i] = '<c:out value="${info.date}"></c:out>';
+					exceed_speed[i] = '<c:out value="${info.exceed_speed}"></c:out>';
 					i++;
 					
 					'</c:forEach>';
 
 					function initialize() {
 						/* geocoder = new google.maps.Geocoder();*/
+						var image_red = {
+								    url: 'resources/images/Map_Markers/map_icon_red.png',
+								    // This marker is 20 pixels wide by 32 pixels tall.
+								  
+								  
+								  };
 						if(length==0)
 							{
 							var mapOptions = {
@@ -135,14 +143,27 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							var latlong = new google.maps.LatLng(lat_array[i],
 									long_array[i]);
 							
+							if(exceed_speed[i]==1)
+							{
 							var marker = new google.maps.Marker({
 								map : map,
 								draggable : false,
 								animation : google.maps.Animation.DROP,
 								position : latlong,
-								text:"Date   : "+date[i]+"<br/>Address: "+address[i]+"<br/>Speed  : "+speed[i]+" KPH"
+								text:"Date   : "+date[i]+"<br/>Address: "+address[i]+"<br/>Speed  : "+speed[i]+" KPH(Overspeed)",
+								icon: image_red
 							});
-							
+							}
+							else
+							{
+								var marker = new google.maps.Marker({
+									map : map,
+									draggable : false,
+									animation : google.maps.Animation.DROP,
+									position : latlong,
+									text:"Date   : "+date[i]+"<br/>Address: "+address[i]+"<br/>Speed  : "+speed[i]+" KPH",
+								});
+							}
 							google.maps.event.addListener(marker, 'mouseover',
 									function() {
 										infowindow.setContent(this.text);
@@ -167,7 +188,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							  <tr style="border:solid 1px black;">
 							  <td align="right" valign="middle" width="20%">Organization:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
-							     <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
+							     <select class="input_cmbbx" name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
         				        <option value="${orgname}" >${orgname}</option>
@@ -176,14 +197,14 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 			                 <td align="right" valign="middle" width="10%">Branch:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
 							    <span id="info"> 
-				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()" disabled="disabled">
+				                 	<select class="input_cmbbx" style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()" disabled="disabled">
 							   <option value="">-- Select branch--</option>
 							 </select>
         				       </span> </td></tr><tr>
 							    <td align="right" valign="middle" width="20%">Vehicle Reg no:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
 							   <span id="info1">
-							   <select name="device_id" id="device"  style='width:220px;'>
+							   <select class="input_cmbbx" name="device_id" id="device"  style='width:220px;'>
 							   <option value="">-- Select Vechicle --</option>
 						   		</select></span>
 							    </td>
