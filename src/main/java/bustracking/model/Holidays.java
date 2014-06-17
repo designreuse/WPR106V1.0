@@ -1,13 +1,32 @@
 package bustracking.model;
 
 import java.lang.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 public class Holidays{
 	
+	@NotEmpty
 	private String org_id;
+	
+	@NotEmpty
 	private String org_name;
+	
+	@NotEmpty
 	private String branch;
+	
+	@NotEmpty
+	private String group1;
+	
+	
+	@NotEmpty
 	private String holiday_date;
+	
+	@NotEmpty
 	private String holiday_reason;
 	
 	
@@ -44,6 +63,13 @@ public class Holidays{
 		this.branch = branch;
 	}
 	
+	
+	public String getGroup1() {
+		return group1;
+	}
+	public void setGroup1(String group1) {
+		this.group1 = group1;
+	}
 	public Holidays(String org_id, String holiday_date, String holiday_reason) {
 		super();
 		this.org_id = org_id;

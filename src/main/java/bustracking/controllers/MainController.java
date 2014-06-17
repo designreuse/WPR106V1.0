@@ -58,7 +58,7 @@ import bustracking.model.*;
 
 import bustracking.model.XMLWriter;
 @Controller
-@SessionAttributes({"sample","listsize","menu","role","org_name","branch","vec_imei"})
+@SessionAttributes({"sample","listsize","menu","role","org_name","branch","vec_imei","holi"})
 public class MainController {
 	@Autowired
 	RouteDAO routeDAO;
@@ -372,7 +372,10 @@ public class MainController {
 
 
 	@RequestMapping(value="/clientholiday", method = RequestMethod.GET)
-	public String clientholiday(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String clientholiday(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal ) {
+	
+		session.removeAttribute("org_name");
+		session.removeAttribute("branch");
 		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
 		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
 		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
