@@ -1,5 +1,10 @@
 package bustracking.model;
 import java.util.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class OrgBusinessRule{
 	
@@ -9,15 +14,29 @@ public class OrgBusinessRule{
 	private String sms_sending;
 	private String sms_options;
 	private String speed_limit;
+	
+	@NotEmpty
 	private String pickup_start_time;
+	
+	@NotEmpty
 	private String pickup_end_time;
+	
+	@NotEmpty
 	private String drop_start_time;
+	
+	@NotEmpty
 	private String drop_end_time;
+	
+	@NotEmpty
 	private String kg_start_time;
+	
+	@NotEmpty
 	private String kg_end_time;
 	private String google_map_traffic;
 	private String saturday;
 	private String alert_time_interval;
+	
+	@NotEmpty
 	private String average_speed;
 	
 	public String getAverage_speed() {

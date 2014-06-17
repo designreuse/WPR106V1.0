@@ -91,9 +91,12 @@ jQuery(function () {
 												
 												<div class='input-group date' id='startDate' style="float:left;">
 												<input type="text" id="timepicker2"	name="pickup_start_time"  value="${orgbrulesadmin.pickup_start_time}"/>
+												
 												<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/clock.png" width="25" height="25"/>
 												</span>
+												<br/>          
+					               				<font color="Red" size="+1"><form:errors path="businessRule.pickup_start_time"></form:errors></font>
 												</div>
 												</td>
 											</tr>
@@ -103,9 +106,13 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt">
 													 <div class='input-group date' id='startDate1' style="float:left;">
     													<input id="timepicker1" type="text" class="input-small" name="pickup_end_time" value="${orgbrulesadmin.pickup_end_time}"/>
+    													
     													<span class="add-on">
         												<img src="resources/images/clock.png" width="25" height="25"/>
-      													</span></div>  <br />
+      													</span>
+      													<br/>          
+					               						<font color="Red" size="+1"><form:errors path="businessRule.pickup_end_time"></form:errors></font>
+      													</div>  <br />
 												</td>
 											</tr>
 											<tr class="row2">
@@ -114,9 +121,13 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt">
 													<div class='input-group date' id='endDate' style="float:left;">
 												<input type="text" class="input_txtbx_br"  id="timepicker3"	name="drop_start_time" value="${orgbrulesadmin.drop_start_time}"/>
+													
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
-      												</span></div>
+      												</span>
+      												<br/>          
+					               				<font color="Red" size="+1"><form:errors path="businessRule.drop_start_time"></form:errors></font>
+      												</div>
       												</br>
 												</td>
 											</tr>
@@ -129,9 +140,14 @@ jQuery(function () {
 												 <input
 													type="text" class="input_txtbx_br"  id="timepicker4"
 													name="drop_end_time" value="${orgbrulesadmin.drop_end_time}"/>	
+													
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
-      												</span></div> <br>
+      												</span>
+      												<br/>          
+					               				<font color="Red" size="+1"><form:errors path="businessRule.drop_end_time"></form:errors></font>
+													
+      												</div> <br>
 													</td>
 											</tr>
 											<tr class="row2">
@@ -140,9 +156,13 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt"> 
 													<div class='input-group date' id='endDate2' style="float:left;">
 												 <input	type="text" class="input_txtbx_br"  id="timepicker5" name="kg_start_time" value="${orgbrulesadmin.kg_start_time}" />
+													
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
-      												</span></div> 
+      												</span>
+      												<br/>          
+					               				<font color="Red" size="+1"><form:errors path="businessRule.kg_start_time"></form:errors></font>
+      												</div> 
 												<br />
 												</td>
 											</tr>
@@ -152,9 +172,13 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt">
 									           <div class='input-group date' id='endDate3' style="float:left;">
 												<input type="text" class="input_txtbx_br"  id="timepicker6"	name="kg_end_time" value="${orgbrulesadmin.kg_end_time}"/>	
+													
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
-      												</span></div> 
+      												</span>
+      												<br/>          
+					               				<font color="Red" size="+1"><form:errors path="businessRule.kg_end_time"></form:errors></font>
+      												</div> 
 									             <br />
 												</td>
 											</tr>
@@ -218,6 +242,8 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx_br" id="inp_id"
 													name="average_speed"  value="${orgbrulesadmin.average_speed}" />
+													<br/>          
+					               				<font color="Red" size="+1"><form:errors path="businessRule.average_speed"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row1">

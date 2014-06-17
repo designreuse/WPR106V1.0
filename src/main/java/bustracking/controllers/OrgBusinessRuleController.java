@@ -262,8 +262,15 @@ public class OrgBusinessRuleController{
 	//Update Businesss Rules in Client Side
 	
 		@RequestMapping(value="/updatechangesettings",method=RequestMethod.POST)
-		public String clienteditclass(HttpServletRequest request,@ModelAttribute("OrgBusinessRule") OrgBusinessRule businessRule,BindingResult result,ModelMap model,Principal principal)
+		public String clienteditclass(HttpServletRequest request,@ModelAttribute("businessRule") @Valid OrgBusinessRule businessRule,BindingResult result,ModelMap model,Principal principal)
 		{
+			if(result.hasErrors()){
+				
+				OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
+				orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.client_changebusinessrules(mainDAO.getOrg_id(principal.getName())));
+				model.addAttribute("orgBusinessRuleForm",orgBusinessRuleForm);
+				return "client_edit_businessrules";
+			}
 			int status=businessRuleDAO.client_updatebusinessrules(businessRule,mainDAO.getOrg_id(principal.getName()));
 			if(status==1)
 			{
