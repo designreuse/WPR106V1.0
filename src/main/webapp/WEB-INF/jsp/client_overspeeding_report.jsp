@@ -62,7 +62,7 @@ jQuery(function () {
     </c:if> 
     <tr>
     <td>
-						<div style="display:none" id="div"><div class="searchpanel">
+						<div style="display:none;height:700px;" id="div"><div class="searchpanel">
 <form action="findadminhome" method="GET">
  
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -99,7 +99,7 @@ jQuery(function () {
         				
         				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr >
-          						<td valign="top" align="right" width="100%"><div class="report_table">
+          						<td valign="top" align="right" width="100%"><div class="report_table" style="height:700px;">
 <ul id="tabs">
     <li><a href="#" name="tab1">Vehicle List</a></li>
     <li><a href="#" name="tab2">Report</a></li>
@@ -107,13 +107,16 @@ jQuery(function () {
     <!-- <li><a href="#" name="tab4">Four</a></li>   -->  
 </ul>
 
-<div id="content"> 
+<div id="content" style="height:800px;"> 
+
     <div id="tab1">...</div>
     <div id="tab2">
+   <form method="get" action="overspeedreportsearch">
     <table width="100%"cellpadding="0" cellspacing="0" border="0" class="">
+    
     <tr><td>
     <table width="80%"cellpadding="2" cellspacing="0" border="0" >
-    <tr><td> Organization Name<br/>
+    <tr><%-- <td> Organization Name<br/>
 							    <select  id="e4" style="width:250px;" name="">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${clientHomeForm.clienthome}" var="clienthome2" varStatus="status">
@@ -125,13 +128,13 @@ jQuery(function () {
 							    <c:forEach items="${clientHomeForm.clienthome}" var="clienthome2" varStatus="status">
 							    <option value="${clienthome2.vechicle_reg_no}">${clienthome2.vechicle_reg_no}</option>
 							    </c:forEach>
-							    </select></td>
+							    </select></td> --%>
     <td>Vehicle Number<br/><select id="e3" style="width:250px;" name="">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${clientHomeForm.clienthome}" var="clienthome2" varStatus="status">
 							    <option value="${clienthome2.vechicle_reg_no}">${clienthome2.vechicle_reg_no}</option>
 							    </c:forEach>
-							    </select></td><td></td></tr></table>
+							    </select></td><td></td></tr></table><br>
 							     <table width="80%"cellpadding="2" cellspacing="0" border="0" ><tr>
     <td>Date From<br/><div class='input-group date' id='endDate' >
 												<input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
@@ -156,66 +159,66 @@ jQuery(function () {
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
         										</span>
-					</div>	</td></tr>
+					</div>	</td>
+					<td align="right"><input type="button" class="btn" value="Search"></td>
+					</tr>
+					
     </table><br/></td>
     </tr>
-    <tr><td align="center">
+    <!-- <tr><td align="center">
     <table width="40%"cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
-    <tr><td><a href="" class="searchpressable showreport" >show</a></td>
-    <td><a href="" class="searchpressable downloadreoprt">Download</a></td>
+    <tr><td><input type="button" class="btn" value="Search"></td>
+    <td><input type="button" class="btn" value="Export to Excel"></td>
     <td><a href="javascript:void(processPrint());" class="searchpressable printreport" >Print</a></td>
     <td>
-    <a href="" class="searchpressable mailreport" >Email</a></td></tr>
+    <a href="" class="searchpressable mailreport" >Email</a></td>
+    </tr>
     
     </table>
-    </td></tr>
+    </td></tr> -->
+    </table>
+    </form>
+    <form method="get" action="overspeedreport">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" >
     <tr><td><br/>
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="">
-    <tr ><td align="left" width="30%">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr><td align="left" width="30%">
     <div class="report_table_innertop" id="printMe">
     <table width="100%" cellpadding="0" cellspacing="0" border="1" bordercolor="#ccc" >
-    <tr><td class="report_side_table">Vehicle Number</td><td class="report_side_table">Over Speed Count</td></tr></table>
+    <tr><td class="report_side_table" align="center" width="48%">Vehicle Number</td><td  align="center" class="report_side_table">Over Speed Count</td></tr></table>
     <div class="report_table_inner">
     <table width="100%" cellpadding="0" cellspacing="0" border="1" bordercolor="#ccc" >
-   
+   <c:forEach items="${clientHomeForm.clienthome}" var="client">
     <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123689</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
-    <tr><td align="center">Test no</td><td align="center">123689</td></tr>
+    </c:forEach>
     
     </table></div></div>
     </td>
-    <td align="right" width="70%"><br/>
+   <!--  <td align="right" width="70%"><br/>
     <table width="100%" cellpadding="0" cellspacing="0" border="0" class="report_table_inner_1">
     <tr><th class="report_side_table">Over Speeding Report</th></tr>
-    <tr><td style="width:100% ; height:300px;"> <img src="resources/images/Chart.jpg" style="width:100% ; height:300px;" /></td></tr>
+  <tr><td style="width:100% ; height:300px;"> <img src="resources/images/Chart.jpg" style="width:100% ; height:300px;" /></td></tr>    
+    </table> 
+    </td> -->
+    </tr>
+    <tr><td align="right"><br>
+    <table width="40%"cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
+    <tr>
+    <td align="right"><input type="button" class="btn" value="Export to Excel"></td>
+    <!-- <td><a href="javascript:void(processPrint());" class="searchpressable printreport" >Print</a></td>
+    <td>
+    <a href="" class="searchpressable mailreport" >Email</a></td> -->
+    </tr>
     
     </table>
     </td></tr>
     
     </table>
-    </td></tr>
-    
-    </table>
-    
+    </td></tr></table></form>
     </div>
     <div id="tab3">...</div>
     <!-- <div id="tab4">...</div> -->
+
 </div></div></td>
         					</tr> </table>
         				</td>
