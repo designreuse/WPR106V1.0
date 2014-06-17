@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
@@ -169,13 +170,13 @@ $(document).ready(function () {
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian Name/Parent Name 1:</td>
 					                <td valign="top" align="left" class="input_txt">
 					                <input type="text"  id="inp_id" name="parent_name1" value="${student.parent_name1}" />
-					                <br/><font color="Red" size="+1"></font></td>
+					                <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name1"></form:errors></font></td>
 					                
 					              </tr>
 				                <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Name 2:</td>
 					                <td valign="top" align="left" class="input_txt"><input type="text"  id="inp_id" name="parent_name2" value="${student.parent_name2}" />
-					                <br/><font color="Red" size="+1"></font></td>
+					                <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name2"></form:errors></font></td>
 					             </tr>
 					              			                
 					             <tr class="row2">
@@ -183,7 +184,7 @@ $(document).ready(function () {
 					               <td valign="top" align="left" class="input_txt">
 					              <input type="text" id="inp_id" name="parent_mobile1" value="${student.parent_mobile1}"/>
 					             <br/>          
-					               <font color="Red" size="+1"></font>
+					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_mobile1"></form:errors></font>
 					               </td>
 					            </tr>
 				                <tr class="row1">
@@ -191,7 +192,7 @@ $(document).ready(function () {
 					               <td valign="top" align="left" class="input_txt">
 					              <input type="text" id="inp_id" name="parent_mobile2" value="${student.parent_mobile2}"/>
 					             <br/>          
-					               <font color="Red" size="+1"></font>
+					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_mobile2"></form:errors></font>
 					               
 					               </td>
 					              
@@ -201,7 +202,7 @@ $(document).ready(function () {
 					               <td valign="top" align="left" class="input_txt">
 					              <input type="text" id="inp_id" name="parent_email1" value="${student.parent_email1}"/>
 					             <br/>          
-					               <font color="Red" size="+1"></font>
+					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_email1"></form:errors></font>
 					               
 					               </td>
 					              
@@ -211,7 +212,8 @@ $(document).ready(function () {
 					            	 <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Guardian/Parent Email 2</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" id="inp_id" name="parent_email2" value="${student.parent_email2}"/>
-				                  	
+				                  	 <br/>          
+					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_email2"></form:errors></font>
 				                  </td>
 					            </tr>
 					           

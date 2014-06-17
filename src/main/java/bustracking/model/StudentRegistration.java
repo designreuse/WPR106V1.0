@@ -24,26 +24,37 @@ public class StudentRegistration
 	
 	private String transport_facility;
 	
+	@NotEmpty
 	private String pickup_route_no;
 	
+	@NotEmpty
 	private String pickup_point_address;
 	
+	@NotEmpty
 	private String drop_route_no;
 	
+	@NotEmpty
 	private String drop_point_address;
+	
 	
 	private String kg_drop;
 	
+	@NotEmpty
 	private String parent_name1;
 	
+	@NotEmpty
 	private String parent_name2;
 	
+	@NotEmpty
 	private String parent_mobile1;
 	
+	@NotEmpty
 	private String parent_mobile2;
 	
+	@NotEmpty
 	private String parent_email1;
 	
+	@NotEmpty
 	private String parent_email2;
 	
 	private String class_standard;

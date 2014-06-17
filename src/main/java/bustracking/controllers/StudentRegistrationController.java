@@ -490,8 +490,10 @@ public class StudentRegistrationController {
 
 	// Edit Student Information In Client Side 
 	@RequestMapping(value="/client_edit_student", method=RequestMethod.GET)
-	public String clienteditStudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,@RequestParam("org_name")String org_name,@RequestParam("branch")String branch,ModelMap model,StudentRegistration studentRegistration,Principal principal)
+	public String clienteditStudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,@RequestParam("org_name")String org_name,@RequestParam("branch")String branch, 
+	ModelMap model,Principal principal)
 	{
+		
 		
 		
 		StudentRegistrationForm studentregistrationform = new StudentRegistrationForm();
@@ -503,14 +505,26 @@ public class StudentRegistrationController {
 		model.addAttribute("route_no",route_no);
 		
 		return "client_edit_student";
-	}
+	
+		
+		}
 	
 	//Client Side Update
 	
 	@RequestMapping(value="/client_update_student", method=RequestMethod.POST)
-	public String clientupdatestudent(HttpServletRequest request,@ModelAttribute("studentregistration") @Valid StudentRegistration studentRegistration,
+	public String clientupdatestudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,@ModelAttribute("studentRegistration") @Valid StudentRegistration studentRegistration,
 			BindingResult result,ModelMap model,Principal principal)
 	{
+		if(result.hasErrors())
+		{
+			
+			StudentRegistrationForm studentregistrationform = new StudentRegistrationForm();
+			studentregistrationform.setStudentregistration(studentDAO.getStudent_roll_no(student_roll_no,mainDAO.getOrg_id(principal.getName())));
+	 		model.addAttribute("studentregistrationform", studentregistrationform);
+			return "client_edit_student";
+			
+		}
+		else{
 	
 		int status =studentDAO.clientupdateStudent(studentRegistration,mainDAO.getOrg_id(principal.getName()));
 		System.out.println(status);
@@ -526,6 +540,7 @@ public class StudentRegistrationController {
 		
 		
 		return "client_view_student";
+	}
 	}
 	
 }
