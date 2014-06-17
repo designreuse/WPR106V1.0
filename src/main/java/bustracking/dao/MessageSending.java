@@ -880,6 +880,51 @@ public class MessageSending{
 		return particularRouteSkippingStops;
 		
 	}
+	
+	
+	/*
+	 * Function To Send SMS To Parents From Client Side
+	 * 
+	 */
+	
+
+	public void SMS_to_parent(String route_no,String Message) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+
+		try {
+
+			String cmd_student_number = "select * from tbl_student where pickup_route_no='"+ route_no + "'";
+			resultSet = statement.executeQuery(cmd_student_number);
+			while (resultSet.next()) {
+				logger.info("Message Sending....");
+				logger.info("MESSAGE SEND TO: "+ resultSet.getString("parent_mobile1"));
+				MessageSender.sendMessage(resultSet.getString("parent_mobile1"),Message);
+				Insert_into_sms_tracking(resultSet.getString("org_id"),resultSet.getString("student_roll_no"),resultSet.getString("parent_mobile1"));
+
+			}
+			resultSet.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseStatement(statement);
+			releaseConnection(con);
+
+		} finally {
+
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+	}
+	
+	
 	/*
 	 * Release DB Connection
 	 */

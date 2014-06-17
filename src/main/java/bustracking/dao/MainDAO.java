@@ -23,8 +23,10 @@ import bustracking.model.Route_view;
 import bustracking.model.Smsparent;
 import bustracking.model.SuperAdminHome;
 import bustracking.forms.SmsparentForm;
+import bustracking.dao.MessageSending;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /*import bustracking.model.DeviceFail;*/
@@ -33,6 +35,8 @@ import bustracking.forms.SmsparentForm;
 public class MainDAO {
 	private DataSource dataSource;
 	 
+	private static final Logger logger = LoggerFactory.getLogger(MessageSending.class);
+	
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
@@ -364,6 +368,7 @@ public class MainDAO {
 		    return busDeviceRegistrations;
 			
 		}
+		
 		
 		
 		

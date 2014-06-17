@@ -135,8 +135,8 @@ public class ReportsDAO extends AbstractExcelView{
 		List<Report> reportForms=new ArrayList<Report>();
 		try{
 			
-			resultSet = statement.executeQuery("select t1.org_name,t1.branch,t2.org_id,t2.student_roll_no,t2.sms_trigger_time_stamp,t2.status,t2.mobile_number from tbl_organization as t1 join tbl_sms_tracking as t2 on t1.org_id=t2.org_id where student_roll_no='"+student_roll_no+"' and(date(t2.sms_trigger_time_stamp) >='"+fromdate+"'  and  date(t2.sms_trigger_time_stamp)<='"+todate+"') and t2.org_id='"+org_id+"'");
-			
+			resultSet = statement.executeQuery("select t1.org_name,t1.branch,t2.org_id,t2.student_roll_no,t2.sms_trigger_time_stamp,t2.status,t2.mobile_number from tbl_organization as t1 join tbl_sms_tracking as t2 on t1.org_id=t2.org_id where student_roll_no='"+student_roll_no+"' or (date(t2.sms_trigger_time_stamp) >='"+fromdate+"'  and  date(t2.sms_trigger_time_stamp)<='"+todate+"') and t2.org_id='"+org_id+"'");
+			System.out.println("select t1.org_name,t1.branch,t2.org_id,t2.student_roll_no,t2.sms_trigger_time_stamp,t2.status,t2.mobile_number from tbl_organization as t1 join tbl_sms_tracking as t2 on t1.org_id=t2.org_id where student_roll_no='"+student_roll_no+"' or (date(t2.sms_trigger_time_stamp) >='"+fromdate+"'  and  date(t2.sms_trigger_time_stamp)<='"+todate+"') and t2.org_id='"+org_id+"'");
 			while(resultSet.next())
 					{
 					reportForms.add(new Report(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"), resultSet.getString("student_roll_no"),resultSet.getString("sms_trigger_time_stamp"), resultSet.getString("status"),resultSet.getString("mobile_number")));

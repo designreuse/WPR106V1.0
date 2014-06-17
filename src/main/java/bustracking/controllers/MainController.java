@@ -37,6 +37,8 @@ import bustracking.dao.OrgBusinessRuleDAO;
 import bustracking.dao.OrgRegistrationDAO;
 import bustracking.dao.RouteDAO;
 import bustracking.dao.TrackingInfoDAO;
+import bustracking.dao.MessageSending;
+
 import bustracking.forms.BusDeviceRegistrationForm;
 /*import bustracking.forms.DeviceFailForm;*/
 import bustracking.forms.BusRegistrationForm;
@@ -87,7 +89,8 @@ public class MainController {
 	@Autowired
 	BusRegistrationDAO busRegistrationDAO;
 	
-	
+	@Autowired
+	MessageSending messageSending;
 	
 	@Autowired
 	FleetHomepageDAO fleetHomepageDAO;
@@ -328,7 +331,7 @@ public class MainController {
 		route=mainDAO.get_route(trip,mainDAO.getOrg_id(principal.getName()));
 		String a=mainDAO.getOrg_id(principal.getName());
 		System.out.println("orgid"+a);
-		returnText=returnText+"<script id='script_bid'> $(document).ready(function() {$('#route').select2(); });</script><select style='width:220px;' name='route' id='route' >";
+		returnText=returnText+"<script id='script_bid'> $(document).ready(function() {$('#route').select2(); });</script><select style='width:220px;' name='route_no' id='route' >";
 		returnText+="<option value='none' selected>--Select Route--</option>";
 		for(String bname:route)
 		{
@@ -958,6 +961,20 @@ public class MainController {
 		 
 		 System.out.println("Open Connection");
 
+	}
+	
+	/*
+	 * SMS To Parent In client Side
+	 * 
+	 */
+	
+	@RequestMapping(value="/sms_to_parent", method=RequestMethod.POST)
+	public String sms_to_parent(@RequestParam("route_no") String route_no,@RequestParam("message") String Message,ModelMap model,Principal principal)
+	{
+		messageSending.SMS_to_parent(route_no, Message);
+		model.addAttribute("suceess","true");
+		
+		return "client_smstoparent";
 	}
 	
 	//Search Operation in Client Home

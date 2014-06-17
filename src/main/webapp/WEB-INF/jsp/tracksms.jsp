@@ -28,6 +28,13 @@
             //$("#report").jExpand();
         });
     </script> 
+    
+    <script id="script_orgid">
+    $(document).ready(function() {
+        $("#student_roll_no_id").select2();
+    });
+</script>
+    
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -50,11 +57,21 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  
         				    <tr>
+							  <td align="right" valign="middle" width="17%">Student Roll No:</td>
+							   <td align="left">
 							  
-							   <td align="left" valign="middle" width="8%">From Date:<br/>
-							    <input type="text" class="org_input_txtbx_height1"  id="fromdate" name="from_date"   value="${organisation.org_name}"/></td>
-							    <td align="left" valign="middle" width="10%">To Date:<br/>
-							    <input type="text" class="org_input_txtbx_height1"  id="todate" name="to_date"   value="${organisation.org_name}"/></td>
+							   <select id="student_roll_no_id" name="student_roll_no" style="width:220px;margin-top:-4px;">
+							   <option value="" selected> -- Select Student Roll No -- </option>
+							    <c:forEach items="${reportForm1.reports}" var="smsreport" varStatus="status">
+							   <option value="${smsreport.student_roll_no}">${smsreport.student_roll_no}</option>
+							    </c:forEach>
+							   </select>
+							  
+							   </td>
+							   <td align="right" valign="middle" width="13%">From Date:&nbsp;&nbsp;</td>
+							  <td align="right"><input type="text" class="org_input_txtbx_height1"  id="fromdate" name="fromdate"   value=""/></td>
+							    <td align="right" valign="middle" width="10%">To Date:&nbsp;&nbsp;</td>
+							   <td align="right"> <input type="text" class="org_input_txtbx_height1"  id="todate" name="todate"   value=""/></td>
 							   
 							    <td align="center" valign="middle"></td>
 							  <td align="center" valign="middle" width="30%">
@@ -86,7 +103,7 @@
         					<c:forEach items="${reportForm.reports}" var="smsreport" varStatus="status">
         				  
         					<tr class="row1">
-        					   	<td valign="top" align="left" width="10%">${smsreport.student_roll_no }</td>					
+        					   	<td valign="top" align="left" width="10%">${smsreport.student_roll_no}</td>					
 					         	<td valign="top" align="left" width="10%">${smsreport.mobile_number}</td>
           						<td valign="top" align="left" width="10%">${smsreport.sms_trigger_time }</td>
           						<td valign="top" align="left" width="10%">${smsreport.status }</td>

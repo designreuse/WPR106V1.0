@@ -27,7 +27,7 @@
 
 
 
-<form action="smsparent" method="POST">
+<form action="sms_to_parent" method="POST">
 <table class="margin_table">
 
       <tr>
@@ -45,9 +45,9 @@
     				<td align="left" valign="top" width="100%" >
     				
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    						<tr class="row2"><td valign="middle" align="right" class="input_txt" width="29%" ></td>
-				                  <td valign="middle" align="left" class="input_txt" width="10%"><span class="err">*</span> Trip </td><td width="1%">:</td>
-				                  	<td valign="top" align="left" class="input_txt" width="60%">
+    						<tr class="row2">
+				                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Trip </td><td width="1%">:</td>
+				                  	<td valign="top" align="left" class="input_txt" width="50%">
 				                  	<select  style="width:220px;" name="trip" id="trip" value="${class_section.class_std}" onchange="doAjaxPost1()">
 				                  	<option value="none" selected>--Select Trip--</option>
 				                  	<option value="0">Pick up</option>
@@ -72,22 +72,22 @@
 				                  </td>
 				                 
 				                </tr>  --%>
-						  <tr class="row2"><td valign="middle" align="right" class="input_txt" width="29%" ></td>
-						  <td valign="middle" align="left" class="input_txt" width="10%" ><span class="err">*</span> Route </td><td width="1%">:</td>
-				                  <td valign="top" align="left" class="input_txt" width="60%">
-				                 <div id="info1">	<select  style="width:220px;" name="route" id="route"  ">
+						  <tr class="row2">
+						  <td valign="middle" align="right" class="input_txt" width="30%" ><span class="err">*</span> Route </td><td width="1%">:</td>
+				                  <td valign="middle" align="left" class="input_txt" width="50%">
+				                 <span id="info1">	<select  style="width:220px;" name="route_no" id="route" disabled="disabled">
 							    <option value="none" selected>-- Select Route--</option>
         				        <!-- <option value="Routes here" >Routes here</option> -->
 			                  
-			                 </select></div> 
+			                 </select></span> 
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.org_id"></form:errors></font>
 				                  </td>
 				               
 				                </tr>
 				                
-				                <tr class="row1"><td valign="middle" align="right" class="input_txt" width="29%" ></td>
-					            	<td valign="middle" align="left" class="input_txt" width="10%"><span class="err">*</span> Message</td><td width="1%">:</td>
-				                  	<td valign="top" align="left" class="input_txt" width="60%">
+				                <tr class="row1">
+					            	<td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Message</td><td width="1%">:</td>
+				                  	<td valign="top" align="left" class="input_txt" width="50%">
 				                  	<textarea name="message" class="textareanew" ></textarea>
 				                  	
 				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
@@ -96,22 +96,13 @@
 				                     
 				               
 				                
-                <tr class="row1" ><td valign="middle" align="right" class="input_txt" width="29%" ></td>
-				              <td valign="top" align="left"></td><td width="1%"></td>
-                 
-                  <td valign="top" align="justify">
-                  <table cellpadding="0" cellspacing="0" border="0">
-                  <tr>
-                  <td><input type="submit" class="btn" value="Send Message"></td>
-                  
-                  <td> 
-                   <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
+                <tr class="row1" >
+				  
+                  <td colspan="3" valign="middle" align="center" class="input_txt" width="30%"><input type="submit" class="btn" value="Send Message">&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
-                  
                   </tr>
-                  </table></td>                
-				              
-				               </tr>
+                  
                  </table>
                  </td>
                  </tr>

@@ -69,13 +69,15 @@ public class ReportsController{
 			reportForm.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("reportForm",reportForm);
 			
-			
+			ReportForm reportForm1=new ReportForm();
+			reportForm1.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("reportForm1",reportForm1);
 			
 			return "tracksms";
 		}
 		
 		
-		@RequestMapping(value="/clientsmsreport", method = RequestMethod.GET)
+		@RequestMapping(value="/clientsmstrack", method = RequestMethod.GET)
 		public String clienttracksms(@RequestParam("fromdate") String fromdate,@RequestParam("todate") String todate,@RequestParam("student_roll_no") String student_roll_no,HttpServletRequest request,ModelMap model, Principal principal ) {
 			
 			
@@ -86,6 +88,10 @@ public class ReportsController{
 				reportForm.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
 				model.addAttribute("reportForm",reportForm);
 				
+				ReportForm reportForm1=new ReportForm();
+				reportForm1.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
+				model.addAttribute("reportForm1",reportForm1);
+				
 			}
 			else{
 				
@@ -93,8 +99,12 @@ public class ReportsController{
 			reportForm.setReports(reportsDAO.getclientsmsreport_search(mainDAO.getOrg_id(principal.getName()), student_roll_no, fromdate, todate));
 			model.addAttribute("reportForm",reportForm);
 			
+			ReportForm reportForm1=new ReportForm();
+			reportForm1.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("reportForm1",reportForm1);
+			
 			}
-			return "admin_sms_report";
+			return "tracksms";
 		}
 		
 		
