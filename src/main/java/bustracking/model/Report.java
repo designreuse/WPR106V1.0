@@ -112,6 +112,17 @@ public class Report{
 		this.mobile_number = mobile_number;
 	}
 
+	/*
+	 * Get Student roll no for Client Track SMS
+	 */
+	
+	
+	public Report(String student_roll_no, String mobile_number) {
+		super();
+		this.student_roll_no = student_roll_no;
+		this.mobile_number = mobile_number;
+	}
+
 
 
 	public Report() {

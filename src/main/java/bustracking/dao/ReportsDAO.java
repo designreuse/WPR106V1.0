@@ -84,6 +84,48 @@ public class ReportsDAO extends AbstractExcelView{
 		
 	}
 	
+	
+	/*
+	 * Get Student Roll No for Client Side SMS Track Search 
+	 * 
+	 */
+	
+	public List<Report> getStudent_roll_no_for_clienttrack_sms(String org_id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Report> reportForms=new ArrayList<Report>();
+		try{
+			
+			resultSet = statement.executeQuery("select student_roll_no,mobile_number from tbl_sms_tracking where org_id='"+org_id+"' group by student_roll_no");
+			
+			while(resultSet.next())
+					{
+					reportForms.add(new Report(resultSet.getString("student_roll_no"),resultSet.getString("mobile_number")));
+					}
+				
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return reportForms;
+		
+	}
+	
+	
 	// SMS Reports in Admin Side
 	
 	public List<Report> getsmsreport(String org_name,String branch,String student_roll_no,String fromdate,String todate){

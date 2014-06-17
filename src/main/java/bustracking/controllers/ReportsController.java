@@ -70,7 +70,7 @@ public class ReportsController{
 			model.addAttribute("reportForm",reportForm);
 			
 			ReportForm reportForm1=new ReportForm();
-			reportForm1.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
+			reportForm1.setReports(reportsDAO.getStudent_roll_no_for_clienttrack_sms(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("reportForm1",reportForm1);
 			
 			return "tracksms";
@@ -89,7 +89,7 @@ public class ReportsController{
 				model.addAttribute("reportForm",reportForm);
 				
 				ReportForm reportForm1=new ReportForm();
-				reportForm1.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
+				reportForm1.setReports(reportsDAO.getStudent_roll_no_for_clienttrack_sms(mainDAO.getOrg_id(principal.getName())));
 				model.addAttribute("reportForm1",reportForm1);
 				
 			}
@@ -100,7 +100,7 @@ public class ReportsController{
 			model.addAttribute("reportForm",reportForm);
 			
 			ReportForm reportForm1=new ReportForm();
-			reportForm1.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
+			reportForm1.setReports(reportsDAO.getStudent_roll_no_for_clienttrack_sms(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("reportForm1",reportForm1);
 			
 			}

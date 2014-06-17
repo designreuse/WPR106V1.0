@@ -49,7 +49,7 @@
 			        <br/></h2>	<div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a></div>			        </div>
+                        </a> &nbsp;&nbsp;<a  href='tracksms' class="btn" >Go Back</a></div></div>
                         
 <div style="display:none" id="div"><div class="searchpanel">
 <form action="clientsmstrack" method="GET">

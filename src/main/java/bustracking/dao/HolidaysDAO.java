@@ -98,7 +98,55 @@ ResultSet resultSet=null;
 		
 	}
 	
-	// Search Holidays
+	
+	/*
+	 * Search Holidays in Client Side
+	 */
+	public List<Holidays> getHolidays_client_search(String date,String org_id){
+		Connection con=null;
+		Statement statement=null;
+ResultSet resultSet=null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} 
+		catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Holidays> holidays=new ArrayList<Holidays>();
+		{	
+				try{
+					
+					String cmd="Select t1.*,t2.org_name,t2.branch from tbl_holidays as t1 join tbl_organization as t2 on t1.org_id=t2.org_id where t1.org_id='"+org_id+"' and t1.holiday_date='"+date+"'";
+					System.out.println(cmd);
+					resultSet=statement.executeQuery(cmd);
+					while(resultSet.next())
+					{
+						holidays.add(new Holidays(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("holiday_date"),resultSet.getString("holiday_reason")));
+					
+					}
+				}
+
+					catch(Exception e){
+				        System.out.println(e.toString());
+				        	releaseResultSet(resultSet);
+				        	releaseStatement(statement);
+				        	releaseConnection(con);
+				        }finally{
+				        	releaseResultSet(resultSet);
+				        	releaseStatement(statement);
+				        	releaseConnection(con);	    	
+				        }
+		}
+		return holidays;
+	
+		
+	}
+	
+	
+	
+	// Search Holidays In Admin Side
 	
 	public List<Holidays> findHolidays(String org_name,String branch,String holiday_date){
 		Connection con=null;
