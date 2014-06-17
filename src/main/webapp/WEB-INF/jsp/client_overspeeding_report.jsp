@@ -185,11 +185,11 @@ jQuery(function () {
     <tr><td align="left" width="30%">
     <div class="report_table_innertop" id="printMe">
     <table width="100%" cellpadding="0" cellspacing="0" border="1" bordercolor="#ccc" >
-    <tr><td class="report_side_table" align="center" width="48%">Vehicle Number</td><td  align="center" class="report_side_table">Over Speed Count</td></tr></table>
+    <tr><td class="report_side_table" align="center" width="48%">Vehicle Number</td><td  align="center" class="report_side_table" width="50%">Over Speed Count</td></tr></table>
     <div class="report_table_inner">
     <table width="100%" cellpadding="0" cellspacing="0" border="1" bordercolor="#ccc" >
-   <c:forEach items="${clientHomeForm.clienthome}" var="client">
-    <tr><td align="center">Test no</td><td align="center">123654</td></tr>
+   <c:forEach items="${reportForm.reports}" var="clientoverspeedreport">
+    <tr><td align="center" width="48%">${clientoverspeedreport.vechicle_reg_no}</td><td align="center" width="50%">${clientoverspeedreport.over_speed_count}</td></tr>
     </c:forEach>
     
     </table></div></div>

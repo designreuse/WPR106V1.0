@@ -190,7 +190,11 @@ public class ReportsController{
 		@RequestMapping(value="/clientoverspeedingreport", method = RequestMethod.GET)
 		public String clientoverspeedingreport(HttpServletRequest request,ModelMap model, Principal principal ) {
 		
-		
+			
+			ReportForm reportForm=new ReportForm();
+			reportForm.setReports(reportsDAO.getoverspeedreport(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("reportForm",reportForm);
+			
 			return "client_overspeeding_report";
 		}
 		

@@ -128,7 +128,7 @@ public class ReportsDAO extends AbstractExcelView{
 	
 	// SMS Reports in Admin Side
 	
-	public List<Report> getsmsreport(String org_name,String branch,String student_roll_no,String fromdate,String todate){
+	public List<Report> getoverspeedreport(String org_id){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -141,11 +141,11 @@ public class ReportsDAO extends AbstractExcelView{
 		List<Report> reportForms=new ArrayList<Report>();
 		try{
 			
-			resultSet = statement.executeQuery("select t1.org_name,t1.branch,t2.org_id,t2.student_roll_no,t2.sms_trigger_time_stamp,t2.status,t2.mobile_number from tbl_organization as t1 join tbl_sms_tracking as t2 on t1.org_id=t2.org_id where t1.org_id=(select  org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') and student_roll_no='"+student_roll_no+"' and(date(t2.sms_trigger_time_stamp) >='"+fromdate+"'  and  date(t2.sms_trigger_time_stamp)<='"+todate+"')");
+			resultSet = statement.executeQuery("Select org_id,vechicle_reg_no,count(exceed_speed_limit) as over_speed_count from tbl_vechicle_tracking_history where org_id='"+org_id+"' and exceed_speed_limit='1'");
 			
 			while(resultSet.next())
 					{
-					reportForms.add(new Report(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"), resultSet.getString("student_roll_no"),resultSet.getString("sms_trigger_time_stamp"), resultSet.getString("status"),resultSet.getString("mobile_number")));
+					reportForms.add(new Report(resultSet.getString("org_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("over_speed_count")));
 					}
 				
 			
@@ -384,6 +384,45 @@ public class ReportsDAO extends AbstractExcelView{
 		}
 	}
 	
+	/*
+	 * Over Speed Report At Client Side
+	 * 
+	 */
+	
+	public List<Report> getsmsreport(String org_name,String branch,String student_roll_no,String fromdate,String todate){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Report> reportForms=new ArrayList<Report>();
+		try{
+			
+			resultSet = statement.executeQuery("select t1.org_name,t1.branch,t2.org_id,t2.student_roll_no,t2.sms_trigger_time_stamp,t2.status,t2.mobile_number from tbl_organization as t1 join tbl_sms_tracking as t2 on t1.org_id=t2.org_id where t1.org_id=(select  org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') and student_roll_no='"+student_roll_no+"' and(date(t2.sms_trigger_time_stamp) >='"+fromdate+"'  and  date(t2.sms_trigger_time_stamp)<='"+todate+"')");
+			
+			while(resultSet.next())
+					{
+					reportForms.add(new Report(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"), resultSet.getString("student_roll_no"),resultSet.getString("sms_trigger_time_stamp"), resultSet.getString("status"),resultSet.getString("mobile_number")));
+					}
+				
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return reportForms;
+		
+	}
 	
 	
 	public void releaseConnection(Connection con){

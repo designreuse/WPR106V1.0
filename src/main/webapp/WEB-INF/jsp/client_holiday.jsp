@@ -229,7 +229,7 @@ select.add(option, 0); */
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="btn" value="Register"></td>
+                  <td><input type="submit" class="btn" value="Save"></td>
                   
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">

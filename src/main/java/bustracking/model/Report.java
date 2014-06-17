@@ -13,6 +13,36 @@ public class Report{
 	
 	private String branch;
 	
+	private String vechicle_reg_no;
+	
+	private String over_speed_count;
+	
+	
+	
+	public String getVechicle_reg_no() {
+		return vechicle_reg_no;
+	}
+
+
+
+	public void setVechicle_reg_no(String vechicle_reg_no) {
+		this.vechicle_reg_no = vechicle_reg_no;
+	}
+
+
+
+	public String getOver_speed_count() {
+		return over_speed_count;
+	}
+
+
+
+	public void setOver_speed_count(String over_speed_count) {
+		this.over_speed_count = over_speed_count;
+	}
+
+
+
 	public Report(String org_id, String student_roll_no,
 			String sms_trigger_time, String status, String mobile_number) {
 		super();
@@ -128,6 +158,19 @@ public class Report{
 	public Report() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+	/*
+	 * Constructor for Over Speed Report
+	 * 
+	 */
+	
+	public Report(String org_id, String vechicle_reg_no, String over_speed_count) {
+		super();
+		this.org_id = org_id;
+		this.vechicle_reg_no = vechicle_reg_no;
+		this.over_speed_count = over_speed_count;
 	}
 	
 	
