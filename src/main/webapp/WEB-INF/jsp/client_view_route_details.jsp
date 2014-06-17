@@ -113,8 +113,8 @@
 											</c:choose></td>
 											<td valign="top" align="left" width="10%">${clientrouteview.no_of_stops}</td>
 											<td valign="top" align="left" width="8%">
-											<%-- <a href="<c:out value="showfulldetailsclient?route_no=${route.route_no}"/>" >Show Full Details</a> --%>
-											<div class="arrow" title="Double click to Show all Details"></div>
+											 <a href="<c:out value="showfulldetailsclient?route_no=${clientrouteview.route_no}"/>" >Stops</a>
+											
 											</td>
 								</tr>
 								

@@ -221,7 +221,7 @@ public class RouteDAO {
 		
 	}
 
-	// Show full Details of Route
+	// Show full Details of Route in admin side
 	
 	public List<Route_view> getRoutes_for_detail_view(String route_no,String org_name,String branch){
 		Connection con = null;
@@ -235,7 +235,7 @@ public class RouteDAO {
 		}
 		List<Route_view> routes=new ArrayList<Route_view>();
 		try{
-			resultSet = statement.executeQuery("Select  org_id,route_no,trip,stop_id,address,bus_arrival_time from tbl_bus_route where route_no='"+route_no+"' and org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch ='"+branch+"')");
+			resultSet = statement.executeQuery("Select org_id,route_no,trip,stop_id,address,bus_arrival_time from tbl_bus_route where route_no='"+route_no+"' and org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch ='"+branch+"')");
 			while(resultSet.next()){
 		     routes.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time")));
 			}
@@ -255,7 +255,38 @@ public class RouteDAO {
 	}
 	
 	
+	// Show full Details of Route in Client Side
 	
+		public List<Route_view> getRoutes_for_detail_view_client(String route_no){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<Route_view> routes=new ArrayList<Route_view>();
+			try{
+				resultSet = statement.executeQuery("Select org_id,route_no,trip,stop_id,address,bus_arrival_time from tbl_bus_route where route_no='"+route_no+"'");
+				while(resultSet.next()){
+			     routes.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time")));
+				}
+			
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return routes;
+			
+		}
 	
 	public List<BusDeviceRegistration> getBusids(){
 		Connection con = null;
@@ -304,12 +335,12 @@ public class RouteDAO {
 		}
 		List<Route_view> route_view = new ArrayList<Route_view>();
 	    try{
-	    	String cmd="select t3.org_name,t3.branch,t1.vechicle_reg_no,t2.org_id,t2.route_no,t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no join tbl_organization as t3 on t3.org_id=t2.org_id where t3.org_name='"+org_name+"' or t3.branch='"+branch+"' or t1.vechicle_reg_no='"+vechicle_reg_no+"' or t2.route_no='"+route_no+"' or t2.trip='"+trip+"' ";
+	    	String cmd="select t3.org_name,t3.branch,t1.vechicle_reg_no,t2.org_id,t2.route_no,t2.stop_id,t2.trip,t2.address,t2.bus_arrival_time,(select count(t2.stop_id) from tbl_bus_route as t2 where t2.route_no=t1.route_no) as no_of_stops from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no join tbl_organization as t3 on t3.org_id=t2.org_id where t3.org_name='"+org_name+"' or t3.branch='"+branch+"' or t1.vechicle_reg_no='"+vechicle_reg_no+"' or t2.route_no='"+route_no+"' or t2.trip='"+trip+"'  group by t2.route_no;";
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);			
 			while(resultSet.next()){
 				
-				route_view.add(new Route_view(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time")));
+				route_view.add(new Route_view(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip"),resultSet.getString("address"),resultSet.getString("bus_arrival_time"),resultSet.getString("no_of_stops")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());

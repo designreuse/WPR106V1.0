@@ -18,8 +18,8 @@
       <script src="resources/js/jquery.mousewheel.js"></script>
       <script src="resources/js/prettify.min.js"></script>
       <!-- <script src="resources/js/bootstrap.min.js"></script> -->
-      <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script></head>
-      <link href="http://ivaynberg.github.io/select2/select2-2.1/select2.css" rel="stylesheet"/>
+      <!-- <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script> --></head>
+      <link href="resources/css/select2.css" rel="stylesheet"/>
       <script src="resources/js/select2.js"></script>
 
      
@@ -156,7 +156,7 @@
 <a class="menuitem submenuheader" href="#" >Tracking</a>
 <div class="submenu">
 	<ul>
-	<li><a href="viewmap?submenuheader=9">Live Track</a></li>
+	<li><a href="admin_viewmap?submenuheader=9">Live Track</a></li>
 	<li><a href="admin_view_map_history?submenuheader=9">Tracking History</a></li>
 	
 		</ul>
@@ -257,8 +257,8 @@
 						<a  href='#' > <img title="Print"src="resources/images/print.png" style="height:25px;width:35px;"/></a>
 						<a  href='#' > <img title="Email"src="resources/images/icon_email.png" style="height:35px;width:35px;"/></a>
 						 -->
-						 <a href="#" class="otherspressable expand_button" onClick="ddaccordion.expandall('submenuheader'); return false">Expand All</a>&nbsp;
-						 <a href="#" class="otherspressable collapse_button" onClick="ddaccordion.collapseall('submenuheader'); return false">Collapse All</a>
+						<center> <a href="#" class="btn"  onClick="ddaccordion.expandall('submenuheader'); return false">Expand All</a>&nbsp;
+						 <a href="#" class="btn"  onClick="ddaccordion.collapseall('submenuheader'); return false">Collapse All</a></center>
 						 <!-- </div> --></div>
 						 <br/>
 						 

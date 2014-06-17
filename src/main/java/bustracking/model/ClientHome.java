@@ -96,6 +96,17 @@ public class ClientHome
 		this.bus_tracking_timestamp = bus_tracking_timestamp;
 		this.device_imei_number=device_imei_number;
 	}
+
+	// Client home Search Page
+	
+	public ClientHome(String speed, String vechicle_reg_no, String address,
+			String bus_tracking_timestamp) {
+		super();
+		this.speed = speed;
+		this.vechicle_reg_no = vechicle_reg_no;
+		this.address = address;
+		this.bus_tracking_timestamp = bus_tracking_timestamp;
+	}
 	
 	
 	

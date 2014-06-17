@@ -68,8 +68,35 @@ public class ReportsController{
 			ReportForm reportForm=new ReportForm();
 			reportForm.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("reportForm",reportForm);
+			
+			
+			
 			return "tracksms";
 		}
+		
+		
+		@RequestMapping(value="/clientsmsreport", method = RequestMethod.GET)
+		public String clienttracksms(@RequestParam("fromdate") String fromdate,@RequestParam("todate") String todate,@RequestParam("student_roll_no") String student_roll_no,HttpServletRequest request,ModelMap model, Principal principal ) {
+			
+			
+			
+			if(student_roll_no=="" && fromdate=="" && todate=="")
+			{
+				ReportForm reportForm=new ReportForm();
+				reportForm.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
+				model.addAttribute("reportForm",reportForm);
+				
+			}
+			else{
+				
+			ReportForm reportForm=new ReportForm();
+			reportForm.setReports(reportsDAO.getclientsmsreport_search(mainDAO.getOrg_id(principal.getName()), student_roll_no, fromdate, todate));
+			model.addAttribute("reportForm",reportForm);
+			
+			}
+			return "admin_sms_report";
+		}
+		
 		
 		// SMS Report Generate in Admin Side
 		
@@ -80,10 +107,20 @@ public class ReportsController{
 			orgname_for_school=busDAO.getorgname_for_school();
 			model.addAttribute("orgname_for_school",orgname_for_school);
 			
+			if(org_name=="" && branch=="" && student_roll_no=="" && fromdate=="" && todate=="")
+			{
+				ReportForm reportForm=new ReportForm();
+				reportForm.setReports(reportsDAO.getsmsreport_for_download());
+				model.addAttribute("reportForm",reportForm);
+				
+			}
+			else{
+				
 			ReportForm reportForm=new ReportForm();
 			reportForm.setReports(reportsDAO.getsmsreport(org_name, branch,student_roll_no,fromdate, todate));
 			model.addAttribute("reportForm",reportForm);
 			
+			}
 			return "admin_sms_report";
 		}
 		
@@ -198,6 +235,7 @@ public class ReportsController{
 			
 			
 		}
+		
 		
 	
 }

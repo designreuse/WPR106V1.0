@@ -4,6 +4,7 @@
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
 <script type="text/javascript" src="resources/js/jquery_ui.js"></script>
 <script type="text/javascript" src="resources/js/jquery.min.js"></script>
+
 <style>
  #map-canvas {
         height: 100%;
@@ -265,5 +266,6 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
         window.location="viewmap_with_id?id="+val;
     }
 </script>
+
 
 <jsp:include page="footer.jsp"></jsp:include>

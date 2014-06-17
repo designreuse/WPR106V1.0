@@ -1,14 +1,22 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page isELIgnored="false" %>
-
+<jsp:include page="Trackingheader.jsp"></jsp:include>
+<script type="text/javascript" src="js/ajaxpaging.js"></script>
+<script type="text/javascript" src="resources/js/jquery_ui.js"></script>
+<script type="text/javascript" src="resources/js/jquery.min.js"></script>
+<script src="resources/js/jquery.mousewheel.js"></script>
+      <!-- <script src="resources/js/prettify.min.js"></script> -->
+      <link href="resources/css/select2.css" rel="stylesheet"/>
+      <script src="resources/js/select2.js"></script>
+      
 <script id="script_orgid">
     $(document).ready(function() {
         $("#orgid").select2();
     });
 </script>
 
-<script id="script_bid">
+<script id="script_bids">
     $(document).ready(function() {
         $("#bid").select2();
     });
@@ -18,11 +26,10 @@ $(document).ready(function() {
 	$("#device").select2(); 
 	});
 	</script> 
-	
-<jsp:include page="Trackingheader.jsp"></jsp:include>
-<script type="text/javascript" src="js/ajaxpaging.js"></script>
-<script type="text/javascript" src="resources/js/jquery_ui.js"></script>
-<script type="text/javascript" src="resources/js/jquery.min.js"></script>
+      
+      
+      
+      
 <style>
  #map-canvas {
         height: 100%;

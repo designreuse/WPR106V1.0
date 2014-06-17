@@ -169,11 +169,11 @@ public class RouteController
 	@RequestMapping(value="/showfulldetailsclient",method=RequestMethod.GET)
 	public String showfulldetailsroute(@RequestParam("route_no") String route_no,ModelMap model,Principal principal){
 		
-	RouteViewForm routeViewForm2=new RouteViewForm();
-	routeViewForm2.setRoute_views(routeDAO.getRoute_for_full_details(route_no));
-	model.addAttribute("routeViewForm2",routeViewForm2);
+		RouteViewForm routeViewForm=new RouteViewForm();
+		routeViewForm.setRoute_views(routeDAO.getRoutes_for_detail_view_client(route_no));
+		model.addAttribute("routeViewForm",routeViewForm);
 	
-	return "client_view_route_details";
+	return "client_show_full_route_details";
 	}
 	
 	
@@ -183,9 +183,10 @@ public class RouteController
 		@RequestMapping(value="/clientfindroutedetails", method = RequestMethod.GET)
 		public String clientfindroutedetails(HttpServletRequest request,@RequestParam("route_no") String route_no,@RequestParam("trip") String trip,ModelMap model, Principal principal ) {
 			if(route_no=="" && trip==""){
-				RouteViewForm routeViewForm=new RouteViewForm();
-				routeViewForm.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));
-				model.addAttribute("routeViewForm",routeViewForm);
+				RouteViewForm routeViewForm1=new RouteViewForm();
+				routeViewForm1.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));
+				model.addAttribute("routeViewForm1",routeViewForm1);
+				
 				return "client_view_route_details";
 			}
 			else{

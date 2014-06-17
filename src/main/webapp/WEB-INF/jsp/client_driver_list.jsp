@@ -16,7 +16,7 @@
 			          <div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a>&nbsp;&nbsp;<a  href='client_driver_list' class="btn" >Go Back</a>
+                        </a>&nbsp;&nbsp;<a  href='driverlist' class="btn" >Go Back</a>
 						</div>	
 			        </div>
 			    
@@ -26,7 +26,7 @@
 
 			        
 						
-						<form action="finddriverClient" method="GET">
+						<form action="finddriverclient" method="GET">
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>

@@ -354,7 +354,7 @@ public class BusRegistrationDAO {
 		
 	}
 	
-	// Client Side Driver List Serach
+	// Client Side Driver List Search
 	
 	public List<BusRegistration> clientdriverlistsearch(String org_id,String driver_name,String vechicle_reg_no,String driver_licence_number){
 		Connection con = null;
@@ -368,10 +368,10 @@ public class BusRegistrationDAO {
 		}
 		List<BusRegistration> busregistration = new ArrayList<BusRegistration>();
 		try{
-			resultSet = statement.executeQuery("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where (driver_name='"+driver_name+"' or vechicle_reg_no='"+vechicle_reg_no+"' or driver_licence_number='"+driver_licence_number+"') and (t2.org_id='"+org_id+"' )");
+			resultSet = statement.executeQuery("SELECT t1.org_id,t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where (driver_name='"+driver_name+"' or vechicle_reg_no='"+vechicle_reg_no+"' or driver_licence_number='"+driver_licence_number+"') and (t2.org_id='"+org_id+"')");
 			System.out.println("SELECT t1.org_name,t1.branch,t2.vechicle_reg_no, t2.device_imei_number,t2.driver_name,t2.driver_licence_number,t2.driver_licence_exp_date from tbl_organization as t1 join tbl_vechicle as t2 on t1.org_id=t2.org_id where (driver_name='"+driver_name+"' or vechicle_reg_no='"+vechicle_reg_no+"' or driver_licence_number='"+driver_licence_number+"') and (t2.org_id='"+org_id+"')");
 			while(resultSet.next()){
-				busregistration.add(new BusRegistration(resultSet.getString("vechicle_reg_no"),resultSet.getString("driver_name"),resultSet.getString("driver_licence_number"),resultSet.getString("driver_licence_exp_date")));
+				busregistration.add(new BusRegistration(resultSet.getString("org_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("driver_name"),resultSet.getString("driver_licence_number"),resultSet.getString("driver_licence_exp_date")));
 				
 			}
 		

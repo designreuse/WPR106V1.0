@@ -11,10 +11,10 @@
 		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Stops Information</h2>
+			          <h2> Stops Information</h2>
 			          <div class="searchdiv">
 						
-                        &nbsp;&nbsp;<a  href='viewroute' class="btn" >Go Back</a>
+                        &nbsp;&nbsp;<a  href='clientviewroutedetails' class="btn" >Go Back</a>
 						</div>
 			      
 			        </div>						

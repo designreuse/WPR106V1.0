@@ -255,23 +255,23 @@ public class MainController {
 	
 	// Find the Deriver List in Client Side
 	
-	@RequestMapping(value="/finddriverClient",method=RequestMethod.GET)
+	@RequestMapping(value="/finddriverclient",method=RequestMethod.GET)
 	public String finddriverClient(HttpServletRequest request,@RequestParam("driver_name") String driver_name,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("driver_licence_number") String driver_licence_number,ModelMap model, Principal principal)
 	{
 		if(driver_name=="" && vechicle_reg_no=="" && driver_licence_number=="")
 		{
 
-			BusRegistrationForm busRegistrationForm=new BusRegistrationForm();
-			busRegistrationForm.setBusregistration(busRegistrationDAO.getBusregistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
-			model.addAttribute("busRegistrationForm",busRegistrationForm);
+			BusRegistrationForm busRegistrationForm1=new BusRegistrationForm();
+			busRegistrationForm1.setBusregistration(busRegistrationDAO.getBusregistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("busRegistrationForm1",busRegistrationForm1);
 			return "client_driver_list";
 		}
 		else
 		{
 			
-		BusRegistrationForm busregistrationform = new BusRegistrationForm();
-		busregistrationform.setBusregistration(busRegistrationDAO.clientdriverlistsearch(mainDAO.getOrg_id(principal.getName()),driver_name,vechicle_reg_no, driver_licence_number));
-        model.addAttribute("busregistrationform", busregistrationform);    
+		BusRegistrationForm busRegistrationForm = new BusRegistrationForm();
+		busRegistrationForm.setBusregistration(busRegistrationDAO.clientdriverlistsearch(mainDAO.getOrg_id(principal.getName()),driver_name,vechicle_reg_no, driver_licence_number));
+        model.addAttribute("busRegistrationForm", busRegistrationForm);    
         
         BusRegistrationForm busRegistrationForm1=new BusRegistrationForm();
 		busRegistrationForm1.setBusregistration(busRegistrationDAO.getBusregistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
@@ -400,16 +400,23 @@ public class MainController {
 	@RequestMapping(value="/findsuperadminhome", method = RequestMethod.GET)
 	public String findadminhome(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model, Principal principal ) {
 		if(org_name=="" && branch==""){
-			SuperAdminHomeForm superAdminHomeForm = new SuperAdminHomeForm();
-			superAdminHomeForm.setSuperAdminHome(mainDAO.getAdminHomes());
-			model.addAttribute("superAdminHomeForm",superAdminHomeForm);
+			SuperAdminHomeForm superAdminHomeForm1 = new SuperAdminHomeForm();
+			superAdminHomeForm1.setSuperAdminHome(mainDAO.getAdminHomes());
+			model.addAttribute("superAdminHomeForm1",superAdminHomeForm1);
+		
 			return "superadmin_homepage";
 		}
 		else{
+			
+			SuperAdminHomeForm superAdminHomeForm1 = new SuperAdminHomeForm();
+			superAdminHomeForm1.setSuperAdminHome(mainDAO.getAdminHomes());
+			model.addAttribute("superAdminHomeForm1",superAdminHomeForm1);
+			
 			SuperAdminHomeForm superAdminHomeForm = new SuperAdminHomeForm();
 			superAdminHomeForm.setSuperAdminHome(mainDAO.findadminhome(org_name ,branch));
 			model.addAttribute("superAdminHomeForm",superAdminHomeForm);
-			return "search_Sadminhome";
+			
+			return "superadmin_homepage";
 		}
 		
 		
@@ -500,7 +507,7 @@ public class MainController {
  
 	}
 	
-	@RequestMapping(value="/viewmap", method = RequestMethod.GET)
+	@RequestMapping(value="/admin_viewmap", method = RequestMethod.GET)
 	public String view_map(HttpSession session,ModelMap model) {
 		
 	
@@ -957,6 +964,7 @@ public class MainController {
 	
 	@RequestMapping(value="/findclienthome", method = RequestMethod.GET)
 	public String findclienthome(HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,ModelMap model, Principal principal ) {
+	
 	ClientHomeForm clientHomeForm= new ClientHomeForm();
 	clientHomeForm.setClienthome(clientHomeDAO.findclienthome(mainDAO.getOrg_id(principal.getName()), vechicle_reg_no));
 	model.addAttribute("clientHomeForm",clientHomeForm);
