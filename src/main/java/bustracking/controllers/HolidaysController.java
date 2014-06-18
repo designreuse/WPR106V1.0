@@ -348,12 +348,16 @@ public class HolidaysController{
 				holidaysForm.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
 				model.addAttribute("holidaysForm",holidaysForm);
 				
+				HolidaysForm holidaysForm1=new HolidaysForm();
+				holidaysForm1.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
+				model.addAttribute("holidaysForm1",holidaysForm1);
+				
 				return "client_viewholidays";
 		   }
 		   else{
 			
 		   HolidaysForm holidaysForm=new HolidaysForm();
-		   holidaysForm.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
+		   holidaysForm.setHolidaysForms(holidaysDAO.getHolidays_client_search(holiday_date,mainDAO.getOrg_id(principal.getName())));
 		   model.addAttribute("holidaysForm",holidaysForm);
 			   
 		   HolidaysForm holidaysForm1=new HolidaysForm();
