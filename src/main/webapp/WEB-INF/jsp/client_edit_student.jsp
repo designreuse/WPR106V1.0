@@ -169,38 +169,39 @@ $(document).ready(function () {
 				                 <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian Name/Parent Name 1:</td>
 					                <td valign="top" align="left" class="input_txt">
-					                <input type="text"  id="inp_id" name="parent_name1" value="${student.parent_name1}" />
+					                <input type="text"  id="pname1" name="parent_name1"  oninput="validateAlpha();" onblur="toTitleCase('pname1')" value="${student.parent_name1}" />
 					                <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name1"></form:errors></font></td>
 					                
 					              </tr>
 				                <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Name 2:</td>
-					                <td valign="top" align="left" class="input_txt"><input type="text"  id="inp_id" name="parent_name2" value="${student.parent_name2}" />
+					                <td valign="top" align="left" class="input_txt"><input type="text"  id="pname2" oninput="validateAlpha1();" onblur="toTitleCase1('pname2')" name="parent_name2" value="${student.parent_name2}" />
 					                <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name2"></form:errors></font></td>
 					             </tr>
 					              			                
 					             <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Mobile 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					              <input type="text" id="inp_id" name="parent_mobile1" value="${student.parent_mobile1}"/>
+					              <input type="text" id="mob1" name="parent_mobile1" oninput="validatenum();" value="${student.parent_mobile1}"/>
 					             <br/>          
 					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_mobile1"></form:errors></font>
+					               <span id="mrequires" style="color: red;"></span>
 					               </td>
 					            </tr>
 				                <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Mobile 2:</td>
 					               <td valign="top" align="left" class="input_txt">
-					              <input type="text" id="inp_id" name="parent_mobile2" value="${student.parent_mobile2}"/>
+					              <input type="text" id="mob2" name="parent_mobile2" oninput="validatenum1();" value="${student.parent_mobile2}"/>
 					             <br/>          
 					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_mobile2"></form:errors></font>
-					               
+					               <span id="mrequires1" style="color: red;"></span>
 					               </td>
 					              
 				                </tr>
 				                <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Email 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					              <input type="text" id="inp_id" name="parent_email1" value="${student.parent_email1}"/>
+					              <input type="text" id="email1" name="parent_email1" value="${student.parent_email1}"/>
 					             <br/>          
 					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_email1"></form:errors></font>
 					               
@@ -211,7 +212,7 @@ $(document).ready(function () {
 				              	<tr class="row1">
 					            	 <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Guardian/Parent Email 2</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" id="inp_id" name="parent_email2" value="${student.parent_email2}"/>
+				                  	<input type="text" id="email2" name="parent_email2" value="${student.parent_email2}"/>
 				                  	 <br/>          
 					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_email2"></form:errors></font>
 				                  </td>
@@ -224,7 +225,7 @@ $(document).ready(function () {
 				               <td valign="top" align="justify">
 				               <table>
 				             <tr> 
-                 <td valign="top" align="left"><input type="submit" class="btn" value="Save Changes" ></td>
+                 <td valign="top" align="left"><input type="submit" class="btn" value="Save Changes" onclick="return mobilecheck('this')"></td>
                
                   <td valign="top" align="left"><input type="button" class="btn" onclick="window.location.href='clientviewstudent'"value="Cancel"></td></tr></table>
                   </td>
@@ -282,6 +283,83 @@ $('#drop_address').html(response);
 		  });  
 		}  
 		</script>
+		
+<script type="text/javascript">
+function mobilecheck()
+{
+	if(document.getElementById("mob1").value!='' && document.getElementById("mob2").value!=''){
+		var phonenumber=document.getElementById("mob1").value;
+		var phonenumber1=document.getElementById("mob2").value;
+		if(phonenumber.length<10 && phonenumber1.length<10)
+			{
+			document.getElementById("mrequires").innerHTML="Invalid Mobile Number";
+			document.getElementById("mrequires1").innerHTML="Invalid Mobile Number";
+			return false;
+			}
+	} 
+	
+	if(document.getElementById("mob1").value!=''){
+		var phonenumber=document.getElementById("mob1").value;
+		if(phonenumber.length<10)
+			{
+			document.getElementById("mrequires").innerHTML="Invalid Mobile Number";
+			return false;
+			}
+	} 
+	
+	if(document.getElementById("mob2").value!=''){
+		var phonenumber1=document.getElementById("mob2").value;
+		if(phonenumber1.length<10)
+			{
+			document.getElementById("mrequires1").innerHTML="Invalid Mobile Number";
+			return false;
+			}
+	} 	
+	
+}
+
+function validateAlpha(){
+    var textInput = document.getElementById("pname1").value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById("pname1").value = textInput;
+}
+
+function toTitleCase(pname1)
+{
+
+    str=document.getElementById(pname1).value;
+    str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    document.getElementById(pname1).value=str;
+	
+}
+
+function validateAlpha1(){
+    var textInput = document.getElementById("pname2").value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById("pname2").value = textInput;
+}
+
+function toTitleCase1(pname2)
+{
+
+    str=document.getElementById(pname2).value;
+    str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    document.getElementById(pname2).value=str;
+	
+}
+
+function validatenum(){
+    var textInput = document.getElementById("mob1").value;
+    textInput = textInput.replace(/[^0-9]/g, "");
+    document.getElementById("mob1").value = textInput;
+}
+
+function validatenum1(){
+    var textInput = document.getElementById("mob2").value;
+    textInput = textInput.replace(/[^0-9]/g, "");
+    document.getElementById("mob2").value = textInput;
+}
+</script>
 
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
 <jsp:include page="footer.jsp"></jsp:include>    

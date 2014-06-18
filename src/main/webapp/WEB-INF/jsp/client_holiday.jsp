@@ -172,60 +172,7 @@ select.add(option, 0); */
 				                  	<label><input type="radio" name="group1" id="one" class="radio1" onclick="onecheck()" value="one"  <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if>>Only One Day</label>
 <label><input type="radio" name="group1" class="radio2" id="more" value="more" onclick="morecheck()"  <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
 
-<script>
-function onecheck()
-{
-	alert("hi");
-	document.getElementById("oneday").style.display="block";
-	document.getElementById("moreday").style.display="none";
-	alert("hello");
-	}
-	
-function morecheck()
-{
-	alert("hiii");
-	document.getElementById("oneday").style.display="none";
-	document.getElementById("moreday").style.display="block";
-	alert("hellooooooo");
-	}
-	
-$(window).load(function(){
 
-	alert("checking");
-	if(document.getElementById("one").checked==true){
-		alert("nbnbn");
-		document.getElementById("oneday").style.display="block";
-		document.getElementById("moreday").style.display="none";
-		
-		if(document.getElementById("hdate").value==""){
-			document.getElementById("requires").innerHTML="Required Field Should not be Empty";
-        }
-		
-	}
-	
-	else if(document.getElementById("more").checked==true)
-		{
-		alert("else");
-		document.getElementById("oneday").style.display="none";
-		document.getElementById("moreday").style.display="block";
-		
-		if(document.getElementById("fdate").value=="" && document.getElementById("tdate").value=="")
-			{
-			document.getElementById("brequires").innerHTML="Required Field Should not be Empty";
-			document.getElementById("brequires1").innerHTML="Required Field Should not be Empty";
-			}
-		else if(document.getElementById("fdate").value==""){
-			document.getElementById("brequires").innerHTML="Required Field Should not be Empty";
-		}
-		else if(document.getElementById("tdate").value==""){
-			document.getElementById("brequires1").innerHTML="Required Field Should not be Empty";
-		}
-		
-		}
-
-});
-
-</script>
 
 				                  	<br/><font color="Red" size="+1"><form:errors path="holidays.group1"></form:errors></font></td>
 				                </tr></table>
@@ -338,5 +285,58 @@ else
 }
 
 </script>
+<script>
+function onecheck()
+{
+	alert("hi");
+	document.getElementById("oneday").style.display="block";
+	document.getElementById("moreday").style.display="none";
+	alert("hello");
+	}
+	
+function morecheck()
+{
+	alert("hiii");
+	document.getElementById("oneday").style.display="none";
+	document.getElementById("moreday").style.display="block";
+	alert("hellooooooo");
+	}
+	
+$(window).load(function(){
 
+	alert("checking");
+	if(document.getElementById("one").checked==true){
+		alert("nbnbn");
+		document.getElementById("oneday").style.display="block";
+		document.getElementById("moreday").style.display="none";
+		
+		if(document.getElementById("hdate").value==""){
+			document.getElementById("requires").innerHTML="Required Field Should not be Empty";
+        }
+		
+	}
+	
+	else if(document.getElementById("more").checked==true)
+		{
+		alert("else");
+		document.getElementById("oneday").style.display="none";
+		document.getElementById("moreday").style.display="block";
+		
+		if(document.getElementById("fdate").value=="" && document.getElementById("tdate").value=="")
+			{
+			document.getElementById("brequires").innerHTML="Required Field Should not be Empty";
+			document.getElementById("brequires1").innerHTML="Required Field Should not be Empty";
+			}
+		else if(document.getElementById("fdate").value==""){
+			document.getElementById("brequires").innerHTML="Required Field Should not be Empty";
+		}
+		else if(document.getElementById("tdate").value==""){
+			document.getElementById("brequires1").innerHTML="Required Field Should not be Empty";
+		}
+		
+		}
+
+});
+
+</script>
 <jsp:include page="footer.jsp"></jsp:include>
