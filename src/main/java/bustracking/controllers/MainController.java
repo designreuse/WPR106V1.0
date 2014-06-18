@@ -259,8 +259,13 @@ public class MainController {
 	// Find the Deriver List in Client Side
 	
 	@RequestMapping(value="/finddriverclient",method=RequestMethod.GET)
-	public String finddriverClient(HttpServletRequest request,@RequestParam("driver_name") String driver_name,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("driver_licence_number") String driver_licence_number,ModelMap model, Principal principal)
+	public String finddriverClient(HttpSession session,HttpServletRequest request,@RequestParam("driver_name") String driver_name,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("driver_licence_number") String driver_licence_number,ModelMap model, Principal principal)
 	{
+		session.setAttribute("driver_name", driver_name);
+		session.setAttribute("vechicle_reg_no", vechicle_reg_no);
+		session.setAttribute("driver_licence_number", driver_licence_number);
+		
+		
 		if(driver_name=="" && vechicle_reg_no=="" && driver_licence_number=="")
 		{
 
