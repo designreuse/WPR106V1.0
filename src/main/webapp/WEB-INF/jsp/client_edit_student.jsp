@@ -140,7 +140,7 @@ $(document).ready(function () {
 						    	<option value="${student.pickup_point_address}" selected>${student.pickup_point_address}</option>
 				                  	</select>
 				                  	</div>
-				                  	 <br/><font color="Red" size="+1"></font>
+				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.pickup_point_address"></form:errors></font>
 				                  </td>
 				                </tr> 
 								<tr class="row2">
@@ -163,7 +163,7 @@ $(document).ready(function () {
 							    <option value="${student.drop_point_address}" selected>${student.drop_point_address}</option>
 				                  	</select>
 				                  	</div>
-				                  	<br/><font color="Red" size="+1"></font>
+				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.drop_point_address"></form:errors></font>
 				                  </td>
 				                </tr>
 				                 <tr class="row2">

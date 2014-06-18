@@ -308,8 +308,9 @@ public class HolidaysController{
 	   // View Holidays in Client Side 
 	   
 	   @RequestMapping(value="/clientviewholiday", method=RequestMethod.GET)
-		public String client_view_holidays(ModelMap model, Principal principal){
+		public String client_view_holidays(HttpSession session,ModelMap model, Principal principal){
 			
+		   session.removeAttribute("holiday_date");
 			HolidaysForm holidaysForm=new HolidaysForm();
 			holidaysForm.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("holidaysForm",holidaysForm);

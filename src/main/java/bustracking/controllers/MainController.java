@@ -241,8 +241,11 @@ public class MainController {
 	
 
 	@RequestMapping(value="/driverlist", method = RequestMethod.GET)
-	public String driverlist(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String driverlist(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal ) {
 		
+		session.removeAttribute("driver_name");
+		session.removeAttribute("vechicle_reg_no");
+		session.removeAttribute("driver_licence_number");
 		
 		BusRegistrationForm busRegistrationForm=new BusRegistrationForm();
 		busRegistrationForm.setBusregistration(busRegistrationDAO.getBusregistration_by_org_id(mainDAO.getOrg_id(principal.getName())));

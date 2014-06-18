@@ -152,7 +152,10 @@ public class RouteController
 	//Client Side View
 	
 	@RequestMapping(value="/clientviewroutedetails", method = RequestMethod.GET)
-	public String driverlist(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String driverlist(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal ) {
+		
+		session.removeAttribute("route_no");
+		session.removeAttribute("routes");
 		
 		RouteViewForm routeViewForm=new RouteViewForm();
 		routeViewForm.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));

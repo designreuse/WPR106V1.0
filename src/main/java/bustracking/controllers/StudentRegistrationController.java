@@ -480,8 +480,12 @@ public class StudentRegistrationController {
 	//Get Student information for Client Side 
 	
 	@RequestMapping(value="/clientviewstudent", method = RequestMethod.GET)
-	public String clientviewstudent(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String clientviewstudent(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal ) {
 		
+		session.removeAttribute("student_roll_no");
+		session.removeAttribute("first_name");
+		session.removeAttribute("last_name");
+		session.removeAttribute("parent_mobile1");
 		
 		StudentRegistrationForm studentRegistrationForm=new StudentRegistrationForm();
 		studentRegistrationForm.setStudentregistration(studentDAO.getStudentRegistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
