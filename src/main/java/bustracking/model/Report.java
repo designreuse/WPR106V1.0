@@ -17,8 +17,34 @@ public class Report{
 	
 	private String over_speed_count;
 	
+	private String bus_tracking_timestamp;
 	
+	private String driver_name;
 	
+	public String getDriver_name() {
+		return driver_name;
+	}
+
+
+
+	public void setDriver_name(String driver_name) {
+		this.driver_name = driver_name;
+	}
+
+
+
+	public String getBus_tracking_timestamp() {
+		return bus_tracking_timestamp;
+	}
+
+
+
+	public void setBus_tracking_timestamp(String bus_tracking_timestamp) {
+		this.bus_tracking_timestamp = bus_tracking_timestamp;
+	}
+
+
+
 	public String getVechicle_reg_no() {
 		return vechicle_reg_no;
 	}
@@ -153,6 +179,16 @@ public class Report{
 		this.mobile_number = mobile_number;
 	}
 
+	/*
+	 * Get Vehicle Registration number for over speed report
+	 * 
+	 */
+
+	public Report(String vechicle_reg_no) {
+		super();
+		
+		this.vechicle_reg_no = vechicle_reg_no;
+	}
 
 
 	public Report() {
@@ -161,8 +197,10 @@ public class Report{
 	}
 
 
+	
+
 	/*
-	 * Constructor for Over Speed Report
+	 * Constructor for Over Speed Report View And Search
 	 * 
 	 */
 	
@@ -172,8 +210,22 @@ public class Report{
 		this.vechicle_reg_no = vechicle_reg_no;
 		this.over_speed_count = over_speed_count;
 	}
-	
-	
+
+
+	/*
+	 * Constructor For Export Over Speed Report
+	 * 
+	 */
+	public Report(String vechicle_reg_no,String driver_name,
+			String over_speed_count, String bus_tracking_timestamp) {
+		super();
+		
+		this.vechicle_reg_no = vechicle_reg_no;
+		this.driver_name= driver_name;
+		this.over_speed_count = over_speed_count;
+		this.bus_tracking_timestamp = bus_tracking_timestamp;
+		
+	}
 	
 	
 	

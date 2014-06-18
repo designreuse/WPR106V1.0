@@ -10,11 +10,11 @@
 $(window).load(function(){
 jQuery(function () {
     jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate1').datetimepicker({ format: 'dd/MM/yyyy' ,pickTime: false});
+    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
     
     jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
 	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
-	jQuery('#endDate').datetimepicker({ format: 'dd/MM/yyyy' ,pickTime: false});
+	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
 
 	jQuery("#startDate").on("dp.change",function (e) {
     jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
@@ -44,7 +44,7 @@ jQuery(function () {
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Over Speeding Report Page</h2><!-- <div class="searchdiv">
+			          <h2>Over Speed Report </h2><!-- <div class="searchdiv">
                         <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
                           Open Search
                         </a></div> -->
@@ -69,8 +69,8 @@ jQuery(function () {
 							  <tr><td align="left" valign="middle" width="30%">Vehicle Number:<br/>
 							    <select   id="e1"style="width:250px;" name="org_name">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${clientHomeForm.clienthome}" var="clienthome2" varStatus="status">
-							    <option value="${clienthome2.vechicle_reg_no}">${clienthome2.vechicle_reg_no}</option>
+							    <c:forEach items="${reportForm1.reports}" var="clientoverspeedreport1" varStatus="status">
+							    <option value="${clientoverspeedreport1.vechicle_reg_no}">${clientoverspeedreport1.vechicle_reg_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="70%">
@@ -111,61 +111,51 @@ jQuery(function () {
 
     <div id="tab1">...</div>
     <div id="tab2">
-   <form method="get" action="overspeedreportsearch">
-    <table width="100%"cellpadding="0" cellspacing="0" border="0" class="">
+   <form method="GET" action="searchoverspeedreport">
     
-    <tr><td>
-    <table width="80%"cellpadding="2" cellspacing="0" border="0" >
-    <tr><%-- <td> Organization Name<br/>
-							    <select  id="e4" style="width:250px;" name="">
+    <table width="100%"cellpadding="2" cellspacing="0" border="0" >
+    <tr>
+    <td>Vehicle Number<br/><select id="e3" style="width:250px;" name="vechicle_reg_no">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${clientHomeForm.clienthome}" var="clienthome2" varStatus="status">
-							    <option value="${clienthome2.vechicle_reg_no}">${clienthome2.vechicle_reg_no}</option>
+							    <c:forEach items="${reportForm1.reports}" var="clientoverspeedreport1" varStatus="status">
+							    <option value="${clientoverspeedreport1.vechicle_reg_no}">${clientoverspeedreport1.vechicle_reg_no}</option>
 							    </c:forEach>
-							    </select></td>
-							    <td>Branch<br/><select  id="e2" style="width:250px;" name="">
-							 	<option value="">Select None</option>     
-							    <c:forEach items="${clientHomeForm.clienthome}" var="clienthome2" varStatus="status">
-							    <option value="${clienthome2.vechicle_reg_no}">${clienthome2.vechicle_reg_no}</option>
-							    </c:forEach>
-							    </select></td> --%>
-    <td>Vehicle Number<br/><select id="e3" style="width:250px;" name="">
-							 	<option value="">Select None</option>     
-							    <c:forEach items="${clientHomeForm.clienthome}" var="clienthome2" varStatus="status">
-							    <option value="${clienthome2.vechicle_reg_no}">${clienthome2.vechicle_reg_no}</option>
-							    </c:forEach>
-							    </select></td><td></td></tr></table><br>
-							     <table width="80%"cellpadding="2" cellspacing="0" border="0" ><tr>
+							    </select></td></tr>
+							    
+  <tr>
     <td>Date From<br/><div class='input-group date' id='endDate' >
-												<input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
+												<input type="text" id="timepicker2"	name="from_date"  style="height:24px;width:150px;float:left;"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="25"/>
         										</span>
 					</div></td>
     <td>Time From<br/><div class='input-group date' id='startDate' >
-												<input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
+												<input type="text" id="timepicker2"	name="from_time"  style="height:24px;width:150px;float:left;"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
         										</span>
 					</div>	</td>
 	<td>Date To<br/><div class='input-group date' id='endDate1' >
-												<input type="text" id="timepicker2"	name="pickup_start_time" style="height:24px; width:150px;float:left;" />
+												<input type="text" id="timepicker2"	name="to_date" style="height:24px; width:150px;float:left;" />
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="45"/>
         										</span>
 					</div></td>
 	<td>Time To<br/><div class='input-group date' id='startDate1' >
-												<input type="text" id="timepicker2"	name="pickup_start_time" style="height:24px;width:150px;float:left;" />
+												<input type="text" id="timepicker2"	name="to_time" style="height:24px;width:150px;float:left;" />
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
         										</span>
 					</div>	</td>
-					<td align="right"><input type="button" class="btn" value="Search"></td>
+					
+					<td align="right"><input type="submit" class="btn" value="Search"></td>
 					</tr>
 					
-    </table><br/></td>
-    </tr>
-    <!-- <tr><td align="center">
+    </table>
+    </form>
+    
+    <!--  </tr>
+     <tr><td align="center">
     <table width="40%"cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
     <tr><td><input type="button" class="btn" value="Search"></td>
     <td><input type="button" class="btn" value="Export to Excel"></td>
@@ -175,10 +165,10 @@ jQuery(function () {
     </tr>
     
     </table>
-    </td></tr> -->
-    </table>
-    </form>
-    <form method="get" action="overspeedreport">
+    </td></tr> 
+    </table>-->
+    
+    
     <table width="100%" cellpadding="0" cellspacing="0" border="0" >
     <tr><td><br/>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -204,7 +194,8 @@ jQuery(function () {
     <tr><td align="right"><br>
     <table width="40%"cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
     <tr>
-    <td align="right"><input type="button" class="btn" value="Export to Excel"></td>
+    
+    <td align="right"><form method="post" action="export_overspeedreport"><input type="submit" class="btn" value="Export to Excel"></form></td>
     <!-- <td><a href="javascript:void(processPrint());" class="searchpressable printreport" >Print</a></td>
     <td>
     <a href="" class="searchpressable mailreport" >Email</a></td> -->
@@ -214,7 +205,7 @@ jQuery(function () {
     </td></tr>
     
     </table>
-    </td></tr></table></form>
+    </td></tr></table>
     </div>
     <div id="tab3">...</div>
     <!-- <div id="tab4">...</div> -->

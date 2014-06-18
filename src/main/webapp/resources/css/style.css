@@ -1252,7 +1252,7 @@ font-size:11px; font-style:italic; color:#ff0000;
 /* ################################text############################# */
 input[type="text"]{
 	outline: none;
-	padding: 10px;
+	padding: 12px;
 	height:29px;
 	width: 220px;
 	font-family: Helvetica, Arial, "Sans Serif";

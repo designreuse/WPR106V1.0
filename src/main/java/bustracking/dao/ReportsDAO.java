@@ -128,7 +128,10 @@ public class ReportsDAO extends AbstractExcelView{
 	
 	// SMS Reports in Admin Side
 	
-	public List<Report> getoverspeedreport(String org_id){
+
+	
+	
+	public List<Report> getsmsreport(String org_name,String branch,String student_roll_no,String fromdate,String todate){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -141,11 +144,11 @@ public class ReportsDAO extends AbstractExcelView{
 		List<Report> reportForms=new ArrayList<Report>();
 		try{
 			
-			resultSet = statement.executeQuery("Select org_id,vechicle_reg_no,count(exceed_speed_limit) as over_speed_count from tbl_vechicle_tracking_history where org_id='"+org_id+"' and exceed_speed_limit='1'");
+			resultSet = statement.executeQuery("select t1.org_name,t1.branch,t2.org_id,t2.student_roll_no,t2.sms_trigger_time_stamp,t2.status,t2.mobile_number from tbl_organization as t1 join tbl_sms_tracking as t2 on t1.org_id=t2.org_id where t1.org_id=(select  org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') and student_roll_no='"+student_roll_no+"' and(date(t2.sms_trigger_time_stamp) >='"+fromdate+"'  and  date(t2.sms_trigger_time_stamp)<='"+todate+"')");
 			
 			while(resultSet.next())
 					{
-					reportForms.add(new Report(resultSet.getString("org_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("over_speed_count")));
+					reportForms.add(new Report(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"), resultSet.getString("student_roll_no"),resultSet.getString("sms_trigger_time_stamp"), resultSet.getString("status"),resultSet.getString("mobile_number")));
 					}
 				
 			
@@ -162,6 +165,8 @@ public class ReportsDAO extends AbstractExcelView{
 	    return reportForms;
 		
 	}
+	
+	
 	
 	// Client Side SMS Report Search
 	public List<Report> getclientsmsreport_search(String org_id,String student_roll_no,String fromdate,String todate){
@@ -323,7 +328,8 @@ public class ReportsDAO extends AbstractExcelView{
         	setExcelRows_admin_sms_track(excelSheet,reports,fields,style2);
         else if(content.equals("client_sms_track"))
            setExcelRows_client_sms_track(excelSheet, reports, fields, style2);
-		
+        else if(content.equals("over_speed_report"))
+            setExcelRows_over_speed_report(excelSheet, reports, fields, style2);
 	}
 	
 	
@@ -385,11 +391,39 @@ public class ReportsDAO extends AbstractExcelView{
 	}
 	
 	/*
+	 * Over Speed Report Excel
+	 * 
+	 */
+	
+	public void setExcelRows_over_speed_report(HSSFSheet excelSheet, List<Report> reports,String[] fields,CellStyle style2){
+		int record = 1;
+		int i=0;
+		for (Report report:reports){	
+			i=0;
+			HSSFRow excelRow = excelSheet.createRow(record++);
+				//excelRow.setRowStyle((HSSFCellStyle) style2);
+				excelRow.createCell(i).setCellValue(report.getVechicle_reg_no());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getDriver_name());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getOver_speed_count());
+				i++;
+				excelRow.createCell(i).setCellValue(report.getBus_tracking_timestamp());
+				
+			
+
+		}
+	}
+	
+	
+	
+	/*
 	 * Over Speed Report At Client Side
 	 * 
 	 */
 	
-	public List<Report> getsmsreport(String org_name,String branch,String student_roll_no,String fromdate,String todate){
+	
+	public List<Report> getoverspeedreport(String org_id){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -402,11 +436,11 @@ public class ReportsDAO extends AbstractExcelView{
 		List<Report> reportForms=new ArrayList<Report>();
 		try{
 			
-			resultSet = statement.executeQuery("select t1.org_name,t1.branch,t2.org_id,t2.student_roll_no,t2.sms_trigger_time_stamp,t2.status,t2.mobile_number from tbl_organization as t1 join tbl_sms_tracking as t2 on t1.org_id=t2.org_id where t1.org_id=(select  org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') and student_roll_no='"+student_roll_no+"' and(date(t2.sms_trigger_time_stamp) >='"+fromdate+"'  and  date(t2.sms_trigger_time_stamp)<='"+todate+"')");
+			resultSet = statement.executeQuery("Select org_id,vechicle_reg_no,count(exceed_speed_limit) as over_speed_count from tbl_vechicle_tracking_history where org_id='"+org_id+"' and exceed_speed_limit='1'");
 			
 			while(resultSet.next())
 					{
-					reportForms.add(new Report(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"), resultSet.getString("student_roll_no"),resultSet.getString("sms_trigger_time_stamp"), resultSet.getString("status"),resultSet.getString("mobile_number")));
+					reportForms.add(new Report(resultSet.getString("org_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("over_speed_count")));
 					}
 				
 			
@@ -423,6 +457,129 @@ public class ReportsDAO extends AbstractExcelView{
 	    return reportForms;
 		
 	}
+	
+	/*
+	 * 
+	 * Get Vehicle Registration Number for Over Speed Report
+	 * 
+	 */
+	
+	public List<Report> getvechicle_reg_no_for_over_speed_report(String org_id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Report> reportForms=new ArrayList<Report>();
+		try{
+			
+			resultSet = statement.executeQuery("Select vechicle_reg_no from tbl_vechicle where org_id='"+org_id+"'");
+			
+			while(resultSet.next())
+					{
+					reportForms.add(new Report(resultSet.getString("vechicle_reg_no")));
+					}
+				
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return reportForms;
+		
+	}
+	
+	/*
+	 * Search operation in Over Speed Report Client Side
+	 * 
+	 */
+	
+	
+	public List<Report> search_over_speed_report_(String org_id,String vechicle_reg_no,String from_date,String from_time,String to_date,String to_time){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Report> reportForms=new ArrayList<Report>();
+		try{
+			
+			resultSet = statement.executeQuery("Select org_id,vechicle_reg_no, count(exceed_speed_limit) as over_speed_count from tbl_vechicle_tracking_history where  org_id='"+org_id+"' and vechicle_reg_no='"+vechicle_reg_no+"' and exceed_speed_limit='1' and (bus_tracking_timestamp>='"+from_date+" "+from_time+"' and bus_tracking_timestamp<='"+to_date+" "+to_time+"')");
+			System.out.println("Select org_id,vechicle_reg_no, count(exceed_speed_limit) as over_speed_count from tbl_vechicle_tracking_history where  org_id='"+org_id+"' and vechicle_reg_no='"+vechicle_reg_no+"' and exceed_speed_limit='1' and (bus_tracking_timestamp>='"+from_date+" "+from_time+"' and bus_tracking_timestamp<='"+to_date+" "+to_time+"')");
+			while(resultSet.next())
+					{
+					reportForms.add(new Report(resultSet.getString("org_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("over_speed_count")));
+					}
+				
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return reportForms;
+	
+	}
+	
+	
+	/*
+	 * Download/Export Over Speed Report Client Side
+	 * 
+	 */
+	
+	public List<Report> export_overspeedreport(String org_id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Report> reportForms=new ArrayList<Report>();
+		try{
+			
+			resultSet = statement.executeQuery("Select t2.driver_name,t1.org_id,t1.vechicle_reg_no,count(t1.exceed_speed_limit) as over_speed_count,bus_tracking_timestamp from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no where t1.org_id='"+org_id+"' and t1.exceed_speed_limit='1'");
+			System.out.println("Select t2.driver_name,t1.org_id,t1.vechicle_reg_no,count(t1.exceed_speed_limit) as over_speed_count,bus_tracking_timestamp from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no where t1.org_id='"+org_id+"' and t1.exceed_speed_limit='1'");
+			while(resultSet.next())
+					{
+					reportForms.add(new Report(resultSet.getString("vechicle_reg_no"),resultSet.getString("driver_name"),resultSet.getString("over_speed_count"),resultSet.getString("bus_tracking_timestamp")));
+					}
+				
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return reportForms;
+		
+	}
+	
 	
 	
 	public void releaseConnection(Connection con){
