@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import bustracking.dao.MainDAO;
 import bustracking.dao.OrgRegistrationDAO;
@@ -49,6 +51,7 @@ import bustracking.forms.BusRegistrationForm;
 
 
 @Controller
+@SessionAttributes({"routes"})
 public class RouteController
 {
 	@Autowired
@@ -181,7 +184,11 @@ public class RouteController
 		//find route client side
 		//*******************************************************************************************************************
 		@RequestMapping(value="/clientfindroutedetails", method = RequestMethod.GET)
-		public String clientfindroutedetails(HttpServletRequest request,@RequestParam("route_no") String route_no,@RequestParam("trip") String trip,ModelMap model, Principal principal ) {
+		public String clientfindroutedetails(HttpSession session,HttpServletRequest request,@RequestParam("route_no") String route_no,@RequestParam("trip") String trip,@ModelAttribute("route") @Valid Route route,ModelMap model, Principal principal ) {
+			session.setAttribute("route_no", route_no);
+			session.setAttribute("routes",route);
+			
+			
 			if(route_no=="" && trip==""){
 				RouteViewForm routeViewForm1=new RouteViewForm();
 				routeViewForm1.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));

@@ -288,25 +288,25 @@ else
 <script>
 function onecheck()
 {
-	alert("hi");
+	/* alert("hi"); */
 	document.getElementById("oneday").style.display="block";
 	document.getElementById("moreday").style.display="none";
-	alert("hello");
+	/* alert("hello"); */
 	}
 	
 function morecheck()
 {
-	alert("hiii");
+	/* alert("hiii"); */
 	document.getElementById("oneday").style.display="none";
 	document.getElementById("moreday").style.display="block";
-	alert("hellooooooo");
+	/* alert("hellooooooo"); */
 	}
 	
 $(window).load(function(){
 
-	alert("checking");
+	/* alert("checking"); */
 	if(document.getElementById("one").checked==true){
-		alert("nbnbn");
+		/* alert("nbnbn"); */
 		document.getElementById("oneday").style.display="block";
 		document.getElementById("moreday").style.display="none";
 		
@@ -318,7 +318,7 @@ $(window).load(function(){
 	
 	else if(document.getElementById("more").checked==true)
 		{
-		alert("else");
+		/* alert("else"); */
 		document.getElementById("oneday").style.display="none";
 		document.getElementById("moreday").style.display="block";
 		

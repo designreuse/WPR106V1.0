@@ -59,14 +59,17 @@
 							    <select   id="e3"style="width:250px;" name="route_no">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${routeViewForm1.route_views}" var="clientrouteview1" varStatus="status">
-							    <option value="${clientrouteview1.route_no}">${clientrouteview1.route_no}</option>
+							    <option value="${clientrouteview1.route_no}" <c:if test="${route_no==clientrouteview1.route_no}"><c:out value="Selected"/></c:if>>${clientrouteview1.route_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">Stop details By:<br/>
 							    <select   id="e2"style="width:250px;" name="trip">
-							 	<option value="0">Pickup</option>
+							 	<option value="0" <c:if test="${route.trip=='0'}"><c:out value="selected"/></c:if>>Pickup</option>
+							 	<option value="1" <c:if test="${route.trip=='1'}"><c:out value="selected"/></c:if>>Drop</option>
+							 	<option value="2" <c:if test="${route.trip=='2'}"><c:out value="selected"/></c:if>>KG Drop</option>
+							 	<!-- <option value="0">Pickup</option>
 							   <option value="1">Drop</option>
-							   <option value="2">KG Drop</option>
+							   <option value="2">KG Drop</option> -->
 							    </select>
 							  <td align="center" valign="middle" width="30%">
 							  <input type="submit" class="btn" value="Search" ></td>

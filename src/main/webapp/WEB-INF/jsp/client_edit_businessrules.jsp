@@ -240,8 +240,8 @@ jQuery(function () {
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Average Speed  :</td>
 												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx_br" id="inp_id"
-													name="average_speed"  value="${orgbrulesadmin.average_speed}" />
+													type="text" class="input_txtbx_br" id="avg_spd"
+													name="average_speed" oninput="validatenum();"  value="${orgbrulesadmin.average_speed}" />
 													<br/>          
 					               				<font color="Red" size="+1"><form:errors path="businessRule.average_speed"></form:errors></font>
 												</td>
@@ -308,7 +308,13 @@ select.add(option, 0); */
 		  });  
 		}  
 		</script>
-
+<script>
+function validatenum(){
+    var textInput = document.getElementById("avg_spd").value;
+    textInput = textInput.replace(/[^0-9]/g, "");
+    document.getElementById("avg_spd").value = textInput;
+}
+</script>
 <!-- <script type='text/javascript'	src='http://code.jquery.com/jquery-1.4.3.min.js'></script> -->
 <jsp:include page="footer.jsp"></jsp:include>
 
