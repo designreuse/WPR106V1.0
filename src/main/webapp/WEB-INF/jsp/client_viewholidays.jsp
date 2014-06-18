@@ -35,7 +35,7 @@
 							    <select   id="e3"style="width:260px;" name="holiday_date">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${holidaysForm1.holidays}" var="holidays" varStatus="status">
-							    <option value="${holidays.holiday_date}">${holidays.holiday_date}</option>
+							    <option value="${holidays.holiday_date}" <c:if test="${holiday_date==holidays.holiday_date}"><c:out value="Selected"/></c:if>>${holidays.holiday_date}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="right" valign="middle" width="5%"><br>

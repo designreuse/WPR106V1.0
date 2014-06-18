@@ -59,21 +59,21 @@
 							    <select  id="e1"style="width:250px;" name="student_roll_no">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
-							    <option value="${studentlist2.student_roll_no}">${studentlist2.student_roll_no}</option>
+							    <option value="${studentlist2.student_roll_no}" <c:if test="${student_roll_no==studentlist2.student_roll_no}"><c:out value="Selected"/></c:if>>${studentlist2.student_roll_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">First Name:<br/>
 							    <select  id="e2"style="width:250px;" name="first_name">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
-							    <option value="${studentlist2.first_name}">${studentlist2.first_name}</option>
+							    <option value="${studentlist2.first_name}" <c:if test="${first_name==studentlist2.first_name}"><c:out value="Selected"/></c:if>>${studentlist2.first_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">Last Name:<br/>
 							    <select  id="e3"style="width:250px;" name="last_name">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
-							    <option value="${studentlist2.last_name}">${studentlist2.last_name}</option>
+							    <option value="${studentlist2.last_name}" <c:if test="${last_name==studentlist2.last_name}"><c:out value="Selected"/></c:if>>${studentlist2.last_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    </tr>
@@ -82,7 +82,7 @@
 							     <select  id="e4"style="width:250px;" name="parent_mobile1">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
-							    <option value="${studentlist2.parent_mobile1}">${studentlist2.parent_mobile1}</option>
+							    <option value="${studentlist2.parent_mobile1}" <c:if test="${parent_mobile1==studentlist2.parent_mobile1}"><c:out value="Selected"/></c:if>>${studentlist2.parent_mobile1}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="center" valign="middle"></td>

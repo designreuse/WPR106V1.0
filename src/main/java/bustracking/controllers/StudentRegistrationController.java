@@ -424,13 +424,19 @@ public class StudentRegistrationController {
 //client Side find student
 	
 	@RequestMapping(value="/findstudentsclient",method=RequestMethod.GET)
-	public String findstudentsclient(HttpServletRequest request,
+	public String findstudentsclient(HttpSession session,HttpServletRequest request,
 			@RequestParam("student_roll_no") String student_roll_no,
 			@RequestParam("first_name") String first_name,
 			@RequestParam("last_name") String last_name,
 			@RequestParam("parent_mobile1") String parent_mobile1,
 			ModelMap model, Principal principal)
 	{
+		
+		session.setAttribute("student_roll_no", student_roll_no);
+		session.setAttribute("first_name", first_name);
+		session.setAttribute("last_name", last_name);
+		session.setAttribute("parent_mobile1", parent_mobile1);
+		
 		if(student_roll_no=="" && first_name=="" && last_name=="" && parent_mobile1=="")
 		{
 			StudentRegistrationForm studentRegistrationForm=new StudentRegistrationForm();

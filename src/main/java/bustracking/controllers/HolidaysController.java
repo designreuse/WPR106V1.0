@@ -339,9 +339,9 @@ public class HolidaysController{
 	   // Find Holidays in client side
 	   
 	   @RequestMapping(value="/clientfindholidays",method=RequestMethod.GET)
-	   public String Client_find_holidays(@RequestParam("holiday_date") String holiday_date,ModelMap model,Principal principal){
+	   public String Client_find_holidays(HttpSession session,@RequestParam("holiday_date") String holiday_date,ModelMap model,Principal principal){
 		   
-		   
+		   session.setAttribute("holiday_date", holiday_date);
 		   if(holiday_date=="")
 		   {
 			   HolidaysForm holidaysForm=new HolidaysForm();
