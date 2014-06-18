@@ -233,6 +233,7 @@ public class HolidaysController{
 		@RequestMapping(value="/client_insert_holiday",method=RequestMethod.POST)
 		public String client_insert_holidays(HttpSession session,HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String bid,@ModelAttribute("holidays") @Valid Holidays holidays,BindingResult result,ModelMap model,Principal principal){
 			
+			session.setAttribute("holi", holidays);
 			session.setAttribute("org_name",org_name);
 			session.setAttribute("branch",bid);
 			if(result.hasErrors())

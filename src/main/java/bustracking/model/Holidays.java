@@ -22,8 +22,10 @@ public class Holidays{
 	@NotEmpty
 	private String group1;
 	
+	private String fromdate;
 	
-	@NotEmpty
+	private String todate;
+	
 	private String holiday_date;
 	
 	@NotEmpty
@@ -31,6 +33,19 @@ public class Holidays{
 	
 	
 	
+	
+	public String getFromdate() {
+		return fromdate;
+	}
+	public void setFromdate(String fromdate) {
+		this.fromdate = fromdate;
+	}
+	public String getTodate() {
+		return todate;
+	}
+	public void setTodate(String todate) {
+		this.todate = todate;
+	}
 	public String getOrg_id() {
 		return org_id;
 	}

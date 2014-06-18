@@ -51,9 +51,11 @@ public class StudentRegistration
 	@NotEmpty
 	private String parent_mobile2;
 	
+	@Email
 	@NotEmpty
 	private String parent_email1;
 	
+	@Email
 	@NotEmpty
 	private String parent_email2;
 	

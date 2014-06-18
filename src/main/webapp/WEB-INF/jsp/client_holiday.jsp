@@ -104,7 +104,7 @@ select.add(option, 0); */
 		</script>
 
 
-<form action="client_insert_holiday" method="POST">
+<form action="client_insert_holiday" method="POST" onload="oneshow()">
 <table class="margin_table">
 
       <tr>
@@ -169,50 +169,105 @@ select.add(option, 0); */
 				                <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Number of Days </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
-				                  	<label><input type="radio" name="group1" class="radio1" value="one" data-divclass="div1" <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if>>Only One Day</label>
-<label><input type="radio" name="group1" class="radio2" value="more" data-divclass="div2" <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
+				                  	<label><input type="radio" name="group1" id="one" class="radio1" onclick="onecheck()" value="one"  <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if>>Only One Day</label>
+<label><input type="radio" name="group1" class="radio2" id="more" value="more" onclick="morecheck()"  <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
 
+<script>
+function onecheck()
+{
+	alert("hi");
+	document.getElementById("oneday").style.display="block";
+	document.getElementById("moreday").style.display="none";
+	alert("hello");
+	}
+	
+function morecheck()
+{
+	alert("hiii");
+	document.getElementById("oneday").style.display="none";
+	document.getElementById("moreday").style.display="block";
+	alert("hellooooooo");
+	}
+	
+$(window).load(function(){
 
+	alert("checking");
+	if(document.getElementById("one").checked==true){
+		alert("nbnbn");
+		document.getElementById("oneday").style.display="block";
+		document.getElementById("moreday").style.display="none";
+		
+		if(document.getElementById("hdate").value==""){
+			document.getElementById("requires").innerHTML="Required Field Should not be Empty";
+        }
+		
+	}
+	
+	else if(document.getElementById("more").checked==true)
+		{
+		alert("else");
+		document.getElementById("oneday").style.display="none";
+		document.getElementById("moreday").style.display="block";
+		
+		if(document.getElementById("fdate").value=="" && document.getElementById("tdate").value=="")
+			{
+			document.getElementById("brequires").innerHTML="Required Field Should not be Empty";
+			document.getElementById("brequires1").innerHTML="Required Field Should not be Empty";
+			}
+		else if(document.getElementById("fdate").value==""){
+			document.getElementById("brequires").innerHTML="Required Field Should not be Empty";
+		}
+		else if(document.getElementById("tdate").value==""){
+			document.getElementById("brequires1").innerHTML="Required Field Should not be Empty";
+		}
+		
+		}
+
+});
+
+</script>
 
 				                  	<br/><font color="Red" size="+1"><form:errors path="holidays.group1"></form:errors></font></td>
 				                </tr></table>
-				                <div id="div" class="div1 content"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
+				                <div id="oneday" style="display: none"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				                <tr class="row2"><td width="25%"></td>
 				                
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Holiday Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<div class='input-group date' id='endDate' style="float:left;">
-				                  	<input type="text" value="" name="holiday_date"/>
+				                  	<input type="text" id="hdate" value="${holidays.holiday_date}"  name="holiday_date"/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 									<img src="resources/images/date.png" width="24" height="35"/>
         							</span>
-				                  	</div>
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+        							</div>
+				                  	<br/><span id="requires" style="color: red;"></span>
+				                  	</td>
 				                    
 				                     </tr></table></div>
-				                     <div id="div" class="div2 content"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
+				                     <div id="moreday" style="display: none"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				                <tr class="row2"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> From Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<div class='input-group date' id='endDate1' style="float:left;">
-				                  	<input type="text" value="" name="fromdate"/>
+				                  	<input type="text" name="fromdate" id="fdate" value="${holidays.fromdate}"/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
 				                  	</div>
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  	<br/><span id="brequires" style="color: red;"></span>
+				                  	</td>
 				                    
 				                     </tr></table><table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				                     <tr class="row1"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> To Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<div class='input-group date' id='endDate2' style="float:left;">
-				                  	<input type="text" value="" name="todate"/>
+				                  	<input type="text" name="todate" id="tdate" value="${holidays.todate}"/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 									<img src="resources/images/date.png" width="24" height="35"/>
         							</span>
 				                  	</div>			                  	
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  	<br/><span id="brequires1" style="color: red;"></span></td>
 				                   
 				                     </tr></table></div>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
@@ -265,4 +320,23 @@ $('[type="radio"]').click(function () {
     $('.' + $(this).data("divclass")).show();
 });
 </script>
+<script type="text/javascript">
+function toggle3(value){
+	 alert(value); 
+	var e = document.getElementById('oneday');
+	var e1=document.getElementById('moreday');
+if(value=='show3')
+	{
+ e.style.display="block";
+ e1.style.display="none";
+	}
+else
+	{
+ e.style.display="none";
+ e1.style.display="block";
+	}
+}
+
+</script>
+
 <jsp:include page="footer.jsp"></jsp:include>
