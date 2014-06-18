@@ -54,7 +54,7 @@ jQuery(function () {
 
 
 <div style="display:none" id="div"><div class="searchpanel">
-						<form action="findbus" method="GET">
+						<form action="searchvechicleinformation" method="GET">
 							 
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -62,13 +62,13 @@ jQuery(function () {
 							   <td align="left" valign="middle" width="20%">&nbsp;Vehicle No:<br/>
 							    <select   id="e1"style="width:250px;" name="vechicle_reg_no">
 							 	<option value="">Select None</option>     
-							    <c:forEach items="${busregistrationform.busregistration}" var="driverlist" varStatus="status">
-							    <option value="${driverlist.vechicle_reg_no}">${driverlist.vechicle_reg_no}</option>
+							    <c:forEach items="${clientHomeForm1.clienthome}" var="clientvechicle" varStatus="status">
+							    <option value="${clientvechicle.vechicle_reg_no}">${clientvechicle.vechicle_reg_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;From Date:<br/>
 							    <span class='input-group date' id='endDate' >
-												<input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
+												<input type="text" id="timepicker2"	name="from_date"  style="height:24px;width:150px;float:left;"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="25"/>
         										</span>
@@ -76,7 +76,7 @@ jQuery(function () {
 							    
 							      <td align="left" valign="middle" width="10%">&nbsp;&nbsp;To Date:<br/>
 							      <span class='input-group date' id='endDate1' >
-												<input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
+												<input type="text" id="timepicker2"	name="to_date"  style="height:24px;width:150px;float:left;"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="25"/>
         										</span>
@@ -101,28 +101,62 @@ jQuery(function () {
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								<!-- <input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"> -->					
-					         	<td valign="top" align="left" width="5%">Date</td>
+					         	
+					         	<!-- <td valign="top" align="left" width="5%">Date</td>
           						<td valign="top" align="left" width="10%">Start Time</td>
           						<td valign="top" align="left" width="10%">End Time</td>
           						<td valign="top" align="left" width="5%">Duration</td>
           						<td valign="top" align="left" width="40%">Location</td>
-          						<td valign="top" align="left" width="25%">Trip</td>
+          						<td valign="top" align="left" width="25%">Trip</td> -->
+          						<td valign="top" align="left" width="8%">Date</td>
+          						<td valign="top" align="left" width="14%">Vehicle Reg No</td>
+          						<td valign="top" align="left" width="10%">Route No</td>
+          						<td valign="top" align="left" width="8%">Stop Id</td>
+          						<td valign="top" align="left" width="34%">Location</td>
+          						<td valign="top" align="left" width="8%">Trip</td>
+          						<td valign="top" align="left" width="5%">Reached</td>
+          						<td valign="top" align="left" width="15%">Message Send</td> 
+          						 
+          						
         					</tr>  </table>
     	<div class="Panel_One_Inner">
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%"class="order-table table">
-							 
+							 <c:forEach items="${clientHomeForm.clienthome}" var="clientvechicleinformation" varStatus="status">
         							<tr class="row1">
 							       		
-					     		     	 <td valign="top" align="left"  width="10%"><a href="driver_details?driver_id=${DriverRegistration.driver_id}">${DriverRegistration.driver_id}</a></td>
-											<td valign="top" align="left" width="15%">${DriverRegistration.driver_name}</td>
-											<td valign="top" align="left" width="15%">${DriverRegistration.contact_no}</td>
-												<td valign="top" align="left" width="15%">${DriverRegistration.license_type}</td>
-											<td valign="top" align="left" width="25%">
-										
-										
-											</td>
+					     		     	 
+											<td valign="top" align="left" width="8%">${clientvechicleinformation.last_message_send_pick}</td>
+											<td valign="top" align="left" width="13%">${clientvechicleinformation.vechicle_reg_no}</td>
+										   <td valign="top" align="left" width="10%">${clientvechicleinformation.route_no}</td>
+          						           <td valign="top" align="left" width="8%">${clientvechicleinformation.stop_id}</td>
+          						           <td valign="top" align="left" width="33%">${clientvechicleinformation.address}</td>
+          						           <td valign="top" align="left" width="8%">
+          						           <c:choose>
+          						           <c:when test="${clientvechicleinformation.trip==0}">
+          						           <c:out value="Pickup"></c:out>
+          						           </c:when>
+          						           <c:when test="${clientvechicleinformation.trip==1}">
+          						           <c:out value="Drop"></c:out>
+          						           </c:when>
+          						           <c:when test="${clientvechicleinformation.trip==2}">
+          						           <c:out value="KG Drop"></c:out>
+          						           </c:when>
+          						           </c:choose>
+          						           </td>
+          						           <td valign="top" align="left" width="8%">
+          						           <c:choose>
+          						           <c:when test="${clientvechicleinformation.reached==0}">
+          						           <c:out value="No"></c:out>
+          						           </c:when>
+          						           <c:when test="${clientvechicleinformation.reached==1}">
+          						           <c:out value="Yes"></c:out>
+          						           </c:when>
+          						           </c:choose>
+          						           </td>
+          						           <td valign="top" align="left" width="15%">${clientvechicleinformation.is_pick_message_send}</td> 
+											
 								</tr>
-							    	
+							    	</c:forEach>
     
         				</table>
         				

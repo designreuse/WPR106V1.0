@@ -169,7 +169,7 @@
 <a class="menuitem submenuheader"  href="#" >Vehicle / Route Information</a>
 <div class="submenu">
 	<ul>
-	<li><a href="clientbusnodetails">Vehicle Information</a></li>
+	<li><a href="clientvechicledetails">Vehicle Information</a></li>
 	<li><a href="clientviewroutedetails">Route Information</a></li>
 	<li><a href="driverlist">Driver List</a></li>
 	

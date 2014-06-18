@@ -92,7 +92,116 @@ public List<ClientHome> findclienthome( String org_id , String vechicle_reg_no){
 	}
 	
 	
+   /*
+    * Vehicle Information In client side 
+    * 
+    */
+
+public List<ClientHome> vechicle_traveled_information( String org_id){
 	
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	List<ClientHome> clientVechicle=new ArrayList<ClientHome>();
+    try{
+		resultSet = statement.executeQuery("select t2.last_message_send_pick,t2.vechicle_reg_no,t1.route_no,t1.stop_id,t1.address,t1.trip,t2.reached,t2.is_pick_message_send from tbl_bus_route as t1 join tbl_message_log as t2 on t1.route_no=t2.route_no where t1.stop_id=t2.stop_id and org_id='"+org_id+"'");
+		while(resultSet.next()){
+			
+			clientVechicle.add(new ClientHome(resultSet.getString("last_message_send_pick"),resultSet.getString("vechicle_reg_no"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("address"),resultSet.getString("trip"),resultSet.getString("reached"),resultSet.getString("is_pick_message_send")));
+		}
+    }catch(Exception e){
+    	System.out.println(e.toString());
+    	releaseResultSet(resultSet);
+    	releaseStatement(statement);
+    	releaseConnection(con);
+    }finally{
+    	releaseResultSet(resultSet);
+    	releaseStatement(statement);
+    	releaseConnection(con);	    	
+    }
+    return clientVechicle;
+}
+
+/*
+ * Vehicle Reg No For Vehicle Information Search
+ * 
+ */
+
+public List<ClientHome> vechicle_reg_no_for_vechicle_information(String org_id){
+	
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	List<ClientHome> clientVechicle=new ArrayList<ClientHome>();
+    try{
+		resultSet = statement.executeQuery("select vechicle_reg_no from tbl_vechicle where org_id='"+org_id+"'");
+		while(resultSet.next()){
+			
+			clientVechicle.add(new ClientHome(resultSet.getString("vechicle_reg_no")));
+		}
+    }catch(Exception e){
+    	System.out.println(e.toString());
+    	releaseResultSet(resultSet);
+    	releaseStatement(statement);
+    	releaseConnection(con);
+    }finally{
+    	releaseResultSet(resultSet);
+    	releaseStatement(statement);
+    	releaseConnection(con);	    	
+    }
+    return clientVechicle;
+}
+
+
+/*
+ * Vehicle Information Search In client side 
+ * 
+ */
+
+public List<ClientHome> vechicle_information_search(String org_id,String vechicle_reg_no,String from_date,String to_date){
+	
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	List<ClientHome> clientVechicle=new ArrayList<ClientHome>();
+    try{
+		resultSet = statement.executeQuery("select t2.last_message_send_pick,t2.vechicle_reg_no,t1.route_no,t1.stop_id,t1.address,t1.trip,t2.reached,t2.is_pick_message_send from tbl_bus_route as t1 join tbl_message_log as t2 on t1.route_no=t2.route_no where t1.stop_id=t2.stop_id and org_id='"+org_id+"' and t2.vechicle_reg_no='"+vechicle_reg_no+"' and (t2.last_message_send_pick>='"+from_date+"'and t2.last_message_send_pick<='"+to_date+"')");
+		while(resultSet.next()){
+			
+			clientVechicle.add(new ClientHome(resultSet.getString("last_message_send_pick"),resultSet.getString("vechicle_reg_no"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("address"),resultSet.getString("trip"),resultSet.getString("reached"),resultSet.getString("is_pick_message_send")));
+		}
+    }catch(Exception e){
+    	System.out.println(e.toString());
+    	releaseResultSet(resultSet);
+    	releaseStatement(statement);
+    	releaseConnection(con);
+    }finally{
+    	releaseResultSet(resultSet);
+    	releaseStatement(statement);
+    	releaseConnection(con);	    	
+    }
+    return clientVechicle;
+}
+
+
 	public void releaseConnection(Connection con){
 		try{if(con != null)
 			con.close();

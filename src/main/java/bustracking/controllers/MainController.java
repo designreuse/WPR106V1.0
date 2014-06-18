@@ -174,12 +174,66 @@ public class MainController {
 		return "client_view_route_details";
 	}
 	*/
-	@RequestMapping(value="/clientbusnodetails", method = RequestMethod.GET)
+	
+	/*
+	 * Vehicle Information In Client Side
+	 * 
+	 */
+	
+	
+	@RequestMapping(value="/clientvechicledetails", method = RequestMethod.GET)
 	public String clientbusnodetails(HttpServletRequest request,ModelMap model, Principal principal ) {
 		
+		ClientHomeForm clientHomeForm=new ClientHomeForm();
+		clientHomeForm.setClienthome(clientHomeDAO.vechicle_traveled_information(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("clientHomeForm",clientHomeForm);
+		
+		ClientHomeForm clientHomeForm1=new ClientHomeForm();
+		clientHomeForm1.setClienthome(clientHomeDAO.vechicle_reg_no_for_vechicle_information(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("clientHomeForm1",clientHomeForm1);
 		
 		return "client_busno_details";
 	}
+	
+	
+	/*
+	 * Vehicle Information Search Client Side
+	 * 
+	 */
+	
+	
+	@RequestMapping(value="/searchvechicleinformation", method = RequestMethod.GET)
+	public String searchvechicleinformation(HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("from_date") String from_date,@RequestParam("to_date") String to_date,ModelMap model, Principal principal ) {
+		
+		if(vechicle_reg_no=="" && from_date=="" && to_date==""){
+			
+			ClientHomeForm clientHomeForm=new ClientHomeForm();
+			clientHomeForm.setClienthome(clientHomeDAO.vechicle_traveled_information(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("clientHomeForm",clientHomeForm);
+			
+			ClientHomeForm clientHomeForm1=new ClientHomeForm();
+			clientHomeForm1.setClienthome(clientHomeDAO.vechicle_reg_no_for_vechicle_information(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("clientHomeForm1",clientHomeForm1);
+			
+			return "client_busno_details";
+		}
+		else{
+			
+			ClientHomeForm clientHomeForm=new ClientHomeForm();
+			clientHomeForm.setClienthome(clientHomeDAO.vechicle_information_search(mainDAO.getOrg_id(principal.getName()),vechicle_reg_no, from_date, to_date));
+			model.addAttribute("clientHomeForm",clientHomeForm);
+			
+			ClientHomeForm clientHomeForm1=new ClientHomeForm();
+			clientHomeForm1.setClienthome(clientHomeDAO.vechicle_reg_no_for_vechicle_information(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("clientHomeForm1",clientHomeForm1);
+			
+			return "client_busno_details";
+		}
+		
+		
+	}
+	
+	
 	
 	/*@RequestMapping(value="/clientviewstudent", method = RequestMethod.GET)
 	public String clientviewstudent(HttpServletRequest request,ModelMap model, Principal principal ) {
@@ -435,6 +489,8 @@ public class MainController {
 		
 		
 	}
+	
+	
 	@RequestMapping(value="/findsuperadminSr", method = RequestMethod.GET)
 	public String findsuperadminSr(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model, Principal principal ) {
 		if(org_name=="" && branch==""){

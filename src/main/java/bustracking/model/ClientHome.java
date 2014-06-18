@@ -4,6 +4,8 @@ package bustracking.model;
 
 public class ClientHome
 {
+	
+
 	private String org_id;
 	private String org_name;
 	private String branch;
@@ -13,6 +15,32 @@ public class ClientHome
 	private String bus_tracking_timestamp;
 	private String device_imei_number;
 	
+	private String route_no;
+	private String stop_id;
+	private String trip;
+	private String reached;
+	private String last_message_send_pick;
+	private String is_pick_message_send;
+	
+	
+	
+
+	public String getTrip() {
+		return trip;
+	}
+
+	public void setTrip(String trip) {
+		this.trip = trip;
+	}
+
+	public String getLast_message_send_pick() {
+		return last_message_send_pick;
+	}
+
+	public void setLast_message_send_pick(String last_message_send_pick) {
+		this.last_message_send_pick = last_message_send_pick;
+	}
+
 	public String getDevice_imei_number() {
 		return device_imei_number;
 	}
@@ -106,6 +134,69 @@ public class ClientHome
 		this.vechicle_reg_no = vechicle_reg_no;
 		this.address = address;
 		this.bus_tracking_timestamp = bus_tracking_timestamp;
+	}
+
+	
+
+	/*
+	 *  Vehicle InforMation In client Side
+	 */
+
+	public ClientHome(String last_message_send_pick, String vechicle_reg_no, String route_no,
+			String stop_id,String address,String trip, String reached,
+			String is_pick_message_send) {
+		super();
+		
+		this.last_message_send_pick = last_message_send_pick;
+		this.vechicle_reg_no = vechicle_reg_no;
+		this.route_no = route_no;
+		this.stop_id = stop_id;
+		this.address = address;
+		this.trip = trip;
+		this.reached = reached;
+		this.is_pick_message_send = is_pick_message_send;
+	}
+
+	/*
+	 *  Vehicle Reg No For Vehicle Information Search
+	 */
+	
+	public ClientHome(String vechicle_reg_no) {
+		super();
+		this.vechicle_reg_no = vechicle_reg_no;
+	}
+	
+	public String getRoute_no() {
+		return route_no;
+	}
+
+	
+	public void setRoute_no(String route_no) {
+		this.route_no = route_no;
+	}
+
+	public String getStop_id() {
+		return stop_id;
+	}
+
+	public void setStop_id(String stop_id) {
+		this.stop_id = stop_id;
+	}
+
+	public String getReached() {
+		return reached;
+	}
+
+	public void setReached(String reached) {
+		this.reached = reached;
+	}
+
+	public String getIs_pick_message_send() {
+		return is_pick_message_send;
+	}
+
+	public void setIs_pick_message_send(String is_pick_message_send) {
+		this.is_pick_message_send = is_pick_message_send;
 	}
 	
 	
