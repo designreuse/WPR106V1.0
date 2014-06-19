@@ -288,6 +288,8 @@ $('#drop_address').html(response);
 function mobilecheck()
 {
 	if(document.getElementById("mob1").value!='' && document.getElementById("mob2").value!=''){
+		document.getElementById("mrequires").innerHTML="";
+		document.getElementById("mrequires1").innerHTML="";
 		var phonenumber=document.getElementById("mob1").value;
 		var phonenumber1=document.getElementById("mob2").value;
 		if(phonenumber.length<10 && phonenumber1.length<10)
@@ -299,18 +301,24 @@ function mobilecheck()
 	} 
 	
 	if(document.getElementById("mob1").value!=''){
+		document.getElementById("mrequires").innerHTML="";
+		document.getElementById("mrequires1").innerHTML="";
 		var phonenumber=document.getElementById("mob1").value;
 		if(phonenumber.length<10)
 			{
 			document.getElementById("mrequires").innerHTML="Invalid Mobile Number";
+			
 			return false;
 			}
 	} 
 	
 	if(document.getElementById("mob2").value!=''){
+		document.getElementById("mrequires").innerHTML="";
+		document.getElementById("mrequires1").innerHTML="";
 		var phonenumber1=document.getElementById("mob2").value;
 		if(phonenumber1.length<10)
 			{
+			
 			document.getElementById("mrequires1").innerHTML="Invalid Mobile Number";
 			return false;
 			}

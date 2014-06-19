@@ -121,9 +121,12 @@ public String orgregistration(HttpServletRequest request,HttpSession session,@Mo
 
 
 @RequestMapping(value="/vieworg",method=RequestMethod.GET)
-public String vieworg(ModelMap model,Principal prinicipal)
+public String vieworg(HttpSession session,ModelMap model,Principal prinicipal)
 {
-	
+	session.removeAttribute("org_name");
+	session.removeAttribute("branch");
+	session.removeAttribute("city");
+	session.removeAttribute("country");
 	OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
 	orgregistrationform.setOrgregistration(orgDAO.getOrgregistration());
 	model.addAttribute("orgregistrationform", orgregistrationform);
@@ -148,8 +151,15 @@ public String editorg(HttpServletRequest request,@RequestParam("org_name") Strin
 }
 
 @RequestMapping(value="/updateorg",method=RequestMethod.POST)
-public String updateorg(HttpServletRequest request,@ModelAttribute ("OrgRegistration") OrgRegistration orgRegistration,ModelMap model,Principal prinicipal)
+public String updateorg(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch, @ModelAttribute ("OrgRegistration") @Valid OrgRegistration orgRegistration,BindingResult result,ModelMap model,Principal prinicipal)
 {
+	if(result.hasErrors())
+	{
+		OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
+		orgregistrationform.setOrgregistration(orgDAO.getOrgregistration_id(org_name, branch));
+		model.addAttribute("orgregistrationform", orgregistrationform);
+		return "edit_org";
+	}
 	
 		int status = orgDAO.updateOrganization(orgRegistration);
 		System.out.println(status);
@@ -195,8 +205,13 @@ public String removeStudent(@RequestParam("org_name") String org_name,@RequestPa
 }
 
 @RequestMapping(value="/findorg",method=RequestMethod.GET)
-public String findorg(HttpServletRequest request,@RequestParam("org_name")String org_name,@RequestParam("branch") String branch,@RequestParam("city") String city,@RequestParam("country") String country,ModelMap model)
+public String findorg(HttpSession session,HttpServletRequest request,@RequestParam("org_name")String org_name,@RequestParam("branch") String branch,@RequestParam("city") String city,@RequestParam("country") String country,ModelMap model)
 {
+	session.setAttribute("org_name", org_name);
+	session.setAttribute("branch", branch);
+	session.setAttribute("city", city);
+	session.setAttribute("country", country);
+	
 	if(org_name=="" && branch== "" && city== "" && country=="")
 	{
 		OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();

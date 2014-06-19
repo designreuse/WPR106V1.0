@@ -12,49 +12,66 @@ public class OrgRegistration
 {
 private String org_id;
 
-
+@NotEmpty
 private String org_name;
 
-
+@NotEmpty
+@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Fax Number!!!")
 private String office_fax;
 
-
+@NotEmpty
 private String branch;
 
-
+@NotEmpty
+@Email
 private String email_id;
 
-
+@NotEmpty
 private String address;
 
 
 private String chairman_name;
 
-
+@NotEmpty
 private String country;
 
+@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
 private String chairman_telephone_number;
 
+@NotEmpty
 private String state;
 
 private String principal_name;
 
+@NotEmpty
 private String city;
 
+@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
 private String principal_telephone_number;
 
+@NotEmpty
+@Pattern(regexp="(^$|[0-9]{6})",message="Invalid Pincode!!!")
 private String pincode;
 
+@NotEmpty
 private String transport_officer_name;
 
+@NotEmpty
 private String type_of_organization;
 
+@NotEmpty
+@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
 private String transport_officer_number;
 
+@NotEmpty
+@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
 private String office_land_line1;
 
+@NotEmpty
 private String is_active;
 
+@NotEmpty
+@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
 private String office_land_line2;
 
 
