@@ -119,7 +119,7 @@ jQuery(function () {
 				                  
 				                  <td valign="top" align="left" class="input_txt">
 				                  <span class='input-group date' id='endDate1' >
-				                  	<input type="text" class="org_input_txtbx_height1" id="todate"  onblur="toTitleCase('tdate'')" value="${adminuser.firstname }" name="todate" />
+				                  	<input type="text" style="width:20px;" id="todate"  onblur="toTitleCase('tdate'')" value="${adminuser.firstname }" name="todate" />
 				                  	 <span class="add-on" style="margin:0 125px 0 0px;float:right">
 									<img src="resources/images/date.png" width="25" height="45"/>
         							</span></span>

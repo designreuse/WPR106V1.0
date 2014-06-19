@@ -17,40 +17,59 @@ public class DeviceRegistration
 	
 
 	private String device_id;
+	
+	@NotEmpty
 	private String manufacturer;
 	
+	@NotEmpty
 	private String model_no;
 	
+	@NotEmpty
 	private String carrier;
 	
+	@NotEmpty
 	private String sim_card_number;
 	
+	@NotEmpty
 	private String device_procured_date;
 	
+	@NotEmpty
 	private String device_invoice_number;
 	
+	@NotEmpty
 	private String device_imei_number;
 	
+	@NotEmpty
 	private String device_tested;
 	
+	@NotEmpty
 	private String sim_procured_date;
 	
+	@NotEmpty
 	private String sim_invoice_number;
 	
+	@NotEmpty
 	private String sim_card_tested;
 	
+	@NotEmpty
 	private String device_sim_paired;
 	
+	@NotEmpty
 	private String  is_assigned;
 	
+	@NotEmpty
 	private String password;
 	
+	@NotEmpty
 	private String device_status;
+	
 	
 	private String port_no;
 	
+	@NotEmpty
 	private String comments;
 	
+	@NotEmpty
 	private String apn;
 	
 	private String adminip;

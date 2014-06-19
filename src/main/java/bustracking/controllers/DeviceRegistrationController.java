@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import bustracking.dao.DeviceRegistrationDAO;
 import bustracking.forms.BusDeviceRegistrationForm;
@@ -30,6 +31,8 @@ import bustracking.dao.MainDAO;
 import java.net.*;
 
 @Controller
+@SessionAttributes({"devicesimsetup","apn","manufactuere","carrier","device_tested","device_sim_paired","sim_card_tested","is_aasigned","device_status","device_imei_number","create_user_id","adminip","sim_card_number"})
+
 public class DeviceRegistrationController
 {
 	@Autowired
@@ -49,12 +52,23 @@ public class DeviceRegistrationController
 		List <String> carriername=new ArrayList<String>();
 		carriername=deviceRegistrationDAO.getcarriername();
 		model.addAttribute("carriername",carriername);
+		
 		return "add_device_registration";
 	
 	}
 	
 	@RequestMapping(value="/changepassword", method=RequestMethod.GET)
 	public String changepassword(HttpSession session,ModelMap model, Principal principal){
+		
+		session.removeAttribute("devicesimsetup");
+		session.removeAttribute("apn");
+		session.removeAttribute("manufacturer");
+		session.removeAttribute("carrier");
+		session.removeAttribute("device_tested");
+		session.removeAttribute("sim_card_tested");
+		session.removeAttribute("is_assigned");
+		session.removeAttribute("device_status");
+		session.removeAttribute("device_sim_paired");
 		
 		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
 		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
@@ -87,7 +101,7 @@ public class DeviceRegistrationController
 	// Edit Device Information
 	
 	@RequestMapping(value="/edit_device", method = RequestMethod.GET)
-	public String edit_device(@RequestParam("device_imei_number")String device_imei_number,@ModelAttribute("DeviceRegistration") DeviceRegistration deviceRegistration,BindingResult result,ModelMap model, Principal principal ) {
+	public String edit_device(@RequestParam("device_imei_number")String device_imei_number,@ModelAttribute("deviceRegistration") DeviceRegistration deviceRegistration,BindingResult result,ModelMap model, Principal principal ) {
 	
 		List <String> carriername=new ArrayList<String>();
 		carriername=deviceRegistrationDAO.getcarriername();
@@ -99,22 +113,40 @@ public class DeviceRegistrationController
 		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
 		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.getDevice(device_imei_number));
 		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+		
 			return "edit_device";
 	}
 	
 	// Update Device Information
 	
 	@RequestMapping(value="/update_device", method=RequestMethod.POST)
-	public String updateBus(HttpServletRequest request,@ModelAttribute("DeviceRegistration")DeviceRegistration deviceregistration,
+	public String updateBus(HttpServletRequest request,@RequestParam("device_imei_number")String device_imei_number,@ModelAttribute("deviceRegistration") @Valid DeviceRegistration deviceRegistration,
 			BindingResult result,ModelMap model,Principal principal)
 	{
 		
 		
-		int status = deviceRegistrationDAO.updateDevice(deviceregistration);
+		if(result.hasErrors())
+		{
+			
+			List <String> carriername=new ArrayList<String>();
+			carriername=deviceRegistrationDAO.getcarriername();
+			model.addAttribute("carriername",carriername);
+			
+			deviceRegistration.setCreate_user_id(principal.getName());
+			deviceRegistration.setModified_user_id(principal.getName());
+			
+			DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
+			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.getDevice(device_imei_number));
+			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+			
+			return "edit_device";
+		}
+		
+		int status = deviceRegistrationDAO.updateDevice(deviceRegistration);
 		System.out.println(status);
 		
-		deviceregistration.setCreate_user_id(principal.getName());
-		deviceregistration.setModified_user_id(principal.getName());
+		deviceRegistration.setCreate_user_id(principal.getName());
+		deviceRegistration.setModified_user_id(principal.getName());
 		
 		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
 		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
@@ -417,6 +449,10 @@ public class DeviceRegistrationController
 	@RequestMapping(value="/view_devices", method = RequestMethod.GET)
 	public String view_inserted_device(HttpSession session,ModelMap model, Principal principal ) {
 	
+		session.removeAttribute("device_imei_number");
+		session.removeAttribute("create_user_id");
+		session.removeAttribute("sim_card_number");
+		session.removeAttribute("adminip");
 		
 		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
 		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
@@ -434,9 +470,15 @@ public class DeviceRegistrationController
 	//find devices
 
 	@RequestMapping(value="/find_devicesadmin",method=RequestMethod.GET)
-	public String find_devicesadmin(HttpServletRequest request,@RequestParam("device_imei_number") String device_imei_number,@RequestParam("sim_card_number") String device_sim_number,@RequestParam("adminip") String adminip,@RequestParam("create_user_id") String create_user_id,ModelMap model)
+	public String find_devicesadmin(HttpSession session,HttpServletRequest request,@RequestParam("device_imei_number") String device_imei_number,@RequestParam("sim_card_number") String device_sim_number,@RequestParam("adminip") String adminip,@RequestParam("create_user_id") String create_user_id,ModelMap model)
 	
 	{		
+		
+		session.setAttribute("device_imei_number",device_imei_number);
+		session.setAttribute("sim_card_number",device_sim_number);
+		session.setAttribute("adminip", adminip);
+		session.setAttribute("create_user_id", create_user_id);
+		
 		if( device_imei_number=="" && device_sim_number==""  && adminip=="" && create_user_id=="")
 		{	
 			DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
@@ -470,22 +512,40 @@ public class DeviceRegistrationController
 	
 	@RequestMapping(value="/deviceregistration", method = RequestMethod.POST)
 
-	public String insert_device(HttpServletRequest req,HttpSession session,@ModelAttribute("DeviceRegistration") @Valid DeviceRegistration deviceRegistration,BindingResult result,ModelMap model, Principal principal ) {
+	public String insert_device(@RequestParam("apn") String apn,@RequestParam("carrier") String carrier,@RequestParam("manufacturer") String manufacturer,@RequestParam("device_tested") String device_tested,@RequestParam("sim_card_tested") String sim_card_tested,@RequestParam("device_sim_paired") String device_sim_paired,@RequestParam("device_status") String device_status,@RequestParam("is_assigned") String is_assigned,HttpSession session,@ModelAttribute("deviceRegistration") @Valid DeviceRegistration deviceRegistration,BindingResult result,ModelMap model, Principal principal ) {
 	
 	
-		List <String> carriername=new ArrayList<String>();
-		carriername=deviceRegistrationDAO.getcarriername();
-		model.addAttribute("carriername",carriername);
 		
+		
+		session.setAttribute("carrier",carrier);
+		session.setAttribute("apn", apn);
+		session.setAttribute("manufacturer", manufacturer);
+		session.setAttribute("device_tested",device_tested);
+		session.setAttribute("sim_card_tested",sim_card_tested);
+		session.setAttribute("device_sim_paired",device_sim_paired);
+		session.setAttribute("device_status",device_status);
+		session.setAttribute("is_assigned",is_assigned);
+		session.setAttribute("devicesimsetup",deviceRegistration);
 		
 		if(result.hasErrors())
 		{
+			
+			List <String> carriername=new ArrayList<String>();
+			carriername=deviceRegistrationDAO.getcarriername();
+			model.addAttribute("carriername",carriername);
+			
+			DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
+			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+			
+			model.addAttribute("apn_array",deviceRegistrationDAO.getapn(deviceRegistration.getCarrier()));
+			
 			return "add_device_setup";
 		}
 		else
 		{	
 			/*if(deviceRegistrationDAO.check_simcard_no(deviceRegistration))
-				deviceRegistrationDAO.insert_device(deviceRegistration,principal.getName());
+				deviceRegistrationDAO.insert_device(deviceRegistration);
 			else
 			{
 				model.addAttribute("simnoexists","SimCard Number already exists!");

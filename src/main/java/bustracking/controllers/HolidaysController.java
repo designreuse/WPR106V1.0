@@ -247,6 +247,7 @@ public class HolidaysController{
 				orgname_for_school=busDAO.getorgname_for_school();
 				model.addAttribute("orgname_for_school",orgname_for_school);
 				model.addAttribute("branch_array",busDAO.getBus_id(org_name));
+				
 				return "client_holiday";
 			}
 			

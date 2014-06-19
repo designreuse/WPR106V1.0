@@ -106,6 +106,11 @@ public class MainController {
 			SuperAdminHomeForm superAdminHomeForm = new SuperAdminHomeForm();
 			superAdminHomeForm.setSuperAdminHome(mainDAO.getAdminHomes());
 			model.addAttribute("superAdminHomeForm",superAdminHomeForm);
+			
+			SuperAdminHomeForm superAdminHomeForm1 = new SuperAdminHomeForm();
+			superAdminHomeForm1.setSuperAdminHome(mainDAO.getAdminHomes());
+			model.addAttribute("superAdminHomeForm1",superAdminHomeForm1);
+			
 			return "superadmin_homepage";
 		}
 			
@@ -472,6 +477,10 @@ public class MainController {
 			superAdminHomeForm1.setSuperAdminHome(mainDAO.getAdminHomes());
 			model.addAttribute("superAdminHomeForm1",superAdminHomeForm1);
 		
+			SuperAdminHomeForm superAdminHomeForm = new SuperAdminHomeForm();
+			superAdminHomeForm.setSuperAdminHome(mainDAO.getAdminHomes());
+			model.addAttribute("superAdminHomeForm",superAdminHomeForm);
+			
 			return "superadmin_homepage";
 		}
 		else{

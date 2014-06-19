@@ -84,7 +84,7 @@ public class AddUserController{
 			List <String> branch=new ArrayList<String>();
 		branch=busDAO.getBus_id(org_name);
 		
-		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select id='bid' name='branch'  style='width:220px;'>";
+		returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#bid').select2(); });</script><select id='bid' name='branch'  style='width:220px;margin-top:-4px;'>";
 		returnText+="<option value='' selected>--Select Branch--</option>";
 		for(String bname:branch)
 		{
