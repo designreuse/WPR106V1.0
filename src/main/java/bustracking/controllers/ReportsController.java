@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import bustracking.dao.BusRegistrationDAO;
@@ -32,7 +33,7 @@ import bustracking.model.Report;
 
 
 @Controller
-
+@SessionAttributes({"student_roll_no","from_date","to_date"})
 public class ReportsController{
 	
 	
@@ -63,7 +64,11 @@ public class ReportsController{
 		}
 	
 		@RequestMapping(value="/tracksms", method = RequestMethod.GET)
-		public String clienttracksms(HttpServletRequest request,ModelMap model, Principal principal ) {
+		public String clienttracksms(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal ) {
+			
+		    session.removeAttribute("student_roll_no");
+		    session.removeAttribute("from_date");
+		    session.removeAttribute("to_date");
 			
 			ReportForm reportForm=new ReportForm();
 			reportForm.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
@@ -78,9 +83,12 @@ public class ReportsController{
 		
 		
 		@RequestMapping(value="/clientsmstrack", method = RequestMethod.GET)
-		public String clienttracksms(@RequestParam("fromdate") String fromdate,@RequestParam("todate") String todate,@RequestParam("student_roll_no") String student_roll_no,HttpServletRequest request,ModelMap model, Principal principal ) {
+		public String clienttracksms(@RequestParam("fromdate") String fromdate,@RequestParam("todate") String todate,@RequestParam("student_roll_no") String student_roll_no,HttpServletRequest request,HttpSession session,ModelMap model, Principal principal ) {
 			
 			
+			session.setAttribute("from_date", fromdate);
+			session.setAttribute("to_date", todate);
+			session.setAttribute("student_roll_no",student_roll_no);
 			
 			if(student_roll_no=="" && fromdate=="" && todate=="")
 			{

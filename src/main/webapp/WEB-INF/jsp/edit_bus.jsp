@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
@@ -29,7 +30,7 @@
 				                  <td valign="top" align="left" class="input_txt" >
 				                  <input type="hidden" name="org_name" class="org_input_cmbbx" value="${BusRegistration.org_name}"/>${BusRegistration.org_name}
 				                  	 
-				                  	</br><font color="Red" size="+1"></font>
+				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.org_name"></form:errors></font>
 				                  </td>
 				                </tr>
 
@@ -38,53 +39,56 @@
 						            <td valign="top" align="left" class="input_txt">
 						      		<input type="hidden" name="branch" class="org_input_cmbbx" value="${BusRegistration.branch}"/>${BusRegistration.branch}
 						            	
-						            	</br><font color="Red" size="+1"></font></td>
+						            	</br><font color="Red" size="+1"><form:errors path="busRegistration.branch"></form:errors></font></td>
 						         </tr> 
 								<tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Bus Registration No :</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                 	<input type="hidden" name="vechicle_reg_no" class="org_input_cmbbx" value="${BusRegistration.vechicle_reg_no}"/>${BusRegistration.vechicle_reg_no}
+				                 	<input type="hidden" name="vechicle_reg_no" class="org_input_cmbbx" style="text-transform: uppercase;" value="${BusRegistration.vechicle_reg_no}"/>${BusRegistration.vechicle_reg_no}
 				                  	
-				                  	<br/><font color="Red" size="+1"></font></td>
+				                  	<br/><font color="Red" size="+1"><form:errors path="busRegistration.vechicle_reg_no"></form:errors></font></td>
 				                </tr> 
 								<tr class="row1">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Device IMEI No : </td>
-				                  	<td valign="top" align="left" class="input_txt"><select name="device_imei_number" id="imei" onblur="Validate2('imei')">
+				                  	<td valign="top" align="left" class="input_txt">
+				                  	<select name="device_imei_number" id="imei" onblur="Validate2('imei')" style="width: 220px;margin-top:-4px">
 							    <option value="${BusRegistration.device_imei_number}" selected>${BusRegistration.device_imei_number}</option>
 							     <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceregistration" varStatus="status">
         				        <option value="${deviceregistration.device_imei_number}">${deviceregistration.device_imei_number}</option>
 			                  </c:forEach>
 			                  </select>
-				                  	</br><font color="Red" size="+1"></font></td>
+				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.device_imei_number"></form:errors></font></td>
 				                </tr>	
 				                <tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver Name :</td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="driver_id" name="driver_name" value="${BusRegistration.driver_name}" /></br><font color="Red" size="+1"></font></td>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="driver_id" name="driver_name" value="${BusRegistration.driver_name}" oninput="validatealpha_driver_name()" onblur="changealpha_driver_name()" />
+				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_name"></form:errors></font></td>
 				                </tr>
 				                <tr class="row1">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License No :</td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="licence_id" name="driver_licence_no" value="${BusRegistration.driver_licence_no}"/>
-				                  	</br><font color="Red" size="+1"></font></td>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text"  style="text-transform: uppercase;" class="org_input_txtbx_height1" id="licence_id" name="driver_licence_no"  oninput="validatealphanum_driver_licence_no()" value="${BusRegistration.driver_licence_no}"/>
+				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_no"></form:errors></font></td>
 				                </tr> 
 				                <tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License Expiry Date :</td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="datepicker" name="driver_licence_exp_date" value="${BusRegistration.driver_licence_exp_date}"/></br><font color="Red" size="+1"></font></td>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text"  class="org_input_txtbx_height1" id="datepicker" name="driver_licence_exp_date" oninput="validatealphanum_driver_licence_exp_date()" value="${BusRegistration.driver_licence_exp_date}"/>
+				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_exp_date"></form:errors></font></td>
 				                </tr> 
 				                <tr class="row1">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Route No : </td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="imei" name="route_no" value="${BusRegistration.route_no}"/>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text"  style="text-transform: uppercase;" class="org_input_txtbx_height1" id="route_id" name="route_no" value="${BusRegistration.route_no}" oninput="validatealphanum_route_no()"/>
 				                  <%-- 	<select class="org_input_cmbbx" name="route_no" id="imei" onblur="Validate2('imei')">
 							    <option value="" selected>-- Select Route No--</option>
 							     <c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         				        <option value="${route.route_no}">${route.route_no}</option>
 			                  </c:forEach>
 			                  </select> --%>
-				                  	</br><font color="Red" size="+1"></font></td>
+				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.route_no"></form:errors></font></td>
 				                </tr>	
 				          </table>
 				           <table width="100%">
 				                  <tr>
-				                   <td width="50%" align="right"><input type="submit" class="btn" value="Update" ></td>
+				                   <td width="50%" align="right"><input type="submit" class="btn" value="Save Changes" ></td>
 				                   <td>&nbsp;&nbsp;</td>
 				                    
 				                    <td><input type="reset" class="btn" value="Cancel"  onclick="window.location.href='viewbus'"></td>
@@ -105,6 +109,44 @@
 
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
+
+<script type="text/javascript">
+
+function validatealphanum_vechicle_reg_no(){
+    var textInput = document.getElementById("bus_no").value;
+    textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
+    document.getElementById("bus_no").value = textInput;
+}
+
+function validatealphanum_driver_licence_no(){
+    var textInput = document.getElementById("licence_id").value;
+    textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
+    document.getElementById("licence_id").value = textInput;
+}
+
+function validatealphanum_route_no(){
+    var textInput = document.getElementById("route_id").value;
+    textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
+    document.getElementById("route_id").value = textInput;
+}
+
+function changealpha_driver_name(){
+	
+    str=document.getElementById(driver_id).value;
+    str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    document.getElementById(driver_id).value=str;
+		
+}
+
+function validatealpha_driver_name(){
+	
+	var textInput = document.getElementById("driver_id").value;
+    textInput = textInput.replace(/[^A-Za-z]/g, "");
+    document.getElementById("driver_id").value = textInput;
+		
+}
+
+</script>
 
 
 <script>

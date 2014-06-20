@@ -30,6 +30,15 @@
 <form action="sms_to_parent" method="POST">
 <table class="margin_table">
 
+<%-- <c:if test="${success==true}">
+        <tr>
+        <td valign="top" align="left" style="padding:5px 0 10px 0;">&nbsp;
+            <div id="success_statusbar" class="status success">
+            <p class="closestatus"><a title="Close" href="viewdriver">x</a></p>
+            <p><img alt="Success" src="resources/images/icons/icon_success.png"><span>Success!</span>.</p>
+          </div>
+      </tr>
+    </c:if>  --%>
       <tr>
       
         <td valign="top" align="left">
@@ -48,15 +57,15 @@
     						<tr class="row2">
 				                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Trip </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="50%">
-				                  	<select  style="width:220px;" name="trip" id="trip" value="${class_section.class_std}" onchange="doAjaxPost1()">
-				                  	<option value="none" selected>--Select Trip--</option>
+				                  	<select  style="width:220px;" name="trip" id="trip"  onchange="doAjaxPost1()">
+				                  	<option selected>--Select Trip--</option>
 				                  	<option value="0">Pick up</option>
 				                  	<option value="1">Drop</option>
 				                  	<option value="2">KG Drop</option>
 				                  	
 				                  	</select>
 				                  	
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.class_std"></form:errors></font></td> 
+				                  	<br/><font color="Red" size="+1"><form:errors path="smsparent.shift"></form:errors></font></td> 
 				               </tr>
 				                
                         		<%-- <tr class="row1"><td valign="middle" align="right" class="input_txt" width="29%" ></td>
@@ -75,12 +84,12 @@
 						  <tr class="row2">
 						  <td valign="middle" align="right" class="input_txt" width="30%" ><span class="err">*</span> Route </td><td width="1%">:</td>
 				                  <td valign="middle" align="left" class="input_txt" width="50%">
-				                 <span id="info1">	<select  style="width:220px;" name="route_no" id="route" disabled="disabled">
-							    <option value="none" selected>-- Select Route--</option>
+				                 <span id="info1">	<select  style="width:220px;" name="route_no" id="route" >
+							    <option selected>-- Select Route--</option>
         				        <!-- <option value="Routes here" >Routes here</option> -->
 			                  
 			                 </select></span> 
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.org_id"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><form:errors path="smsparent.route"></form:errors></font>
 				                  </td>
 				               
 				                </tr>
@@ -90,7 +99,7 @@
 				                  	<td valign="top" align="left" class="input_txt" width="50%">
 				                  	<textarea name="message" class="textareanew" ></textarea>
 				                  	
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  	<br/><font color="Red" size="+1"><form:errors path="smsparent.message"></form:errors></font></td>
 				                    
 				                     </tr>
 				                     

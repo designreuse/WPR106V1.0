@@ -63,15 +63,15 @@
 							   <select id="student_roll_no_id" name="student_roll_no" style="width:220px;margin-top:-4px;">
 							   <option value="" selected> -- Select Student Roll No -- </option>
 							    <c:forEach items="${reportForm1.reports}" var="smsreport" varStatus="status">
-							   <option value="${smsreport.student_roll_no}">${smsreport.student_roll_no}</option>
+							   <option value="${smsreport.student_roll_no}" <c:if test="${smsreport.student_roll_no==student_roll_no}"><c:out value="selected"></c:out></c:if> >${smsreport.student_roll_no}</option>
 							    </c:forEach>
 							   </select>
 							  
 							   </td>
 							   <td align="right" valign="middle" width="13%">From Date:&nbsp;&nbsp;</td>
-							  <td align="right"><input type="text" class="org_input_txtbx_height1"  id="fromdate" name="fromdate"   value=""/></td>
+							  <td align="right"><input type="text" class="org_input_txtbx_height1"  id="fromdate" name="fromdate"   value="${from_date}"/></td>
 							    <td align="right" valign="middle" width="10%">To Date:&nbsp;&nbsp;</td>
-							   <td align="right"> <input type="text" class="org_input_txtbx_height1"  id="todate" name="todate"   value=""/></td>
+							   <td align="right"> <input type="text" class="org_input_txtbx_height1"  id="todate" name="todate"   value="${to_date}"/></td>
 							   
 							    <td align="center" valign="middle"></td>
 							  <td align="center" valign="middle" width="30%">

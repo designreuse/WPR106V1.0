@@ -29,14 +29,14 @@
 							    <select   id="e1"style="width:250px;" name="org_name">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${superAdminHomeForm1.superAdminHome}" var="superAdmin1" varStatus="status">
-							    <option value="${superAdmin1.org_name}">${superAdmin1.org_name}</option>
+							    <option value="${superAdmin1.org_name}" <c:if test="${superAdmin1.org_name==org_name}"><c:out value="selected"></c:out></c:if> >${superAdmin1.org_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Branch  &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e2"style="width:250px;" name="branch">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${superAdminHomeForm1.superAdminHome}" var="superAdmin1" varStatus="status">
-							    <option value="${superAdmin1.branch}">${superAdmin1.branch}</option>
+							    <option value="${superAdmin1.branch}" <c:if test="${superAdmin1.branch==branch}"><c:out value="selected"></c:out></c:if>>${superAdmin1.branch}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="center" valign="middle" width="20%"><br/>

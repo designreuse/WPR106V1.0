@@ -336,7 +336,7 @@ jQuery(function () {
 								    </select>
 				        </c:when>
 				        <c:otherwise>
-				        <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;">  
+				        <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;margin-top:-4px;">  
      					 <option value="" selected>--Select APN--</option>  
       					</select>
 				        </c:otherwise>

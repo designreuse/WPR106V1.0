@@ -5,6 +5,7 @@ import java.util.TimeZone;
 import java.text.SimpleDateFormat;
 
 import java.security.Principal;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +59,7 @@ import bustracking.model.*;
 
 import bustracking.model.XMLWriter;
 @Controller
-@SessionAttributes({"sample","listsize","menu","role","org_name","branch","vec_imei","holi"})
+@SessionAttributes({"sample","listsize","menu","role","org_name","branch","vec_imei","holi","vechicle_reg_no"})
 public class MainController {
 	@Autowired
 	RouteDAO routeDAO;
@@ -103,6 +104,9 @@ public class MainController {
 		
 		if(role.equals("ROLE_SUPERADMIN")){
 			
+			session.removeAttribute("org_name");
+			session.removeAttribute("branch");
+			
 			SuperAdminHomeForm superAdminHomeForm = new SuperAdminHomeForm();
 			superAdminHomeForm.setSuperAdminHome(mainDAO.getAdminHomes());
 			model.addAttribute("superAdminHomeForm",superAdminHomeForm);
@@ -127,6 +131,8 @@ public class MainController {
 				
 		}
 		else{
+			
+			session.removeAttribute("vechcicle_reg_no");
 			
 			ClientHomeForm clientHomeForm= new ClientHomeForm();
 			clientHomeForm.setClienthome(clientHomeDAO.getClienthome(mainDAO.getOrg_id(principal.getName())));
@@ -471,8 +477,13 @@ public class MainController {
 //admin home search 06/05/2014
 	
 	@RequestMapping(value="/findsuperadminhome", method = RequestMethod.GET)
-	public String findadminhome(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model, Principal principal ) {
+	public String findadminhome(HttpSession session,HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model, Principal principal ) {
+		
+		session.setAttribute("org_name", org_name);
+		session.setAttribute("branch", branch);
+		
 		if(org_name=="" && branch==""){
+			
 			SuperAdminHomeForm superAdminHomeForm1 = new SuperAdminHomeForm();
 			superAdminHomeForm1.setSuperAdminHome(mainDAO.getAdminHomes());
 			model.addAttribute("superAdminHomeForm1",superAdminHomeForm1);
@@ -1045,19 +1056,29 @@ public class MainController {
 	 */
 	
 	@RequestMapping(value="/sms_to_parent", method=RequestMethod.POST)
-	public String sms_to_parent(@RequestParam("route_no") String route_no,@RequestParam("message") String Message,ModelMap model,Principal principal)
+	public String sms_to_parent(@RequestParam("route_no") String route_no,@RequestParam("message") String Message,@ModelAttribute("smsparent") @Valid Smsparent smsparent,BindingResult result,ModelMap model,Principal principal)
 	{
-		messageSending.SMS_to_parent(route_no, Message);
-		model.addAttribute("suceess","true");
+		if(result.hasErrors())
+		{
+			
+			return "client_smstoparent";
+		}
+		else{
+			messageSending.SMS_to_parent(route_no, Message);
+			model.addAttribute("suceess","true");
+			
+		}
 		
-		return "client_smstoparent";
+		return "tracksms";
 	}
 	
 	//Search Operation in Client Home
 	
 	@RequestMapping(value="/findclienthome", method = RequestMethod.GET)
-	public String findclienthome(HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,ModelMap model, Principal principal ) {
+	public String findclienthome(HttpSession session,HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,ModelMap model, Principal principal ) {
 	
+	session.setAttribute("vechicle_reg_no",vechicle_reg_no);	
+		
 	ClientHomeForm clientHomeForm= new ClientHomeForm();
 	clientHomeForm.setClienthome(clientHomeDAO.findclienthome(mainDAO.getOrg_id(principal.getName()), vechicle_reg_no));
 	model.addAttribute("clientHomeForm",clientHomeForm);

@@ -1,13 +1,20 @@
 package bustracking.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Smsparent{
 	
+	
+	@NotEmpty
 	private String route;
 	
+	@NotEmpty
 	private String shift;
 	
+	@NotEmpty
 	private String trip;
 	
+	@NotEmpty
 	private String message;
 
 	public Smsparent() {

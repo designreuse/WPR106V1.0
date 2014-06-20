@@ -41,7 +41,7 @@
 							    <select   id="e1"style="width:300px;" name="org_name">
 							       <option value="">Select None</option>
 							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
-							    <option value="${BusRegistration1.org_name}">${BusRegistration1.org_name}</option>
+							    <option value="${BusRegistration1.org_name}" <c:if test="${BusRegistration1.org_name==org_name}"><c:out value="Selected"/></c:if>>${BusRegistration1.org_name}</option>
 							    </c:forEach>
 							    </select>
 							    </td>
@@ -51,7 +51,7 @@
 							    <select   id="e2"style="width:300px;" name="branch">
 							     <option value="">Select None</option>
 							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
-							    <option value="${BusRegistration1.branch}">${BusRegistration1.branch}</option>
+							    <option value="${BusRegistration1.branch}" <c:if test="${BusRegistration1.branch==branch}"><c:out value="Selected"/></c:if> >${BusRegistration1.branch}</option>
 							    </c:forEach>
 							    </select>
 								</td>
@@ -60,7 +60,7 @@
 							    <select   id="e3"style="width:300px;" name="vechicle_reg_no">
 							     <option value="">Select None</option>
 							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
-							    <option value="${BusRegistration1.vechicle_reg_no}">${BusRegistration1.vechicle_reg_no}</option>
+							    <option value="${BusRegistration1.vechicle_reg_no}" <c:if test="${BusRegistration1.vechicle_reg_no==vechicle_reg_no}"><c:out value="Selected"/></c:if>>${BusRegistration1.vechicle_reg_no}</option>
 							    </c:forEach>
 							    </select>
 							    </td>
@@ -75,7 +75,7 @@
 							    <select   id="e4"style="width:300px;" name="device_imei_number">
 							      <option value="">Select None</option>
 							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
-							    <option value="${BusRegistration1.device_imei_number}">${BusRegistration1.device_imei_number}</option>
+							    <option value="${BusRegistration1.device_imei_number}" <c:if test="${BusRegistration1.device_imei_number==device_imei_no}"><c:out value="Selected"/></c:if>>${BusRegistration1.device_imei_number}</option>
 							    </c:forEach>
 							    </select>
 							    </td>

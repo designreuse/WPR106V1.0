@@ -569,6 +569,84 @@ public List<String> getStudent_route_no(String org_id){
 		   			return 0;
 		}
 		
+	
+	// Check Vehicle Reg No whether already exists or not
+	
+		public boolean check_vechicle_reg_no(String vechicle_reg_no){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			boolean result=false;
+		
+			try{
+				
+				resultSet = statement.executeQuery("Select vechicle_reg_no from tbl_vechicle where vechicle_reg_no='"+vechicle_reg_no+"'");
+				
+				if(resultSet.next())
+				{
+					result=true;
+				}
+				
+		    }catch(Exception e){
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    
+		    	return result;
+		    
+			
+		}
+	
+	
+		// Check Vehicle Reg No whether already exists or not
+		
+					public boolean check_route_no(String route_no){
+							Connection con = null;
+							Statement statement = null;
+							ResultSet resultSet = null;
+							try {
+								con = dataSource.getConnection();
+								statement = con.createStatement();
+							} catch (SQLException e1) {
+								e1.printStackTrace();
+							}
+							boolean result=false;
+						
+							try{
+								
+								resultSet = statement.executeQuery("Select route_no from tbl_vechicle where route_no='"+route_no+"'");
+								
+								if(resultSet.next())
+								{
+									result=true;
+								}
+									
+							}catch(Exception e){
+						    	releaseResultSet(resultSet);
+						    	releaseStatement(statement);
+						    	releaseConnection(con);
+						    }finally{
+						    	releaseResultSet(resultSet);
+						    	releaseStatement(statement);
+						    	releaseConnection(con);	    	
+						    }
+						    
+						    	return result;
+						    
+							
+						}
+	
 public void releaseConnection(Connection con){
 	try{if(con != null)
 		con.close();

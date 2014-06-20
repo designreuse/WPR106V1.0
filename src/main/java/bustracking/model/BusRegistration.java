@@ -2,6 +2,8 @@ package bustracking.model;
 
 import java.sql.Date;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class BusRegistration
 {
 	private String org_id;
@@ -19,13 +21,28 @@ public class BusRegistration
 		this.driver_licence_exp_date = driver_licence_exp_date;
 	}
 
+	@NotEmpty
 	private String org_name;
+	
+	@NotEmpty
 	private String branch;
+	
+	@NotEmpty
 	private String vechicle_reg_no;
+	
+	@NotEmpty
 	private String device_imei_number;
+	
+	@NotEmpty
 	private String driver_name;
+	
+	@NotEmpty
 	private String driver_licence_no;
+	
+	@NotEmpty
 	private String driver_licence_exp_date;
+	
+	@NotEmpty
 	private String route_no;
 	
 	public String getRoute_no() {
@@ -126,13 +143,22 @@ public class BusRegistration
 		this.driver_licence_no = driver_licence_no;
 		this.driver_licence_exp_date = driver_licence_exp_date;
 	}
+	
 	public BusRegistration(String route_no) {
 		super();
 		this.route_no = route_no;
 	}
 
+	// Check whether already exiss or not
 	
-	
+	public BusRegistration(String vechicle_reg_no, String driver_licence_no,
+			String route_no) {
+		super();
+		this.vechicle_reg_no = vechicle_reg_no;
+		this.driver_licence_no = driver_licence_no;
+		this.route_no = route_no;
+	}
+
 	// 	Constructor for Edit Operation
 	
 	public BusRegistration(String org_name, String branch,
