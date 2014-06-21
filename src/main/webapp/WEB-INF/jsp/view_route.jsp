@@ -60,23 +60,25 @@
 							    <select   id="e1"style="width:300px;" name="org_name">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
-							    <option value="${route1.org_name}">${route1.org_name}</option>
+							    <option value="${route1.org_name}" <c:if test="${route1.org_name==org_name}"><c:out value="selected"></c:out> </c:if>   >${route1.org_name}</option>
 							    </c:forEach>
 							    </select></td>
+							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Branch &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							    <select   id="e2"style="width:300px;" name="branch">
+							 	<option value="">Select None</option>     
+							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
+							    <option value="${route1.branch}" <c:if test="${route1.branch==branch}"><c:out value="selected"></c:out> </c:if> >${route1.branch}</option>
+							    </c:forEach>
+							    </select></td>
+							    
 							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Bus Registration No &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select id="e3"style="width:300px;" name="vechicle_reg_no">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
-							    <option value="${route1.bus_reg_no}">${route1.bus_reg_no}</option>
+							    <option value="${route1.bus_reg_no}" <c:if test="${route1.bus_reg_no==vechicle_reg_no}"><c:out value="selected"></c:out> </c:if> >${route1.bus_reg_no}</option>
 							    </c:forEach>
 							    </select></td>
-							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Branch &nbsp;<br/><font color="#ccc">.</font></span><br/>
-							    <select   id="e2"style="width:300px;" name="branch">
-							 	<option value="">Select None</option>     
-							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
-							    <option value="${route1.branch}">${route1.branch}</option>
-							    </c:forEach>
-							    </select></td>
+							  
 							  
 							  </tr><tr><td><font color="#ccc">.</font></td></tr>
 							  <tr>
@@ -84,27 +86,48 @@
 							    <select   id="e4" style="width:300px;" name="route_no">
 							 	<option value="">Select None</option>     
 							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
-							  <option value="${route1.route_no}">${route1.route_no}</option>
+							  <option value="${route1.route_no}" <c:if test="${route1.route_no==route_no}"><c:out value="selected"></c:out> </c:if>  >${route1.route_no}</option>
 							  </c:forEach>
 							    </select></td>
 							    
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Trip &nbsp;<br/><font color="#ccc">.</font></span><br/>
-							    <select   id="e5"style="width:300px;" name="trip">
-							 	<option value="">Select None</option>     
-							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
-							    <c:choose>
-							   <c:when test="${route1.trip==0}">
-							    <option value="0">pickup</option>
-							   </c:when>
-							   <c:when test="${route1.trip==1}">
-							    <option value="1">Drop</option>
-							   </c:when>
-							   <c:when test="${route1.trip==2}">
-							    <option value="2">KG Drop</option>
-							   </c:when>
-							   </c:choose>
-							    </c:forEach>
-							    </select></td>
+							  
+							  <c:choose>
+							  <c:when test="${trip==0}">
+							  <select   id="e5"style="width:300px;" name="trip">
+							 	<option value="">Select None</option>    
+							 	  <option value="0" selected="selected">Pickup</option>
+							 	  <option value="1">Drop</option>
+							 	  <option value="2">KG Drop</option> 
+							 </select>
+							  </c:when>
+							  <c:when test="${trip==1}">
+							 <select id="e5"style="width:300px;" name="trip">
+							 	<option value="">Select None</option>    
+							 	  <option value="0" >Pickup</option>
+							 	  <option value="1" selected="selected">Drop</option>
+							 	  <option value="2">KG Drop</option> 
+							 </select>
+							  </c:when>
+							  <c:when test="${trip==2}">
+							  <select id="e5"style="width:300px;" name="trip">
+							 	<option value="">Select None</option>    
+							 	  <option value="0" >Pickup</option>
+							 	  <option value="1">Drop</option>
+							 	  <option value="2" selected="selected">KG Drop</option> 
+							 </select>
+							  </c:when>
+							  <c:otherwise>
+							  <select id="e5"style="width:300px;" name="trip">
+							 	<option value="">Select None</option>    
+							 	  <option value="0" >Pickup</option>
+							 	  <option value="1">Drop</option>
+							 	  <option value="2">KG Drop</option> 
+							 </select>
+							  </c:otherwise>
+							  </c:choose>
+							  
+							   </td>
 							    
 							    
 							    
@@ -167,10 +190,6 @@
 											<a href="<c:out value="showfulldetails?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}"/>">Stops</a>&nbsp;|&nbsp;&nbsp;
 										    <a href="<c:out value="editroute?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}&vechicle_reg_no=${route.bus_reg_no}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 											<a href="<c:out value="deleteroute?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}&vechicle_reg_no=${route.bus_reg_no}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
-																					
-				
-											
-											
 											</td>
 								</tr>
 								

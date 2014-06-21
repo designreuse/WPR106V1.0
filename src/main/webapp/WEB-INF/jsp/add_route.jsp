@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -213,27 +214,40 @@ p {
 								<td valign="top" align="left" class="input_txt" width="70%">
 
 								<select style="width:220px;margin-top:-4px;" name="org_name" id="orgid" onchange="doAjaxPost()" onblur="Validate('orgid')">
-								<option value="Selected">-- Select Organization--</option>
+								<option value="" selected="selected">-- Select Organization--</option>
 								<c:forEach items="${orgname}" var="orgname" varStatus="status">
-        				        <option value="${orgname}" <%-- <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if> --%>>${orgname}</option>
+        				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if> >${orgname}</option>
 			                  </c:forEach>
-								
 								</select>
+								<br/><font color="Red" size="+1"><form:errors path="route.org_name"></form:errors></font>
 								</td>
 							</tr>
 							<tr class="row2">
 								<td valign="middle" align="right" class="input_txt" width="30%"><span
 									class="err">*</span> Branch :</td>
 								<td valign="top" align="left" class="input_txt" width="70%">
-					  <div id="info" style="height:8px;" >
-								<select name="branch" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost1()" onblur="Validate1('bid')" disabled="disabled"> 
-								<option value="Selected">-- Select branch--</option>
-								<%-- <c:forEach items="${orgRegistrationForm.orgregistration}" var="OrgRegistration" varStatus="status">
-        				        <option value="${OrgRegistration.branch}">${OrgRegistration.branch}</option>
-			                  </c:forEach> --%>
-
-								</select></div>
-								<br />
+					  <span id="info" style="height:8px;" >
+					  <c:choose>
+					  <c:when test="${fn:length(route_array) gt 0 }">
+					  <select name="branch" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost1()" onblur="Validate1('bid')"> 
+								<option value="" selected="selected">-- Select branch--</option>
+								<c:forEach items="${branch_array}" var="branch_array">
+								<option value="${branch_array}" <c:if test="${branch_array==branch}"><c:out value="selected"></c:out></c:if> >${branch_array}</option>
+								</c:forEach>
+								</select>
+								
+					  </c:when>
+					  <c:otherwise>
+					  <select name="branch" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost1()" onblur="Validate1('bid')"> 
+								<option value="" selected="selected">-- Select branch--</option>
+								<c:forEach items="${branch_array}" var="branch_array">
+								<option value="${branch_array}" >${branch_array}</option>
+								</c:forEach>
+								</select>
+					  </c:otherwise>
+					  </c:choose>
+								</span>
+								<br><font color="Red" size="+1"><form:errors path="route.branch"></form:errors></font>
 								</td>
 							</tr>
 							<!-- <tr class="row1">
@@ -246,17 +260,33 @@ p {
 								</td>
 							</tr> -->
 							<tr class="row1">
-								<td valign="middle" align="right" class="input_txt" width="30%"><span
-									class="err">*</span> Route No :</td>
+								<td valign="middle" align="right" class="input_txt" width="30%">
+								<span class="err">*</span> Route No :</td>
 								<td valign="middle" align="left" class="input_txt" width="70%" >
-								<div id="info1" style="height:8px;"><select style="width:220px;margin-top:-4px;" name="route_no" id="route_id" onblur="Validate2('route_id')" disabled="disabled">
+								<span id="info1" style="height:8px;">
+								<c:choose>
+								<c:when test="${fn:length(route_array) gt 0}">
+								<select style="width:220px;margin-top:-4px;" name="route_no" id="route_id" onblur="Validate2('route_id')" >
+							   <option value="" selected>-- Select Route No--</option>
+							    <c:forEach items="${route_array}" var="route1">
+							    <option value="${route1}" <c:if test="${route1==route_no}"><c:out value="selected"></c:out></c:if> >${route1}</option>
+							    </c:forEach>
+							    </select>
+								</c:when>
+								<c:otherwise>
+								<select style="width:220px;margin-top:-4px;" name="route_no" id="route_id" onblur="Validate2('route_id')" >
 							    <option value="" selected>-- Select Route No--</option>
+							    
+							    </select>
+								</c:otherwise>
+								</c:choose>
+								
 							     <%-- <c:forEach items="${busregistrationform.busregistration}" var="BusRegistration" varStatus="status">
         				        <option value="${BusRegistration.route_no}">${BusRegistration.route_no}</option>
 			                  </c:forEach> --%>
-			                  </select>
-			                  </div>
-									&nbsp;&nbsp;<br />
+			                  
+			                  </span>
+								<br/><font color="Red" size="+1"><form:errors path="route.route_no"></form:errors></font>
 								</td>
 							</tr>
 							<%-- <tr class="row1">
@@ -303,43 +333,10 @@ p {
 								<div  id="p_scents" style="height:auto;overflow:auto;">
 								
 								</div>
+								<%-- <font color="Red" size="+1"><form:errors path="route.number_of_stops"></form:errors></font> --%>
 								</td>
 								</tr>
-								<script type="text/javascript">
-//This example adds a search box to a map, using the Google Place Autocomplete
-//feature. People can enter geographical searches. The search box will return a
-//pick list containing a mix of places and predicted search terms.
-$(function() {
-	
-        var scntDiv = $('#p_scents');
-        var i = $('#p_scents p').size();
-        //alert(i);
-        var j=0;
-        $('#addScnt').live('click', function() {
-        	//alert(i);
-        	$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:400px;background-color:#E5E5E5;"><label for="p_scents"><input type="text"  size="20" class="input_txtbx_height" id="stop_info_'+i+'" name="stop['+i+']" value="" placeholder="Stop Location" /></label><br/><br/><input type="radio"  name="stop_pick['+i+']" id="stop_pick_'+i+'" value="0" checked>Pick up<input type="radio"  name="stop_pick['+i+']" value="1" id="stop_drop_'+i+'">Drop<input type="radio"  name="stop_pick['+i+']" value="2" id="stop_both_'+i+'">KG Drop<br/><br/><input type="text" name="particular_stop_pickup_time['+i+']" id="endDate" placeholder="Bus Arrival time" class="input_txtbx_height" style="width=100px; value=""/><span class="add-on" style="margin-top:-15px;"><br/><br/>&nbsp;&nbsp;&nbsp;<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
-        	document.getElementById("number_of_stops").value=i;
-        	var autocomplete_stop = new google.maps.places.Autocomplete(document.getElementById("stop_info_"+i));
-            i++;
-            return false;
-    });
-    
-    $('#remScnt').live('click', function() { 
-               $(this).parents('p').remove();
-                    i--;
-           
-		});
-});
-
-function initialize() {
-
-	var autocomplete_stop_address = new  google.maps.places.Autocomplete(document.getElementById('stop_address'));
-	var autocomplete_route_stop = new google.maps.places.Autocomplete(document.getElementById('route_stop'));
-	
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-								
+		
 							
 							<!--  <tr class="row2" style="margin-top:20px;">
 								<td valign="middle" align="right" class="input_txt"><span
@@ -412,6 +409,42 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script> -->
+
+<script type="text/javascript">
+//This example adds a search box to a map, using the Google Place Autocomplete
+//feature. People can enter geographical searches. The search box will return a
+//pick list containing a mix of places and predicted search terms.
+$(function() {
+	
+        var scntDiv = $('#p_scents');
+        var i = $('#p_scents p').size();
+        //alert(i);
+        var j=0;
+        $('#addScnt').live('click', function() {
+        	//alert(i);
+        	$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:400px;background-color:#E5E5E5;"><label for="p_scents"><input type="text"  size="20" class="input_txtbx_height" id="stop_info_'+i+'" name="stop['+i+']" value="" placeholder="Stop Location" /></label><br/><br/><input type="radio"  name="stop_pick['+i+']" id="stop_pick_'+i+'" value="0" checked>Pick up<input type="radio"  name="stop_pick['+i+']" value="1" id="stop_drop_'+i+'">Drop<input type="radio"  name="stop_pick['+i+']" value="2" id="stop_both_'+i+'">KG Drop<br/><br/><input type="text" name="particular_stop_pickup_time['+i+']" id="endDate" placeholder="Bus Arrival time" class="input_txtbx_height" style="width=100px; value=""/><span class="add-on" style="margin-top:-15px;"><br/><font color="Red" size="+1"><br/>&nbsp;&nbsp;&nbsp;<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
+        	document.getElementById("number_of_stops").value=i;
+        	var autocomplete_stop = new google.maps.places.Autocomplete(document.getElementById("stop_info_"+i));
+            i++;
+            return false;
+    });
+    
+    $('#remScnt').live('click', function() { 
+               $(this).parents('p').remove();
+                    i--;
+           
+		});
+});
+
+function initialize() {
+
+	var autocomplete_stop_address = new  google.maps.places.Autocomplete(document.getElementById('stop_address'));
+	var autocomplete_route_stop = new google.maps.places.Autocomplete(document.getElementById('route_stop'));
+	
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+							
 
 <script>
 

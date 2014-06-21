@@ -51,7 +51,7 @@ import bustracking.forms.BusRegistrationForm;
 
 
 @Controller
-@SessionAttributes({"routes"})
+@SessionAttributes({"routes","org_name","branch","vechicle_reg_no","trip","route_no"})
 public class RouteController
 {
 	@Autowired
@@ -75,7 +75,11 @@ public class RouteController
 	
 
 	@RequestMapping(value="/insert_route",method=RequestMethod.GET)
-	public String getroute(ModelMap model,Route route, Principal principal){
+	public String getroute(HttpSession session,ModelMap model,Route route, Principal principal){
+		
+		session.removeAttribute("org_name");
+		session.removeAttribute("branch");
+		session.removeAttribute("route_no");
 		
 		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
 		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
@@ -118,7 +122,15 @@ public class RouteController
 	// View Route Information In Admin Side
 	
 	@RequestMapping(value="/viewroute", method=RequestMethod.GET)
-	public String viewroute(HttpServletRequest request,ModelMap model, Principal principal){
+	public String viewroute(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal){
+		
+		
+		session.removeAttribute("org_name");
+		session.removeAttribute("branch");
+		session.removeAttribute("vechicle_reg_no");
+		session.removeAttribute("route_no");
+		session.removeAttribute("trip");
+		
 		
 		RouteViewForm routeViewForm=new RouteViewForm();
 		routeViewForm.setRoute_views(routeDAO.getRoutes());
@@ -214,12 +226,38 @@ public class RouteController
 	
 @RequestMapping(value="/insert_route_stop", method = RequestMethod.POST)
 
-	public String inserting_route(HttpServletRequest request,ModelMap model,Route route, Principal principal ) {
+	public String inserting_route(HttpSession session,HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("route_no") String route_no,@ModelAttribute("route") @Valid Route route,BindingResult result,ModelMap model, Principal principal ) {
 		
+	
+	session.setAttribute("org_name",org_name);
+	session.setAttribute("branch",branch);
+	session.setAttribute("route_no",route_no);
+	
+	if(result.hasErrors())
+	   {
+		   OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
+			orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
+			model.addAttribute("orgRegistrationForm",orgRegistrationForm);
+			
+			BusRegistrationForm busregistrationform= new BusRegistrationForm();
+			busregistrationform.setBusregistration(busDAO.getBusregistration());
+			model.addAttribute("busregistrationform",busregistrationform);
+			
+			List <String> orgname=new ArrayList<String>();
+			orgname=busDAO.getorgname();
+			model.addAttribute("orgname",orgname);
+			
+			model.addAttribute("branch_array",busDAO.getBus_id(org_name));
+			model.addAttribute("route_array",studentDAO.getStud_route(org_name, branch));
+			
+			
+			return "add_route";
+	   }
+	  
 	
 	   route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
 		
-		//this.setInfo(route, route.getRoute_from(),"both",request.getParameter("route_pick_time"),request.getParameter("route_drop_time"));
+	  //this.setInfo(route, route.getRoute_from(),"both",request.getParameter("route_pick_time"),request.getParameter("route_drop_time"));
 		System.out.println(request.getParameter("org_name"));
 		System.out.println(request.getParameter("branch"));
 		System.out.println(request.getParameter("stop[]"));
@@ -274,6 +312,8 @@ public class RouteController
 		
 		//model.addAttribute("org_id",orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
 		
+		
+		
 		routeDAO.insert_message_log(request.getParameter("route_no"));
 		
 		RouteViewForm routeViewForm=new RouteViewForm();
@@ -287,7 +327,10 @@ public class RouteController
 		
 		
 		return "view_route";
-	}
+	
+}
+	
+
 	
 	
 	public String getLat(String Stoplocation)
@@ -443,13 +486,21 @@ updateroute.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_nam
 	//find route 06/05/2014 
 
 @RequestMapping(value="/findroute",method=RequestMethod.GET)
-public String findroute(HttpServletRequest request,
+public String findroute(HttpSession session,HttpServletRequest request,
 		@RequestParam("org_name") String org_name,
 		@RequestParam("branch")String branch,
 		@RequestParam("vechicle_reg_no") String vechicle_reg_no,
 		@RequestParam("route_no") String route_no,
 		@RequestParam("trip") String trip,ModelMap model)
 {
+	
+	session.setAttribute("org_name",org_name );
+	session.setAttribute("branch",branch );
+	session.setAttribute("vechicle_reg_no",vechicle_reg_no );
+	session.setAttribute("trip",trip);
+	session.setAttribute("route_no",route_no );
+	
+	
 	if( org_name== " " && branch== " " && vechicle_reg_no==" " && route_no==" " && trip==" ")
 	{
 		RouteViewForm routeViewForm=new RouteViewForm();

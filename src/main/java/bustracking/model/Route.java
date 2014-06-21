@@ -1,9 +1,24 @@
 package bustracking.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Route
 {
 	private String org_id;
+	
+	@NotEmpty
 	private String route_no;
+	
+	@NotEmpty
+	private String org_name;
+	
+	@NotEmpty
+	private String branch;
+	
+	
+
+	private String number_of_stops;
+	
 	private String stop_id;
 	
 	private String tracking_date;
@@ -15,11 +30,18 @@ public class Route
 	public void setTracking_date(String tracking_date) {
 		this.tracking_date = tracking_date;
 	}
+	
+	
 	private String trip;
+	
+	
 	private String address;
 	private String latitude;
 	private String longitude;
+	
+	
 	private String bus_arrival_time;
+	
 	private String speed;
 	
 	
@@ -72,6 +94,22 @@ public class Route
 		this.last_message_send_kg_drop = last_message_send_kg_drop;
 	}
 	
+	public String getOrg_name() {
+		return org_name;
+	}
+
+	public void setOrg_name(String org_name) {
+		this.org_name = org_name;
+	}
+
+	public String getBranch() {
+		return branch;
+	}
+
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
+	
 	public String getLast_message_send_kg_pick() {
 		return last_message_send_kg_pick;
 	}
@@ -113,6 +151,16 @@ public class Route
 		this.longitude = longitude;
 		this.bus_arrival_time = bus_arrival_time;
 	}
+	
+	
+	public String getNumber_of_stops() {
+		return number_of_stops;
+	}
+
+	public void setNumber_of_stops(String number_of_stops) {
+		this.number_of_stops = number_of_stops;
+	}
+	
 	public String getOrg_id() {
 		return org_id;
 	}

@@ -7,16 +7,19 @@ public class ClassSection
 	
 	private String org_id;
 	
-	
+	@NotEmpty
 	private String class_std;
 	
-	
+	@NotEmpty
 	private String section;
 	
+	@NotEmpty
 	private String org_name;
 	
+	@NotEmpty
 	private String branch;
 	
+	@NotEmpty
 	private String service;
 	
 	

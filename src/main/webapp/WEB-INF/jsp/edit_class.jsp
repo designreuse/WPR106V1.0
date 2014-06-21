@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
@@ -21,10 +22,10 @@
 	            <div class="headings altheading">
 	              <h2>Edit Class Registration</h2>
 	            </div>
-            <div class="contentbox">
-              <table cellpadding="0" cellspacing="0"  width="100%">
+            <div class="contentbox" style="height:600px;">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
   				<tr>
-    				<td align="left" valign="top" width="100%" style="padding-right:25px;">
+    				<td align="left" valign="top" width="100%" >
     				<c:set value="${classSectionForm.classSections[0]}" var="class_section"></c:set>
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
     						<tr class="row1">
@@ -62,8 +63,8 @@
 				                </tr> 
 								<tr class="row2">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Services:</td>
-				                  	<td valign="top" align="left" class="input_txt" style="width:220px;">
-				                  	 <select name="service" id="service_id">
+				                  	<td valign="top" align="left" class="input_txt">
+				                  	 <select name="service" id="service_id"  style="width:220px;">
 					               <option value="${class_section.service}" selected>${class_section.service}</option>
 					               <option value="Attendance" >Attendance</option>
 				                  	<option value="Tracking" >Tracking</option>
@@ -71,7 +72,7 @@
 				                  	<option value="None Of These" >None Of These</option>
         				        </select>
 				                  	 
-				                  	 <br/><font color="Red" size="+1"></font>
+				                  	 <br/><font color="Red" size="+1"><form:errors path="classsection.service"></form:errors></font>
 				                  </td>
 				                
 					           
@@ -82,7 +83,7 @@
 				               <td valign="top" align="justify">
 				               <table>
 				             <tr> 
-                 <td valign="top" align="left"><input type="submit" class="btn" value="Update" ></td>
+                 <td valign="top" align="left"><input type="submit" class="btn" value="Save Changes" ></td>
                
                   <td valign="top" align="left"><input type="button" class="btn" onclick="window.location.href='viewclass'"value="Cancel"></td></tr></table>
                   </td>
