@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 
 <script id="script_orgid">
@@ -43,9 +44,10 @@
 				                <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
-        				        <option value="${orgname}" >${orgname}</option>
+        				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if>>${orgname}</option>
 			                  </c:forEach>
 			                 </select>
+			                 <br/><font color="Red" size="+1"><form:errors path="user.org_name"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row2">
@@ -53,11 +55,29 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Branch </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                 <div id="info"> 
-				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid" onblur="Validate1('bid')" disabled="disabled">
+				                
+				                 	<!-- <select style="width:220px;margin-top:-4px;" name="branch" id="bid" onblur="Validate1('bid')" disabled="disabled">
 							   <option value="">-- Select branch--</option>
-							 </select>
-        				       </div> 
+							 </select> -->
+							 <span id="info">  
+				                  <c:choose>
+							  	  <c:when test="${fn:length(branch_array) gt 0}">
+				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid">
+				                 	<option value="">--Select Branch--</option>
+							  		<c:forEach items="${branch_array}" var="orgReg" >
+							  		<option value="${orgReg}" <c:if test="${orgReg==branch}"><c:out value="Selected"/></c:if>>${orgReg}</option>
+							  		</c:forEach>
+								    </select>
+								 </c:when>
+								 <c:otherwise>
+									 <select style="width:220px;margin-top:-4px;" name="branch" id="bid"  >
+							  		<option value="">-- Select branch--</option>
+								    </select>
+								 </c:otherwise>
+								</c:choose>	
+								</span>
+							 <br/><font color="Red" size="+1"><form:errors path="user.branch"></form:errors></font>
+        				       
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <!-- <tr class="row2" style="border:none;"><td></td><td></td><td></td><td></td><td></td></tr> -->
@@ -67,7 +87,7 @@
 				                  <span class="err">*</span> First Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="fname" oninput="validateAlpha();" onblur="toTitleCase('fname')" value="${adminuser.firstname }" name="firstname" />
-				                  	<br/><font color="Red" size="+1"><form:errors path="AddUser.firstname"></form:errors></font>
+				                  <br/><font color="Red" size="+1"><form:errors path="user.firstname"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
                         		<tr class="row2">
@@ -76,7 +96,7 @@
 				                  <span class="err">*</span> Last Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="lname" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" name="lastname"   value="${adminuser.lastname}"/>
-				                  	<br/><font color="Red" size="+1"><form:errors path="AddUser.lastname"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><form:errors path="user.lastname"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row1">
@@ -84,8 +104,8 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Email </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" onblur="emailcheck('eid')"  value="${adminuser.email}"/>
-				                	<font color="Red" size="+1"><span id="info2"></span></font>
+				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" onblur="emailcheck('eid')" onfocus="doAjaxcheckemail()"  value="${adminuser.email}"/>
+				                	<br/><font color="Red" size="+1"><c:out value="${emailexists}"/><form:errors path="user.email"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row2">
@@ -93,19 +113,21 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> User Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="uname"  name="username" onblur="user('uname')" onfocus="doAjaxcheckemail()" value="${adminuser.username}"/>
-				                  	<font color="Red" size="+1"><span id="info1"></span></font>
+				                  
+				                  	<input type="text" class="org_input_txtbx_height1" id="uname"  name="username"  onblur="doAjaxcheckuser()"  value="${adminuser.username}"/>
+				                  	<br/><font color="Red" size="+1"><form:errors path="user.username"></form:errors></font>
 				                  	<%--  <font color="Red" size="+1"><c:out value="${userexists}"/><form:errors path="AddUser.username"></form:errors></font> --%> 
 				                  
-				                  </td><td width="15%"></td>
+				                  </td>
+				                  <td width="15%"></td>
 				                </tr>
 				                <tr class="row1">
 				                <td width="15%"></td>
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Password </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="password"  onblur="passcheck('pass')" id="pass" name="password" onfocus="doAjaxcheckuser()"/>
-				                  	<br/><font color="Red" size="+1"><form:errors path="AddUser.password"></form:errors></font>
+				                  	<input type="password"  onblur="passcheck('pass')" id="pass" name="password" />
+				                  	<br/><font color="Red" size="+1"><form:errors path="user.password"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                  
 				                </tr>
@@ -115,7 +137,8 @@
 				                  <span class="err">*</span> Re-Enter Password </td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="password" class="org_input_txtbx_height1" id="repass" onblur="repasscheck('repass')" name="confirm_password" />
-				                  	<br/><font color="Red" size="+1"><form:errors path="AddUser.password"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><form:errors path="user.confirm_password"></form:errors></font>
+				                  	<br/><span id="vali" style="color: red;"></span>
 				                  </td><td width="25%"></td>
 				                  
 				                </tr>
@@ -162,16 +185,11 @@ function validateAlpha(){
 
 function toTitleCase(fname)
 {
-	if(document.getElementById("fname").value==''){
-		confirm("First Name is required");
-		return false;
-	}
-	else
-		{
+	
     str=document.getElementById(fname).value;
     str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     document.getElementById(fname).value=str;
-		}
+		
 }
 
 function validateAlpha1(){
@@ -182,16 +200,11 @@ function validateAlpha1(){
 
 function toTitleCase1(lname)
 {
-	if(document.getElementById("lname").value==''){
-		confirm("Last Name is required");
-		return false;
-	}
-	else
-		{
+
     str=document.getElementById(lname).value;
     str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     document.getElementById(lname).value=str;
-    }
+   
 
 }
 
@@ -219,66 +232,9 @@ function doAjaxPost_for_orgname() {
 
 <script>
 function check(){
-if(document.getElementById("fname").value==''){
-	confirm("First Name is required");
-	return false;
-}
-else if(document.getElementById("lname").value==''){
-	confirm("Last Name is required");
-	return false;
-}
-if(document.getElementById("eid").value==''){
-	confirm("Email Address is required");
-		return false;
-
-		}
-		}
-
-		
-function emailcheck(eid){
-	if(document.getElementById("eid").value==''){
-		confirm("Email Address is required");
-			return false;
-			
-	}
-	else if(document.getElementById("eid").value!='')
-		{
-		 var email = document.getElementById("eid").value;
-		 var pattern =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-		   if(!pattern.test(email)) 
-			   {
-			   alert("Invalid Email Address");
-		    return false;
-			   }
-		   }
-	
-}
-
-function user(uname){
-	if(document.getElementById("uname").value==''){
-		confirm("Username is required");
-			return false;
-			
-	}
-}
-
-function passcheck(pass){
-	if(document.getElementById("pass").value==''){
-		confirm("Password is required");
-			return false;
-			
-	}
-}
-
-function repasscheck(repass){
-	if(document.getElementById("repass").value==''){
-		confirm("Confirm Password is required");
-			return false;
-			
-	}
-	
-	else if(document.getElementById("pass").value != document.getElementById("repass").value){
-		alert("Password and Confirm Password doen not match!!!");
+	document.getElementById("vali").innerHTML="";
+	if(document.getElementById("pass").value != document.getElementById("repass").value){
+		document.getElementById("vali").innerHTML="Password and Confirm Password should not match!!!";
 		return false;
 	
 	}
@@ -288,53 +244,6 @@ function repasscheck(repass){
 </script>	   
  <script>
 function check(){
-if(document.getElementById("fname").value==''){
-	confirm("First Name is required");
-	return false;
-}
-else if(document.getElementById("lname").value==''){
-	confirm("Last Name is required");
-	return false;
-}
-if(document.getElementById("eid").value==''){
-	confirm("Email Address is required");
-		return false;
-		
-}
-if(document.getElementById("eid").value!='')
-	{
-	 var email = document.getElementById("eid").value;
-	 var pattern =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	   if(!pattern.test(email)) 
-		   {
-		   alert("Invalid Email Address");
-	    return false;
-		   }
-	   }
-if(document.getElementById("uname").value==''){
-	confirm("User Name is required");
-		return false;
-		
-}
-
-if(document.getElementById("pass").value==''){
-	confirm("Password is required");
-		return false;
-		
-}
-
-if(document.getElementById("repass").value==''){
-	confirm("Confirm Password is required");
-		return false;
-		
-}
-
-if(document.add_adminuser.password.value != document.add_adminuser.confirm_password.value){
-	alert("Password and Confirm Password doen not match!!!");
-	return false;
-}
-}
-</script> 
 
 <script type="text/javascript">
 function doAjaxPost() {  

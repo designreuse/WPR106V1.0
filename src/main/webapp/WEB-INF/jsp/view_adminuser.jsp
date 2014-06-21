@@ -41,7 +41,7 @@
 							    <select   id="e1" style="width:280px;" name="org_name">
 							 	<option value="">Select None</option>     
 							    <c:forEach items="${adduserform1.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.org_name}">${addUser1.org_name}</option>
+							    <option value="${addUser1.org_name}" <c:if test="${org_name==addUser1.org_name}"><c:out value="Selected"/></c:if>>${addUser1.org_name}</option>
 							    </c:forEach>
 							    </select>
 							    
@@ -52,7 +52,7 @@
 							    <select   id="e2"style="width:280px;" name="branch">
 									<option value="">Select None</option>							      
 							    <c:forEach items="${adduserform1.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.branch}">${addUser1.branch}</option>
+							    <option value="${addUser1.branch}" <c:if test="${branch==addUser1.branch}"><c:out value="Selected"/></c:if>>${addUser1.branch}</option>
 							    </c:forEach>
 							    </select>
 
@@ -63,7 +63,7 @@
 							    <select   id="e3"style="width:280px;" name="firstname">
 								<option value="">Select None</option>							      
 							    <c:forEach items="${adduserform1.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.firstname}">${addUser1.firstname}</option>
+							    <option value="${addUser1.firstname}" <c:if test="${firstname==addUser1.firstname}"><c:out value="Selected"/></c:if>>${addUser1.firstname}</option>
 							    </c:forEach>
 							    </select>
 
@@ -78,7 +78,7 @@
 							    	<select   id="e4"style="width:280px;" name="lastname">
 							    <option value="">Select None</option>  
 							    <c:forEach items="${adduserform1.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.lastname}">${addUser1.lastname}</option>
+							    <option value="${addUser1.lastname}" <c:if test="${lastname==addUser1.lastname}"><c:out value="Selected"/></c:if>>${addUser1.lastname}</option>
 							    </c:forEach>
 							    </select></td>
 							    
@@ -86,7 +86,7 @@
 							    <select   id="e5"style="width:300px;" name="email">
 							      <option value="">Select None</option>
 							    <c:forEach items="${adduserform1.adduser}" var="addUser1" varStatus="status">
-							    <option value="${addUser1.email}">${addUser1.email}</option>
+							    <option value="${addUser1.email}" <c:if test="${email==addUser1.email}"><c:out value="Selected"/></c:if>>${addUser1.email}</option>
 							    </c:forEach>
 							    </select>
 							    </td>

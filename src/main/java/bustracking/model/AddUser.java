@@ -10,20 +10,29 @@ public class AddUser{
 	
 	private String org_id;
 	
+	@NotEmpty
 	private String org_name;
 	
+	@NotEmpty
 	private String branch;
 	
+	@NotEmpty
 	private String firstname;
 	
+	@NotEmpty
 	private String lastname;
 	
+	@NotEmpty
+	@Email
 	private String email;
 	
+	@NotEmpty
 	private String username;
 	
+	@NotEmpty
 	private String password;
 	
+	@NotEmpty
 	private String confirm_password;
 
 	public AddUser() {

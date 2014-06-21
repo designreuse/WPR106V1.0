@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+
+
 import bustracking.forms.AddUserForm;
 import bustracking.model.AddUser;
 import bustracking.model.OrgRegistration;
@@ -472,6 +474,53 @@ public class AddUserDAO{
 	    }
 	    return adduser;
 		
+	}
+	
+	public  int checkuser(String username)
+	{
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		int flag=0;
+		//List<AdminUser> adminuser = new ArrayList<AdminUser>();
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try{
+	   
+	    	String cmd_userlist="";
+	    	   
+	      cmd_userlist="Select count(*) as counting from login where username='"+username+"'";
+	    	
+	    	 resultSet=statement.executeQuery(cmd_userlist);
+	          resultSet.next();
+	          int count=Integer.parseInt(resultSet.getString("counting"));
+	         // System.out.println(count);
+	         if(count>0)
+	          {
+	        	  return 0;
+	          }
+	          else
+	          {
+	              return 1;
+	          }
+	 }
+	    catch(Exception e){
+	    	//logger.info(e.toString());
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    	flag=0;
+	    	
+	    	return 0;
+	    }finally{
+	     	releaseStatement(statement);
+	    	releaseConnection(con);	    
+	    	
+	   }
+	    
 	}
 	
 	public void releaseConnection(Connection con){
