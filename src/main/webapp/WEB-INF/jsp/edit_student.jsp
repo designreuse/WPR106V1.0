@@ -1,4 +1,4 @@
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
   
@@ -56,15 +56,18 @@
     						<td width="5%"></td>
 				                  <td valign="middle" align="right" class="input_txt" ><span class="err">*</span> Organization Name:</td>
 				                  <td valign="middle" align="left" class="input_txt">
-				                 <input type="hidden" name="org_name" id="orgid" value="${student.org_name}"/>${student.org_name}</td>
-				                 
+				                 <input type="hidden" name="org_name" id="orgid" value="${student.org_name}"/>${student.org_name}
+				                  <br/><font color="Red" size="+1"><form:errors path="studentRegistration.org_name"></form:errors></font></td>
+				                  
+				                  
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Point Address:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<div id="drop_address" style="height:8px;"><select name="drop_point_address" id="drop_location_id" style="width:220px;" onblur="Validate1('bid')">
 							    	<option value="${student.drop_point_address}" selected>${student.drop_point_address}</option>
 				                  	</select>
 				                  	</div>
-				                  	</td>
+				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.drop_point_address"></form:errors></font></td>
+				                  	
 				                    <td width="15%" class="input_txt"></td>
 				               </tr>
 				                
@@ -73,8 +76,8 @@
                         		<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Branch :</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="hidden" name="branch" id="bid" value="${student.branch}"/>${student.branch}
+				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.branch"></form:errors></font></td>
 				                  	
-				                  	</td>
 				                 <td valign="middle" align="right" class="input_txt"><span class="err">*</span> KG Drop :</td>
 				                  <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="checkbox"  id="inp_id" name="kg_drop" value="${student.kg_drop}" />
@@ -89,12 +92,12 @@
 								<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Student Roll Number:</td>
 				                  <td valign="middle" align="left" class="input_txt">
 				                  	<input type="hidden" class="student_txtbx_height_right" id="inp_id" name="student_roll_no" value="${student.student_roll_no}"/>${student.student_roll_no} <br/>
-				                  	<font color="Red" size="+1"><form:errors path="StudentRegistration.student_roll_no"></form:errors></font>
-				                  </td>
+				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.student_roll_no"></form:errors></font></td>
+				                
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Name 1:</td>
 					                <td valign="top" align="left" class="input_txt">
-					                <input type="text"  id="inp_id" name="parent_name1" value="${student.parent_name1}"/>
-					               <!--  <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.drop_route_no"></form:errors></font> --></td>
+					                <input type="text"  id="pname1" name="parent_name1" oninput="validateAlpha2();" onblur="toTitleCase2('pname1')" value="${student.parent_name1}"/>
+					                <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name1"></form:errors></font></td>
 				                  
 				                   <td width="15%" class="input_txt"></td>
 				                </tr>
@@ -103,12 +106,12 @@
 				                 <td width="3%" class="input_txt"></td>
 				                        <td valign="middle" align="right" class="input_txt"><span class="err">*</span> First Name:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="text"  id="inp_id" name="first_name" value="${student.first_name}"/>
-				                  	<br/><font color="Red" size="+1"><form:errors path="StudentRegistration.student_class"></form:errors></font></td>
+				                  	<input type="text"  id="fname" name="first_name" oninput="validateAlpha();" onblur="toTitleCase('fname')" value="${student.first_name}"/>
+				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.first_name"></form:errors></font></td>
 				                     <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Parent Name 2:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="inp_id" name="parent_name2" value="${student.parent_name2}"/>
-					         <!--  <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.drop_location"></form:errors></font>--></td>
+					               <input type="text"  id="pname2" name="parent_name2" oninput="validateAlpha3();" onblur="toTitleCase3('pname2')" value="${student.parent_name2}"/>
+					         <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name2"></form:errors></font></td>
 					               	 	
 					               	 	<td width="15%" class="input_txt"></td>			                					            	 
 				                </tr>
@@ -116,16 +119,16 @@
 				                <td width="3%" class="input_txt"></td>
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Last Name</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="text"  id="inp_id" name="last_name" value="${student.last_name}"/>
-				                  	      	<br/><font color="Red" size="+1"><form:errors path="StudentRegistration.section"></form:errors></font></td>
+				                  	<input type="text"  id="lname" name="last_name" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" value="${student.last_name}"/>
+				                  	   <br/><font color="Red" size="+1"><form:errors path="studentRegistration.last_name"></form:errors></font></td>
 				                
 				         
 				                
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Parent Mobile 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="inp_id" name="parent_mobile1" value="${student.parent_mobile1}" />
-					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.father_name"></form:errors></font>
-					              </td>
+					               <input type="text"  id="mob1" name="parent_mobile1" oninput="validatenum();" min="10" maxlength="10" value="${student.parent_mobile1}" />
+					         <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_mobile1"></form:errors></font></td>
+					              
 					              <td width="15%" class="input_txt"></td>
 				                </tr>
 				                <tr class="row2">
@@ -146,13 +149,13 @@
 					                </c:otherwise>
 					                </c:choose>
 						            	
-						            	<font color="Red" size="+1"><form:errors path="StudentRegistration.name"></form:errors></font></td>
+						            	</td>
 						            	
 						       
 				                 <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Mobile 2:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  name="parent_mobile2" id="inp_id" value="${student.parent_mobile2}"/>
-					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.mobile_number"></form:errors></font>
+					               <input type="text"  name="parent_mobile2" id="mob2" oninput="validatenum1();" min="10" maxlength="10" value="${student.parent_mobile2}"/>
+					        <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_mobile2"></form:errors></font>
 					               </td>
 					               <td width="15%" class="input_txt"></td>
 				                </tr>
@@ -178,7 +181,7 @@
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Email 1:</td>
 					               <td valign="top" align="left" class="input_txt">
 					               <input type="text"  id="inp_id" name="parent_email1" value="${student.parent_email1}" />
-					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.email_id"></form:errors></font>
+					         <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_email1"></form:errors></font>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
 				                      <tr class="row2">
@@ -192,12 +195,13 @@
 			                  </c:forEach>
 			                  </select>
 			                  </div>
+			                  <br/><font color="Red" size="+1"><form:errors path="studentRegistration.pickup_route_no"></form:errors></font>
 				                  	</td>
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Email 2:</td>
 					               <td valign="top" align="left" class="input_txt">
 					               <input type="text"  id="inp_id" name="parent_email2" value="${student.parent_email2}"/>
-					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.email_id"></form:errors></font>
+					      <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_email2"></form:errors></font>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
 				                      <tr class="row1">
@@ -208,6 +212,7 @@
 							    <option value="${student.pickup_point_address}" selected>${student.pickup_point_address}</option>
 				                  	</select>
 				                  	</div>
+				                  	<br/><font color="Red" size="+1"><form:errors path="studentRegistration.pickup_point_address"></form:errors></font>
 				                  </td>
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Class:</td>
@@ -218,6 +223,7 @@
         				        <option value="${class_std}">${class_std}</option>
 			                  </c:forEach> 
 					               </select></div>
+					               <br/><font color="Red" size="+1"><form:errors path="studentRegistration.class_standard"></form:errors></font>
 					               </td>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
@@ -232,6 +238,7 @@
 			                  </c:forEach>
 			                  
 			                  </select> </div>
+			                  <br/><font color="Red" size="+1"><form:errors path="studentRegistration.drop_route_no"></form:errors></font>
 			                  </td>
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Section:</td>
@@ -242,7 +249,7 @@
         				        <option value="${class_std}">${class_std}</option>
 			                  </c:forEach> --%> 
 					               </select></div>
-					         <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.email_id"></form:errors></font>
+					        <br/><font color="Red" size="+1"><form:errors path="studentRegistration.section"></form:errors></font>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
 				               
@@ -341,5 +348,81 @@ function doAjaxPost_section() {
 		  });  
 		}  
 		</script>
+		
+		 
+    <script>
+    function validateAlpha(){
+        var textInput = document.getElementById("fname").value;
+        textInput = textInput.replace(/[^A-Za-z ]/g, "");
+        document.getElementById("fname").value = textInput;
+    }
+
+    function toTitleCase(fname)
+    {
+    	
+        str=document.getElementById(fname).value;
+        str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        document.getElementById(fname).value=str;
+    	
+    }
+
+    function validateAlpha1(){
+        var textInput = document.getElementById("lname").value;
+        textInput = textInput.replace(/[^A-Za-z ]/g, "");
+        document.getElementById("lname").value = textInput;
+    }
+
+    function toTitleCase1(lname)
+    {
+    	
+        str=document.getElementById(lname).value;
+        str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        document.getElementById(lname).value=str;
+    	
+    }
+
+    function validateAlpha2(){
+        var textInput = document.getElementById("pname1").value;
+        textInput = textInput.replace(/[^A-Za-z]/g, "");
+        document.getElementById("pname1").value = textInput;
+    }
+
+    function toTitleCase2(pname1)
+    {
+    	
+        str=document.getElementById(pname1).value;
+        str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        document.getElementById(pname1).value=str;
+
+    	}
+
+    function validateAlpha3(){
+        var textInput = document.getElementById("pname2").value;
+        textInput = textInput.replace(/[^A-Za-z]/g, "");
+        document.getElementById("pname2").value = textInput;
+    }
+
+    function toTitleCase3(pname2)
+    {
+    	
+        str=document.getElementById(pname2).value;
+        str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        document.getElementById(pname2).value=str;
+    	
+    }
+    
+    function validatenum(){
+        var textInput = document.getElementById("mob1").value;
+        textInput = textInput.replace(/[^0-9]/g, "");
+        document.getElementById("mob1").value = textInput;
+    }
+
+    function validatenum1(){
+        var textInput = document.getElementById("mob2").value;
+        textInput = textInput.replace(/[^0-9]/g, "");
+        document.getElementById("mob2").value = textInput;
+    }
+
+    </script>
 
 <jsp:include page="footer.jsp"></jsp:include>

@@ -7,18 +7,22 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class StudentRegistration
-{
+public class StudentRegistration{
 	private String org_id;
 	
+	@NotEmpty
 	private String org_name;
 	
+	@NotEmpty
 	private String branch;
 	
+	@NotEmpty
 	private String student_roll_no;
 	
+	@NotEmpty
 	private String first_name;
 	
+	@NotEmpty
 	private String last_name;
 	
 	private String gender;
@@ -46,9 +50,11 @@ public class StudentRegistration
 	@NotEmpty
 	private String parent_name2;
 	
+	@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
 	@NotEmpty
 	private String parent_mobile1;
 	
+	@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
 	@NotEmpty
 	private String parent_mobile2;
 	
@@ -60,10 +66,13 @@ public class StudentRegistration
 	@NotEmpty
 	private String parent_email2;
 	
+	@NotEmpty
 	private String class_standard;
 	
+	@NotEmpty
 	private String section;
 
+	
 	public StudentRegistration() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -312,13 +321,15 @@ public class StudentRegistration
 
 	 // Client Side Edit Constructor
 	
-	public StudentRegistration(String student_roll_no, String first_name,
+	public StudentRegistration(String org_name,String branch,String student_roll_no, String first_name,
 			String last_name, String pickup_route_no,
 			String pickup_point_address, String drop_route_no,
 			String drop_point_address, String parent_name1,
 			String parent_name2, String parent_mobile1, String parent_mobile2,
 			String parent_email1, String parent_email2) {
 		super();
+		this.org_name=org_name;
+		this.branch=branch;
 		this.student_roll_no = student_roll_no;
 		this.first_name = first_name;
 		this.last_name = last_name;
@@ -332,6 +343,7 @@ public class StudentRegistration
 		this.parent_mobile2 = parent_mobile2;
 		this.parent_email1 = parent_email1;
 		this.parent_email2 = parent_email2;
+		
 	}
 
 	

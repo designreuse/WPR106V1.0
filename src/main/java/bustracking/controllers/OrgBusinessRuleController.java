@@ -100,7 +100,10 @@ public class OrgBusinessRuleController{
 	
 	
 	@RequestMapping(value="/view_business_rule", method=RequestMethod.GET)
-	public String view_business_rule(ModelMap model, Principal principal){
+	public String view_business_rule(HttpSession session,ModelMap model, Principal principal){
+		
+		session.removeAttribute("org_name");
+		session.removeAttribute("branch");
 		
 		OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
 		orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.getOrgBusinessRules());
@@ -116,8 +119,11 @@ public class OrgBusinessRuleController{
 	//search admin business rules
 	
 	@RequestMapping(value="/findBusinessRules",method=RequestMethod.GET)
-	public String findBus(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model)
+	public String findBus(HttpSession session,HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,ModelMap model)
 	{
+		
+		session.setAttribute("org_name", org_name);
+		session.setAttribute("branch", branch);
 		if(org_name=="" && branch=="")
 		{
 			OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();

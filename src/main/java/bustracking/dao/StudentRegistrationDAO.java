@@ -400,13 +400,14 @@ public class StudentRegistrationDAO {
 		}
 		List<StudentRegistration> studentregistration = new ArrayList<StudentRegistration>();
 	    try{
-	    	String cmd="select * from tbl_student where student_roll_no='"+student_roll_no+"' and org_id='"+org_id+"'";
+	    	String cmd="select t1.org_name,t1.branch,t2.* from tbl_organization as t1 join tbl_student as t2 on t1.org_id=t2.org_id where student_roll_no='"+student_roll_no+"'";
+	    	//String cmd="select * from tbl_student where student_roll_no='"+student_roll_no+"' and org_id='"+org_id+"'";
 	    	System.out.println(student_roll_no);
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);
 			while(resultSet.next())
 			{
-				studentregistration.add(new StudentRegistration(resultSet.getString("student_roll_no"), resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("pickup_route_no"),resultSet.getString("pickup_point_address"),resultSet.getString("drop_route_no"),resultSet.getString("drop_point_address"),resultSet.getString("parent_name1"),resultSet.getString("parent_name2"),resultSet.getString("parent_mobile1"),resultSet.getString("parent_mobile2"),resultSet.getString("parent_email1"),resultSet.getString("parent_email2")));
+				studentregistration.add(new StudentRegistration(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("student_roll_no"), resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("pickup_route_no"),resultSet.getString("pickup_point_address"),resultSet.getString("drop_route_no"),resultSet.getString("drop_point_address"),resultSet.getString("parent_name1"),resultSet.getString("parent_name2"),resultSet.getString("parent_mobile1"),resultSet.getString("parent_mobile2"),resultSet.getString("parent_email1"),resultSet.getString("parent_email2"),resultSet.getString("class_standard"),resultSet.getString("section")));
 			}
 	    }catch(Exception e){
 	        System.out.println(e.toString());

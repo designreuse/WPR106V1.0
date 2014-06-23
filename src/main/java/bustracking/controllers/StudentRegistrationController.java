@@ -70,13 +70,22 @@ public class StudentRegistrationController {
 	public String printWelcome(HttpSession session,ModelMap model, Principal principal){
 		
 		session.removeAttribute("studentDetails");
+		session.removeAttribute("org_name");
+		session.removeAttribute("branch");
+		session.removeAttribute("pickup_route_no");
+		session.removeAttribute("drop_route_no"); 
+		session.removeAttribute("class_standard");
+		session.removeAttribute("pickup_point_address");
+		session.removeAttribute("drop_point_address");
+		session.removeAttribute("section");
+		
 		
 		
 		/*RouteForm routeForm=new RouteForm();
 		routeForm.setRoutes(studentDAO.getRouteids());
 		model.addAttribute("routeForm",routeForm);
 		
-		BusDeviceRegistrationForm busDeviceRegistrationForm= new BusDeviceRegistrationForm();
+		BusDeviceRegistrationForme busDeviceRegistrationForm= new BusDeviceRegistrationForm();
 		busDeviceRegistrationForm.setBusDeviceRegistrations(studentDAO.getbusRegistation());
 		model.addAttribute("busDeviceRegistrationForm", busDeviceRegistrationForm);
 		
@@ -244,9 +253,18 @@ public class StudentRegistrationController {
 	
 	
 	@RequestMapping(value="/studentregistration", method=RequestMethod.POST)
-	public String addstudent(HttpServletRequest request,HttpSession session,@ModelAttribute("StudentRegistration") @Valid StudentRegistration student,BindingResult result,ModelMap model,Principal principal)
+	public String addstudent(HttpServletRequest request,HttpSession session,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("pickup_route_no") String pickup_route_no,@RequestParam("drop_route_no") String drop_route_no,@RequestParam("class_standard") String class_standard,@RequestParam("pickup_point_address") String pickup_point_address,@RequestParam("drop_point_address") String drop_point_address,@RequestParam("section") String section,@ModelAttribute("student") @Valid StudentRegistration student,BindingResult result,ModelMap model,Principal principal)
 	{
 		session.setAttribute("studentDetails",student);
+		session.setAttribute("org_name", org_name);
+		session.setAttribute("branch", branch);
+		session.setAttribute("pickup_route_no", pickup_route_no);
+		session.setAttribute("drop_route_no", drop_route_no);
+		session.setAttribute("class_standard", class_standard);
+		session.setAttribute("pickup_point_address", pickup_point_address);
+		session.setAttribute("drop_point_address", drop_point_address);
+		session.setAttribute("section", section);
+		
 		
 		/*RouteForm routeForm=new RouteForm();
 		routeForm.setRoutes(studentDAO.getRouteids());
@@ -258,12 +276,38 @@ public class StudentRegistrationController {
 		
 		
 		student.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
-		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
+		/*OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
 		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
-		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
+		model.addAttribute("orgRegistrationForm",orgRegistrationForm);*/
 		
 		if(result.hasErrors())
 		{
+			
+			OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
+			orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
+			model.addAttribute("orgRegistrationForm",orgRegistrationForm);
+			
+			
+			ClassSectionForm classSectionForm=new ClassSectionForm();
+			classSectionForm.setClassSections(classSectionDAO.get_classsection());
+			model.addAttribute("classSectionForm",classSectionForm);
+			
+			model.addAttribute("registration_no",studentDAO.getMax_StudentReg());
+			StudentRegistrationForm studentregistrationform= new StudentRegistrationForm();
+			studentregistrationform.setStudentregistration(studentDAO.getstudentregistration());
+			model.addAttribute("studentregistrationform",studentregistrationform);
+			
+			List <String> orgname_for_school=new ArrayList<String>();
+			orgname_for_school=busDAO.getorgname_for_school();
+			model.addAttribute("orgname_for_school",orgname_for_school);
+			model.addAttribute("branch_array",busDAO.getBus_id(org_name));
+			model.addAttribute("pickup_array",studentDAO.getStud_route(org_name, branch));
+			model.addAttribute("drop_array",studentDAO.getStud_route(org_name, branch));
+			model.addAttribute("class_array",studentDAO.getStud_class(org_name, branch));
+			model.addAttribute("pickup_address_array",busDAO.getPickupStop_location(pickup_route_no));
+			model.addAttribute("drop_address_array",busDAO.getDropStop_location(drop_route_no));
+			model.addAttribute("section_array",studentDAO.getStud_section(org_name, branch, class_standard));
+			
 			model.addAttribute("registration_no",studentDAO.getMax_StudentReg());
 			
 			return "add_student_registration";
@@ -289,8 +333,14 @@ public class StudentRegistrationController {
 	}
 	
 	@RequestMapping(value="/viewstudent", method=RequestMethod.GET)
-	public String viewstudent(ModelMap model, Principal principal) {
+	public String viewstudent(HttpSession session,ModelMap model, Principal principal) {
 	
+		session.removeAttribute("org_name");
+		session.removeAttribute("branch");
+		session.removeAttribute("student_roll_no");
+		session.removeAttribute("first_name");
+		session.removeAttribute("last_name");
+		
 		
 		StudentRegistrationForm studentregistrationform= new StudentRegistrationForm();
 		studentregistrationform.setStudentregistration(studentDAO.getstudentregistration());
@@ -330,10 +380,32 @@ public class StudentRegistrationController {
 	//Update operation for Student Admin side
 	
 	@RequestMapping(value="/update_student", method=RequestMethod.POST)
-	public String updatestudent(HttpServletRequest request,@ModelAttribute("studentregistration") @Valid StudentRegistration studentRegistration,
+	public String updatestudent(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("student_roll_no") String student_roll_no,@ModelAttribute("studentRegistration") @Valid StudentRegistration studentRegistration,
 			BindingResult result,ModelMap model,Principal principal)
 	{
 	
+		
+		if(result.hasErrors()){
+			
+			OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
+			orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
+			model.addAttribute("orgRegistrationForm",orgRegistrationForm);
+			
+			StudentRegistrationForm studentRegistrationForm=new StudentRegistrationForm();
+			studentRegistrationForm.setStudentregistration(studentDAO.getStudent_for_edit(student_roll_no));
+			model.addAttribute("studentRegistrationForm",studentRegistrationForm);
+			
+			List <String> class_std=new ArrayList<String>();
+			class_std=classSectionDAO.getclass_for_edit(org_name, branch);
+			model.addAttribute("class_std",class_std);
+			
+			List <String> route_no=new ArrayList<String>();
+			route_no=busDAO.getBusRegistrations_route_no(org_name, branch);
+			model.addAttribute("route_no",route_no);
+			
+			return "edit_student";
+		
+		}
 		
 		//System.out.println("student_reg_no"+studentRegistration.getStudent_reg_no());
 		int status =studentDAO.adminupdateStudent(studentRegistration);
@@ -373,13 +445,19 @@ public class StudentRegistrationController {
 	
 	// Search student in Admin side.
 	@RequestMapping(value="/findstudents",method=RequestMethod.GET)
-	public String findstudents(HttpServletRequest request,
+	public String findstudents(HttpSession session,HttpServletRequest request,
 			@RequestParam("org_name") String org_name,
 			@RequestParam("branch") String branch,
 			@RequestParam("student_roll_no") String student_roll_no,
 			@RequestParam("first_name") String first_name,
 			@RequestParam("last_name") String last_name,ModelMap model)
 	{
+		session.setAttribute("org_name", org_name);
+		session.setAttribute("branch", branch);
+		session.setAttribute("student_roll_no", student_roll_no);
+		session.setAttribute("first_name", first_name);
+		session.setAttribute("last_name", last_name);
+		
 		if(org_name=="" && branch=="" && student_roll_no=="" && first_name=="" && last_name=="")
 		{
 			StudentRegistrationForm studentregistrationform = new StudentRegistrationForm();
@@ -531,6 +609,11 @@ public class StudentRegistrationController {
 			StudentRegistrationForm studentregistrationform = new StudentRegistrationForm();
 			studentregistrationform.setStudentregistration(studentDAO.getStudent_roll_no(student_roll_no,mainDAO.getOrg_id(principal.getName())));
 	 		model.addAttribute("studentregistrationform", studentregistrationform);
+	 		
+	 		List <String> route_no=new ArrayList<String>();
+			route_no=busDAO.getStudent_route_no(mainDAO.getOrg_id(principal.getName()));
+			model.addAttribute("route_no",route_no);
+			
 			return "client_edit_student";
 			
 		}

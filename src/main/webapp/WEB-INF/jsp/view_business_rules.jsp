@@ -34,7 +34,7 @@
 							      <option value="">-- Select None --</option>
 							    <c:forEach items="${orgBusinessRuleForm1.orgBusinessRules}" var="vieworgBusinessRules1" varStatus="status">
 							    
-							    <option value="${vieworgBusinessRules1.org_name}">${vieworgBusinessRules1.org_name}</option>
+							    <option value="${vieworgBusinessRules1.org_name}" <c:if test="${org_name==vieworgBusinessRules1.org_name}"><c:out value="Selected"/></c:if>>${vieworgBusinessRules1.org_name}</option>
 							    </c:forEach>
 							    </select>
 							    </td>
@@ -42,7 +42,7 @@
 							    <select style="width:300px;"  id="e2" name="branch" >
 							    <option value="">-- Select None --</option>
 							    <c:forEach items="${orgBusinessRuleForm1.orgBusinessRules}" var="vieworgBusinessRules1" varStatus="status">
-							    <option value="${vieworgBusinessRules1.branch}">${vieworgBusinessRules1.branch}</option>
+							    <option value="${vieworgBusinessRules1.branch}" <c:if test="${branch==vieworgBusinessRules1.branch}"><c:out value="Selected"/></c:if>>${vieworgBusinessRules1.branch}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="center" valign="middle" width="30%"><br/>

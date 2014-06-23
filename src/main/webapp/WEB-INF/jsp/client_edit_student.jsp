@@ -96,27 +96,29 @@ $(document).ready(function () {
     				<td align="left" valign="top" width="100%" style="padding-right:25px;">
     				<c:set value="${studentregistrationform.studentregistration[0]}" var="student"></c:set>
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
+    						
+    						
     						<tr class="row1">
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Student Roll No:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="hidden" name="student_roll_no" value="${student.student_roll_no}"/>${student.student_roll_no}
-				                  	<br/><font color="Red" size="+1"></font>
+				                  	<br/><font color="Red" size="+1"><form:errors path="studentRegistration.student_roll_no"></form:errors></font>
 				                  </td>
-				                  
+				                
 				                </tr>
 				                <tr class="row2">
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Student First Name:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	 <input type="hidden" class="input_txtbx1" id="inp_id" name="student_first_name" value="${student.first_name}" />${student.first_name}
-				                  	<br/><font color="Red" size="+1"></font>
+				                  	 <input type="hidden" class="input_txtbx1" id="inp_id" name="first_name" value="${student.first_name}" />${student.first_name}
+				                  	<br/><font color="Red" size="+1"><form:errors path="studentRegistration.first_name"></form:errors></font>
 				                  </td>
 				                  
 				                </tr>
                         		<tr class="row1">
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Student Last Name :</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="hidden" class="student_txtbx_height_right" id="inp_id" name="student_last_name" value="${student.last_name}"/>${student.last_name}
-				                  	<br/><font color="Red" size="+1"></font>
+				                  	<input type="hidden" class="student_txtbx_height_right" id="inp_id" name="last_name" value="${student.last_name}"/>${student.last_name}
+				                  	<br/><font color="Red" size="+1"><form:errors path="studentRegistration.last_name"></form:errors></font>
 				                  </td>
 				                  
 				                </tr>
@@ -130,7 +132,7 @@ $(document).ready(function () {
         				        <option value="${route_no}" selected>${route_no}</option>
 			                  </c:forEach>
 			                  </select>
-						            	<font color="Red" size="+1"></font></td>
+						            	<br/><font color="Red" size="+1"><form:errors path="studentRegistration.pickup_route_no"></form:errors></font>
 						            	
 						         </tr> 
 								<tr class="row1">
@@ -153,7 +155,7 @@ $(document).ready(function () {
 			                  </c:forEach>
 			                  </select>
 				                  	 
-				                  	 <br/><font color="Red" size="+1"></font>
+				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.drop_route_no"></form:errors></font>
 				                  </td>
 				                </tr>	
 				                <tr class="row1">
@@ -217,8 +219,14 @@ $(document).ready(function () {
 					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_email2"></form:errors></font>
 				                  </td>
 					            </tr>
-					           
-				               
+					            <input type="text" name="class_standard"  value="${student.class_standard}"/>
+				              <font color="Red" size="+1"><form:errors path="studentRegistration.class_standard"></form:errors></font>
+				              <input type="text" name="section"  value="${student.section}"/>
+				              <font color="Red" size="+1"><form:errors path="studentRegistration.section"></form:errors></font> 	
+				              <input type="text" name="org_name"  value="${student.org_name}"/>
+				             <font color="Red" size="+1"><form:errors path="studentRegistration.org_name"></form:errors></font>
+				              <input type="text" name="branch"  value="${student.branch}"/>
+				             <font color="Red" size="+1"><form:errors path="studentRegistration.branch"></form:errors></font>
                 <tr class="row1">
                 <td valign="top" align="right"></td>
 				             
