@@ -20,7 +20,7 @@
 			          <h2> Vehicle Information</h2><div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a>&nbsp;&nbsp;<a  href='viewbus' class="btn" >Go Back</a>
+                        </a>&nbsp;&nbsp;<a  href='viewbus' class="btn" >Back to View</a>
 						</div>
 			        </div>
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -39,7 +39,7 @@
 							    <td align="left" valign="middle" width="15%" ><span style="line-height:6px;">&nbsp; Organization Name &nbsp;<br/><font color="#ccc">.</font></span>
 							    <br/>
 							    <select   id="e1"style="width:300px;" name="org_name">
-							       <option value="">Select None</option>
+							       <option selected>--Select Organization--</option>
 							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.org_name}" <c:if test="${BusRegistration1.org_name==org_name}"><c:out value="Selected"/></c:if>>${BusRegistration1.org_name}</option>
 							    </c:forEach>
@@ -49,7 +49,7 @@
 								<td align="left" valign="middle" width="10%" ><span style="line-height:6px;">&nbsp; Branch &nbsp;<br/><font color="#ccc">.</font></span>
 								<br/>
 							    <select   id="e2"style="width:300px;" name="branch">
-							     <option value="">Select None</option>
+							     <option selected>--Select Branch--</option>
 							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.branch}" <c:if test="${BusRegistration1.branch==branch}"><c:out value="Selected"/></c:if> >${BusRegistration1.branch}</option>
 							    </c:forEach>
@@ -58,7 +58,7 @@
 							    <td align="left" valign="middle" width="10%" ><span style="line-height:6px;">&nbsp;Bus Registration No &nbsp;<br/><font color="#ccc">.</font></span>
 							    <br/>
 							    <select   id="e3"style="width:300px;" name="vechicle_reg_no">
-							     <option value="">Select None</option>
+							     <option selected>--Select Bus Reg No--</option>
 							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.vechicle_reg_no}" <c:if test="${BusRegistration1.vechicle_reg_no==vechicle_reg_no}"><c:out value="Selected"/></c:if>>${BusRegistration1.vechicle_reg_no}</option>
 							    </c:forEach>
@@ -73,7 +73,7 @@
 							    <td align="left" valign="middle" width="10%" ><span style="line-height:2px;">&nbsp;Device IMEI No: &nbsp;<br/><font color="#ccc">.</font></span>
 							    <br/>
 							    <select   id="e4"style="width:300px;" name="device_imei_number">
-							      <option value="">Select None</option>
+							     <option selected>--Select IMEI No--</option>
 							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.device_imei_number}" <c:if test="${BusRegistration1.device_imei_number==device_imei_no}"><c:out value="Selected"/></c:if>>${BusRegistration1.device_imei_number}</option>
 							    </c:forEach>

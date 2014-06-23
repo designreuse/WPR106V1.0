@@ -181,7 +181,7 @@ p {
 				               <td valign="top" align="justify">
 				               <table>
 				             <tr> 
-                 <td valign="top" align="left"><input type="submit" class="btn" value="Update" ></td>
+                 <td valign="top" align="left"><input type="submit" class="btn" value="Save Changes" ></td>
                
                   <td valign="top" align="left"><input type="button" class="btn" onclick="window.location.href='viewroute'"value="Cancel"></td></tr></table>
                   </td>

@@ -105,7 +105,7 @@ jQuery(function () {
 				                  <c:otherwise>
 				                  <select name="manufacturer"  id="manuid" style="width:220px;" onblur="Validate('manuidid')" >  
                                    
-                                   <option value="" selected="selected">--Select Manufacturer Name --</option>
+                                   <option selected>--Select Manufacturer Name --</option>
                                    
                                    <option value="coban">Coban</option>
                                    </select>
@@ -123,7 +123,7 @@ jQuery(function () {
 
 				                 
       <select name="carrier" style="width:220px;" id="carrierid" onblur="Validate('carrierid')" onchange="doAjaxPost1()">  
-      <option value="" selected="selected">--Select Carrier--</option>
+      <option selected>--Select Carrier--</option>
        <c:forEach items="${carriername}" var="carriername" varStatus="status">
         				        <option value="${carriername}"  <c:if test="${carriername==carrier}"><c:out value="Selected"/></c:if>>${carriername}</option>
 			                  </c:forEach>
@@ -151,7 +151,7 @@ jQuery(function () {
 				              <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Procured Date:</td>
 				                  <td valign="top" align="left" class="input_txt" >
 				                  <div class='input-group date' id='endDate' >
-												<input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')"  style="height:27px;width:190px;float:left;" value="${devicesimsetup.device_procured_date}">
+												<input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')"  style="height:27px;width:190px;float:left;" value="${devicesimsetup.device_procured_date}" readonly="readonly">
 				                  				<!-- <input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
 												 --><span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="24" height="35"/>
@@ -162,7 +162,7 @@ jQuery(function () {
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Procured Date:</td>
 				                  <td valign="center" align="left" class="input_txt" width="60%" >
 				                  	<div class='input-group date' id='endDate1' >
-												<input type="text"  id="datepicker" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${devicesimsetup.sim_procured_date}"  style="height:27px;width:190px;float:left;">
+												<input type="text"  id="datepicker" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${devicesimsetup.sim_procured_date}" readonly="readonly" style="height:27px;width:190px;float:left;">
 				                  				<!-- <input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
 												 --><span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="24" height="35"/>
@@ -329,7 +329,7 @@ jQuery(function () {
 				        <c:choose>
 				        <c:when test="${fn:length(apn_array) gt 0}">
 				        <select  style="width:220px;margin-top:-4px;" id="apn_id" name="apn" >
-				                 	<option value="">--Select APN--</option>
+				                 	<option selected>--Select APN--</option>
 							  		<c:forEach items="${apn_array}" var="apn1" >
 							  		<option value="${apn1}" <c:if test="${apn1==apn}"><c:out value="Selected"/></c:if>>${apn1}</option>
 							  		</c:forEach>
@@ -337,7 +337,7 @@ jQuery(function () {
 				        </c:when>
 				        <c:otherwise>
 				        <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;margin-top:-4px;">  
-     					 <option value="" selected>--Select APN--</option>  
+     					 <option selected>--Select APN--</option>  
       					</select>
 				        </c:otherwise>
 				        </c:choose>

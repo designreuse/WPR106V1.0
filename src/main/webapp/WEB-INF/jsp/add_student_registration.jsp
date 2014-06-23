@@ -81,7 +81,7 @@
 				                  <td valign="middle" align="left" class="input_txt"  width="25%"><span class="err">*</span> Organization Name</td>
 				                  <td width="0.5%">:</td><td valign="top" align="left" class="input_txt">
 				                  	<select  onchange="doAjaxPost()" style="width:220px;"name="org_name" id="orgid">
-							   <option value="" selected="selected">-- Select Organization--</option>
+							   <option selected>-- Select Organization--</option>
 							    <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
         				        <option value="${orgname_for_school}" <c:if test="${orgname_for_school==org_name}"><c:out value="Selected"/></c:if> >${orgname_for_school}</option>
 			                  </c:forEach>
@@ -98,7 +98,7 @@
 						            <c:choose>
 						            <c:when test="${fn:length(drop_address_array) gt 0}">
 						            <select  style="width:220px;margin-top:-4px;" id="drop_location_id" name="drop_point_address" >
-				                 	<option value="">--Select Drop Location--</option>
+				                 	<option selected>--Select Drop Location--</option>
 							  		<c:forEach items="${drop_address_array}" var="drop_addr" >
 							  		<option value="${drop_addr}" <c:if test="${drop_addr==drop_point_address}"><c:out value="Selected"/></c:if>>${drop_addr}</option>
 							  		</c:forEach>
@@ -106,7 +106,7 @@
 						            </c:when>
 						            <c:otherwise>
 						            <select   style="width:220px;margin-top:-4px;" name="drop_point_address" id="drop_location_id" onblur="Validate1('bid')"  >
-							    <option value="" selected="selected">-- Select Drop Location--</option>
+							    <option selected>-- Select Drop Location--</option>
 							     </select>
 						            </c:otherwise>
 						            </c:choose>
@@ -129,7 +129,7 @@
 						            <c:choose>
 						            <c:when test="${fn:length(branch_array) gt 0}">
 						            <select  style="width:220px;margin-top:-4px;" id="bid" name="branch" onchange="doAjaxPost1()" >
-				                 	<option value="">--Select branch--</option>
+				                 	<option selected>--Select branch--</option>
 							  		<c:forEach items="${branch_array}" var="branch1" >
 							  		<option value="${branch1}" <c:if test="${branch1==branch}"><c:out value="Selected"/></c:if>>${branch1}</option>
 							  		</c:forEach>
@@ -137,7 +137,7 @@
 						            </c:when>
 						            <c:otherwise>
 						            <select   style="width:220px;margin-top:-4px;" name="branch" id="bid" onblur="Validate1('bid')" onchange="doAjaxPost1()" >
-							    <option value="" selected="selected">-- Select branch--</option>
+							    <option selected>-- Select branch--</option>
 							     </select>
 						            </c:otherwise>
 						            </c:choose>
@@ -234,8 +234,8 @@
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Pickup Route No </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                    <div id="info1">
-				                  	 <select style="width:220px;"name="pickup_route_no"  id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()" disabled="disabled">
-					               <option value="" selected>--Select PickUp Route No--</option>
+				                  	 <select style="width:220px;"name="pickup_route_no"  id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()" >
+					               <option  selected>--Select PickUp Route No--</option>
 					              
 			                  </select>
 			                  </div> 
@@ -261,7 +261,7 @@
 						            <c:choose>
 						            <c:when test="${fn:length(pickup_address_array) gt 0}">
 						            <select  style="width:220px;margin-top:-4px;" id="pickup_location_id" name="pickup_point_address" >
-				                 	<option value="">--Select Pickup Location--</option>
+				                 	<option selected>--Select Pickup Location--</option>
 							  		<c:forEach items="${pickup_address_array}" var="pickup_addr" >
 							  		<option value="${pickup_addr}" <c:if test="${pickup_addr==pickup_point_address}"><c:out value="Selected"/></c:if>>${pickup_addr}</option>
 							  		</c:forEach>
@@ -269,7 +269,7 @@
 						            </c:when>
 						            <c:otherwise>
 						            <select   style="width:220px;margin-top:-4px;" name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')"  >
-							    <option value="" selected="selected">-- Select Pickup Location--</option>
+							    <option  selected">-- Select Pickup Location--</option>
 							     </select>
 						            </c:otherwise>
 						            </c:choose>
@@ -290,7 +290,7 @@
 						            <c:choose>
 						            <c:when test="${fn:length(class_array) gt 0}">
 						            <select  style="width:220px;margin-top:-4px;" id="class_standard_id" name="class_standard" onchange="doAjaxPost_section()">
-				                 	<option value="">--Select Drop Route No--</option>
+				                 	<option selected>--Select Class--</option>
 							  		<c:forEach items="${class_array}" var="class_std" >
 							  		<option value="${class_std}" <c:if test="${class_std==class_standard}"><c:out value="Selected"/></c:if>>${class_std}</option>
 							  		</c:forEach>
@@ -298,7 +298,7 @@
 						            </c:when>
 						            <c:otherwise>
 						            <select   style="width:220px;margin-top:-4px;" name="class_standard" id="class_standard_id" onblur="Validate1('bid')" onchange="doAjaxPost_section()" >
-							    <option value="" selected="selected">-- Select Class--</option>
+							    <option selected>-- Select Class--</option>
 							     </select>
 						            </c:otherwise>
 						            </c:choose>
@@ -314,7 +314,7 @@
 						            <c:choose>
 						            <c:when test="${fn:length(drop_array) gt 0}">
 						            <select  style="width:220px;margin-top:-4px;" id="drop_route_id" name="drop_route_no" onchange="doAjaxPost_drop_route_no()">
-				                 	<option value="">--Select Drop Route No--</option>
+				                 	<option selected>--Select Drop Route No--</option>
 							  		<c:forEach items="${drop_array}" var="drop" >
 							  		<option value="${drop}" <c:if test="${drop==drop_route_no}"><c:out value="Selected"/></c:if>>${drop}</option>
 							  		</c:forEach>
@@ -322,7 +322,7 @@
 						            </c:when>
 						            <c:otherwise>
 						            <select   style="width:220px;margin-top:-4px;" name="drop_route_no" id="drop_route_id" onblur="Validate1('bid')" onchange="doAjaxPost_drop_route_no()" >
-							    <option value="" selected="selected">-- Select drop Route No--</option>
+							    <option selected>-- Select drop Route No--</option>
 							     </select>
 						            </c:otherwise>
 						            </c:choose>
@@ -350,7 +350,7 @@
 						            <c:choose>
 						            <c:when test="${fn:length(section_array) gt 0}">
 						            <select  style="width:220px;margin-top:-4px;" id="section_id" name="section" >
-				                 	<option value="">--Select Section--</option>
+				                 	<option selected>--Select Section--</option>
 							  		<c:forEach items="${section_array}" var="sec" >
 							  		<option value="${sec}" <c:if test="${sec==section}"><c:out value="Selected"/></c:if>>${sec}</option>
 							  		</c:forEach>
@@ -358,7 +358,7 @@
 						            </c:when>
 						            <c:otherwise>
 						            <select   style="width:220px;margin-top:-4px;" name="section" id="section_id" onblur="Validate1('bid')" >
-							    <option value="" selected="selected">-- Select section--</option>
+							    <option selected>-- Select section--</option>
 							     </select>
 						            </c:otherwise>
 						            </c:choose>
@@ -374,7 +374,7 @@
                  <td valign="top">
                   <table cellpadding="0" cellspacing="0" border="0" >
                   <tr>
-                  <td ><input type="submit" class="btn" value="Register" onclick=""></td>
+                  <td ><input type="submit" class="btn" value="Save" onclick=""></td>
                   <td> 
                  
                    <input type="reset" class="btn" value="Reset" >

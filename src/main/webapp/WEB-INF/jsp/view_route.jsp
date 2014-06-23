@@ -43,7 +43,7 @@
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
                         </a>
-                        &nbsp;&nbsp;<a  href='viewroute' class="btn" >Go Back</a>
+                        &nbsp;&nbsp;<a  href='viewroute' class="btn" >Back to View</a>
 						</div>
 			        </div>						
     	<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -58,14 +58,14 @@
 							  <tr>
 							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Organization Name &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e1"style="width:300px;" name="org_name">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Organization--</option>     
 							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.org_name}" <c:if test="${route1.org_name==org_name}"><c:out value="selected"></c:out> </c:if>   >${route1.org_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Branch &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e2"style="width:300px;" name="branch">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Branch--</option>     
 							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.branch}" <c:if test="${route1.branch==branch}"><c:out value="selected"></c:out> </c:if> >${route1.branch}</option>
 							    </c:forEach>
@@ -73,7 +73,7 @@
 							    
 							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Bus Registration No &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select id="e3"style="width:300px;" name="vechicle_reg_no">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Bus Reg No--</option>     
 							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
 							    <option value="${route1.bus_reg_no}" <c:if test="${route1.bus_reg_no==vechicle_reg_no}"><c:out value="selected"></c:out> </c:if> >${route1.bus_reg_no}</option>
 							    </c:forEach>
@@ -84,7 +84,7 @@
 							  <tr>
 							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Rout No &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e4" style="width:300px;" name="route_no">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Route No--</option>     
 							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
 							  <option value="${route1.route_no}" <c:if test="${route1.route_no==route_no}"><c:out value="selected"></c:out> </c:if>  >${route1.route_no}</option>
 							  </c:forEach>
@@ -95,7 +95,7 @@
 							  <c:choose>
 							  <c:when test="${trip==0}">
 							  <select   id="e5"style="width:300px;" name="trip">
-							 	<option value="">Select None</option>    
+							 	<option selected>--Select Trip--</option>    
 							 	  <option value="0" selected="selected">Pickup</option>
 							 	  <option value="1">Drop</option>
 							 	  <option value="2">KG Drop</option> 
@@ -103,7 +103,7 @@
 							  </c:when>
 							  <c:when test="${trip==1}">
 							 <select id="e5"style="width:300px;" name="trip">
-							 	<option value="">Select None</option>    
+							 	<option selected>--Select Trip--</option>    
 							 	  <option value="0" >Pickup</option>
 							 	  <option value="1" selected="selected">Drop</option>
 							 	  <option value="2">KG Drop</option> 
@@ -111,7 +111,7 @@
 							  </c:when>
 							  <c:when test="${trip==2}">
 							  <select id="e5"style="width:300px;" name="trip">
-							 	<option value="">Select None</option>    
+							 	<option selected>--Select Trip--</option>    
 							 	  <option value="0" >Pickup</option>
 							 	  <option value="1">Drop</option>
 							 	  <option value="2" selected="selected">KG Drop</option> 
@@ -119,7 +119,7 @@
 							  </c:when>
 							  <c:otherwise>
 							  <select id="e5"style="width:300px;" name="trip">
-							 	<option value="">Select None</option>    
+							 	<option selected>--Select Trip--</option>    
 							 	  <option value="0" >Pickup</option>
 							 	  <option value="1">Drop</option>
 							 	  <option value="2">KG Drop</option> 

@@ -16,7 +16,7 @@
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
                         </a>
-                        &nbsp;&nbsp;<a  href='viewstudent' class="btn" >Go Back</a>
+                        &nbsp;&nbsp;<a  href='viewstudent' class="btn" >Back to View</a>
 						</div>
 			        </div>
 			        
@@ -27,21 +27,21 @@
 							  <tr>
 							  	<td align="left" valign="middle" width="15%"><span style="line-height:8px;">&nbsp; Organization Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select id="e1" style="width:300px;" name="org_name">
-							     <option value="">Select None</option>
+							     <option selected>--Select Organization--</option>
 							    <c:forEach items="${studentregistrationform1.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.org_name}" <c:if test="${org_name==studentRegistration.org_name}"><c:out value="Selected"/></c:if>>${studentRegistration.org_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="15%"> <span style="line-height:8px;">&nbsp; Branch&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e2"style="width:300px;" name="branch">
-							     <option value="">Select None</option>
+							     <option selected>--Select Branch--</option>
 							    <c:forEach items="${studentregistrationform1.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.branch}" <c:if test="${branch==studentRegistration.branch}"><c:out value="Selected"/></c:if> >${studentRegistration.branch}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="15%"><span style="line-height:8px;">&nbsp;Student Roll No&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e3"style="width:300px;" name="student_roll_no">
-							     <option value="">Select None</option>
+							     <option selected>--Select Roll No--</option>
 							    <c:forEach items="${studentregistrationform1.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.student_roll_no}" <c:if test="${student_roll_no==studentRegistration.student_roll_no}"><c:out value="Selected"/></c:if>>${studentRegistration.student_roll_no}</option>
 							    </c:forEach>
@@ -51,14 +51,14 @@
 							  <tr>
 							  	<td align="left" valign="middle" width="15%"><span style="line-height:8px;">&nbsp; First Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e4"style="width:300px;" name="first_name">
-							     <option value="">Select None</option>
+							     <option selected>--Select First Name--</option>
 							    <c:forEach items="${studentregistrationform1.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.first_name}" <c:if test="${first_name==studentRegistration.first_name}"><c:out value="Selected"/></c:if>>${studentRegistration.first_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%"><span style="line-height:8px;">&nbsp;Last Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e5"style="width:300px;" name="last_name">
-							     <option value="">Select None</option>
+							     <option selected>--Select Last Name--</option>
 							    <c:forEach items="${studentregistrationform1.studentregistration}" var="studentRegistration" varStatus="status">
 							    <option value="${studentRegistration.last_name}" <c:if test="${last_name==studentRegistration.last_name}"><c:out value="Selected"/></c:if>>${studentRegistration.last_name}</option>
 							    </c:forEach>

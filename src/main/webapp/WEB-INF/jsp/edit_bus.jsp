@@ -52,7 +52,7 @@
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Device IMEI No : </td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<select name="device_imei_number" id="imei" onblur="Validate2('imei')" style="width: 220px;margin-top:-4px">
-							    <option value="${BusRegistration.device_imei_number}" selected>${BusRegistration.device_imei_number}</option>
+							    <option value="${BusRegistration.device_imei_number}" >${BusRegistration.device_imei_number}</option>
 							     <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceregistration" varStatus="status">
         				        <option value="${deviceregistration.device_imei_number}">${deviceregistration.device_imei_number}</option>
 			                  </c:forEach>

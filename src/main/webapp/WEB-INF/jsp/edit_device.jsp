@@ -138,7 +138,7 @@ jQuery(function () {
 				              <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Procured Date:</td>
 				                  <td valign="middle" align="left" class="input_txt" >
 				                 <div class='input-group date' id='endDate' >
-												<input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')" value="${device.device_procured_date}"  style="height:27px;width:190px;float:left;">
+												<input type="text" name="device_procured_date" id="datepicker" onblur="devicedate('datepicker')" value="${device.device_procured_date}" readonly="readonly" style="height:27px;width:190px;float:left;">
 				                  				<!-- <input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
 												 --><span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="24" height="35"/>
@@ -150,7 +150,7 @@ jQuery(function () {
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Procured Date:</td>
 				                  <td valign="middle" align="left" class="input_txt" width="60%" >
 				                  	<div class='input-group date' id='endDate1' >
-												<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${device.sim_procured_date}" style="height:27px;width:190px;float:left;" />
+												<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" readonly="readonly" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${device.sim_procured_date}" style="height:27px;width:190px;float:left;" />
 				                  	
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="24" height="35"/>

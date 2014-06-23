@@ -18,7 +18,7 @@
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
                         </a>
-                        &nbsp;&nbsp;<a  href='holidayviewadmin' class="btn" >Go Back</a>
+                        &nbsp;&nbsp;<a  href='holidayviewadmin' class="btn" >Back to View</a>
 						</div>
 			        </div>
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0" >
@@ -32,21 +32,21 @@
 							  <tr>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Organization Name &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select id="e1"style="width:260px;" name="org_name">
-							 	<option value="">Select None</option>
+							 	<option selected>--Select Organization--</option>
 							   <c:forEach items="${holidaysForm1.holidays}" var="holidays" varStatus="status">
 							    <option value="${holidays.org_name}" <c:if test="${org_name==holidays.org_name}"><c:out value="Selected"/></c:if>>${holidays.org_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Branch  &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e2"style="width:260px;" name="branch">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Branch--</option>     
 							   <c:forEach items="${holidaysForm1.holidays}" var="holidays" varStatus="status">
 							    <option value="${holidays.branch}" <c:if test="${branch==holidays.branch}"><c:out value="Selected"/></c:if>>${holidays.branch}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Date   &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e3"style="width:260px;" name="holiday_date">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Date--</option>     
 							   <c:forEach items="${holidaysForm1.holidays}" var="holidays" varStatus="status">
 							    <option value="${holidays.holiday_date}" <c:if test="${holiday_date==holidays.holiday_date}"><c:out value="Selected"/></c:if>>${holidays.holiday_date}</option>
 							    </c:forEach>

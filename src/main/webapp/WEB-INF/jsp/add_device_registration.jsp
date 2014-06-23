@@ -123,7 +123,7 @@ jQuery(function () {
 									<%-- <input type="text" class="org_input_txtbx_height1" id="manuid" onblur="toTitleCase('manuid')" name="manufacturer" oninput="validateAlpha()" value=""/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font> --%>
 				                 <div id="info9"> <select name="manufacturer"  id="manuid" style="width:220px;"onblur="Validate('manuidid')" >  
-                                   <option value="Selected">--Select Manufacturer Name--</option>
+                                   <option selected>--Select Manufacturer Name--</option>
                                    <option value="coban">Coban</option>
                                    </select>
                                    </div> 
@@ -136,7 +136,7 @@ jQuery(function () {
 
 		<div id="info10">		                 
       <select name="carrier" style="width:220px;" id="carrierid" onblur="Validate('carrierid')" onchange="doAjaxPost()">  
-      <option value="Selected">--Select Carrier--</option>
+      <option selected>--Select Carrier--</option>
        <c:forEach items="${carriername}" var="carriername" varStatus="status">
         				        <option value="${carriername}" <%-- <c:if test="${adminuser.org_id==OrgRegistration.org_id}"><c:out value="Selected"/></c:if> --%>>${carriername}</option>
 			                  </c:forEach>
@@ -230,7 +230,7 @@ jQuery(function () {
 				                   --%>
 				                  
 				                  <select   style="width:220px;"name="device_imei_number" id="imei" onblur="Validate2('imei')" onchange="doAjaxPost1()" >
-							    <option value="" selected>-- Select IMEI No--</option>
+							    <option selected>-- Select IMEI No--</option>
 							     <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceregistration" varStatus="status">
         				        <option value="${deviceregistration.device_imei_number}">${deviceregistration.device_imei_number}</option>
 			                  </c:forEach>
@@ -320,7 +320,7 @@ jQuery(function () {
      <!-- <input type="text" class="org_input_txtbx_height1" name="apn" id="apn_id"/></td> -->
      <div id="info" >
       <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;">  
-      <option value="" selected>--Select APN--</option>  
+      <option  selected>--Select APN--</option>  
       </select> 
       </div> 
       </td>

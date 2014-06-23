@@ -108,7 +108,7 @@
 				                </tr>
                         		<tr class="row1">
                         		<td>&nbsp;&nbsp;</td>
-				                   <td align="right" ><input type="submit" class="btn" value="Update" ></td>
+				                   <td align="right" ><input type="submit" class="btn" value="Save Changes" ></td>
 				                   
 				                    <td colspan="1"></td>
 				                    <td><input type="reset" class="btn" value="Cancel"  onclick="window.location.href='viewuser'"></td>

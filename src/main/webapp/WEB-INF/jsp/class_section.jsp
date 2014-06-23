@@ -84,7 +84,7 @@ select.add(option, 0); */
 				                  <td valign="middle" align="right" class="input_txt" width="40%" ><span class="err">*</span> Organization :</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	<select  style="width:220px;" name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option value="">-- Select Organization--</option>
+							    <option selected>-- Select Organization--</option>
         				        <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
         				        <option value="${orgname_for_school}" <c:if test="${orgname_for_school==org_name}"><c:out value="selected"></c:out></c:if>   >${orgname_for_school}</option>
 			                  </c:forEach>
@@ -107,7 +107,7 @@ select.add(option, 0); */
 				                  	 	</c:when>
 				                  	 	<c:otherwise>
 				                  	 	<select  style="width:220px;"name="branch" id="bid" onblur="Validate1('bid')" >
-							             <option value="">-- Select branch--</option>
+							             <option selected>-- Select branch--</option>
 							            </select>
 				                  	 	</c:otherwise>
 				                  	 	</c:choose>
@@ -407,7 +407,7 @@ select.add(option, 0); */
 				                  	</c:when>
 				                  	<c:otherwise>
 				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="">-- Select Class --</option>
+				                  	<option selected>-- Select Class --</option>
 				                  	<option value="PreKG">Pre-KG</option>
 				                  	<option value="UKG">UKG</option>
 				                  	<option value="LKG">LKG</option>
@@ -1218,7 +1218,7 @@ select.add(option, 0); */
 				                  	</c:when>
 				                  	<c:otherwise>
 				                  	<select  style="width:220px;"id="inp_id1" name="section" value="${class_section.section}">
-				                  	<option value="">-- Select Section --</option>
+				                  	<option selected>-- Select Section --</option>
 				                  	<option value="A">A</option>
 				                  	<option value="B">B</option>
 				                  	<option value="C">C</option>
@@ -1294,7 +1294,7 @@ select.add(option, 0); */
 				                  	</c:when>
 				                  	<c:otherwise>
 				                  	<select name="service" style="width:220px;"id="service">
-				                  	<option value="" selected>--Select Service--</option>
+				                  	<option  selected>--Select Service--</option>
 				                  	<option value="Attendance" >Attendance</option>
 				                  	<option value="Tracking" >Tracking</option>
 				                  	<option value="Both" >Both</option>

@@ -18,7 +18,7 @@
 			          <h2>Business Rules Information</h2><div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a>&nbsp;&nbsp;<a  href='view_business_rule' class="btn" >Go Back</a>
+                        </a>&nbsp;&nbsp;<a  href='view_business_rule' class="btn" >Back to view</a>
 						</div>
 			        </div>
 			    				
@@ -31,7 +31,7 @@
 							    <td align="left" valign="middle" width="10%"><span style="line-height:8px;">&nbsp;Organization Name :&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    
 							     <select   id="e1"style="width:300px;" name="org_name">
-							      <option value="">-- Select None --</option>
+							      <option selected>-- Select Organization--</option>
 							    <c:forEach items="${orgBusinessRuleForm1.orgBusinessRules}" var="vieworgBusinessRules1" varStatus="status">
 							    
 							    <option value="${vieworgBusinessRules1.org_name}" <c:if test="${org_name==vieworgBusinessRules1.org_name}"><c:out value="Selected"/></c:if>>${vieworgBusinessRules1.org_name}</option>
@@ -40,7 +40,7 @@
 							    </td>
 							    <td align="left" valign="middle" width="8%"><span style="line-height:8px;">&nbsp;Branch:&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select style="width:300px;"  id="e2" name="branch" >
-							    <option value="">-- Select None --</option>
+							    <option selected>-- Select Branch --</option>
 							    <c:forEach items="${orgBusinessRuleForm1.orgBusinessRules}" var="vieworgBusinessRules1" varStatus="status">
 							    <option value="${vieworgBusinessRules1.branch}" <c:if test="${branch==vieworgBusinessRules1.branch}"><c:out value="Selected"/></c:if>>${vieworgBusinessRules1.branch}</option>
 							    </c:forEach>

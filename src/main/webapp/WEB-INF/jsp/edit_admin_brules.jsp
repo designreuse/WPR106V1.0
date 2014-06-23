@@ -101,7 +101,7 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt">
 												
 												<div class='input-group date' id='startDate' style="float:left;">
-												<input type="text" id="timepicker2"	name="pickup_start_time"  value="${orgbrulesadmin.pickup_start_time}"/>
+												<input type="text" id="timepicker2"	name="pickup_start_time"  value="${orgbrulesadmin.pickup_start_time}" readonly="readonly"/>
 												<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/clock.png" width="25" height="25"/>
 												</span>
@@ -115,7 +115,7 @@ jQuery(function () {
 													class="err">*</span>Pickup end time :</td>
 												<td valign="top" align="left" class="input_txt">
 													 <div class='input-group date' id='startDate1' style="float:left;">
-    													<input id="timepicker1" type="text" class="input-small" name="pickup_end_time" value="${orgbrulesadmin.pickup_end_time}"/>
+    													<input id="timepicker1" type="text" class="input-small" name="pickup_end_time" value="${orgbrulesadmin.pickup_end_time}" readonly="readonly"/>
     													<span class="add-on">
         												<img src="resources/images/clock.png" width="25" height="25"/>
       													</span></div>  
@@ -128,7 +128,7 @@ jQuery(function () {
 													class="err">*</span>Drop Start Time :</td>
 												<td valign="top" align="left" class="input_txt">
 													<div class='input-group date' id='endDate' style="float:left;">
-												<input type="text" class="input_txtbx_br"  id="timepicker3"	name="drop_start_time" value="${orgbrulesadmin.drop_start_time}"/>
+												<input type="text" class="input_txtbx_br"  id="timepicker3"	name="drop_start_time" readonly="readonly" value="${orgbrulesadmin.drop_start_time}"/>
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
       												</span></div>
@@ -144,7 +144,7 @@ jQuery(function () {
 													<div class='input-group date' id='endDate1' style="float:left;">
 												 <input
 													type="text" class="input_txtbx_br"  id="timepicker4"
-													name="drop_end_time" value="${orgbrulesadmin.drop_end_time}"/>	
+													name="drop_end_time" value="${orgbrulesadmin.drop_end_time}" readonly="readonly"/>	
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
       												</span></div> 
@@ -157,7 +157,7 @@ jQuery(function () {
 													class="err">*</span>KG Drop Start Time:</td>
 												<td valign="top" align="left" class="input_txt"> 
 													<div class='input-group date' id='endDate2' style="float:left;">
-												 <input	type="text" class="input_txtbx_br"  id="timepicker5" name="kg_start_time" value="${orgbrulesadmin.kg_start_time}" />
+												 <input	type="text" class="input_txtbx_br"  id="timepicker5" readonly="readonly" name="kg_start_time" value="${orgbrulesadmin.kg_start_time}" />
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
       												</span></div> 
@@ -170,7 +170,7 @@ jQuery(function () {
 													class="err">*</span>KG Drop end Time:</td>
 												<td valign="top" align="left" class="input_txt">
 									           <div class='input-group date' id='endDate3' style="float:left;">
-												<input type="text" class="input_txtbx_br"  id="timepicker6"	name="kg_end_time" value="${orgbrulesadmin.kg_end_time}"/>	
+												<input type="text" class="input_txtbx_br" readonly="readonly"  id="timepicker6"	name="kg_end_time" value="${orgbrulesadmin.kg_end_time}"/>	
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
       												</span></div> 

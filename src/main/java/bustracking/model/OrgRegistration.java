@@ -5,6 +5,7 @@ import javax.validation.GroupSequence;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @GroupSequence({OrgRegistration.class})
@@ -13,6 +14,7 @@ public class OrgRegistration
 private String org_id;
 
 @NotEmpty
+@Length(min=4,max=32,message="Organization Name should between 4 to 32 characters!!!")
 private String org_name;
 
 @NotEmpty
@@ -20,6 +22,7 @@ private String org_name;
 private String office_fax;
 
 @NotEmpty
+@Length(min=4,max=32,message="Branch should between 4 to 32 characters!!!")
 private String branch;
 
 @NotEmpty
@@ -29,21 +32,25 @@ private String email_id;
 @NotEmpty
 private String address;
 
-
+@Length(min=4,max=32,message="Chairman Name should between 4 to 32 characters!!!")
 private String chairman_name;
 
 @NotEmpty
+@Length(min=4,max=32,message="Country should between 4 to 32 characters!!!")
 private String country;
 
 @Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
 private String chairman_telephone_number;
 
 @NotEmpty
+@Length(min=4,max=32,message="State should between 4 to 32 characters!!!")
 private String state;
 
+@Length(min=4,max=32,message="Principal Name should between 4 to 32 characters!!!")
 private String principal_name;
 
 @NotEmpty
+@Length(min=4,max=32,message="City should between 4 to 32 characters!!!")
 private String city;
 
 @Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
@@ -54,6 +61,7 @@ private String principal_telephone_number;
 private String pincode;
 
 @NotEmpty
+@Length(min=4,max=32,message="Transport Officer Name should between 4 to 32 characters!!!")
 private String transport_officer_name;
 
 @NotEmpty

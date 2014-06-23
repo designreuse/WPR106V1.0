@@ -77,7 +77,7 @@ jQuery(function () {
 				                  Organization Name:</td>
 				                  <td valign="middle" align="left" class="input_txt">
 				                <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option value="">-- Select Organization--</option>
+							    <option selected>-- Select Organization--</option>
         				        <c:forEach items="${orgname_for_school}" var="orgname" varStatus="status">
         				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if>>${orgname}</option>
 			                     </c:forEach>
@@ -95,7 +95,7 @@ jQuery(function () {
 				                  	 	<c:choose>
 							  	  <c:when test="${fn:length(branch_array) gt 0}">
 				                 	<select  style="width:220px;margin-top:-4px;" id="bid" name="branch" >
-				                 	<option value="">--Select Branch--</option>
+				                 	<option selected>--Select Branch--</option>
 							  		<c:forEach items="${branch_array}" var="orgReg" >
 							  		<option value="${orgReg}" <c:if test="${orgReg==branch}"><c:out value="Selected"/></c:if>>${orgReg}</option>
 							  		</c:forEach>
@@ -103,7 +103,7 @@ jQuery(function () {
 								 </c:when>
 								 <c:otherwise>
 									 <select style="width:220px;margin-top:-4px;" name="branch" id="bid"  >
-							  		<option value="">-- Select branch--</option>
+							  		<option selected>-- Select branch--</option>
 								    </select>
 								 </c:otherwise>
 								</c:choose>	
@@ -122,7 +122,7 @@ jQuery(function () {
 				                  	 	<c:choose>
 							  	  <c:when test="${fn:length(roll_array) gt 0}">
 				                 	<select  style="width:220px;margin-top:-4px;" id="student_roll_id" name="student_roll_no" >
-				                 	<option value="">--Select Roll No--</option>
+				                 	<option selected>--Select Roll No--</option>
 							  		<c:forEach items="${roll_array}" var="roll" >
 							  		<option value="${roll}" <c:if test="${roll==student_roll_no}"><c:out value="Selected"/></c:if>>${roll}</option>
 							  		</c:forEach>
@@ -130,7 +130,7 @@ jQuery(function () {
 								 </c:when>
 								 <c:otherwise>
 									 <select style="width:220px;margin-top:-4px;" name="student_roll_no" id="student_roll_id"  >
-							  		<option value="">-- Select Roll No--</option>
+							  		<option selected>-- Select Roll No--</option>
 								    </select>
 								 </c:otherwise>
 								</c:choose>	

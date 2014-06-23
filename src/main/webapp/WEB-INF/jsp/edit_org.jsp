@@ -142,7 +142,7 @@
 				                  <td valign="middle" align="left" class="input_txt">
 				                  	<select name="type_of_organization" style="width:220px;" onchange="fleetmanagement()" id="typeid" onblur="Validate('typeid')">
 				                  	<option value="${orgRegistration.type_of_organization}" selected>${orgRegistration.type_of_organization}</option>
-				                  	<option value="">-- Select Organization--</option>
+				                  	<option selected>-- Select Organization--</option>
 				                  	<option value="school"  <c:if test="${organisation.type_of_organization=='school'}"><c:out value="selected"/></c:if>>School</option>
 				                  	<option value="college"  <c:if test="${organisation.type_of_organization=='college'}"><c:out value="selected"/></c:if>>College</option>
 				                  	<option value="fleet management"  <c:if test="${organisation.type_of_organization=='fleet management'}"><c:out value="selected"/></c:if>>Fleet Management</option>
@@ -199,7 +199,7 @@
 				                
 	                            <tr class="row1">
 	                            	<td valign="middle" align="left"   class="input_txtlabel"></td>
-				                   <td valign="middle" align="right" class="input_txt"><input id="inp_id" type="submit" class="btn" value="Update" ></td>
+				                   <td valign="middle" align="right" class="input_txt"><input id="inp_id" type="submit" class="btn" value="Save Changes" ></td>
 				                   
 				                    
 				                    <td valign="middle" align="right" class="input_txt"><input type="reset" class="btn" value="Cancel"  onclick="window.location.href='vieworg'"></td>

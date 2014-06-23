@@ -127,7 +127,7 @@ select.add(option, 0); */
 				                  <td valign="middle" align="left" class="input_txt" width="14%" ><span class="err">*</span> Organization Name</td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	<select  style="width:220px;"name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option value="">-- Select Organization--</option>
+							    <option selected>-- Select Organization--</option>
         				        <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
         				        <option value="${orgname_for_school}" <c:if test="${orgname_for_school==org_name}"><c:out value="Selected"/></c:if>>${orgname_for_school}</option>
 			                  </c:forEach>
@@ -150,7 +150,7 @@ select.add(option, 0); */
 				                  	 	<c:choose>
 							  	  <c:when test="${fn:length(branch_array) gt 0}">
 				                 	<select  style="width:220px;margin-top:-4px;" id="bid" name="branch" >
-				                 	<option value="">--Select Branch--</option>
+				                 	<option selected>--Select Branch--</option>
 							  		<c:forEach items="${branch_array}" var="orgReg" >
 							  		<option value="${orgReg}" <c:if test="${orgReg==branch}"><c:out value="Selected"/></c:if>>${orgReg}</option>
 							  		</c:forEach>
@@ -158,7 +158,7 @@ select.add(option, 0); */
 								 </c:when>
 								 <c:otherwise>
 									 <select style="width:220px;margin-top:-4px;" name="branch" id="bid"  >
-							  		<option value="">-- Select branch--</option>
+							  		<option selected>-- Select branch--</option>
 								    </select>
 								 </c:otherwise>
 								</c:choose>	
@@ -233,7 +233,7 @@ select.add(option, 0); */
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="btn" value="Register"></td>
+                  <td><input type="submit" class="btn" value="Save"></td>
                   
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">

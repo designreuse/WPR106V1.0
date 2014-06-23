@@ -20,7 +20,7 @@
 			         <h2> View Users</h2><div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a>&nbsp;&nbsp;<a  href='viewuser' class="btn" >Go Back</a>
+                        </a>&nbsp;&nbsp;<a  href='viewuser' class="btn" >Back to View</a>
 						</div>
                     
 			        </div>
@@ -39,7 +39,7 @@
 							  <tr>
 							    <td align="left" valign="middle" width="20%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Organization Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e1" style="width:280px;" name="org_name">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Organization--</option>     
 							    <c:forEach items="${adduserform1.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.org_name}" <c:if test="${org_name==addUser1.org_name}"><c:out value="Selected"/></c:if>>${addUser1.org_name}</option>
 							    </c:forEach>
@@ -50,7 +50,7 @@
 							    
 							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;Branch&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e2"style="width:280px;" name="branch">
-									<option value="">Select None</option>							      
+									<option selected>--Select Branch--</option>							      
 							    <c:forEach items="${adduserform1.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.branch}" <c:if test="${branch==addUser1.branch}"><c:out value="Selected"/></c:if>>${addUser1.branch}</option>
 							    </c:forEach>
@@ -61,7 +61,7 @@
 							  
 							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;First Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e3"style="width:280px;" name="firstname">
-								<option value="">Select None</option>							      
+								<option selected>--Select First Name--</option>							      
 							    <c:forEach items="${adduserform1.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.firstname}" <c:if test="${firstname==addUser1.firstname}"><c:out value="Selected"/></c:if>>${addUser1.firstname}</option>
 							    </c:forEach>
@@ -76,7 +76,7 @@
 							    
 							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;Last Name&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    	<select   id="e4"style="width:280px;" name="lastname">
-							    <option value="">Select None</option>  
+							    <option selected>--Select Last Name--</option>  
 							    <c:forEach items="${adduserform1.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.lastname}" <c:if test="${lastname==addUser1.lastname}"><c:out value="Selected"/></c:if>>${addUser1.lastname}</option>
 							    </c:forEach>
@@ -84,7 +84,7 @@
 							    
 							    <td align="left" valign="middle" width="25%"><span style="line-height:8px;">&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e5"style="width:300px;" name="email">
-							      <option value="">Select None</option>
+							      <option selected>--Select Email--</option>
 							    <c:forEach items="${adduserform1.adduser}" var="addUser1" varStatus="status">
 							    <option value="${addUser1.email}" <c:if test="${email==addUser1.email}"><c:out value="Selected"/></c:if>>${addUser1.email}</option>
 							    </c:forEach>

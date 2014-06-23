@@ -49,7 +49,7 @@
 				                  <td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span>Organization Name:</td>
 				                  <td valign="top" align="left" class="input_txt" >
 				                  	 <select  style="width:220px;"name="org_name" id="orgid" onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option value="" selected="selected">-- Select Organization--</option>
+							    <option selected>-- Select Organization--</option>
 							    <c:forEach items="${orgname}" var="orgname" varStatus="status">
         				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if> >${orgname}</option>
 			                  </c:forEach>
@@ -65,7 +65,7 @@
 						            <c:choose>
 						            <c:when test="${fn:length(branch_array) gt 0}">
 						            <select  style="width:220px;margin-top:-4px;" id="bid" name="branch" >
-				                 	<option value="">--Select branch--</option>
+				                 	<option selected>--Select branch--</option>
 							  		<c:forEach items="${branch_array}" var="branch1" >
 							  		<option value="${branch1}" <c:if test="${branch1==branch}"><c:out value="Selected"/></c:if>>${branch1}</option>
 							  		</c:forEach>
@@ -73,7 +73,7 @@
 						            </c:when>
 						            <c:otherwise>
 						            <select   style="width:220px;margin-top:-4px;" name="branch" id="bid" onblur="Validate1('bid')" >
-							    <option value="" selected="selected">-- Select branch--</option>
+							    <option selected>-- Select branch--</option>
 							     </select>
 						            </c:otherwise>
 						            </c:choose>
@@ -91,7 +91,7 @@
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Device IMEI No : </td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<select   style="width:220px;"name="device_imei_number" id="imei" onblur="Validate2('imei')" >
-							    <option value="" selected>-- Select IMEI No--</option>
+							    <option selected>-- Select IMEI No--</option>
 							     <c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceregistration" varStatus="status">
         				        <option value="${deviceregistration.device_imei_number}" <c:if test="${deviceregistration.device_imei_number==device_imei_no}"><c:out value="Selected"/></c:if> >${deviceregistration.device_imei_number}</option>
 			                  </c:forEach>

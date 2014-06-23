@@ -17,7 +17,7 @@
 			          <h2>Class &amp; Section Information</h2><div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a>&nbsp;&nbsp;<a  href='viewclass' class="btn" >Go Back</a>
+                        </a>&nbsp;&nbsp;<a  href='viewclass' class="btn" >Back to View</a>
 						</div>
 			        </div>
 			        <table width="100%" border="0" cellspacing="0" cellpadding="0" >
@@ -31,21 +31,21 @@
 							  <tr>
 							    <td align="left" valign="middle" width="15%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Organization Name &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e1"style="width:300px;" name="org_name">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Organization--</option>     
 							   <c:forEach items="${classSectionForm1.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.org_name}" <c:if test="${classSection1.org_name==org_name}"> <c:out value="selected"></c:out> </c:if> >${classSection1.org_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Branch  &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e2"style="width:300px;" name="branch">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Branch--</option>     
 							   <c:forEach items="${classSectionForm1.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.branch}" <c:if test="${classSection1.branch==branch}"> <c:out value="selected"></c:out> </c:if>>${classSection1.branch}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Class   &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e3"style="width:300px;" name="class_std">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Class--</option>     
 							   <c:forEach items="${classSectionForm1.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.class_std}" <c:if test="${classSection1.class_std==class_std}"> <c:out value="selected"></c:out> </c:if>>${classSection1.class_std}</option>
 							    </c:forEach>
@@ -55,7 +55,7 @@
 							    <tr>							   
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp;Section   &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e4"style="width:300px;" name="section">
-							 	<option value="">Select None</option>     
+							 	<option selected>--Select Section--</option>     
 							   <c:forEach items="${classSectionForm1.classSections}" var="classSection1" varStatus="status">
 							    <option value="${classSection1.section}" <c:if test="${classSection1.section==section}"> <c:out value="selected"></c:out> </c:if>>${classSection1.section}</option>
 							    </c:forEach>

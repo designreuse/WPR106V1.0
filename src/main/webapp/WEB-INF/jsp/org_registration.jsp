@@ -39,7 +39,7 @@
 				                  <td valign="middle" width="20%"align="left" class="txtinput"><span class="err">*</span> Organization Name :</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  <input type="hidden" value="${org_id}" name="org_id"/>
-									<input type="text" class="org_input_txtbx_height1"  id="oname" name="org_name" oninput="validateAlpha();" onblur="toTitleCase('oname')"  value="${organisation.org_name}"/>
+									<input type="text" class="org_input_txtbx_height1"  id="oname" name="org_name" oninput="validateAlpha();" min="4" maxlength="32" onblur="toTitleCase('oname')"  value="${organisation.org_name}"/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font>
 				                  </td>	
 				                  
@@ -52,7 +52,7 @@
 				              <tr class="row2">
 				              <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Branch:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                	<input type="text" class="org_input_txtbx_height1"  id="branchid" name="branch"  oninput="validateAlpha1();" onblur="toTitleCase1('branchid')"  value="${organisation.branch}" />
+				                	<input type="text" class="org_input_txtbx_height1"  id="branchid" name="branch"  oninput="validateAlpha1();" min="4" maxlength="32" onblur="toTitleCase1('branchid')"  value="${organisation.branch}" />
 				                	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.branch"></form:errors></font>
 				                  </td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Email ID:</td>
@@ -73,8 +73,8 @@
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Name:</td>
 				                  <td valign="center" align="left" class="input_txt" width="60%" >
-				                  	<input type="text" class="org_input_txtbx_height1"  id="chairmanid"  name="chairman_name"  oninput="validateAlpha2();" onblur="toTitleCase2('chairmanid')"value="${organisation.chairman_name}" />
-				                  	
+				                  	<input type="text" class="org_input_txtbx_height1"  id="chairmanid"  name="chairman_name" min="4" maxlength="32"  oninput="validateAlpha2();" onblur="toTitleCase2('chairmanid')"value="${organisation.chairman_name}" />
+				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.chairman_name"></form:errors></font>
 				                  </td>
 				                 
 				                </tr>
@@ -86,7 +86,7 @@
 				                  	<!-- <select name="country" class="org_input_cmbbx" id="country_id">
 				                  	<option>-- Select Country--</option>
 				                  	</select> -->
-				                  	<input type="text" class="org_input_txtbx_height1" id="countryid" onblur="countrycheck('countryid')" oninput="validatecountry();" name="country" value="${organisation.country}" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="countryid" min="4" maxlength="32" onblur="countrycheck('countryid')" oninput="validatecountry();" name="country" value="${organisation.country}" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.country"></form:errors></font>
 				                  </td>
 									<td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Telephone number:</td>
@@ -101,15 +101,15 @@
 				                  	<!-- <select name="state" class="org_input_cmbbx" id="state_id">
 				                  	<option>-- Select State--</option>
 				                  	</select> -->
-				                  	<input type="text" class="org_input_txtbx_height1" id="stateid" onblur="statecheck('stateid')" oninput="validatestate();" name="state" value="${organisation.state}" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="stateid" min="4" maxlength="32" onblur="statecheck('stateid')" oninput="validatestate();" name="state" value="${organisation.state}" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.state"></form:errors></font>
 				                  
 				                  	
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Principal Name:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  	<input type="text" class="org_input_txtbx_height1"  id="principalid"  name="principal_name"  oninput="validateAlpha3();" onblur="toTitleCase3('principalid')" value="${organisation.principal_name}" />
-				                  	
+				                  	<input type="text" class="org_input_txtbx_height1"  id="principalid"  name="principal_name" min="4" maxlength="32" oninput="validateAlpha3();" onblur="toTitleCase3('principalid')" value="${organisation.principal_name}" />
+				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.principal_name"></form:errors></font>
 				                  </td>
 				                </tr>
 				                <tr class="row2">
@@ -120,7 +120,7 @@
 				                  	</select>
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                   --%>
-				                   <input type="text" class="org_input_txtbx_height1" id="cityid" onblur="citycheck('cityid')" oninput="validatecity();" name="city" value="${organisation.city}" />
+				                   <input type="text" class="org_input_txtbx_height1" min="4" maxlength="32" id="cityid" onblur="citycheck('cityid')" oninput="validatecity();" name="city" value="${organisation.city}" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  
 				                   </td>
@@ -141,7 +141,7 @@
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Transport Officer Name:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1"  id="transportid"  name="transport_officer_name"  oninput="validateAlpha4();" onblur="toTitleCase4('transportid')" value="${organisation.transport_officer_name}" />
+				                  	<input type="text" class="org_input_txtbx_height1"  id="transportid" min="4" maxlength="32" name="transport_officer_name"  oninput="validateAlpha4();" onblur="toTitleCase4('transportid')" value="${organisation.transport_officer_name}" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.transport_officer_name"></form:errors></font>
 				                  </td>
 				                </tr>

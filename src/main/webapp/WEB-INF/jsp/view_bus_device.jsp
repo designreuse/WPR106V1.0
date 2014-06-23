@@ -129,7 +129,7 @@
 			          <h2>Device Informations<br/></h2><div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a>&nbsp;&nbsp;<a  href='view_devices' class="btn" >Go Back</a>
+                        </a>&nbsp;&nbsp;<a  href='view_devices' class="btn" >Back to View</a>
 						</div>
 			          
 			          
@@ -160,7 +160,7 @@
 							    </select></td> --%>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel">IMEI No:<br/>
 							    <select name="device_imei_number" id="e3"style="width:250px;">
-							    <option value="">Select None</option>
+							    <option selected>--Select IMEI No--</option>
 							    <c:forEach items="${deviceRegistrationForm1.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
 							    <option value="${deviceRegistrations1.device_imei_number}"<c:if test="${deviceRegistrations1.device_imei_number==device_imei_number}"><c:out value="selected"></c:out></c:if>>${deviceRegistrations1.device_imei_number}</option>
 							    </c:forEach>
@@ -168,21 +168,21 @@
 							   
 							    <td align="left" valign="middle" width="10%">&nbsp;Sim No :&nbsp;<br/>
 							    <select name="sim_card_number" id="e4"style="width:250px;">
-							    <option value="">Select None</option>
+							    <option selected>--Select Sim No--</option>
 							    <c:forEach items="${deviceRegistrationForm1.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
 							    <option value="${deviceRegistrations1.sim_card_number}" <c:if test="${deviceRegistrations1.sim_card_number==sim_card_number}"><c:out value="selected"></c:out></c:if>>${deviceRegistrations1.sim_card_number}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel">Admin Ip:&nbsp;<br/>
 							    <select name="adminip" id="e5"style="width:250px;">
-							    <option value="">Select None</option>
+							    <option selected>--Select Admin IP--</option>
 							    <c:forEach items="${deviceRegistrationForm1.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
 							    <option value="${deviceRegistrations1.adminip}"<c:if test="${deviceRegistrations1.adminip==adminip}"><c:out value="selected"></c:out></c:if>>${deviceRegistrations1.adminip}</option>
 							    </c:forEach>
 							    </select></td></tr><tr>
 							    <td align="left" valign="middle" width="8%">&nbsp;Created By :&nbsp;&nbsp;&nbsp;<br/>
 							    <select name="create_user_id" id="e6"style="width:250px;">
-							    <option value="">Select None</option>
+							    <option selected>--Select User--</option>
 							    <c:forEach items="${deviceRegistrationForm1.deviceRegistrations}" var="deviceRegistrations1" varStatus="status">
 							    <option value="${deviceRegistrations1.create_user_id}" <c:if test="${deviceRegistrations1.create_user_id==create_user_id}"><c:out value="selected"></c:out></c:if>>${deviceRegistrations1.create_user_id}</option>
 							    </c:forEach>
