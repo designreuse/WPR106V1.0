@@ -33,7 +33,7 @@ import bustracking.model.Report;
 
 
 @Controller
-@SessionAttributes({"student_roll_no","from_date","to_date"})
+@SessionAttributes({"student_roll_no","from_date","to_date","date"})
 public class ReportsController{
 	
 	
@@ -50,7 +50,12 @@ public class ReportsController{
 	// Admin Side Reports For SMS
 	
 		@RequestMapping(value="/admin_reports", method=RequestMethod.GET)
-		public String adminreports(ModelMap model) {
+		public String adminreports(HttpSession session,ModelMap model) {
+			
+			session.removeAttribute("org_name");
+			session.removeAttribute("branch");
+			session.removeAttribute("student_roll_no");
+			session.removeAttribute("date");
 			
 			List <String> orgname_for_school=new ArrayList<String>();
 			orgname_for_school=busDAO.getorgname_for_school();
@@ -119,14 +124,19 @@ public class ReportsController{
 		// SMS Report Generate in Admin Side
 		
 		@RequestMapping(value="/adminsmsreport", method = RequestMethod.GET)
-		public String admintracksms(HttpSession session,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("fromdate") String fromdate,@RequestParam("todate") String todate,@RequestParam("student_roll_no") String student_roll_no,HttpServletRequest request,ModelMap model, Principal principal ) {
+		public String admintracksms(HttpSession session,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("from_date") String fromdate,@RequestParam("to_date") String todate,@RequestParam("student_roll_no") String student_roll_no,@ModelAttribute("sms_report") Report sms_report,HttpServletRequest request,ModelMap model, Principal principal ) {
 			
+			session.setAttribute("date", sms_report);
 			session.setAttribute("org_name", org_name);
+			session.setAttribute("branch", branch);
+			session.setAttribute("student_roll_no", student_roll_no);
 			
 			
 			List <String> orgname_for_school=new ArrayList<String>();
 			orgname_for_school=busDAO.getorgname_for_school();
 			model.addAttribute("orgname_for_school",orgname_for_school);
+			model.addAttribute("branch_array",busDAO.getBus_id(org_name));
+			model.addAttribute("roll_array", reportsDAO.get_student_roll_no(org_name, branch));
 			
 			if(org_name=="" && branch=="" && student_roll_no=="" && fromdate=="" && todate=="")
 			{
