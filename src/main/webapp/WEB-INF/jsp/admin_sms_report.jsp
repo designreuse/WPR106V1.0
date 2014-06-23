@@ -79,7 +79,7 @@ jQuery(function () {
 				                <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname_for_school}" var="orgname" varStatus="status">
-        				        <option value="${orgname}" >${orgname}</option>
+        				        <option value="${orgname}"  >${orgname}</option>
 			                     </c:forEach>
 			                      </select>
 				              </td>
@@ -94,7 +94,8 @@ jQuery(function () {
 				                  </td>
 				                  
 				                  <td align="left" valign="middle" width="15%">Student Roll No:</td>
-							    <td align="left" valign="bottom"><div id="info1"> 
+							    <td align="left" valign="bottom">
+							    <div id="info1"> 
 				                 	<select style="width:220px;margin-top:-4px;" name="student_roll_no" id="student_roll_no" onblur="Validate1('bid')" disabled="disabled">
 							   <option value="">-- Select student--</option>
 							  </select>

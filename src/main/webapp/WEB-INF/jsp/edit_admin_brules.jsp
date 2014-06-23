@@ -106,6 +106,8 @@ jQuery(function () {
 												<img src="resources/images/clock.png" width="25" height="25"/>
 												</span>
 												</div>
+												<br/>
+												<font color="Red" size="+1"><form:errors path="businessRule.pickup_start_time"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row1">
@@ -116,7 +118,9 @@ jQuery(function () {
     													<input id="timepicker1" type="text" class="input-small" name="pickup_end_time" value="${orgbrulesadmin.pickup_end_time}"/>
     													<span class="add-on">
         												<img src="resources/images/clock.png" width="25" height="25"/>
-      													</span></div>  <br />
+      													</span></div>  
+      													<br/>
+												<font color="Red" size="+1"><form:errors path="businessRule.pickup_end_time"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row2">
@@ -128,7 +132,8 @@ jQuery(function () {
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
       												</span></div>
-      												</br>
+      												<br/>
+												<font color="Red" size="+1"><form:errors path="businessRule.drop_start_time"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row1">
@@ -142,7 +147,9 @@ jQuery(function () {
 													name="drop_end_time" value="${orgbrulesadmin.drop_end_time}"/>	
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
-      												</span></div> <br>
+      												</span></div> 
+      												<br/>
+												<font color="Red" size="+1"><form:errors path="businessRule.drop_end_time"></form:errors></font>
 													</td>
 											</tr>
 											<tr class="row2">
@@ -154,7 +161,8 @@ jQuery(function () {
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
       												</span></div> 
-												<br />
+												<br/>
+												<font color="Red" size="+1"><form:errors path="businessRule.kg_start_time"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row1">
@@ -166,7 +174,8 @@ jQuery(function () {
 													<span class="add-on">
         											<img src="resources/images/clock.png" width="25" height="25"/>
       												</span></div> 
-									             <br />
+									            <br/>
+												<font color="Red" size="+1"><form:errors path="businessRule.kg_end_time"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row2">
@@ -175,6 +184,8 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx_br" id="inp_id"
 													name="speed_limit"  value="${orgbrulesadmin.speed_limit}" />
+													<br/>
+												<font color="Red" size="+1"><form:errors path="businessRule.speed_limit"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row1">
@@ -186,6 +197,8 @@ jQuery(function () {
 												 <option value="only delay">Only Delay Time</option>
 												 <option value="before reach">Before Reaching Stop</option>
 												 </select>
+												 <br/>
+												<font color="Red" size="+1"><form:errors path="businessRule.sms_options"></form:errors></font>
 												 </td>
 											</tr>
 											<tr class="row2">
@@ -194,6 +207,8 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt"> <input
 													type="text" class="input_txtbx_br" id="inp_id"
 													name="alert_time_interval" value="${orgbrulesadmin.alert_time_interval}"/> 
+													<br/>
+												<font color="Red" size="+1"><form:errors path="businessRule.alert_time_interval"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row1">
@@ -238,6 +253,8 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx_br" id="inp_id"
 													name="average_speed"  value="${orgbrulesadmin.average_speed}" />
+												<br/>
+												<font color="Red" size="+1"><form:errors path="businessRule.average_speed"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row1">

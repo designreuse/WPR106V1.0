@@ -75,7 +75,35 @@ public class HolidaysController{
 	// Insert Holidays admin side
 	
 	@RequestMapping(value="/insert_holidays",method=RequestMethod.POST)
-	public String insert_holidays(HttpServletRequest request,Holidays holidays,ModelMap model,Principal principal){
+	public String insert_holidays(HttpSession session,HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String bid,@ModelAttribute("holidays") @Valid Holidays holidays,BindingResult result,ModelMap model,Principal principal){
+		
+		session.setAttribute("holi", holidays);
+		session.setAttribute("org_name",org_name);
+		session.setAttribute("branch",bid);
+		
+		if(result.hasErrors()){
+			
+			OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
+			orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
+			model.addAttribute("orgRegistrationForm",orgRegistrationForm);
+			
+			List <String> orgname_for_school=new ArrayList<String>();
+			orgname_for_school=busDAO.getorgname_for_school();
+			model.addAttribute("orgname_for_school",orgname_for_school);
+			model.addAttribute("branch_array",busDAO.getBus_id(org_name));
+			
+			return "holidayAdmin";
+		}
+		
+		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
+		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
+		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
+		
+		List <String> orgname_for_school=new ArrayList<String>();
+		orgname_for_school=busDAO.getorgname_for_school();
+		model.addAttribute("orgname_for_school",orgname_for_school);
+		model.addAttribute("branch_array",busDAO.getBus_id(org_name));
+		
 		
 		holidays.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"), request.getParameter("branch")));
 
@@ -170,8 +198,13 @@ public class HolidaysController{
 	   // View Holidays Information
 	   
 	   @RequestMapping(value="/holidayviewadmin", method=RequestMethod.GET)
-		public String view_holidays(ModelMap model, Principal principal){
+		public String view_holidays(HttpSession session,ModelMap model, Principal principal){
 			
+		   session.removeAttribute("org_name");
+		   session.removeAttribute("branch");
+		   session.removeAttribute("holiday_date");
+		   
+		   
 			HolidaysForm holidaysForm=new HolidaysForm();
 			holidaysForm.setHolidaysForms(holidaysDAO.getHolidays());
 			model.addAttribute("holidaysForm",holidaysForm);
@@ -187,8 +220,10 @@ public class HolidaysController{
 	   // Find Holidays
 	   
 	   @RequestMapping(value="/findholidays",method=RequestMethod.GET)
-	   public String find_holidays(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("holiday_date") String holiday_date,ModelMap model,Principal principal){
-		   
+	   public String find_holidays(HttpSession session,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("holiday_date") String holiday_date,ModelMap model,Principal principal){
+		   session.setAttribute("org_name", org_name);
+		   session.setAttribute("branch", branch);
+		   session.setAttribute("holiday_date", holiday_date);
 		   
 		   if(org_name=="" && branch=="" && holiday_date=="")
 		   {

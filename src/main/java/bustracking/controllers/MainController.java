@@ -782,6 +782,9 @@ public class MainController {
 	public String admin_view_map_history(HttpSession session,ModelMap model) {
 		
 	
+		session.removeAttribute("org_name");
+		session.removeAttribute("branch");
+		session.removeAttribute("device_id");
 	
 		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
 		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
@@ -805,8 +808,11 @@ public class MainController {
 	// Admin Tracking history after selecting vechicle no
 	
 	@RequestMapping(value="/adminviewmaphistory", method = RequestMethod.POST)
-	public String admin_view_particular_device(HttpServletRequest request,HttpSession session,ModelMap model) {
+	public String admin_view_particular_device(HttpServletRequest request,HttpSession session,@RequestParam("org_name") String org_name,@RequestParam("branch") String bid,@RequestParam("device_id") String device_id,ModelMap model) {
 		
+		session.setAttribute("org_name", org_name);
+		session.setAttribute("branch", bid);
+		session.setAttribute("device_id", device_id);
 	
 	
 		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
@@ -816,6 +822,12 @@ public class MainController {
 		List <String> orgname=new ArrayList<String>();
 		orgname=busDAO.getorgname();
 		model.addAttribute("orgname",orgname);
+		model.addAttribute("branch_array",busDAO.getBus_id(org_name));
+		
+		BusDeviceRegistrationForm busDeviceRegistrationForm1=new BusDeviceRegistrationForm();
+		busDeviceRegistrationForm1.setBusDeviceRegistrations(mainDAO.get_vechicle_no(org_name, bid));
+		
+		model.addAttribute("vehicle_array",busDeviceRegistrationForm1);
 		
 		LatLongForm latLongForm=new LatLongForm();
 		System.out.println("Selected Date:"+request.getParameter("date").toString());

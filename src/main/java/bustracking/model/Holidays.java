@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class Holidays{
 	
-	@NotEmpty
+	
 	private String org_id;
 	
 	@NotEmpty

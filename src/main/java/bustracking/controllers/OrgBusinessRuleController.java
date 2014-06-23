@@ -199,8 +199,23 @@ public class OrgBusinessRuleController{
 	//Update Businesss Rules Admin Side
 	
 	@RequestMapping(value="/updatebrulesadmin",method=RequestMethod.POST)
-	public String updateclass(HttpServletRequest request,@ModelAttribute("OrgBusinessRule") OrgBusinessRule businessRule,BindingResult result,ModelMap model)
+	public String updateclass(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@ModelAttribute("businessRule") @Valid OrgBusinessRule businessRule,BindingResult result,ModelMap model)
 	{
+		if(result.hasErrors()){
+			
+			List <String> orgname_for_school=new ArrayList<String>();
+			orgname_for_school=busDAO.getorgname_for_school();
+			model.addAttribute("orgname_for_school",orgname_for_school);
+			
+			OrgBusinessRuleForm orgBusinessRuleForm=new OrgBusinessRuleForm();
+			orgBusinessRuleForm.setOrgBusinessRules(businessRuleDAO.edit_orgbusinessrules(org_name,branch));
+			model.addAttribute("orgBusinessRuleForm",orgBusinessRuleForm);
+			
+			return "edit_admin_brules";
+			
+		}
+		
+		
 		int status=businessRuleDAO.update_orgbusinessrules(businessRule);
 		if(status==1)
 		{

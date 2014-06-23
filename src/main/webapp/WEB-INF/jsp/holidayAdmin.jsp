@@ -129,10 +129,10 @@ select.add(option, 0); */
 				                  	<select  style="width:220px;"name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
-        				        <option value="${orgname_for_school}" >${orgname_for_school}</option>
+        				        <option value="${orgname_for_school}" <c:if test="${orgname_for_school==org_name}"><c:out value="Selected"/></c:if>>${orgname_for_school}</option>
 			                  </c:forEach>
 			                 </select>
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.org_id"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><form:errors path="holidays.org_name"></form:errors></font>
 				                  </td>
 				               </tr></table>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
@@ -140,12 +140,30 @@ select.add(option, 0); */
                         		<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Branch<br/><span style="color:#f5f5f5;">.</span></td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	
-				                  	 <div id="info" style="height:8px; " > 
+				                  	 <!-- <div id="info" style="height:8px; " > 
 				                  	 	<select  style="width:220px;"name="branch" id="bid" onblur="Validate1('bid')">
 							    <option value="">-- Select branch--</option>
 							  </select>
-        				       </div> 
-				                  <font color="Red" size="+1"><form:errors path="ClassSection.branch"></form:errors></font>
+        				       </div>  -->
+        				       
+        				        <span id="info">  
+				                  	 	<c:choose>
+							  	  <c:when test="${fn:length(branch_array) gt 0}">
+				                 	<select  style="width:220px;margin-top:-4px;" id="bid" name="branch" >
+				                 	<option value="">--Select Branch--</option>
+							  		<c:forEach items="${branch_array}" var="orgReg" >
+							  		<option value="${orgReg}" <c:if test="${orgReg==branch}"><c:out value="Selected"/></c:if>>${orgReg}</option>
+							  		</c:forEach>
+								    </select>
+								 </c:when>
+								 <c:otherwise>
+									 <select style="width:220px;margin-top:-4px;" name="branch" id="bid"  >
+							  		<option value="">-- Select branch--</option>
+								    </select>
+								 </c:otherwise>
+								</c:choose>	
+								</span>
+				                  <br/><font color="Red" size="+1"><form:errors path="holidays.branch"></form:errors></font>
 				                  </td>
 				                 
 				                </tr></table> <table cellpadding="0" cellspacing="0" border="0" width="100%" >
@@ -153,8 +171,9 @@ select.add(option, 0); */
 				                <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Number of Days </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
-				                  	<label><input type="radio" name="no_days" class="radio1" data-divclass="div1">Only One Day</label> <label><input type="radio" name="no_days" class="radio2" data-divclass="div2"> More than One Day</label>
-								<br/><font color="Red" size="+1"><form:errors path="ClassSection.class_std"></form:errors></font></td>
+				                  	<label><input type="radio" name="group1" class="radio1" data-divclass="div1" value="one" <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if>>Only One Day</label> <label><input type="radio" name="group1" class="radio2" data-divclass="div2" value="more" <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
+								<br/><font color="Red" size="+1"><form:errors path="holidays.group1"></form:errors></font>
+								</td>
 				                </tr></table>
 				                
 				                <div id="div" class="div1 content"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
@@ -168,7 +187,7 @@ select.add(option, 0); */
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
         										</div>
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  </td>
 				                    
 				                     </tr></table></div>
 				                     <div id="div" class="div2 content"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
@@ -182,7 +201,7 @@ select.add(option, 0); */
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
         										</div>
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  	</td>
 				                    
 				                     </tr></table><table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				                     <tr class="row1"><td width="25%" class="input_txt"></td>
@@ -195,14 +214,16 @@ select.add(option, 0); */
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
         										</div>
-				                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  	</td>
 				                    
 				                     </tr></table></div>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				               <tr class="row2"><td width="25%" class="input_txt"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Description</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  <textarea name="holiday_reason" class="textareanew"></textarea>		                  	<br/><font color="Red" size="+1"><form:errors path="ClassSection.section"></form:errors></font></td>
+				                  <textarea name="holiday_reason" class="textareanew">${holidays.holiday_reason}</textarea>		            
+				                  <br/><font color="Red" size="+1"><form:errors path="holidays.holiday_reason"></form:errors></font>
+				                  </td>
 				                    
 				                     </tr></table>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >

@@ -12,7 +12,11 @@ public class OrgBusinessRule{
 	private String org_name;
 	private String branch;
 	private String sms_sending;
+	
+	@NotEmpty
 	private String sms_options;
+	
+	@NotEmpty
 	private String speed_limit;
 	
 	@NotEmpty
@@ -34,6 +38,8 @@ public class OrgBusinessRule{
 	private String kg_end_time;
 	private String google_map_traffic;
 	private String saturday;
+	
+	@NotEmpty
 	private String alert_time_interval;
 	
 	@NotEmpty

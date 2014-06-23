@@ -119,7 +119,10 @@ public class ReportsController{
 		// SMS Report Generate in Admin Side
 		
 		@RequestMapping(value="/adminsmsreport", method = RequestMethod.GET)
-		public String admintracksms(@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("fromdate") String fromdate,@RequestParam("todate") String todate,@RequestParam("student_roll_no") String student_roll_no,HttpServletRequest request,ModelMap model, Principal principal ) {
+		public String admintracksms(HttpSession session,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("fromdate") String fromdate,@RequestParam("todate") String todate,@RequestParam("student_roll_no") String student_roll_no,HttpServletRequest request,ModelMap model, Principal principal ) {
+			
+			session.setAttribute("org_name", org_name);
+			
 			
 			List <String> orgname_for_school=new ArrayList<String>();
 			orgname_for_school=busDAO.getorgname_for_school();
@@ -131,6 +134,8 @@ public class ReportsController{
 				reportForm.setReports(reportsDAO.getsmsreport_for_download());
 				model.addAttribute("reportForm",reportForm);
 				
+				return "admin_sms_report";
+				
 			}
 			else{
 				
@@ -138,8 +143,14 @@ public class ReportsController{
 			reportForm.setReports(reportsDAO.getsmsreport(org_name, branch,student_roll_no,fromdate, todate));
 			model.addAttribute("reportForm",reportForm);
 			
-			}
+			ReportForm reportForm1=new ReportForm();
+			reportForm1.setReports(reportsDAO.getsmsreport_for_download());
+			model.addAttribute("reportForm",reportForm);
+			
 			return "admin_sms_report";
+			
+			}
+			
 		}
 		
 		// Get Student Roll No

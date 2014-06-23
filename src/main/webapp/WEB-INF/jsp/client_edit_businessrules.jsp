@@ -188,6 +188,8 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt">
 												<input type="hidden" class="input_txtbx_br" id="inp_id"
 													name="speed_limit"  value="${orgbrulesadmin.speed_limit}" />${orgbrulesadmin.speed_limit}
+												<br/>          
+					               				<font color="Red" size="+1"><form:errors path="businessRule.speed_limit"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row1">
@@ -196,6 +198,8 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt">
 												<input type="hidden" class="input_txtbx_br" id="inp_id"
 													name="sms_options"  value="${orgbrulesadmin.sms_options}" />${orgbrulesadmin.sms_options}
+												 <br/>          
+					               				<font color="Red" size="+1"><form:errors path="businessRule.sms_options"></form:errors></font>
 												 </td>
 											</tr>
 											<tr class="row2">
@@ -204,6 +208,8 @@ jQuery(function () {
 												<td valign="top" align="left" class="input_txt"> <input
 													type="hidden" class="input_txtbx_br" id="inp_id"
 													name="alert_time_interval" value="${orgbrulesadmin.alert_time_interval}"/> ${orgbrulesadmin.alert_time_interval}
+												<br/>          
+					               				<font color="Red" size="+1"><form:errors path="businessRule.alert_time_interval"></form:errors></font>
 												</td>
 											</tr>
 											<tr class="row1">

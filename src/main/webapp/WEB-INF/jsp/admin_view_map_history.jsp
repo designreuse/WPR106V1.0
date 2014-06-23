@@ -189,24 +189,61 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							  <td align="right" valign="middle" width="20%">Organization:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
 							     <select class="input_cmbbx" name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option value="">-- Select Organization--</option>
+							    <option selected>-- Select Organization--</option>
         				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
-        				        <option value="${orgname}" >${orgname}</option>
+        				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if> >${orgname}</option>
 			                  </c:forEach>
 			                 </select></td>
 			                 <td align="right" valign="middle" width="10%">Branch:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
-							    <span id="info"> 
+							    <!-- <span id="info"> 
 				                 	<select class="input_cmbbx" style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()" disabled="disabled">
 							   <option value="">-- Select branch--</option>
 							 </select>
-        				       </span> </td></tr><tr>
+        				       </span> -->
+        				       <span id="info"> 
+							   <c:choose>
+							  	  <c:when test="${fn:length(branch_array) gt 0}">
+				                 	<select class="input_cmbbx" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost_vechicle()">
+				                 	<option value="null">--Select Branch--</option>
+							  		<c:forEach items="${branch_array}" var="orgReg" >
+							  		<option value="${orgReg}" <c:if test="${orgReg==branch}"><c:out value="Selected"/></c:if>>${orgReg}</option>
+							  		</c:forEach>
+								    </select>
+								 </c:when>
+								 <c:otherwise>
+									 <select class="input_cmbbx" style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()" disabled="disabled">
+							  		<option value="">-- Select branch--</option>
+								    </select>
+								 </c:otherwise>
+								</c:choose>	
+        				       </span> 
+        				        </td></tr><tr>
 							    <td align="right" valign="middle" width="20%">Vehicle Reg no:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
-							   <span id="info1">
+							   <!-- <span id="info1">
 							   <select class="input_cmbbx" name="device_id" id="device"  style='width:220px;'>
 							   <option value="">-- Select Vechicle --</option>
-						   		</select></span>
+						   		</select></span> -->
+						   		<span id="info1">
+							<c:choose>
+							  <c:when test="${fn:length(vehicle_array.busDeviceRegistrations) gt 0}">
+							    <select class="input_cmbbx" name="device_id" id="device"  onchange="doAction(this.value);" style='width:220px;'>
+							     <option value="--Select device--">Select device</option>
+							     <c:forEach items="${vehicle_array.busDeviceRegistrations}" var="vehicle" >
+							  		<option value="${vehicle.device_imei_number}" <c:if test="${vehicle.device_imei_number==device_id}"><c:out value="Selected"/></c:if>>${vehicle.bus_reg_id}</option>
+							  		</c:forEach>
+							     
+							     
+							    </select>
+							  </c:when>	
+							  <c:otherwise>
+							  		<select class="input_cmbbx" name="device_id" id="device"  onchange="doAction(this.value);" disabled style='width:220px;'>
+							     <option value="">--Select Vechicle--</option>
+							    </select>
+							    </c:otherwise>
+							    </c:choose>	
+							</span>
 							    </td>
 							    <td align="right" valign="middle" width="10%">Date :&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="8%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date}"></td>
