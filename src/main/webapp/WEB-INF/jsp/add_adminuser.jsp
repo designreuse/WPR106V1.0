@@ -104,8 +104,8 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Email </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" onblur="emailcheck('eid')" onfocus="doAjaxcheckemail()"  value="${adminuser.email}"/>
-				                	<br/><font color="Red" size="+1"><c:out value="${emailexists}"/><form:errors path="user.email"></form:errors></font>
+				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" onblur="emailcheck('eid')"  value="${adminuser.email}"/>
+				                	<br/><font color="Red" size="+1"><span id="info2"><form:errors path="user.email"></form:errors></span></font>
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row2">
@@ -114,8 +114,8 @@
 				                  <span class="err">*</span> User Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  
-				                  	<input type="text" class="org_input_txtbx_height1" id="uname"  name="username"  onblur="doAjaxcheckuser()"  value="${adminuser.username}"/>
-				                  	<br/><font color="Red" size="+1"><form:errors path="user.username"></form:errors></font>
+				                  	<input type="text" class="org_input_txtbx_height1" id="uname"  name="username"  onblur="doAjaxcheckuser()" onfocus="doAjaxcheckemail()"  value="${adminuser.username}"/>
+				                  	<br/><font color="Red" size="+1"><span id="info1"><form:errors path="user.username"></form:errors></span></font>
 				                  	<%--  <font color="Red" size="+1"><c:out value="${userexists}"/><form:errors path="AddUser.username"></form:errors></font> --%> 
 				                  
 				                  </td>
@@ -242,8 +242,8 @@ function check(){
 
 
 </script>	   
- <script>
-function check(){
+ 
+
 
 <script type="text/javascript">
 function doAjaxPost() {  
@@ -362,4 +362,5 @@ select.add(option, 0); */
 		    }  
 		  });  
 		}  
+
 		</script>

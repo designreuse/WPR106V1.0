@@ -53,17 +53,20 @@
 						<form action="clientfindroutedetails" method="GET">
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							  <tr><td><input type="hidden" value="organization" name="org_name" >
+							  </td><td> <input type="hidden" value="branch" name="branch" ></td></tr>
 							  <tr><td align="left" valign="middle" width="8%">
 							  
 							   <td align="left" valign="middle" width="8%">&nbsp;Route No:<br/>
 							    <select   id="e3"style="width:250px;" name="route_no">
-							 	<option value="">Select None</option>     
+							 	<option selected> -- Select Route --</option>     
 							    <c:forEach items="${routeViewForm1.route_views}" var="clientrouteview1" varStatus="status">
 							    <option value="${clientrouteview1.route_no}" <c:if test="${route_no==clientrouteview1.route_no}"><c:out value="Selected"/></c:if>>${clientrouteview1.route_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">Stop details By:<br/>
 							    <select   id="e2"style="width:250px;" name="trip">
+							    <option selected> -- Select Trip --</option>   
 							 	<option value="0" <c:if test="${route.trip=='0'}"><c:out value="selected"/></c:if>>Pickup</option>
 							 	<option value="1" <c:if test="${route.trip=='1'}"><c:out value="selected"/></c:if>>Drop</option>
 							 	<option value="2" <c:if test="${route.trip=='2'}"><c:out value="selected"/></c:if>>KG Drop</option>

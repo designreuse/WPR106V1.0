@@ -59,7 +59,7 @@ import bustracking.model.*;
 
 import bustracking.model.XMLWriter;
 @Controller
-@SessionAttributes({"sample","listsize","menu","role","org_name","branch","vec_imei","holi","vechicle_reg_no"})
+@SessionAttributes({"sample","listsize","menu","role","org_name","branch","vec_imei","holi","vechicle_reg_no","from_date","to_date"})
 public class MainController {
 	@Autowired
 	RouteDAO routeDAO;
@@ -170,8 +170,9 @@ public class MainController {
 	
 	/*Client Dependent actions ::::GPS*/
 	@RequestMapping(value="/clienthome", method = RequestMethod.GET)
-	public String clienthome(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String clienthome(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal ) {
 		
+		session.removeAttribute("vechicle_reg_no");
 		
 		return "client_home";
 	}
@@ -193,7 +194,12 @@ public class MainController {
 	
 	
 	@RequestMapping(value="/clientvechicledetails", method = RequestMethod.GET)
-	public String clientbusnodetails(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String clientbusnodetails(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal ) {
+		
+		
+		session.removeAttribute("vechicle_reg_no");
+		session.removeAttribute("from_date");
+		session.removeAttribute("to_date");
 		
 		ClientHomeForm clientHomeForm=new ClientHomeForm();
 		clientHomeForm.setClienthome(clientHomeDAO.vechicle_traveled_information(mainDAO.getOrg_id(principal.getName())));
@@ -214,14 +220,15 @@ public class MainController {
 	
 	
 	@RequestMapping(value="/searchvechicleinformation", method = RequestMethod.GET)
-	public String searchvechicleinformation(HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("from_date") String from_date,@RequestParam("to_date") String to_date,ModelMap model, Principal principal ) {
+	public String searchvechicleinformation(HttpSession session,HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("from_date") String from_date,@RequestParam("to_date") String to_date,ModelMap model, Principal principal ) {
+		
+		session.setAttribute("vechicle_reg_no",vechicle_reg_no);
+		session.setAttribute("from_date",from_date);
+		session.setAttribute("to_date", to_date);
 		
 		if(vechicle_reg_no=="" && from_date=="" && to_date==""){
 			
-			ClientHomeForm clientHomeForm=new ClientHomeForm();
-			clientHomeForm.setClienthome(clientHomeDAO.vechicle_traveled_information(mainDAO.getOrg_id(principal.getName())));
-			model.addAttribute("clientHomeForm",clientHomeForm);
-			
+
 			ClientHomeForm clientHomeForm1=new ClientHomeForm();
 			clientHomeForm1.setClienthome(clientHomeDAO.vechicle_reg_no_for_vechicle_information(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("clientHomeForm1",clientHomeForm1);
@@ -340,6 +347,7 @@ public class MainController {
 			BusRegistrationForm busRegistrationForm1=new BusRegistrationForm();
 			busRegistrationForm1.setBusregistration(busRegistrationDAO.getBusregistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("busRegistrationForm1",busRegistrationForm1);
+			
 			return "client_driver_list";
 		}
 		else

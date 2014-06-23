@@ -39,21 +39,21 @@
 							    </select> --%>
 							   Driver Name:<br/>
 							    <select   id="e1"style="width:250px;" name="driver_name">
-							 	<option value="">Select None</option>     
+							 	<option selected>-- Select Name --</option>     
 							    <c:forEach items="${busRegistrationForm1.busregistration}" var="driverlist" varStatus="status">
 							    <option value="${driverlist.driver_name}" <c:if test="${driver_name==driverlist.driver_name}"><c:out value="Selected"/></c:if>>${driverlist.driver_name}</option>
 							    </c:forEach>
 							    </select></td>
 							     <td align="left" valign="middle" width="10%">Vehicle No:<br/>
 							    <select   id="e2"style="width:250px;" name="vechicle_reg_no">
-							 	<option value="">Select None</option>     
+							 	<option selected>-- Select Vehicle No --</option>     
 							    <c:forEach items="${busRegistrationForm1.busregistration}" var="driverlist" varStatus="status">
 							    <option value="${driverlist.vechicle_reg_no}" <c:if test="${vechicle_reg_no==driverlist.vechicle_reg_no}"><c:out value="Selected"/></c:if>>${driverlist.vechicle_reg_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">License No:<br/>
 							    <select   id="e3"style="width:250px;" name="driver_licence_number">
-							 	<option value="">Select None</option>     
+							 	<option selected>-- Select License No --</option>     
 							    <c:forEach items="${busRegistrationForm1.busregistration}" var="driverlist" varStatus="status">
 							    <option value="${driverlist.driver_licence_no}" <c:if test="${driver_licence_number==driverlist.driver_licence_no}"><c:out value="Selected"/></c:if>>${driverlist.driver_licence_no}</option>
 							    </c:forEach>

@@ -121,7 +121,7 @@ select.add(option, 0); */
   				<tr>
     				<td align="left" valign="top" width="100%" style="padding-right:25px;">
     				
-    						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
+    						<%-- <table cellpadding="0" cellspacing="0" border="0" width="100%" >
     						<tr class="row1"><td width="25%"></td>
 				                  <td valign="middle" align="left" class="input_txt" width="14%" ><span class="err">*</span> Organization Name</td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
@@ -162,19 +162,15 @@ select.add(option, 0); */
 				                  
 				                  </td>
 				                 
-				                </tr></table>
+				                </tr></table> --%>
 				                
 				                 <table cellpadding="0" cellspacing="0" border="0" width="100%" >
 						 <tr class="row1"><td width="25%"></td>
 				                <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Number of Days </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
-				                  	<label><input type="radio" name="group1" id="one" class="radio1" onclick="onecheck()" value="one"  <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if>>Only One Day</label>
-<label><input type="radio" name="group1" class="radio2" id="more" value="more" onclick="morecheck()"  <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
-
-
-
-				                  	<br/><font color="Red" size="+1"><form:errors path="holidays.group1"></form:errors></font></td>
+				                  	<label><input type="radio" name="group1" id="one" class="radio1" onclick="onecheck()" value="one"  <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if> >Only One Day</label><label><input type="radio" name="group1" class="radio2" id="more" value="more" onclick="morecheck()"  <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
+										<br/><font color="Red" size="+1"><form:errors path="holidays.group1"></form:errors></font></td>
 				                </tr></table>
 				                <div id="oneday" style="display: none"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				                <tr class="row2"><td width="25%"></td>

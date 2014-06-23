@@ -200,11 +200,13 @@ public class RouteController
 		//*******************************************************************************************************************
 		@RequestMapping(value="/clientfindroutedetails", method = RequestMethod.GET)
 		public String clientfindroutedetails(HttpSession session,HttpServletRequest request,@RequestParam("route_no") String route_no,@RequestParam("trip") String trip,@ModelAttribute("route") @Valid Route route,ModelMap model, Principal principal ) {
+			
 			session.setAttribute("route_no", route_no);
 			session.setAttribute("routes",route);
 			
 			
 			if(route_no=="" && trip==""){
+				
 				RouteViewForm routeViewForm1=new RouteViewForm();
 				routeViewForm1.setRoute_views(routeDAO.getRoute_by_org_id(mainDAO.getOrg_id(principal.getName())));
 				model.addAttribute("routeViewForm1",routeViewForm1);

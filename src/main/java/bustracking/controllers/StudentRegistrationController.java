@@ -517,9 +517,10 @@ public class StudentRegistrationController {
 		
 		if(student_roll_no=="" && first_name=="" && last_name=="" && parent_mobile1=="")
 		{
-			StudentRegistrationForm studentRegistrationForm=new StudentRegistrationForm();
-			studentRegistrationForm.setStudentregistration(studentDAO.getStudentRegistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
-			model.addAttribute("studentRegistrationForm",studentRegistrationForm);
+			StudentRegistrationForm studentRegistrationForm1=new StudentRegistrationForm();
+			studentRegistrationForm1.setStudentregistration(studentDAO.getStudentRegistration_by_org_id(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("studentRegistrationForm1",studentRegistrationForm1);
+			
 			return "client_view_student";
 		}
 		else
@@ -578,8 +579,7 @@ public class StudentRegistrationController {
 
 	// Edit Student Information In Client Side 
 	@RequestMapping(value="/client_edit_student", method=RequestMethod.GET)
-	public String clienteditStudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,@RequestParam("org_name")String org_name,@RequestParam("branch")String branch, 
-	ModelMap model,Principal principal)
+	public String clienteditStudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,@RequestParam("pickup_route_no") String pickup_route_no,@RequestParam("drop_route_no") String drop_route_no,ModelMap model,Principal principal)
 	{
 		
 		
@@ -591,6 +591,9 @@ public class StudentRegistrationController {
  		List <String> route_no=new ArrayList<String>();
 		route_no=busDAO.getStudent_route_no(mainDAO.getOrg_id(principal.getName()));
 		model.addAttribute("route_no",route_no);
+		
+		model.addAttribute("pickup_route_location",busDAO.getPickupStop_location(pickup_route_no));
+		model.addAttribute("drop_route_location",busDAO.getDropStop_location(drop_route_no));
 		
 		return "client_edit_student";
 	

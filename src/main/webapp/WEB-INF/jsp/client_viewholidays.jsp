@@ -95,7 +95,7 @@
 							    </c:if>
 							    <c:if test="${fn:length(holidaysForm.holidays) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Informations Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b>No Holidays Found!!!</b></center></td>
 							    	</tr>
 							    	</c:if>
         				</table>

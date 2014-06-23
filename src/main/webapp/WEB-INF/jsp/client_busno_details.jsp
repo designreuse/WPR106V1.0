@@ -61,14 +61,14 @@ jQuery(function () {
 							  <tr>
 							   <td align="left" valign="middle" width="20%">&nbsp;Vehicle No:<br/>
 							    <select   id="e1"style="width:250px;" name="vechicle_reg_no">
-							 	<option value="">Select None</option>     
+							 	<option selected>-- Select Vehicle No --</option>     
 							    <c:forEach items="${clientHomeForm1.clienthome}" var="clientvechicle" varStatus="status">
-							    <option value="${clientvechicle.vechicle_reg_no}">${clientvechicle.vechicle_reg_no}</option>
+							    <option value="${clientvechicle.vechicle_reg_no}" <c:if test="${clientvechicle.vechicle_reg_no==vechicle_reg_no}"><c:out value="selected"></c:out> </c:if> >${clientvechicle.vechicle_reg_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;From Date:<br/>
 							    <span class='input-group date' id='endDate' >
-												<input type="text" id="timepicker2"	name="from_date"  style="height:24px;width:150px;float:left;"/>
+												<input type="text" id="timepicker2"	name="from_date" value="${from_date}" style="height:24px;width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="25"/>
         										</span>
@@ -76,7 +76,7 @@ jQuery(function () {
 							    
 							      <td align="left" valign="middle" width="10%">&nbsp;&nbsp;To Date:<br/>
 							      <span class='input-group date' id='endDate1' >
-												<input type="text" id="timepicker2"	name="to_date"  style="height:24px;width:150px;float:left;"/>
+												<input type="text" id="timepicker2"	name="to_date"  style="height:24px;width:150px;float:left;" value="${to_date}" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="25"/>
         										</span>
@@ -121,6 +121,7 @@ jQuery(function () {
         					</tr>  </table>
     	<div class="Panel_One_Inner">
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%"class="order-table table">
+							 <c:if test="${fn:length(clientHomeForm.clienthome) gt 0 }">
 							 <c:forEach items="${clientHomeForm.clienthome}" var="clientvechicleinformation" varStatus="status">
         							<tr class="row1">
 							       		
@@ -157,7 +158,12 @@ jQuery(function () {
 											
 								</tr>
 							    	</c:forEach>
-    
+                                 </c:if>
+                                 <c:if test="${fn:length(clientHomeForm.clienthome) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Vehicle Information  Found!!!</b></center></td>
+							    	</tr>
+							    	</c:if>
         				</table>
         				
         				</div>

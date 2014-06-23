@@ -407,7 +407,7 @@ public class StudentRegistrationDAO {
 			System.out.println(cmd);
 			while(resultSet.next())
 			{
-				studentregistration.add(new StudentRegistration(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("student_roll_no"), resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("pickup_route_no"),resultSet.getString("pickup_point_address"),resultSet.getString("drop_route_no"),resultSet.getString("drop_point_address"),resultSet.getString("parent_name1"),resultSet.getString("parent_name2"),resultSet.getString("parent_mobile1"),resultSet.getString("parent_mobile2"),resultSet.getString("parent_email1"),resultSet.getString("parent_email2"),resultSet.getString("class_standard"),resultSet.getString("section")));
+				studentregistration.add(new StudentRegistration(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("student_roll_no"), resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("pickup_route_no"),resultSet.getString("pickup_point_address"),resultSet.getString("drop_route_no"),resultSet.getString("drop_point_address"),resultSet.getString("parent_name1"),resultSet.getString("parent_name2"),resultSet.getString("parent_mobile1"),resultSet.getString("parent_mobile2"),resultSet.getString("parent_email1"),resultSet.getString("parent_email2"),resultSet.getString("class_standard"),resultSet.getString("section")));
 			}
 	    }catch(Exception e){
 	        System.out.println(e.toString());

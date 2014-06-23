@@ -267,7 +267,7 @@ p {
 								<c:choose>
 								<c:when test="${fn:length(route_array) gt 0}">
 								<select style="width:220px;margin-top:-4px;" name="route_no" id="route_id" onblur="Validate2('route_id')" >
-							   <option value="" selected>-- Select Route No--</option>
+							   <option value="" selected="selected">-- Select Route No--</option>
 							    <c:forEach items="${route_array}" var="route1">
 							    <option value="${route1}" <c:if test="${route1==route_no}"><c:out value="selected"></c:out></c:if> >${route1}</option>
 							    </c:forEach>

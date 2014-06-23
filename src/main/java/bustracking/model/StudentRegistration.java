@@ -321,13 +321,14 @@ public class StudentRegistration{
 
 	 // Client Side Edit Constructor
 	
-	public StudentRegistration(String org_name,String branch,String student_roll_no, String first_name,
+	public StudentRegistration(String org_id,String org_name,String branch,String student_roll_no, String first_name,
 			String last_name, String pickup_route_no,
 			String pickup_point_address, String drop_route_no,
 			String drop_point_address, String parent_name1,
 			String parent_name2, String parent_mobile1, String parent_mobile2,
-			String parent_email1, String parent_email2) {
+			String parent_email1, String parent_email2,String class_standard,String section) {
 		super();
+		this.org_id=org_id;
 		this.org_name=org_name;
 		this.branch=branch;
 		this.student_roll_no = student_roll_no;
@@ -343,6 +344,8 @@ public class StudentRegistration{
 		this.parent_mobile2 = parent_mobile2;
 		this.parent_email1 = parent_email1;
 		this.parent_email2 = parent_email2;
+		this.class_standard=class_standard;
+		this.section=section;
 		
 	}
 

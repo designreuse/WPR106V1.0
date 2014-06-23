@@ -57,21 +57,21 @@
 							  
 							   <td align="left" valign="middle" width="8%">Roll No:<br/>
 							    <select  id="e1"style="width:250px;" name="student_roll_no">
-							 	<option value="">Select None</option>     
+							 	<option selected>-- Select Roll No --</option>     
 							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
 							    <option value="${studentlist2.student_roll_no}" <c:if test="${student_roll_no==studentlist2.student_roll_no}"><c:out value="Selected"/></c:if>>${studentlist2.student_roll_no}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">First Name:<br/>
 							    <select  id="e2"style="width:250px;" name="first_name">
-							 	<option value="">Select None</option>     
+							 	<option slected>-- Select First Name --</option>     
 							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
 							    <option value="${studentlist2.first_name}" <c:if test="${first_name==studentlist2.first_name}"><c:out value="Selected"/></c:if>>${studentlist2.first_name}</option>
 							    </c:forEach>
 							    </select></td>
 							    <td align="left" valign="middle" width="10%">Last Name:<br/>
 							    <select  id="e3"style="width:250px;" name="last_name">
-							 	<option value="">Select None</option>     
+							 	<option selected>-- Select Last Name --</option>     
 							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
 							    <option value="${studentlist2.last_name}" <c:if test="${last_name==studentlist2.last_name}"><c:out value="Selected"/></c:if>>${studentlist2.last_name}</option>
 							    </c:forEach>
@@ -80,7 +80,7 @@
 							    <tr>
 							     <td align="left" valign="middle" width="10%">Parent Mobile No<br/>
 							     <select  id="e4"style="width:250px;" name="parent_mobile1">
-							 	<option value="">Select None</option>     
+							 	<option selected>-- Select Mobile No -- </option>     
 							    <c:forEach items="${studentRegistrationForm1.studentregistration}" var="studentlist2" varStatus="status">
 							    <option value="${studentlist2.parent_mobile1}" <c:if test="${parent_mobile1==studentlist2.parent_mobile1}"><c:out value="Selected"/></c:if>>${studentlist2.parent_mobile1}</option>
 							    </c:forEach>
@@ -134,7 +134,7 @@
 									 <td valign="top" align="left" width="30%" title="Drop Point Address">${studentlist.drop_point_address}			 </td>
 									 <td valign="top" align="left" width="8%" title="Kg Drop ">${studentlist.kg_drop}</td>
 									 <td align="left">
-										<div class="arrow" title="Double click to Show all Details"></div><a href="<c:out value="client_edit_student?student_roll_no=${studentlist.student_roll_no}&org_name=${studentlist.org_name}&branch=${studentlist.branch}"/>" title="Edit" ><img src="resources/images/edit-29.png" alt="Edit" width="20" height="15"/></a>
+										<div class="arrow" title="Double click to Show all Details"></div><a href="<c:out value="client_edit_student?student_roll_no=${studentlist.student_roll_no}&pickup_route_no=${studentlist.pickup_route_no}&drop_route_no=${studentlist.drop_route_no}"/>" title="Edit" ><img src="resources/images/edit-29.png" alt="Edit" width="20" height="15"/></a>
 										</td>
 								</tr>
 							    	
