@@ -3,6 +3,7 @@ package bustracking.model;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class AddUser{
@@ -17,9 +18,11 @@ public class AddUser{
 	private String branch;
 	
 	@NotEmpty
+	@Length(min=4,max=32,message="First Name should between 4 to 32 characters!!!")
 	private String firstname;
 	
 	@NotEmpty
+	@Length(min=4,max=32,message="Last Name should between 4 to 32 characters!!!")
 	private String lastname;
 	
 	@NotEmpty

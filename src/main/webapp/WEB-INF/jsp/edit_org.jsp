@@ -65,7 +65,7 @@
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Name:</td>
 				                  <td valign="middle" align="left" class="input_txt" width="60%" >
-				                  	<input type="text" class="org_input_txtbx_height1"  id="chairmanid"  name="chairman_name"  oninput="validateAlpha2();" onblur="toTitleCase2('chairmanid')"value="${orgRegistration.chairman_name}" />
+				                  	<input type="text" class="org_input_txtbx_height1"  id="chairmanid"  name="chairman_name" min="4" maxlength="32"  oninput="validateAlpha2();" onblur="toTitleCase2('chairmanid')"value="${orgRegistration.chairman_name}" />
 				                  	
 				                  </td>
 				                 
@@ -78,7 +78,7 @@
 				                  	<!-- <select name="country" class="org_input_cmbbx" id="country_id">
 				                  	<option>-- Select Country--</option>
 				                  	</select> -->
-				                  	<input type="text" class="org_input_txtbx_height1" id="countryid" onblur="countrycheck('countryid')" oninput="validatecountry();" name="country" value="${orgRegistration.country}" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="countryid" min="4" maxlength="32" onblur="countrycheck('countryid')" oninput="validatecountry();" name="country" value="${orgRegistration.country}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.country"></form:errors></font>
 				                  </td>
 									<td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Telephone number:</td>
@@ -93,14 +93,14 @@
 				                  	<!-- <select name="state" class="org_input_cmbbx" id="state_id">
 				                  	<option>-- Select State--</option>
 				                  	</select> -->
-				                  	<input type="text" class="org_input_txtbx_height1" id="stateid" onblur="statecheck('stateid')" oninput="validatestate();" name="state" value="${orgRegistration.state}" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="stateid" min="4" maxlength="32"  onblur="statecheck('stateid')" oninput="validatestate();" name="state" value="${orgRegistration.state}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.state"></form:errors></font>
 				                  
 				                  	
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Principal Name:</td>
 				                  <td valign="middle" align="left" class="input_txt" >
-				                  	<input type="text" class="org_input_txtbx_height1"  id="principalid"  name="principal_name"  oninput="validateAlpha3();" onblur="toTitleCase3('principalid')" value="${orgRegistration.principal_name}" />
+				                  	<input type="text" class="org_input_txtbx_height1"  id="principalid" min="4" maxlength="32"  name="principal_name"  oninput="validateAlpha3();" onblur="toTitleCase3('principalid')" value="${orgRegistration.principal_name}" />
 				                  	
 				                  </td>
 				                </tr>
@@ -112,7 +112,7 @@
 				                  	</select>
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                   --%>
-				                   <input type="text" class="org_input_txtbx_height1" id="cityid" onblur="citycheck('cityid')" oninput="validatecity();" name="city" value="${orgRegistration.city}" />
+				                   <input type="text" class="org_input_txtbx_height1" id="cityid" min="4" maxlength="32" onblur="citycheck('cityid')" oninput="validatecity();" name="city" value="${orgRegistration.city}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.city"></form:errors></font>
 				                  
 				                   </td>
@@ -133,7 +133,7 @@
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Transport Officer Name:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1"  id="transportid"  name="transport_officer_name"  oninput="validateAlpha4();" onblur="toTitleCase4('transportid')" value="${orgRegistration.transport_officer_name}" />
+				                  	<input type="text" class="org_input_txtbx_height1"  id="transportid" min="4" maxlength="32"  name="transport_officer_name"  oninput="validateAlpha4();" onblur="toTitleCase4('transportid')" value="${orgRegistration.transport_officer_name}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.transport_officer_name"></form:errors></font>
 				                  </td>
 				                </tr>

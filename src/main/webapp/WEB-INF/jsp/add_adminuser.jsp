@@ -86,7 +86,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> First Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="fname" oninput="validateAlpha();" onblur="toTitleCase('fname')" value="${adminuser.firstname }" name="firstname" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="fname" oninput="validateAlpha();" min="4" maxlength="32"  onblur="toTitleCase('fname')" value="${adminuser.firstname }" name="firstname" />
 				                  <br/><font color="Red" size="+1"><form:errors path="user.firstname"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
@@ -95,7 +95,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Last Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="lname" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" name="lastname"   value="${adminuser.lastname}"/>
+				                  	<input type="text" class="org_input_txtbx_height1" id="lname" oninput="validateAlpha1();" min="4" maxlength="32" onblur="toTitleCase1('lname')" name="lastname"   value="${adminuser.lastname}"/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="user.lastname"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
