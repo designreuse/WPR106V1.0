@@ -92,7 +92,7 @@ public class ClassSectionController
 		ClassSectionForm classSectionForm1=new ClassSectionForm();
 		classSectionForm1.setClassSections(classSectionDAO.get_classsection());
 		model.addAttribute("classSectionForm1",classSectionForm1);
-		
+			
 		return "view_ClassAndSection";
 		
  
@@ -100,7 +100,7 @@ public class ClassSectionController
 	
 	
 	@RequestMapping(value="/insert_class_section", method = RequestMethod.POST)
-	public String insert_class_values(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("class_std") String class_std,@RequestParam("section") String section,@RequestParam("service") String service, HttpSession session,@ModelAttribute("classsection") @Valid ClassSection classSection,BindingResult result,ModelMap model, Principal principal ) {
+	public String insert_class_values(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("class_std") String class_std,@RequestParam("section") String section,@RequestParam("service") String service, HttpSession session,@ModelAttribute("classSection") @Valid ClassSection classSection,BindingResult result,ModelMap model, Principal principal ) {
 	
 		session.setAttribute("class_section",classSection);
 		session.setAttribute("org_name", org_name);

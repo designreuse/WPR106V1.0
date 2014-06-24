@@ -214,7 +214,7 @@ p {
 								<td valign="top" align="left" class="input_txt" width="70%">
 
 								<select style="width:220px;margin-top:-4px;" name="org_name" id="orgid" onchange="doAjaxPost()" onblur="Validate('orgid')">
-								<option selected>-- Select Organization--</option>
+								<option value="">-- Select Organization--</option>
 								<c:forEach items="${orgname}" var="orgname" varStatus="status">
         				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if> >${orgname}</option>
 			                  </c:forEach>
@@ -230,7 +230,7 @@ p {
 					  <c:choose>
 					  <c:when test="${fn:length(route_array) gt 0 }">
 					  <select name="branch" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost1()" onblur="Validate1('bid')"> 
-								<option selected>-- Select branch--</option>
+								<option value="">-- Select branch--</option>
 								<c:forEach items="${branch_array}" var="branch_array">
 								<option value="${branch_array}" <c:if test="${branch_array==branch}"><c:out value="selected"></c:out></c:if> >${branch_array}</option>
 								</c:forEach>
@@ -239,7 +239,7 @@ p {
 					  </c:when>
 					  <c:otherwise>
 					  <select name="branch" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost1()" onblur="Validate1('bid')"> 
-								<option selected>-- Select branch--</option>
+								<option value="">-- Select branch--</option>
 								<c:forEach items="${branch_array}" var="branch_array">
 								<option value="${branch_array}" >${branch_array}</option>
 								</c:forEach>
@@ -268,7 +268,7 @@ p {
 								<c:when test="${fn:length(route_array) gt 0}">
 								<select style="width:220px;margin-top:-4px;" name="route_no" id="route_id" onblur="Validate2('route_id')" >
 
-							   <option  selected>-- Select Route No--</option>
+							   <option value="">-- Select Route No--</option>
 
 							   
 							    <c:forEach items="${route_array}" var="route1">
@@ -278,7 +278,7 @@ p {
 								</c:when>
 								<c:otherwise>
 								<select style="width:220px;margin-top:-4px;" name="route_no" id="route_id" onblur="Validate2('route_id')" >
-							    <option  selected>-- Select Route No--</option>
+							    <option  value="">-- Select Route No--</option>
 							    
 							    </select>
 								</c:otherwise>

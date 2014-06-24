@@ -157,7 +157,7 @@
 								<td width="5%" class="input_txt"></td>
 								<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Student Roll Number </td><td width="0.5%">:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text"  id="inp_id" name="student_roll_no" value="${studentDetails.student_roll_no}"/><br/>
+				                  	<input type="text"  id="rollid" name="student_roll_no" oninput="validateAlpha4();" value="${studentDetails.student_roll_no}"/><br/>
 				                  	 <br/><font color="Red" size="+1"><form:errors path="student.student_roll_no"></form:errors></font>
 				                  </td>
 				                  <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Name 1</td><td width="0.5%">:</td>
@@ -202,7 +202,7 @@
 				                <td width="5%" class="input_txt"></td>
 					            	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Gender </td><td width="0.5%">:</td>
 						            <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						            	<input type="radio" value="M" name="gender" <c:if test="${studentDetails.gender=='M'}"><c:out value="checked=checked"/></c:if>>Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="F" name="gender" <c:if test="${studentDetails.gender=='F'}"><c:out value="checked=checked"/></c:if>>FeMale
+						            	<input type="radio" value="M" name="gender" checked <c:if test="${studentDetails.gender=='M'}"><c:out value="checked=checked"/></c:if>>Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="F" name="gender" <c:if test="${studentDetails.gender=='F'}"><c:out value="checked=checked"/></c:if>>FeMale
 						            	</td>
 						            	
 						       
@@ -218,7 +218,7 @@
 				                    <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Avail Transport Facility </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	 <input type="radio" name="transport_facility" value="yes" class="input_txt" <c:if test="${studentDetails.transport_facility=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;
+				                  	 <input type="radio" name="transport_facility" value="yes" class="input_txt" checked <c:if test="${studentDetails.transport_facility=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;
 					                <input type="radio" name="transport_facility" value="no" class="input_txt" <c:if test="${studentDetails.transport_facility=='no'}"><c:out value="checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
 				                  <!-- <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.transport_facility"></form:errors></font> -->	
 				                  </td>
@@ -676,6 +676,11 @@ function validat(org_id){
         var textInput = document.getElementById("mob2").value;
         textInput = textInput.replace(/[^0-9]/g, "");
         document.getElementById("mob2").value = textInput;
+    }
+    function validateAlpha4(){
+        var textInput = document.getElementById("rollid").value;
+        textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
+        document.getElementById("rollid").value = textInput;
     }
 
     </script>

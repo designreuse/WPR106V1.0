@@ -138,7 +138,7 @@ jQuery(function () {
 				                  </td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Sim Card Number :</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" width="60%" id="simno_id" maxlength="11" simno('simno_id')" oninput="validatenum_sim()" name="sim_card_number" value="${devicesimsetup.sim_card_number}" />
+				                  	<input type="text" class="org_input_txtbx_height1" width="60%" id="simno_id" maxlength="10" simno('simno_id')" oninput="validatenum_sim()" name="sim_card_number" value="${devicesimsetup.sim_card_number}" />
 				                  	
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_card_number"></form:errors></font>
 				                  </td>
@@ -353,12 +353,12 @@ jQuery(function () {
      
 				  
                    <tr class="row2">
-                   <table border="0" width="100%">
+                   <table border="0" width="80%" align="center">
                    <tr>
-                   <td width="30%"></td>
-                   <td align="right" width="20%"><input type="submit" class="btn" value="Save" ></td>
-                 <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel"></td>
+                   <td width="10%"></td>
+                   <td width="7%"><input type="submit" class="btn" value="Save" ></td>
+                   <td width="7%"><input type="reset" class="btn" onclick="window.location.href='changepassword'" value="Reset"></td>
+                   <td width="7%"><input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel"></td>
                    </tr>
                    </table>
                    

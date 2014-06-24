@@ -219,7 +219,7 @@ function changealpha_driver_name(){
 function validatealpha_driver_name(){
 	
 	var textInput = document.getElementById("driver_id").value;
-    textInput = textInput.replace(/[^A-Za-z]/g, "");
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
     document.getElementById("driver_id").value = textInput;
 		
 }

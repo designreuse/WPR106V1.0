@@ -84,7 +84,7 @@ select.add(option, 0); */
 				                  <td valign="middle" align="right" class="input_txt" width="40%" ><span class="err">*</span> Organization :</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	<select  style="width:220px;" name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option selected>-- Select Organization--</option>
+							    <option value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
         				        <option value="${orgname_for_school}" <c:if test="${orgname_for_school==org_name}"><c:out value="selected"></c:out></c:if>   >${orgname_for_school}</option>
 			                  </c:forEach>
@@ -107,7 +107,7 @@ select.add(option, 0); */
 				                  	 	</c:when>
 				                  	 	<c:otherwise>
 				                  	 	<select  style="width:220px;"name="branch" id="bid" onblur="Validate1('bid')" >
-							             <option selected>-- Select branch--</option>
+							             <option value="">-- Select branch--</option>
 							            </select>
 				                  	 	</c:otherwise>
 				                  	 	</c:choose>
@@ -119,313 +119,26 @@ select.add(option, 0); */
 						  <tr class="row2">
 				                <td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Class :</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<c:choose>
-				                  	<c:when test="${class_std=='PreKG'}">
+				                  
 				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG" selected="selected">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
+				                  	<option value="">-- Select Class --</option>
+				                  	<option value="PreKG" <c:if test="${classSection.class_std=='PreKG'}"><c:out value="selected"/></c:if>>Pre-KG</option>
+				                  	<option value="UKG" <c:if test="${classSection.class_std=='UKG'}"><c:out value="selected"/></c:if>>UKG</option>
+				                  	<option value="LKG" <c:if test="${classSection.class_std=='LKG'}"><c:out value="selected"/></c:if>>LKG</option>
+				                  	<option value="1" <c:if test="${classSection.class_std=='1'}"><c:out value="selected"/></c:if>>1</option>
+				                  	<option value="2" <c:if test="${classSection.class_std=='2'}"><c:out value="selected"/></c:if>>2</option>
+				                  	<option value="3" <c:if test="${classSection.class_std=='3'}"><c:out value="selected"/></c:if>>3</option>
+				                  	<option value="4" <c:if test="${classSection.class_std=='4'}"><c:out value="selected"/></c:if>>4</option>
+				                  	<option value="5" <c:if test="${classSection.class_std=='5'}"><c:out value="selected"/></c:if>>5</option>
+				                  	<option value="6" <c:if test="${classSection.class_std=='6'}"><c:out value="selected"/></c:if>>6</option>
+				                  	<option value="7" <c:if test="${classSection.class_std=='7'}"><c:out value="selected"/></c:if>>7</option>
+				                  	<option value="8" <c:if test="${classSection.class_std=='8'}"><c:out value="selected"/></c:if>>8</option>
+				                  	<option value="9" <c:if test="${classSection.class_std=='9'}"><c:out value="selected"/></c:if>>9</option>
+				                  	<option value="10" <c:if test="${classSection.class_std=='10'}"><c:out value="selected"/></c:if>>10</option>
+				                  	<option value="11" <c:if test="${classSection.class_std=='11'}"><c:out value="selected"/></c:if>>11</option>
+				                  	<option value="12" <c:if test="${classSection.class_std=='12'}"><c:out value="selected"/></c:if>>12</option>
 				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std=='UKG'}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG" selected="selected">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std=='LKG'}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG" selected="selected">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==1}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1" selected="selected">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==2}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2" selected="selected">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==3}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG" >Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3" selected="selected">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==4}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4" selected="selected">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==5}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG" >Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5" selected="selected">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==6}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6" selected="selected">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==7}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7" selected="selected">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==8}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8" selected="selected">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==9}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9" selected="selected">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==10}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG" >Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10" selected="selected">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==11}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11" selected="selected">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:when test="${class_std==12}">
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12" selected="selected">12</option>
-				                  	</select>
-				                  	</c:when>
-				                  	<c:otherwise>
-				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
-				                  	<option selected>-- Select Class --</option>
-				                  	<option value="PreKG">Pre-KG</option>
-				                  	<option value="UKG">UKG</option>
-				                  	<option value="LKG">LKG</option>
-				                  	<option value="1">1</option>
-				                  	<option value="2">2</option>
-				                  	<option value="3">3</option>
-				                  	<option value="4">4</option>
-				                  	<option value="5">5</option>
-				                  	<option value="6">6</option>
-				                  	<option value="7">7</option>
-				                  	<option value="8">8</option>
-				                  	<option value="9">9</option>
-				                  	<option value="10">10</option>
-				                  	<option value="11">11</option>
-				                  	<option value="12">12</option>
-				                  	</select>
-				                  	</c:otherwise>
-				                  	</c:choose>
+				                  	
 				                  	
 				                  	
 				                  	
@@ -1218,7 +931,7 @@ select.add(option, 0); */
 				                  	</c:when>
 				                  	<c:otherwise>
 				                  	<select  style="width:220px;"id="inp_id1" name="section" value="${class_section.section}">
-				                  	<option selected>-- Select Section --</option>
+				                  	<option value="">-- Select Section --</option>
 				                  	<option value="A">A</option>
 				                  	<option value="B">B</option>
 				                  	<option value="C">C</option>
@@ -1294,7 +1007,7 @@ select.add(option, 0); */
 				                  	</c:when>
 				                  	<c:otherwise>
 				                  	<select name="service" style="width:220px;"id="service">
-				                  	<option  selected>--Select Service--</option>
+				                  	<option value="">--Select Service--</option>
 				                  	<option value="Attendance" >Attendance</option>
 				                  	<option value="Tracking" >Tracking</option>
 				                  	<option value="Both" >Both</option>
@@ -1315,7 +1028,7 @@ select.add(option, 0); */
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
                   <td><input type="submit" class="btn" value="Save"></td>
-                  <td><input type="reset" class="btn" value="Reset"></td> 
+                  <td><input type="reset" class="btn" value="Reset" onclick="window.location.href='addclass'"></td> 
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
