@@ -31,14 +31,14 @@ $(window).load(function(){
 		});
 jQuery(function () {
     jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    jQuery('#endDate1').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false});
     
     jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
 	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
-	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+	jQuery('#endDate').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false});
 
 	jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate2').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    jQuery('#endDate2').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false});
     
 	jQuery("#startDate").on("dp.change",function (e) {
     jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
@@ -121,25 +121,21 @@ select.add(option, 0); */
   				<tr>
     				<td align="left" valign="top" width="100%" style="padding-right:25px;">
     				
-    						<%-- <table cellpadding="0" cellspacing="0" border="0" width="100%" >
     						<tr class="row1"><td width="25%"></td>
-				                  <td valign="middle" align="left" class="input_txt" width="14%" ><span class="err">*</span> Organization Name</td><td width="1%">:</td>
-				                  <td valign="top" align="left" class="input_txt" width="60%">
-				                  	<select style="width:220px;"name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')" value="">
-							    <option value="">-- Select Organization--</option>
-        				        <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
-        				        <option value="${orgname_for_school}" <c:if test="${orgname_for_school==org_name}"><c:out value="Selected"/></c:if>>${orgname_for_school}</option>
-			                  </c:forEach>
-			                 </select>
-				                  	<br/><font color="Red" size="+1"><form:errors path="holidays.org_name"></form:errors></font>
-				                  </td>
-				               </tr></table>
-				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
+				                  <td valign="middle" align="left" class="input_txt" width="14%" ><input type="hidden" name="org_name" value="organization"> 
+				                 <br/><font color="Red" size="+1"><form:errors path="holidays.org_name"></form:errors></font>
+				               </td>
+				                <td valign="middle" align="left" class="input_txt" width="14%" ><input type="hidden" name="branch" value="branch"> 
+				                 <br/><font color="Red" size="+1"><form:errors path="holidays.org_name"></form:errors></font>
+				               </td>
+				               
+				               </tr>
+				                <%-- <table cellpadding="0" cellspacing="0" border="0" width="100%" >
                         		<tr class="row2"><td width="25%"></td> 
                         		<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Branch<br/><span style="color:#f5f5f5;">.</span></td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	
-				                  	 <div id="info"  >
+				                  	
 				                  	 <span id="info">  
 				                  	 	<c:choose>
 							  	  <c:when test="${fn:length(branch_array) gt 0}">
@@ -158,12 +154,12 @@ select.add(option, 0); */
 								</c:choose>	
 								</span>
 							  <br/><font color="Red" size="+1"><form:errors path="holidays.branch"></form:errors></font>
-        				       </div> 
+        				       
 				                  
 				                  </td>
 				                 
-				                </tr></table> --%>
-				                
+				                </tr></table> 
+				                 --%>
 				                 <table cellpadding="0" cellspacing="0" border="0" width="100%" >
 						 <tr class="row1"><td width="25%"></td>
 				                <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Number of Days </td><td width="1%">:</td>
@@ -178,7 +174,7 @@ select.add(option, 0); */
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Holiday Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<div class='input-group date' id='endDate' style="float:left;">
-				                  	<input type="text" id="hdate" value="${holidays.holiday_date}"  name="holiday_date"/>
+				                  	<input type="text" id="hdate" value="${holidays.holiday_date}"  name="holiday_date" readonly="readonly"/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 									<img src="resources/images/date.png" width="24" height="35"/>
         							</span>
@@ -192,7 +188,7 @@ select.add(option, 0); */
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> From Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<div class='input-group date' id='endDate1' style="float:left;">
-				                  	<input type="text" name="fromdate" id="fdate" value="${holidays.fromdate}"/>
+				                  	<input type="text" name="fromdate" id="fdate" value="${holidays.fromdate}" readonly="readonly"/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
@@ -205,7 +201,7 @@ select.add(option, 0); */
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> To Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<div class='input-group date' id='endDate2' style="float:left;">
-				                  	<input type="text" name="todate" id="tdate" value="${holidays.todate}"/>
+				                  	<input type="text" name="todate" id="tdate" value="${holidays.todate}" readonly="readonly"/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 									<img src="resources/images/date.png" width="24" height="35"/>
         							</span>

@@ -2057,8 +2057,10 @@ Third button
 	width:auto;
 	height:auto;
 	text-shadow:none;
+	
 	font-weight:bold;
 }
+
 .searchdiv_client{
 	margin:-53px 0 0 810px;
 	width:auto;

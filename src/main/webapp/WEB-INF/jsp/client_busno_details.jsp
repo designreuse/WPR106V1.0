@@ -45,7 +45,7 @@ jQuery(function () {
 			          <h2>Vehicle Information</h2><div class="searchdiv_client">
                         <a href="#" class="btn1" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a>&nbsp;&nbsp;<a  href='clientvechicledetails' class="btn1" >Go Back</a>
+                        </a>&nbsp;&nbsp;<a  href='clientvechicledetails' class="btn1" >Back to View</a>
 						<br/></div>
 			          
 			          

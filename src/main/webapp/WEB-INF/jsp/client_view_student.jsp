@@ -43,7 +43,7 @@
 			        <br/></h2>	<div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a>&nbsp;&nbsp;<a  href='clientviewstudent' class="btn" >Go Back</a>
+                        </a>&nbsp;&nbsp;<a  href='clientviewstudent' class="btn" >Back to View</a>
 						</div>			        </div>
 			    
 

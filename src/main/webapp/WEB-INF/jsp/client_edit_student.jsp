@@ -177,20 +177,20 @@ $(document).ready(function () {
 				                 <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian Name/Parent Name 1:</td>
 					                <td valign="top" align="left" class="input_txt">
-					                <input type="text"  id="pname1" name="parent_name1"  oninput="validateAlpha();" onblur="toTitleCase('pname1')" value="${student.parent_name1}" />
+					                <input type="text"  id="pname1" name="parent_name1"  oninput="validateAlpha();" onblur="toTitleCase('pname1')" value="${student.parent_name1}" min="4" maxlength="32"/>
 					                <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name1"></form:errors></font></td>
 					                
 					              </tr>
 				                <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Name 2:</td>
-					                <td valign="top" align="left" class="input_txt"><input type="text"  id="pname2" oninput="validateAlpha1();" onblur="toTitleCase1('pname2')" name="parent_name2" value="${student.parent_name2}" />
+					                <td valign="top" align="left" class="input_txt"><input type="text"  id="pname2" oninput="validateAlpha1();" onblur="toTitleCase1('pname2')" name="parent_name2" min="4" maxlength="32" value="${student.parent_name2}" />
 					                <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name2"></form:errors></font></td>
 					             </tr>
 					              			                
 					             <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Mobile 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					              <input type="text" id="mob1" name="parent_mobile1" oninput="validatenum();" value="${student.parent_mobile1}"/>
+					              <input type="text" id="mob1" name="parent_mobile1" oninput="validatenum();" value="${student.parent_mobile1}" maxlength="11"/>
 					             <br/>          
 					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_mobile1"></form:errors></font>
 					               <span id="mrequires" style="color: red;"></span>
@@ -199,7 +199,7 @@ $(document).ready(function () {
 				                <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Mobile 2:</td>
 					               <td valign="top" align="left" class="input_txt">
-					              <input type="text" id="mob2" name="parent_mobile2" oninput="validatenum1();" value="${student.parent_mobile2}"/>
+					              <input type="text" id="mob2" name="parent_mobile2" oninput="validatenum1();" value="${student.parent_mobile2}" maxlength="11"/>
 					             <br/>          
 					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_mobile2"></form:errors></font>
 					               <span id="mrequires1" style="color: red;"></span>

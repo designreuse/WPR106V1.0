@@ -2,6 +2,7 @@ package bustracking.model;
 
 import java.sql.Date;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class BusRegistration
@@ -33,6 +34,7 @@ public class BusRegistration
 	@NotEmpty
 	private String device_imei_number;
 	
+	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
 	@NotEmpty
 	private String driver_name;
 	

@@ -83,7 +83,7 @@
 						         </tr> 
 								<tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Bus Registration No :</td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" style="text-transform: uppercase;" oninput="validatealphanum_vechicle_reg_no()" id="bus_no" name="vechicle_reg_no" value="${busreg.vechicle_reg_no}" onblur="doAjaxcheckvechicle_reg_no()"/>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1"  oninput="validatealphanum_vechicle_reg_no()" id="bus_no" name="vechicle_reg_no" value="${busreg.vechicle_reg_no}" onkeyup="ChangeCase(this);" onblur="doAjaxcheckvechicle_reg_no()"/>
 				                  	<br/><font color="Red" size="+1"><span id="info1"><form:errors path="busRegistration.vechicle_reg_no"></form:errors></span></font></td>
 				                
 				                </tr> 
@@ -102,23 +102,23 @@
 				                </tr>	
 				                <tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver Name :</td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="driver_id" name="driver_name" onblur="changealpha_driver_name()" oninput="validatealpha_driver_name()" value="${busreg.driver_name}"/>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="driver_id" name="driver_name" min="4" maxlength="32" onblur="changealpha_driver_name()" oninput="validatealpha_driver_name()" value="${busreg.driver_name}"/>
 				                </br><font color="Red" size="+1"><form:errors path="busRegistration.driver_name"></form:errors></font>
 				                </td>
 				                </tr>
 				                <tr class="row1">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License No :</td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" style="text-transform: uppercase;" id="licence_id" name="driver_licence_no" oninput="validatealphanum_driver_licence_no()" value="${busreg.driver_licence_no}"/>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="licence_id" onkeyup="ChangeCase(this);" name="driver_licence_no" oninput="validatealphanum_driver_licence_no()" value="${busreg.driver_licence_no}"/>
 				                </br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_no"></form:errors></font>
 				                </tr> 
 				                <tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License Expiry Date :</td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="datepicker"  name="driver_licence_exp_date" onblur="expiry('datepicker')" value="${busreg.driver_licence_exp_date}"/>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="datepicker"  name="driver_licence_exp_date" onblur="expiry('datepicker')" value="${busreg.driver_licence_exp_date}" readonly="readonly"/>
 				                </br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_exp_date"></form:errors></font></td>
 				                </tr> 
 				                <tr class="row1">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Route No : </td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" style="text-transform: uppercase;" id="route_id" name="route_no" oninput="validatealphanum_route_no()" value="${busreg.route_no}" onblur="doAjaxcheckroute_no()"/>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" onkeyup="ChangeCase(this);" id="route_id" name="route_no" oninput="validatealphanum_route_no()" value="${busreg.route_no}" onblur="doAjaxcheckroute_no()"/>
 				                  <%-- 	<select class="org_input_cmbbx" name="route_no" id="imei" onblur="Validate2('imei')">
 							    <option value="" selected>-- Select Route No--</option>
 							     <c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
@@ -190,6 +190,11 @@ function validatealpha_driver_name(){
 		
 }
 
+
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
 
 
 </script>

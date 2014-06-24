@@ -72,8 +72,8 @@
 							  <tr >
 							    <td align="left" valign="middle" width="10%" ><span style="line-height:2px;">&nbsp;Device IMEI No: &nbsp;<br/><font color="#ccc">.</font></span>
 							    <br/>
-							    <select   id="e4"style="width:300px;" name="device_imei_number">
-							     <option selected>--Select IMEI No--</option>
+							    <select   id="e4" style="width:300px;" name="device_imei_number">
+							     <option selected> --Select IMEI No-- </option>
 							    <c:forEach items="${busregistrationform1.busregistration}" var="BusRegistration1" varStatus="status">
 							    <option value="${BusRegistration1.device_imei_number}" <c:if test="${BusRegistration1.device_imei_number==device_imei_no}"><c:out value="Selected"/></c:if>>${BusRegistration1.device_imei_number}</option>
 							    </c:forEach>
@@ -137,7 +137,7 @@
 							    	</c:forEach></c:if>
 							    <c:if test="${fn:length(busregistrationform.busregistration) == 0}">	
 							    	<tr class="row1">
-							    	
+							    	<td style="align:center"><center><b> No Vehicle Found !! </b></center></td>
 							    	</tr>
 							    	</c:if> </table>
         				

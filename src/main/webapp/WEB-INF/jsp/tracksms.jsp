@@ -1,6 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+
 <style type="text/css">
         body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
         #report { border-collapse:collapse;}
@@ -49,7 +50,7 @@
 			        <br/></h2>	<div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a> &nbsp;&nbsp;<a  href='tracksms' class="btn" >Go Back</a></div></div>
+                        </a> &nbsp;&nbsp;<a  href='tracksms' class="btn" >Back to View</a></div></div>
                         
 <div style="display:none" id="div"><div class="searchpanel">
 <form action="clientsmstrack" method="GET">
@@ -61,7 +62,7 @@
 							   <td align="left">
 							  
 							   <select id="student_roll_no_id" name="student_roll_no" style="width:220px;margin-top:-4px;">
-							   <option value="" selected> -- Select Student Roll No -- </option>
+							   <option selected> -- Select Student Roll No -- </option>
 							    <c:forEach items="${reportForm1.reports}" var="smsreport" varStatus="status">
 							   <option value="${smsreport.student_roll_no}" <c:if test="${smsreport.student_roll_no==student_roll_no}"><c:out value="selected"></c:out></c:if> >${smsreport.student_roll_no}</option>
 							    </c:forEach>
@@ -100,6 +101,7 @@
 					         		<td valign="top" align="left" width="10%">Status</td>
           								
         					</tr>
+        					<c:if test="${fn:length(reportForm.reports) gt 0}">
         					<c:forEach items="${reportForm.reports}" var="smsreport" varStatus="status">
         				  
         					<tr class="row1">
@@ -110,6 +112,12 @@
           							
         					</tr>
         					</c:forEach>
+        					</c:if>
+        					<c:if test="${fn:length(reportForm.reports) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Routes Found!!!</b></center></td>
+							    	</tr>
+							    	</c:if>
         					<tr>
         					<td valign="top" align="right" style="padding:20px;" colspan="6">
         					<form action="export_clientsmstrack" method="post">

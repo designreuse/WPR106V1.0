@@ -59,7 +59,7 @@ import bustracking.model.*;
 
 import bustracking.model.XMLWriter;
 @Controller
-@SessionAttributes({"sample","listsize","menu","role","org_name","branch","vec_imei","holi","vechicle_reg_no","from_date","to_date"})
+@SessionAttributes({"sample","device","listsize","menu","role","org_name","branch","vec_imei","holi","vechicle_reg_no","from_date","to_date"})
 public class MainController {
 	@Autowired
 	RouteDAO routeDAO;
@@ -461,9 +461,7 @@ public class MainController {
 		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
 		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
 		
-		List <String> orgname_for_school=new ArrayList<String>();
-		orgname_for_school=busDAO.getorgname_for_school();
-		model.addAttribute("orgname_for_school",orgname_for_school);
+		
 		
 		return "client_holiday";
 	}
@@ -702,7 +700,10 @@ public class MainController {
 	public String client_view_map_history(HttpSession session,ModelMap model,Principal principal) {
 		
 	
-	
+		
+		session.removeAttribute("device_id");
+		
+		
 		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
 		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
 		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
@@ -724,10 +725,12 @@ public class MainController {
 	// Client Tracking history after selecting vechicle no
 	
 		@RequestMapping(value="/clientviewmaphistory", method = RequestMethod.POST)
-		public String client_view_particular_device(HttpServletRequest request,HttpSession session,ModelMap model,Principal principal) {
+		public String client_view_particular_device(HttpServletRequest request,HttpSession session,@RequestParam("device_id") String vechicle_reg_no,ModelMap model,Principal principal) {
 			
 		
-		
+		    session.setAttribute("device_id",vechicle_reg_no);
+		    
+			
 			BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
 			busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
 			model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		

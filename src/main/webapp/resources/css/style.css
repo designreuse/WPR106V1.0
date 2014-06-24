@@ -240,14 +240,14 @@ background: -moz-linear-gradient(top, #EEEEEE, #6600cc); for firefox 3.6+ */
 .headingsnew {
 	padding-bottom: 15px ;
 	padding-top: 0px ;
+	color:#000;
 	border: 1px solid #CACACA;
 	text-shadow: 1px 1px 1px #fff;
 	/* background: #EAEAEA url(../images/bg_heading.png) repeat-x top; */
 	background: #999; /* for non-css3 browsers */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#666'); /* for IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#666)); /* for webkit browsers */
-	background: -moz-linear-gradient(top, #ccc, #666); /* for firefox 3.6+ */
-	border-top-left-radius: 10px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEE', endColorstr='#CCC'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#ccc)); /* for webkit browsers */
+	background: -moz-linear-gradient(top, #EEE, #ccc); /* for firefox 3.6+ */
 	border-top-right-radius: 10px;
 	-moz-border-radius-topright: 10px;
 	-moz-border-radius-topleft: 10px;

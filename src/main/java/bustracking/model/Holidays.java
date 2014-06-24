@@ -19,7 +19,7 @@ public class Holidays{
 	@NotEmpty
 	private String branch;
 	
-	@NotEmpty
+	
 	private String group1;
 	
 	private String fromdate;

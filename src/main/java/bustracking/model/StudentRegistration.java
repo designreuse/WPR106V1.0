@@ -5,6 +5,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class StudentRegistration{
@@ -44,17 +45,19 @@ public class StudentRegistration{
 	
 	private String kg_drop;
 	
+	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
 	@NotEmpty
 	private String parent_name1;
 	
+	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
 	@NotEmpty
 	private String parent_name2;
 	
-	@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
+	@Pattern(regexp="(^$|[0-9]{11})",message="Invalid Mobile Number!!!")
 	@NotEmpty
 	private String parent_mobile1;
 	
-	@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
+	@Pattern(regexp="(^$|[0-9]{11})",message="Invalid Mobile Number!!!")
 	@NotEmpty
 	private String parent_mobile2;
 	

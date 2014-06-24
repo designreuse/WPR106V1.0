@@ -101,22 +101,24 @@ jQuery(function () {
 							<tr >
           						<td valign="top" align="right" width="100%"><div class="report_table" style="height:700px;">
 <ul id="tabs">
-    <li><a href="#" name="tab1">Vehicle List</a></li>
-    <li><a href="#" name="tab2">Report</a></li>
-    <li><a href="#" name="tab3">Settings</a></li>
+  <!--  <li><a href="#" name="tab1">Vehicle List</a></li> 
+    <li><a href="#" name="tab2">Report</a></li> -->
+    <!-- <li><a href="#" name="tab3">Settings</a></li> -->
     <!-- <li><a href="#" name="tab4">Four</a></li>   -->  
 </ul>
 
 <div id="content" style="height:800px;"> 
 
-    <div id="tab1">...</div>
+    <!-- <div id="tab1">...</div> -->
     <div id="tab2">
-   <form method="GET" action="searchoverspeedreport">
+  
+    </div>
+     <form method="GET" action="searchoverspeedreport">
     
     <table width="100%"cellpadding="2" cellspacing="0" border="0" >
     <tr>
     <td>Vehicle Number<br/><select id="e3" style="width:250px;" name="vechicle_reg_no">
-							 	<option value="">Select None</option>     
+							 	<option selected> -- Select Vehicle No -- </option>     
 							    <c:forEach items="${reportForm1.reports}" var="clientoverspeedreport1" varStatus="status">
 							    <option value="${clientoverspeedreport1.vechicle_reg_no}">${clientoverspeedreport1.vechicle_reg_no}</option>
 							    </c:forEach>
@@ -206,8 +208,7 @@ jQuery(function () {
     
     </table>
     </td></tr></table>
-    </div>
-    <div id="tab3">...</div>
+    <!-- <div id="tab3">...</div> -->
     <!-- <div id="tab4">...</div> -->
 
 </div></div></td>

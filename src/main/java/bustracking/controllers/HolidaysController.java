@@ -259,29 +259,27 @@ public class HolidaysController{
 		    	HolidaysForm holidaysForm=new HolidaysForm();
 				holidaysForm.setHolidaysForms(holidaysDAO.getHolidays());
 				model.addAttribute("holidaysForm",holidaysForm);
+		    
+				  HolidaysForm holidaysForm1=new HolidaysForm();
+				   holidaysForm1.setHolidaysForms(holidaysDAO.getHolidays());
+				   model.addAttribute("holidaysForm1",holidaysForm1);
 		    }
 		   return "view_holidays";
 	   }
 
+	   
 	// Insert Holidays client side
 		
 		@RequestMapping(value="/client_insert_holiday",method=RequestMethod.POST)
-		public String client_insert_holidays(HttpSession session,HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String bid,@ModelAttribute("holidays") @Valid Holidays holidays,BindingResult result,ModelMap model,Principal principal){
+		public String client_insert_holidays(HttpSession session,HttpServletRequest request,@ModelAttribute("holidays") @Valid Holidays holidays,BindingResult result,ModelMap model,Principal principal){
 			
 			session.setAttribute("holi", holidays);
-			session.setAttribute("org_name",org_name);
-			session.setAttribute("branch",bid);
+			
 			if(result.hasErrors())
 			{
 				OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
 				orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
 				model.addAttribute("orgRegistrationForm",orgRegistrationForm);
-				
-				
-				List <String> orgname_for_school=new ArrayList<String>();
-				orgname_for_school=busDAO.getorgname_for_school();
-				model.addAttribute("orgname_for_school",orgname_for_school);
-				model.addAttribute("branch_array",busDAO.getBus_id(org_name));
 				
 				return "client_holiday";
 			}
@@ -290,12 +288,9 @@ public class HolidaysController{
 			orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
 			model.addAttribute("orgRegistrationForm",orgRegistrationForm);
 			
-			List <String> orgname_for_school=new ArrayList<String>();
-			orgname_for_school=busDAO.getorgname_for_school();
-			model.addAttribute("orgname_for_school",orgname_for_school);
-			model.addAttribute("branch_array",busDAO.getBus_id(org_name));
+		
 			
-			holidays.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"), request.getParameter("branch")));
+			holidays.setOrg_id(mainDAO.getOrg_id(principal.getName()));
 
 			if(!request.getParameter("fromdate").equals("")){
 				
@@ -334,7 +329,9 @@ public class HolidaysController{
 				holidaysDAO.insert_holiday(holidays);
 			}
 					
-				
+			HolidaysForm holidaysForm=new HolidaysForm();
+			holidaysForm.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("holidaysForm",holidaysForm);
 			
 			
 			return "client_viewholidays";
@@ -369,6 +366,11 @@ public class HolidaysController{
 		    	HolidaysForm holidaysForm=new HolidaysForm();
 				holidaysForm.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
 				model.addAttribute("holidaysForm",holidaysForm);
+		    
+				HolidaysForm holidaysForm1=new HolidaysForm();
+				holidaysForm1.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
+				model.addAttribute("holidaysForm1",holidaysForm1);
+		    
 		    }
 		   return "client_viewholidays";
 	   }
@@ -381,10 +383,7 @@ public class HolidaysController{
 		   session.setAttribute("holiday_date", holiday_date);
 		   if(holiday_date=="")
 		   {
-			   HolidaysForm holidaysForm=new HolidaysForm();
-				holidaysForm.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
-				model.addAttribute("holidaysForm",holidaysForm);
-				
+			   
 				HolidaysForm holidaysForm1=new HolidaysForm();
 				holidaysForm1.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
 				model.addAttribute("holidaysForm1",holidaysForm1);

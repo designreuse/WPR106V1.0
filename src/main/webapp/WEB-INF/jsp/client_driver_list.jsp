@@ -16,7 +16,7 @@
 			          <div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a>&nbsp;&nbsp;<a  href='driverlist' class="btn" >Go Back</a>
+                        </a>&nbsp;&nbsp;<a  href='driverlist' class="btn" >Back to View</a>
 						</div>	
 			        </div>
 			    

@@ -175,18 +175,41 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							    <td align="left" valign="middle" width="10%"></td>
 							    <td align="right" valign="middle" width="8%">Vehicle:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
-							   <select name="device_id" class="input_cmbbx">
-							   <option>--Select Device--</option>
-							   <c:forEach items="${busDeviceRegistrationForm1.busDeviceRegistrations}" var="busDeviceRegistrations">
-							   <option <c:if test="${device==busDeviceRegistrations.device_imei_number}"><c:out value="selected"/></c:if> value="${busDeviceRegistrations.device_imei_number}">${busDeviceRegistrations.bus_reg_id}</option>
+							     <c:choose>
+							    <c:when test="${fn:length(busDeviceRegistrationForm1.busDeviceRegistrations) gt 0}">
+							    <select name="device_id" class="input_cmbbx" id="device">
+							   <option value="-- Select Vehicle --" selected="selected">-- Select Vehicle --</option>
+							   <c:forEach items="${busDeviceRegistrationForm1.busDeviceRegistrations}" var="busDeviceRegistrations1">
+							   <option value="${busDeviceRegistrations1.device_imei_number}" <c:if test="${device_id==busDeviceRegistrations1.device_imei_number}"><c:out value="Selected"/></c:if> >${busDeviceRegistrations1.bus_reg_id}</option>
 							   
 							   </c:forEach>
 							    </select>
-							    </td>
+							    </c:when>
+							    <c:otherwise>
+							    <select name="device_id" class="input_cmbbx" id="device">
+							   <option value="-- Select Vechicle --" selected="selected">-- Select Vehicle --</option>
+							   <c:forEach items="${busDeviceRegistrationForm1.busDeviceRegistrations}" var="busDeviceRegistrations1">
+							   <option value="${busDeviceRegistrations1.device_imei_number}">${busDeviceRegistrations1.bus_reg_id}</option>
+							   
+							   </c:forEach>
+							    </select>
+							    </c:otherwise>
+							    </c:choose>
+							   
+							    </td> 
+							     
+							   <%--  <select name="device_id" class="input_cmbbx">
+							   <option selected>-- Select Vehicle --</option>
+							   <c:forEach items="${busDeviceRegistrationForm1.busDeviceRegistrations}" var="busDeviceRegistrations">
+							   <option value="${busDeviceRegistrations.device_imei_number}" <c:if test="${device==busDeviceRegistrations.device_imei_number}"><c:out value="selected"/></c:if>>${busDeviceRegistrations.bus_reg_id}</option>
+							   
+							   </c:forEach>
+							    </select>
+							    </td> --%>
 							    <td align="right" valign="middle" width="8%">Date :&nbsp;&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date }"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date}" readonly="readonly"></td>
 							    <td align="center" valign="middle" width="30%"><input type="submit" class="btn" value="Show" name="find"></td>
-							 <td align="center" valign="middle" width="30%"><input type="reset" class="btn" value="Reset"></td>
+							 <td align="center" valign="middle" width="30%"><a href="client_view_map_history" class="btn">Reset</a></td>
 							  </tr>
 							</table>
 
