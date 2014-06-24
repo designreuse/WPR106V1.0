@@ -21,9 +21,11 @@ public class StudentRegistration{
 	private String student_roll_no;
 	
 	@NotEmpty
+	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
 	private String first_name;
 	
 	@NotEmpty
+	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
 	private String last_name;
 	
 	private String gender;

@@ -172,7 +172,7 @@
 				                 <td width="5%" class="input_txt"></td>
 				                        <td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="text"  id="fname" name="first_name" oninput="validateAlpha();" onblur="toTitleCase('fname')" value="${studentDetails.first_name}"/>
+				                  	<input type="text"  id="fname" name="first_name" oninput="validateAlpha();" min="4" maxlength="32" onblur="toTitleCase('fname')" value="${studentDetails.first_name}"/>
 				                  	 <br/><font color="Red" size="+1"><form:errors path="student.first_name"></form:errors></font></td>
 				                     <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Parent Name 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
@@ -185,7 +185,7 @@
 				                <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Last Name</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="text"  id="lname" name="last_name" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" value="${studentDetails.last_name}" />
+				                  	<input type="text"  id="lname" name="last_name" min="4" maxlength="32" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" value="${studentDetails.last_name}" />
 				                  	  <br/><font color="Red" size="+1"><form:errors path="student.last_name"></form:errors></font></td>
 				                
 				         
