@@ -64,7 +64,9 @@ jQuery(function () {
 			          <div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
-                        </a></div>
+                        </a>
+                        </a>&nbsp;&nbsp;<a  href='admin_reports' class="btn" >Back to View</a>
+                        </div>
 			        </div>
                
 <div style="display:none" id="div"><div class="searchpanel">
@@ -178,6 +180,7 @@ jQuery(function () {
 					         		<td valign="top" align="left" width="10%">Status</td>
           								
         					</tr>
+        					<c:if test="${fn:length(reportForm.reports) gt 0 }">
         					<c:forEach items="${reportForm.reports}" var="adminsmsreport" varStatus="status">
         				  
         					<tr class="row1">
@@ -190,6 +193,13 @@ jQuery(function () {
           							
         					</tr>
         					</c:forEach>
+        					</c:if>
+        					 <c:if test="${fn:length(reportForm.reports) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Reports Found!!!</b></center></td>
+							    	</tr>
+							    	</c:if>
+        					
         					<tr>
         					<td valign="top" align="right" style="padding:20px;" colspan="6">
         					<form action="export_adminsmstrack" method="post">

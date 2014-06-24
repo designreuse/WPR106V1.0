@@ -284,7 +284,7 @@ public class DeviceRegistrationDAO {
 			preparedStatement.setString(16,"9000");
 			preparedStatement.setString(17,device.getComments());
 			preparedStatement.setString(18,device.getApn());
-			preparedStatement.setString(19,"50.62.213.127");
+			preparedStatement.setString(19,"208.109.87.191");
 			preparedStatement.setString(20,device.getConfiguration_date());
 			preparedStatement.setString(21,device.getCreate_user_id());
 			preparedStatement.setTimestamp(22, device.getCreate_timestamp());
@@ -387,7 +387,7 @@ public class DeviceRegistrationDAO {
 			preparedStatement.setInt(16,9000);
 			preparedStatement.setString(17,deviceRegistration.getComments());
 			preparedStatement.setString(18,deviceRegistration.getApn());
-			preparedStatement.setString(19,"50.62.213.127");
+			preparedStatement.setString(19,"208.109.87.191");
 			preparedStatement.setString(20,"NULL");
 			preparedStatement.setString(21,deviceRegistration.getCreate_user_id());
 			preparedStatement.setTimestamp(22, getCurrentTimeStamp());
@@ -414,7 +414,7 @@ public class DeviceRegistrationDAO {
 			preparedStatement1.setString(16,"9000");
 			preparedStatement1.setString(17,deviceRegistration.getComments());
 			preparedStatement1.setString(18,deviceRegistration.getApn());
-			preparedStatement1.setString(19,"50.62.213.127");
+			preparedStatement1.setString(19,"208.109.87.191");
 			preparedStatement1.setString(20,"NULL");
 			preparedStatement1.setString(21,deviceRegistration.getCreate_user_id());
 			preparedStatement1.setTimestamp(22, getCurrentTimeStamp());
