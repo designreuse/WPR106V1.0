@@ -130,6 +130,7 @@ public class RouteController
 		session.removeAttribute("vechicle_reg_no");
 		session.removeAttribute("route_no");
 		session.removeAttribute("trip");
+		session.removeAttribute("routes");
 		
 		
 		RouteViewForm routeViewForm=new RouteViewForm();
@@ -493,13 +494,13 @@ public String findroute(HttpSession session,HttpServletRequest request,
 		@RequestParam("branch")String branch,
 		@RequestParam("vechicle_reg_no") String vechicle_reg_no,
 		@RequestParam("route_no") String route_no,
-		@RequestParam("trip") String trip,ModelMap model)
+		@RequestParam("trip") String trip,@ModelAttribute("route") Route route,ModelMap model)
 {
 	
 	session.setAttribute("org_name",org_name );
 	session.setAttribute("branch",branch );
 	session.setAttribute("vechicle_reg_no",vechicle_reg_no );
-	session.setAttribute("trip",trip);
+	session.setAttribute("routes",route);
 	session.setAttribute("route_no",route_no );
 	
 	

@@ -359,7 +359,7 @@ p {
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
                   <td><input type="submit" class="btn" value="Save" ></td>
-                  
+                  <td><input type="reset" class="btn" value="Reset"></td>
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>

@@ -82,7 +82,7 @@
 							  
 							  </tr><tr><td><font color="#ccc">.</font></td></tr>
 							  <tr>
-							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Rout No &nbsp;<br/><font color="#ccc">.</font></span><br/>
+							  <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Route No &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							    <select   id="e4" style="width:300px;" name="route_no">
 							 	<option selected>--Select Route No--</option>     
 							   <c:forEach items="${routeViewForm1.route_views}" var="route1" varStatus="status">
@@ -92,7 +92,7 @@
 							    
 							    <td align="left" valign="middle" width="10%" class="input_txtlabel"><span style="line-height:8px;">&nbsp; Trip &nbsp;<br/><font color="#ccc">.</font></span><br/>
 							  
-							  <c:choose>
+							 <%--  <c:choose>
 							  <c:when test="${trip==0}">
 							  <select   id="e5"style="width:300px;" name="trip">
 							 	<option selected>--Select Trip--</option>    
@@ -117,15 +117,15 @@
 							 	  <option value="2" selected="selected">KG Drop</option> 
 							 </select>
 							  </c:when>
-							  <c:otherwise>
+							  <c:otherwise> --%>
 							  <select id="e5"style="width:300px;" name="trip">
-							 	<option selected>--Select Trip--</option>    
-							 	  <option value="0" >Pickup</option>
-							 	  <option value="1">Drop</option>
-							 	  <option value="2">KG Drop</option> 
+							 	<option selected >--Select Trip--</option>    
+							 	  <option value="0" <c:if test="${route.trip=='0'}"><c:out value="selected"/></c:if>>Pickup</option>
+							 	  <option value="1" <c:if test="${route.trip=='1'}"><c:out value="selected"/></c:if>>Drop</option>
+							 	  <option value="2" <c:if test="${route.trip=='2'}"><c:out value="selected"/></c:if>>KG Drop</option> 
 							 </select>
-							  </c:otherwise>
-							  </c:choose>
+							  <%-- </c:otherwise>
+							  </c:choose> --%>
 							  
 							   </td>
 							    
@@ -167,8 +167,8 @@
 							
 							<div class="Panel_One_Inner">
 							
-				        <table cellpadding="0" cellspacing="0" border="0" id="report" style="width:1050px" class="order-table table">
-							<tr><td colspan="7"style="overflow:hidden;width:1050px"></td></tr>
+				        <table cellpadding="0" cellspacing="0" border="0" id="report" style="width:1050px;table-layout: fixed;"  class="order-table table">
+							<!-- <tr><td colspan="7"style="overflow:hidden;width:1050px"></td></tr> -->
         					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         					

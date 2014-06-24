@@ -452,11 +452,11 @@ function validatenum_imei(){
     document.getElementById("imei_id").value = textInput;
 }
 
-function validateAlpha_comments(){
+/* function validateAlpha_comments(){
     var textInput = document.getElementById("comments_id").value;
     textInput = textInput.replace(/[^A-Za-z]/g, "");
     document.getElementById("comments_id").value = textInput;
-}
+} */
 
 function validatealphanum_device_invoice(){
     var textInput = document.getElementById("invoice_id").value;

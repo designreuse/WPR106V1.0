@@ -28,6 +28,7 @@ public class DeviceRegistration
 	private String carrier;
 	
 	@NotEmpty
+	@Pattern(regexp="(^$|[0-9]{11})",message="Invalid Sim Card Number!!!")
 	private String sim_card_number;
 	
 	@NotEmpty
@@ -37,6 +38,7 @@ public class DeviceRegistration
 	private String device_invoice_number;
 	
 	@NotEmpty
+	@Pattern(regexp="(^$|[0-9]{15})",message="Invalid IMEI Number!!!")
 	private String device_imei_number;
 	
 	@NotEmpty
