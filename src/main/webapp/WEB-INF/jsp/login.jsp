@@ -27,7 +27,7 @@
 }
 .txtfld{
 	outline: none;
-	padding: 10px;
+	padding-left: 10px;
 	height:20px;
 	width: 190px;
 	font-family: Helvetica, Arial, "Sans Serif";

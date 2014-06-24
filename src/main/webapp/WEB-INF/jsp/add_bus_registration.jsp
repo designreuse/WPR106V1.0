@@ -1,10 +1,38 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script type='text/javascript' src='resources/js/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
+  <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
+   <script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+jQuery(function () {
+    jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    
+    jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
+	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
 
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+	jQuery("#startDate").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#startDate1").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#endDate").on("dp.change",function (e) {
+    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	jQuery("#endDate1").on("dp.change",function (e) {
+	    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	
+});
+});//]]>  
+
+</script>
 
 <script id="script_orgid">
     $(document).ready(function() {
@@ -113,7 +141,13 @@
 				                </tr> 
 				                <tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License Expiry Date :</td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="datepicker"  name="driver_licence_exp_date" onblur="expiry('datepicker')" value="${busreg.driver_licence_exp_date}" readonly="readonly"/>
+				                  	<td valign="top" align="left" class="input_txt">
+				                  	<span class='input-group date' id='endDate1' >
+							    <input type="text" id="fromdate" name="driver_licence_exp_date" value="${busreg.driver_licence_exp_date}" style="width:190px;" readonly/>
+							   <span class="add-on" style="margin:0 0 0 0px;">
+							   <img src="resources/images/date.png" width="25" height="45"/>
+        							</span></span>
+        				
 				                </br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_exp_date"></form:errors></font></td>
 				                </tr> 
 				                <tr class="row1">
@@ -337,15 +371,7 @@ $('#info2').html(response);
 		</script>
 
 
-<script>
-$(function() {
-	$("#datepicker").datepicker({format: 'yyyy/MM/dd', minDate: 0});
-});
 
-
-</script>
-
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript">
 function doAjaxPost() {  
 	/* alert("hi"); */

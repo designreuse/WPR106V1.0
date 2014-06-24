@@ -54,7 +54,7 @@
     				<td align="left" valign="top" width="100%" >
     				
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    						<tr class="row2">
+    						<tr class="row1">
 				                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Trip </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="50%">
 				                  	<select  style="width:220px;" name="trip" id="trip"  onchange="doAjaxPost1()">

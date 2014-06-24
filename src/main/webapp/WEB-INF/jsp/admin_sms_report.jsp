@@ -1,12 +1,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
-   <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+<script type='text/javascript' src='resources/js/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
-  <script type='text/javascript'>//<![CDATA[ 
+   <script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
 jQuery(function () {
     jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
@@ -59,22 +59,27 @@ jQuery(function () {
 <table class="margin_table" > 
      		<tr>
         		<td valign="top" align="left">
-        		<div class="headings altheading">
+        		<div class="headings1 altheading">
 			          <h2>Track SMS</h2>
 			          <div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
                         </a>
-                        </a>&nbsp;&nbsp;<a  href='admin_reports' class="btn" >Back to View</a>
+                       &nbsp;&nbsp;<a  href='admin_reports' class="btn" >Back to View</a>
+                       <br/><br/><br/>
                         </div>
+                        
 			        </div>
-               
+               <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+    	<tr>
+
+<td>
 <div style="display:none" id="div"><div class="searchpanel">
 <form action="adminsmsreport" method="GET">
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 							
-        				    <tr style="height:20px;">
+        				    <tr >
 							  <td valign="middle" align="left" class="input_txtlabel" width="15%">
 				                  Organization Name:</td>
 				                  <td valign="middle" align="left" class="input_txt">
@@ -85,7 +90,7 @@ jQuery(function () {
 			                     </c:forEach>
 			                      </select>
 				              </td>
-				              <td valign="middle" align="left" class="input_txtlabel" width="10%">
+				              <td valign="middle" align="left"  width="10%">
 				                  Branch :</td>
 				                  <td valign="middle" align="left" class="input_txt">
 				                 <!-- <div id="info"> 
@@ -140,11 +145,11 @@ jQuery(function () {
         				        </td>
 				                  </tr>
 				                
-				                <tr style="height:20px;">  
+				                <tr >  
 							   <td align="left" valign="middle" class="input_txtlabel" width="20%">From Date:</td>
 							    <td align="left" valign="bottom" style="padding-top: 10px;">
 							    <span class='input-group date' id='endDate1' >
-							    <input type="text" id="fromdate" name="from_date" value="${sms_report.from_date}" width="-10%"/>
+							    <input type="text" id="fromdate" name="from_date" value="${sms_report.from_date}" style="width:190px;" readonly/>
 							   <span class="add-on" style="margin:0 0 0 0px;float:right">
 							   <img src="resources/images/date.png" width="25" height="45"/>
         							</span></span>
@@ -153,7 +158,7 @@ jQuery(function () {
 							    <td align="left" valign="middle" class="input_txtlabel" width="10%">To Date:</td>
 							    <td align="left" valign="bottom" style="padding-top: 10px;">
 							    <span class='input-group date' id='endDate' >
-							    <input type="text" id="todate" value="${sms_report.to_date}" name="to_date">
+							    <input type="text" id="todate" value="${sms_report.to_date}" name="to_date" style="width:190px;"readonly/>
 							    <span class="add-on" style="margin:0 0 0 0px;float:right">
 							   <img src="resources/images/date.png" width="25" height="45"/>
         							</span></span>
@@ -167,7 +172,7 @@ jQuery(function () {
 							</table>
 							</form>
 						</div>
-					</div>
+					</div></td></tr></table>
 						
 			     
               <table cellpadding="0" cellspacing="0" border="0" width="100%">

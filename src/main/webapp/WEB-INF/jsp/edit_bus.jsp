@@ -1,8 +1,41 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
-  
+<!-- <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+  --> 
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+  <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
+  <script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+	 
+jQuery(function () {
+    jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false,startDate: new Date()});
+    
+    jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
+	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+
+	jQuery("#startDate").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#startDate1").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#endDate").on("dp.change",function (e) {
+    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	jQuery("#endDate1").on("dp.change",function (e) {
+	    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	
+});
+});//]]>  
+
+</script>
  <script id="script_bid">
     $(document).ready(function() {
         $("#imei").select2();
@@ -66,14 +99,32 @@
 				                </tr>
 				                <tr class="row1">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License No :</td>
+<<<<<<< .mine
+				                  	<td valign="top" align="left" class="input_txt">
+				                  	<input type="text" class="org_input_txtbx_height1" id="licence_id" name="driver_licence_no" value="${BusRegistration.driver_licence_no}"/>
+				                  	<br/><font color="Red" size="+1"></font></td>
+=======
 				                  	<td valign="top" align="left" class="input_txt"><input type="text"  style="text-transform: uppercase;" class="org_input_txtbx_height1" id="licence_id" name="driver_licence_no"  oninput="validatealphanum_driver_licence_no()" value="${BusRegistration.driver_licence_no}"/>
 				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_no"></form:errors></font></td>
+>>>>>>> .r116
 				                </tr> 
 				                <tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License Expiry Date :</td>
+<<<<<<< .mine
+				                  	<td valign="top" align="left" class="input_txt">
+				                  	<div class='input-group date' id='endDate1' >
+												<input type="text" name="driver_licence_exp_date" value="${BusRegistration.driver_licence_exp_date}" style="height:27px;width:190px;float:left;">
+				                  				<span class="add-on" style="margin-top:0px;float:left">
+												<img src="resources/images/date.png" width="24" height="35"/>
+        										</span>
+									</div>
+				                  	<%-- <input type="text" class="org_input_txtbx_height1" id="datepicker" name="driver_licence_exp_date" value="${BusRegistration.driver_licence_exp_date}"/><br/><font color="Red" size="+1"></font></td>
+				                 --%></tr> 
+=======
 				                  	<td valign="top" align="left" class="input_txt"><input type="text"  class="org_input_txtbx_height1" id="datepicker" name="driver_licence_exp_date" oninput="validatealphanum_driver_licence_exp_date()" value="${BusRegistration.driver_licence_exp_date}"/>
 				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_exp_date"></form:errors></font></td>
 				                </tr> 
+>>>>>>> .r116
 				                <tr class="row1">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Route No : </td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text"  style="text-transform: uppercase;" class="org_input_txtbx_height1" id="route_id" name="route_no" value="${BusRegistration.route_no}" oninput="validatealphanum_route_no()"/>
@@ -88,7 +139,11 @@
 				          </table>
 				           <table width="100%">
 				                  <tr>
+<<<<<<< .mine
+				                   <td width="50%" align="right"><input type="submit" class="btn" value="Save Cahnges" ></td>
+=======
 				                   <td width="50%" align="right"><input type="submit" class="btn" value="Save Changes" ></td>
+>>>>>>> .r116
 				                   <td>&nbsp;&nbsp;</td>
 				                    
 				                    <td><input type="reset" class="btn" value="Cancel"  onclick="window.location.href='viewbus'"></td>
@@ -104,6 +159,8 @@
 				          				
 				          <jsp:include page="footer.jsp"></jsp:include>
 				          
+<<<<<<< .mine
+				         =======
 				         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
 
@@ -155,4 +212,4 @@ $(function() {
 });
 
 
-</script>         
+</script>         >>>>>>> .r116

@@ -3,14 +3,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 <style type="text/css">
-        body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
+        /* body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
         #report { border-collapse:collapse;}
         #report h4 { margin:0px; padding:0px;}
         #report img { float:right;}
         #report ul { margin:10px 0 10px 40px; padding:0px;}
         #report th { background:#3bb9ff url(header_bkg.png) repeat-x scroll center left; color:#fff; padding:0px 2px; text-align:left;}
-        #report td { background:#eee none repeat-x scroll center left; color:#fff; padding:0px 2px; }
-        #report tr.odd td { background:#fff ;color:#666; cursor:pointer; }
+        */#report td { padding:10px 4px 0px 2px; }
+         #report tr.odd td { background:#fff ;color:#666; cursor:pointer; }
         #report div.arrow { background:transparent url(resources/images/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
         #report div.up { background-position:0px 0px;}
         
@@ -106,16 +106,16 @@
     						
         					   			
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%" id="report" >
-							<tr  class="headings altheading"> <td valign="top" align="left" width="8%" style="color:#000;font-size:medium;">Roll NO</td>
-							<td valign="top" align="left" width="10%" style="color:#000;font-size:medium;">First Name</td>
+							<tr  class="headings altheading"> <td valign="top" align="left" width="8%" style="color:#000;font-weight:bold;font-size:14px;text-shadow:1px 1px 1px #fff;">Roll NO</td>
+							<td valign="top" align="left" width="10%" style="color:#000;font-weight:bold;font-size:14px;text-shadow:1px 1px 1px #fff;">First Name</td>
 							
-							<td valign="top" align="left" width="8%" style="color:#000;font-size:medium;">Calss & Sec</td>
-							<td valign="top" align="left" width="8%" style="color:#000;font-size:medium;">Pick RteNo</td>
-							<td valign="top" align="left" width="15%" style="color:#000;font-size:medium;">PicK Address</td>
-							<td valign="top" align="left" width="8%" style="color:#000;font-size:medium;">Drop RteNo</td>
-							<td valign="top" align="left" width="15%" style="color:#000;font-size:medium;">Drop Address</td>
-							<td valign="top" align="left" width="8%" style="color:#000;font-size:medium;">KG Drop</td>
-							<td valign="top" align="left" width="10%" style="color:#000;font-size:medium;">Action</td>
+							<td valign="top" align="left" width="8%" style="color:#000;font-weight:bold;font-size:14px;text-shadow:1px 1px 1px #fff;">Calss & Sec</td>
+							<td valign="top" align="left" width="8%" style="color:#000;font-weight:bold;font-size:14px;text-shadow:1px 1px 1px #fff;">Pick RteNo</td>
+							<td valign="top" align="left" width="15%" style="color:#000;font-weight:bold;font-size:14px;text-shadow:1px 1px 1px #fff;">PicK Address</td>
+							<td valign="top" align="left" width="8%" style="color:#000;font-weight:bold;font-size:14px;text-shadow:1px 1px 1px #fff;">Drop RteNo</td>
+							<td valign="top" align="left" width="15%" style="color:#000;font-weight:bold;font-size:14px;text-shadow:1px 1px 1px #fff;">Drop Address</td>
+							<td valign="top" align="left" width="8%" style="color:#000;font-weight:bold;font-size:14px;text-shadow:1px 1px 1px #fff;">KG Drop</td>
+							<td valign="top" align="left" width="10%" style="color:#000;font-weight:bold;font-size:14px;text-shadow:1px 1px 1px #fff;">Action</td>
           						 </tr>
 							       		<c:if test="${fn:length(studentRegistrationForm.studentregistration) gt 0 }">
         					<c:forEach items="${studentRegistrationForm.studentregistration}" var="studentlist" varStatus="status">

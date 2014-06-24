@@ -3,13 +3,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <!-- ###################################DDDL################################### -->
-  
- <!--  	<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
- -->
-  <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
-   <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+ 
+  <script type='text/javascript' src='resources/js/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
   <script type='text/javascript'>//<![CDATA[ 
  

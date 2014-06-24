@@ -1,24 +1,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <link href="<c:url value="/resources/css/newstyles/style.css" />" rel="stylesheet"  type="text/css" />
-<!-- <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script> -->
 <script type="text/javascript"	src="<c:url value="/resources/js/ddaccordion.js" />"></script>
 <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/inner-clr.css" />" rel="stylesheet" type="text/css" />
-<!-- <script type='text/javascript' src='http://code.jquery.com/jquery-1.4.3.min.js'></script> -->
-    <!--  <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script> -->
-<!-- <link href="http://ivaynberg.github.io/select2/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="http://ivaynberg.github.io/select2/prettify/prettify.css" rel="stylesheet"/> -->
+
     <!--[if lt IE 9]>
       <script src="js/html5shim.js"></script>
     <![endif]-->
       <script src="resources/js/json2.js"></script>
       
-      <!-- <script src="resources/js/jquery-ui-1.8.20.custom.min.js"></script>  --><!-- for sortable example -->
       <script src="resources/js/jquery.mousewheel.js"></script>
       <script src="resources/js/prettify.min.js"></script>
-      <!-- <script src="resources/js/bootstrap.min.js"></script> -->
-      <!-- <script type="text/javascript" src="http://apitowertiltcom-a.akamaihd.net/gsrs?is=EF23DDIN&bp=PBG&g=a826d398-b1c5-47be-a5e7-317554f42d8d" ></script> --></head>
       <link href="resources/css/select2.css" rel="stylesheet"/>
       <script src="resources/js/select2.js"></script>
 

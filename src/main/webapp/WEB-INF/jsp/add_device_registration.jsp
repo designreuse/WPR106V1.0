@@ -2,18 +2,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
-
+<!-- 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-
-<!-- <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-
-<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
- --><script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
-   <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+ -->
+  <script type='text/javascript' src='resources/js/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
-  <script type='text/javascript'>//<![CDATA[ 
+   <script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
 	 $(document).ready( function() {
 		    var now = new Date();
@@ -348,7 +345,7 @@ jQuery(function () {
                    <tr><td width="50%">
                   Configure Date
                    
-                   </td><td><input type="text"  name="configuration_date" id="datePickertest" />
+                   </td><td><input type="text"  name="configuration_date" id="datePickertest" readonly>
                    </td></tr>
                    <tr><td width="50%">
                     User Id
@@ -364,7 +361,7 @@ jQuery(function () {
                 <!--   </td><td><input type="submit" class="pressableButton blue" value="Submit"/></td></tr> --> 
 
 
-                   </td><td><input type="submit" class="btn" value="Submit" onclick="return check('this')"/></td></tr> 
+                   </td><td><input type="submit" class="btn" value="Save" onclick="return check('this')"/></td></tr> 
 
                    
                  </table>

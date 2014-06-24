@@ -1,6 +1,38 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<script type='text/javascript' src='resources/js/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
+  <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
+   <script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+jQuery(function () {
+    jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    
+    jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
+	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+
+	jQuery("#startDate").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#startDate1").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#endDate").on("dp.change",function (e) {
+    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	jQuery("#endDate1").on("dp.change",function (e) {
+	    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	
+});
+});//]]>  
+
+</script>
 
 <style type="text/css">
         body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
@@ -45,20 +77,21 @@
 			
       		<tr>
         		<td valign="top" align="left">
-			        <div class="headings altheading">
+			        <div class="headings1 altheading">
 			          <h2>TRACK SMS
-			        <br/></h2>	<div class="searchdiv">
+			        </h2>	<div class="searchdiv">
                         <a href="#" class="btn" onclick="toggle(this,'div');return false">
                           Open Search
                         </a> &nbsp;&nbsp;<a  href='tracksms' class="btn" >Back to View</a></div></div>
                         
-<div style="display:none" id="div"><div class="searchpanel">
+<div style="display:none" id="div">
+<div class="searchpanel">
 <form action="clientsmstrack" method="GET">
 							 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  
         				    <tr>
-							  <td align="right" valign="middle" width="17%">Student Roll No:</td>
+							  <td align="right" valign="middle" width="10%">Student Roll No:</td>
 							   <td align="left">
 							  
 							   <select id="student_roll_no_id" name="student_roll_no" style="width:220px;margin-top:-4px;">
@@ -69,13 +102,22 @@
 							   </select>
 							  
 							   </td>
-							   <td align="right" valign="middle" width="13%">From Date:&nbsp;&nbsp;</td>
-							  <td align="right"><input type="text" class="org_input_txtbx_height1"  id="fromdate" name="fromdate"   value="${from_date}"/></td>
-							    <td align="right" valign="middle" width="10%">To Date:&nbsp;&nbsp;</td>
-							   <td align="right"> <input type="text" class="org_input_txtbx_height1"  id="todate" name="todate"   value="${to_date}"/></td>
-							   
-							    <td align="center" valign="middle"></td>
-							  <td align="center" valign="middle" width="30%">
+							   <td align="right" valign="middle" width="8%">From Date:&nbsp;&nbsp;</td>
+							   <td align="right">
+							   <span class='input-group date' id='endDate1' >
+							   <input type="text" id="fromdate" name="fromdate"   value="${from_date}" style="width:190px;" readonly/>
+							   <span class="add-on" style="margin:0 0 0 0px;">
+							   <img src="resources/images/date.png" width="25" height="45"/>
+        					   </span></span></td>
+							   <td align="right" valign="middle" width="10%">To Date:&nbsp;&nbsp;</td>
+							   <td align="right">
+							   <span class='input-group date' id='endDate' >
+							    <input type="text" id="todate" name="todate"   value="${to_date}" style="width:190px;"readonly/>
+							    <span class="add-on" style="margin:0 0 0 0px;">
+							   <img src="resources/images/date.png" width="25" height="45"/>
+        							</span></span></td>
+							    
+							  <td align="center" valign="middle" width="2%">
 							  <input type="submit" class="btn" value="Search" ></td>
 							 
 							  </tr>

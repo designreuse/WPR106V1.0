@@ -237,6 +237,33 @@ background: -moz-linear-gradient(top, #EEEEEE, #6600cc); for firefox 3.6+ */
 	color:#000;
 	
 }
+.headings1 {
+	width:100%;
+	padding-bottom:30px ;
+	padding-top: 0px ;
+	color:#000;
+	border: 1px solid #CACACA;
+	text-shadow: 1px 1px 1px #fff;
+	/* background: #EAEAEA url(../images/bg_heading.png) repeat-x top; */
+	background: #999; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEE', endColorstr='#CCC'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#ccc)); /* for webkit browsers */
+	background: -moz-linear-gradient(top, #EEE, #ccc); /* for firefox 3.6+ */
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-topleft: 10px;
+	letter-spacing: -1px;
+	height: 25px;
+}
+.headings1 h2 {
+	letter-spacing:1px;
+	padding-top: 0px;
+	padding-left: 10px;
+	font-size: 17px;
+	color:#000;
+	
+}
 .headingsnew {
 	padding-bottom: 15px ;
 	padding-top: 0px ;
@@ -1252,7 +1279,7 @@ font-size:11px; font-style:italic; color:#ff0000;
 /* ################################text############################# */
 input[type="text"]{
 	outline: none;
-	padding: 12px;
+	padding-left: 12px;
 	height:29px;
 	width: 220px;
 	font-family: Helvetica, Arial, "Sans Serif";
@@ -1276,7 +1303,7 @@ input[type="text"]:focus {
 }
 input[type="password"]{
 	outline: none;
-	padding: 0px;
+	padding-left: 12px;
 	height:29px;
 	width: 220px;
 	font-family: Helvetica, Arial, "Sans Serif";

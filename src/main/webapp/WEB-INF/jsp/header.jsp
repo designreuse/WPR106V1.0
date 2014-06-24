@@ -8,10 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>:: StudentBusTrackingSystem::</title>
 <link href="<c:url value="/resources/css/newstyles/style.css" />" rel="stylesheet"  type="text/css" />
-
-  
-<!-- <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script> -->
-<!-- <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script> -->
 <script type="text/javascript"	src="<c:url value="/resources/js/WelcomeScreenNew/menu_jquery.js" />"></script>
 <script type="text/javascript"	src="<c:url value="/resources/js/ddaccordion.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/ddlevelsmenu.js" />"></script>

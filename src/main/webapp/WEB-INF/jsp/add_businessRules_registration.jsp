@@ -176,7 +176,7 @@
                 	  <td valign="top" align="left">
                   	<table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="btn" value="Register" ></td>
+                  <td><input type="submit" class="btn" value="Save" ></td>
                   
                   <td> 
                    <input type="button" class="btn " value="Cancel" onclick="window.location.href='welcome'">

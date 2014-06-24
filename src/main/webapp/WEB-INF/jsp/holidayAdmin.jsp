@@ -6,14 +6,12 @@
  -->
  <style>#div {display: none}
 </style>
-<!-- <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
- -->
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
-   <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+<script type='text/javascript' src='resources/js/jquery-1.10.1.js'></script> 
+   <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
-  <script type='text/javascript'>//<![CDATA[ 
+   <script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
 	 $(document).ready( function() {
 		    var now = new Date();
@@ -182,7 +180,7 @@ select.add(option, 0); */
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
 				                  	<div class='input-group date' id='endDate' style="float:left;">
-				                  	<input type="text" value="" name="holiday_date"/>
+				                  	<input type="text" value="" name="holiday_date" readonly/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
@@ -196,7 +194,7 @@ select.add(option, 0); */
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
 				                  	<div class='input-group date' id='endDate1' style="float:left;">
-				                  	<input type="text" value="" name="fromdate"/>
+				                  	<input type="text" value="" name="fromdate" readonly/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
@@ -209,7 +207,7 @@ select.add(option, 0); */
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
 				                  	<div class='input-group date' id='endDate2' style="float:left;">
-				                  	<input type="text" value="" name="todate"/>	
+				                  	<input type="text" value="" name="todate" readonly/>	
 				                  	<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
@@ -234,7 +232,7 @@ select.add(option, 0); */
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
                   <td><input type="submit" class="btn" value="Save"></td>
-                  <td><input type="reset" class="btn" value="Reset"></td>
+                  
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
