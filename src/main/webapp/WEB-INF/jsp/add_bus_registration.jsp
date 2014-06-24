@@ -347,10 +347,11 @@ $('#info1').html(response);
 <script type="text/javascript">
 function doAjaxcheckroute_no() {  
 
-	/*  alert("hi"); */ 
+	 //alert("hi"); 
 
 	var route_no = $('#route_id').val();
-	
+	  
+	//alert(route_no);
 	
 
 	 $.ajax({  

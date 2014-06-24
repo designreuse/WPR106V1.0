@@ -888,7 +888,7 @@ public class MessageSending{
 	 */
 	
 
-	public void SMS_to_parent(String route_no,String Message) {
+	public void SMS_to_parent(String trip,String route_no,String Message) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -901,7 +901,9 @@ public class MessageSending{
 		}
 
 		try {
-
+			System.out.println("pickup"+trip);
+			if(trip.equals("0")){
+				System.out.println("pickup");
 			String cmd_student_number = "select * from tbl_student where pickup_route_no='"+ route_no + "'";
 			resultSet = statement.executeQuery(cmd_student_number);
 			while (resultSet.next()) {
@@ -909,9 +911,24 @@ public class MessageSending{
 				logger.info("MESSAGE SEND TO: "+ resultSet.getString("parent_mobile1"));
 				MessageSender.sendMessage(resultSet.getString("parent_mobile1"),Message);
 				Insert_into_sms_tracking(resultSet.getString("org_id"),resultSet.getString("student_roll_no"),resultSet.getString("parent_mobile1"));
-
 			}
 			resultSet.close();
+			}
+			else if(trip.equals("1")){
+				System.out.println("drop");
+				String cmd_student_number = "select * from tbl_student where drop_route_no='"+ route_no + "'";
+				resultSet = statement.executeQuery(cmd_student_number);
+				while (resultSet.next()) {
+					logger.info("Message Sending....");
+					logger.info("MESSAGE SEND TO: "+ resultSet.getString("parent_mobile1"));
+					MessageSender.sendMessage(resultSet.getString("parent_mobile1"),Message);
+					Insert_into_sms_tracking(resultSet.getString("org_id"),resultSet.getString("student_roll_no"),resultSet.getString("parent_mobile1"));
+				}
+				resultSet.close();
+			}
+			
+			
+			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			releaseStatement(statement);

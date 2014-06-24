@@ -72,7 +72,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Email </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" onblur="emailcheck('eid')"  value="${addUser.email}"/>
+				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" oninput="validateemail();" onblur="emailcheck('eid')"  value="${addUser.email}"/>
 				                 <br/><font color="Red" size="+1"><form:errors path="user.email"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
@@ -91,7 +91,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Password </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" onblur="passcheck('pass')" id="pass" name="password" value="${addUser.password}" />
+				                  	<input type="text" class="org_input_txtbx_height1" onblur="passcheck('pass')" oninput="validatepassword();" id="pass" name="password" value="${addUser.password}" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="user.password"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                  
@@ -101,14 +101,15 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Re-Enter Password </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="repass" onblur="repasscheck('repass')" name="confirm_password" value="${addUser.confirm_password}"/>
+				                  	<input type="text" class="org_input_txtbx_height1" id="repass" onblur="repasscheck('repass');" oninput="validateconfirmpassword()" name="confirm_password" value="${addUser.confirm_password}"/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="user.confirm_password"></form:errors></font>
+				                  	<br/><span id="vali" style="color: red;"></span>
 				                  </td><td width="25%"></td>
 				                  
 				                </tr>
                         		<tr class="row1">
                         		<td>&nbsp;&nbsp;</td>
-				                   <td align="right" ><input type="submit" class="btn" value="Save Changes" ></td>
+				                   <td align="right" ><input type="submit" class="btn" value="Save Changes" onclick="return check('this')"></td>
 				                   
 				                    <td colspan="1"></td>
 				                    <td><input type="reset" class="btn" value="Cancel"  onclick="window.location.href='viewuser'"></td>
@@ -155,4 +156,35 @@ function toTitleCase1(lname)
    
 
 }
+
+function validatepassword(){
+    var textInput = document.getElementById("pass").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_!@#$%&*()?{}+-=]/g, "");
+    document.getElementById("pass").value = textInput;
+}
+
+function validateconfirmpassword(){
+    var textInput = document.getElementById("repass").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_!@#$%&*()?{}+-=]/g, "");
+    document.getElementById("repass").value = textInput;
+}
+
+function validateemail(){
+    var textInput = document.getElementById("eid").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_@.]/g, "");
+    document.getElementById("eid").value = textInput;
+}
+
+<script>
+function check(){
+	document.getElementById("vali").innerHTML="";
+	if(document.getElementById("pass").value != document.getElementById("repass").value){
+		document.getElementById("vali").innerHTML="Password and Confirm Password should be same!!!";
+		return false;
+	
+	}
+}
+
+
+</script>
 </script>				          		          

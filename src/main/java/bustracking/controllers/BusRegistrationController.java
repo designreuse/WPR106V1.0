@@ -356,8 +356,10 @@ public class BusRegistrationController {
 						return "";
 					
 					if(busDAO.check_route_no(request.getParameter("route_no")))
+						
 						return "Route Already Registered<br/>";
 					else
+						System.out.println("Outside If");
 						return "";
 				}	
 					

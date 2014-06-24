@@ -200,7 +200,7 @@
                    <td ><input type="submit" class="btn" value="Save" onclick="return check('this')"></td>
                    <td>
                    
-                   <input type="reset" class="btn" value="Reset" ></td>
+                   <input type="button" class="btn" onclick="window.location.href='orgregistration'" value="Reset" ></td>
                  <td>
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel"></td>
                    </tr>

@@ -8,7 +8,7 @@ public class Smsparent{
 	@NotEmpty
 	private String route;
 	
-	@NotEmpty
+
 	private String shift;
 	
 	@NotEmpty

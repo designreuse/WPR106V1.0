@@ -11,7 +11,7 @@
 
 <script id="script_bid">
     $(document).ready(function() {
-        $("#route").select2();
+        $("#route_id").select2();
     });
 </script>
 
@@ -58,14 +58,14 @@
 				                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Trip </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="50%">
 				                  	<select  style="width:220px;" name="trip" id="trip"  onchange="doAjaxPost1()">
-				                  	<option selected>--Select Trip--</option>
+				                  	<option value="">--Select Trip--</option>
 				                  	<option value="0">Pick up</option>
 				                  	<option value="1">Drop</option>
 				                  	<option value="2">KG Drop</option>
 				                  	
 				                  	</select>
 				                  	
-				                  	<br/><font color="Red" size="+1"><form:errors path="smsparent.shift"></form:errors></font></td> 
+				                  	<br/><font color="Red" size="+1"><form:errors path="smsparent.trip"></form:errors></font></td> 
 				               </tr>
 				                
                         		<%-- <tr class="row1"><td valign="middle" align="right" class="input_txt" width="29%" ></td>
@@ -84,8 +84,8 @@
 						  <tr class="row2">
 						  <td valign="middle" align="right" class="input_txt" width="30%" ><span class="err">*</span> Route </td><td width="1%">:</td>
 				                  <td valign="middle" align="left" class="input_txt" width="50%">
-				                 <span id="info1">	<select  style="width:220px;" name="route_no" id="route" >
-							    <option selected>-- Select Route--</option>
+				                 <span id="info1">	<select  style="width:220px;" name="route" id="route_id" >
+							    <option value="" >-- Select Route--</option>
         				        <!-- <option value="Routes here" >Routes here</option> -->
 			                  
 			                 </select></span> 

@@ -626,6 +626,7 @@ public List<String> getStudent_route_no(String org_id){
 							try{
 								
 								resultSet = statement.executeQuery("Select route_no from tbl_vechicle where route_no='"+route_no+"'");
+								System.out.println("Select route_no from tbl_vechicle where route_no='"+route_no+"'");
 								
 								if(resultSet.next())
 								{

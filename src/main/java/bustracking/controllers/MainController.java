@@ -39,6 +39,7 @@ import bustracking.dao.OrgRegistrationDAO;
 import bustracking.dao.RouteDAO;
 import bustracking.dao.TrackingInfoDAO;
 import bustracking.dao.MessageSending;
+import bustracking.dao.ReportsDAO;
 
 import bustracking.forms.BusDeviceRegistrationForm;
 /*import bustracking.forms.DeviceFailForm;*/
@@ -48,6 +49,7 @@ import bustracking.forms.DeviceRegistrationForm;
 import bustracking.forms.FleetHomepageForm;
 import bustracking.forms.OrgBusinessRuleForm;
 import bustracking.forms.OrgRegistrationForm;
+import bustracking.forms.ReportForm;
 import bustracking.forms.RouteViewForm;
 import bustracking.forms.SmsparentForm;
 import bustracking.forms.SuperAdminHomeForm;
@@ -77,6 +79,9 @@ public class MainController {
 	@Autowired  
 	ClientHomeDAO clientHomeDAO; 
 	
+	@Autowired
+	
+	ReportsDAO reportsDAO;
 	
 	@Autowired
 	OrgBusinessRuleDAO businessRuleDAO;
@@ -412,12 +417,12 @@ public class MainController {
 		route=mainDAO.get_route(trip,mainDAO.getOrg_id(principal.getName()));
 		String a=mainDAO.getOrg_id(principal.getName());
 		System.out.println("orgid"+a);
-		returnText=returnText+"<script id='script_bid'> $(document).ready(function() {$('#route').select2(); });</script><select style='width:220px;' name='route_no' id='route' >";
-		returnText+="<option value='none' selected>--Select Route--</option>";
-		for(String bname:route)
+		returnText=returnText+"<script id='script_bid'> $(document).ready(function() {$('#route_id').select2(); });</script><select style='width:220px;' name='route' id='route_id' >";
+		returnText+="<option value='' selected>--Select Route--</option>";
+		for(String routes:route)
 		{
 			 
-			returnText+="<option value='"+bname+"'>"+bname+"</option>";
+			returnText+="<option value='"+routes+"'>"+routes+"</option>";
 		}			
 		
 		
@@ -1079,7 +1084,7 @@ public class MainController {
 	 */
 	
 	@RequestMapping(value="/sms_to_parent", method=RequestMethod.POST)
-	public String sms_to_parent(@RequestParam("route_no") String route_no,@RequestParam("message") String Message,@ModelAttribute("smsparent") @Valid Smsparent smsparent,BindingResult result,ModelMap model,Principal principal)
+	public String sms_to_parent(HttpServletRequest request,@RequestParam("trip") String trip,@RequestParam("route") String route_no,@RequestParam("message") String Message,@ModelAttribute("smsparent") @Valid Smsparent smsparent,BindingResult result,ModelMap model,Principal principal)
 	{
 		if(result.hasErrors())
 		{
@@ -1087,10 +1092,19 @@ public class MainController {
 			return "client_smstoparent";
 		}
 		else{
-			messageSending.SMS_to_parent(route_no, Message);
+			messageSending.SMS_to_parent(trip,route_no, Message);
 			model.addAttribute("suceess","true");
 			
+			
 		}
+		
+		ReportForm reportForm=new ReportForm();
+		reportForm.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("reportForm",reportForm);
+		
+		ReportForm reportForm1=new ReportForm();
+		reportForm1.setReports(reportsDAO.getStudent_roll_no_for_clienttrack_sms(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("reportForm1",reportForm1);
 		
 		return "tracksms";
 	}

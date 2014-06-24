@@ -30,12 +30,15 @@ public class AddUser{
 	private String email;
 	
 	@NotEmpty
+	@Length(min=5,max=32,message="User Name should between 5 to 32 characters!!!")
 	private String username;
 	
 	@NotEmpty
+	@Length(min=4,max=32,message="Password should between 4 to 32 characters!!!")
 	private String password;
 	
 	@NotEmpty
+	@Length(min=4,max=32,message="Password should between 4 to 32 characters!!!")
 	private String confirm_password;
 
 	public AddUser() {

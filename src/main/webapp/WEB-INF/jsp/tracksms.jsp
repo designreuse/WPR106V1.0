@@ -157,7 +157,7 @@ jQuery(function () {
         					</c:if>
         					<c:if test="${fn:length(reportForm.reports) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Routes Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b>No Informations Found!!!</b></center></td>
 							    	</tr>
 							    	</c:if>
         					<tr>

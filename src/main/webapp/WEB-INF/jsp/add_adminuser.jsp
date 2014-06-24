@@ -42,8 +42,8 @@
 				                  <span class="err">*</span>Organization Name</td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option selected>-- Select Organization--</option>
-        				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
+							    <option>-- Select Organization--</option>
+							     <c:forEach items="${orgname}" var="orgname" varStatus="status">
         				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if>>${orgname}</option>
 			                  </c:forEach>
 			                 </select>
@@ -95,7 +95,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Last Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="lname" oninput="validateAlpha1();" min="4" maxlength="32" onblur="toTitleCase1('lname')" name="lastname"   value="${adminuser.lastname}"/>
+				                  	<input type="text" class="org_input_txtbx_height1" id="lname" oninput="validateAlpha1();" min="5" maxlength="32" onblur="toTitleCase1('lname')" name="lastname"   value="${adminuser.lastname}"/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="user.lastname"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
@@ -104,17 +104,17 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Email </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" onblur="emailcheck('eid')"  value="${adminuser.email}"/>
+				                  	<input type="text" class="org_input_txtbx_height1" id="eid" oninput="validateemail()" name="email" onblur="emailcheck('eid')"  value="${adminuser.email}"/>
 				                	<br/><font color="Red" size="+1"><span id="info2"><form:errors path="user.email"></form:errors></span></font>
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row2">
 				                <td width="15%"></td>
-				                  <td valign="middle" align="left" class="input_txtlabel">
+				                  <td valign="middle" align="left" class="input_txtlabel" >
 				                  <span class="err">*</span> User Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  
-				                  	<input type="text" class="org_input_txtbx_height1" id="uname"  name="username"  onblur="doAjaxcheckuser()" onfocus="doAjaxcheckemail()"  value="${adminuser.username}"/>
+				                  	<input type="text" class="org_input_txtbx_height1" id="uname"  name="username" oninput="validateusername()" onblur="doAjaxcheckuser()" onfocus="doAjaxcheckemail()" min="4" maxlength="32" value="${adminuser.username}"/>
 				                  	<br/><font color="Red" size="+1"><span id="info1"><form:errors path="user.username"></form:errors></span></font>
 				                  	<%--  <font color="Red" size="+1"><c:out value="${userexists}"/><form:errors path="AddUser.username"></form:errors></font> --%> 
 				                  
@@ -126,7 +126,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Password </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="password"  onblur="passcheck('pass')" id="pass" name="password" />
+				                  	<input type="password" oninput="validatepassword()" onblur="passcheck('pass')" id="pass" name="password" min="4" maxlength="32"/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="user.password"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                  
@@ -136,7 +136,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Re-Enter Password </td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="password" class="org_input_txtbx_height1" id="repass" onblur="repasscheck('repass')" name="confirm_password" />
+				                  	<input type="password" class="org_input_txtbx_height1" id="repass" onblur="repasscheck('repass')" oninput="validatepassword()" name="confirm_password" min="4" maxlength="32" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="user.confirm_password"></form:errors></font>
 				                  	<br/><span id="vali" style="color: red;"></span>
 				                  </td><td width="25%"></td>
@@ -153,7 +153,7 @@
                   <tr>
                   <td><input type="submit" class="btn"  value="Save" onclick="return check('this')"></td>
                   <td> 
-                   <input type="reset" class="btn" value="Reset">
+                   <input type="reset" class="btn" onclick="window.location.href='adduser'" value="Reset">
                   </td>
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
@@ -204,8 +204,30 @@ function toTitleCase1(lname)
     str=document.getElementById(lname).value;
     str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     document.getElementById(lname).value=str;
-   
+}
 
+function validatepassword(){
+    var textInput = document.getElementById("pass").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_!@#$%&*()?{}+-=]/g, "");
+    document.getElementById("pass").value = textInput;
+}
+
+function validateconfirmpassword(){
+    var textInput = document.getElementById("repass").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_!@#$%&*()?{}+-=]/g, "");
+    document.getElementById("repass").value = textInput;
+}
+
+function validateusername(){
+    var textInput = document.getElementById("uname").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_]/g, "");
+    document.getElementById("uname").value = textInput;
+}
+
+function validateemail(){
+    var textInput = document.getElementById("eid").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_@.]/g, "");
+    document.getElementById("eid").value = textInput;
 }
 
 function doAjaxPost_for_orgname() {
@@ -234,7 +256,7 @@ function doAjaxPost_for_orgname() {
 function check(){
 	document.getElementById("vali").innerHTML="";
 	if(document.getElementById("pass").value != document.getElementById("repass").value){
-		document.getElementById("vali").innerHTML="Password and Confirm Password should not match!!!";
+		document.getElementById("vali").innerHTML="Password and Confirm Password should be same!!!";
 		return false;
 	
 	}
