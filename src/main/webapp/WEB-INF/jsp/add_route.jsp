@@ -214,7 +214,7 @@ p {
 								<td valign="top" align="left" class="input_txt" width="70%">
 
 								<select style="width:220px;margin-top:-4px;" name="org_name" id="orgid" onchange="doAjaxPost()" onblur="Validate('orgid')">
-								<option value="" selected="selected">-- Select Organization--</option>
+								<option selected>-- Select Organization--</option>
 								<c:forEach items="${orgname}" var="orgname" varStatus="status">
         				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if> >${orgname}</option>
 			                  </c:forEach>
@@ -230,7 +230,7 @@ p {
 					  <c:choose>
 					  <c:when test="${fn:length(route_array) gt 0 }">
 					  <select name="branch" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost1()" onblur="Validate1('bid')"> 
-								<option value="" selected="selected">-- Select branch--</option>
+								<option selected>-- Select branch--</option>
 								<c:forEach items="${branch_array}" var="branch_array">
 								<option value="${branch_array}" <c:if test="${branch_array==branch}"><c:out value="selected"></c:out></c:if> >${branch_array}</option>
 								</c:forEach>
@@ -239,7 +239,7 @@ p {
 					  </c:when>
 					  <c:otherwise>
 					  <select name="branch" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost1()" onblur="Validate1('bid')"> 
-								<option value="" selected="selected">-- Select branch--</option>
+								<option selected>-- Select branch--</option>
 								<c:forEach items="${branch_array}" var="branch_array">
 								<option value="${branch_array}" >${branch_array}</option>
 								</c:forEach>
@@ -267,7 +267,10 @@ p {
 								<c:choose>
 								<c:when test="${fn:length(route_array) gt 0}">
 								<select style="width:220px;margin-top:-4px;" name="route_no" id="route_id" onblur="Validate2('route_id')" >
-							   <option value="" selected="selected">-- Select Route No--</option>
+
+							   <option  selected>-- Select Route No--</option>
+
+							   
 							    <c:forEach items="${route_array}" var="route1">
 							    <option value="${route1}" <c:if test="${route1==route_no}"><c:out value="selected"></c:out></c:if> >${route1}</option>
 							    </c:forEach>
@@ -275,7 +278,7 @@ p {
 								</c:when>
 								<c:otherwise>
 								<select style="width:220px;margin-top:-4px;" name="route_no" id="route_id" onblur="Validate2('route_id')" >
-							    <option value="" selected>-- Select Route No--</option>
+							    <option  selected>-- Select Route No--</option>
 							    
 							    </select>
 								</c:otherwise>
@@ -355,7 +358,7 @@ p {
                   <td valign="top" align="left">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="btn" value="Register" ></td>
+                  <td><input type="submit" class="btn" value="Save" ></td>
                   
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
