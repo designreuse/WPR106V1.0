@@ -49,7 +49,7 @@
 				                  </td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Email ID:</td>
 				                  <td valign="middle" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" width="60%" onblur="emailcheck('email')" id="email" name="email_id" value="${orgRegistration.email_id}" />
+				                  	<input type="text" class="org_input_txtbx_height1" width="60%" onblur="emailcheck('email')" id="email" on name="email_id" value="${orgRegistration.email_id}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.email_id"></form:errors></font>
 				                  </td>
 				               
@@ -83,7 +83,7 @@
 				                  </td>
 									<td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Telephone number:</td>
 				                  <td valign="middle" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="cno_id" oninput="validatenum4();" onblur="cnocheck('cno_id')" name="chairman_telephone_number" value="${orgRegistration.chairman_telephone_number}" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="cno_id" oninput="validatenum4();" maxlength="10" onblur="cnocheck('cno_id')" name="chairman_telephone_number" value="${orgRegistration.chairman_telephone_number}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.chairman_telephone_number"></form:errors></font>
 				                  </td>
 				                </tr>
@@ -142,7 +142,7 @@
 				                  <td valign="middle" align="left" class="input_txt">
 				                  	<select name="type_of_organization" style="width:220px;" onchange="fleetmanagement()" id="typeid" onblur="Validate('typeid')">
 				                  	<option value="${orgRegistration.type_of_organization}" selected>${orgRegistration.type_of_organization}</option>
-				                  	<option selected>-- Select Organization--</option>
+				                  	<option value="">-- Select Organization--</option>
 				                  	<option value="school"  <c:if test="${organisation.type_of_organization=='school'}"><c:out value="selected"/></c:if>>School</option>
 				                  	<option value="college"  <c:if test="${organisation.type_of_organization=='college'}"><c:out value="selected"/></c:if>>College</option>
 				                  	<option value="fleet management"  <c:if test="${organisation.type_of_organization=='fleet management'}"><c:out value="selected"/></c:if>>Fleet Management</option>
@@ -381,6 +381,12 @@ str=document.getElementById(pinid).value;
 str= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 document.getElementById(pinid).value=str;
 
+}
+
+function validateemail(){
+    var textInput = document.getElementById("email").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_@.]/g, "");
+    document.getElementById("email").value = textInput;
 }
 </script>
 				          <script type="text/javascript">

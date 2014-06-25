@@ -7,6 +7,7 @@
   <script type='text/javascript' src='resources/js/jquery-1.10.1.js'></script> 
    <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
   <script type='text/javascript'>//<![CDATA[ 

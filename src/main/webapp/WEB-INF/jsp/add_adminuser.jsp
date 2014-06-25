@@ -136,7 +136,7 @@
 				                  <td valign="middle" align="left" class="input_txtlabel">
 				                  <span class="err">*</span> Re-Enter Password </td><td width="1%">:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="password" class="org_input_txtbx_height1" id="repass" onblur="repasscheck('repass')" oninput="validatepassword()" name="confirm_password" min="4" maxlength="32" />
+				                  	<input type="password" class="org_input_txtbx_height1" id="repass" onblur="repasscheck('repass')" oninput="validateconfirmpassword()" name="confirm_password" min="4" maxlength="32" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="user.confirm_password"></form:errors></font>
 				                  	<br/><span id="vali" style="color: red;"></span>
 				                  </td><td width="25%"></td>

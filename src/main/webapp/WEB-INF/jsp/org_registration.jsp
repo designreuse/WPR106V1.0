@@ -57,7 +57,7 @@
 				                  </td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Email ID:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" width="60%" onblur="emailcheck('email')" id="email" name="email_id" value="${organisation.email_id}" onfocus="doAjaxcheckunique()"/>
+				                  	<input type="text" class="org_input_txtbx_height1" width="60%" onblur="emailcheck('email')" id="email" oninput="validateemail();" name="email_id" value="${organisation.email_id}" onfocus="doAjaxcheckunique()"/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.email_id"></form:errors></font>
 				                  </td>
 				               
@@ -380,6 +380,11 @@ document.getElementById(pinid).value=str;
 
 }
 
+function validateemail(){
+    var textInput = document.getElementById("email").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_@.]/g, "");
+    document.getElementById("email").value = textInput;
+}
 
 	/* else if(document.getElementById("email").value!='')
 		{
