@@ -59,7 +59,12 @@ public class HolidaysController{
 	
 	@RequestMapping(value="/holidayadmin",method=RequestMethod.GET)
 	
-	public String holidayadmin(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String holidayadmin(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal ) {
+		
+			session.removeAttribute("holi");
+			session.removeAttribute("org_name");
+			session.removeAttribute("branch");
+		
 			OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
 			
 			orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());

@@ -3,11 +3,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <!-- ###################################DDDL################################### -->
- <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
   <script type='text/javascript' src='resources/js/jquery-1.10.1.js'></script> 
    <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+  
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
   <script type='text/javascript'>//<![CDATA[ 
@@ -307,7 +307,7 @@ jQuery(function () {
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Password:</td>
 				                  <td valign="middle" align="left" class="input_txt" >
-				                  	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" onblur="passcheck('passid')" value="${devicesimsetup.password}">
+				                  	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" oninput="validatepassword();" onblur="passcheck('passid')" value="${devicesimsetup.password}">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.password"> </form:errors></font>
 				                  </td>
 				                
@@ -473,6 +473,12 @@ function validatealphanum_device_model(){
     var textInput = document.getElementById("modelid").value;
     textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
     document.getElementById("modelid").value = textInput;
+}
+
+function validatepassword(){
+    var textInput = document.getElementById("passid").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_!@#$%&*()?{}+-=]/g, "");
+    document.getElementById("passid").value = textInput;
 }
 </script> 		
 		
