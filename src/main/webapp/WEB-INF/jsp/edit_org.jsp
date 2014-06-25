@@ -393,11 +393,11 @@ function validateemail(){
 function fleetmanagement(){
 	var type=document.getElementById('typeid').value;
 
-	if(type=='Fleet Management'){
-		/* document.getElementById('chairmanid').style.display='none';
+	if(type=='fleet management'){
+		 document.getElementById('chairmanid').style.display='none';
 		document.getElementById('cno_id').style.display='none';
 		document.getElementById('principalid').style.display='none';
-		document.getElementById('pno_id').style.display='none'; */
+		document.getElementById('pno_id').style.display='none'; 
 		
 		document.getElementById('chairmanid').value='null';
 		document.getElementById('cno_id').value='null';
@@ -405,6 +405,19 @@ function fleetmanagement(){
 		document.getElementById('pno_id').value='null';
 		
 	}
+	else if(type=='private'){
+		 document.getElementById('chairmanid').style.display='none';
+		document.getElementById('cno_id').style.display='none';
+		document.getElementById('principalid').style.display='none';
+		document.getElementById('pno_id').style.display='none'; 
+		
+		document.getElementById('chairmanid').value='null';
+		document.getElementById('cno_id').value='null';
+		document.getElementById('principalid').value='null';
+		document.getElementById('pno_id').value='null';
+		
+	}
+	
 	else{
 		document.getElementById('chairmanid').style.display='block';
 		document.getElementById('cno_id').style.display='block';

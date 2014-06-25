@@ -424,7 +424,13 @@ alert("Please Select a Type Of Organization");
 function fleetmanagement(){
 	var type=document.getElementById('typeid').value;
 
-	if(type=='Fleet Management'){
+	if(type=='fleet management'){
+		document.getElementById('chairmanid').style.display='none';
+		document.getElementById('cno_id').style.display='none';
+		document.getElementById('principalid').style.display='none';
+		document.getElementById('pno_id').style.display='none';
+	}
+	else if(type=='private'){
 		document.getElementById('chairmanid').style.display='none';
 		document.getElementById('cno_id').style.display='none';
 		document.getElementById('principalid').style.display='none';

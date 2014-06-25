@@ -32,7 +32,7 @@ private String email_id;
 @NotEmpty
 private String address;
 
-@Length(min=4,max=32,message="Chairman Name should between 4 to 32 characters!!!")
+
 private String chairman_name;
 
 @NotEmpty
@@ -46,7 +46,7 @@ private String chairman_telephone_number;
 @Length(min=4,max=32,message="State should between 4 to 32 characters!!!")
 private String state;
 
-@Length(min=4,max=32,message="Principal Name should between 4 to 32 characters!!!")
+
 private String principal_name;
 
 @NotEmpty

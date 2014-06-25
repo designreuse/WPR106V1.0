@@ -169,6 +169,7 @@ public class AddUserController{
 		
 		AddUserForm adduserform=new AddUserForm();
 		model.addAttribute("adduserform",adduserform);
+		
 		return "add_adminuser";
 	}
 	else{

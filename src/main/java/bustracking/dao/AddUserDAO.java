@@ -77,7 +77,7 @@ public class AddUserDAO{
         	preparedStatement.setString(6,user.getPassword());
         	preparedStatement.setString(7,user.getConfirm_password());
         	preparedStatement.setInt(8,1);
-        		if(type.equals("School")||type.equals("College")||type.equals("School & College"))
+        		if(type.equals("school")||type.equals("college")||type.equals("school and college"))
         			preparedStatement.setString(9,"ROLE_ADMIN");
         		else
         			preparedStatement.setString(9,"ROLE_FCLIENT");
