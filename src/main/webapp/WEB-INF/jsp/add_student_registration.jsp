@@ -225,7 +225,7 @@
 				                  
 				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Email 1</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="inp_id" name="parent_email1" value="${studentDetails.parent_email1}" />
+					               <input type="text"  id="email1" name="parent_email1" oninput="validateemail1()" value="${studentDetails.parent_email1}" />
 					         <br/><font color="Red" size="+1"><form:errors path="student.parent_email1"></form:errors></font></td>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
@@ -244,7 +244,7 @@
 				                  
 				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Email 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="inp_id" name="parent_email2" value="${studentDetails.parent_email2}" />
+					               <input type="text"  id="email2" name="parent_email2" oninput="validateemail2()" value="${studentDetails.parent_email2}" />
 					        <br/><font color="Red" size="+1"><form:errors path="student.parent_email2"></form:errors></font></td>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
@@ -681,6 +681,18 @@ function validat(org_id){
         var textInput = document.getElementById("rollid").value;
         textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
         document.getElementById("rollid").value = textInput;
+    }
+    
+    function validateemail1(){
+        var textInput = document.getElementById("email1").value;
+        textInput = textInput.replace(/[^A-Za-z0-9_@.]/g, "");
+        document.getElementById("email1").value = textInput;
+    }
+    
+    function validateemail2(){
+        var textInput = document.getElementById("email2").value;
+        textInput = textInput.replace(/[^A-Za-z0-9_@.]/g, "");
+        document.getElementById("email2").value = textInput;
     }
 
     </script>

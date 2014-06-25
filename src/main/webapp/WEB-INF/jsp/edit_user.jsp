@@ -175,6 +175,8 @@ function validateemail(){
     document.getElementById("eid").value = textInput;
 }
 
+</script>
+
 <script>
 function check(){
 	document.getElementById("vali").innerHTML="";
@@ -187,4 +189,4 @@ function check(){
 
 
 </script>
-</script>				          		          
+				          		          
