@@ -99,18 +99,18 @@ jQuery(function () {
 				                </tr>
 				                <tr class="row1">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License No :</td>
-<<<<<<< .mine
-				                  	<td valign="top" align="left" class="input_txt">
+
+				                  	<%-- <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="licence_id" name="driver_licence_no" value="${BusRegistration.driver_licence_no}"/>
-				                  	<br/><font color="Red" size="+1"></font></td>
-=======
+				                  	<br/><font color="Red" size="+1"></font></td> --%>
+
 				                  	<td valign="top" align="left" class="input_txt"><input type="text"  style="text-transform: uppercase;" class="org_input_txtbx_height1" id="licence_id" name="driver_licence_no"  oninput="validatealphanum_driver_licence_no()" value="${BusRegistration.driver_licence_no}"/>
 				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_no"></form:errors></font></td>
->>>>>>> .r116
+
 				                </tr> 
 				                <tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License Expiry Date :</td>
-<<<<<<< .mine
+
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<div class='input-group date' id='endDate1' >
 												<input type="text" name="driver_licence_exp_date" value="${BusRegistration.driver_licence_exp_date}" style="height:27px;width:190px;float:left;">
@@ -119,12 +119,12 @@ jQuery(function () {
         										</span>
 									</div>
 				                  	<%-- <input type="text" class="org_input_txtbx_height1" id="datepicker" name="driver_licence_exp_date" value="${BusRegistration.driver_licence_exp_date}"/><br/><font color="Red" size="+1"></font></td>
-				                 --%></tr> 
-=======
-				                  	<td valign="top" align="left" class="input_txt"><input type="text"  class="org_input_txtbx_height1" id="datepicker" name="driver_licence_exp_date" oninput="validatealphanum_driver_licence_exp_date()" value="${BusRegistration.driver_licence_exp_date}"/>
+				                 --%>
+
+				                  	
 				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_exp_date"></form:errors></font></td>
 				                </tr> 
->>>>>>> .r116
+
 				                <tr class="row1">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Route No : </td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text"  style="text-transform: uppercase;" class="org_input_txtbx_height1" id="route_id" name="route_no" value="${BusRegistration.route_no}" oninput="validatealphanum_route_no()"/>
@@ -139,14 +139,12 @@ jQuery(function () {
 				          </table>
 				           <table width="100%">
 				                  <tr>
-<<<<<<< .mine
+
 				                   <td width="50%" align="right"><input type="submit" class="btn" value="Save Cahnges" ></td>
-=======
-				                   <td width="50%" align="right"><input type="submit" class="btn" value="Save Changes" ></td>
->>>>>>> .r116
+
 				                   <td>&nbsp;&nbsp;</td>
 				                    
-				                    <td><input type="reset" class="btn" value="Cancel"  onclick="window.location.href='viewbus'"></td>
+				                    <td><input type="button" class="btn" value="Cancel"  onclick="window.location.href='viewbus'"></td>
 				                  </tr>
 				                  </table>
 				          </div>
