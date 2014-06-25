@@ -89,7 +89,7 @@ select.add(option, 0); */
         				        <option value="${orgname_for_school}" <c:if test="${orgname_for_school==org_name}"><c:out value="selected"></c:out></c:if>   >${orgname_for_school}</option>
 			                  </c:forEach>
 			                 </select>
-				                  	<br/><font color="Red" size="+1"><form:errors path="classsection.org_name"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><form:errors path="classSection.org_name"></form:errors></font>
 				                  </td>
 				               </tr>
 				                
@@ -112,7 +112,7 @@ select.add(option, 0); */
 				                  	 	</c:otherwise>
 				                  	 	</c:choose>
 				                  	</span> 
-				                  <br/><font color="Red" size="+1"><form:errors path="classsection.branch"></form:errors></font>
+				                  <br/><font color="Red" size="+1"><form:errors path="classSection.branch"></form:errors></font>
 				                  </td>
 				                 
 				                </tr> 
@@ -142,7 +142,7 @@ select.add(option, 0); */
 				                  	
 				                  	
 				                  	
-				                  	<br/><font color="Red" size="+1"><form:errors path="classsection.class_std"></form:errors></font></td>
+				                  	<br/><font color="Red" size="+1"><form:errors path="classSection.class_std"></form:errors></font></td>
 				                </tr>
 				                
 				                <tr class="row1">
@@ -963,7 +963,7 @@ select.add(option, 0); */
 				                  	</c:choose>
 				                  	
 				                  	
-				                  	<br/><font color="Red" size="+1"><form:errors path="classsection.section"></form:errors></font></td>
+				                  	<br/><font color="Red" size="+1"><form:errors path="classSection.section"></form:errors></font></td>
 				                    
 				                     </tr>
 				                     <tr class="row2">
@@ -1016,7 +1016,7 @@ select.add(option, 0); */
 				                  	</c:otherwise>
 				                  	</c:choose>
 				                  	
-				                  	<br/><font color="Red" size="+1"><form:errors path="classsection.service"></form:errors></font></td>
+				                  	<br/><font color="Red" size="+1"><form:errors path="classSection.service"></form:errors></font></td>
 				                    
 				                     </tr>
 				               

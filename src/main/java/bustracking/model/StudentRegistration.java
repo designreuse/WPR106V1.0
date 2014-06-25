@@ -55,11 +55,11 @@ public class StudentRegistration{
 	@NotEmpty
 	private String parent_name2;
 	
-	@Pattern(regexp="(^$|[0-9]{11})",message="Invalid Mobile Number!!!")
+	@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
 	@NotEmpty
 	private String parent_mobile1;
 	
-	@Pattern(regexp="(^$|[0-9]{11})",message="Invalid Mobile Number!!!")
+	@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
 	@NotEmpty
 	private String parent_mobile2;
 	

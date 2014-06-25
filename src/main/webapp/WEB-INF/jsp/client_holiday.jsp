@@ -196,7 +196,8 @@ select.add(option, 0); */
 				                  	<br/><span id="brequires" style="color: red;"></span>
 				                  	</td>
 				                    
-				                     </tr></table><table cellpadding="0" cellspacing="0" border="0" width="100%" >
+				                     </tr></table></div>
+				                     <table cellpadding="0" cellspacing="0" border="0" width="100%" >
 				                     <tr class="row1"><td width="25%"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> To Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">

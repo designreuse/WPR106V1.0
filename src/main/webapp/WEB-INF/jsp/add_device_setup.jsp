@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <!-- ###################################DDDL################################### -->
- 
+ <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
   <script type='text/javascript' src='resources/js/jquery-1.10.1.js'></script> 
    <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
@@ -104,7 +104,7 @@ jQuery(function () {
 				                  <c:otherwise>
 				                  <select name="manufacturer"  id="manuid" style="width:220px;" onblur="Validate('manuidid')" >  
                                    
-                                   <option selected>--Select Manufacturer Name --</option>
+                                   <option selected value="">--Select Manufacturer Name --</option>
                                    
                                    <option value="coban">Coban</option>
                                    </select>
@@ -122,7 +122,7 @@ jQuery(function () {
 
 				                 
       <select name="carrier" style="width:220px;" id="carrierid" onblur="Validate('carrierid')" onchange="doAjaxPost1()">  
-      <option selected>--Select Carrier--</option>
+      <option selected value="">--Select Carrier--</option>
        <c:forEach items="${carriername}" var="carriername" varStatus="status">
         				        <option value="${carriername}"  <c:if test="${carriername==carrier}"><c:out value="Selected"/></c:if>>${carriername}</option>
 			                  </c:forEach>
@@ -336,7 +336,7 @@ jQuery(function () {
 				        </c:when>
 				        <c:otherwise>
 				        <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;margin-top:-4px;">  
-     					 <option selected>--Select APN--</option>  
+     					 <option selected value="">--Select APN--</option>  
       					</select>
 				        </c:otherwise>
 				        </c:choose>

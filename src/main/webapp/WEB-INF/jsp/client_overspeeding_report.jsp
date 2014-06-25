@@ -126,25 +126,25 @@ jQuery(function () {
 							    
   <tr>
     <td>Date From<br/><div class='input-group date' id='endDate' >
-												<input type="text" id="timepicker2"	name="from_date"  style="height:24px;width:150px;float:left;"/>
+												<input type="text" id="timepicker2"	name="from_date"  style="height:24px;width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="25"/>
         										</span>
 					</div></td>
     <td>Time From<br/><div class='input-group date' id='startDate' >
-												<input type="text" id="timepicker2"	name="from_time"  style="height:24px;width:150px;float:left;"/>
+												<input type="text" id="timepicker2"	name="from_time"  style="height:24px;width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
         										</span>
 					</div>	</td>
 	<td>Date To<br/><div class='input-group date' id='endDate1' >
-												<input type="text" id="timepicker2"	name="to_date" style="height:24px; width:150px;float:left;" />
+												<input type="text" id="timepicker2"	name="to_date" style="height:24px; width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="45"/>
         										</span>
 					</div></td>
 	<td>Time To<br/><div class='input-group date' id='startDate1' >
-												<input type="text" id="timepicker2"	name="to_time" style="height:24px;width:150px;float:left;" />
+												<input type="text" id="timepicker2"	name="to_time" style="height:24px;width:150px;float:left;" readonly="readonly" />
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
         										</span>

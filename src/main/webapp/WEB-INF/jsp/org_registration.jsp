@@ -149,7 +149,7 @@
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Type Of Organization:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<select name="type_of_organization"  onblur="Validate('typeid')" onchange="fleetmanagement()" id="typeid" style="width:220px;">
-				                  	<option selected>-- Select Organization--</option>
+				                  	<option value="">-- Select Organization--</option>
 				                  	<option value="school"  <c:if test="${organisation.type_of_organization=='school'}"><c:out value="selected"/></c:if>>School</option>
 				                  	<option value="college"  <c:if test="${organisation.type_of_organization=='college'}"><c:out value="selected"/></c:if>>College</option>
 				                  	<option value="fleet management"  <c:if test="${organisation.type_of_organization=='fleet management'}"><c:out value="selected"/></c:if>>Fleet Management</option>

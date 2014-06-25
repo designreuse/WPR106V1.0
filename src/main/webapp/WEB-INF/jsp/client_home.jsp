@@ -36,7 +36,7 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr><td align="left" valign="middle" width="30%">Vehicle Number:<br/>
 							    <select   id="e1"style="width:250px;" name="vechicle_reg_no">
-							 	<option value="">Select None</option>     
+							 	<option selected>Select None</option>     
 							    <c:forEach items="${clientHomeForm1.clienthome}" var="clienthome2" varStatus="status">
 							    <option value="${clienthome2.vechicle_reg_no}" <c:if test="${clienthome2.vechicle_reg_no==vechicle_reg_no}"><c:out value="selected"></c:out></c:if> >${clienthome2.vechicle_reg_no}</option>
 							    </c:forEach>

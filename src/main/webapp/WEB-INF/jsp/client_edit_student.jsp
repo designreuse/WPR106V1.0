@@ -127,7 +127,7 @@ $(document).ready(function () {
 						         	<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Pick Route No:</td>
 						            <td valign="top" align="left" class="input_txt">
 						            	<select name="pickup_route_no"  id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()" style="width:220px">
-					               <option selected>-- Select Pickup Route No--</option>
+					               <option value="">-- Select Pickup Route No--</option>
 					               <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}" <c:if test="${route_no==student.pickup_route_no}"><c:out value="selected"></c:out></c:if> >${route_no}</option>
 			                  </c:forEach>
@@ -139,7 +139,7 @@ $(document).ready(function () {
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Pick Point Address :</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<span id="pickup_address" style="height:8px;"><select  name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')" style="width:220px">
-						    	<option selected>-- Select Pickup Location--</option>
+						    	<option value="">-- Select Pickup Location--</option>
 						    	
 						    	<option value="${student.pickup_point_address}" selected>${student.pickup_point_address}</option>
 						    	<%-- <c:forEach items="${pickup_route_location}" var="pickup_location">
@@ -154,7 +154,7 @@ $(document).ready(function () {
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Route No:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	 <select name="drop_route_no"  onchange="doAjaxPost_drop_route_no()" id="drop_route_id" style="width:220px">
-					               <option selected>-- Select Drop Route No--</option>
+					               <option value="">-- Select Drop Route No --</option>
 					              <c:forEach items="${route_no}" var="route_no" varStatus="status">
         				        <option value="${route_no}"  <c:if test="${route_no==student.drop_route_no}"><c:out value="selected"></c:out></c:if>   >${route_no}</option>
 			                  </c:forEach>
@@ -167,7 +167,7 @@ $(document).ready(function () {
 				                 	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Point Address:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<span id="drop_address" style="height:8px;"><select  name="drop_point_address" id="drop_location_id" onblur="Validate1('bid')" style="width:220px">
-							    <option selected>-- Select Drop Location --</option>
+							    <option value="">-- Select Drop Location --</option>
 							    <option value="${student.drop_point_address}" selected>${student.drop_point_address}</option>
 				                  	</select>
 				                  	</span>
@@ -209,7 +209,7 @@ $(document).ready(function () {
 				                <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Email 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					              <input type="text" id="email1" name="parent_email1" value="${student.parent_email1}"/>
+					              <input type="text" id="email1" name="parent_email1" oninput="validateemail1()" value="${student.parent_email1}"/>
 					             <br/>          
 					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_email1"></form:errors></font>
 					               
@@ -220,7 +220,7 @@ $(document).ready(function () {
 				              	<tr class="row1">
 					            	 <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Guardian/Parent Email 2</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" id="email2" name="parent_email2" value="${student.parent_email2}"/>
+				                  	<input type="text" id="email2" name="parent_email2" oninput="validateemail2()" value="${student.parent_email2}"/>
 				                  	 <br/>          
 					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_email2"></form:errors></font>
 				                  </td>
@@ -380,6 +380,17 @@ function validatenum1(){
     var textInput = document.getElementById("mob2").value;
     textInput = textInput.replace(/[^0-9]/g, "");
     document.getElementById("mob2").value = textInput;
+}
+
+function validateemail1(){
+    var textInput = document.getElementById("email1").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_@.]/g, "");
+    document.getElementById("email1").value = textInput;
+}
+function validateemail2(){
+    var textInput = document.getElementById("email2").value;
+    textInput = textInput.replace(/[^A-Za-z0-9_@.]/g, "");
+    document.getElementById("email2").value = textInput;
 }
 </script>
 

@@ -42,7 +42,7 @@
 				                  <span class="err">*</span>Organization Name</td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                <select  name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option>-- Select Organization--</option>
+							    <option value="">-- Select Organization--</option>
 							     <c:forEach items="${orgname}" var="orgname" varStatus="status">
         				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if>>${orgname}</option>
 			                  </c:forEach>
@@ -63,7 +63,7 @@
 				                  <c:choose>
 							  	  <c:when test="${fn:length(branch_array) gt 0}">
 				                 	<select style="width:220px;margin-top:-4px;" name="branch" id="bid">
-				                 	<option selected>--Select Branch--</option>
+				                 	<option selected value="">--Select Branch--</option>
 							  		<c:forEach items="${branch_array}" var="orgReg" >
 							  		<option value="${orgReg}" <c:if test="${orgReg==branch}"><c:out value="Selected"/></c:if>>${orgReg}</option>
 							  		</c:forEach>
@@ -71,7 +71,7 @@
 								 </c:when>
 								 <c:otherwise>
 									 <select style="width:220px;margin-top:-4px;" name="branch" id="bid"  >
-							  		<option selected>-- Select branch--</option>
+							  		<option selected value="">-- Select branch--</option>
 								    </select>
 								 </c:otherwise>
 								</c:choose>	
