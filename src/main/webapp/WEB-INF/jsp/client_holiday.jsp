@@ -160,72 +160,80 @@ select.add(option, 0); */
 				                 
 				                </tr></table> 
 				                 --%>
-				                 <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-						 <tr class="row1"><td width="25%"></td>
+				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
+						 <tr class="row1"><td width="25%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Number of Days </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
-				                  	<label><input type="radio" name="group1" id="one" class="radio1" onclick="onecheck()" value="one"  <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if> >Only One Day</label><label><input type="radio" name="group1" class="radio2" id="more" value="more" onclick="morecheck()"  <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
-										<br/><font color="Red" size="+1"><form:errors path="holidays.group1"></form:errors></font></td>
+				                  	<label><input type="radio" name="group1" id="one" onclick="onecheck()" class="radio1" data-divclass="div1" value="one" <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if>>Only One Day</label> <label><input type="radio" name="group1" class="radio2" data-divclass="div2" id="more" onclick="morecheck()" value="more" <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
+								<br/><font color="Red" size="+1"><form:errors path="holidays.group1"></form:errors></font>
+								</td>
 				                </tr></table>
-				                <div id="oneday" style="display: none"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
-				                <tr class="row2"><td width="25%"></td>
 				                
+				                <div id="oneday" class="div1 content" style="display: none"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
+				                <tr class="row2"><td width="25%" class="input_txt"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Holiday Date</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
+				                  	
 				                  	<div class='input-group date' id='endDate' style="float:left;">
-				                  	<input type="text" id="hdate" value="${holidays.holiday_date}"  name="holiday_date" readonly="readonly"/>
-				                  	<span class="add-on" style="margin-top:-15px;">
-									<img src="resources/images/date.png" width="24" height="35"/>
-        							</span>
-        							</div>
-				                  	<br/><span id="requires" style="color: red;"></span>
-				                  	</td>
-				                    
-				                     </tr></table></div>
-				                     <div id="moreday" style="display: none"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
-				                <tr class="row2"><td width="25%"></td>
-					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> From Date</td><td width="1%">:</td>
-				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<div class='input-group date' id='endDate1' style="float:left;">
-				                  	<input type="text" name="fromdate" id="fdate" value="${holidays.fromdate}" readonly="readonly"/>
+				                  	<input type="text" value="" id="hdate" name="holiday_date" readonly/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
-				                  	</div>
-				                  	<br/><span id="brequires" style="color: red;"></span>
+        										</div>
+        										<br/><span id="requires" style="color: red;"></span>
+				                  </td>
+				                    
+				                     </tr></table></div>
+				                     <div id="moreday" class="div2 content" style="display: none"><table cellpadding="0" cellspacing="0" border="0" width="100%" >
+				                <tr class="row2"><td width="25%" class="input_txt"></td>
+					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> From Date</td><td width="1%">:</td>
+				                  	<td valign="top" align="left" class="input_txt" width="60%">
+				                  	
+				                  	<div class='input-group date' id='endDate1' style="float:left;">
+				                  	<input type="text" value=""id="fdate" name="fromdate" readonly/>
+				                  	<span class="add-on" style="margin-top:-15px;">
+												<img src="resources/images/date.png" width="24" height="35"/>
+        										</span>
+        										</div>
+        										<br/><span id="brequires" style="color: red;"></span>
+				                  	</td>
+				                    
+				                     </tr></table><table cellpadding="0" cellspacing="0" border="0" width="100%" >
+				                     <tr class="row1"><td width="25%" class="input_txt"></td>
+					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> To Date</td><td width="1%">:</td>
+				                  	<td valign="top" align="left" class="input_txt" width="60%">
+				                  	
+				                  	<div class='input-group date' id='endDate2' style="float:left;">
+				                  	<input type="text" value="" id="tdate" name="todate" readonly/>	
+				                  	<span class="add-on" style="margin-top:-15px;">
+												<img src="resources/images/date.png" width="24" height="35"/>
+        										</span>
+        										</div>
+        										<br/><span id="brequires1" style="color: red;"></span></td>
 				                  	</td>
 				                    
 				                     </tr></table></div>
-				                     <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-				                     <tr class="row1"><td width="25%"></td>
-					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> To Date</td><td width="1%">:</td>
-				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  	<div class='input-group date' id='endDate2' style="float:left;">
-				                  	<input type="text" name="todate" id="tdate" value="${holidays.todate}" readonly="readonly"/>
-				                  	<span class="add-on" style="margin-top:-15px;">
-									<img src="resources/images/date.png" width="24" height="35"/>
-        							</span>
-				                  	</div>			                  	
-				                  	<br/><span id="brequires1" style="color: red;"></span></td>
-				                   
-				                     </tr></table></div>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-				               <tr class="row2"><td width="25%"></td>
+				               <tr class="row2"><td width="25%" class="input_txt"></td>
 					            	<td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Description</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
-				                  <textarea name="holiday_reason" class="textareanew">${holidays.holiday_reason}</textarea>		                  	<br/><font color="Red" size="+1"><form:errors path="holidays.holiday_reason"></form:errors></font></td>
+				                  <textarea name="holiday_reason" class="textareanew">${holidays.holiday_reason}</textarea>		            
+				                  <br/><font color="Red" size="+1"><form:errors path="holidays.holiday_reason"></form:errors></font>
+				                  </td>
 				                    
 				                     </tr></table>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-                <tr class="row1" ><td width="25%"></td>
+                <tr class="row1" ><td width="25%" class="input_txt"></td>
 				              <td valign="top" align="left"></td>
                  <td width="1%"></td>
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
                   <td><input type="submit" class="btn" value="Save"></td>
-                  
+                  <td> 
+                   <input type="button" class="btn" onclick="window.location.href='holidayadmin'" value="Reset">
+                  </td>
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
