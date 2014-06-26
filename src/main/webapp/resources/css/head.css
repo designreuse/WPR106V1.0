@@ -1,0 +1,255 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+	background:url(../images/EITracker_trifold_outside.png);
+	
+		background-repeat:no-repeat;
+	background-size:cover;
+}
+.ta
+{
+	background:url(../images/animated.24128.gif) no-repeat 50% 150%;
+	background-repeat:no-repeat;
+}
+.head
+{
+	
+	width:100%;
+	height:120px;
+	position: relative;
+    z-index: 5;
+}
+.head .bg
+{
+	position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  opacity: .4;
+    width: 100%;
+    height: 100%;
+}
+.l1
+{
+	
+	font-size:20px;
+	font-weight:bold;
+}
+.tb
+{ 
+background: #D3D3D3; 
+background: -moz-linear-gradient(top, #D3D3D3 0%, #D9D9D9 38%, #E5E5E5 82%, #E7E7E7 100%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D3D3D3), color-stop(38%,#D9D9D9), color-stop(82%,#E5E5E5), color-stop(100%,#E7E7E7)); 
+background: -webkit-linear-gradient(top, #D3D3D3 0%,#D9D9D9 38%,#E5E5E5 82%,#E7E7E7 100%); 
+background: -o-linear-gradient(top, #D3D3D3 0%,#D9D9D9 38%,#E5E5E5 82%,#E7E7E7 100%); 
+background: -ms-linear-gradient(top, #D3D3D3 0%,#D9D9D9 38%,#E5E5E5 82%,#E7E7E7 100%); 
+background: linear-gradient(to bottom, #D3D3D3 0%,#D9D9D9 38%,#E5E5E5 82%,#E7E7E7 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3d3d3', endColorstr='#e7e7e7',GradientType=0 ); 
+display: block; 
+ 
+color: #999; 
+font-size: 12px; 
+font-weight: bold; 
+border: 1px solid rgba(16, 103, 133, 0.6); 
+border-radius: 3px;  
+width:150px; 
+height:25px;
+}
+.button
+{
+	background:#06C;
+	width: 60%;
+	height: 30px;
+	font-size:18px;
+	font-family:"Times New Roman", Times, serif;
+	color:#fff;
+	opacity:0.8;
+	font-weight:bold;
+
+}
+
+.req
+{
+	width:30%;
+	height:50px;
+	background:#CCC;
+	margin-left:77%;
+	
+	width:250px; height:40px;
+border-top:10px solid #00F;
+border-right:25px solid #FFF;
+border-bottom:10px solid #00F;
+border-left:25px solid #FFF;
+	
+}
+.req1
+{
+	font-family:Rockwell;
+	font-size:28px;
+	margin-left:15px;
+	
+
+}
+.text1
+{
+	margin-top:1cm;
+	width:17%;
+	height:30px;
+	float:right;
+	background-image:url(../images/admin.png);
+  background-position:left; 
+  background-repeat:no-repeat; 
+  padding-left:35px;
+  font-family:"Times New Roman", Times, serif;
+  color:#30F;
+  border:2px solid #F30;
+  font-size:20px;
+  opacity:0.7;
+}
+.text2
+{
+	margin-top:0.2cm;
+	width:17%;
+	height:30px;
+	float:right;
+	background-image:url(../images/admin.png);
+  background-position:left; 
+  background-repeat:no-repeat; 
+  padding-left:35px;
+  font-family:"Times New Roman", Times, serif;
+  color:#30F;
+  border:2px solid #F30;
+  font-size:20px;
+  opacity:0.7;
+}
+.text3
+{
+	margin-top:0.2cm;
+	width:17%;
+	height:30px;
+	float:right;
+	background-image:url(../images/loginemail.png);
+  background-position:left; 
+  background-repeat:no-repeat; 
+  padding-left:35px;
+  font-family:"Times New Roman", Times, serif;
+  color:#30F;
+  border:2px solid #F30;
+  font-size:20px;
+  opacity:0.7;
+}
+.text4
+{
+	margin-top:0.2cm;
+	width:17%;
+	height:30px;
+	float:right;
+	background-image:url(../images/org.png);
+  background-position:left; 
+  background-repeat:no-repeat; 
+  padding-left:35px;
+  font-family:"Times New Roman", Times, serif;
+  color:#30F;
+  border:2px solid #F30;
+  font-size:20px;
+  opacity:0.7;
+}
+.text5
+{
+	margin-top:0.2cm;
+	width:17%;
+	height:30px;
+	float:right;
+	background-image:url(../images/mobile.png);
+  background-position:left; 
+  background-repeat:no-repeat; 
+  padding-left:35px;
+  font-family:"Times New Roman", Times, serif;
+  color:#30F;
+  border:2px solid #F30;
+  font-size:20px;
+  opacity:0.7;
+}
+.text6
+{
+	margin-top:0.2cm;
+	width:17%;
+	height:30px;
+	float:right;
+	background-image:url(../images/home.png);
+  background-position:left; 
+  background-repeat:no-repeat; 
+  padding-left:35px;
+  font-family:"Times New Roman", Times, serif;
+  color:#30F;
+  border:2px solid #F30;
+  font-size:20px;
+  opacity:0.7;
+}
+.text7
+{
+	margin-top:0.2cm;
+	width:17%;
+	height:30px;
+	float:right;
+	background-image:url(../images/home.png);
+  background-position:left; 
+  background-repeat:no-repeat; 
+  padding-left:35px;
+  font-family:"Times New Roman", Times, serif;
+  color:#30F;
+  border:2px solid #F30;
+  font-size:20px;
+  opacity:0.7;
+}
+.text8
+{
+	margin-top:0.2cm;
+	width:17%;
+	height:30px;
+	float:right;
+	background-image:url(../images/state.png);
+  background-position:left; 
+  background-repeat:no-repeat; 
+  padding-left:35px;
+  font-family:"Times New Roman", Times, serif;
+  color:#30F;
+  border:2px solid #F30;
+  font-size:20px;
+  opacity:0.7;
+}
+
+.text9
+{
+	margin-top:0.2cm;
+	width:17%;
+	height:30px;
+	float:right;
+	background-image:url(../images/city.png);
+  background-position:left; 
+  background-repeat:no-repeat; 
+  padding-left:35px;
+  font-family:"Times New Roman", Times, serif;
+  color:#30F;
+  border:2px solid #F30;
+  font-size:20px;
+  opacity:0.7;
+}
+.btn
+{
+	margin-top:0.2cm;
+	width:10%;
+	height:35px;
+	font-family:"Times New Roman", Times, serif;
+	font-size:24px;
+	font-weight:bold;
+	color:#fff;
+	margin-left:25cm;
+	background:#06C;
+	opacity:0.8;
+}

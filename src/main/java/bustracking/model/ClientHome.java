@@ -14,7 +14,10 @@ public class ClientHome
 	private String address;
 	private String bus_tracking_timestamp;
 	private String device_imei_number;
+	private String device_status;
 	
+	
+
 	private String route_no;
 	private String stop_id;
 	private String trip;
@@ -23,7 +26,13 @@ public class ClientHome
 	private String is_pick_message_send;
 	
 	
-	
+	public String getDevice_status() {
+		return device_status;
+	}
+
+	public void setDevice_status(String device_status) {
+		this.device_status = device_status;
+	}
 
 	public String getTrip() {
 		return trip;
@@ -112,11 +121,12 @@ public class ClientHome
 	}
 
 	
-	public ClientHome(String vechicle_reg_no,
+	public ClientHome(String device_status,String vechicle_reg_no,
 			String address, String speed,
 			String bus_tracking_timestamp,String device_imei_number) {
 		super();
-	
+		
+		this.device_status=device_status;
 		this.vechicle_reg_no = vechicle_reg_no;
 		this.address = address;
 		

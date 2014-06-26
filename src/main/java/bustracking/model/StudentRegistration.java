@@ -1,5 +1,6 @@
 package bustracking.model;
 
+import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -51,15 +52,16 @@ public class StudentRegistration{
 	@NotEmpty
 	private String parent_name1;
 	
+	
 	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
 	@NotEmpty
 	private String parent_name2;
 	
-	@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
+	@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
 	@NotEmpty
 	private String parent_mobile1;
 	
-	@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
+	@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
 	@NotEmpty
 	private String parent_mobile2;
 	

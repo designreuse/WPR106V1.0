@@ -39,7 +39,7 @@ private String chairman_name;
 @Length(min=4,max=32,message="Country should between 4 to 32 characters!!!")
 private String country;
 
-@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
+@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
 private String chairman_telephone_number;
 
 @NotEmpty
@@ -53,7 +53,7 @@ private String principal_name;
 @Length(min=4,max=32,message="City should between 4 to 32 characters!!!")
 private String city;
 
-@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
+@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
 private String principal_telephone_number;
 
 @NotEmpty
@@ -68,18 +68,18 @@ private String transport_officer_name;
 private String type_of_organization;
 
 @NotEmpty
-@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
+@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
 private String transport_officer_number;
 
 @NotEmpty
-@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
+@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
 private String office_land_line1;
 
 @NotEmpty
 private String is_active;
 
 @NotEmpty
-@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Mobile Number!!!")
+@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
 private String office_land_line2;
 
 

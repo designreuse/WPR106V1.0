@@ -28,7 +28,7 @@ public class DeviceRegistration
 	private String carrier;
 	
 	@NotEmpty
-	@Pattern(regexp="(^$|[0-9]{10})",message="Invalid Sim Card Number!!!")
+	@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Sim Card Number!!!")
 	private String sim_card_number;
 	
 	@NotEmpty

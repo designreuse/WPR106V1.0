@@ -7,9 +7,9 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
-   <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+   <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
   <script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
@@ -359,7 +359,7 @@ p {
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
                   <td><input type="submit" class="btn" value="Save" ></td>
-                  <td><input type="reset" class="btn" value="Reset"></td>
+                  <td><input type="button" onclick="window.location.href='insert_route'" class="btn" value="Reset"></td>
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>

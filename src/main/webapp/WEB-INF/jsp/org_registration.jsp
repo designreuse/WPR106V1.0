@@ -429,6 +429,11 @@ function fleetmanagement(){
 		document.getElementById('cno_id').style.display='none';
 		document.getElementById('principalid').style.display='none';
 		document.getElementById('pno_id').style.display='none';
+	
+		document.getElementById('chairmanid').value='null';
+		document.getElementById('cno_id').value='null';
+		document.getElementById('principalid').value='null';
+		document.getElementById('pno_id').value='null';
 	}
 	else if(type=='private'){
 		document.getElementById('chairmanid').style.display='none';
