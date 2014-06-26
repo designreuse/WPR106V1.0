@@ -45,6 +45,7 @@ import bustracking.forms.BusDeviceRegistrationForm;
 /*import bustracking.forms.DeviceFailForm;*/
 import bustracking.forms.BusRegistrationForm;
 import bustracking.forms.ClientHomeForm;
+import bustracking.forms.ContactUsForm;
 import bustracking.forms.DeviceRegistrationForm;
 import bustracking.forms.FleetHomepageForm;
 import bustracking.forms.OrgBusinessRuleForm;
@@ -598,6 +599,22 @@ public class MainController {
 		return "login";
  
 	}
+	
+	@RequestMapping(value="/contactus",method=RequestMethod.POST)
+	public String contactus(HttpSession session,@ModelAttribute("contacts") @Valid ContactUs contacts,BindingResult result,ModelMap model,Principal principal) {
+	
+		System.out.println(" get inside the controller........");
+		mainDAO.insert_contacts(contacts);
+		System.out.println("inserted......");
+		ContactUsForm contactusForm = new ContactUsForm();
+		contactusForm.setContactus(mainDAO.getContactus());
+		model.addAttribute("contactusForm", contactusForm);
+		model.addAttribute("menu","contacts");
+		return "login";
+	}
+	
+	
+
 	/*@RequestMapping(value="/insert_organisation", method = RequestMethod.GET)
 	public String insert_org(ModelMap model) {
 		return "insert_organisation";

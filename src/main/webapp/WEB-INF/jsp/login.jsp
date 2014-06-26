@@ -30,8 +30,9 @@
 	</c:if>
 <div class="head">
  <div class="bg"></div>
-<table width="100%">
 <form name='f' action="<c:url value='j_spring_security_check' />" method='post'>
+<table width="100%">
+
     <tr>
     <td width="55%" height="103"></td>
       <td width="16%"><span class="l1">Email</span><br />
@@ -46,46 +47,48 @@
       <td width="12%">
         <input type="submit" value="Login" class="button" /></td>
         </tr>
-         </form>
+        
       </table>
-     
+      </form>
       </div>
       <br />
+<form action="contactus" method='post'>
 <table width="95%" class="ta">
+
   <tr>
-  <td><img src="resources/images/netalloy_school_building_tattoo_tatoo-1331px.png" width="160" height="83" /> <div class="req"> <span class="req1">Request for demo</span> </div></td>
+  <td><!-- <img src="resources/images/netalloy_school_building_tattoo_tatoo-1331px.png" width="160" height="83" /> --> <div class="req"> <span class="req1">Request for demo</span> </div></td>
 
         </tr>
   <tr>
-    <td><input type="text" value="" placeholder="First Name" class="text1" /></td>
+    <td><input type="text" name="firstname" value="" placeholder="First Name" class="text1" /></td>
   </tr>
   <tr>
-    <td><input type="text" value="" placeholder="Last Name" class="text2" /></td>
+    <td><input type="text" name="lastname" value="" placeholder="Last Name" class="text2" /></td>
   </tr>
   <tr>
-    <td>     <input type="text" value="" placeholder="Email Address" class="text3" /></td>
+    <td><input type="text" name="email" value="" placeholder="Email Address" class="text3" /></td>
   </tr>
   <tr>
-    <td><input type="text" value="" placeholder="Organaisation Name" class="text4" /></td>
+    <td><input type="text" name="organisation" value="" placeholder="Organaisation Name" class="text4" /></td>
   </tr>
   <tr>
-    <td><input type="text" value="" placeholder="Mobile Number" class="text5" /></td>
+    <td><input type="text" name="mobile" value="" placeholder="Mobile Number" class="text5" /></td>
   </tr>
   <tr>
-    <td><input type="text" value="" placeholder="Address Line 1" class="text6" /></td>
+    <td><input type="text" name="address1" value="" placeholder="Address Line 1" class="text6" /></td>
   </tr>
   <tr>
-    <td><input type="text" value="" placeholder="Address Line 2" class="text7" /></td>
+    <td><input type="text" name="address2" value="" placeholder="Address Line 2" class="text7" /></td>
   </tr>
   <tr>
-    <td><input type="text" value="" placeholder="City" class="text8" /></td>
+    <td><input type="text" name="city" value="" placeholder="City" class="text8" /></td>
   </tr>
   <tr>
-    <td><input type="text" value="" placeholder="State" class="text9" /></td>
+    <td><input type="text" name="state" value="" placeholder="State" class="text9" /></td>
   </tr>
   <tr>
-  <td align="center"><input type="button" value="Submit"  class="btn" /></td></tr></td>
-  </table>
+  <td align="center"><input type="submit" value="Submit"  class="btn" /></td></tr></td>
+  </table></form>
 <!-- <img src="/lady.png" width="160" height="179"/ style="margin-left:3cm;" /> -->
 <table width="100%" height="132" >
 

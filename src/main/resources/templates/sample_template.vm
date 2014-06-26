@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<body>
+Hi,<p/>
+
+Below are the details of the contacted person<br/>
+<br/>
+Firstname: <font style="color:blue">${firstName}</font><br/>
+Lastname: <font style="color:blue">${lastname}</font><br/>
+Email: <font style="color:blue">${email}</font><br/>
+Organisation: <font style="color:blue">${organisation}</font><br/>
+Mobile phone: <font style="color:blue">${mobile}</font><br/>
+Address1: <font style="color:blue">${address1}</font><br/>
+Address2: <font style="color:blue">${address2}</font><br/>
+City: <font style="color:blue">${city}</font><br/>
+State: <font style="color:blue">${state}</font><br/>
+
+
+
+</body>
+</html>

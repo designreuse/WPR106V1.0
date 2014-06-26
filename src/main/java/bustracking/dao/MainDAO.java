@@ -16,7 +16,9 @@ import org.joda.time.chrono.BuddhistChronology;
 import bustracking.forms.SuperAdminHomeForm;
 import bustracking.model.BusDeviceRegistration;
 import bustracking.model.BusRegistration;
+import bustracking.model.ContactUs;
 import bustracking.model.DeviceRegistration;
+import bustracking.model.EmailSender;
 import bustracking.model.MessageSender;
 import bustracking.model.Route;
 import bustracking.model.Route_view;
@@ -27,12 +29,18 @@ import bustracking.dao.MessageSending;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 /*import bustracking.model.DeviceFail;*/
 
 
 public class MainDAO {
+	
+	@Autowired  
+	EmailSender emailSender;
+	
+	
 	private DataSource dataSource;
 	 
 	private static final Logger logger = LoggerFactory.getLogger(MessageSending.class);
@@ -40,6 +48,88 @@ public class MainDAO {
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
+	
+	public boolean insert_contacts(ContactUs contacts)
+	{
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status=false;
+		
+		try {
+			con =  dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+				e1.printStackTrace();
+		}
+		  try{
+			  System.out.println("inserting");
+			  String cmd_insert="insert into tbl_contact_us(firstname,lastname,email,organisation,mobile,address1,address2,city,state) values('"+contacts.getFirstname()+"','"+contacts.getLastname()+"','"+contacts.getEmail()+"','"+contacts.getOrganisation()+"','"+contacts.getMobile()+"','"+contacts.getAddress1()+"','"+contacts.getAddress2()+"','"+contacts.getCity()+"','"+contacts.getState()+"')"; 
+			  statement.execute(cmd_insert);
+			  System.out.println("records to be inserted.........");
+			 
+			
+			  emailSender.contact_sendEmail("vino.baskaran8@gmail.com","bustracking@gmail.com","Contact Us Information",contacts.getFirstname(),contacts.getLastname(),contacts.getEmail(),contacts.getOrganisation(),contacts.getMobile(),contacts.getAddress1(),contacts.getAddress2(),contacts.getCity(),contacts.getState());
+			  
+			  
+			  /*emailSender.contact_sendEmail("ems.vino@yahoo.com","learnguild@gmail.com","Contact Us Information",contacts.getFirstname(),contacts.getLastname(),contacts.getCompany(),contacts.getBusiness_phone(),contacts.getMobile_phone(),contacts.getEmail(),contacts.getAddress(),contacts.getCity(),contacts.getState(),contacts.getZip(),contacts.getWs_cgun(),contacts.getBecoming_distributor(),contacts.getComments());*/
+			  status=true;
+		  }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+		    return status;
+	}
+
+	public List<ContactUs> getContactus() {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		List<ContactUs> contactus = new ArrayList<ContactUs>();
+
+		try {
+			con =  dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			resultSet = statement.executeQuery("select * from tbl_contact_us");
+			while (resultSet.next()) {
+							
+								
+				contactus.add(new ContactUs(resultSet
+						.getString("firstname"), resultSet
+						.getString("lastname"), resultSet
+						.getString("email"), resultSet
+						.getString("organisation"), resultSet
+						.getString("mobile"), resultSet
+						.getString("address1"), resultSet
+						.getString("address2"), resultSet
+						.getString("city"), resultSet
+						.getString("state")));
+			}
+
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return contactus;
+	}
+
 	
 	public String getRole(String username){
 		Connection con = null;
