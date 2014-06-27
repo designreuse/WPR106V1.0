@@ -71,7 +71,7 @@ public class MainDAO {
 			
 			  emailSender.contact_sendEmail("vino.baskaran8@gmail.com","bustracking@gmail.com","Contact Us Information",contacts.getFirstname(),contacts.getLastname(),contacts.getEmail(),contacts.getOrganisation(),contacts.getMobile(),contacts.getAddress1(),contacts.getAddress2(),contacts.getCity(),contacts.getState());
 			  
-			  
+			  emailSender.reply_sendEmail(contacts.getEmail(), "bustracking@gmail.com", "Reply mail",contacts.getFirstname(),contacts.getLastname());
 			  /*emailSender.contact_sendEmail("ems.vino@yahoo.com","learnguild@gmail.com","Contact Us Information",contacts.getFirstname(),contacts.getLastname(),contacts.getCompany(),contacts.getBusiness_phone(),contacts.getMobile_phone(),contacts.getEmail(),contacts.getAddress(),contacts.getCity(),contacts.getState(),contacts.getZip(),contacts.getWs_cgun(),contacts.getBecoming_distributor(),contacts.getComments());*/
 			  status=true;
 		  }catch(Exception e){
