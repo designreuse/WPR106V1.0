@@ -62,7 +62,7 @@ import bustracking.model.*;
 
 import bustracking.model.XMLWriter;
 @Controller
-@SessionAttributes({"sample","device","listsize","menu","role","org_name","branch","vec_imei","holi","vechicle_reg_no","from_date","to_date"})
+@SessionAttributes({"sample","device","listsize","menu","role","org_name","branch","vec_imei","holi","vechicle_reg_no","from_date","to_date","contact"})
 public class MainController {
 	@Autowired
 	RouteDAO routeDAO;
@@ -594,8 +594,8 @@ public class MainController {
 	
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public String login(ModelMap model) {
-		
+	public String login(HttpSession session,ModelMap model) {
+		session.removeAttribute("contact");
 		return "login";
  
 	}
@@ -603,6 +603,13 @@ public class MainController {
 	@RequestMapping(value="/contactus",method=RequestMethod.POST)
 	public String contactus(HttpSession session,@ModelAttribute("contacts") @Valid ContactUs contacts,BindingResult result,ModelMap model,Principal principal) {
 	
+		session.setAttribute("contact", contacts);
+		
+		if(result.hasErrors()){
+			
+			return "login";
+		}
+		
 		System.out.println(" get inside the controller........");
 		mainDAO.insert_contacts(contacts);
 		System.out.println("inserted......");

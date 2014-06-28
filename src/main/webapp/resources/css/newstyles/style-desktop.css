@@ -1,17 +1,18 @@
 
 #header-wrapper {
-	
+	color:#3bb9ff;
 }
 
 .homepage #header-wrapper {
+	color:#3bb9ff;
 }
 
 #header {
 	
-	background: ;
+	
 	margin: 0 auto 0 auto;
 	padding: 0 0 0em 0;
-	background-size: 90%;
+	color:#3bb9ff;
 }
 
 /* Logo */

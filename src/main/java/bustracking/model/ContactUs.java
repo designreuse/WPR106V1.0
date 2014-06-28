@@ -8,22 +8,31 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class ContactUs{
 	
+	@NotEmpty
 	private String firstname;
 	
+	@NotEmpty
 	private String lastname;
 	
+	@NotEmpty
 	private String email;
 	
+	@NotEmpty
 	private String organisation;
 	
+	@NotEmpty
 	private String mobile;
 	
+	@NotEmpty
 	private String address1;
 	
+	@NotEmpty
 	private String address2;
 	
+	@NotEmpty
 	private String state;
 	
+	@NotEmpty
 	private String city;
 
 	public ContactUs() {

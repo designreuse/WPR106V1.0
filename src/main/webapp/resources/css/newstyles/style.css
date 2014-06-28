@@ -8,9 +8,11 @@ html, body {
 body {
 	width:100%;
 	margin: 0em;
-	
 	padding: 0em;
-	background: #fff;
+	background:url(../images/map.png) no-repeat;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:center; 
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10pt;
 	color: #525252;
@@ -287,14 +289,13 @@ ul.style5 .first {
 /* login */
 .Login_panel{
 width:112.8%;
-height:auto;
-border-top: 2px solid #0066cc;
-border-bottom:  2px solid #0066cc;
-border-left:  2px solid #0066cc;
-border-right:  2px solid #0066cc;
-background: #0066cc;
-color: #ffffff;
-margin:5% 0% 0% -7% ;
+height:80px;
+border: 2px solid #3bb9ff; 
+padding:10px 0 0 0px;
+background: #66a3c2;
+color: #3bb9ff;
+margin:0% 0% 0% -7% ;
+/* opacity:.5; */
 }
 .text_align{
 align: right;
@@ -339,7 +340,7 @@ font-family: "Helvetica Neue", Arial, sans-serif;
 border-style: solid;
 border-width: 1px;
 border-color: #0066cc;
-margin-bottom: 5px;
+margin:5px 0 5px 0;
 font-size: 1.55em;
 padding: 6px 25px;
 padding-left: 55px;
@@ -370,7 +371,7 @@ font-family: "Helvetica Neue", Arial, sans-serif;
 border-style: solid;
 border-width: 1px;
 border-color: #0066cc;
-margin-bottom: 5px;
+margin: 0 0 7px 0;
 font-size: 1.55em;
 padding: 6px 25px;
 padding-left: 55px;
@@ -399,8 +400,8 @@ font-family: "Helvetica Neue", Arial, sans-serif;
 border-style: solid;
 border-width: 1px;
 border-color: #0066cc;
-margin:-10.7% 0 0 46%;
-margin-bottom:5px;
+margin:-11% 0 10px 46%;
+
 font-size: 1.55em;
 padding: 6px 25px;
 padding-left: 55px;
@@ -428,7 +429,7 @@ outline: 0 none;
 #contact-form input#fname {
 background: #fff url('images/user1male.png') 5px 4px no-repeat;
 }
-#contact-form input#oname {
+#contact-form input#orgid {
 background: #fff url('images/org1.png') 5px 4px no-repeat;
 }
 #contact-form input#lname {
@@ -437,28 +438,33 @@ background: #fff url('images/user1male.png') 5px 4px no-repeat;
 #contact-form input#country {
 background: #fff url('images/globe.png') 5px 4px no-repeat;
 }
-#contact-form input#email {
+#contact-form input#eid {
 background: #fff url('images/email.png') 5px 4px no-repeat;
 }
 #contact-form input#website {
 background: #fff url('images/website.png') 5px 4px no-repeat;
 }
-#contact-form input#telephone {
+#contact-form input#mobid {
 background: #fff url('images/phone.png') 5px 4px no-repeat;
 }
-
+#contact-form input#cityid {
+background: #fff url('images/city.png') 5px 4px no-repeat;
+}
+#contact-form input#stateid {
+background: #fff url('images/state.png') 5px 4px no-repeat;
+}
 #contact-form textarea {
 display: block;
 font-family: "Helvetica Neue", Arial, sans-serif;
 border-style: solid;
 border-width: 1px;
 border-color: #0066cc;
-margin-bottom: 15px;
+margin:5px 0 5px 0;
 font-size: 1.5em;
 padding: 11px 25px;
 padding-left: 55px;
 width: 90%;
-height: 25%;
+height: 15%;
 color: #777;
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
 -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
@@ -477,7 +483,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
 outline: 0 none; 
 }
 #contact-form textarea.txtblock {
-background: #fff url('images/speech.png') 5px 4px no-repeat;
+background: #fff url('images/address.png') 5px 4px no-repeat;
 }
 
 #contact-form #slider { width: 60%; }
@@ -569,11 +575,11 @@ margin-right: 50px;
 }
 
 .Login_page_footer_link{
-	width:92%;
+	width:93%;
 	height:auto;
 	padding:1% 10%;
-	border:4px solid #003366;
-	background:0066cc;
+	/* border:4px solid #003366; */
+	background:#3bb9ff;
 	color:#fff;
 	margin:5% 0 0 -6.5%;
 	font-size:17px;
@@ -2150,3 +2156,12 @@ background-image:url('images/check1.png');
 user-select: none;
 
 }
+
+.login_table{
+	color:#3bb9ff;
+}
+.login_table td{
+	color:#3bb9ff;
+}
+
+
