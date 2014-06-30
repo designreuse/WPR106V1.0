@@ -235,7 +235,7 @@ select.add(option, 0); */
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="btn" value="Save"></td>
+                  <td><input type="submit" class="btn" value="Save" onclick="return validate()"></td>
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='holidayadmin'" value="Reset">
                   </td>
@@ -346,6 +346,23 @@ $(window).load(function(){
 });
 
 </script>
+<script>
+function validate()
+{
+	  var startDate = $('#fdate').val();
+      var endDate =$('#tdate').val();
+
+if(startDate!='' && endDate!='')
+{
+if (Date.parse(endDate)<Date.parse(startDate)){
+    	 document.getElementById("brequires1").innerHTML="To date must be greater than or equal to From date";                	
+    	
+     return false;
+      }
+}
+	}
+</script>
+
 
 
 <jsp:include page="footer.jsp"></jsp:include>
