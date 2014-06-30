@@ -288,13 +288,13 @@ ul.style5 .first {
 
 /* login */
 .Login_panel{
-width:112.8%;
+width:113.5%;
 height:80px;
 border: 2px solid #3bb9ff; 
 padding:10px 0 0 0px;
 background: #66a3c2;
 color: #3bb9ff;
-margin:0% 0% 0% -7% ;
+margin:0% 0% 0% -6.5% ;
 /* opacity:.5; */
 }
 .text_align{
@@ -329,7 +329,7 @@ border-radius:5px;
 width: 35%;
 height:auto;
 
-margin:0 0 0 70%;
+margin:0 0 -34px 70%;
 }
 /* form */
 #contact-form { box-sizing: border-box; }
@@ -509,8 +509,8 @@ margin-right: 50px;
  font-size: 16px !important;
  width: 65%;   
  position: relative;
- background: #3399cc;
- color: #fff;
+ background: #fff;
+ color: #3bb9ff;
  text-align: center;
  margin: 1% 0 0 7.7%; 
  padding:3% 5%;
@@ -524,13 +524,13 @@ margin-right: 50px;
  z-index: -1;
 }
 .ribbon_login:before {
- left: -2em;
- border-right-width: 1.5em;
+ left: 0em;
+ border-right-width: 0em;
  border-left-color: transparent;
 }
 .ribbon_login:after {
- right: -2em;
- border-left-width: 1.5em;
+ right: 0em;
+ border-left-width: 0em;
  border-right-color: transparent;
 }
 .ribbon_login .ribbon_login-content:before, .ribbon_login .ribbon_login-content:after {
@@ -538,16 +538,16 @@ margin-right: 50px;
  position: absolute;
  display: block;
  border-style: solid;
- border-color: #0066cc transparent transparent transparent;
+ border-color: transparent transparent transparent transparent;
  bottom: -1em;
 }
 .ribbon_login .ribbon_login-content:before {
  left: 0;
- border-width: 1em 0 0 1em;
+ border-width: 0em 0 0 0em;
 }
 .ribbon_login .ribbon_login-content:after {
  right: 0;
- border-width: 1em 1em 0 0;
+ border-width: 0em 0em 0 0;
 }
 
 .contact_submit_btn{
@@ -575,7 +575,7 @@ margin-right: 50px;
 }
 
 .Login_page_footer_link{
-	width:93%;
+	width:95%;
 	height:auto;
 	padding:1% 10%;
 	/* border:4px solid #003366; */

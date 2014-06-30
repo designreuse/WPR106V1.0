@@ -78,29 +78,7 @@ jQuery(function () {
 
 
 <!-- Date Picker -->
-<script>
-$(function() {
-$( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
-});
 
-$('.datetimeinput').timepicker();
-</script>
-
-<script type='text/javascript'
-	src='http://code.jquery.com/jquery-1.4.3.min.js'></script>
-	<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery.ui.timepicker.js" />"></script>
-	<link href="<c:url value="/resources/css/jquery.ui.timepicker.css" />"
-	rel="stylesheet" type="text/css" />
-	<script type="text/javascript">
-	 $(document).ready(function() {
-		 $('#timepicker').timepicker({
-			    showPeriod: true,
-			    showLeadingZero: true
-			});
-     });
-	
-	</script> 
 	
 	
 	
@@ -317,7 +295,7 @@ p {
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
                   </td>
                   </tr>
-                  </table>
+                  </table><br/><br/><br/><br/>
                   </td>
                 </tr>
 
