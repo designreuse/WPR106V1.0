@@ -161,7 +161,10 @@ public class MessageSending{
 		try {
 
 			String update_as_reached = "";
-			update_as_reached="Update tbl_message_log set reached=1 where route_no='"+route.getRoute_no()+"' and stop_id='"+route.getStop_id()+"'";
+			DateTimeZone timeZone=DateTimeZone.forID("Asia/Kolkata");
+			LocalDate date=new LocalDate(timeZone);
+			
+			update_as_reached="Update tbl_message_log set reached='"+date+" where route_no='"+route.getRoute_no()+"' and stop_id='"+route.getStop_id()+"' and trip='"+route.getTrip()+"'";
 			status = statement.execute(update_as_reached);
 			removeSkippingStops(route.getRoute_no());
 				
@@ -200,16 +203,9 @@ public class MessageSending{
 		try {
 			DateTimeZone dateTimeZone=DateTimeZone.forID("Asia/Kolkata");
 			LocalDate localDate=new LocalDate(dateTimeZone);
-						
-			
-			
 			String update_as_reached = "";
-			if(Integer.parseInt(route.getTrip())==0)
-				update_as_reached="Update tbl_message_log set reached=0,last_message_send_pick='"+localDate+"' where route_no='"+route.getRoute_no()+"' and stop_id='"+route.getStop_id()+"'";
-			else if(Integer.parseInt(route.getTrip())==1)
-				update_as_reached="Update tbl_message_log set reached=0,last_message_send_drop='"+localDate+"' where route_no='"+route.getRoute_no()+"' and stop_id='"+route.getStop_id()+"'";
+			update_as_reached="Update tbl_message_log set last_message_send='"+localDate+"' where route_no='"+route.getRoute_no()+"' and stop_id='"+route.getStop_id()+"' and trip='"+route.getTrip()+"'";
 			status = statement.execute(update_as_reached);
-				
 			} catch (Exception e) 
 			{
 			logger.info(e.toString());
@@ -349,18 +345,18 @@ public class MessageSending{
 			//To add the skipping stops in the current stops
 			String cmd_add_skipping_stops="";
 			for (SkippingStop skippingStop : particularRouteSkippingStops) {				
-				cmd_add_skipping_stops="select t1.vechicle_reg_no,t1.route_no,t1.stop_id as stop_id,t1.last_message_send_pick,t1.last_message_send_drop,t1.last_message_send_kg_pick,t1.last_message_send_kg_drop,t1.reached,t2.org_id,t2.trip,t2.latitude,t2.longitude from tbl_message_log as t1 join tbl_bus_route as t2 on t1.stop_id=t2.stop_id and t1.route_no=t2.route_no where vechicle_reg_no='"+vechicleRegNo+"' and t1.stop_id='"+skippingStop.getStop_id()+"'";
+				cmd_add_skipping_stops="select t1.vechicle_reg_no,t1.route_no,t1.stop_id as stop_id,t1.trip,t1.last_message_send,t1.reached,t2.org_id,t2.latitude,t2.longitude from tbl_message_log as t1 join tbl_bus_route as t2 on t1.stop_id=t2.stop_id and t1.route_no=t2.route_no and t1.trip=t2.trip where vechicle_reg_no='"+vechicleRegNo+"' and t1.stop_id='"+skippingStop.getStop_id()+"'";
 				resultSet=statement.executeQuery(cmd_add_skipping_stops);
 				if(resultSet.next())
 				{
-					routes.add(new Route(resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("trip"),resultSet.getString("latitude"),resultSet.getString("longitude"),resultSet.getString("last_message_send_pick"),resultSet.getString("last_message_send_drop"),resultSet.getString("last_message_send_kg_pick"),resultSet.getString("last_message_send_kg_drop")));
+					routes.add(new Route(resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("trip"),resultSet.getString("latitude"),resultSet.getString("longitude"),resultSet.getString("last_message_send")));
 				}
 							
 			}
 			
 			//Normally add the next not reached stop in the list
 			//String cmd_get_info="select t1.vechicle_reg_no,t1.route_no,min(t1.stop_id) as stop_id,t1.last_message_send_pick,t1.last_message_send_drop,t1.last_message_send_kg_pick,t1.last_message_send_kg_drop,t1.reached,t2.org_id,t2.trip,t2.latitude,t2.longitude from tbl_message_log as t1 join tbl_bus_route as t2 on t1.stop_id=t2.stop_id and t1.route_no=t2.route_no where vechicle_reg_no='"+vechicleRegNo+"' and date(t1.last_message_send_pick)<date('"+localDate+"') and trip='"+trip+"' and t1.stop_id!='S0' and t1.stop_id>(select max(stop_id) from tbl_message_log where date(last_message_send_pick)=date('"+localDate+"'));";
-			String cmd_get_info="select t1.vechicle_reg_no,t1.route_no,t1.stop_id as stop_id,t1.last_message_send_pick,t1.last_message_send_drop,t1.last_message_send_kg_pick,t1.last_message_send_kg_drop,t1.reached,t2.org_id,t2.trip,t2.latitude,t2.longitude from tbl_message_log as t1 join tbl_bus_route as t2 on t1.stop_id=t2.stop_id and t1.route_no=t2.route_no where vechicle_reg_no='"+vechicleRegNo+"' and date(t1.last_message_send_pick)<date('"+localDate+"') and trip='"+trip+"' and t1.stop_id!='S0' and t1.stop_id>(select Max(stop_id) from tbl_message_log where  vechicle_reg_no='"+vechicleRegNo+"' and (stop_id='S0' or date(last_message_send_pick)=date('"+localDate+"')));";
+			String cmd_get_info="select t1.vechicle_reg_no,t1.route_no,t1.stop_id as stop_id,t1.trip,t1.last_message_send,t1.reached,t2.org_id,t2.latitude,t2.longitude from tbl_message_log as t1 join tbl_bus_route as t2 on t1.stop_id=t2.stop_id and t1.route_no=t2.route_no and t1.trip=t2.trip where vechicle_reg_no='"+vechicleRegNo+"' and date(t1.last_message_send)<date('"+localDate+"') and t1.trip='"+trip+"' and t1.stop_id!='S0' and t1.stop_id>(select Max(stop_id) from tbl_message_log where  vechicle_reg_no='"+vechicleRegNo+"' and (stop_id='S0' or date(last_message_send)=date('"+localDate+"')));";
 			
 			resultSet=statement.executeQuery(cmd_get_info);	
 			
@@ -375,7 +371,7 @@ public class MessageSending{
 				}
 				if(!alreadyPresent)
 				{
-					routes.add(new Route(resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("trip"),resultSet.getString("latitude"),resultSet.getString("longitude"),resultSet.getString("last_message_send_pick"),resultSet.getString("last_message_send_drop"),resultSet.getString("last_message_send_kg_pick"),resultSet.getString("last_message_send_kg_drop")));
+					routes.add(new Route(resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("trip"),resultSet.getString("latitude"),resultSet.getString("longitude"),resultSet.getString("last_message_send")));
 					break;
 				}
 				alreadyPresent=false;
@@ -413,11 +409,11 @@ public class MessageSending{
 			LocalDate localDate=new LocalDate(dateTimeZone);
 			
 			//Get not reached stop
-			String cmd_get_info="select t1.vechicle_reg_no,t1.route_no,t1.stop_id as stop_id,t1.last_message_send_pick,t1.last_message_send_drop,t1.last_message_send_kg_pick,t1.last_message_send_kg_drop,t1.reached,t2.org_id,t2.trip,t2.latitude,t2.longitude from tbl_message_log as t1 join tbl_bus_route as t2 on t1.stop_id=t2.stop_id and t1.route_no=t2.route_no where vechicle_reg_no='"+vechicleRegNo+"' and date(t1.last_message_send_pick)=date('"+localDate+"') and reached=0 and trip='"+trip+"' and t1.stop_id!='S0'";
+			String cmd_get_info="select t1.vechicle_reg_no,t1.route_no,t1.stop_id as stop_id,t1.trip,t1.last_message_send,t1.reached,t2.org_id,t2.latitude,t2.longitude from tbl_message_log as t1 join tbl_bus_route as t2 on t1.stop_id=t2.stop_id and t1.route_no=t2.route_no and t1.trip=t2.trip where vechicle_reg_no='"+vechicleRegNo+"' and date(t1.last_message_send)=date('"+localDate+"') and reached!=date('"+localDate+"') and t1.trip='"+trip+"' and t1.stop_id!='S0'";
 			resultSet=statement.executeQuery(cmd_get_info);			
 			while(resultSet.next()&&resultSet.getBoolean(1))
 			{
-				notReachedStopInfo.add(new Route(resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("trip"),resultSet.getString("latitude"),resultSet.getString("longitude"),resultSet.getString("last_message_send_pick"),resultSet.getString("last_message_send_drop"),resultSet.getString("last_message_send_kg_pick"),resultSet.getString("last_message_send_kg_drop")));
+				notReachedStopInfo.add(new Route(resultSet.getString("org_id"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("trip"),resultSet.getString("latitude"),resultSet.getString("longitude"),resultSet.getString("last_message_send")));
 			}
 
 		} catch (Exception e) {
@@ -430,7 +426,46 @@ public class MessageSending{
 		}
 		return notReachedStopInfo;
 	}
+	/*
+	 * Check for holidays
+	 */
+	public boolean getHolidays(String org_id,String date){
+		Connection con=null;
+		Statement statement=null;
+        ResultSet resultSet=null;
+		boolean holiday=false;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} 
+		catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		{	
+				try{
+					String cmd="Select * from tbl_holidays where org_id='"+org_id+"' and holiday_date='"+date+"'";
+					resultSet=statement.executeQuery(cmd);
+					if(resultSet.next())
+					{
+						holiday=true;
+					}
+				}
+
+					catch(Exception e){
+				        System.out.println(e.toString());
+				        	releaseResultSet(resultSet);
+				        	releaseStatement(statement);
+				        	releaseConnection(con);
+				        }finally{
+				        	releaseResultSet(resultSet);
+				        	releaseStatement(statement);
+				        	releaseConnection(con);	    	
+				        }
+		}
+		return holiday;
 	
+		
+	}
 	/*
 	 * 
 	 */
@@ -447,13 +482,16 @@ public class MessageSending{
 		}
 
 		try {
-
-			String cmd_student_number = "select * from tbl_student where pickup_route_no='"+ route.getRoute_no() + "'";
+			String cmd_student_number="";
+			if(route.getTrip().equals("0"))
+			  cmd_student_number= "select * from tbl_student where pickup_route_no='"+ route.getRoute_no() + "' and org_id='"+route.getOrg_id()+"'";
+			else if(route.getTrip().equals("1"))
+			  cmd_student_number= "select * from tbl_student where drop_route_no='"+ route.getRoute_no() + "' and org_id='"+route.getOrg_id()+"'";
 			resultSet = statement.executeQuery(cmd_student_number);
 			while (resultSet.next()) {
 				logger.info("Message Sending....");
 				logger.info("MESSAGE SEND TO: "+ resultSet.getString("parent_mobile1"));
-				MessageSender.sendMessage(resultSet.getString("parent_mobile1"),"You will reach Bus Stop "+route.getStop_id()+" in 10 mins");
+				//MessageSender.sendMessage(resultSet.getString("parent_mobile1"),"You will reach Bus Stop "+route.getStop_id()+" in 10 mins");
 				Insert_into_sms_tracking(resultSet.getString("org_id"),resultSet.getString("student_roll_no"),resultSet.getString("parent_mobile1"));
 
 			}
@@ -512,6 +550,8 @@ public class MessageSending{
 							break;
 					case 3: logger.info("Do Calculation for KG");
 							doCalculation(trackinginfo,2,businessRules.get(0));
+							break;
+					case 4:logger.info("Today Holiday!!");
 							break;
 					default:logger.info("Failed to satisfy business rules");
 							break;								
@@ -572,7 +612,9 @@ public class MessageSending{
 		//Time Conversion
 		DateTimeZone TZ = DateTimeZone.forID("Asia/Kolkata");
 		LocalTime localTime = new LocalTime(TZ);
+		LocalDate localDate=new LocalDate(TZ);
 		logger.info("Local Date Time:" + localTime);
+	
 		LocalTime pickup_start_time = LocalTime.parse(businessRule.getPickup_start_time());
 		LocalTime pickup_end_time = LocalTime.parse(businessRule.getPickup_end_time());
 		LocalTime drop_start_time = LocalTime.parse(businessRule.getDrop_start_time());
@@ -585,6 +627,11 @@ public class MessageSending{
 		{
 			logger.info("Message Setting fail!!");
 			status=0;
+		}
+		else if(getHolidays(businessRule.getOrg_id(),localDate.toString()))
+		{
+			logger.info("Today Holiday!!");
+			status=4;
 		}
 		//Check the current time falls with pick up time range
 		else if(localTime.isAfter(pickup_start_time)&&localTime.isBefore(pickup_end_time))

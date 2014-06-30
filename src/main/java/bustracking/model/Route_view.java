@@ -79,11 +79,12 @@ public class Route_view
 	}
 
 	// Constructor For Message Log table
-	public Route_view(String route_no, String stop_id, String bus_reg_no) {
+	public Route_view(String route_no, String stop_id, String bus_reg_no,String trip) {
 		super();
 		this.route_no = route_no;
 		this.stop_id = stop_id;
 		this.bus_reg_no = bus_reg_no;
+		this.trip=trip;
 	}
 	
 	

@@ -69,18 +69,20 @@ public class Route
 	public void setSpeed(String speed) {
 		this.speed = speed;
 	}
-	private String last_message_send_pick;
-	private String last_message_send_drop;
-	private String last_message_send_kg_pick;
-	private String last_message_send_kg_drop;
+	private String last_message_send;
 	
 	
 	
-	
+	public String getLast_message_send() {
+		return last_message_send;
+	}
+
+	public void setLast_message_send(String last_message_send) {
+		this.last_message_send = last_message_send;
+	}
+
 	public Route(String org_id, String route_no, String stop_id, String trip,
-			String latitude, String longitude, String last_message_send_pick,
-			String last_message_send_drop, String last_message_send_kg_pick,
-			String last_message_send_kg_drop) {
+			String latitude, String longitude, String last_message_send) {
 		super();
 		this.org_id = org_id;
 		this.route_no = route_no;
@@ -88,10 +90,8 @@ public class Route
 		this.trip = trip;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.last_message_send_pick = last_message_send_pick;
-		this.last_message_send_drop = last_message_send_drop;
-		this.last_message_send_kg_pick = last_message_send_kg_pick;
-		this.last_message_send_kg_drop = last_message_send_kg_drop;
+		this.last_message_send=last_message_send;
+		
 	}
 	
 	public String getOrg_name() {
@@ -110,31 +110,7 @@ public class Route
 		this.branch = branch;
 	}
 	
-	public String getLast_message_send_kg_pick() {
-		return last_message_send_kg_pick;
-	}
-	public void setLast_message_send_kg_pick(String last_message_send_kg_pick) {
-		this.last_message_send_kg_pick = last_message_send_kg_pick;
-	}
-	public String getLast_message_send_kg_drop() {
-		return last_message_send_kg_drop;
-	}
-	public void setLast_message_send_kg_drop(String last_message_send_kg_drop) {
-		this.last_message_send_kg_drop = last_message_send_kg_drop;
-	}
-	public String getLast_message_send_pick() {
-		return last_message_send_pick;
-	}
-	public void setLast_message_send_pick(String last_message_send_pick) {
-		this.last_message_send_pick = last_message_send_pick;
-	}
-	public String getLast_message_send_drop() {
-		return last_message_send_drop;
-	}
-	public void setLast_message_send_drop(String last_message_send_drop) {
-		this.last_message_send_drop = last_message_send_drop;
-	}
-	public Route() {
+		public Route() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -232,91 +232,84 @@ public class RouteController
 	public String inserting_route(HttpSession session,HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("route_no") String route_no,@ModelAttribute("route") @Valid Route route,BindingResult result,ModelMap model, Principal principal ) {
 		
 	
-	session.setAttribute("org_name",org_name);
-	session.setAttribute("branch",branch);
-	session.setAttribute("route_no",route_no);
-	
-	if(result.hasErrors())
-	   {
-		   OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
-			orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
-			model.addAttribute("orgRegistrationForm",orgRegistrationForm);
-			
-			BusRegistrationForm busregistrationform= new BusRegistrationForm();
-			busregistrationform.setBusregistration(busDAO.getBusregistration());
-			model.addAttribute("busregistrationform",busregistrationform);
-			
-			List <String> orgname=new ArrayList<String>();
-			orgname=busDAO.getorgname();
-			model.addAttribute("orgname",orgname);
-			
-			model.addAttribute("branch_array",busDAO.getBus_id(org_name));
-			model.addAttribute("route_array",studentDAO.getStud_route(org_name, branch));
-			
-			
-			return "add_route";
-	   }
-	  
-	
-	   route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
+		String[] stop_info=new String[100];
+		String[] trip_info=new String[100];
+		String[] stop_time=new String[100];
 		
-	  //this.setInfo(route, route.getRoute_from(),"both",request.getParameter("route_pick_time"),request.getParameter("route_drop_time"));
-		System.out.println(request.getParameter("org_name"));
-		System.out.println(request.getParameter("branch"));
-		System.out.println(request.getParameter("stop[]"));
-		String[] stop_locations=new String[100];
-		String[] stop_pick_drop=new String[100];
-		String[] stop_timings=new String[100];
-		int stop_count=Integer.parseInt(request.getParameter("number_of_stops"));
-		System.out.println(stop_count);
-		stop_locations=request.getParameterValues("stop[0]");
-		stop_pick_drop=request.getParameterValues("stop_pick[0]");
-		stop_timings=request.getParameterValues("particular_stop_pickup_time[0]");
-	
-		//setting the route values
-		  route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
-		  
-		String stop_location;
-		for (int i=0;i<=stop_count;i++)
-		{
-			System.out.println("request.getParameter(stop["+i+"])");
-			if(!request.getParameter("stop["+i+"]").equals(""))
-			{
-				stop_location=request.getParameter("stop["+i+"]");
-				route.setStop_id("S"+i);
-				route.setAddress(stop_location);
-				route.setLatitude(getLat(stop_location));
-				route.setLongitude(getLong(stop_location));
-				route.setTrip(request.getParameter("stop_pick["+i+"]"));
-				route.setBus_arrival_time(request.getParameter("particular_stop_pickup_time["+i+"]"));
-				routeDAO.insert_route(route);
+		stop_info=request.getParameterValues("stop[]");
+		trip_info=request.getParameterValues("stop_pick[]");
+		stop_time=request.getParameterValues("particular_stop_time[]");
+		
 				
-			}
+		int no_of_pick=0,no_of_drop=0;
+				
+		for (String pick_or_drop : trip_info) {
+			switch (Integer.parseInt(pick_or_drop)) {
+			case 0:no_of_pick++;			
+				break;
+			case 1:no_of_drop++;
+				break;
+			case 2:no_of_pick++;no_of_drop++;
+			    break;
+			default://nothing to do
+				break;
+			}			
 			
-			System.out.println(route);
-			 
-				
 		}
 		
-		/*
-			if(request.getParameter("stop_pick["+k+"]").equals("0"))
-				System.out.println(request.getParameter("stop_pick["+k+"]"));
-			this.setInfo(route, stop_location);
-		if(request.getParameter("stop_pick["+k+"]").equals("1"))
-			this.setInfo(route, stop_location);
-		if(request.getParameter("stop_pick["+k+"]").equals("2"))
-			this.setInfo(route, stop_location);
-		k++;
-		*/
-	
-		//System.out.println(request.getParameter("stop_pick["+k+"]"));
-		//route.setStop_id("S"+(k+1));
-		//this.setInfo(route, route.getRoute_to());
-		
-		//model.addAttribute("org_id",orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
-		
-		
-		
+		int pick_count=0;
+		int drop_count=no_of_drop-1;
+
+		//setting the route values
+		  route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
+		//insert route
+		for (int i=0;i<stop_info.length;i++)
+		{
+			
+			switch (Integer.parseInt(trip_info[i])) {
+			case 0:	route.setStop_id("S"+pick_count);
+					route.setAddress(stop_info[i]);
+					route.setLatitude(getLat(stop_info[i]));
+					route.setLongitude(getLong(stop_info[i]));
+					route.setTrip(trip_info[i]);
+					route.setBus_arrival_time(stop_time[i]);
+					routeDAO.insert_route(route);	
+					pick_count++;
+					break;
+			case 1:
+				route.setStop_id("S"+drop_count);
+				route.setAddress(stop_info[i]);
+				route.setLatitude(getLat(stop_info[i]));
+				route.setLongitude(getLong(stop_info[i]));
+				route.setTrip(trip_info[i]);
+				route.setBus_arrival_time(stop_time[i]);
+				routeDAO.insert_route(route);	
+				drop_count--;
+				break;
+			case 2:	
+				route.setStop_id("S"+pick_count);
+				route.setAddress(stop_info[i]);
+				route.setLatitude(getLat(stop_info[i]));
+				route.setLongitude(getLong(stop_info[i]));
+				route.setTrip("0");
+				route.setBus_arrival_time(stop_time[i]);
+				routeDAO.insert_route(route);	
+				pick_count++;
+				route.setStop_id("S"+drop_count);
+				route.setAddress(stop_info[i]);
+				route.setLatitude(getLat(stop_info[i]));
+				route.setLongitude(getLong(stop_info[i]));
+				route.setTrip("1");
+				route.setBus_arrival_time(stop_time[i]);
+				routeDAO.insert_route(route);
+				drop_count--;
+				break;
+			default:
+				break;
+			}
+			
+			
+		}
 		routeDAO.insert_message_log(request.getParameter("route_no"));
 		
 		RouteViewForm routeViewForm=new RouteViewForm();
@@ -327,13 +320,10 @@ public class RouteController
 		routeViewForm1.setRoute_views(routeDAO.getRoutes());
 		model.addAttribute("routeViewForm1",routeViewForm1);
 		
-		
-		
 		return "view_route";
 	
 }
 	
-
 	
 	
 	public String getLat(String Stoplocation)

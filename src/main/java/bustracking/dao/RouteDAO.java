@@ -111,9 +111,9 @@ public class RouteDAO {
 		}
 		List<Route_view> stops=new ArrayList<Route_view>();
 		try{
-			resultSet = statement.executeQuery("select t2.vechicle_reg_no,t1.route_no,t1.stop_id from tbl_bus_route as t1 join tbl_vechicle as t2 on t1.route_no=t2.route_no where t1.route_no='"+route_no+"'");
+			resultSet = statement.executeQuery("select t2.vechicle_reg_no,t1.route_no,t1.stop_id,t1.trip from tbl_bus_route as t1 join tbl_vechicle as t2 on t1.route_no=t2.route_no where t1.route_no='"+route_no+"'");
 			while(resultSet.next()){
-		     stops.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no")));
+		     stops.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip")));
 			}
 		
 	    }catch(Exception e){
@@ -144,27 +144,23 @@ public class RouteDAO {
 		}
 		List<Route_view> stops=new ArrayList<Route_view>();
 		try{
-			resultSet = statement.executeQuery("select t2.vechicle_reg_no,t1.route_no,t1.stop_id from tbl_bus_route as t1 join tbl_vechicle as t2 on t1.route_no=t2.route_no where t2.route_no='"+route_no+"'");
+			resultSet = statement.executeQuery("select t2.vechicle_reg_no,t1.route_no,t1.stop_id,t1.trip from tbl_bus_route as t1 join tbl_vechicle as t2 on t1.route_no=t2.route_no where t2.route_no='"+route_no+"'");
 			while(resultSet.next()){
-		     stops.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no")));
+		     stops.add(new Route_view(resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("vechicle_reg_no"),resultSet.getString("trip")));
 			}
 			System.out.println("inserting...");
 			DateTimeZone dateTimeZone=DateTimeZone.forID("Asia/Kolkata");
-			LocalDate localDate=new LocalDate();
-			localDate=localDate.minusDays(1);
-			
-			
+			LocalDate localDate=new LocalDate(dateTimeZone);
+			localDate=localDate.minusDays(1);			
 			
 			for (Route_view route_view: stops) {
-				PreparedStatement preparedStatement=con.prepareStatement("Insert into tbl_message_log(vechicle_reg_no,route_no,stop_id,last_message_send_pick,last_message_send_drop,last_message_send_kg_pick,last_message_send_kg_drop,reached) values(?,?,?,?,?,?,?,?)");
+				PreparedStatement preparedStatement=con.prepareStatement("Insert into tbl_message_log(vechicle_reg_no,route_no,stop_id,trip,last_message_send,reached) values(?,?,?,?,?,?)");
 				preparedStatement.setString(1,route_view.getBus_reg_no());
 				preparedStatement.setString(2,route_view.getRoute_no());
 	        	preparedStatement.setString(3,route_view.getStop_id());
-	        	preparedStatement.setString(4,localDate.toString());
+	        	preparedStatement.setString(4,route_view.getTrip());
 	        	preparedStatement.setString(5,localDate.toString());
-	        	preparedStatement.setString(6,localDate.toString());
-	        	preparedStatement.setString(7,localDate.toString());
-	        	preparedStatement.setString(8,"0");
+	        	preparedStatement.setString(6,localDate.toString());	        	
 	        	preparedStatement.execute();
 				flag=1;
 			}
