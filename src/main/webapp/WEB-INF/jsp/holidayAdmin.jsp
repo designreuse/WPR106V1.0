@@ -29,14 +29,14 @@ $(window).load(function(){
 		});
 jQuery(function () {
     jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    jQuery('#endDate1').datetimepicker({ format: 'yyyy-MM-dd' ,pickTime: false});
     
     jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
 	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
-	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+	jQuery('#endDate').datetimepicker({ format: 'yyyy-MM-dd' ,pickTime: false});
 
 	jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate2').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    jQuery('#endDate2').datetimepicker({ format: 'yyyy-MM-dd' ,pickTime: false});
     
 	jQuery("#startDate").on("dp.change",function (e) {
     jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
@@ -262,9 +262,9 @@ select.add(option, 0); */
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script>
 $(function() {
-	$("#datepicker").datepicker({ format: 'YYYY/MM/dd', minDate: 0});
-	$("#datepicker1").datepicker({ format: 'YYYY/MM/dd', minDate: 0});
-	$("#datepicker2").datepicker({ format: 'YYYY/MM/dd', minDate: 0});
+	$("#datepicker").datepicker({ format: 'YYYY-MM-dd', minDate: 0});
+	$("#datepicker1").datepicker({ format: 'YYYY-MM-dd', minDate: 0});
+	$("#datepicker2").datepicker({ format: 'YYYY-MM-dd', minDate: 0});
 });
 </script>
 <script>

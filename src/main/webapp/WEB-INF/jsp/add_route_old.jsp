@@ -291,19 +291,55 @@ p {
 			                  </span>
 								<br/><font color="Red" size="+1"><form:errors path="route.route_no"></form:errors></font>
 								</td>
-							</tr>							
+							</tr>
+							<%-- <tr class="row1">
+								<td valign="middle" align="right" class="input_txt" width="30%"><span
+									class="err">*</span> Trip :</td>
+								<td valign="top" align="left" class="input_txt" width="70%">
+								<select name="trip" class="input_txtbx_height">
+								<option value="Pick Up"> Pick Up</option>
+								<option value="Drop"> Drop</option>
+								<option value="KG Drop"> KG Drop</option>
+								</select><br />
+								</td>
+							</tr>
+							<tr class="row2" style="margin-top:20px;">
+								<td valign="middle" align="right" class="input_txt"><span
+									class="err">*</span> Bus Registration No :</td>
+								<td valign="top" align="left" class="input_txt" width="70%">
+								<select name="vechicle_reg_no" class="input_txtbx_height">
+								<option value="">-- Select Registration No--</option>
+								<c:forEach items="${busregistrationform.busregistration}" var="BusRegistration" varStatus="status">
+        				        <option value="${BusRegistration.vechicle_reg_no}">${BusRegistration.vechicle_reg_no}</option>
+			                  </c:forEach>
+
+								</select>
+									&nbsp;&nbsp;<br />
+								</td>
+							</tr> 
+							
+							<tr class="row2" style="margin-top:20px;">
+								<td valign="middle" align="right" class="input_txt"><span
+									class="err">*</span> Bus Stop Address  :</td>
+								<td valign="top" align="left" class="input_txt" width="70%"  >
+								<input type="text" name="stopaddress" class="input_txtbx_height" id="stop_address" onblur="check()" value="" />
+									&nbsp;&nbsp;<br />
+								</td>
+							</tr>
+							--%>
 							<tr class="row1" style="margin-top:20px;">
 								<td valign="bottom" align="right" class="input_txt" ><span
 									class="err">*</span>&nbsp;&nbsp;
-									<input type="button" id="addScnt" value="Add Bus Stops :" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;">
-									 <input type="hidden" id="number_of_stops" name="number_of_stops"></td>
+									<a href="#" id="addScnt" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;">
+									 Add Bus Stops :</a><input type="hidden" id="number_of_stops" name="number_of_stops"></td>
 								<td valign="top" align="left" class="input_txt" width="70%">
 								<div  id="p_scents" style="height:auto;overflow:auto;">
 								
 								</div>
+								<%-- <font color="Red" size="+1"><form:errors path="route.number_of_stops"></form:errors></font> --%>
 								</td>
 								</tr>
-			
+											
 							<tr class="row1">
                   
                   <td valign="top" align="left"></td>
@@ -331,6 +367,41 @@ p {
 	</div></div>				
 <script
 	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+<!-- <script type="text/javascript">
+//This example adds a search box to a map, using the Google Place Autocomplete
+//feature. People can enter geographical searches. The search box will return a
+//pick list containing a mix of places and predicted search terms.
+$(function() {
+	
+        var scntDiv = $('#p_scents');
+        var i = $('#p_scents p').size();
+        //alert(i);
+        var j=0;
+        $('#addScnt').live('click', function() {
+        	//alert(i);
+        	$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:400px;background-color:#E5E5E5;"><label for="p_scnts"><input type="text"  size="20" class="input_txtbx_height" id="stop_info_'+i+'" name="stop['+i+']" value="" placeholder="Stop Location" /></label><br/><br/><input type="radio"  name="stop_pick['+i+']" id="stop_pick_'+i+'" value="0" checked>Pick up<input type="radio"  name="stop_pick['+i+']" value="1" id="stop_drop_'+i+'">Drop<input type="radio"  name="stop_pick['+i+']" value="2" id="stop_both_'+i+'">KG Drop<br/><br/><input type="text" name="particular_stop_pickup_time['+i+']" id="datepicker" placeholder="Bus Arrival time" class="input_txtbx_height" style="width=100px; value=""/><br/><br/>&nbsp;&nbsp;&nbsp;<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
+        	document.getElementById("number_of_stops").value=i;
+        	var autocomplete_stop = new google.maps.places.Autocomplete(document.getElementById("stop_info_"+i));
+            i++;
+            return false;
+    });
+    
+    $('#remScnt').live('click', function() { 
+               $(this).parents('p').remove();
+                    i--;
+           
+		});
+});
+
+function initialize() {
+
+	var autocomplete_stop_address = new  google.maps.places.Autocomplete(document.getElementById('stop_address'));
+	var autocomplete_route_stop = new google.maps.places.Autocomplete(document.getElementById('route_stop'));
+	
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script> -->
+
 <script type="text/javascript">
 //This example adds a search box to a map, using the Google Place Autocomplete
 //feature. People can enter geographical searches. The search box will return a
@@ -343,7 +414,7 @@ $(function() {
         var j=0;
         $('#addScnt').live('click', function() {
         	//alert(i);
-        	$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:700px;background-color:#E5E5E5;"><label for="p_scents"><input type="text"  size="500" class="input_txtbx_height" style="width:700px;" id="stop_info_'+i+'" name="stop[]" value="" placeholder="Stop Location" /></label><select name="stop_pick[]"><option value="0">Pick</option><option value="1">Drop</option><option value="2">Both</option></select>&nbsp<input type="text" name="particular_stop_time[]" id="endDate" placeholder="Bus Arrival time" class="input_txtbx_height" style="width=100px; value=""/><font color="Red" size="+1">&nbsp<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
+        	$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:400px;background-color:#E5E5E5;"><label for="p_scents"><input type="text"  size="20" class="input_txtbx_height" id="stop_info_'+i+'" name="stop['+i+']" value="" placeholder="Stop Location" /></label><input type="radio"  name="stop_pick['+i+']" id="stop_pick_'+i+'" value="0" checked>Pick up<input type="radio"  name="stop_pick['+i+']" value="1" id="stop_drop_'+i+'">Drop<input type="radio"  name="stop_pick['+i+']" value="2" id="stop_both_'+i+'">KG Drop<input type="text" name="particular_stop_pickup_time['+i+']" id="endDate" placeholder="Bus Arrival time" class="input_txtbx_height" style="width=100px; value=""/><span class="add-on" style="margin-top:-15px;"><br/><font color="Red" size="+1"><br/>&nbsp;&nbsp;&nbsp;<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
         	document.getElementById("number_of_stops").value=i;
         	var autocomplete_stop = new google.maps.places.Autocomplete(document.getElementById("stop_info_"+i));
             i++;

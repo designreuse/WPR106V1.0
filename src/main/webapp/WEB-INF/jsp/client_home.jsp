@@ -86,6 +86,9 @@
 								          <c:when test="${clienthome1.device_status eq 1}">
 								          <img src="resources/images/Map_Markers/green_round_button.png" title="Traceable" style="width:15px;height:15px;"/>
 								          </c:when>
+								           <c:when test="${clienthome1.device_status eq 3}">
+								          <img src="resources/images/Map_Markers/orange_round_button.png" title="No Movement" style="width:15px;height:15px;"/>
+								          </c:when>
 								          <c:otherwise>
 								          <img src="resources/images/Map_Markers/yellow_round_button.jpg" title="No GPS Signal" style="width:15px;height:15px;"/>
 								         
