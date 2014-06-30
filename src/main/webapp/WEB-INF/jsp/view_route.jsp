@@ -167,12 +167,12 @@
 							
 							<div class="Panel_One_Inner">
 							
-				        <table cellpadding="0" cellspacing="0" border="0" id="report" style="width:1050px;table-layout: fixed;"  class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" id="report" style="width:1050px;table-layout: fixed;" class="order-table table">
 							<!-- <tr><td colspan="7"style="overflow:hidden;width:1050px"></td></tr> -->
         					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         					
-        				       				<tr class="click_row">
+        				       				 <tr class="click_row"> 
         				            		<td valign="middle" align="left"style="overflow:hidden; width:210px">${route.org_name}</td>
 					     		     		<td valign="top" align="left" style="overflow:hidden;width:150px">${route.branch}</td> 
 											<td valign="top" align="left" style="overflow:hidden;width:110px">${route.bus_reg_no}</td>

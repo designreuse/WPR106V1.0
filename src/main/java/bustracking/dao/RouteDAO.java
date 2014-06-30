@@ -251,6 +251,38 @@ public class RouteDAO {
 	}
 	
 	
+	//Get routes from route table
+	
+	public List<Route_view> getRoute(String route_no,String org_name,String branch){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Route_view> routes=new ArrayList<Route_view>();
+		try{
+			resultSet = statement.executeQuery("Select route_no from tbl_bus_route where route_no='"+route_no+"' and org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch ='"+branch+"')");
+			while(resultSet.next()){
+		     routes.add(new Route_view(resultSet.getString("route_no")));
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return routes;
+		
+	}
 	// Show full Details of Route in Client Side
 	
 		public List<Route_view> getRoutes_for_detail_view_client(String route_no){
