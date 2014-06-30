@@ -144,16 +144,7 @@ jQuery(function () {
           						           </c:when>
           						           </c:choose>
           						           </td>
-          						           <td valign="top" align="left" width="8%">
-          						           <c:choose>
-          						           <c:when test="${clientvechicleinformation.reached==0}">
-          						           <c:out value="No"></c:out>
-          						           </c:when>
-          						           <c:when test="${clientvechicleinformation.reached==1}">
-          						           <c:out value="Yes"></c:out>
-          						           </c:when>
-          						           </c:choose>
-          						           </td>
+          						           <td valign="top" align="left" width="8%">${clientvechicleinformation.reached}</td>        						                						           </td>
           						           <td valign="top" align="left" width="15%">${clientvechicleinformation.is_pick_message_send}</td> 
 											
 								</tr>

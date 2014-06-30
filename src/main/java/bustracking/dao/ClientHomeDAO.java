@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import org.joda.time.DateTimeZone;
+import org.joda.time.LocalDate;
+
 import bustracking.model.ClientHome;
 import bustracking.model.OrgRegistration;
 import bustracking.model.SuperAdminHome;
@@ -110,10 +113,14 @@ public List<ClientHome> vechicle_traveled_information( String org_id){
 	}
 	List<ClientHome> clientVechicle=new ArrayList<ClientHome>();
     try{
-		resultSet = statement.executeQuery("select t2.last_message_send_pick,t2.vechicle_reg_no,t1.route_no,t1.stop_id,t1.address,t1.trip,t2.reached,t2.is_pick_message_send from tbl_bus_route as t1 join tbl_message_log as t2 on t1.route_no=t2.route_no where t1.stop_id=t2.stop_id and org_id='"+org_id+"'");
+		//resultSet = statement.executeQuery("select t2.last_message_send_pick,t2.vechicle_reg_no,t1.route_no,t1.stop_id,t1.address,t1.trip,t2.reached,t2.is_pick_message_send from tbl_bus_route as t1 join tbl_message_log as t2 on t1.route_no=t2.route_no where t1.stop_id=t2.stop_id and org_id='"+org_id+"'");
+    	DateTimeZone dateTimeZone=DateTimeZone.forID("Asia/Kolkata");
+    	LocalDate localDate=new LocalDate(dateTimeZone);
+    	
+    	resultSet = statement.executeQuery("select t1.*,t2.address from tbl_message_log as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no and t1.stop_id=t2.stop_id and t1.trip=t2.trip where t1.reached='"+localDate+"' order by t1.vechicle_reg_no");
 		while(resultSet.next()){
 			
-			clientVechicle.add(new ClientHome(resultSet.getString("last_message_send_pick"),resultSet.getString("vechicle_reg_no"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("address"),resultSet.getString("trip"),resultSet.getString("reached"),resultSet.getString("is_pick_message_send")));
+			clientVechicle.add(new ClientHome(localDate.toString(),resultSet.getString("vechicle_reg_no"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("address"),resultSet.getString("trip"),resultSet.getString("reached"),resultSet.getString("last_message_send")));
 		}
     }catch(Exception e){
     	System.out.println(e.toString());
@@ -184,10 +191,11 @@ public List<ClientHome> vechicle_information_search(String org_id,String vechicl
 	}
 	List<ClientHome> clientVechicle=new ArrayList<ClientHome>();
     try{
-		resultSet = statement.executeQuery("select t2.last_message_send_pick,t2.vechicle_reg_no,t1.route_no,t1.stop_id,t1.address,t1.trip,t2.reached,t2.is_pick_message_send from tbl_bus_route as t1 join tbl_message_log as t2 on t1.route_no=t2.route_no where t1.stop_id=t2.stop_id and org_id='"+org_id+"' and t2.vechicle_reg_no='"+vechicle_reg_no+"' and (t2.last_message_send_pick>='"+from_date+"'and t2.last_message_send_pick<='"+to_date+"')");
+    	String cmd_search="select t2.last_message_send,t2.vechicle_reg_no,t1.route_no,t1.stop_id,t1.address,t1.trip,t2.reached from tbl_bus_route as t1 join tbl_message_log as t2 on t1.route_no=t2.route_no where t1.stop_id=t2.stop_id and org_id='"+org_id+"' and t2.vechicle_reg_no='"+vechicle_reg_no+"' and (t2.last_message_send>='"+from_date+"'and t2.last_message_send<='"+to_date+"')";
+		resultSet = statement.executeQuery(cmd_search);
 		while(resultSet.next()){
 			
-			clientVechicle.add(new ClientHome(resultSet.getString("last_message_send_pick"),resultSet.getString("vechicle_reg_no"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("address"),resultSet.getString("trip"),resultSet.getString("reached"),resultSet.getString("is_pick_message_send")));
+			clientVechicle.add(new ClientHome(resultSet.getString("last_message_send"),resultSet.getString("vechicle_reg_no"),resultSet.getString("route_no"),resultSet.getString("stop_id"),resultSet.getString("address"),resultSet.getString("trip"),resultSet.getString("reached"),resultSet.getString("last_message_send")));
 		}
     }catch(Exception e){
     	System.out.println(e.toString());
