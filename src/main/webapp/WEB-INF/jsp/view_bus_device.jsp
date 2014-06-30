@@ -211,7 +211,7 @@
 					         	<td valign="top" align="left" width="12%">Sim Card No</td>
 					         	
 					         	<td valign="top" align="left" width="16.6%">Admin ip</td>
-					         	<td valign="top" align="left" width="20%">Configuration Date</td>
+					         	<td valign="top" align="left" width="20%">Is Assigned</td>
           						<td valign="top" align="left" width="10%">Created by</td>  
           						<td valign="top" align="left" width="13%">Device Status</td>        					
           						<td valign="top" align="left" width="21%">Action</td>
@@ -231,7 +231,19 @@
 										
 											
 											<td valign="top" align="left" width="16.6%">${deviceRegistrations.adminip}</td>
-											<td valign="top" align="left" width="18%">${deviceRegistrations.configuration_date}</td>
+											<td valign="top" align="left" width="18%">
+											 <c:choose>
+											<c:when test="${deviceRegistrations.is_assigned==1}">
+											<c:out value="Assigned"></c:out>
+											</c:when>
+											<c:when test="${deviceRegistrations.is_assigned==0}">
+											<c:out value="Not Assigned"></c:out>
+											</c:when>
+											<c:otherwise>
+											<c:out value=""></c:out>
+											</c:otherwise>
+											</c:choose> 
+											</td>
 											<td valign="top" align="left" width="10%">${deviceRegistrations.create_user_id}</td>
 											<td valign="top" align="left" width="10%">
 											

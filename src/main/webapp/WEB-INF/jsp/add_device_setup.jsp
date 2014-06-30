@@ -137,14 +137,29 @@ jQuery(function () {
 				                	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="modelid" onblur="modelcheck('modelid')" name="model_no" oninput="validatealphanum_device_model()" value="${devicesimsetup.model_no}" />
 				                   <br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.model_no"></form:errors></font>
 				                  </td>
-				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Sim Card Number :</td>
+				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> APN :</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" width="60%" id="simno_id" maxlength="10" simno('simno_id')" oninput="validatenum_sim()" name="sim_card_number" value="${devicesimsetup.sim_card_number}" />
-				                  	
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_card_number"></form:errors></font>
-				                  </td>
+				                  <div id="info" >
+				                   
+				        <c:choose>
+				        <c:when test="${fn:length(apn_array) gt 0}">
+				        <select  style="width:220px;margin-top:-4px;" id="apn_id" name="apn" >
+				                 	<option selected>--Select APN--</option>
+							  		<c:forEach items="${apn_array}" var="apn1" >
+							  		<option value="${apn1}" <c:if test="${apn1==apn}"><c:out value="Selected"/></c:if>>${apn1}</option>
+							  		</c:forEach>
+								    </select>
+				        </c:when>
+				        <c:otherwise>
+				        <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;margin-top:-4px;">  
+     					 <option selected value="">--Select APN--</option>  
+      					</select>
+				        </c:otherwise>
+				        </c:choose>
+				        
+      					</div>	
 				               
-				                  
+				           <br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.apn"></form:errors></font> </td>        
 				                </tr>
 				              <tr class="row1"><td width="10%"></td>
 				              <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Procured Date:</td>
@@ -158,16 +173,11 @@ jQuery(function () {
 					</div>
 				                   	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.device_procured_date"></form:errors></font>
 				                  </td>
-				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Procured Date:</td>
+				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Card Number:</td>
 				                  <td valign="center" align="left" class="input_txt" width="60%" >
-				                  	<div class='input-group date' id='endDate1' >
-												<input type="text"  id="datepicker" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${devicesimsetup.sim_procured_date}" readonly="readonly" style="height:27px;width:190px;float:left;">
-				                  				<!-- <input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
-												 --><span class="add-on" style="margin-top:0px;float:left">
-												<img src="resources/images/date.png" width="24" height="35"/>
-        										</span>
-					</div>
-				                  	<br><br><br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_procured_date"></form:errors></font>
+				                  <input type="text" class="org_input_txtbx_height1" width="60%" id="simno_id" maxlength="10" simno('simno_id')" oninput="validatenum_sim()" name="sim_card_number" value="${devicesimsetup.sim_card_number}" />
+				                  	
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_card_number"></form:errors></font>
 				                  </td>
 				                 
 				                </tr>
@@ -179,10 +189,16 @@ jQuery(function () {
 				                  	<input type="text" name="device_invoice_number" class="org_input_txtbx_height1" id="invoice_id" onblur="deviceinvoice('invoiceid')" oninput="validatealphanum_device_invoice()" value="${devicesimsetup.device_invoice_number}">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.device_invoice_number"></form:errors></font>
 				                  </td>
-									<td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Invoice Number:</td>
+									<td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Procured Date:</td>
 				                  <td valign="center" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="sim_invoice_id" onblur="siminvoice('sim_invoice_id')" oninput="validatealphanum_sim_invoice()" name="sim_invoice_number" value="${devicesimsetup.sim_invoice_number}" />
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_invoice_number"></form:errors></font>
+				                  	<div class='input-group date' id='endDate1' >
+												<input type="text"  id="datepicker" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${devicesimsetup.sim_procured_date}" readonly="readonly" style="height:27px;width:190px;float:left;">
+				                  				<!-- <input type="text" id="timepicker2"	name="pickup_start_time"  style="height:24px;width:150px;float:left;"/>
+												 --><span class="add-on" style="margin-top:0px;float:left">
+												<img src="resources/images/date.png" width="24" height="35"/>
+        										</span>
+					</div>
+				                  	<br><br><br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_procured_date"></form:errors></font>
 				                  </td>
 				                </tr>
 				                <tr class="row1">
@@ -196,24 +212,10 @@ jQuery(function () {
 				                  
   
 				                   </td>
-				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim tested ?:</td>
+				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Invoice Number:</td>
 				                  <td valign="top" align="left" class="input_txt" >
-				                  <c:choose>
-				                  <c:when test="${sim_card_tested==1}">
-				                  <input type="radio" id="id_yes_active" name="sim_card_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<input type="radio" id="id_no_active" name="sim_card_tested" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
-				                  </c:when>
-				                  <c:when test="${sim_card_tested==0}">
-				                  <input type="radio" id="id_yes_active" name="sim_card_tested" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<input type="radio" id="id_no_active" name="sim_card_tested" value="0" checked >&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
-				                  </c:when>
-				                  <c:otherwise>
-				                  <input type="radio" id="id_yes_active" name="sim_card_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<input type="radio" id="id_no_active" name="sim_card_tested" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
-				                  </c:otherwise>
-				                  </c:choose>
-				                  	
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_card_tested"></form:errors></font>
+				                  <input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="sim_invoice_id" onblur="siminvoice('sim_invoice_id')" oninput="validatealphanum_sim_invoice()" name="sim_invoice_number" value="${devicesimsetup.sim_invoice_number}" />
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_invoice_number"></form:errors></font>
 				                  </td>
 				                </tr>
 				                <tr class="row2">
@@ -238,24 +240,24 @@ jQuery(function () {
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.device_tested"></form:errors></font>
 				                  </td>
 				                
-				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Device-Sim Paired ? :</td>
+				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Tested ? :</td>
 				                  <td valign="top" align="left" class="input_txt"  >
 				                  <c:choose>
-				                  <c:when test="${device_sim_paired==1}">
-				                  <input type="radio" id="id_yes_active" name="device_sim_paired" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <c:when test="${sim_card_tested==1}">
+				                  <input type="radio" id="id_yes_active" name="sim_card_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="sim_card_tested" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
 				                  </c:when>
-				                  <c:when test="${device_sim_paired==0}">
-				                  <input type="radio" id="id_yes_active" name="device_sim_paired"  value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0" checked>&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
-				                 </c:when>
-				                 <c:otherwise>
-				                 <input type="radio" id="id_yes_active" name="device_sim_paired"  value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0" checked>&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
-				                 </c:otherwise>
+				                  <c:when test="${sim_card_tested==0}">
+				                  <input type="radio" id="id_yes_active" name="sim_card_tested" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="sim_card_tested" value="0" checked >&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                  </c:when>
+				                  <c:otherwise>
+				                  <input type="radio" id="id_yes_active" name="sim_card_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="sim_card_tested" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                  </c:otherwise>
 				                  </c:choose>
 				                  	
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.device_sim_paired"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_card_tested"></form:errors></font>
 				                  </td>
 				                
 				                </tr>
@@ -281,8 +283,37 @@ jQuery(function () {
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.device_status"></form:errors></font>
 				                  </td>
 				                
-				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Is Assigned? :</td>
+				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Device-Sim Paired? :</td>
 				                  <td valign="top" align="left" class="input_txt" >
+				                  <c:choose>
+				                  <c:when test="${device_sim_paired==1}">
+				                  <input type="radio" id="id_yes_active" name="device_sim_paired" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                  </c:when>
+				                  <c:when test="${device_sim_paired==0}">
+				                  <input type="radio" id="id_yes_active" name="device_sim_paired"  value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0" checked>&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                 </c:when>
+				                 <c:otherwise>
+				                 <input type="radio" id="id_yes_active" name="device_sim_paired"  value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
+				                  	<input type="radio" id="id_no_active" name="device_sim_paired" value="0" checked>&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
+				                 </c:otherwise>
+				                  </c:choose>
+				                  	
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.device_sim_paired"></form:errors></font>
+				                  </td>
+				                
+				                </tr>
+				                <tr class="row2">
+				                <td width="10%"></td>
+				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Password:</td>
+				                  <td valign="middle" align="left" class="input_txt" >
+				                  	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" oninput="validatepassword();" onblur="passcheck('passid')" value="${devicesimsetup.password}">
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.password"> </form:errors></font>
+				                  </td>
+				                
+				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Is Assigned?:</td>
+				                  <td valign="top" align="left" class="input_txt">
 				                  <c:choose>
 				                  <c:when test="${is_assigned==1}">
 				                  <input type="radio" id="id_yes_active" name="is_assigned" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
@@ -300,69 +331,40 @@ jQuery(function () {
 				                  
 				                  	
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
-				                  </td>
-				                
-				                </tr>
-				                <tr class="row2">
-				                <td width="10%"></td>
-				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Password:</td>
-				                  <td valign="middle" align="left" class="input_txt" >
-				                  	<input type="text" name="password" class="org_input_txtbx_height1" id="passid" oninput="validatepassword();" onblur="passcheck('passid')" value="${devicesimsetup.password}">
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.password"> </form:errors></font>
-				                  </td>
-				                
-				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Comments:</td>
-				                  <td valign="top" align="left" class="input_txt">
-				                  	<textarea  name="comments" class="textareanew" rows="3" style="width:220px;" id="comments_id" onblur="com('comments_id')" oninput="validateAlpha_comments();">${devicesimsetup.comments}</textarea>
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.comments"></form:errors></font> </td>
+				                 
+				                  	</td>
 				                
 				                </tr>
 				                
 				                      <tr class="row1">
 				                      <td width="10%"></td>
-				                      <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>APN:</td>
+				                      <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Comments:</td>
 				                      <td valign="top" align="left" class="input_txt"  >
-				                      
-				                    <div id="info" >
-				                   
-				        <c:choose>
-				        <c:when test="${fn:length(apn_array) gt 0}">
-				        <select  style="width:220px;margin-top:-4px;" id="apn_id" name="apn" >
-				                 	<option selected>--Select APN--</option>
-							  		<c:forEach items="${apn_array}" var="apn1" >
-							  		<option value="${apn1}" <c:if test="${apn1==apn}"><c:out value="Selected"/></c:if>>${apn1}</option>
-							  		</c:forEach>
-								    </select>
-				        </c:when>
-				        <c:otherwise>
-				        <select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;margin-top:-4px;">  
-     					 <option selected value="">--Select APN--</option>  
-      					</select>
-				        </c:otherwise>
-				        </c:choose>
-				        
-      					</div>  
+				                      <textarea  name="comments" class="textareanew" rows="3" style="width:220px;" id="comments_id" onblur="com('comments_id')" oninput="validateAlpha_comments();">${devicesimsetup.comments}</textarea>
+				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.comments"></form:errors></font> </td>
+				                   <%--    --%> 
       					 <!-- <div id="info">
       					<select name="apn" id="apn_id" onblur="Validate1('apn_id')" style="width:220px;">  
      					 <option value="" selected>--Select APN--</option>  
       					</select>
       					</div>  -->
-     					 <br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.apn"></form:errors></font> </td>
+     					
       						
       						<td><input type="hidden" class="org_input_txtbx_height1" name="create_user_id" id="userid" onblur="usercheck('userid')" value="<sec:authentication property="principal.username" />" /></td></tr>
 				                
      
 				  
-                   <tr class="row2">
-                   <table border="0" width="80%" align="center">
+                   <tr class="row1"><td border="0" colspan="4">
+                 
+                   <table border="0" width="80%" align="right">
                    <tr>
-                   <td width="10%"></td>
-                   <td width="7%"><input type="submit" class="btn" value="Save" ></td>
-                   <td width="7%"><input type="reset" class="btn" onclick="window.location.href='changepassword'" value="Reset"></td>
-                   <td width="7%"><input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel"></td>
+                   <td width="50%" align="right"><input type="submit" class="btn" value="Save" ></td>
+                   <td width="10%"><input type="reset" class="btn" onclick="window.location.href='changepassword'" value="Reset"></td>
+                   <td ><input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel"></td>
                    </tr>
                    </table>
                    
+                   </td>
                    </tr>
                  
                   
