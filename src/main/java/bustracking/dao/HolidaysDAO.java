@@ -36,7 +36,7 @@ public class HolidaysDAO{
 		}
 		
 		try{
-			String cmd_insert = "insert into tbl_holidays(org_id,holiday_date,holiday_reason) values('"+holiday.getOrg_id()+"','"+holiday.getHoliday_date()+"','"+holiday.getHoliday_reason()+"')";
+			String cmd_insert = "insert into tbl_holidays(org_id,holiday_date,holiday_reason) values('"+holiday.getOrg_id()+"',STR_TO_DATE('"+holiday.getHoliday_date()+"','%Y-%m-%d'),'"+holiday.getHoliday_reason()+"')";
 			statement.execute(cmd_insert);
 			} catch (Exception e) {
 		System.out.println(e.toString());

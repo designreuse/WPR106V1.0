@@ -31,14 +31,14 @@ $(window).load(function(){
 		});
 jQuery(function () {
     jQuery('#startDate').datetimepicker({minDate: 0, format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate1').datetimepicker({minDate: 0, format: 'MM/dd/yyyy' ,pickTime: false,startDate:new Date()});
+    jQuery('#endDate1').datetimepicker({minDate: 0, format: 'yyyy-MM-dd' ,pickTime: false,startDate:new Date()});
     
     jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
 	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
-	jQuery('#endDate').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false,startDate:new Date()});
+	jQuery('#endDate').datetimepicker({ format: 'yyyy-MM-dd' ,pickTime: false,startDate:new Date()});
 
 	jQuery('#startDate').datetimepicker({minDate: 0, format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate2').datetimepicker({ minDate: 0,format: 'MM/dd/yyyy' ,pickTime: false,startDate:new Date()});
+    jQuery('#endDate2').datetimepicker({ minDate: 0,format: 'yyyy-MM-dd' ,pickTime: false,startDate:new Date()});
     
 	jQuery("#startDate").on("dp.change",function (e) {
     jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
