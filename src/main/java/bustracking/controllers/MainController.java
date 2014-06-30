@@ -617,6 +617,7 @@ public class MainController {
 		contactusForm.setContactus(mainDAO.getContactus());
 		model.addAttribute("contactusForm", contactusForm);
 		model.addAttribute("menu","contacts");
+		session.removeAttribute("contact");
 		return "login";
 	}
 	

@@ -3,6 +3,8 @@
 <html>
 <head>
 <title>Login Page</title> 
+ 
+ 
 <link href="<c:url value="/resources/css/newstyles/5grid/core.css" />" rel="stylesheet"  type="text/css" />
 <link href="<c:url value="/resources/css/newstyles/5grid/core-desktop.css" />" rel="stylesheet"  type="text/css" />
 <link href="<c:url value="/resources/css/newstyles/5grid/core-1200px.css" />" rel="stylesheet"  type="text/css" />
@@ -14,7 +16,7 @@
 <%-- <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet"  type="text/css" />
  --%>
  <!--[if IE 9]><link rel="stylesheet" href="css/style-ie9.css" /><![endif]-->
- <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
+<script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script>
 <style>
 .errorblock {
 	color: #ff0000;
@@ -101,6 +103,74 @@ overflow-x:hidden;
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
 	</c:if> --%>
+	<script>
+
+	function validate()	
+	{
+	document.getElementById("ferror").innerHTML="";
+	document.getElementById("lerror").innerHTML="";
+	document.getElementById("mobiderror").innerHTML="";
+	document.getElementById("eiderror").innerHTML="";
+		
+		var sub=document.getElementById("fname").value.substring(0,2);
+	
+		if(sub.substring(0,1)==' ')
+		{
+		document.getElementById("ferror").innerHTML="Invalid Firstname";
+		return false;
+		}
+		if(sub=='  ')
+			{
+			document.getElementById("ferror").innerHTML="Invalid Firstname";	
+			return false;
+			}
+		if(sub=='   ')
+		{
+		document.getElementById("ferror").innerHTML="Invalid Firstname";
+		return false;
+		}
+		if(document.getElementById("lname").value.substring(0,1)==' ')
+			{
+			document.getElementById("lerror").innerHTML="Invalid Lastname";
+			return false;
+			}
+		
+	/* if(document.getElementById("eid").value=="")
+	{
+	document.getElementById("eiderror").innerHTML="Required Field Should not be Empty";
+	
+	return false;
+	} */
+	if(document.getElementById("lname").value!='')
+		{
+		//alert(document.getElementById("lname").value.length);
+		if(document.getElementById("lname").value.length<4)
+			{
+		document.getElementById("lerror").innerHTML="Lastname must be of length 4 to 32.";
+		return false;
+			}
+		}
+	var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    
+	 if(document.getElementById("eid").value!="")
+		{
+	if(document.getElementById("eid").value.match(mail)==null)
+    {
+    	document.getElementById("eiderror").innerHTML="Invalid Email format";
+    	
+        return false;
+    }
+		}
+    if(document.getElementById("mobid").value!="")
+    	{
+    	if(document.getElementById("mobid").value.substring(0,5)=='00000')
+    		{
+    		document.getElementById("mobiderror").innerHTML="Invalid mobile format";
+    		return false;
+    		}
+    	}
+	}
+	</script>
 <div id="header-wrapper" style="overflow:hidden;background:url(resources/images/map.png) no-repeat;">
 	<header id="header" class="5grid-layout" >
 		
@@ -128,17 +198,17 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
    <strong class="ribbon_login-content"><span style="color: #fff;">Contact Us</span></strong>
 </h1>
 <br/><form action="contactus" method='post'>
-			<input type="text"name="firstname" id="fname" value="${contact.firstname}" placeholder="First Name" oninput="validateAlpha();" onblur="toTitleCase('fname')"  autocomplete="off" tabindex="1" class="txtinput_small">
+			<input type="text"name="firstname" id="fname" value="${contact.firstname}" placeholder="First Name" oninput="validateAlpha();" onblur="toTitleCase('fname')" maxlength="32" autocomplete="off" tabindex="1" class="txtinput_small">
 			
-			<input type="text" name="lastname" id="lname" value="${contact.lastname}" placeholder="Last Name" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" autocomplete="off" tabindex="2" class="txtinput_small_two">
-			<font color="Red"><form:errors path="contacts.firstname"></form:errors></font>
+			<input type="text" name="lastname" id="lname" value="${contact.lastname}" placeholder="Last Name" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" maxlength="32" autocomplete="off" tabindex="2" class="txtinput_small_two">
+			<font color="Red"><span id="ferror"><form:errors path="contacts.firstname"></form:errors></span><span id="lerror"></span></font>
     		<input type="text" name="email" id="eid" value="${contact.email}" placeholder="Email Address" autocomplete="off" tabindex="3" class="txtinput">
-			 <font color="Red" ><form:errors path="contacts.email"></form:errors></font>
-    		<input type="text" name="organisation" id="orgid" value="${contact.organisation}" placeholder="Organaisation Name" oninput="validateAlpha2();" onblur="toTitleCase2('orgid')"autocomplete="off" tabindex="4" class="txtinput">
+			 <font color="Red" ><span id="eiderror"><form:errors path="contacts.email"></form:errors></font></span>
+    		<input type="text" name="organisation" maxlength="32" id="orgid" value="${contact.organisation}" placeholder="Organaisation Name" oninput="validateAlpha2();" onblur="toTitleCase2('orgid')"autocomplete="off" tabindex="4" class="txtinput">
 			 <font color="Red" ><form:errors path="contacts.organisation"></form:errors></font>
 			<input type="text" name="mobile" id="mobid" value="${contact.mobile}" placeholder="Mobile Number" oninput="validatenum();" min="10" maxlength="10" autocomplete="off" tabindex="5" class="txtinput">
-			<font color="Red"><form:errors path="contacts.mobile"></form:errors></font>
-			<textarea name="address1" id="addr1" value="${contact.address1}" placeholder="Address Line 1"tabindex="6" class="txtblock"></textarea>
+			<font color="Red"><span id="mobiderror"><form:errors path="contacts.mobile"></form:errors></span></font>
+			<textarea name="address1" id="addr1"  placeholder="Address Line 1"tabindex="6" class="txtblock">${contact.address1}</textarea>
 			<font color="Red"  ><form:errors path="contacts.address1"></form:errors></font>
 			<%-- <textarea name="address2" id="addr2" value="${contact.address2}" placeholder="Address Line 2" tabindex="7" class="txtblock"></textarea>
 			<font color="Red" ><form:errors path="contacts.address2"></form:errors></font> --%>
@@ -146,7 +216,7 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 			<font color="Red" ><form:errors path="contacts.city"></form:errors></font>
 			<input type="text" name="state" id="stateid" value="${contact.state}" placeholder="State" oninput="validateAlpha4();" onblur="toTitleCase4('stateid')" class="txtinput" />
      		<font color="Red" ><form:errors path="contacts.state"></form:errors></font><br/>
-   			<input type="submit" value="Submit" class="btn"><input type="reset" value="Reset" class="btn" onclick="window.location.href='login'">
+   			<input type="submit" value="Submit" id="submit" class="btn" onclick="return validate()"><input type="reset" value="Reset" class="btn" onclick="window.location.href='login'">
    			</form>
 </div>
 
@@ -250,6 +320,21 @@ $(function() {
         if (e.keyCode == 32) // 32 is the ASCII value for a space
             e.preventDefault();
     });
+});
+/* $('#submit').click(function(){
+   alert("test");
+   $("#fname").on("input", function(e) {
+	   alert("test12");
+   if (e.which === 32 && !this.value.length)
+	   alert("error");
+       e.preventDefault();
+   });   
+}); */
+$(function() {
+$("#fname").on("keypress", function(e) {
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
 });
 
 function require(){

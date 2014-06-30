@@ -8,19 +8,19 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class ContactUs{
 	
-	@NotEmpty
+	@Length(min=4,max=32,message="Firstname must be of length 4 to 32.")
 	private String firstname;
 	
-	@NotEmpty
+	//@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String lastname;
 	
 	@NotEmpty
 	private String email;
 	
-	@NotEmpty
+	@Length(min=4,max=32,message="Firstname must be of length 4 to 32.")
 	private String organisation;
 	
-	@NotEmpty
+	@Length(min=10,max=10,message="Required & must be of length 10.")
 	private String mobile;
 	
 	@NotEmpty

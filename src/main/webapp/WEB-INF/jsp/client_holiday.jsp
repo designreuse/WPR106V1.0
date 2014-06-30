@@ -232,7 +232,7 @@ select.add(option, 0); */
                   <tr>
                   <td><input type="submit" class="btn" value="Save"></td>
                   <td> 
-                   <input type="button" class="btn" onclick="window.location.href='holidayadmin'" value="Reset">
+                   <input type="button" class="btn" onclick="window.location.href='clientholiday'" value="Reset">
                   </td>
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
