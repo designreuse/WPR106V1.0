@@ -30,15 +30,15 @@ $(window).load(function(){
 		    
 		});
 jQuery(function () {
-    jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate1').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false});
+    jQuery('#startDate').datetimepicker({minDate: 0, format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate1').datetimepicker({minDate: 0, format: 'MM/dd/yyyy' ,pickTime: false,startDate:new Date()});
     
     jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
 	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
-	jQuery('#endDate').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false});
+	jQuery('#endDate').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false,startDate:new Date()});
 
-	jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate2').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false});
+	jQuery('#startDate').datetimepicker({minDate: 0, format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate2').datetimepicker({ minDate: 0,format: 'MM/dd/yyyy' ,pickTime: false,startDate:new Date()});
     
 	jQuery("#startDate").on("dp.change",function (e) {
     jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
@@ -165,7 +165,7 @@ select.add(option, 0); */
 				                <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Number of Days </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
-				                  	<label><input type="radio" name="group1" id="one" onclick="onecheck()" class="radio1" data-divclass="div1" value="one" <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if>>Only One Day</label> <label><input type="radio" name="group1" class="radio2" data-divclass="div2" id="more" onclick="morecheck()" value="more" <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
+				                  	<label><input type="radio" name="group1" id="one" onclick="onecheck()" class="radio1" data-divclass="div1" value="one" checked>Only One Day</label> <label><input type="radio" name="group1" class="radio2" data-divclass="div2" id="more" onclick="morecheck()" value="more" <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
 								<br/><font color="Red" size="+1"><form:errors path="holidays.group1"></form:errors></font>
 								</td>
 				                </tr></table>
@@ -181,7 +181,7 @@ select.add(option, 0); */
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
         										</div>
-        										<br/><span id="requires" style="color: red;"></span>
+        										<br><br><br><span id="requires" style="color: red;"></span>
 				                  </td>
 				                    
 				                     </tr></table></div>
@@ -196,7 +196,7 @@ select.add(option, 0); */
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
         										</div>
-        										<br/><span id="brequires" style="color: red;"></span>
+        										<br/><br><br><span id="brequires" style="color: red;"></span>
 				                  	</td>
 				                    
 				                     </tr></table><table cellpadding="0" cellspacing="0" border="0" width="100%" >
@@ -210,7 +210,7 @@ select.add(option, 0); */
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
         										</div>
-        										<br/><span id="brequires1" style="color: red;"></span></td>
+        										<br/><br><br><br><span id="brequires1" style="color: red;"></span></td>
 				                  	</td>
 				                    
 				                     </tr></table></div>
@@ -230,7 +230,36 @@ select.add(option, 0); */
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="btn" value="Save"></td>
+                  <td><input type="submit" class="btn" value="Save" onclick=" return validate('this')"></td>
+                  <script>
+          function validate()
+          {
+              
+        	  if(document.getElementById("one").checked==true){
+        			/* alert("nbnbn"); */
+        			document.getElementById("oneday").style.display="block";
+        			document.getElementById("moreday").style.display="none";
+        			
+        			if(document.getElementById("hdate").value==""){
+        				document.getElementById("requires").innerHTML="Required Field Should not be Empty";
+        				return false;
+        	        }
+        			
+        		}
+        	  var startDate = $('#fdate').val();
+                  var endDate =$('#tdate').val();
+
+if(startDate!='' && endDate!='')
+	{
+if (Date.parse(endDate)<Date.parse(startDate)){
+                	 document.getElementById("brequires1").innerHTML="To date must be greater than or equal to From date";                	
+                	
+                 return false;
+                  }
+	}
+          }
+                 
+                  </script>
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='clientholiday'" value="Reset">
                   </td>
@@ -305,15 +334,12 @@ function morecheck()
 	
 $(window).load(function(){
 
-	/* alert("checking"); */
+	
 	if(document.getElementById("one").checked==true){
 		/* alert("nbnbn"); */
 		document.getElementById("oneday").style.display="block";
-		document.getElementById("moreday").style.display="none";
+		document.getElementById("moreday").style.display="none";		
 		
-		if(document.getElementById("hdate").value==""){
-			document.getElementById("requires").innerHTML="Required Field Should not be Empty";
-        }
 		
 	}
 	
