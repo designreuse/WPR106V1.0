@@ -27,9 +27,6 @@ public class ContactUs{
 	private String address1;
 	
 	@NotEmpty
-	private String address2;
-	
-	@NotEmpty
 	private String state;
 	
 	@NotEmpty
@@ -41,8 +38,7 @@ public class ContactUs{
 	}
 
 	public ContactUs(String firstname, String lastname, String email,
-			String organisation, String mobile, String address1,
-			String address2, String state, String city) {
+			String organisation, String mobile, String address1, String state, String city) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -50,7 +46,6 @@ public class ContactUs{
 		this.organisation = organisation;
 		this.mobile = mobile;
 		this.address1 = address1;
-		this.address2 = address2;
 		this.state = state;
 		this.city = city;
 	}
@@ -102,15 +97,7 @@ public class ContactUs{
 	public void setAddress1(String address1) {
 		this.address1 = address1;
 	}
-
-	public String getAddress2() {
-		return address2;
-	}
-
-	public void setAddress2(String address2) {
-		this.address2 = address2;
-	}
-
+	
 	public String getState() {
 		return state;
 	}

@@ -64,12 +64,12 @@ public class MainDAO {
 		}
 		  try{
 			  System.out.println("inserting");
-			  String cmd_insert="insert into tbl_contact_us(firstname,lastname,email,organisation,mobile,address1,address2,city,state) values('"+contacts.getFirstname()+"','"+contacts.getLastname()+"','"+contacts.getEmail()+"','"+contacts.getOrganisation()+"','"+contacts.getMobile()+"','"+contacts.getAddress1()+"','"+contacts.getAddress2()+"','"+contacts.getCity()+"','"+contacts.getState()+"')"; 
+			  String cmd_insert="insert into tbl_contact_us(firstname,lastname,email,organisation,mobile,address1,city,state) values('"+contacts.getFirstname()+"','"+contacts.getLastname()+"','"+contacts.getEmail()+"','"+contacts.getOrganisation()+"','"+contacts.getMobile()+"','"+contacts.getAddress1()+"','"+contacts.getCity()+"','"+contacts.getState()+"')"; 
 			  statement.execute(cmd_insert);
 			  System.out.println("records to be inserted.........");
 			 
 			
-			  emailSender.contact_sendEmail("vino.baskaran8@gmail.com","bustracking@gmail.com","Contact Us Information",contacts.getFirstname(),contacts.getLastname(),contacts.getEmail(),contacts.getOrganisation(),contacts.getMobile(),contacts.getAddress1(),contacts.getAddress2(),contacts.getCity(),contacts.getState());
+			  emailSender.contact_sendEmail("vino.baskaran8@gmail.com","bustracking@gmail.com","Contact Us Information",contacts.getFirstname(),contacts.getLastname(),contacts.getEmail(),contacts.getOrganisation(),contacts.getMobile(),contacts.getAddress1(),contacts.getCity(),contacts.getState());
 			  
 			  emailSender.reply_sendEmail(contacts.getEmail(), "bustracking@gmail.com", "Reply mail",contacts.getFirstname(),contacts.getLastname());
 			  
@@ -111,7 +111,6 @@ public class MainDAO {
 						.getString("organisation"), resultSet
 						.getString("mobile"), resultSet
 						.getString("address1"), resultSet
-						.getString("address2"), resultSet
 						.getString("city"), resultSet
 						.getString("state")));
 			}

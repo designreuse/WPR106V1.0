@@ -140,13 +140,13 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 			<font color="Red"><form:errors path="contacts.mobile"></form:errors></font>
 			<textarea name="address1" id="addr1" value="${contact.address1}" placeholder="Address Line 1"tabindex="6" class="txtblock"></textarea>
 			<font color="Red"  ><form:errors path="contacts.address1"></form:errors></font>
-			<textarea name="address2" id="addr2" value="${contact.address2}" placeholder="Address Line 2" tabindex="7" class="txtblock"></textarea>
-			<font color="Red" ><form:errors path="contacts.address2"></form:errors></font>
+			<%-- <textarea name="address2" id="addr2" value="${contact.address2}" placeholder="Address Line 2" tabindex="7" class="txtblock"></textarea>
+			<font color="Red" ><form:errors path="contacts.address2"></form:errors></font> --%>
 			<input type="text" name="city" id="cityid" value="${contact.city}" placeholder="City" oninput="validateAlpha3();" onblur="toTitleCase3('cityid')"class="txtinput"/>
 			<font color="Red" ><form:errors path="contacts.city"></form:errors></font>
 			<input type="text" name="state" id="stateid" value="${contact.state}" placeholder="State" oninput="validateAlpha4();" onblur="toTitleCase4('stateid')" class="txtinput" />
      		<font color="Red" ><form:errors path="contacts.state"></form:errors></font><br/>
-   			<input type="submit" value="Submit" class="btn"><input type="reset" value="Reset" class="btn">
+   			<input type="submit" value="Submit" class="btn"><input type="reset" value="Reset" class="btn" onclick="window.location.href='login'">
    			</form>
 </div>
 

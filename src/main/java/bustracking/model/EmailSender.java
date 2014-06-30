@@ -79,13 +79,13 @@ public class EmailSender {
 	// Password Sending starts
 	public void contact_sendEmail(final String toEmailAddresses,
 			final String fromEmailAddress, final String subject,
-			final String firstname,final String lastname,final String email,final String organisation,final String mobile,final String address1,final String address2,final String city,final String state) {
-		pswd_sendEmail(toEmailAddresses, fromEmailAddress, subject, firstname, lastname, email, organisation, mobile,address1,address2, city, state);
+			final String firstname,final String lastname,final String email,final String organisation,final String mobile,final String address1,final String city,final String state) {
+		pswd_sendEmail(toEmailAddresses, fromEmailAddress, subject, firstname, lastname, email, organisation, mobile,address1, city, state);
 	}
 
 	private void pswd_sendEmail(final String toEmailAddresses,
 			final String fromEmailAddress, final String subject,
-			final String firstname,final String lastname,final String email,final String organisation,final String mobile,final String address1,final String address2,final String city,final String state) {
+			final String firstname,final String lastname,final String email,final String organisation,final String mobile,final String address1,final String city,final String state) {
 		MimeMessagePreparator preparator = new MimeMessagePreparator() 
 		{
 			public void prepare(MimeMessage mimeMessage) throws Exception
@@ -103,7 +103,6 @@ public class EmailSender {
 				model.put("organisation", organisation);
 				model.put("mobile", mobile);
 				model.put("address1", address1);
-				model.put("address2", address2);
 				model.put("city", city);
 				model.put("state", state);
 			

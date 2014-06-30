@@ -146,7 +146,8 @@ public List<ClientHome> vechicle_reg_no_for_vechicle_information(String org_id){
 	}
 	List<ClientHome> clientVechicle=new ArrayList<ClientHome>();
     try{
-		resultSet = statement.executeQuery("select vechicle_reg_no from tbl_vechicle where org_id='"+org_id+"'");
+		System.out.println("select vechicle_reg_no from tbl_vechicle where org_id='"+org_id+"'");
+    	resultSet = statement.executeQuery("select vechicle_reg_no from tbl_vechicle where org_id='"+org_id+"'");
 		while(resultSet.next()){
 			
 			clientVechicle.add(new ClientHome(resultSet.getString("vechicle_reg_no")));
