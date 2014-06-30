@@ -43,10 +43,11 @@
 	cursor: pointer;
 }
 body{
+ 
 
-background:url(resources/images/map.png) no-repeat;
-bacground-size:100% 100%;
-overflow-x:hidden;
+/*bacground-size:100% 100%;
+overflow-x:hidden; */
+
 }
 
 .txtfld{
@@ -171,11 +172,11 @@ overflow-x:hidden;
     	}
 	}
 	</script>
-<div id="header-wrapper" style="overflow:hidden;background:url(resources/images/map.png) no-repeat;">
+<div id="header-wrapper" style=" overflow:hidden;background:url(resources/images/map.png) no-repeat;background-size:110% 100%;">
 	<header id="header" class="5grid-layout" >
-		
+		<div class="Login_panel">
 <form name='f' action="<c:url value='j_spring_security_check' />" method='post'>
-	<div class="Login_panel">
+	
 <table cellpadding="3" cellspacing="0" border="0" width="100%"><tr>
 	<td  align="right" width="65%"></td><td width="5%" align="left" style="color:#fff;">
 Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
@@ -216,13 +217,15 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 			<font color="Red" ><form:errors path="contacts.city"></form:errors></font>
 			<input type="text" name="state" id="stateid" value="${contact.state}" placeholder="State" oninput="validateAlpha4();" onblur="toTitleCase4('stateid')" class="txtinput" />
      		<font color="Red" ><form:errors path="contacts.state"></form:errors></font><br/>
-   			<input type="submit" value="Submit" id="submit" class="btn" onclick="return validate()"><input type="reset" value="Reset" class="btn" onclick="window.location.href='login'">
+   			<span style="margin:0  0 0 120px;">
+   			<input type="submit" value="Submit" id="submit" class="btn" onclick="return validate()">
+   			<input type="reset" value="Reset" class="btn" onclick="window.location.href='login'"></span>
    			</form>
 </div>
 
 <!-- <div class="dee_copy_rights">© Copyright 2014, All rights reserved, Deemsys Inc.<br/>
 Phone: 00 91 96327 19800 - Fax: 000-111-0000</div> -->
-<div class="Login_page_footer_link">Contact Us | Terms of Use | Privacy Policy | Email-Us | Directions | Site Map</div>
+<center><div class="Login_page_footer_link">Contact Us | Terms of Use | Privacy Policy | Email-Us | Directions | Site Map</div></center>
 
 </header>
 </div>
