@@ -69,6 +69,12 @@ public String PrintWelcome(HttpSession session,Model model, Principal prinicpal)
 public String orgregistration(HttpServletRequest request,HttpSession session,@ModelAttribute("OrgBusinessRule") OrgBusinessRule businessRule,@ModelAttribute("OrgRegistration") @Valid OrgRegistration org,BindingResult result, ModelMap model)
 {
 	session.setAttribute("organisation",org);
+	int count=orgDAO.checkUniqueorganization(org.getOrg_name(),org.getBranch());
+	if(count==0)
+	{
+		model.addAttribute("error",true);
+		return "org_registration";
+	}
 	if(result.hasErrors())
 	{
 		return "org_registration";
@@ -153,6 +159,15 @@ public String editorg(HttpServletRequest request,@RequestParam("org_name") Strin
 @RequestMapping(value="/updateorg",method=RequestMethod.POST)
 public String updateorg(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch, @ModelAttribute ("OrgRegistration") @Valid OrgRegistration orgRegistration,BindingResult result,ModelMap model,Principal prinicipal)
 {
+	int count=orgDAO.checkUniqueorganization(org_name,branch);
+	if(count==0)
+	{
+		model.addAttribute("error",true);
+		OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
+		orgregistrationform.setOrgregistration(orgDAO.getOrgregistration_id(org_name, branch));
+		model.addAttribute("orgregistrationform", orgregistrationform);
+		return "edit_org";
+	}
 	if(result.hasErrors())
 	{
 		OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();

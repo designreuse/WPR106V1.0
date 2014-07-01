@@ -40,7 +40,7 @@
 				                  <td valign="top" align="left" class="input_txt">
 				                  <input type="hidden" value="${org_id}" name="org_id"/>
 									<input type="text" class="org_input_txtbx_height1"  id="oname" name="org_name" oninput="validateAlpha();" min="4" maxlength="32" onblur="toTitleCase('oname')"  value="${organisation.org_name}"/>
-				                  	<br/><font color="Red" size="+1"><span id="oerror"><form:errors path="OrgRegistration.org_name"></form:errors></font></span>
+				                  	<br/><font color="Red" size="+1"><c:if test="${error==true}"><c:out value="Organisation name and branch already exist"></c:out></c:if><span id="oerror"><form:errors path="OrgRegistration.org_name"></form:errors></font></span>
 				                  </td>	
 				                  
 				                  <td valign="middle" width="27.5%" align="left" class="input_txtlabel"><span class="err">*</span> Office Fax:</td>

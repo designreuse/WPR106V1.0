@@ -244,7 +244,91 @@ public class OrgRegistrationDAO{
 	}
 	
 	// Check Unique Organization and branch
-	 public boolean checkUnique(String org_name,String branch)
+	public int checkUniqueorganization(String org_name,String branch)
+	   {
+		   
+		String org_id="";
+		int count=1;
+		Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+	         boolean result=false;
+	          try 
+	          {
+				resultSet = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"'");
+			    if(resultSet.next())
+			    {
+			    	org_id=resultSet.getString("count");
+			    }
+			  if(Integer.parseInt(org_id)>0)
+			  {
+				  count=0;
+			  }
+			   
+			 
+		    }catch(Exception e){
+		    	
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return count;
+		   
+	   } 
+	public int checkUniquemobile(OrgRegistration org)
+	   {
+		   
+		String org_id="";
+		int count=1;
+		Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+	         boolean result=false;
+	          try 
+	          {
+				resultSet = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line1='"+org.getOffice_land_line1()+"'");
+			    if(resultSet.next())
+			    {
+			    	org_id=resultSet.getString("count");
+			    }
+			  if(Integer.parseInt(org_id)>0)
+			  {
+				  count=0;
+			  }
+			   
+			 
+		    }catch(Exception e){
+		    	
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return count;
+		   
+	   } 
+	public boolean checkUnique(String org_name,String branch)
 	   {
 		   
 		   Connection con = null;
