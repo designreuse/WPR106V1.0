@@ -29,14 +29,14 @@ $(window).load(function(){
 		});
 jQuery(function () {
     jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate1').datetimepicker({ format: 'yyyy-MM-dd' ,pickTime: false});
+    jQuery('#endDate1').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false});
     
     jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
 	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
-	jQuery('#endDate').datetimepicker({ format: 'yyyy-MM-dd' ,pickTime: false});
+	jQuery('#endDate').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false});
 
 	jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
-    jQuery('#endDate2').datetimepicker({ format: 'yyyy-MM-dd' ,pickTime: false});
+    jQuery('#endDate2').datetimepicker({ format: 'MM/dd/yyyy' ,pickTime: false});
     
 	jQuery("#startDate").on("dp.change",function (e) {
     jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
@@ -181,7 +181,7 @@ select.add(option, 0); */
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
 				                  	<div class='input-group date' id='endDate' style="float:left;">
-				                  	<input type="text" value="" id="hdate" name="holiday_date" readonly/>
+				                  	<input type="text" value="${holidays.holiday_date}" id="hdate" name="holiday_date" readonly/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
@@ -196,7 +196,7 @@ select.add(option, 0); */
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
 				                  	<div class='input-group date' id='endDate1' style="float:left;">
-				                  	<input type="text" value=""id="fdate" name="fromdate" readonly/>
+				                  	<input type="text" value="${holidays.fromdate}" id="fdate" name="fromdate" readonly/>
 				                  	<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>
@@ -210,7 +210,7 @@ select.add(option, 0); */
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
 				                  	<div class='input-group date' id='endDate2' style="float:left;">
-				                  	<input type="text" value="" id="tdate" name="todate" readonly/>	
+				                  	<input type="text" value="${holidays.todate}" id="tdate" name="todate" readonly/>	
 				                  	<span class="add-on" style="margin-top:-15px;">
 												<img src="resources/images/date.png" width="24" height="35"/>
         										</span>

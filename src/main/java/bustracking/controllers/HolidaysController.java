@@ -171,6 +171,7 @@ public class HolidaysController{
 	       //split year, month and days from the date using StringBuffer.
 	       StringBuffer sBuffer = new StringBuffer(fromDate);
 	       String yearFrom = sBuffer.substring(6,10);
+	       System.out.println("yearFrom"+yearFrom);
 	       String monFrom = sBuffer.substring(0,2);
 	       String ddFrom = sBuffer.substring(3,5);
 	       int intYearFrom = Integer.parseInt(yearFrom);
@@ -341,6 +342,10 @@ public class HolidaysController{
 			holidaysForm.setHolidaysForms(holidaysDAO.getHolidays_client(mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("holidaysForm",holidaysForm);
 			
+			
+			HolidaysForm holidaysForm1=new HolidaysForm();
+			holidaysForm1.setHolidaysForms(holidaysDAO.getHolidays());
+			model.addAttribute("holidaysForm1",holidaysForm1);
 			
 			return "client_viewholidays";
 		}
