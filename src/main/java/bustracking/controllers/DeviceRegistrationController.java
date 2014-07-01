@@ -124,39 +124,48 @@ public class DeviceRegistrationController
 			BindingResult result,ModelMap model,Principal principal)
 	{
 		
-		
-		if(result.hasErrors())
-		{
-			
-			List <String> carriername=new ArrayList<String>();
-			carriername=deviceRegistrationDAO.getcarriername();
-			model.addAttribute("carriername",carriername);
-			
-			deviceRegistration.setCreate_user_id(principal.getName());
-			deviceRegistration.setModified_user_id(principal.getName());
-			
-			DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
-			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.getDevice(device_imei_number));
-			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
-			
-			return "edit_device";
-		}
-		
-		int status = deviceRegistrationDAO.updateDevice(deviceRegistration);
-		System.out.println(status);
+		List <String> carriername=new ArrayList<String>();
+		carriername=deviceRegistrationDAO.getcarriername();
+		model.addAttribute("carriername",carriername);
 		
 		deviceRegistration.setCreate_user_id(principal.getName());
 		deviceRegistration.setModified_user_id(principal.getName());
 		
 		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
-		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.getDevice(device_imei_number));
 		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+		
+		if(result.hasErrors())
+		{
+			
+			
+			if(!deviceRegistrationDAO.check_simcard_no_by_imei(deviceRegistration))
+				model.addAttribute("simnoexists","SimCard Number already exists!");
+			
+			return "edit_device";
+		}
+		if(!deviceRegistrationDAO.check_simcard_no_by_imei(deviceRegistration))
+		{
+			model.addAttribute("simnoexists","SimCard Number already exists!");
+			return "edit_device";
+			
+		}	
+		else
+		{
+		int status = deviceRegistrationDAO.updateDevice(deviceRegistration);
+		System.out.println(status);		
+		deviceRegistration.setCreate_user_id(principal.getName());
+		deviceRegistration.setModified_user_id(principal.getName());
+		DeviceRegistrationForm deviceRegistrationForm2=new DeviceRegistrationForm();
+		deviceRegistrationForm2.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm2);
 		
 		DeviceRegistrationForm deviceRegistrationForm1=new DeviceRegistrationForm();
 		deviceRegistrationForm1.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
 		model.addAttribute("deviceRegistrationForm1",deviceRegistrationForm1);
 		
 		return "view_bus_device";
+		}
 		
 	}
 	
@@ -526,72 +535,54 @@ public class DeviceRegistrationController
 		session.setAttribute("device_status",device_status);
 		session.setAttribute("is_assigned",is_assigned);
 		session.setAttribute("devicesimsetup",deviceRegistration);
+		List <String> carriername=new ArrayList<String>();
+		carriername=deviceRegistrationDAO.getcarriername();
+		model.addAttribute("carriername",carriername);
+		
+		DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
+		deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+		model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+		
+		model.addAttribute("apn_array",deviceRegistrationDAO.getapn(deviceRegistration.getCarrier()));
 		
 		if(result.hasErrors())
 		{
 			
-			List <String> carriername=new ArrayList<String>();
-			carriername=deviceRegistrationDAO.getcarriername();
-			model.addAttribute("carriername",carriername);
 			
-			DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
-			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
-			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
-			
-			model.addAttribute("apn_array",deviceRegistrationDAO.getapn(deviceRegistration.getCarrier()));
-			
+			if(!deviceRegistrationDAO.check_simcard_no(deviceRegistration))
+				model.addAttribute("simnoexists","SimCard Number already exists!");
+			if(!deviceRegistrationDAO.check_imei_no(deviceRegistration))
+					model.addAttribute("imeinoexists","Device Imei Number already exists!");
 			return "add_device_setup";
 		}
 		else
 		{	
-			/*if(deviceRegistrationDAO.check_simcard_no(deviceRegistration))
-				deviceRegistrationDAO.insert_device(deviceRegistration);
-			else
+		
+			if(!deviceRegistrationDAO.check_simcard_no(deviceRegistration))
 			{
 				model.addAttribute("simnoexists","SimCard Number already exists!");
-				return "add_device_registration";
+				return "add_device_setup";
 				
-			}
-			
-			if(deviceRegistrationDAO.check_device_invoice(deviceRegistration))
-				deviceRegistrationDAO.insert_device(deviceRegistration,principal.getName());
-			else
-			{
-				model.addAttribute("dinvoicenoexists","Device Invoice Number already exists!");
-				return "add_device_registration";
-				
-			}
-			
-			if(deviceRegistrationDAO.check_sim_invoice(deviceRegistration))
-				deviceRegistrationDAO.insert_device(deviceRegistration,principal.getName());
-			else
-			{
-				model.addAttribute("sinvoicenoexists","Sim Invoice Number already exists!");
-				return "add_device_registration";
-				
-			}
-			
-			if(deviceRegistrationDAO.check_imei_no(deviceRegistration))
-				deviceRegistrationDAO.insert_device(deviceRegistration,principal.getName());
-			else
+			}	
+			else if(!deviceRegistrationDAO.check_imei_no(deviceRegistration))
 			{
 				model.addAttribute("imeinoexists","Device Imei Number already exists!");
-				return "add_device_registration";
+				return "add_device_setup";
 				
-			}*/
-			
-			deviceRegistrationDAO.insert_device(deviceRegistration);
-			
-			
-			DeviceRegistrationForm deviceRegistrationForm=new DeviceRegistrationForm();
-			deviceRegistrationForm.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
-			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm);
+			}
+			else
+			{
+     		  deviceRegistrationDAO.insert_device(deviceRegistration);
+			DeviceRegistrationForm deviceRegistrationForm2=new DeviceRegistrationForm();
+			deviceRegistrationForm2.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
+			model.addAttribute("deviceRegistrationForm",deviceRegistrationForm2);
 			
 			DeviceRegistrationForm deviceRegistrationForm1=new DeviceRegistrationForm();
 			deviceRegistrationForm1.setDeviceRegistrations(deviceRegistrationDAO.get_devices());
 			model.addAttribute("deviceRegistrationForm1",deviceRegistrationForm1);
 			
 			return "view_bus_device";
+			}
 		}
 		
  

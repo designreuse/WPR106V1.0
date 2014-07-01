@@ -481,6 +481,41 @@ public class DeviceRegistrationDAO {
 	
 	//find device 10/05/2014
 	
+	
+	public boolean get_devices(String imei){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean imei_exists=false;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try{
+			String cmd_sql="Select * from tbl_device_configuration where device_imei_number='"+imei+"'";
+			resultSet=statement.executeQuery(cmd_sql);
+			
+			if(resultSet.next())
+				imei_exists=true;
+			
+			
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return imei_exists;
+		
+	   
+	}
 
 	public List<String> get_imei(String device_imei_number){
 		Connection con = null;
@@ -1052,7 +1087,44 @@ public class DeviceRegistrationDAO {
 	    
 		
 	}
-	
+	public boolean check_simcard_no_by_imei(DeviceRegistration simno){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		int count=0;
+		try{
+			
+			resultSet = statement.executeQuery("select * from tbl_device_configuration where sim_card_number='"+simno.getSim_card_number()+"' and device_imei_number!='"+simno.getDevice_imei_number()+"'");
+			if(resultSet.next())
+			{
+				count=1;
+			}
+			
+			
+		
+	    }catch(Exception e){
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    if(count==1)
+	    	return false;
+	    else
+	    	return true;
+	    
+		
+	}
 	public boolean check_device_invoice(DeviceRegistration dinvoiceno){
 		Connection con = null;
 		Statement statement = null;
