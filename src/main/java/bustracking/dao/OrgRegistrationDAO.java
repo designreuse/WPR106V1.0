@@ -324,7 +324,7 @@ public class OrgRegistrationDAO{
 			{
 				
 			
-	        	resultSet = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and office_land_line1='"+org.getOffice_land_line1()+"' or office_land_line2='"+org.getOffice_land_line1()+"' or office_fax='"+org.getOffice_land_line1()+"' or chairman_telephone_number='"+org.getOffice_land_line1()+"' or principal_telephone_number='"+org.getOffice_land_line1()+"' or transport_officer_number='"+org.getOffice_land_line1()+"'");
+	        	resultSet = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and (office_land_line1='"+org.getOffice_land_line1()+"' or office_land_line2='"+org.getOffice_land_line1()+"' or office_fax='"+org.getOffice_land_line1()+"' or chairman_telephone_number='"+org.getOffice_land_line1()+"' or principal_telephone_number='"+org.getOffice_land_line1()+"' or transport_officer_number='"+org.getOffice_land_line1()+"')");
 			    if(resultSet.next())
 			    {
 			    	l1=resultSet.getString("count");
@@ -335,12 +335,13 @@ public class OrgRegistrationDAO{
 				  counts.add(0, "0");
 			  }
 			}
-			// System.out.println("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line2='"+org.getOffice_land_line2()+"'");
+			System.out.println("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and (office_land_line1='"+org.getOffice_land_line2()+"' or office_land_line2='"+org.getOffice_land_line2()+"' or office_fax='"+org.getOffice_land_line2()+"' or chairman_telephone_number='"+org.getOffice_land_line2()+"' or principal_telephone_number='"+org.getOffice_land_line2()+"' or transport_officer_number='"+org.getOffice_land_line2()+"')");
 			 //validation for officelandline2
 				if(org.getOffice_land_line2()!="")
 				{
 					
-			 resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and office_land_line1='"+org.getOffice_land_line2()+"' or office_land_line2='"+org.getOffice_land_line2()+"' or office_fax='"+org.getOffice_land_line2()+"' or chairman_telephone_number='"+org.getOffice_land_line2()+"' or principal_telephone_number='"+org.getOffice_land_line2()+"' or transport_officer_number='"+org.getOffice_land_line2()+"'");
+			
+					resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and (office_land_line1='"+org.getOffice_land_line2()+"' or office_land_line2='"+org.getOffice_land_line2()+"' or office_fax='"+org.getOffice_land_line2()+"' or chairman_telephone_number='"+org.getOffice_land_line2()+"' or principal_telephone_number='"+org.getOffice_land_line2()+"' or transport_officer_number='"+org.getOffice_land_line2()+"')");
 			    if(resultSet1.next())
 			    {
 			    	l2=resultSet1.getString("count");
@@ -356,7 +357,7 @@ public class OrgRegistrationDAO{
 			//validation for office fax
 				if(org.getOffice_fax()!="")
 				{
-			  resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and office_land_line1='"+org.getOffice_fax()+"' or office_land_line2='"+org.getOffice_fax()+"' or office_fax='"+org.getOffice_fax()+"' or chairman_telephone_number='"+org.getOffice_fax()+"' or principal_telephone_number='"+org.getOffice_fax()+"' or transport_officer_number='"+org.getOffice_fax()+"'");
+			  resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and (office_land_line1='"+org.getOffice_fax()+"' or office_land_line2='"+org.getOffice_fax()+"' or office_fax='"+org.getOffice_fax()+"' or chairman_telephone_number='"+org.getOffice_fax()+"' or principal_telephone_number='"+org.getOffice_fax()+"' or transport_officer_number='"+org.getOffice_fax()+"')");
 			    if(resultSet1.next())
 			    {
 			    	fax=resultSet1.getString("count");
@@ -373,7 +374,7 @@ public class OrgRegistrationDAO{
 			//validation for Chairman Telephone number
 				if(org.getChairman_telephone_number()!="")
 				{
-			  resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and office_land_line1='"+org.getChairman_telephone_number()+"' or office_land_line2='"+org.getChairman_telephone_number()+"' or office_fax='"+org.getChairman_telephone_number()+"' or chairman_telephone_number='"+org.getChairman_telephone_number()+"' or principal_telephone_number='"+org.getChairman_telephone_number()+"' or transport_officer_number='"+org.getChairman_telephone_number()+"'");
+			  resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and (office_land_line1='"+org.getChairman_telephone_number()+"' or office_land_line2='"+org.getChairman_telephone_number()+"' or office_fax='"+org.getChairman_telephone_number()+"' or chairman_telephone_number='"+org.getChairman_telephone_number()+"' or principal_telephone_number='"+org.getChairman_telephone_number()+"' or transport_officer_number='"+org.getChairman_telephone_number()+"')");
 			    if(resultSet1.next())
 			    {
 			    	ct=resultSet1.getString("count");
@@ -388,7 +389,7 @@ public class OrgRegistrationDAO{
 			//validation for Principal Telephone Number
 				if(org.getPrincipal_telephone_number()!="")
 				{
-				resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and office_land_line1='"+org.getPrincipal_telephone_number()+"' or office_land_line2='"+org.getPrincipal_telephone_number()+"' or office_fax='"+org.getPrincipal_telephone_number()+"' or chairman_telephone_number='"+org.getPrincipal_telephone_number()+"' or principal_telephone_number='"+org.getPrincipal_telephone_number()+"' or transport_officer_number='"+org.getPrincipal_telephone_number()+"'");
+				resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and (office_land_line1='"+org.getPrincipal_telephone_number()+"' or office_land_line2='"+org.getPrincipal_telephone_number()+"' or office_fax='"+org.getPrincipal_telephone_number()+"' or chairman_telephone_number='"+org.getPrincipal_telephone_number()+"' or principal_telephone_number='"+org.getPrincipal_telephone_number()+"' or transport_officer_number='"+org.getPrincipal_telephone_number()+"')");
 			    if(resultSet1.next())
 			    {
 			    	pt=resultSet1.getString("count");
@@ -403,7 +404,7 @@ public class OrgRegistrationDAO{
 			//validation for Transport Officer Number
 				if(org.getTransport_officer_number()!="")
 				{
-				resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and office_land_line1='"+org.getTransport_officer_number()+"' or office_land_line2='"+org.getTransport_officer_number()+"' or office_fax='"+org.getTransport_officer_number()+"' or chairman_telephone_number='"+org.getTransport_officer_number()+"' or principal_telephone_number='"+org.getTransport_officer_number()+"' or transport_officer_number='"+org.getTransport_officer_number()+"'");
+				resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name!='"+org.getOrg_name()+"' and (office_land_line1='"+org.getTransport_officer_number()+"' or office_land_line2='"+org.getTransport_officer_number()+"' or office_fax='"+org.getTransport_officer_number()+"' or chairman_telephone_number='"+org.getTransport_officer_number()+"' or principal_telephone_number='"+org.getTransport_officer_number()+"' or transport_officer_number='"+org.getTransport_officer_number()+"')");
 			    if(resultSet1.next())
 			    {
 			    	to=resultSet1.getString("count");
