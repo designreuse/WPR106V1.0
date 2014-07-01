@@ -170,7 +170,7 @@ select.add(option, 0); */
 				                <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Number of Days </td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	
-				                  	<label><input type="radio" name="group1" id="one" onclick="onecheck()" class="radio1" data-divclass="div1" value="one" <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if>>Only One Day</label> <label><input type="radio" name="group1" class="radio2" data-divclass="div2" id="more" onclick="morecheck()" value="more" <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
+				                  	<label><input type="radio" name="group1" id="one" onclick="onecheck()" class="radio1" data-divclass="div1" value="one" checked <c:if test="${holidays.group1=='one'}"><c:out value="checked=checked"/></c:if>>Only One Day</label> <label><input type="radio" name="group1" class="radio2" data-divclass="div2" id="more" onclick="morecheck()" value="more" <c:if test="${holidays.group1=='more'}"><c:out value="checked=checked"/></c:if>> More than One Day</label>
 								<br/><font color="Red" size="+1"><form:errors path="holidays.group1"></form:errors></font>
 								</td>
 				                </tr></table>
@@ -317,10 +317,11 @@ $(window).load(function(){
 		document.getElementById("oneday").style.display="block";
 		document.getElementById("moreday").style.display="none";
 		
-		if(document.getElementById("hdate").value==""){
+		/* if(document.getElementById("hdate").value==""){
 			document.getElementById("requires").innerHTML="Required Field Should not be Empty";
+			return false;
         }
-		
+		 */
 	}
 	
 	else if(document.getElementById("more").checked==true)
@@ -333,17 +334,21 @@ $(window).load(function(){
 			{
 			document.getElementById("brequires").innerHTML="Required Field Should not be Empty";
 			document.getElementById("brequires1").innerHTML="Required Field Should not be Empty";
+			return false;
 			}
 		else if(document.getElementById("fdate").value==""){
 			document.getElementById("brequires").innerHTML="Required Field Should not be Empty";
+			return false;
 		}
 		else if(document.getElementById("tdate").value==""){
 			document.getElementById("brequires1").innerHTML="Required Field Should not be Empty";
+			return false;
 		}
 		
 		}
 
 });
+
 
 </script>
 <script>
@@ -360,6 +365,42 @@ if (Date.parse(endDate)<Date.parse(startDate)){
      return false;
       }
 }
+
+
+if(document.getElementById("one").checked==true){
+	/* alert("nbnbn"); */ 
+	document.getElementById("oneday").style.display="block";
+	document.getElementById("moreday").style.display="none";
+	
+	if(document.getElementById("hdate").value==""){
+		document.getElementById("requires").innerHTML="Required Field Should not be Empty";
+		return false;
+    }
+	
+}
+
+else if(document.getElementById("more").checked==true)
+	{
+	/* alert("else"); */
+	document.getElementById("oneday").style.display="none";
+	document.getElementById("moreday").style.display="block";
+	
+	if(document.getElementById("fdate").value=="" && document.getElementById("tdate").value=="")
+		{
+		document.getElementById("brequires").innerHTML="Required Field Should not be Empty";
+		document.getElementById("brequires1").innerHTML="Required Field Should not be Empty";
+		return false;
+		}
+	else if(document.getElementById("fdate").value==""){
+		document.getElementById("brequires").innerHTML="Required Field Should not be Empty";
+		return false;
+	}
+	else if(document.getElementById("tdate").value==""){
+		document.getElementById("brequires1").innerHTML="Required Field Should not be Empty";
+		return false;
+	}
+	
+	}
 	}
 </script>
 

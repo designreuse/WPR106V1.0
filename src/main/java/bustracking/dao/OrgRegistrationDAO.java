@@ -364,11 +364,13 @@ public class OrgRegistrationDAO{
 	public int deleteorganization(String org_name,String branch){
 		Connection con = null;
 		Statement statement = null;
+		
 		ResultSet resultSet = null;
 		int flag=0;
 		try {
 			con = dataSource.getConnection();
 			statement = con.createStatement();
+			
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
@@ -377,11 +379,19 @@ public class OrgRegistrationDAO{
 	    	 String cmd ="select * from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"'";
 	    	 String Desc="Delete report ";
 	    	 resultSet=statement.executeQuery(cmd);
+	    	 
 				
 				if(resultSet.next())
 					Desc=Desc+resultSet.getString(1);
-				statement.execute("delete from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"'");
 				
+				statement.execute("delete from tbl_user where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')");
+				statement.execute("delete from tbl_vechicle where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')");
+				statement.execute("delete from tbl_bus_route where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')");
+				statement.execute("delete from tbl_class where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')");
+				statement.execute("delete from tbl_student where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')");
+				statement.execute("delete from tbl_business_rule where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')");
+				statement.execute("delete from tbl_holidays where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')");
+				statement.execute("delete from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"'");
 				flag=1;
 				
 		    }catch(Exception e){
