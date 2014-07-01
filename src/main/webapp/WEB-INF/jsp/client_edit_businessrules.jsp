@@ -187,7 +187,7 @@ jQuery(function () {
 													class="err">*</span>Speed Limit  :</td>
 												<td valign="top" align="left" class="input_txt">
 												<input type="hidden" class="input_txtbx_br" id="inp_id"
-													name="speed_limit"  value="${orgbrulesadmin.speed_limit}" />${orgbrulesadmin.speed_limit}
+													name="speed_limit"  value="${orgbrulesadmin.speed_limit}" />${orgbrulesadmin.speed_limit} kmph
 												<br/>          
 					               				<font color="Red" size="+1"><form:errors path="businessRule.speed_limit"></form:errors></font>
 												</td>
@@ -207,7 +207,7 @@ jQuery(function () {
 													class="err">*</span>Alert Time Interval:</td>
 												<td valign="top" align="left" class="input_txt"> <input
 													type="hidden" class="input_txtbx_br" id="inp_id"
-													name="alert_time_interval" value="${orgbrulesadmin.alert_time_interval}"/> ${orgbrulesadmin.alert_time_interval}
+													name="alert_time_interval" value="${orgbrulesadmin.alert_time_interval}"/> ${orgbrulesadmin.alert_time_interval} mins
 												<br/>          
 					               				<font color="Red" size="+1"><form:errors path="businessRule.alert_time_interval"></form:errors></font>
 												</td>
@@ -247,7 +247,7 @@ jQuery(function () {
 													class="err">*</span>Average Speed  :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx_br" id="avg_spd"
-													name="average_speed" oninput="validatenum();"  value="${orgbrulesadmin.average_speed}" />
+													name="average_speed" oninput="validatenum();"  value="${orgbrulesadmin.average_speed}" />kmph
 													<br/>          
 					               				<font color="Red" size="+1"><form:errors path="businessRule.average_speed"></form:errors></font>
 												</td>

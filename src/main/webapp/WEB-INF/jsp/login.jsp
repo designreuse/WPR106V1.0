@@ -244,11 +244,11 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 			<font color="Red"><span id="ferror"><form:errors path="contacts.firstname"></form:errors></span><span id="lerror"></span></font>
     		<input type="text" name="email" id="eid" value="${contact.email}" placeholder="Email Address" autocomplete="off" tabindex="3" class="txtinput">
 			 <font color="Red" ><span id="eiderror"><form:errors path="contacts.email"></form:errors></font></span>
-    		<input type="text" name="organisation" maxlength="32" id="orgid" value="${contact.organisation}" placeholder="Organaisation Name" oninput="validateAlpha2();" onblur="toTitleCase2('orgid')"autocomplete="off" tabindex="4" class="txtinput">
+    		<input type="text" name="organisation" maxlength="32" id="orgid" value="${contact.organisation}" placeholder="Organization Name" oninput="validateAlpha2();" onblur="toTitleCase2('orgid')"autocomplete="off" tabindex="4" class="txtinput">
 			 <font color="Red" ><span id="oerror"><form:errors path="contacts.organisation"></form:errors></span></font>
 			<input type="text" name="mobile" id="mobid" value="${contact.mobile}" placeholder="Mobile Number" oninput="validatenum();" min="10" maxlength="10" autocomplete="off" tabindex="5" class="txtinput">
 			<font color="Red"><span id="mobiderror"><form:errors path="contacts.mobile"></form:errors></span></font>
-			<textarea name="address1" id="addr1"  placeholder="Address Line 1"tabindex="6" class="txtblock">${contact.address1}</textarea>
+			<textarea name="address1" id="addr1"  placeholder="Address"tabindex="6" class="txtblock">${contact.address1}</textarea>
 			<font color="Red"  ><form:errors path="contacts.address1"></form:errors></font>
 			<%-- <textarea name="address2" id="addr2" value="${contact.address2}" placeholder="Address Line 2" tabindex="7" class="txtblock"></textarea>
 			<font color="Red" ><form:errors path="contacts.address2"></form:errors></font> --%>
