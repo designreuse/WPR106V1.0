@@ -355,10 +355,12 @@
 							return false;	
 						}
 						
-
+						if(document.getElementById("landid2").value!="")
+						{
 						if(document.getElementById("landid1").value==document.getElementById("landid2").value){
-							document.getElementById("landerror").innerHTML="Give different number";
+							document.getElementById("landerror").innerHTML="Office Land Line number should not be the same!!";
 							return false;	
+						}
 						}
 				 	}
 function validateAlpha(){

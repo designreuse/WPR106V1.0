@@ -98,17 +98,18 @@ overflow-x:hidden; */
 </style>
 </head>
 <body onload='document.f.j_username.focus();' >
-<%-- <c:if test="${not empty error}">
+<br/>
+ <c:if test="${not empty error}">
 		<div class="errorblock">
 			Your login attempt was not successful, try again.<br /> Caused :
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
-	</c:if> --%>
+	</c:if> 
 	<script>
 
 	function validate()	
 	{
-		
+		document.getElementById("oerror").innerHTML="";	
 	document.getElementById("ferror").innerHTML="";
 	document.getElementById("lerror").innerHTML="";
 	document.getElementById("mobiderror").innerHTML="";
@@ -127,7 +128,13 @@ overflow-x:hidden; */
 	{
 	document.getElementById("staterror").innerHTML="Invalid State Name";
 	return false;
-	}	
+	}
+    
+    if(document.getElementById("orgid").value.substring(0,1)==' ')
+	{
+	document.getElementById("oerror").innerHTML="Invalid Organization Name";
+	return false;
+	}
 		
 		var sub=document.getElementById("fname").value.substring(0,2);
 	
@@ -213,6 +220,21 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 </form>
 </div>
 <div class="Login_side_contact_outline" id="contact-form">
+<c:if test="${success==true}">
+				<div class="table-row1">
+					<div class="table-cell1" valign="top" align="left" style="padding: 5px 0 10px 0;margin-left:80px;">&nbsp;
+						<div style="width:900px;margin-left:20px;">
+							<!-- <p class="closestatus">
+								<a title="Close" href="home">X</a>
+							</p> -->
+							<p>
+								<span style="font-family:Helvetica;font-size:15px;color:#00ff00;font-weight: bold;">Thanks for contacting Us.!</span>
+							</p>
+						</div>
+						</div>
+				</div>
+			</c:if>
+
 <h1 class="ribbon_login">
    <strong class="ribbon_login-content"><span style="color: #fff;">Contact Us</span></strong>
 </h1>
@@ -224,7 +246,7 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
     		<input type="text" name="email" id="eid" value="${contact.email}" placeholder="Email Address" autocomplete="off" tabindex="3" class="txtinput">
 			 <font color="Red" ><span id="eiderror"><form:errors path="contacts.email"></form:errors></font></span>
     		<input type="text" name="organisation" maxlength="32" id="orgid" value="${contact.organisation}" placeholder="Organaisation Name" oninput="validateAlpha2();" onblur="toTitleCase2('orgid')"autocomplete="off" tabindex="4" class="txtinput">
-			 <font color="Red" ><form:errors path="contacts.organisation"></form:errors></font>
+			 <font color="Red" ><span id="oerror"><form:errors path="contacts.organisation"></form:errors></span></font>
 			<input type="text" name="mobile" id="mobid" value="${contact.mobile}" placeholder="Mobile Number" oninput="validatenum();" min="10" maxlength="10" autocomplete="off" tabindex="5" class="txtinput">
 			<font color="Red"><span id="mobiderror"><form:errors path="contacts.mobile"></form:errors></span></font>
 			<textarea name="address1" id="addr1"  placeholder="Address Line 1"tabindex="6" class="txtblock">${contact.address1}</textarea>
@@ -254,7 +276,7 @@ Phone: 00 91 96327 19800 - Fax: 000-111-0000</div> -->
 <script>
 function validateAlpha(){
     var textInput = document.getElementById("fname").value;
-    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    textInput = textInput.replace(/[^A-Za-z]/g, "");
     document.getElementById("fname").value = textInput;
 }
 
@@ -268,7 +290,7 @@ function toTitleCase(fname)
 }
 function validateAlpha1(){
     var textInput = document.getElementById("lname").value;
-    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    textInput = textInput.replace(/[^A-Za-z]/g, "");
     document.getElementById("lname").value = textInput;
 }
 
@@ -352,6 +374,13 @@ $(function() {
 
 $(function() {
     $("#stateid").keydown(function(e) {
+        if (e.keyCode == 32 && !this.value.length) // 32 is the ASCII value for a space
+            e.preventDefault();
+    });
+});
+
+$(function() {
+    $("#orgid").keydown(function(e) {
         if (e.keyCode == 32 && !this.value.length) // 32 is the ASCII value for a space
             e.preventDefault();
     });
