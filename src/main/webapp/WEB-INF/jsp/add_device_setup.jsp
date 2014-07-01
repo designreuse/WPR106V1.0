@@ -176,8 +176,7 @@ jQuery(function () {
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Card Number:</td>
 				                  <td valign="center" align="left" class="input_txt" width="60%" >
 				                  <input type="text" class="org_input_txtbx_height1" width="60%" id="simno_id" maxlength="10" simno('simno_id')" oninput="validatenum_sim()" name="sim_card_number" value="${devicesimsetup.sim_card_number}" />
-				                  	
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_card_number"></form:errors></font>
+				                                	<br/><font color="Red" size="+1"><c:out value="${simnoexists}"></c:out><span id="unique_error"></span><form:errors path="deviceRegistration.sim_card_number"></form:errors></font>
 				                  </td>
 				                 
 				                </tr>
@@ -206,7 +205,7 @@ jQuery(function () {
 				                 <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span>  Device IMEI Number:</td>
 				                  <td valign="top" align="left" class="input_txt" >
 				                  	 <input type="text" name="device_imei_number" maxlength="15" class="org_input_txtbx_height1" id="imei_id" onblur="deviceimei('imei_id')" oninput="validatenum_imei()" value="${devicesimsetup.device_imei_number}">
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.device_imei_number"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><c:out value="${imeinoexists}"></c:out><span id="unique_error"></span><form:errors path="deviceRegistration.device_imei_number"></form:errors></font>
 				                  
 				                  
 				                  

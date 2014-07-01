@@ -129,7 +129,7 @@ jQuery(function () {
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" width="60%" maxlength="10" id="simno_id" onblur="simno('simno_id')" oninput="validatenum1()" name="sim_card_number" value="${device.sim_card_number}" />
 				                  	
-				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_card_number"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><c:out value="${simnoexists}"></c:out><span id="unique_error"></span><form:errors path="deviceRegistration.sim_card_number"></form:errors></font>
 				                  </td>
 				               
 				                  
