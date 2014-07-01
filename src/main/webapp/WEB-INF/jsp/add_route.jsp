@@ -79,7 +79,35 @@ jQuery(function () {
 
 <!-- Date Picker -->
 
+	<script type='text/javascript'
+	src='http://code.jquery.com/jquery-1.4.3.min.js'></script>
+	<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery.ui.timepicker.js" />"></script>
+	<link href="<c:url value="/resources/css/jquery.ui.timepicker.css" />"
+	rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+	 $(document).ready(function() {
+		 $('#timepicker').timepicker({
+			    showPeriod: true,
+			    showLeadingZero: true
+			});
+     });
 	
+	</script> 
+	
+ <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+  
+
+  
+  <script type="text/javascript" src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+   
+      <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css">
+    
+  
+
+    
+      <script type='text/javascript' src="https://rawgithub.com/fgelinas/timepicker/master/jquery.ui.timepicker.js"></script>
+    
 	
 	
 	<!-- Branch Dependent DropDown  -->
@@ -273,12 +301,13 @@ p {
 							<tr class="row1" style="margin-top:20px;">
 								<td valign="bottom" align="right" class="input_txt" ><span
 									class="err">*</span>&nbsp;&nbsp;
-									<input type="button" id="addScnt" value="Add Bus Stops :" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;">
-									 <input type="hidden" id="number_of_stops" name="number_of_stops"></td>
+									<a href="#" id="addScnt" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;">
+									 Add Bus Stops :</a><input type="hidden" id="number_of_stops" name="number_of_stops"></td>
 								<td valign="top" align="left" class="input_txt" width="70%">
 								<div  id="p_scents" style="height:auto;overflow:auto;">
 								
 								</div>
+								<%-- <font color="Red" size="+1"><form:errors path="route.number_of_stops"></form:errors></font> --%>
 								</td>
 								</tr>
 			
@@ -321,7 +350,7 @@ $(function() {
         var j=0;
         $('#addScnt').live('click', function() {
         	//alert(i);
-        	$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:700px;background-color:#E5E5E5;"><label for="p_scents"><input type="text"  size="500" class="input_txtbx_height" style="width:700px;" id="stop_info_'+i+'" name="stop[]" value="" placeholder="Stop Location" /></label><select name="stop_pick[]"><option value="0">Pick</option><option value="1">Drop</option><option value="2">Both</option></select>&nbsp<input type="text" name="particular_stop_time[]" id="endDate" placeholder="Bus Arrival time" class="input_txtbx_height" style="width=100px; value=""/><font color="Red" size="+1">&nbsp<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
+        	$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:700px;background-color:#E5E5E5;"><label for="p_scents"><input type="text"  size="500" class="input_txtbx_height" style="width:700px;" id="stop_info_'+i+'" name="stop[]" value="" placeholder="Stop Location" /></label><select name="stop_pick[]"><option value="0">Pick</option><option value="1">Drop</option><option value="2">Both</option></select>&nbsp<input type="text" name="particular_stop_time[]" id="endDate" placeholder="Bus Arrival time" class="timepicker" style="width=100px; value=""/><font color="Red" size="+1">&nbsp<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
         	document.getElementById("number_of_stops").value=i;
         	var autocomplete_stop = new google.maps.places.Autocomplete(document.getElementById("stop_info_"+i));
             i++;

@@ -34,8 +34,7 @@ public class BusRegistration
 	@NotEmpty
 	private String device_imei_number;
 	
-	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
-	@NotEmpty
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32!")
 	private String driver_name;
 	
 	@NotEmpty

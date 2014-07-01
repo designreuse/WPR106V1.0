@@ -2,7 +2,10 @@ package bustracking.model;
 
 
 import javax.validation.GroupSequence;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.validation.groups.Default;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -13,8 +16,11 @@ public class OrgRegistration
 {
 private String org_id;
 
+
+//@Length(min=4,max=32,groups=Default.class,message="Organization Name should between 4 to 32 characters!!!")
+
 @NotEmpty
-@Length(min=4,max=32,message="Organization Name should between 4 to 32 characters!!!")
+@Size(min=2, max=30,groups=OrgRegistration.class) 
 private String org_name;
 
 @NotEmpty

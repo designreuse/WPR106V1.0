@@ -21,12 +21,10 @@ public class StudentRegistration{
 	@NotEmpty
 	private String student_roll_no;
 	
-	@NotEmpty
-	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String first_name;
 	
-	@NotEmpty
-	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String last_name;
 	
 	private String gender;
@@ -48,13 +46,11 @@ public class StudentRegistration{
 	
 	private String kg_drop;
 	
-	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
-	@NotEmpty
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String parent_name1;
 	
 	
-	@Length(min=4,max=32,message="Name should between 4 to 32 characters!!!")
-	@NotEmpty
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String parent_name2;
 	
 	@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")

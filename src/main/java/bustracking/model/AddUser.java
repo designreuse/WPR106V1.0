@@ -17,28 +17,24 @@ public class AddUser{
 	@NotEmpty
 	private String branch;
 	
-	@NotEmpty
-	@Length(min=4,max=32,message="First Name should between 4 to 32 characters!!!")
+	
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String firstname;
 	
-	@NotEmpty
-	@Length(min=4,max=32,message="Last Name should between 4 to 32 characters!!!")
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32")
 	private String lastname;
 	
 	@NotEmpty
 	@Email
 	private String email;
 	
-	@NotEmpty
-	@Length(min=5,max=32,message="User Name should between 5 to 32 characters!!!")
+	@Length(min=5,max=32,message="Required & must be of length 5 to 32")
 	private String username;
 	
-	@NotEmpty
-	@Length(min=4,max=32,message="Password should between 4 to 32 characters!!!")
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32")
 	private String password;
 	
-	@NotEmpty
-	@Length(min=4,max=32,message="Password should between 4 to 32 characters!!!")
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32")
 	private String confirm_password;
 
 	public AddUser() {
