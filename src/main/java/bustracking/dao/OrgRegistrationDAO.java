@@ -12,15 +12,22 @@ import javax.mail.Address;
 import javax.sql.DataSource;
 import javax.validation.constraints.Max;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.sql.PreparedStatement;
 
 import bustracking.forms.OrgRegistrationForm;
 
+import bustracking.model.EmailSender;
 import bustracking.model.OrgRegistration;
 import bustracking.model.Route;
 import bustracking.model.StudentRegistration;
 
 public class OrgRegistrationDAO{
+	
+	@Autowired  
+	EmailSender emailSender;
+	
 	private DataSource dataSource;
 	 
 	public void setDataSource(DataSource dataSource) {
@@ -82,7 +89,7 @@ public class OrgRegistrationDAO{
 		   preparedStatement2.setString(13, "off");
 		   preparedStatement2.execute();*/
 		   
-		   
+		   emailSender.org_sendEmail(org.getEmail_id(),"bustracking@gmail.com" ,"Registration Success");
 			
 			flag=1;
 		}

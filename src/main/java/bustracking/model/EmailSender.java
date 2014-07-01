@@ -28,6 +28,8 @@ public class EmailSender {
 	public static final String TEMPLATE_NAME = "sample_template.vm";
 	
 	public static final String TEMPLATE_NAME1 = "sample_template1.vm";
+	
+	public static final String TEMPLATE_NAME2 = "sample_template2.vm";
 
 	public void sendEmail(final String toEmailAddresses,
 			final String fromEmailAddress, final String subject) {
@@ -187,4 +189,60 @@ public class EmailSender {
 		
 	}
 	//Reply Mail Sending Ends
+	
+	//Organisation Mail Starts 
+	public void org_sendEmail(final String toEmailAddresses,
+			final String fromEmailAddress, final String subject) {
+		org_Email(toEmailAddresses, fromEmailAddress, subject);
+	}
+
+	private void org_Email(final String toEmailAddresses,
+			final String fromEmailAddress, final String subject) {
+		MimeMessagePreparator preparator = new MimeMessagePreparator() 
+		{
+			public void prepare(MimeMessage mimeMessage) throws Exception
+			{
+				MimeMessageHelper message = new MimeMessageHelper(mimeMessage,
+						true);
+				message.setTo(toEmailAddresses);
+				message.setFrom(new InternetAddress(fromEmailAddress));
+				message.setSubject(subject);
+				// Pass values to Template
+				Map<String, String> model = new HashMap<String, String>();
+				/*model.put("firstName", firstname);
+				model.put("lastname", lastname);
+				model.put("email", email);
+				model.put("organisation", organisation);
+				model.put("mobile", mobile);
+				model.put("address1", address1);
+				model.put("address2", address2);
+				model.put("city", city);
+				model.put("state", state);*/
+			
+				
+				
+				// Pass values to Template End
+				String body = VelocityEngineUtils.mergeTemplateIntoString(
+						velocityEngine, "templates/" + TEMPLATE_NAME2, "UTF-8",
+						model);
+				message.setText(body, true);
+				/*if (!StringUtils.isBlank(attachmentPath)) {
+					FileSystemResource file = new FileSystemResource(
+							attachmentPath);
+					message.addAttachment(attachmentName, file);*/
+			
+			}
+		};
+		try
+		{
+		this.mailSender.send(preparator);
+		}
+		catch(Exception ex)
+		{
+			System.out.println(ex.toString());
+		}
+		
+	}
+	
+	//Organization Mail Ends
 }

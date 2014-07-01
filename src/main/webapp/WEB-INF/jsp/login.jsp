@@ -98,7 +98,6 @@ overflow-x:hidden; */
 </style>
 </head>
 <body onload='document.f.j_username.focus();' >
-<br/>
  <c:if test="${not empty error}">
 		<div class="errorblock">
 			Your login attempt was not successful, try again.<br /> Caused :
