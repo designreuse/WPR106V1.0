@@ -19,17 +19,19 @@ private String org_id;
 
 //@Length(min=4,max=32,groups=Default.class,message="Organization Name should between 4 to 32 characters!!!")
 
-@NotEmpty
-@Size(min=2, max=30,groups=OrgRegistration.class) 
+ 
+@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 private String org_name;
+
 
 @NotEmpty
 @Pattern(regexp="(^$|[0-9]{10})",message="Invalid Fax Number!!!")
 private String office_fax;
 
-@NotEmpty
-@Length(min=4,max=32,message="Branch should between 4 to 32 characters!!!")
+
+@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 private String branch;
+
 
 @NotEmpty
 @Email
@@ -41,22 +43,22 @@ private String address;
 
 private String chairman_name;
 
-@NotEmpty
-@Length(min=4,max=32,message="Country should between 4 to 32 characters!!!")
+
+@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 private String country;
 
 @Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
 private String chairman_telephone_number;
 
-@NotEmpty
-@Length(min=4,max=32,message="State should between 4 to 32 characters!!!")
+
+@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 private String state;
 
 
 private String principal_name;
 
-@NotEmpty
-@Length(min=4,max=32,message="City should between 4 to 32 characters!!!")
+
+@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 private String city;
 
 @Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
@@ -66,8 +68,8 @@ private String principal_telephone_number;
 @Pattern(regexp="(^$|[0-9]{6})",message="Invalid Pincode!!!")
 private String pincode;
 
-@NotEmpty
-@Length(min=4,max=32,message="Transport Officer Name should between 4 to 32 characters!!!")
+
+@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 private String transport_officer_name;
 
 @NotEmpty

@@ -17,7 +17,7 @@ public class ContactUs{
 	@NotEmpty
 	private String email;
 	
-	@Length(min=4,max=32,message="Firstname must be of length 4 to 32.")
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String organisation;
 	
 	@Length(min=10,max=10,message="Required & must be of length 10.")
@@ -26,10 +26,10 @@ public class ContactUs{
 	@NotEmpty
 	private String address1;
 	
-	@NotEmpty
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String state;
 	
-	@NotEmpty
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String city;
 
 	public ContactUs() {
