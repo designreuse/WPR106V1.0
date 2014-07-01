@@ -215,15 +215,9 @@ public String editorg(HttpServletRequest request,@RequestParam("org_name") Strin
 @RequestMapping(value="/updateorg",method=RequestMethod.POST)
 public String updateorg(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch, @ModelAttribute ("OrgRegistration") @Valid OrgRegistration orgRegistration,BindingResult result,ModelMap model,Principal prinicipal)
 {
-	int count=orgDAO.checkUniqueorganization(org_name,branch);
-	if(count==0)
-	{
-		model.addAttribute("error",true);
-		OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
-		orgregistrationform.setOrgregistration(orgDAO.getOrgregistration_id(org_name, branch));
-		model.addAttribute("orgregistrationform", orgregistrationform);
-		return "edit_org";
-	}
+	
+	
+	
 	if(result.hasErrors())
 	{
 		OrgRegistrationForm orgregistrationform = new OrgRegistrationForm();
