@@ -107,7 +107,7 @@
 				                        <td valign="middle" align="right" class="input_txt"><span class="err">*</span> First Name:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<input type="text"  id="fname" name="first_name" oninput="validateAlpha();" onblur="toTitleCase('fname')" value="${student.first_name}"/>
-				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.first_name"></form:errors></font></td>
+				                  	 <br/><font color="Red" size="+1"><span id="fnameerror"><form:errors path="studentRegistration.first_name"></form:errors></font></span></td>
 				                     <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Parent Name 2:</td>
 					               <td valign="top" align="left" class="input_txt">
 					               <input type="text"  id="pname2" name="parent_name2" oninput="validateAlpha3();" onblur="toTitleCase3('pname2')" value="${student.parent_name2}"/>
@@ -120,7 +120,7 @@
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Last Name</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<input type="text"  id="lname" name="last_name" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" value="${student.last_name}"/>
-				                  	   <br/><font color="Red" size="+1"><form:errors path="studentRegistration.last_name"></form:errors></font></td>
+				                  	   <br/><font color="Red" size="+1"><span id="lnameerror"><form:errors path="studentRegistration.last_name"></form:errors></font></span></td>
 				                
 				         
 				                
@@ -180,8 +180,8 @@
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Email 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="inp_id" name="parent_email1" value="${student.parent_email1}" />
-					         <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_email1"></form:errors></font>
+					               <input type="text"  id="email1" name="parent_email1" value="${student.parent_email1}" />
+					         <br/><font color="Red" size="+1"><span id="eiderror"><form:errors path="studentRegistration.parent_email1"></form:errors></font></span>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
 				                      <tr class="row2">
@@ -200,8 +200,8 @@
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Email 2:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="inp_id" name="parent_email2" value="${student.parent_email2}"/>
-					      <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_email2"></form:errors></font>
+					               <input type="text"  id="email2" name="parent_email2" value="${student.parent_email2}"/>
+					      <br/><font color="Red" size="+1"><span id="eiderror1"><form:errors path="studentRegistration.parent_email2"></form:errors></font></span>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
 				                      <tr class="row1">
@@ -260,7 +260,7 @@
 				               <td valign="top" align="justify">
 				               <table>
 				             <tr> 
-                 <td valign="top" align="left"><input type="submit" class="btn" value="Save Changes" ></td>
+                 <td valign="top" align="left"><input type="submit" class="btn" value="Save Changes" onclick="return validate('this')"></td>
                
                   <td valign="top" align="left"><input type="button" class="btn" onclick="window.location.href='viewstudent'"value="Cancel"></td></tr></table>
                   </td>
@@ -351,6 +351,55 @@ function doAjaxPost_section() {
 		
 		 
     <script>
+      $(function() {
+		$("#fname").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+    $(function() {
+		$("#lname").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+    function validate()
+    {
+    	document.getElementById("fnameerror").innerHTML="";
+    	document.getElementById("lnameerror").innerHTML="";
+    	if(document.getElementById("fname").value.substring(0,1)==' ')
+		{
+		document.getElementById("fnameerror").innerHTML="Invalid Firstname";
+		return false;
+		}
+    	if(document.getElementById("lname").value.substring(0,1)==' ')
+		{
+		document.getElementById("lnameerror").innerHTML="Invalid Lastname";
+		return false;
+		}
+    	
+    	
+    	var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+	    
+		 if(document.getElementById("email1").value!="")
+			{
+		if(document.getElementById("email1").value.match(mail)==null)
+	    {
+	    	document.getElementById("eiderror").innerHTML="Invalid Email ID";
+	    	
+	        return false;
+	    }
+			}
+		 if(document.getElementById("email2").value!="")
+			{
+		if(document.getElementById("email2").value.match(mail)==null)
+	    {
+	    	document.getElementById("eiderror1").innerHTML="Invalid Email ID";
+	    	
+	        return false;
+	    }
+			}
+    }
     function validateAlpha(){
         var textInput = document.getElementById("fname").value;
         textInput = textInput.replace(/[^A-Za-z ]/g, "");

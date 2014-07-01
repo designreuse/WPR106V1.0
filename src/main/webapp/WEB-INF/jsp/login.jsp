@@ -213,9 +213,9 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 			<font color="Red"  ><form:errors path="contacts.address1"></form:errors></font>
 			<%-- <textarea name="address2" id="addr2" value="${contact.address2}" placeholder="Address Line 2" tabindex="7" class="txtblock"></textarea>
 			<font color="Red" ><form:errors path="contacts.address2"></form:errors></font> --%>
-			<input type="text" name="city" id="cityid" value="${contact.city}" placeholder="City" oninput="validateAlpha3();" onblur="toTitleCase3('cityid')"class="txtinput"/>
+			<input type="text" name="city"  maxlength="32"  id="cityid" value="${contact.city}" placeholder="City" oninput="validateAlpha3();" onblur="toTitleCase3('cityid')"class="txtinput"/>
 			<font color="Red" ><form:errors path="contacts.city"></form:errors></font>
-			<input type="text" name="state" id="stateid" value="${contact.state}" placeholder="State" oninput="validateAlpha4();" onblur="toTitleCase4('stateid')" class="txtinput" />
+			<input type="text" name="state" id="stateid" maxlength="32"  value="${contact.state}" placeholder="State" oninput="validateAlpha4();" onblur="toTitleCase4('stateid')" class="txtinput" />
      		<font color="Red" ><form:errors path="contacts.state"></form:errors></font><br/>
    			<span style="margin:0  0 0 120px;">
    			<input type="submit" value="Submit" id="submit" class="btn" onclick="return validate()">
