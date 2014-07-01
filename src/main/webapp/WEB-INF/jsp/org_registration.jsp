@@ -46,7 +46,7 @@
 				                  <td valign="middle" width="27.5%" align="left" class="input_txtlabel"><span class="err">*</span> Office Fax:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="office_fax_id"  name="office_fax" onblur="faxcheck('office_fax_id')" oninput="validatenum();" min="10" maxlength="10" tabindex="11" value="${organisation.office_fax}" />
-				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.office_fax"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><c:if test="${ferror==true}"><c:out value="Fax number already exist"></c:out></c:if><form:errors path="OrgRegistration.office_fax"></form:errors></font>
 				                  </td>			                   
 				              </tr>
 				              <tr class="row2">
@@ -58,7 +58,7 @@
 				                  <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Email ID:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" width="60%" onblur="emailcheck('email')" id="email" oninput="validateemail();" name="email_id" value="${organisation.email_id}" tabindex="12" onfocus="doAjaxcheckunique()"/>
-				                  	<br/><font color="Red" size="+1"><span id="eiderror"><form:errors path="OrgRegistration.email_id"></form:errors></span></font>
+				                  	<br/><font color="Red" size="+1"><span id="eiderror"><c:if test="${emailerror==true}"><c:out value="Email Id already exist"></c:out></c:if><form:errors path="OrgRegistration.email_id"></form:errors></span></font>
 				                  </td>
 				               
 				                  
@@ -92,7 +92,7 @@
 									<td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Telephone number:</td>
 				                  <td valign="center" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="cno_id" oninput="validatenum4();" onblur="cnocheck('cno_id')" name="chairman_telephone_number" tabindex="14" min="10" maxlength="10" value="${organisation.chairman_telephone_number}" />
-				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.chairman_telephone_number"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><c:if test="${cerror==true}"><c:out value="Mobile number already exist"></c:out></c:if><form:errors path="OrgRegistration.chairman_telephone_number"></form:errors></font>
 				                  </td>
 				                </tr>
 				                <tr class="row1">
@@ -128,7 +128,7 @@
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Principal Telephone Number:</td>
 				                  <td valign="top" align="left" class="input_txt"  >
 				                  	<input type="text" class="org_input_txtbx_height1"  id="pno_id" oninput="validatenum5();" name="principal_telephone_number" tabindex="16" onblur="pnocheck('pno_id')" min="10" maxlength="10" value="${organisation.principal_telephone_number}" />
-				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.principal_telephone_number"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><c:if test="${perror==true}"><c:out value="Mobile number already exist"></c:out></c:if><form:errors path="OrgRegistration.principal_telephone_number"></form:errors></font>
 				                  </td>
 				                
 				                </tr>
@@ -161,7 +161,7 @@
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err">*</span> Transport Officer Number:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1"  id="tno_id"  name="transport_officer_number" oninput="validatenum6();" tabindex="18" min="10" maxlength="10" onblur="tnocheck('tno_id')" value="${organisation.transport_officer_number}" />
-				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.transport_officer_number"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><c:if test="${terror==true}"><c:out value="Mobile number already exist"></c:out></c:if><form:errors path="OrgRegistration.transport_officer_number"></form:errors></font>
 				                  </td>
 				                  
 				                </tr>
@@ -169,7 +169,7 @@
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Office Land Line 1:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum2();" onblur="landcheck1('landid1')" id="landid1" tabindex="9" name="office_land_line1" min="10" maxlength="10" value="${organisation.office_land_line1}" />
-				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.office_land_line1"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><c:if test="${l1error==true}"><c:out value="Mobile number already exist"></c:out></c:if><form:errors path="OrgRegistration.office_land_line1"></form:errors></font>
 				                  </td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Is Active :</td>
 									<td valign="top" align="left" class="input_txt">
@@ -183,7 +183,7 @@
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Office Land Line 2:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum3();" tabindex="10" onblur="landcheck2('landid2')" id="landid2" min="10" maxlength="10" name="office_land_line2" value="${organisation.office_land_line2}" />
-				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.office_land_line2"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><span id="landerror"><c:if test="${l2error==true}"><c:out value="Mobile number already exist"></c:out></c:if><form:errors path="OrgRegistration.office_land_line2"></form:errors></font></span>
 				                  </td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"></td>
 									<td valign="top" align="left" class="input_txt">
@@ -311,8 +311,8 @@ $(function() {
 		document.getElementById("aerror").innerHTML="";
 		document.getElementById("cerror").innerHTML="";
 		document.getElementById("serror").innerHTML="";
-		document.getElementById("cityerror").innerHTML="";
-	
+		document.getElementById("cityerror").innerHTML="";		
+		document.getElementById("landerror").innerHTML="";
 		if(document.getElementById("oname").value.substring(0,1)==' ')
 		{
 		document.getElementById("oerror").innerHTML="Invalid Organization Name";
@@ -343,6 +343,13 @@ $(function() {
 		document.getElementById("cityerror").innerHTML="Invalid City";
 		return false;
 		}
+		if(document.getElementById("landid2").value!="")
+						{
+						if(document.getElementById("landid1").value==document.getElementById("landid2").value){
+							document.getElementById("landerror").innerHTML="Office Land Line number should not be the same!!";
+							return false;	
+						}
+						}
 		
 		var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 	    
@@ -355,6 +362,8 @@ $(function() {
 	        return false;
 	    }
 			}
+			
+			
 		if(document.getElementById("chairmanid").value!='')
 			{
 		if(document.getElementById("chairmanid").value.length<4)

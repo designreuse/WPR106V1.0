@@ -1,6 +1,6 @@
 package bustracking.controllers;
 
-import java.awt.List;
+import java.util.*;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
@@ -70,6 +70,62 @@ public String orgregistration(HttpServletRequest request,HttpSession session,@Mo
 {
 	session.setAttribute("organisation",org);
 	int count=orgDAO.checkUniqueorganization(org.getOrg_name(),org.getBranch());
+	//int count1=orgDAO.checkUniquemobile(org);
+	List<String>counts=new ArrayList<String>();
+	counts=orgDAO.checkUniquemobile(org);
+	String error="";
+
+	for(String checkcount:counts)
+	{
+		System.out.println("count"+checkcount);
+	}
+	System.out.println("value"+counts.get(0)+"value2"+counts.get(1));
+	if(counts.get(0).equals("0"))
+	{
+		model.addAttribute("l1error",true);
+		error="true";		
+	}
+	if(counts.get(1).equals("0"))
+	{
+		model.addAttribute("l2error",true);
+		error="true";		
+	}
+	if(counts.get(2).equals("0"))
+	{
+		model.addAttribute("ferror",true);
+		error="true";		
+	}
+	if(counts.get(3).equals("0"))
+	{
+		model.addAttribute("cerror",true);
+		error="true";		
+	}
+	if(counts.get(4).equals("0"))
+	{
+		model.addAttribute("perror",true);
+		error="true";		
+	}
+	if(counts.get(5).equals("0"))
+	{
+		model.addAttribute("terror",true);
+		error="true";		
+	}
+	if(counts.get(6).equals("0"))
+	{
+		model.addAttribute("emailerror",true);
+		error="true";		
+	}
+	if(error.equals("true"))
+	{
+		if(result.hasErrors())
+		{
+			return "org_registration";
+		}
+		return "org_registration";
+	}
+	
+	
+	
 	if(count==0)
 	{
 		model.addAttribute("error",true);

@@ -286,14 +286,23 @@ public class OrgRegistrationDAO{
 		    return count;
 		   
 	   } 
-	public int checkUniquemobile(OrgRegistration org)
+	public List<String> checkUniquemobile(OrgRegistration org)
 	   {
 		   
-		String org_id="";
+		String l1="",l2="",fax="",email="",ct="",pt="",to="";
+		List<String>counts=new ArrayList<String>();
+		counts.add(0, "1");
+		counts.add(1, "1");
+		counts.add(2, "1");
+		counts.add(3, "1");
+		counts.add(4, "1");
+		counts.add(5, "1");
+		counts.add(6, "1");
+	
 		int count=1;
 		Connection con = null;
 			Statement statement = null;
-			ResultSet resultSet = null;
+			ResultSet resultSet = null,resultSet1=null;
 			try {
 				con = dataSource.getConnection();
 				statement = con.createStatement();
@@ -303,17 +312,116 @@ public class OrgRegistrationDAO{
 	         boolean result=false;
 	          try 
 	          {
-				resultSet = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line1='"+org.getOffice_land_line1()+"'");
+	        	  System.out.println("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line1='"+org.getOffice_land_line1()+"' or office_land_line2='"+org.getOffice_land_line1()+"' or office_fax='"+org.getOffice_land_line1()+"' or chairman_telephone_number='"+org.getOffice_land_line1()+"' or principal_telephone_number='"+org.getOffice_land_line1()+"' or transport_officer_number='"+org.getOffice_land_line1()+"'");
+			if(org.getOffice_land_line1()!="")
+			{
+				
+			
+	        	resultSet = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line1='"+org.getOffice_land_line1()+"' or office_land_line2='"+org.getOffice_land_line1()+"' or office_fax='"+org.getOffice_land_line1()+"' or chairman_telephone_number='"+org.getOffice_land_line1()+"' or principal_telephone_number='"+org.getOffice_land_line1()+"' or transport_officer_number='"+org.getOffice_land_line1()+"'");
 			    if(resultSet.next())
 			    {
-			    	org_id=resultSet.getString("count");
+			    	l1=resultSet.getString("count");
 			    }
-			  if(Integer.parseInt(org_id)>0)
+			  if(Integer.parseInt(l1)>0)
 			  {
 				  count=0;
+				  counts.add(0, "0");
 			  }
-			   
+			}
+			 System.out.println("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line2='"+org.getOffice_land_line2()+"'");
+			 //validation for officelandline2
+				if(org.getOffice_land_line2()!="")
+				{
+					
+			 resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line1='"+org.getOffice_land_line2()+"' or office_land_line2='"+org.getOffice_land_line2()+"' or office_fax='"+org.getOffice_land_line2()+"' or chairman_telephone_number='"+org.getOffice_land_line2()+"' or principal_telephone_number='"+org.getOffice_land_line2()+"' or transport_officer_number='"+org.getOffice_land_line2()+"'");
+			    if(resultSet1.next())
+			    {
+			    	l2=resultSet1.getString("count");
+			    }
+			    System.out.println("l2"+l2);
+			  if(Integer.parseInt(l2)>0)
+			  {
+				  count=0;
+				  counts.add(1, "0");
+			  }
+				}
+			  
+			//validation for office fax
+				if(org.getOffice_fax()!="")
+				{
+			  resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line1='"+org.getOffice_fax()+"' or office_land_line2='"+org.getOffice_fax()+"' or office_fax='"+org.getOffice_fax()+"' or chairman_telephone_number='"+org.getOffice_fax()+"' or principal_telephone_number='"+org.getOffice_fax()+"' or transport_officer_number='"+org.getOffice_fax()+"'");
+			    if(resultSet1.next())
+			    {
+			    	fax=resultSet1.getString("count");
+			    }
+			  if(Integer.parseInt(fax)>0)
+			  {
+				  count=0;
+				  counts.add(2, "0");
+			  }
+			  }
+			  
+			  
 			 
+			//validation for Chairman Telephone number
+				if(org.getChairman_telephone_number()!="")
+				{
+			  resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line1='"+org.getChairman_telephone_number()+"' or office_land_line2='"+org.getChairman_telephone_number()+"' or office_fax='"+org.getChairman_telephone_number()+"' or chairman_telephone_number='"+org.getChairman_telephone_number()+"' or principal_telephone_number='"+org.getChairman_telephone_number()+"' or transport_officer_number='"+org.getChairman_telephone_number()+"'");
+			    if(resultSet1.next())
+			    {
+			    	ct=resultSet1.getString("count");
+			    }
+			  if(Integer.parseInt(ct)>0)
+			  {
+				  count=0;
+				  counts.add(3, "0");
+			  }
+				}
+			  
+			//validation for Principal Telephone Number
+				if(org.getPrincipal_telephone_number()!="")
+				{
+				resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line1='"+org.getPrincipal_telephone_number()+"' or office_land_line2='"+org.getPrincipal_telephone_number()+"' or office_fax='"+org.getPrincipal_telephone_number()+"' or chairman_telephone_number='"+org.getPrincipal_telephone_number()+"' or principal_telephone_number='"+org.getPrincipal_telephone_number()+"' or transport_officer_number='"+org.getPrincipal_telephone_number()+"'");
+			    if(resultSet1.next())
+			    {
+			    	pt=resultSet1.getString("count");
+			    }
+			  if(Integer.parseInt(pt)>0)
+			  {
+				  count=0;
+				  counts.add(4, "0");
+			  }
+				}
+			  
+			//validation for Transport Officer Number
+				if(org.getTransport_officer_number()!="")
+				{
+				resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and office_land_line1='"+org.getTransport_officer_number()+"' or office_land_line2='"+org.getTransport_officer_number()+"' or office_fax='"+org.getTransport_officer_number()+"' or chairman_telephone_number='"+org.getTransport_officer_number()+"' or principal_telephone_number='"+org.getTransport_officer_number()+"' or transport_officer_number='"+org.getTransport_officer_number()+"'");
+			    if(resultSet1.next())
+			    {
+			    	to=resultSet1.getString("count");
+			    }
+			  if(Integer.parseInt(to)>0)
+			  {
+				  count=0;
+				  counts.add(5, "0");
+			  }
+				}
+			  
+			//validation for Emailid
+				if(org.getEmail_id()!="")
+				{
+				resultSet1 = statement.executeQuery("select count(org_id) as count from tbl_organization where org_name='"+org.getOrg_name()+"' and email_id='"+org.getEmail_id()+"'");
+			    if(resultSet1.next())
+			    {
+			    	email=resultSet1.getString("count");
+			    }
+			  if(Integer.parseInt(email)>0)
+			  {
+				  count=0;
+				  counts.add(6, "0");
+			  }
+				}
 		    }catch(Exception e){
 		    	
 		    	System.out.println(e.toString());
@@ -325,7 +433,7 @@ public class OrgRegistrationDAO{
 		    	releaseStatement(statement);
 		    	releaseConnection(con);	    	
 		    }
-		    return count;
+		    return counts;
 		   
 	   } 
 	public boolean checkUnique(String org_name,String branch)
