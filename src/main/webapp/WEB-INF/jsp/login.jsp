@@ -212,9 +212,9 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 <input type="reset" class="btn" value="Reset"/></td></tr>
 <tr><td  align="right"></td><td style="color:#fff;">
 <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" /><label for="checkboxG1" class="css-label">keep me logged in</label> </td>
-<td >
+<!-- <td >
 <a href="#login_form" id="login_pop">
-<font color="white">Forgot your password?</font></a></td>
+<font color="white">Forgot your password?</font></a></td> -->
 <td></td><td></td></tr></table>
 </form>
 </div>
