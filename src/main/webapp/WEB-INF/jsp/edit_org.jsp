@@ -37,7 +37,7 @@
 				                  
 				                  <td valign="middle" width="27.5%" align="left" class="input_txtlabel"><span class="err">*</span> Office Fax:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="office_fax_id"  name="office_fax" onblur="faxcheck('office_fax_id')" min="10" maxlength="10" oninput="validatenum();" value="${orgRegistration.office_fax}" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="office_fax_id" tabindex="9"  name="office_fax" onblur="faxcheck('office_fax_id')" min="10" maxlength="10" oninput="validatenum();" value="${orgRegistration.office_fax}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.office_fax"></form:errors></font>
 				                  </td>			                   
 				              </tr>
@@ -49,7 +49,7 @@
 				                  </td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Email ID:</td>
 				                  <td valign="middle" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" width="60%" onblur="emailcheck('email')" id="email" on name="email_id" value="${orgRegistration.email_id}" />
+				                  	<input type="text" class="org_input_txtbx_height1" width="60%" tabindex="10" onblur="emailcheck('email')" id="email" on name="email_id" value="${orgRegistration.email_id}" />
 				                  		<br/><font color="Red" size="+1"><span id="eiderror"><form:errors path="OrgRegistration.email_id"></form:errors></font></span>
 				                  </td>
 				               
@@ -60,12 +60,12 @@
 				                  <td valign="middle" align="left" class="input_txt" >
 				                 <%--  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_address_id" name="address" value="${organisation.address}" />
 				                   --%>
-				                   <textarea class="textareanew"  rows="3" cols="4" style="width:220px;height:50px;" onblur="toTitleCase5('addr_id')" id="addr_id" name="address">${orgRegistration.address}</textarea>
+				                   <textarea class="textareanew"  rows="3" cols="4" tabindex="1" style="width:220px;height:50px;" onblur="toTitleCase5('addr_id')" id="addr_id" name="address">${orgRegistration.address}</textarea>
 				                   		<br/><font color="Red" size="+1"><span id="aerror"><form:errors path="OrgRegistration.address"></form:errors></font></span>
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Name:</td>
 				                  <td valign="middle" align="left" class="input_txt" width="60%" >
-				                  	<input type="text" class="org_input_txtbx_height1"  id="chairmanid"  name="chairman_name" min="4" maxlength="32"  oninput="validateAlpha2();" onblur="toTitleCase2('chairmanid')"value="${orgRegistration.chairman_name}" />
+				                  	<input type="text" class="org_input_txtbx_height1"  id="chairmanid" tabindex="11"  name="chairman_name" min="4" maxlength="32"  oninput="validateAlpha2();" onblur="toTitleCase2('chairmanid')"value="${orgRegistration.chairman_name}" />
 				                  <br/><font color="Red" size="+1"><span id="ciderror"></span></font>	
 				                  </td>
 				                 
@@ -78,12 +78,12 @@
 				                  	<!-- <select name="country" class="org_input_cmbbx" id="country_id">
 				                  	<option>-- Select Country--</option>
 				                  	</select> -->
-				                  	<input type="text" class="org_input_txtbx_height1" id="countryid" min="4" maxlength="32" onblur="countrycheck('countryid')" oninput="validatecountry();" name="country" value="${orgRegistration.country}" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="countryid" min="4" tabindex="2" maxlength="32" onblur="countrycheck('countryid')" oninput="validatecountry();" name="country" value="${orgRegistration.country}" />
 				                  		<br/><font color="Red" size="+1"><span id="cerror"><form:errors path="OrgRegistration.country"></form:errors></font></span>
 				                  </td>
 									<td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Telephone number:</td>
 				                  <td valign="middle" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" id="cno_id" oninput="validatenum4();" maxlength="10" onblur="cnocheck('cno_id')" name="chairman_telephone_number" value="${orgRegistration.chairman_telephone_number}" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="cno_id" oninput="validatenum4();" tabindex="12" maxlength="10" onblur="cnocheck('cno_id')" name="chairman_telephone_number" value="${orgRegistration.chairman_telephone_number}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.chairman_telephone_number"></form:errors></font>
 				                  </td>
 				                </tr>
@@ -93,14 +93,14 @@
 				                  	<!-- <select name="state" class="org_input_cmbbx" id="state_id">
 				                  	<option>-- Select State--</option>
 				                  	</select> -->
-				                  	<input type="text" class="org_input_txtbx_height1" id="stateid" min="4" maxlength="32"  onblur="statecheck('stateid')" oninput="validatestate();" name="state" value="${orgRegistration.state}" />
+				                  	<input type="text" class="org_input_txtbx_height1" id="stateid" min="4" maxlength="32" tabindex="3"  onblur="statecheck('stateid')" oninput="validatestate();" name="state" value="${orgRegistration.state}" />
 				                  		<br/><font color="Red" size="+1"><span id="serror"><form:errors path="OrgRegistration.state"></form:errors></font></span>
 				                  
 				                  	
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Principal Name:</td>
 				                  <td valign="middle" align="left" class="input_txt" >
-				                  	<input type="text" class="org_input_txtbx_height1"  id="principalid" min="4" maxlength="32"  name="principal_name"  oninput="validateAlpha3();" onblur="toTitleCase3('principalid')" value="${orgRegistration.principal_name}" />
+				                  	<input type="text" class="org_input_txtbx_height1"  id="principalid" min="4" maxlength="32" tabindex="13"  name="principal_name"  oninput="validateAlpha3();" onblur="toTitleCase3('principalid')" value="${orgRegistration.principal_name}" />
 				                  <br>	<font color="Red" size="+1"><span id="piderror"></span></font>	
 				                  </td>
 				                </tr>
@@ -112,14 +112,14 @@
 				                  	</select>
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.city"></form:errors></font>
 				                   --%>
-				                   <input type="text" class="org_input_txtbx_height1" id="cityid" min="4" maxlength="32" onblur="citycheck('cityid')" oninput="validatecity();" name="city" value="${orgRegistration.city}" />
+				                   <input type="text" class="org_input_txtbx_height1" id="cityid" min="4" maxlength="32" tabindex="4" onblur="citycheck('cityid')" oninput="validatecity();" name="city" value="${orgRegistration.city}" />
 				                  		<br/><font color="Red" size="+1"><span id="cityerror"><form:errors path="OrgRegistration.city"></form:errors></font></span>
 				                  
 				                   </td>
 				                
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Principal Telephone Number:</td>
 				                  <td valign="middle" align="left" class="input_txt"  >
-				                  	<input type="text" class="org_input_txtbx_height1"  id="pno_id" oninput="validatenum5();" name="principal_telephone_number" min="10" maxlength="10" onblur="pnocheck('pno_id')" value="${orgRegistration.principal_telephone_number}" />
+				                  	<input type="text" class="org_input_txtbx_height1"  id="pno_id" oninput="validatenum5();" tabindex="14" name="principal_telephone_number" min="10" maxlength="10" onblur="pnocheck('pno_id')" value="${orgRegistration.principal_telephone_number}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.principal_telephone_number"></form:errors></font>
 				                  </td>
 				                
@@ -128,19 +128,19 @@
 				                <tr class="row1">
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Pin code:</td>
 				                  <td valign="middle" align="left" class="input_txt" >
-				                  	<input type="text" class="org_input_txtbx_height1"  id="pinid" name="pincode" onblur="pincheck('pinid')" min="6" maxlength="6" oninput="validatenum1();" value="${orgRegistration.pincode}" />
+				                  	<input type="text" class="org_input_txtbx_height1" tabindex="5" id="pinid" name="pincode" onblur="pincheck('pinid')" min="6" maxlength="6" oninput="validatenum1();" value="${orgRegistration.pincode}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.pincode"></form:errors></font>
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err">*</span> Transport Officer Name:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1"  id="transportid" min="4" maxlength="32"  name="transport_officer_name"  oninput="validateAlpha4();" onblur="toTitleCase4('transportid')" value="${orgRegistration.transport_officer_name}" />
+				                  	<input type="text" class="org_input_txtbx_height1" tabindex="15" id="transportid" min="4" maxlength="32"  name="transport_officer_name"  oninput="validateAlpha4();" onblur="toTitleCase4('transportid')" value="${orgRegistration.transport_officer_name}" />
 				                  		<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.transport_officer_name"></form:errors></font>
 				                  </td>
 				                </tr>
 				                <tr class="row2">
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Type Of Organization:</td>
 				                  <td valign="middle" align="left" class="input_txt">
-				                  	<select name="type_of_organization" style="width:220px;" onchange="fleetmanagement()" id="typeid" onblur="Validate('typeid')">
+				                  	<select name="type_of_organization" style="width:220px;" tabindex="6" onchange="fleetmanagement()" id="typeid" onblur="Validate('typeid')">
 				                  	<option value="${orgRegistration.type_of_organization}" selected>${orgRegistration.type_of_organization}</option>
 				                  	<option value="">-- Select Organization--</option>
 				                  	<option value="school"  <c:if test="${organisation.type_of_organization=='school'}"><c:out value="selected"/></c:if>>School</option>
@@ -153,7 +153,7 @@
 				                  </td>
 				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err">*</span> Transport Officer Number:</td>
 				                  <td valign="middle" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1"  id="tno_id"  name="transport_officer_number" oninput="validatenum6();" min="10" maxlength="10" onblur="tnocheck('tno_id')" value="${orgRegistration.transport_officer_number}" />
+				                  	<input type="text" class="org_input_txtbx_height1"  id="tno_id" tabindex="16"  name="transport_officer_number" oninput="validatenum6();" min="10" maxlength="10" onblur="tnocheck('tno_id')" value="${orgRegistration.transport_officer_number}" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.transport_officer_number"></form:errors></font>
 				                  </td>
 				                  
@@ -161,7 +161,7 @@
 				                <tr class="row1">
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Office Land Line 1:</td>
 				                  <td valign="middle" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum2();" onblur="landcheck1('landid1')" id="landid1" min="10" maxlength="10" name="office_land_line1" value="${orgRegistration.office_land_line1}" />
+				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum2();" tabindex="7" onblur="landcheck1('landid1')" id="landid1" min="10" maxlength="10" name="office_land_line1" value="${orgRegistration.office_land_line1}" />
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.office_land_line1"></form:errors></font>
 				                  </td>
 				                  
@@ -171,7 +171,7 @@
 
 				                  <c:choose>
 				                  <c:when test="${orgRegistration.is_active==1}">
-				                  <input type="radio" name="is_active" value="1" checked="checked"/>Yes&nbsp;&nbsp;
+				                  <input type="radio" name="is_active" value="1" tabindex="17" checked="checked"/>Yes&nbsp;&nbsp;
 									<input type="radio" name="is_active" value="0"/>No&nbsp;&nbsp;
 
 				                  </c:when>
@@ -187,8 +187,8 @@
 				                <tr class="row2">
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Office Land Line 2:</td>
 				                  <td valign="middle" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum3();" min="10" maxlength="10" onblur="landcheck2('landid2')" id="landid2" name="office_land_line2" value="${orgRegistration.office_land_line2}" />
-				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.office_land_line2"></form:errors></font>
+				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum3();" tabindex="8" min="10" maxlength="10" onblur="landcheck2('landid2')" id="landid2" name="office_land_line2" value="${orgRegistration.office_land_line2}" />
+				                  	<br/><font color="Red" size="+1"><span id="landerror"><form:errors path="OrgRegistration.office_land_line2"></form:errors></span></font>
 				                  </td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"></td>
 									<td valign="middle" align="left" class="input_txt">
@@ -251,10 +251,29 @@
 		        e.preventDefault();
 		});
 		});
+	$(function() {
+		$("#principalid").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+	
+	$(function() {
+		$("#transportid").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+	$(function() {
+		$("#chairmanid").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
 				     
 				     function check()
 				 	{
-				    	 
+				    	document.getElementById("tiderror").innerHTML=""; 
 				 		document.getElementById("ciderror").innerHTML="";
 				 		document.getElementById("piderror").innerHTML="";
 				 		document.getElementById("oerror").innerHTML="";
@@ -312,6 +331,10 @@
 				 		document.getElementById("ciderror").innerHTML="Required & must be of length 4 to 32.";
 				 		return false;
 				 		}	
+				 		if(document.getElementById("chairmanid").value.substring(0,1)==' '){
+							document.getElementById("ciderror").innerHTML="Invalid Name";
+							return false;
+						}
 				 			}
 				 		if(document.getElementById("principalid").value!='')
 				 		{
@@ -322,7 +345,21 @@
 				 		document.getElementById("piderror").innerHTML="Required & must be of length 4 to 32.";
 				 		return false;
 				 		}
-				 		}		
+				 		if(document.getElementById("principalid").value.substring(0,1)==' '){
+							document.getElementById("piderror").innerHTML="Invalid Name";
+							return false;	
+						}
+				 		}	
+						if(document.getElementById("transportid").value.substring(0,1)==' '){
+							document.getElementById("tiderror").innerHTML="Invalid Name";
+							return false;	
+						}
+						
+
+						if(document.getElementById("landid1").value==document.getElementById("landid2").value){
+							document.getElementById("landerror").innerHTML="Give different number";
+							return false;	
+						}
 				 	}
 function validateAlpha(){
     var textInput = document.getElementById("oname").value;
@@ -356,7 +393,7 @@ function toTitleCase1(branchid)
 
 function validateAlpha2(){
     var textInput = document.getElementById("chairmanid").value;
-    textInput = textInput.replace(/[^A-Za-z]/g, "");
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
     document.getElementById("chairmanid").value = textInput;
 }
 
@@ -371,7 +408,7 @@ function toTitleCase2(chairmanid)
 
 function validateAlpha3(){
     var textInput = document.getElementById("principalid").value;
-    textInput = textInput.replace(/[^A-Za-z]/g, "");
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
     document.getElementById("principalid").value = textInput;
 }
 
@@ -386,7 +423,7 @@ function toTitleCase3(principalid)
 
 function validateAlpha4(){
     var textInput = document.getElementById("transportid").value;
-    textInput = textInput.replace(/[^A-Za-z]/g, "");
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
     document.getElementById("transportid").value = textInput;
 }
 

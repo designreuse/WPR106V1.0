@@ -387,6 +387,7 @@ $(function() {
 			document.getElementById("tiderror").innerHTML="Invalid Name";
 			return false;	
 		}
+		
 	}
 	$(function() {
 		$("#principalid").on("keypress", function(e) {

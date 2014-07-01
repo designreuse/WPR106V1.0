@@ -81,7 +81,7 @@
     						<td width="25%" class="input_txt"></td>
 				                  <td valign="middle" align="left" class="input_txt"  width="25%"><span class="err">*</span> Organization Name</td>
 				                  <td width="0.5%">:</td><td valign="top" align="left" class="input_txt">
-				                  	<select  onchange="doAjaxPost()" style="width:220px;"name="org_name" id="orgid">
+				                  	<select  onchange="doAjaxPost()" style="width:220px;"name="org_name" id="orgid" tabindex="1">
 							   <option selected value="">-- Select Organization--</option>
 							    <c:forEach items="${orgname_for_school}" var="orgname_for_school" varStatus="status">
         				        <option value="${orgname_for_school}" <c:if test="${orgname_for_school==org_name}"><c:out value="Selected"/></c:if> >${orgname_for_school}</option>
@@ -106,7 +106,7 @@
 								    </select>
 						            </c:when>
 						            <c:otherwise>
-						            <select   style="width:220px;margin-top:-4px;" name="drop_point_address" id="drop_location_id" onblur="Validate1('bid')"  >
+						            <select   style="width:220px;margin-top:-4px;" name="drop_point_address" id="drop_location_id" onblur="Validate1('bid')"  tabindex="11">
 							    <option selected value="">-- Select Drop Location--</option>
 							     </select>
 						            </c:otherwise>
@@ -137,7 +137,7 @@
 								    </select>
 						            </c:when>
 						            <c:otherwise>
-						            <select   style="width:220px;margin-top:-4px;" name="branch" id="bid" onblur="Validate1('bid')" onchange="doAjaxPost1()" >
+						            <select   style="width:220px;margin-top:-4px;" name="branch" id="bid" onblur="Validate1('bid')" onchange="doAjaxPost1()" tabindex="2">
 							    <option selected value="">-- Select branch--</option>
 							     </select>
 						            </c:otherwise>
@@ -147,7 +147,7 @@
 				                  	 
 				                 <td valign="middle" align="left" class="input_txt"><span class="err"></span> KG Drop </td><td width="0.5%">:</td>
 				                  <td valign="middle" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	<input type="checkbox"  id="inp_id" value="yes" name="kg_drop" <c:if test="${studentDetails.kg_drop=='yes'}"><c:out value="checked=checked"/></c:if> />
+				                  	<input type="checkbox"  id="inp_id" value="yes" tabindex="12" name="kg_drop" <c:if test="${studentDetails.kg_drop=='yes'}"><c:out value="checked=checked"/></c:if> />
 				                  	
 				                  </td>
 				                  <td width="15%" class="input_txt"></td>
@@ -158,12 +158,12 @@
 								<td width="5%" class="input_txt"></td>
 								<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Student Roll Number </td><td width="0.5%">:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text"  id="rollid" name="student_roll_no" oninput="validateAlpha4();" value="${studentDetails.student_roll_no}"/><br/>
+				                  	<input type="text"  id="rollid" name="student_roll_no" oninput="validateAlpha4();" tabindex="3" value="${studentDetails.student_roll_no}"/><br/>
 				                  	 <br/><font color="Red" size="+1"><form:errors path="student.student_roll_no"></form:errors></font>
 				                  </td>
 				                  <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Name 1</td><td width="0.5%">:</td>
 					                <td valign="top" align="left" class="input_txt">
-					                <input type="text"  id="pname1" name="parent_name1" oninput="validateAlpha2();" onblur="toTitleCase2('pname1')" value="${studentDetails.parent_name1}"/>
+					                <input type="text"  id="pname1" name="parent_name1" oninput="validateAlpha2();" tabindex="13" onblur="toTitleCase2('pname1')" value="${studentDetails.parent_name1}"/>
 					               <br/><font color="Red" size="+1"><form:errors path="student.parent_name1"></form:errors></font></td>
 				                  
 				                   <td width="15%" class="input_txt"></td>
@@ -173,11 +173,11 @@
 				                 <td width="5%" class="input_txt"></td>
 				                        <td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="text"  id="fname" name="first_name" oninput="validateAlpha();" min="4" maxlength="32" onblur="toTitleCase('fname')" value="${studentDetails.first_name}"/>
+				                  	<input type="text"  id="fname" name="first_name" oninput="validateAlpha();" tabindex="4" min="4" maxlength="32" onblur="toTitleCase('fname')" value="${studentDetails.first_name}"/>
 				                  	 <br/><font color="Red" size="+1"><span id="fnameerror"><form:errors path="student.first_name"></form:errors></font></span></td>
 				                     <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Parent Name 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="pname2" name="parent_name2" oninput="validateAlpha3();" onblur="toTitleCase3('pname2')" value="${studentDetails.parent_name2}" />
+					               <input type="text"  id="pname2" name="parent_name2" oninput="validateAlpha3();" tabindex="14" onblur="toTitleCase3('pname2')" value="${studentDetails.parent_name2}" />
 					          <br/><font color="Red" size="+1"><form:errors path="student.parent_name2"></form:errors></font></td>
 					               	 	
 					               	 	<td width="15%" class="input_txt"></td>			                					            	 
@@ -186,14 +186,14 @@
 				                <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Last Name</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="text"  id="lname" name="last_name" min="4" maxlength="32" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" value="${studentDetails.last_name}" />
+				                  	<input type="text"  id="lname" name="last_name" min="4" maxlength="32" tabindex="5" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" value="${studentDetails.last_name}" />
 				                  	  <br/><font color="Red" size="+1"><span id="lnameerror"></span><form:errors path="student.last_name"></form:errors></font></span></td>
 				                
 				         
 				                
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Parent Mobile 1</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="mob1" name="parent_mobile1" oninput="validatenum();" min="10" maxlength="10" value="${studentDetails.parent_mobile1}" />
+					               <input type="text"  id="mob1" name="parent_mobile1" oninput="validatenum();" tabindex="15" min="10" maxlength="10" value="${studentDetails.parent_mobile1}" />
 					          <br/><font color="Red" size="+1"><form:errors path="student.parent_mobile1"></form:errors></font>
 					              </td>
 					              <td width="15%" class="input_txt"></td>
@@ -203,13 +203,13 @@
 				                <td width="5%" class="input_txt"></td>
 					            	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Gender </td><td width="0.5%">:</td>
 						            <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						            	<input type="radio" value="M" name="gender" checked <c:if test="${studentDetails.gender=='M'}"><c:out value="checked=checked"/></c:if>>Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="F" name="gender" <c:if test="${studentDetails.gender=='F'}"><c:out value="checked=checked"/></c:if>>FeMale
+						            	<input type="radio" value="M" name="gender" tabindex="6" checked <c:if test="${studentDetails.gender=='M'}"><c:out value="checked=checked"/></c:if>>Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="F" name="gender" <c:if test="${studentDetails.gender=='F'}"><c:out value="checked=checked"/></c:if>>FeMale
 						            	</td>
 						            	
 						       
 				                 <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Mobile 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  name="parent_mobile2" id="mob2" oninput="validatenum1();" min="10" maxlength="10" value="${studentDetails.parent_mobile2}"/>
+					               <input type="text"  name="parent_mobile2" id="mob2" oninput="validatenum1();" tabindex="16" min="10" maxlength="10" value="${studentDetails.parent_mobile2}"/>
 					         <br/><font color="Red" size="+1"><span id="mob2error"></span><form:errors path="student.parent_mobile2"></form:errors></font>
 					               </td>
 					               <td width="15%" class="input_txt"></td>
@@ -219,14 +219,14 @@
 				                    <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Avail Transport Facility </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				                  	 <input type="radio" name="transport_facility" value="yes" class="input_txt" checked <c:if test="${studentDetails.transport_facility=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;
+				                  	 <input type="radio" name="transport_facility" value="yes" tabindex="7" class="input_txt" checked <c:if test="${studentDetails.transport_facility=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;
 					                <input type="radio" name="transport_facility" value="no" class="input_txt" <c:if test="${studentDetails.transport_facility=='no'}"><c:out value="checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
 				                  <!-- <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.transport_facility"></form:errors></font> -->	
 				                  </td>
 				                  
 				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Email 1</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="email1" name="parent_email1" oninput="validateemail1()" value="${studentDetails.parent_email1}" />
+					               <input type="text"  id="email1" name="parent_email1" tabindex="17" oninput="validateemail1()" value="${studentDetails.parent_email1}" />
 					         <br/><font color="Red" size="+1"><span id="eiderror"><form:errors path="student.parent_email1"></form:errors></font></span></td>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
@@ -235,7 +235,7 @@
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Pickup Route No </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                    <div id="info1">
-				                  	 <select style="width:220px;"name="pickup_route_no"  id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()" >
+				                  	 <select style="width:220px;"name="pickup_route_no"  id="pickup_route_id" tabindex="8" onchange="doAjaxPost_pickup_route_no()" >
 					               <option  selected value="">--Select PickUp Route No--</option>
 					              
 			                  </select>
@@ -245,7 +245,7 @@
 				                  
 				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Email 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="email2" name="parent_email2" oninput="validateemail2()" value="${studentDetails.parent_email2}" />
+					               <input type="text"  id="email2" name="parent_email2" tabindex="18" oninput="validateemail2()" value="${studentDetails.parent_email2}" />
 					        <br/><font color="Red" size="+1"><span id="eiderror1"><form:errors path="student.parent_email2"></form:errors></font></span></td>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
@@ -269,7 +269,7 @@
 								    </select>
 						            </c:when>
 						            <c:otherwise>
-						            <select   style="width:220px;margin-top:-4px;" name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')"  >
+						            <select   style="width:220px;margin-top:-4px;" name="pickup_point_address" tabindex="9" id="pickup_location_id" onblur="Validate1('bid')"  >
 							    <option  selected value="">-- Select Pickup Location--</option>
 							     </select>
 						            </c:otherwise>
@@ -298,7 +298,7 @@
 								    </select>
 						            </c:when>
 						            <c:otherwise>
-						            <select   style="width:220px;margin-top:-4px;" name="class_standard" id="class_standard_id" onblur="Validate1('bid')" onchange="doAjaxPost_section()" >
+						            <select   style="width:220px;margin-top:-4px;" name="class_standard" id="class_standard_id" tabindex="19" onblur="Validate1('bid')" onchange="doAjaxPost_section()" >
 							    <option selected value="">-- Select Class--</option>
 							     </select>
 						            </c:otherwise>
@@ -322,7 +322,7 @@
 								    </select>
 						            </c:when>
 						            <c:otherwise>
-						            <select   style="width:220px;margin-top:-4px;" name="drop_route_no" id="drop_route_id" onblur="Validate1('bid')" onchange="doAjaxPost_drop_route_no()" >
+						            <select   style="width:220px;margin-top:-4px;" name="drop_route_no" id="drop_route_id" tabindex="10" onblur="Validate1('bid')" onchange="doAjaxPost_drop_route_no()" >
 							    <option selected value="">-- Select drop Route No--</option>
 							     </select>
 						            </c:otherwise>
@@ -358,7 +358,7 @@
 								    </select>
 						            </c:when>
 						            <c:otherwise>
-						            <select   style="width:220px;margin-top:-4px;" name="section" id="section_id" onblur="Validate1('bid')" >
+						            <select   style="width:220px;margin-top:-4px;" name="section" id="section_id" tabindex="20" onblur="Validate1('bid')" >
 							    <option selected value="">-- Select section--</option>
 							     </select>
 						            </c:otherwise>

@@ -108,10 +108,26 @@ overflow-x:hidden; */
 
 	function validate()	
 	{
+		
 	document.getElementById("ferror").innerHTML="";
 	document.getElementById("lerror").innerHTML="";
 	document.getElementById("mobiderror").innerHTML="";
 	document.getElementById("eiderror").innerHTML="";
+	document.getElementById("cityerror").innerHTML="";
+	document.getElementById("staterror").innerHTML="";
+	
+	
+	if(document.getElementById("cityid").value.substring(0,1)==' ')
+	{
+	document.getElementById("cityerror").innerHTML="Invalid City Name";
+	return false;
+	}
+    
+    if(document.getElementById("stateid").value.substring(0,1)==' ')
+	{
+	document.getElementById("staterror").innerHTML="Invalid State Name";
+	return false;
+	}	
 		
 		var sub=document.getElementById("fname").value.substring(0,2);
 	
@@ -170,6 +186,8 @@ overflow-x:hidden; */
     		return false;
     		}
     	}
+    
+    
 	}
 	</script>
 <div id="header-wrapper" style=" overflow:hidden;background:url(resources/images/map.png) no-repeat;background-size:110% 100%;">
@@ -214,9 +232,9 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 			<%-- <textarea name="address2" id="addr2" value="${contact.address2}" placeholder="Address Line 2" tabindex="7" class="txtblock"></textarea>
 			<font color="Red" ><form:errors path="contacts.address2"></form:errors></font> --%>
 			<input type="text" name="city"  maxlength="32"  id="cityid" value="${contact.city}" placeholder="City" oninput="validateAlpha3();" onblur="toTitleCase3('cityid')"class="txtinput"/>
-			<font color="Red" ><form:errors path="contacts.city"></form:errors></font>
+			<font color="Red" ><span id="cityerror"><form:errors path="contacts.city"></form:errors></span></font>
 			<input type="text" name="state" id="stateid" maxlength="32"  value="${contact.state}" placeholder="State" oninput="validateAlpha4();" onblur="toTitleCase4('stateid')" class="txtinput" />
-     		<font color="Red" ><form:errors path="contacts.state"></form:errors></font><br/>
+     		<font color="Red" ><span id="staterror"><form:errors path="contacts.state"></form:errors></span></font><br/>
    			<span style="margin:0  0 0 120px;">
    			<input type="submit" value="Submit" id="submit" class="btn" onclick="return validate()">
    			<input type="reset" value="Reset" class="btn" onclick="window.location.href='login'"></span>
@@ -321,6 +339,20 @@ $(function() {
 $(function() {
     $("#pswd").keydown(function(e) {
         if (e.keyCode == 32) // 32 is the ASCII value for a space
+            e.preventDefault();
+    });
+});
+
+$(function() {
+    $("#cityid").keydown(function(e) {
+        if (e.keyCode == 32 && !this.value.length) // 32 is the ASCII value for a space
+            e.preventDefault();
+    });
+});
+
+$(function() {
+    $("#stateid").keydown(function(e) {
+        if (e.keyCode == 32 && !this.value.length) // 32 is the ASCII value for a space
             e.preventDefault();
     });
 });

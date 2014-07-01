@@ -28,7 +28,7 @@ public class AddUser{
 	@Email
 	private String email;
 	
-	@Length(min=5,max=32,message="Required & must be of length 5 to 32")
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32")
 	private String username;
 	
 	@Length(min=4,max=32,message="Required & must be of length 4 to 32")
