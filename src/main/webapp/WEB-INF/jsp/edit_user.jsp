@@ -6,7 +6,20 @@
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
     <div id="GPS_View_table">
 	<form method="POST" action="updateuser">
-
+<script id="script_bid">
+     $(function() {
+    	$("#fname").on("keypress", function(e) {
+    		if (e.which === 32 && !this.value.length)
+    	        e.preventDefault();
+    	});
+    	});
+    $(function() {
+    	$("#lname").on("keypress", function(e) {
+    		if (e.which === 32 && !this.value.length)
+    	        e.preventDefault();
+    	});
+    	});
+</script>
 <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
 
       <tr>
@@ -55,7 +68,7 @@
 				                  <span class="err">*</span> First Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="fname" min="4" maxlength="32" oninput="validateAlpha();" onblur="toTitleCase('fname')" value="${addUser.firstname }" name="firstname" />
-				                  	<br/><font color="Red" size="+1"><form:errors path="user.firstname"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><span id="ferror"></span><form:errors path="user.firstname"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
                         		<tr class="row2">
@@ -64,7 +77,7 @@
 				                  <span class="err">*</span> Last Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="lname" min="4" maxlength="32" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" name="lastname"   value="${addUser.lastname}"/>
-				                  	<br/><font color="Red" size="+1"><form:errors path="user.lastname"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><span id="lerror"></span><form:errors path="user.lastname"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row1">
@@ -184,6 +197,16 @@ function check(){
 		document.getElementById("vali").innerHTML="Password and Confirm Password should be same!!!";
 		return false;
 	
+	}
+	if(document.getElementById("lname").value.substring(0,1)==' ')
+	{
+	document.getElementById("lerror").innerHTML="Invalid Lastname";
+	return false;
+	}
+	if(document.getElementById("fname").value.substring(0,1)==' ')
+	{
+	document.getElementById("ferror").innerHTML="Invalid Firstname";
+	return false;
 	}
 }
 

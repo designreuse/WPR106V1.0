@@ -13,6 +13,18 @@
     $(document).ready(function() {
         $("#bid").select2();
     });
+    $(function() {
+    	$("#fname").on("keypress", function(e) {
+    		if (e.which === 32 && !this.value.length)
+    	        e.preventDefault();
+    	});
+    	});
+    $(function() {
+    	$("#lname").on("keypress", function(e) {
+    		if (e.which === 32 && !this.value.length)
+    	        e.preventDefault();
+    	});
+    	});
 </script>
 <jsp:include page="header.jsp"></jsp:include>
 
@@ -87,7 +99,7 @@
 				                  <span class="err">*</span> First Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="fname" oninput="validateAlpha();" min="4" maxlength="32"  onblur="toTitleCase('fname')" value="${adminuser.firstname }" name="firstname" />
-				                  <br/><font color="Red" size="+1"><form:errors path="user.firstname"></form:errors></font>
+				                  <br/><font color="Red" size="+1"><span id="ferror"></span><form:errors path="user.firstname"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
                         		<tr class="row2">
@@ -96,7 +108,7 @@
 				                  <span class="err">*</span> Last Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="lname" oninput="validateAlpha1();" min="5" maxlength="32" onblur="toTitleCase1('lname')" name="lastname"   value="${adminuser.lastname}"/>
-				                  	<br/><font color="Red" size="+1"><form:errors path="user.lastname"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><span id="lerror" style="display:none:"></span><form:errors path="user.lastname"></form:errors></font>
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row1">
@@ -260,8 +272,19 @@ function check(){
 		return false;
 	
 	}
+	if(document.getElementById("lname").value.substring(0,1)==' ')
+	{
+	document.getElementById("lerror").innerHTML="Invalid Lastname";
+	return false;
+	}
+	if(document.getElementById("fname").value.substring(0,1)==' ')
+	{
+	document.getElementById("ferror").innerHTML="Invalid Firstname";
+	return false;
+	}
 	
 }
+
 
 
 </script>	   

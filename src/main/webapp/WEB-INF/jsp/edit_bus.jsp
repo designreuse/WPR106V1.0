@@ -40,6 +40,15 @@ jQuery(function () {
     $(document).ready(function() {
         $("#imei").select2();
     });
+    
+    $(function() {
+    	$("#driver_id").on("keypress", function(e) {
+    		if (e.which === 32 && !this.value.length)
+    	        e.preventDefault();
+    	});
+    	});
+    
+    
 </script>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
@@ -95,7 +104,7 @@ jQuery(function () {
 				                <tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver Name :</td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="driver_id" name="driver_name" value="${BusRegistration.driver_name}" oninput="validatealpha_driver_name()" onblur="changealpha_driver_name()" />
-				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_name"></form:errors></font></td>
+				                  	</br><font color="Red" size="+1"><span id="derror"></span><form:errors path="busRegistration.driver_name"></form:errors></font></td>
 				                </tr>
 				                <tr class="row1">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License No :</td>
@@ -140,7 +149,7 @@ jQuery(function () {
 				           <table width="100%">
 				                  <tr>
 
-				                   <td width="50%" align="right"><input type="submit" class="btn" value="Save Cahnges" ></td>
+				                   <td width="50%" align="right"><input type="submit" class="btn" value="Save Cahnges" onclick="return check('this')"></td>
 
 				                   <td>&nbsp;&nbsp;</td>
 				                    
@@ -156,9 +165,7 @@ jQuery(function () {
 				          </div>
 				          				
 				          <jsp:include page="footer.jsp"></jsp:include>
-				          
-<<<<<<< .mine
-				         =======
+				         
 				         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
 
@@ -203,7 +210,18 @@ function validatealpha_driver_name(){
 
 </script>
 
-
+<script>
+		function check(){
+			if(document.getElementById("driver_id").value.substring(0,1)==' ')
+			{
+			document.getElementById("derror").innerHTML="Invalid Drivername";
+			return false;
+			}
+			
+		}
+		
+		
+		</script>
 <script>
 $(function() {
 	$("#datepicker").datepicker({ minDate: 0});

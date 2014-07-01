@@ -37,7 +37,15 @@ jQuery(function () {
 });//]]>  
 
 </script>
-
+<script id="script_bid">
+   
+    $(function() {
+    	$("#driver_id").on("keypress", function(e) {
+    		if (e.which === 32 && !this.value.length)
+    	        e.preventDefault();
+    	});
+    	});
+</script>
 <script id="script_orgid">
     $(document).ready(function() {
         $("#orgid").select2();
@@ -135,7 +143,7 @@ jQuery(function () {
 				                <tr class="row2">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver Name :</td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="driver_id" name="driver_name" min="4" maxlength="32" onblur="changealpha_driver_name()" oninput="validatealpha_driver_name()" value="${busreg.driver_name}"/>
-				                </br><font color="Red" size="+1"><form:errors path="busRegistration.driver_name"></form:errors></font>
+				                </br><font color="Red" size="+1"><span id="derror"></span><form:errors path="busRegistration.driver_name"></form:errors></font>
 				                </td>
 				                </tr>
 				                <tr class="row1">
@@ -397,7 +405,18 @@ $('#info').html(response);
 		  });  
 		}  
 		</script>
+		<script>
+		function check(){
+			if(document.getElementById("driver_id").value.substring(0,1)==' ')
+			{
+			document.getElementById("derror").innerHTML="Invalid Drivername";
+			return false;
+			}
+			
+		}
 		
+		
+		</script>
 
 <jsp:include page="footer.jsp"></jsp:include>
 				                
