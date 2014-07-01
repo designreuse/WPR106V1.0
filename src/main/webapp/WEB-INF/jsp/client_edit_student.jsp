@@ -222,7 +222,7 @@ $(document).ready(function () {
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" id="email2" name="parent_email2" oninput="validateemail2()" value="${student.parent_email2}"/>
 				                  	 <br/>          
-					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_email2"></form:errors></font>
+					               <font color="Red" size="+1"><span id="email2error"></span><form:errors path="studentRegistration.parent_email2"></form:errors></font>
 				                  </td>
 					            </tr>
 					            <input type="hidden" name="class_standard"  value="${student.class_standard}"/>
@@ -337,6 +337,20 @@ function mobilecheck()
 			return false;
 			}
 	} 	
+	if(document.getElementById("mob2").value!=''){
+		if(document.getElementById("mob2").value==document.getElementById("mob1").value){
+			
+			document.getElementById("mrequires1").innerHTML="Mobile Number should not be same";
+			return false;
+		}
+	}
+	if(document.getElementById("email2").value!=''){
+		if(document.getElementById("email2").value==document.getElementById("email1").value){
+			
+			document.getElementById("email2error").innerHTML="Email ID's should not be same";
+			return false;
+		}
+	}
 	
 }
 

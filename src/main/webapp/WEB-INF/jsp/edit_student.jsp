@@ -155,7 +155,7 @@
 				                 <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Mobile 2:</td>
 					               <td valign="top" align="left" class="input_txt">
 					               <input type="text"  name="parent_mobile2" id="mob2" oninput="validatenum1();" min="10" maxlength="10" value="${student.parent_mobile2}"/>
-					        <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_mobile2"></form:errors></font>
+					        <br/><font color="Red" size="+1"><span id="mob2error"></span><form:errors path="studentRegistration.parent_mobile2"></form:errors></font>
 					               </td>
 					               <td width="15%" class="input_txt"></td>
 				                </tr>
@@ -378,6 +378,15 @@ function doAjaxPost_section() {
 		return false;
 		}
     	
+    	if(document.getElementById("mob2").value!="")
+		{
+	if(document.getElementById("mob1").value==document.getElementById("mob2").value)
+    {
+    	document.getElementById("mob2error").innerHTML="Mobile number should not be the same<br/>";
+    	
+        return false;
+    }
+		}
     	
     	var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 	    
@@ -395,6 +404,15 @@ function doAjaxPost_section() {
 		if(document.getElementById("email2").value.match(mail)==null)
 	    {
 	    	document.getElementById("eiderror1").innerHTML="Invalid Email ID";
+	    	
+	        return false;
+	    }
+			}
+		 if(document.getElementById("email2").value!="")
+			{
+		if(document.getElementById("email2").value==document.getElementById("email1").value)
+	    {
+	    	document.getElementById("eiderror1").innerHTML="Email ID's should not be same";
 	    	
 	        return false;
 	    }

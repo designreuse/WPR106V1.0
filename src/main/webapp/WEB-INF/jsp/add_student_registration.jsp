@@ -187,7 +187,7 @@
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Last Name</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<input type="text"  id="lname" name="last_name" min="4" maxlength="32" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" value="${studentDetails.last_name}" />
-				                  	  <br/><font color="Red" size="+1"><span id="lnameerror"><form:errors path="student.last_name"></form:errors></font></span></td>
+				                  	  <br/><font color="Red" size="+1"><span id="lnameerror"></span><form:errors path="student.last_name"></form:errors></font></span></td>
 				                
 				         
 				                
@@ -210,7 +210,7 @@
 				                 <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Mobile 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
 					               <input type="text"  name="parent_mobile2" id="mob2" oninput="validatenum1();" min="10" maxlength="10" value="${studentDetails.parent_mobile2}"/>
-					         <br/><font color="Red" size="+1"><form:errors path="student.parent_mobile2"></form:errors></font>
+					         <br/><font color="Red" size="+1"><span id="mob2error"></span><form:errors path="student.parent_mobile2"></form:errors></font>
 					               </td>
 					               <td width="15%" class="input_txt"></td>
 				                </tr>
@@ -611,14 +611,26 @@ function validat(org_id){
     {
     	if(document.getElementById("fname").value.substring(0,1)==' ')
 		{
-		document.getElementById("fnameerror").innerHTML="Invalid Firstname";
+		document.getElementById("fnameerror").innerHTML="Invalid Firstname<br/>";
 		return false;
 		}
     	if(document.getElementById("lname").value.substring(0,1)==' ')
 		{
-		document.getElementById("lnameerror").innerHTML="Invalid Lastname";
+		document.getElementById("lnameerror").innerHTML="Invalid Lastname<br/>";
 		return false;
 		}
+    	
+    	 if(document.getElementById("mob2").value!="")
+			{
+		if(document.getElementById("mob1").value==document.getElementById("mob2").value)
+	    {
+	    	document.getElementById("mob2error").innerHTML="Mobile number should not be the same<br/>";
+	    	
+	        return false;
+	    }
+			}
+    	
+    	
     	
     	
     	var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -640,7 +652,21 @@ function validat(org_id){
 	    	
 	        return false;
 	    }
+		
+		
 			}
+		 if(document.getElementById("email2").value!="")
+			{
+		if(document.getElementById("email1").value==document.getElementById("email2").value)
+	    {
+	    	document.getElementById("eiderror1").innerHTML="Email ID's should not be same";
+	    	
+	        return false;
+	    }
+			}
+		 
+		 
+		 
     }
     $(function() {
 		$("#fname").on("keypress", function(e) {
