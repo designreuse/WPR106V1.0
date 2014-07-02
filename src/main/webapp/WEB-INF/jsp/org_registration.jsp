@@ -36,8 +36,9 @@
     					  <td>
     					  <table cellpadding="0" cellspacing="0" border="0" width="100%">
     							<tr class="row1">
+    							<td valign="middle" width="15%"></td>
 				                  <td valign="middle" width="20%"align="left" class="txtinput"><span class="err">*</span> Organization Name :</td>
-				                  <td valign="top" align="left" class="input_txt">
+				                  <td valign="top"  align="left" class="input_txt">
 				                  <input type="hidden" value="${org_id}" name="org_id"/>
 									<input type="text" class="org_input_txtbx_height1"  id="oname" name="org_name" oninput="validateAlpha();" min="4" maxlength="32" onblur="toTitleCase('oname')" tabindex="1"  value="${organisation.org_name}"/>
 				                  	<br/><font color="Red" size="+1"><c:if test="${error==true}"><c:out value="Organisation name and branch already exist"></c:out></c:if><span id="oerror"><form:errors path="OrgRegistration.org_name"></form:errors></font></span>
@@ -49,7 +50,7 @@
 				                  	<br/><font color="Red" size="+1"><c:if test="${ferror==true}"><c:out value="Fax number already exist"></c:out></c:if><form:errors path="OrgRegistration.office_fax"></form:errors></font>
 				                  </td>			                   
 				              </tr>
-				              <tr class="row2">
+				              <tr class="row2"><td valign="middle" width="15%"></td>
 				              <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Branch:</td>
 				                  <td valign="top" align="left" class="input_txt" >
 				                	<input type="text" class="org_input_txtbx_height1"  id="branchid" name="branch"  oninput="validateAlpha1();" min="4" maxlength="32" onblur="toTitleCase1('branchid')" tabindex="2"  value="${organisation.branch}" />
@@ -63,7 +64,7 @@
 				               
 				                  
 				                </tr>
-				              <tr class="row1">
+				              <tr class="row1"><td valign="middle" width="15%"></td>
 				              <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Address:</td>
 				                  <td valign="top" align="left" class="input_txt" >
 				                 <%--  	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_address_id" name="address" value="${organisation.address}" />
@@ -71,7 +72,7 @@
 				                   <textarea class="textareanew"  rows="3" cols="7" style="width:220px;height:50px;" onblur="toTitleCase5('addr_id')" id="addr_id" tabindex="3" name="address" onfocus="doAjaxcheckunique()">${organisation.address}</textarea>
 				                   	<br/><font color="Red" size="+1"><span id="aerror"><form:errors path="OrgRegistration.address"></form:errors></font></span>
 				                  </td>
-				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Name:</td>
+				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err">&nbsp;</span> Chairman Name:</td>
 				                  <td valign="center" align="left" class="input_txt" width="60%" >
 				                  	<input type="text" class="org_input_txtbx_height1"  id="chairmanid"  name="chairman_name" min="4" maxlength="32"  oninput="validateAlpha2();" tabindex="13" onblur="toTitleCase2('chairmanid')"value="${organisation.chairman_name}" />
 				                  	<br/><font color="Red" size="+1"><span id="ciderror"><form:errors path="OrgRegistration.chairman_name"></form:errors></span></font>
@@ -79,7 +80,7 @@
 				                 
 				                </tr>
 				                
-				                <tr class="row2">
+				                <tr class="row2"><td valign="middle" width="15%"></td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Country:</td>
 				                  <td valign=
 				                  "top" align="left" class="input_txt" >
@@ -89,13 +90,13 @@
 				                  	<input type="text" class="org_input_txtbx_height1" id="countryid" min="4" maxlength="32" onblur="countrycheck('countryid')" oninput="validatecountry();" name="country" tabindex="4" value="${organisation.country}" />
 				                  	<br/><font color="Red" size="+1"><span id="cerror"><form:errors path="OrgRegistration.country"></form:errors></span></font>
 				                  </td>
-									<td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Chairman Telephone number:</td>
+									<td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span>Chairman Telephone number:</td>
 				                  <td valign="center" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="cno_id" oninput="validatenum4();" onblur="cnocheck('cno_id')" name="chairman_telephone_number" tabindex="14" min="10" maxlength="10" value="${organisation.chairman_telephone_number}" />
 				                  	<br/><font color="Red" size="+1"><c:if test="${cerror==true}"><c:out value="Mobile number already exist"></c:out></c:if><form:errors path="OrgRegistration.chairman_telephone_number"></form:errors></font>
 				                  </td>
 				                </tr>
-				                <tr class="row1">
+				                <tr class="row1"><td valign="middle" width="15%"></td>
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> State:</td>
 				                  <td valign="top" align="left" class="input_txt"  >
 				                  	<!-- <select name="state" class="org_input_cmbbx" id="state_id">
@@ -106,13 +107,13 @@
 				                  
 				                  	
 				                  </td>
-				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Principal Name:</td>
+				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err">&nbsp;</span> Principal Name:</td>
 				                  <td valign="top" align="left" class="input_txt" >
 				                  	<input type="text" class="org_input_txtbx_height1"  id="principalid"  name="principal_name" min="4" maxlength="32" oninput="validateAlpha3();" tabindex="15" onblur="toTitleCase3('principalid')" value="${organisation.principal_name}" />
 				                  	<br/><font color="Red" size="+1"><span id="piderror"><form:errors path="OrgRegistration.principal_name"></form:errors></font></span>
 				                  </td>
 				                </tr>
-				                <tr class="row2">
+				                <tr class="row2"><td valign="middle" width="15%"></td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> City:</td>
 				                  <td valign="top" align="left" class="input_txt" ">
 				                  	<%-- <select name="city" class="org_input_cmbbx" id="city_id">
@@ -125,7 +126,7 @@
 				                  
 				                   </td>
 				                
-				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err"></span> Principal Telephone Number:</td>
+				                  <td valign="middle"   align="left" class="input_txtlabel"><span class="err">&nbsp;</span> Principal Telephone Number:</td>
 				                  <td valign="top" align="left" class="input_txt"  >
 				                  	<input type="text" class="org_input_txtbx_height1"  id="pno_id" oninput="validatenum5();" name="principal_telephone_number" tabindex="16" onblur="pnocheck('pno_id')" min="10" maxlength="10" value="${organisation.principal_telephone_number}" />
 				                  	<br/><font color="Red" size="+1"><c:if test="${perror==true}"><c:out value="Mobile number already exist"></c:out></c:if><form:errors path="OrgRegistration.principal_telephone_number"></form:errors></font>
@@ -133,7 +134,7 @@
 				                
 				                </tr>
 				                
-				                <tr class="row1">
+				                <tr class="row1"><td valign="middle" width="15%"></td>
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Pin code:</td>
 				                  <td valign="top" align="left" class="input_txt" >
 				                  	<input type="text" class="org_input_txtbx_height1"  id="pinid" name="pincode" onblur="pincheck('pinid')" oninput="validatenum1();" tabindex="7" min="6" maxlength="6" value="${organisation.pincode}" />
@@ -145,7 +146,7 @@
 				                  	<br/><font color="Red" size="+1"><span id="tiderror"><form:errors path="OrgRegistration.transport_officer_name"></form:errors></span></font>
 				                  </td>
 				                </tr>
-				                <tr class="row2">
+				                <tr class="row2"><td valign="middle" width="15%"></td>
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Type Of Organization:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<select name="type_of_organization"  onblur="Validate('typeid')" tabindex="8" onchange="fleetmanagement()" id="typeid" style="width:220px;">
@@ -165,7 +166,7 @@
 				                  </td>
 				                  
 				                </tr>
-				                <tr class="row1">
+				                <tr class="row1"><td valign="middle" width="15%"></td>
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Office Land Line 1:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum2();" onblur="landcheck1('landid1')"  id="landid1" tabindex="9" name="office_land_line1" min="12" maxlength="12" value="${organisation.office_land_line1}"  />
@@ -179,7 +180,7 @@
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.is_active"></form:errors></font>
 				                  
 				                </tr>
-				                <tr class="row2">
+				                <tr class="row2"><td valign="middle" width="15%"></td>
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Office Land Line 2:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum3();" tabindex="10" onblur="landcheck2('landid2')" id="landid2" min="12" maxlength="12" name="office_land_line2" value="${organisation.office_land_line2}" />
@@ -192,7 +193,7 @@
 				                  </td>
 				                </tr>
 				                
-				                <tr class="row1">
+				                <tr class="row">
 				                <td colspan="4" valign="top" align="center" width="60%"  class="input_txt">
 				 <table>
                    <tr align="right">
