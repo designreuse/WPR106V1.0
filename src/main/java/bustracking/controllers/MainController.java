@@ -1118,12 +1118,12 @@ public class MainController {
 		
 		if(result.hasErrors())
 		{
-			
+			model.addAttribute("route_array", mainDAO.get_route(trip,mainDAO.getOrg_id(principal.getName())));
 			return "client_smstoparent";
 		}
 		else{
 			messageSending.SMS_to_parent(trip,route_no, Message);
-			model.addAttribute("route_array", mainDAO.get_route(trip,mainDAO.getOrg_id(principal.getName())));
+			
 			model.addAttribute("suceess","true");
 			
 			
@@ -1132,6 +1132,7 @@ public class MainController {
 		ReportForm reportForm=new ReportForm();
 		reportForm.setReports(reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName())));
 		model.addAttribute("reportForm",reportForm);
+		
 		
 		ReportForm reportForm1=new ReportForm();
 		reportForm1.setReports(reportsDAO.getStudent_roll_no_for_clienttrack_sms(mainDAO.getOrg_id(principal.getName())));

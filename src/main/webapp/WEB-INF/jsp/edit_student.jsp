@@ -97,7 +97,7 @@
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Name 1:</td>
 					                <td valign="top" align="left" class="input_txt">
 					                <input type="text"  id="pname1" name="parent_name1" oninput="validateAlpha2();" onblur="toTitleCase2('pname1')" value="${student.parent_name1}"/>
-					                <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name1"></form:errors></font></td>
+					                <br/><font color="Red" size="+1"><span id="p1error"><form:errors path="studentRegistration.parent_name1"></form:errors></span></font></td>
 				                  
 				                   <td width="15%" class="input_txt"></td>
 				                </tr>
@@ -111,7 +111,7 @@
 				                     <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Parent Name 2:</td>
 					               <td valign="top" align="left" class="input_txt">
 					               <input type="text"  id="pname2" name="parent_name2" oninput="validateAlpha3();" onblur="toTitleCase3('pname2')" value="${student.parent_name2}"/>
-					         <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name2"></form:errors></font></td>
+					         <br/><font color="Red" size="+1"><span id="p2error"><form:errors path="studentRegistration.parent_name2"></form:errors></span></font></td>
 					               	 	
 					               	 	<td width="15%" class="input_txt"></td>			                					            	 
 				                </tr>
@@ -180,7 +180,7 @@
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Email 1:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="email1" name="parent_email1" value="${student.parent_email1}" />
+					               <input type="text"  id="email1" name="parent_email1" oninput="validateemail1()" value="${student.parent_email1}" />
 					         <br/><font color="Red" size="+1"><span id="eiderror"><form:errors path="studentRegistration.parent_email1"></form:errors></font></span>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
@@ -200,7 +200,7 @@
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Parent Email 2:</td>
 					               <td valign="top" align="left" class="input_txt">
-					               <input type="text"  id="email2" name="parent_email2" value="${student.parent_email2}"/>
+					               <input type="text"  id="email2" name="parent_email2" oninput="validateemail2()" value="${student.parent_email2}"/>
 					      <br/><font color="Red" size="+1"><span id="eiderror1"><form:errors path="studentRegistration.parent_email2"></form:errors></font></span>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
@@ -363,6 +363,19 @@ function doAjaxPost_section() {
 		        e.preventDefault();
 		});
 		});
+    $(function() {
+		$("#pname1").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+    $(function() {
+		$("#pname2").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+    
     function validate()
     {
     	document.getElementById("fnameerror").innerHTML="";
@@ -375,6 +388,16 @@ function doAjaxPost_section() {
     	if(document.getElementById("lname").value.substring(0,1)==' ')
 		{
 		document.getElementById("lnameerror").innerHTML="Invalid Lastname";
+		return false;
+		}
+    	if(document.getElementById("pname1").value.substring(0,1)==' ')
+		{
+		document.getElementById("p1error").innerHTML="Invalid Parentname";
+		return false;
+		}
+    	if(document.getElementById("pname2").value.substring(0,1)==' ')
+		{
+		document.getElementById("p2error").innerHTML="Invalid Parentname";
 		return false;
 		}
     	
@@ -450,7 +473,7 @@ function doAjaxPost_section() {
 
     function validateAlpha2(){
         var textInput = document.getElementById("pname1").value;
-        textInput = textInput.replace(/[^A-Za-z]/g, "");
+        textInput = textInput.replace(/[^A-Za-z ]/g, "");
         document.getElementById("pname1").value = textInput;
     }
 
@@ -465,7 +488,7 @@ function doAjaxPost_section() {
 
     function validateAlpha3(){
         var textInput = document.getElementById("pname2").value;
-        textInput = textInput.replace(/[^A-Za-z]/g, "");
+        textInput = textInput.replace(/[^A-Za-z ]/g, "");
         document.getElementById("pname2").value = textInput;
     }
 
@@ -488,6 +511,17 @@ function doAjaxPost_section() {
         var textInput = document.getElementById("mob2").value;
         textInput = textInput.replace(/[^0-9]/g, "");
         document.getElementById("mob2").value = textInput;
+    }
+    function validateemail1(){
+        var textInput = document.getElementById("email1").value;
+        textInput = textInput.replace(/[^A-Za-z0-9_@.]/g, "");
+        document.getElementById("email1").value = textInput;
+    }
+    
+    function validateemail2(){
+        var textInput = document.getElementById("email2").value;
+        textInput = textInput.replace(/[^A-Za-z0-9_@.]/g, "");
+        document.getElementById("email2").value = textInput;
     }
 
     </script>

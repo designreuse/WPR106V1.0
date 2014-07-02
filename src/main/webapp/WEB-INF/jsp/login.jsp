@@ -115,6 +115,7 @@ overflow-x:hidden; */
 	document.getElementById("eiderror").innerHTML="";
 	document.getElementById("cityerror").innerHTML="";
 	document.getElementById("staterror").innerHTML="";
+	document.getElementById("addrerror").innerHTML="";
 	
 	
 	if(document.getElementById("cityid").value.substring(0,1)==' ')
@@ -132,6 +133,12 @@ overflow-x:hidden; */
     if(document.getElementById("orgid").value.substring(0,1)==' ')
 	{
 	document.getElementById("oerror").innerHTML="Invalid Organization Name";
+	return false;
+	}
+    
+    if(document.getElementById("addr1").value.substring(0,1)==' ')
+	{
+	document.getElementById("addrerror").innerHTML="Invalid Address";
 	return false;
 	}
 		
@@ -249,7 +256,7 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 			<input type="text" name="mobile" id="mobid" value="${contact.mobile}" placeholder="Mobile Number" oninput="validatenum();" min="10" maxlength="10" autocomplete="off" tabindex="5" class="txtinput">
 			<font color="Red"><span id="mobiderror"><form:errors path="contacts.mobile"></form:errors></span></font>
 			<textarea name="address1" id="addr1"  placeholder="Address"tabindex="6" class="txtblock">${contact.address1}</textarea>
-			<font color="Red"  ><form:errors path="contacts.address1"></form:errors></font>
+			<font color="Red"  ><span id="addrerror"><form:errors path="contacts.address1"></form:errors></span></font>
 			<%-- <textarea name="address2" id="addr2" value="${contact.address2}" placeholder="Address Line 2" tabindex="7" class="txtblock"></textarea>
 			<font color="Red" ><form:errors path="contacts.address2"></form:errors></font> --%>
 			<input type="text" name="city"  maxlength="32"  id="cityid" value="${contact.city}" placeholder="City" oninput="validateAlpha3();" onblur="toTitleCase3('cityid')"class="txtinput"/>
@@ -335,6 +342,8 @@ function validateAlpha4(){
     document.getElementById("stateid").value = textInput;
 }
 
+
+
 function toTitleCase4(stateid)
 {
 	
@@ -398,6 +407,13 @@ $("#fname").on("keypress", function(e) {
 	if (e.which === 32 && !this.value.length)
         e.preventDefault();
 });
+});
+
+$(function() {
+    $("#addr1").keydown(function(e) {
+        if (e.keyCode == 32 && !this.value.length) // 32 is the ASCII value for a space
+            e.preventDefault();
+    });
 });
 
 function require(){

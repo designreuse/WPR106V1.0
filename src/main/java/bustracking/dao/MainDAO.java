@@ -69,7 +69,9 @@ public class MainDAO {
 			  System.out.println("records to be inserted.........");
 			 
 			
-			  emailSender.contact_sendEmail("deemsyshr@gmail.com","bustracking@gmail.com","Contact Us Information",contacts.getFirstname(),contacts.getLastname(),contacts.getEmail(),contacts.getOrganisation(),contacts.getMobile(),contacts.getAddress1(),contacts.getCity(),contacts.getState());
+			  emailSender.contact_sendEmail("deemsysinchr@gmail.com","bustracking@gmail.com","Contact Us Information",contacts.getFirstname(),contacts.getLastname(),contacts.getEmail(),contacts.getOrganisation(),contacts.getMobile(),contacts.getAddress1(),contacts.getCity(),contacts.getState());
+			  
+			  emailSender.contact_sendEmail("sureshr@deemsysinc.net","bustracking@gmail.com","Contact Us Information",contacts.getFirstname(),contacts.getLastname(),contacts.getEmail(),contacts.getOrganisation(),contacts.getMobile(),contacts.getAddress1(),contacts.getCity(),contacts.getState());
 			  
 			  emailSender.reply_sendEmail(contacts.getEmail(), "bustracking@gmail.com", "Reply mail",contacts.getFirstname(),contacts.getLastname());
 			  

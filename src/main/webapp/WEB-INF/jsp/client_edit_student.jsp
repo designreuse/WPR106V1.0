@@ -211,7 +211,7 @@ $(document).ready(function () {
 					               <td valign="top" align="left" class="input_txt">
 					              <input type="text" id="email1" name="parent_email1" oninput="validateemail1()" value="${student.parent_email1}"/>
 					             <br/>          
-					               <font color="Red" size="+1"><form:errors path="studentRegistration.parent_email1"></form:errors></font>
+					               <font color="Red" size="+1"><span id="eiderror"><form:errors path="studentRegistration.parent_email1"></form:errors></span></font>
 					               
 					               </td>
 					              
@@ -222,7 +222,7 @@ $(document).ready(function () {
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" id="email2" name="parent_email2" oninput="validateemail2()" value="${student.parent_email2}"/>
 				                  	 <br/>          
-					               <font color="Red" size="+1"><span id="email2error"></span><form:errors path="studentRegistration.parent_email2"></form:errors></font>
+					               <font color="Red" size="+1"><span id="email2error"><form:errors path="studentRegistration.parent_email2"></form:errors></span></font>
 				                  </td>
 					            </tr>
 					            <input type="hidden" name="class_standard"  value="${student.class_standard}"/>
@@ -299,6 +299,19 @@ $('#drop_address').html(response);
 		</script>
 		
 <script type="text/javascript">
+$(function() {
+	$("#pname1").on("keypress", function(e) {
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+$(function() {
+	$("#pname2").on("keypress", function(e) {
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+
 function mobilecheck()
 {document.getElementById("pname1error").innerHTML="";
 document.getElementById("pname2error").innerHTML="";
@@ -369,7 +382,26 @@ if(error=="true")
 			return false;
 		}
 	}
-	
+	var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    
+	 if(document.getElementById("email1").value!="")
+		{
+	if(document.getElementById("email1").value.match(mail)==null)
+   {
+   	document.getElementById("eiderror").innerHTML="Invalid Email ID";
+   	
+       return false;
+   }
+		}
+	 if(document.getElementById("email2").value!="")
+		{
+	if(document.getElementById("email2").value.match(mail)==null)
+   {
+   	document.getElementById("email2error").innerHTML="Invalid Email ID";
+   	
+       return false;
+   }
+		}
 }
 
 function validateAlpha(){

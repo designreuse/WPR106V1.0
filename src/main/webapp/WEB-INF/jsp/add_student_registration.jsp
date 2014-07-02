@@ -164,7 +164,7 @@
 				                  <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Name 1</td><td width="0.5%">:</td>
 					                <td valign="top" align="left" class="input_txt">
 					                <input type="text"  id="pname1" name="parent_name1" oninput="validateAlpha2();" tabindex="13" onblur="toTitleCase2('pname1')" value="${studentDetails.parent_name1}"/>
-					               <br/><font color="Red" size="+1"><form:errors path="student.parent_name1"></form:errors></font></td>
+					               <br/><font color="Red" size="+1"><span id="p1error"><form:errors path="student.parent_name1"></form:errors></span></font></td>
 				                  
 				                   <td width="15%" class="input_txt"></td>
 				                </tr>
@@ -178,7 +178,7 @@
 				                     <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Parent Name 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
 					               <input type="text"  id="pname2" name="parent_name2" oninput="validateAlpha3();" tabindex="14" onblur="toTitleCase3('pname2')" value="${studentDetails.parent_name2}" />
-					          <br/><font color="Red" size="+1"><form:errors path="student.parent_name2"></form:errors></font></td>
+					          <br/><font color="Red" size="+1"><span id="p2error"><form:errors path="student.parent_name2"></form:errors></span></font></td>
 					               	 	
 					               	 	<td width="15%" class="input_txt"></td>			                					            	 
 				                </tr>
@@ -609,6 +609,13 @@ function validat(org_id){
     <script>
     function validate()
     {
+    	document.getElementById("fnameerror").innerHTML="";
+    	document.getElementById("lnameerror").innerHTML="";
+    	document.getElementById("p1error").innerHTML="";
+    	document.getElementById("p2error").innerHTML="";
+    	document.getElementById("mob2error").innerHTML="";
+    					
+    	
     	if(document.getElementById("fname").value.substring(0,1)==' ')
 		{
 		document.getElementById("fnameerror").innerHTML="Invalid Firstname<br/>";
@@ -617,6 +624,16 @@ function validat(org_id){
     	if(document.getElementById("lname").value.substring(0,1)==' ')
 		{
 		document.getElementById("lnameerror").innerHTML="Invalid Lastname<br/>";
+		return false;
+		}
+    	if(document.getElementById("pname1").value.substring(0,1)==' ')
+		{
+		document.getElementById("p1error").innerHTML="Invalid Parentname<br/>";
+		return false;
+		}
+    	if(document.getElementById("pname2").value.substring(0,1)==' ')
+		{
+		document.getElementById("p2error").innerHTML="Invalid Parentname<br/>";
 		return false;
 		}
     	
@@ -680,6 +697,18 @@ function validat(org_id){
 		        e.preventDefault();
 		});
 		});
+    $(function() {
+		$("#pname1").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+    $(function() {
+		$("#pname2").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
     function validateAlpha(){
         var textInput = document.getElementById("fname").value;
         textInput = textInput.replace(/[^A-Za-z ]/g, "");
@@ -712,7 +741,7 @@ function validat(org_id){
 
     function validateAlpha2(){
         var textInput = document.getElementById("pname1").value;
-        textInput = textInput.replace(/[^A-Za-z]/g, "");
+        textInput = textInput.replace(/[^A-Za-z ]/g, "");
         document.getElementById("pname1").value = textInput;
     }
 
@@ -727,7 +756,7 @@ function validat(org_id){
 
     function validateAlpha3(){
         var textInput = document.getElementById("pname2").value;
-        textInput = textInput.replace(/[^A-Za-z]/g, "");
+        textInput = textInput.replace(/[^A-Za-z ]/g, "");
         document.getElementById("pname2").value = textInput;
     }
 
