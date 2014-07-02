@@ -80,6 +80,14 @@ function doAjaxPost() {
 		<script type="text/javascript">
 		function doRemovestop(value) {  
 			
+		var stoplist=document.getElementById("stop_list").innerHTML;
+		alert(stoplist.count("Remove"));
+		if(stoplist.count("Remove")==1) {
+        alert("Should have atleast one stop");
+		return false;
+		} 
+	
+			
 			
 			/* alert(orgname); */
 			 $.ajax({  
@@ -90,6 +98,7 @@ function doAjaxPost() {
 				    success: function(response){  
 				
 		            $('#stop_list').html(response);
+		          
 		            $('#stop_info').html(response);
 
 		   },  
@@ -104,7 +113,16 @@ function doAjaxPost() {
 			var stop_pick=$('#stop_pick_info').val();
 			var stop_time=$('#timepicker').val();
 			var editID=$('#editid').val();
-			 $.ajax({  
+			var stop_address = $('#stop_address_info').val();
+
+			var stop_pick=$('#stop_pick_info').val();
+			var stop_time=$('#timepicker').val();
+			if(stop_address=='' || stop_pick=='' || stop_time=='' || stop_address=='Stop Location')
+				{
+				alert("Check all the fields");
+				return false;
+				}
+			$.ajax({  
 				    type: "POST",  
 				    url: "/BusTrackingApp/update_stop",  
 				    data: "stop_address_info="+stop_address+"&stop_pick_info="+stop_pick+"&stop_time_info="+stop_time+"&id="+editID,
@@ -123,6 +141,15 @@ function doAjaxPost() {
 		</script>
 		
 		<script type="text/javascript">
+		function validation()
+		{
+			var stoplist=document.getElementById("stop_list").innerHTML;
+		var count = stoplist.match(/Remove/g);
+		if(count.length>2) {
+        alert("Should have atleast one stop");
+		return false;
+		} 
+		}
 $(window).load(
 function doCollectStops() {
 	var orgname = $('#org_name').val();
@@ -145,8 +172,13 @@ function doCollectStops() {
 		</script>
 		
 		<script type="text/javascript">
-		function doRemovestop(value) {  
-		
+		function doRemovestop(value) {
+		var stoplist=document.getElementById("stop_list").innerHTML;
+		var count = stoplist.match(/Remove/g);
+		if(count.length==2) {
+        alert("Should have atleast one stop");
+		return false;
+		} 
 		
 		/* alert(orgname); */
 		 $.ajax({  
@@ -247,6 +279,7 @@ p {
 	              <h2 >Edit Route Information</h2>
 	       </div></div> 
 	       <div class="contentbox">
+	      
 	        <c:set value="${routeForm.route_views[0]}" var="route"/>
                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
                                  <tr class="row1">
@@ -301,7 +334,7 @@ p {
 				               <td valign="top" align="justify">
 				               <table>
 				             <tr> 
-                 <td valign="top" align="left"><input type="submit" class="btn" value="Save Changes" ></td>
+                 <td valign="top" align="left"><input type="submit" class="btn" value="Save Changes"  onclick="return validation()"></td>
                
                   <td valign="top" align="left"><input type="button" class="btn" onclick="window.location.href='viewroute'"value="Cancel"></td></tr></table>
                   </td>
