@@ -168,8 +168,8 @@
 				                <tr class="row1">
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Office Land Line 1:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum2();" onblur="landcheck1('landid1')" id="landid1" tabindex="9" name="office_land_line1" min="10" maxlength="10" value="${organisation.office_land_line1}" />
-				                  	<br/><font color="Red" size="+1"><c:if test="${l1error==true}"><c:out value="Mobile number already exist"></c:out></c:if><form:errors path="OrgRegistration.office_land_line1"></form:errors></font>
+				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum2();" onblur="landcheck1('landid1')"  id="landid1" tabindex="9" name="office_land_line1" min="12" maxlength="12" value="${organisation.office_land_line1}"  />
+				                  	<br/><font color="Red" size="+1"><c:if test="${l1error==true}"><c:out value="Mobile number already exist"></c:out></c:if><span id="l1error"><form:errors path="OrgRegistration.office_land_line1"></form:errors></span></font>
 				                  </td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Is Active :</td>
 									<td valign="top" align="left" class="input_txt">
@@ -182,7 +182,7 @@
 				                <tr class="row2">
 				                 <td valign="middle" align="left"   class="input_txtlabel"><span class="err">*</span> Office Land Line 2:</td>
 				                  <td valign="top" align="left" class="input_txt">
-				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum3();" tabindex="10" onblur="landcheck2('landid2')" id="landid2" min="10" maxlength="10" name="office_land_line2" value="${organisation.office_land_line2}" />
+				                  	<input type="text" class="org_input_txtbx_height1" oninput="validatenum3();" tabindex="10" onblur="landcheck2('landid2')" id="landid2" min="12" maxlength="12" name="office_land_line2" value="${organisation.office_land_line2}" />
 				                  	<br/><font color="Red" size="+1"><span id="landerror"><c:if test="${l2error==true}"><c:out value="Mobile number already exist"></c:out></c:if><form:errors path="OrgRegistration.office_land_line2"></form:errors></font></span>
 				                  </td>
 				                  <td valign="middle" align="left"   class="input_txtlabel"></td>
@@ -313,6 +313,7 @@ $(function() {
 		document.getElementById("serror").innerHTML="";
 		document.getElementById("cityerror").innerHTML="";		
 		document.getElementById("landerror").innerHTML="";
+		document.getElementById("l1error").innerHTML="";
 		if(document.getElementById("oname").value.substring(0,1)==' ')
 		{
 		document.getElementById("oerror").innerHTML="Invalid Organization Name";
@@ -362,7 +363,29 @@ $(function() {
 	        return false;
 	    }
 			}
-			
+		
+		  //var landline = /^([0-9]{5}[\-]{1}[0-9]{7})$/;
+		  
+		  var landline=/^[0-9]\d{2,4}-\d{6,8}$/;
+		 
+		 if(document.getElementById("landid1").value!=""){
+			 
+			 if(document.getElementById("landid1").value.match(landline)==null)
+				 {
+				 document.getElementById("l1error").innerHTML="Invalid Land line number Eg:Areacode- phone number";
+				 return false;
+				 }
+		 } 
+		 
+		 if(document.getElementById("landid2").value!=""){
+			 
+			 if(document.getElementById("landid2").value.match(landline)==null)
+				 {
+				 document.getElementById("landerror").innerHTML="Invalid Land line number Eg:Areacode- phone number";
+				 return false;
+				 }
+		 } 
+		 
 			
 		if(document.getElementById("chairmanid").value!='')
 			{
@@ -465,13 +488,13 @@ function validatenum1(){
 
 function validatenum2(){
     var textInput = document.getElementById("landid1").value;
-    textInput = textInput.replace(/[^0-9]/g, "");
+    textInput = textInput.replace(/[^0-9-]/g, "");
     document.getElementById("landid1").value = textInput;
 }
 
 function validatenum3(){
     var textInput = document.getElementById("landid2").value;
-    textInput = textInput.replace(/[^0-9]/g, "");
+    textInput = textInput.replace(/[^0-9-]/g, "");
     document.getElementById("landid2").value = textInput;
 }
 

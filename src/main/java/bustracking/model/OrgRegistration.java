@@ -80,14 +80,14 @@ private String type_of_organization;
 private String transport_officer_number;
 
 @NotEmpty
-@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
+//@Pattern(regexp="(^$|[0-9]{1}[0-9]{10})",message="Invalid Mobile Number!!!")
 private String office_land_line1;
 
 @NotEmpty
 private String is_active;
 
 @NotEmpty
-@Pattern(regexp="(^$|[7-9]{1}[0-9]{9})",message="Invalid Mobile Number!!!")
+//@Pattern(regexp="(^$|[0-9]{1}[0-9]{10})",message="Invalid Mobile Number!!!")
 private String office_land_line2;
 
 
