@@ -114,7 +114,7 @@ jQuery(function () {
                                    <br/><font color="Red" size="+1"><form:errors path="deviceRegistration.manufacturer"></form:errors></font>
 				                  </td>	
 				                  
-				                  <td valign="middle"  width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Card Carrier:</td>
+				                  <td valign="middle"  width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Card Carrier:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<%-- <input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_contact_person_name_id" onkeypress="return onlyAlphabets(event,this);" name="contact_person_name" value="${organisation.contact_person_name}" />
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
@@ -188,7 +188,7 @@ jQuery(function () {
 				                  	<input type="text" name="device_invoice_number" class="org_input_txtbx_height1" id="invoice_id" onblur="deviceinvoice('invoiceid')" oninput="validatealphanum_device_invoice()" value="${devicesimsetup.device_invoice_number}">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.device_invoice_number"></form:errors></font>
 				                  </td>
-									<td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Procured Date:</td>
+									<td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Procured Date:</td>
 				                  <td valign="center" align="left" class="input_txt">
 				                  	<div class='input-group date' id='endDate1' >
 												<input type="text"  id="datepicker" onkeyup="doAjaxPost()" id="datepicker1" onblur="simdate('datepicker1')" onkeypress="return onlyAlphabets(event,this);" name="sim_procured_date" value="${devicesimsetup.sim_procured_date}" readonly="readonly" style="height:27px;width:190px;float:left;">
@@ -211,7 +211,7 @@ jQuery(function () {
 				                  
   
 				                   </td>
-				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim Invoice Number:</td>
+				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Invoice Number:</td>
 				                  <td valign="top" align="left" class="input_txt" >
 				                  <input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="sim_invoice_id" onblur="siminvoice('sim_invoice_id')" oninput="validatealphanum_sim_invoice()" name="sim_invoice_number" value="${devicesimsetup.sim_invoice_number}" />
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_invoice_number"></form:errors></font>
@@ -337,7 +337,7 @@ jQuery(function () {
 				                
 				                      <tr class="row1">
 				                      <td width="10%"></td>
-				                      <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Comments:</td>
+				                      <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Comments:</td>
 				                      <td valign="top" align="left" class="input_txt"  >
 				                      <textarea  name="comments" class="textareanew" rows="3" style="width:220px;" id="comments_id" onblur="com('comments_id')" oninput="validateAlpha_comments();">${devicesimsetup.comments}</textarea>
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.comments"></form:errors></font> </td>
