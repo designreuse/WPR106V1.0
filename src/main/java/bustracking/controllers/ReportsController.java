@@ -33,7 +33,7 @@ import bustracking.model.Report;
 
 
 @Controller
-@SessionAttributes({"student_roll_no","from_date","to_date","date"})
+@SessionAttributes({"student_roll_no","from_date","to_date","date","vechicle_reg_no","from_time","to_time"})
 public class ReportsController{
 	
 	
@@ -221,8 +221,14 @@ public class ReportsController{
 		 */
 		
 		@RequestMapping(value="/clientoverspeedingreport", method = RequestMethod.GET)
-		public String clientoverspeedingreport(HttpServletRequest request,ModelMap model, Principal principal ) {
+		public String clientoverspeedingreport(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal ) {
 		
+			
+			session.removeAttribute("vechicle_reg_no");
+			session.removeAttribute("from_date");
+			session.removeAttribute("from_time");
+			session.removeAttribute("to_date");
+			session.removeAttribute("to_time");
 			
 			ReportForm reportForm=new ReportForm();
 			reportForm.setReports(reportsDAO.getoverspeedreport(mainDAO.getOrg_id(principal.getName())));
@@ -241,8 +247,13 @@ public class ReportsController{
 		 */
 		
 		@RequestMapping(value="/searchoverspeedreport", method = RequestMethod.GET)
-		public String searchclientoverspeedingreport(HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("from_date") String from_date,@RequestParam("from_time") String from_time,@RequestParam("to_date") String to_date,@RequestParam("to_time") String to_time,ModelMap model, Principal principal ) {
+		public String searchclientoverspeedingreport(HttpSession session,HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("from_date") String from_date,@RequestParam("from_time") String from_time,@RequestParam("to_date") String to_date,@RequestParam("to_time") String to_time,ModelMap model, Principal principal ) {
 		
+			session.setAttribute("vechicle_reg_no", vechicle_reg_no);
+			session.setAttribute("from_date", from_date);
+			session.setAttribute("from_time", from_time);
+			session.setAttribute("to_date", to_date);
+			session.setAttribute("to_time", to_time);
 			
 			ReportForm reportForm=new ReportForm();
 			reportForm.setReports(reportsDAO.search_over_speed_report_(mainDAO.getOrg_id(principal.getName()), vechicle_reg_no, from_date, from_time, to_date, to_time));

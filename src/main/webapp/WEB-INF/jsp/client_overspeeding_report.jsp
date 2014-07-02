@@ -2,9 +2,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script> -->
  <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
-   <script type='text/javascript' src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+   <script type='text/javascript' src="resources/js/bootstrap-datetimepicker.min.js"></script>
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
   <script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
@@ -117,40 +117,41 @@ jQuery(function () {
     
     <table width="100%"cellpadding="2" cellspacing="0" border="0" >
     <tr>
-    <td>Vehicle Number<br/><select id="e3" style="width:250px;" name="vechicle_reg_no">
-							 	<option selected> -- Select Vehicle No -- </option>     
+    <td><span class="err">*</span>Vehicle Number<br/><select id="e3" style="width:250px;" name="vechicle_reg_no">
+							 	<option selected value=""> -- Select Vehicle No -- </option>     
 							    <c:forEach items="${reportForm1.reports}" var="clientoverspeedreport1" varStatus="status">
-							    <option value="${clientoverspeedreport1.vechicle_reg_no}">${clientoverspeedreport1.vechicle_reg_no}</option>
+							    <option value="${clientoverspeedreport1.vechicle_reg_no}"<c:if test="${clientoverspeedreport1.vechicle_reg_no==vechicle_reg_no}"><c:out value="selected"></c:out></c:if> >${clientoverspeedreport1.vechicle_reg_no}</option>
 							    </c:forEach>
-							    </select></td></tr>
+							    </select><br><span id="vechicle_error" style="color: red;"></span>
+							    </td></tr>
 							    
   <tr>
-    <td>Date From<br/><div class='input-group date' id='endDate' >
-												<input type="text" id="timepicker2"	name="from_date"  style="height:24px;width:150px;float:left;" readonly="readonly"/>
+    <td><span class="err">*</span>Date From<br/><div class='input-group date' id='endDate' >
+												<input type="text" id="fromdate"	name="from_date" value="${from_date}"  style="height:24px;width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="25"/>
-        										</span>
+        										</span><span id="fdateerror" style="color: red;"></span>
 					</div></td>
-    <td>Time From<br/><div class='input-group date' id='startDate' >
-												<input type="text" id="timepicker2"	name="from_time"  style="height:24px;width:150px;float:left;" readonly="readonly"/>
+    <td><span class="err">*</span>Time From<br/><div class='input-group date' id='startDate' >
+												<input type="text" id="fromtime" value="${from_time}"  name="from_time"  style="height:24px;width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
-        										</span>
-					</div>	</td>
-	<td>Date To<br/><div class='input-group date' id='endDate1' >
-												<input type="text" id="timepicker2"	name="to_date" style="height:24px; width:150px;float:left;" readonly="readonly"/>
+        										</span><span id="ftimeerror" style="color: red;"></span>	
+					</div></td>
+	<td><span class="err">*</span>Date To<br/><div class='input-group date' id='endDate1' >
+												<input type="text" id="todate"	name="to_date" value="${to_date}" style="height:24px; width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="45"/>
-        										</span>
+        										</span><span id="tdateerror" style="color: red;"></span>
 					</div></td>
-	<td>Time To<br/><div class='input-group date' id='startDate1' >
-												<input type="text" id="timepicker2"	name="to_time" style="height:24px;width:150px;float:left;" readonly="readonly" />
+	<td><span class="err">*</span>Time To<br/><div class='input-group date' id='startDate1' >
+												<input type="text" id="totime"	name="to_time" value="${to_time}" style="height:24px;width:150px;float:left;" readonly="readonly" />
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
-        										</span>
-					</div>	</td>
+        										</span><span id="ttimeerror" style="color: red;"></span>	
+					</div></td>
 					
-					<td align="right"><input type="submit" class="btn" value="Search"></td>
+					<td align="right"><input type="submit" class="btn" value="Search" onclick="return check('this')"></td>
 					</tr>
 					
     </table>
@@ -180,10 +181,16 @@ jQuery(function () {
     <tr><td class="report_side_table" align="center" width="48%">Vehicle Number</td><td  align="center" class="report_side_table" width="50%">Over Speed Count</td></tr></table>
     <div class="report_table_inner">
     <table width="100%" cellpadding="0" cellspacing="0" border="1" bordercolor="#ccc" >
+    <c:if test="${fn:length(reportForm.reports) gt 0}">
    <c:forEach items="${reportForm.reports}" var="clientoverspeedreport">
     <tr><td align="center" width="48%">${clientoverspeedreport.vechicle_reg_no}</td><td align="center" width="50%">${clientoverspeedreport.over_speed_count}</td></tr>
     </c:forEach>
-    
+    </c:if>
+    <c:if test="${fn:length(reportForm.reports) == 0}">	
+	<tr class="row1">
+	<td colspan="7" width="100%"><center><b>No Informations Found!!!</b></center></td>
+	</tr>
+  </c:if>
     </table></div></div>
     </td>
    <!--  <td align="right" width="70%"><br/>
@@ -238,7 +245,47 @@ $(document).ready(function() {
         }
     });
 });
-</script><script language="javascript">
+</script>
+<script>
+function check(){
+	document.getElementById("vechicle_error").innerHTML="";
+	document.getElementById("fdateerror").innerHTML="";
+	document.getElementById("ftimeerror").innerHTML="";
+	document.getElementById("tdateerror").innerHTML="";
+	document.getElementById("ttimeerror").innerHTML="";
+	
+	if(document.getElementById("e3").value=='')
+	{
+	document.getElementById("vechicle_error").innerHTML="Choose Vechicle No";
+	return false;
+	}
+	if(document.getElementById("fromdate").value =='')
+	{
+	document.getElementById("fdateerror").innerHTML="Choose From Date";
+	return false;
+	}
+	if(document.getElementById("fromtime").value =='')
+	{
+	document.getElementById("ftimeerror").innerHTML="Choose From Time";
+	return false;
+	}
+	if(document.getElementById("todate").value =='')
+	{
+	document.getElementById("tdateerror").innerHTML="Choose End Date";
+	return false;
+	}
+	if(document.getElementById("totime").value =='')
+	{
+	document.getElementById("ttimeerror").innerHTML="Choose End Time";
+	return false;
+	}
+}
+
+
+
+</script>
+
+<script language="javascript">
     var gAutoPrint = true;
 
     function processPrint(){
