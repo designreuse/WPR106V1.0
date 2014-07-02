@@ -247,7 +247,7 @@ jQuery(function () {
 												
 												</td>
 												</tr>
-												<tr class="row1">
+												<tr class="roww">
 												<td valign="middle" align="right" class="input_txt"><span
 													class="err">*</span>Average Speed  :</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -257,7 +257,7 @@ jQuery(function () {
 												<font color="Red" size="+1"><form:errors path="businessRule.average_speed"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row1">
+											<tr class="roww">
 												<td valign="top" align="right"></td>
 											
                 	  <td valign="top" align="left">

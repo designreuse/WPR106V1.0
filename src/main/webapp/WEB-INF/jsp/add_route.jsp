@@ -166,8 +166,8 @@ p {
 					
 <input type="hidden" id="rsession">
 						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
-						<tr class="row1">
-								<td valign="middle" align="right" class="input_txt" width="30%"><span
+						<tr class="row1"><td width="25%"></td>
+								<td valign="middle" align="left" class="input_txt" width="30%"><span
 									class="err">*</span> Organization Name :</td>
 								<td valign="top" align="left" class="input_txt" width="70%">
 
@@ -180,8 +180,8 @@ p {
 								<br/><font color="Red" size="+1"><span id="orgerror"><form:errors path="route.org_name"></form:errors></font></span>
 								</td>
 							</tr>
-							<tr class="row2">
-								<td valign="middle" align="right" class="input_txt" width="30%"><span
+							<tr class="row2"><td width="20">
+								<td valign="middle" align="left" class="input_txt" width="30%"><span
 									class="err">*</span> Branch :</td>
 								<td valign="top" align="left" class="input_txt" width="70%">
 					  <span id="info" style="height:8px;" >
@@ -217,8 +217,8 @@ p {
 									placeholder="Stop ID" /><br />
 								</td>
 							</tr> -->
-							<tr class="row1">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+							<tr class="row1"><td width="20%">
+								<td valign="middle" align="left" class="input_txt" width="30%">
 								<span class="err">*</span> Route No :</td>
 								<td valign="middle" align="left" class="input_txt" width="70%" >
 								<span id="info1" style="height:8px;">
@@ -250,7 +250,7 @@ p {
 								<br/><font color="Red" size="+1"><span id="routeerror"><form:errors path="route.route_no"></form:errors></font></span>
 								</td>
 							</tr>							
-							<tr class="row1" style="margin-top:20px;">
+							<tr class="row1" style="margin-top:20px;"><td width="20">
 								<td valign="bottom" align="right" class="input_txt" ><span
 									class="err">*</span>&nbsp;&nbsp;</td>
 								<td>
@@ -264,13 +264,13 @@ p {
 								</div>
 								</td>
 							</tr>
-							<tr class="row1" style="margin-top:20px;">
+							<tr class="roww" style="margin-top:20px;"><td width="20">
 							<td valign="bottom" align="Right" class="input_txt"></td>
 								<td valign="bottom" align="left" class="input_txt">
 								<b>Added Stops:</b>
 								</td>
 							</tr>
-							<tr class="row1" style="margin-top:20px;">
+							<tr class="roww" style="margin-top:20px;"><td width="20">
 							
 							<td valign="bottom" align="left" class="input_txt"></td>
 								<td valign="bottom" align="left" class="input_txt">
@@ -279,7 +279,7 @@ p {
 							</tr>
 							
 			
-							<tr class="row1">
+							<tr class="roww"><td width="20">
                   
                   <td valign="top" align="left"></td>
                  

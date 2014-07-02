@@ -252,7 +252,7 @@ jQuery(function () {
 					               				<font color="Red" size="+1"><form:errors path="businessRule.average_speed"></form:errors></font>
 												</td>
 											</tr>
-											<tr class="row1">
+											<tr class="roww">
 												<td valign="top" align="right"></td>
 											
                 	  <td valign="top" align="left">

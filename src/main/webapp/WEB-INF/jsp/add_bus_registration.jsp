@@ -85,8 +85,8 @@ jQuery(function () {
     				<td align="left" valign="top" width="100%">
     				
     						<table cellpadding="0" cellspacing="0" border="0" width="100%">
-                        		<tr class="row2">
-				                  <td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span>Organization Name:</td>
+                        		<tr class="row2"><td width="20%"></td>
+				                  <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span>Organization Name:</td>
 				                  <td valign="top" align="left" class="input_txt" >
 				                  	 <select  style="width:220px;"name="org_name" id="orgid" onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option selected value="">-- Select Organization--</option>
@@ -98,8 +98,8 @@ jQuery(function () {
 				                  </td>
 				                </tr>
 <!-- <input type="text" id="branch"> -->
-								 <tr class="row1">
-						         	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Branch :</td>
+								 <tr class="row1"><td width="20%"></td>
+						         	<td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span> Branch :</td>
 						            <td valign="top" align="left" class="input_txt">
 						           <span id="info" style="height:8px;" >
 						            <c:choose>
@@ -121,14 +121,14 @@ jQuery(function () {
 						            	
 						            	</br><font color="Red" size="+1"><form:errors path="busRegistration.branch"></form:errors></font></td>
 						         </tr> 
-								<tr class="row2">
-				                	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Bus Registration No :</td>
+								<tr class="row2"><td width="20%"></td>
+				                	<td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span> Bus Registration No :</td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1"  oninput="validatealphanum_vechicle_reg_no()" id="bus_no" name="vechicle_reg_no" value="${busreg.vechicle_reg_no}" onkeyup="ChangeCase(this);" onblur="doAjaxcheckvechicle_reg_no()"/>
 				                  	<br/><font color="Red" size="+1"><span id="info1"><form:errors path="busRegistration.vechicle_reg_no"></form:errors></span></font></td>
 				                
 				                </tr> 
-								<tr class="row1">
-				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Device IMEI No : </td>
+								<tr class="row1"><td width="20%"></td>
+				                  	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Device IMEI No : </td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<select   style="width:220px;"name="device_imei_number" id="imei" onblur="Validate2('imei')" >
 							    <option selected value="">-- Select IMEI No--</option>
@@ -140,19 +140,19 @@ jQuery(function () {
 				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.device_imei_number"></form:errors></font>
 				                  	</td>
 				                </tr>	
-				                <tr class="row2">
-				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver Name :</td>
+				                <tr class="row2"><td width="20%"></td>
+				                	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Driver Name :</td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="driver_id" name="driver_name" min="4" maxlength="32" onblur="changealpha_driver_name()" oninput="validatealpha_driver_name()" value="${busreg.driver_name}"/>
 				                </br><font color="Red" size="+1"><span id="derror"></span><form:errors path="busRegistration.driver_name"></form:errors></font>
 				                </td>
 				                </tr>
-				                <tr class="row1">
-				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License No :</td>
+				                <tr class="row1"><td width="20%"></td>
+				                	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Driver License No :</td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="licence_id" onkeyup="ChangeCase(this);" name="driver_licence_no" oninput="validatealphanum_driver_licence_no()" value="${busreg.driver_licence_no}"/>
 				                </br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_no"></form:errors></font>
 				                </tr> 
-				                <tr class="row2">
-				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License Expiry Date :</td>
+				                <tr class="row2"><td width="20%"></td>
+				                	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Driver License Expiry Date :</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<span class='input-group date' id='endDate1' >
 							    <input type="text"  name="driver_licence_exp_date" value="${busreg.driver_licence_exp_date}" style="width:190px;" readonly/>
@@ -163,7 +163,7 @@ jQuery(function () {
 				                </br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_exp_date"></form:errors></font></td>
 				                </tr> 
 				                <tr class="roww">
-				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Route No : </td>
+				                  <td width="20%"></td>	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Route No : </td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" onkeyup="ChangeCase(this);" id="route_id" name="route_no" oninput="validatealphanum_route_no()" value="${busreg.route_no}" onblur="doAjaxcheckroute_no()"/>
 				                  <%-- 	<select class="org_input_cmbbx" name="route_no" id="imei" onblur="Validate2('imei')">
 							    <option value="" selected>-- Select Route No--</option>
@@ -174,7 +174,7 @@ jQuery(function () {
 				                  	</br><font color="Red" size="+1"><span id="info2"><form:errors path="busRegistration.route_no"></form:errors></span></font></td>
 				                </tr>	
 				                
-				                 <tr class="roww">
+				                 <tr class="roww"><td width="20%"></td>
                   <td valign="top" align="right"></td>
                  
                   <td valign="top" align="left">

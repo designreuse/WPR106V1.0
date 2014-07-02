@@ -67,31 +67,31 @@ jQuery(function () {
 	       <div class="contentbox">
 	        <c:set value="${busRegistrationForm.busregistration[0]}" var="BusRegistration"/>
                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
-	                            <tr class="row2">
-				                  <td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span>Organization Name:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+	                            <tr class="row2"><td width="20%" style="height: 50px"></td>
+				                  <td valign="middle" align="left" class="input_txt" width="20%" ><span class="err">*</span>Organization Name:</td>
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  <input type="hidden" name="org_name" class="org_input_cmbbx" value="${BusRegistration.org_name}"/>${BusRegistration.org_name}
 				                  	 
 				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.org_name"></form:errors></font>
 				                  </td>
 				                </tr>
 
-								 <tr class="row1">
-						         	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Branch :</td>
-						            <td valign="top" align="left" class="input_txt">
+								 <tr class="row1"><td width="20" style="height: 50px"></td> 
+						         	<td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span> Branch :</td>
+						            <td valign="middle" align="left" class="input_txt">
 						      		<input type="hidden" name="branch" class="org_input_cmbbx" value="${BusRegistration.branch}"/>${BusRegistration.branch}
 						            	
 						            	</br><font color="Red" size="+1"><form:errors path="busRegistration.branch"></form:errors></font></td>
 						         </tr> 
-								<tr class="row2">
-				                	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Bus Registration No :</td>
+								<tr class="row2" style="height: 50px">
+				                	<td width="20"></td><td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span> Bus Registration No :</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                 	<input type="hidden" name="vechicle_reg_no" class="org_input_cmbbx" style="text-transform: uppercase;" value="${BusRegistration.vechicle_reg_no}"/>${BusRegistration.vechicle_reg_no}
 				                  	
 				                  	<br/><font color="Red" size="+1"><form:errors path="busRegistration.vechicle_reg_no"></form:errors></font></td>
 				                </tr> 
-								<tr class="row1">
-				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Device IMEI No : </td>
+								<tr class="row1"><td width="20"></td>
+				                  	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Device IMEI No : </td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<select name="device_imei_number" id="imei" onblur="Validate2('imei')" style="width: 220px;margin-top:-4px">
 							    <option value="${BusRegistration.device_imei_number}" >${BusRegistration.device_imei_number}</option>
@@ -101,13 +101,13 @@ jQuery(function () {
 			                  </select>
 				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.device_imei_number"></form:errors></font></td>
 				                </tr>	
-				                <tr class="row2">
-				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver Name :</td>
+				                <tr class="row2" ><td width="20"></td>
+				                	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Driver Name :</td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text" class="org_input_txtbx_height1" id="driver_id" name="driver_name" value="${BusRegistration.driver_name}" oninput="validatealpha_driver_name()" onblur="changealpha_driver_name()" />
 				                  	</br><font color="Red" size="+1"><span id="derror"></span><form:errors path="busRegistration.driver_name"></form:errors></font></td>
 				                </tr>
-				                <tr class="row1">
-				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License No :</td>
+				                <tr class="row1"><td width="20"></td>
+				                	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Driver License No :</td>
 
 				                  	<%-- <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="licence_id" name="driver_licence_no" value="${BusRegistration.driver_licence_no}"/>
@@ -117,8 +117,8 @@ jQuery(function () {
 				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_no"></form:errors></font></td>
 
 				                </tr> 
-				                <tr class="row2">
-				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Driver License Expiry Date :</td>
+				                <tr class="row2"><td width="20"></td>
+				                	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Driver License Expiry Date :</td>
 
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<div class='input-group date' id='endDate1' >
@@ -134,8 +134,8 @@ jQuery(function () {
 				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_exp_date"></form:errors></font></td>
 				                </tr> 
 
-				                <tr class="roww">
-				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Route No : </td>
+				                <tr class="roww"><td width="20"></td>
+				                  	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Route No : </td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text"  style="text-transform: uppercase;" class="org_input_txtbx_height1" id="route_id" name="route_no" value="${BusRegistration.route_no}" oninput="validatealphanum_route_no()"/>
 				                  <%-- 	<select class="org_input_cmbbx" name="route_no" id="imei" onblur="Validate2('imei')">
 							    <option value="" selected>-- Select Route No--</option>

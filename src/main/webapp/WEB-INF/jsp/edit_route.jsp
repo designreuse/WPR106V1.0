@@ -282,33 +282,33 @@ p {
 	      
 	        <c:set value="${routeForm.route_views[0]}" var="route"/>
                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                 <tr class="row1">
-								<td valign="middle" align="right" class="input_txt" width="30%"><span
+                                 <tr class="row1"><td width="20%"></td>
+								<td valign="middle" align="left" class="input_txt" width="15%"><span
 									class="err">*</span> Organization Name :</td>
 								<td valign="top" align="left" class="input_txt" width="70%">
 
 								<input type="hidden" name="org_name" id="org_name" class="org_input_cmbbx" value="${route.org_name}"/>${route.org_name}
 								</td>
 							</tr>
-							<tr class="row2">
-								<td valign="middle" align="right" class="input_txt" width="30%"><span
+							<tr class="row2"><td width="20%"></td>
+								<td valign="middle" align="left" class="input_txt" width="10%"><span
 									class="err">*</span> Branch :</td>
-								<td valign="top" align="left" class="input_txt" width="70%">
+								<td valign="top" align="left" class="input_txt" width="10%"">
 					  			<input type="hidden" name="branch" id="branch" class="org_input_cmbbx" value="${route.branch}"/>${route.branch}
 								<br />
 								</td>
 							</tr>
-							<tr class="row1">
-								<td valign="middle" align="right" class="input_txt" width="30%"><span
+							<tr class="row1"><td width="20%"></td>
+								<td valign="middle" align="left" class="input_txt" width="10%"><span
 									class="err">*</span> Route No :</td>
-								<td valign="top" align="left" class="input_txt" width="70%" >
+								<td valign="top" align="left" class="input_txt" width="10%"" >
 								<input type="hidden" name="route_no" id="route_no" class="org_input_cmbbx" value="${route.route_no}"/>${route.route_no}
 								
 								
 								</td>
 							</tr>
-						<tr class='row2' style='margin-top:20px;'>
-						<td valign="middle" align="left" class="input_txt" width="30%"><span
+						<tr class='row2' style='margin-top:20px;'><td width="20%"></td>
+						<td valign="middle" align="left" class="input_txt" width="10%"><span
 									class="err"></span><!-- <a href="#" id="addScnt" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;"> Add Bus Stops :</a> --><input type="hidden" id="number_of_stops" name="number_of_stops" onload=""></td>
 								<%-- <c:forEach items="${routeForm.route_views}" var="route"> --%>
 							
@@ -316,8 +316,8 @@ p {
 		                 <span id="stop_info"></span>						 
 								</td></tr>
 						
-							<tr class="row2">
-							<td valign="middle" align="right" class="input_txt" width="30%"><span
+							<tr class="row2"><td width="20%"></td>
+							<td valign="middle" align="right" class="input_txt" width="10%"><span
 									class="err">*</span><!-- <a href="#" id="addScnt" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;"> Add Bus Stops :</a> -->Stops<input type="hidden" id="number_of_stops" name="number_of_stops" onload=""></td>
 								<%-- <c:forEach items="${routeForm.route_views}" var="route"> --%>
 								<td valign="middle" align="left" class="input_txt" id="p_scents" >
@@ -328,7 +328,7 @@ p {
 								</tr>
 								
 							
-							<tr class="row1">
+							<tr class="roww"><td width="20%"></td>
                 <td valign="top" align="right"></td>
 				             
 				               <td valign="top" align="justify">
