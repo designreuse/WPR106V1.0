@@ -95,11 +95,11 @@ jQuery(function () {
 							   <td align="left">
 							  
 							   <select id="student_roll_no_id" name="student_roll_no" style="width:220px;margin-top:-4px;">
-							   <option selected> -- Select Student Roll No -- </option>
+							   <option selected > -- Select Student Roll No -- </option>
 							    <c:forEach items="${reportForm1.reports}" var="smsreport" varStatus="status">
 							   <option value="${smsreport.student_roll_no}" <c:if test="${smsreport.student_roll_no==student_roll_no}"><c:out value="selected"></c:out></c:if> >${smsreport.student_roll_no}</option>
 							    </c:forEach>
-							   </select>
+							   </select><br/><span id="rollno_error" style="color: red;"></span>
 							  
 							   </td>
 							   <td align="right" valign="middle" width="8%">From Date:&nbsp;&nbsp;</td>
@@ -108,17 +108,17 @@ jQuery(function () {
 							   <input type="text" id="fromdate" name="fromdate"   value="${from_date}" style="width:190px;" readonly/>
 							   <span class="add-on" style="margin:0 0 0 0px;">
 							   <img src="resources/images/date.png" width="25" height="45"/>
-        					   </span></span></td>
+        					   </span></span><br/><span id="ferror" style="color: red;"></span></td>
 							   <td align="right" valign="middle" width="10%">To Date:&nbsp;&nbsp;</td>
 							   <td align="right">
 							   <span class='input-group date' id='endDate' >
 							    <input type="text" id="todate" name="todate"   value="${to_date}" style="width:190px;"readonly/>
 							    <span class="add-on" style="margin:0 0 0 0px;">
 							   <img src="resources/images/date.png" width="25" height="45"/>
-        							</span></span></td>
+        							</span></span><br/><span id="terror" style="color: red;"></span></td>
 							    
 							  <td align="center" valign="middle" width="2%">
-							  <input type="submit" class="btn" value="Search" ></td>
+							  <input type="submit" class="btn" value="Search" onclick="return check('this')" ></td>
 							 
 							  </tr>
 							</table>
@@ -178,7 +178,27 @@ jQuery(function () {
         					</div>
         					</div>
         					
-                        
+      <script>
+      function check(){
+    	  
+    	  document.getElementById("rollno_error").innerHTML="";
+    	  document.getElementById("ferror").innerHTML="";
+    	  document.getElementById("terror").innerHTML="";
+    	  
+    	  if(document.getElementById("student_roll_no_id").value==''){
+    		  document.getElementById("rollno_error").innerHTML="Choose Student Roll No";
+    		  return false;
+    	  }
+    	  if(document.getElementById("fromdate").value==''){
+    		  document.getElementById("ferror").innerHTML="Choose From Date";
+    		  return false;
+    	  }
+    	  if(document.getElementById("todate").value==''){
+    		  document.getElementById("terror").innerHTML="Choose To Date";
+    		  return false;
+    	  }
+      }
+      </script>                  
                         
                         
                         
