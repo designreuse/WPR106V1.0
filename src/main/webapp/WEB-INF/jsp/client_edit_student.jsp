@@ -178,13 +178,13 @@ $(document).ready(function () {
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian Name/Parent Name 1:</td>
 					                <td valign="top" align="left" class="input_txt">
 					                <input type="text"  id="pname1" name="parent_name1"  oninput="validateAlpha();" onblur="toTitleCase('pname1')" value="${student.parent_name1}" min="4" maxlength="32"/>
-					                <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name1"></form:errors></font></td>
+					                <br/><font color="Red" size="+1"><span id="pname1error"><form:errors path="studentRegistration.parent_name1"></form:errors></font></span></td>
 					                
 					              </tr>
 				                <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Guardian/Parent Name 2:</td>
 					                <td valign="top" align="left" class="input_txt"><input type="text"  id="pname2" oninput="validateAlpha1();" onblur="toTitleCase1('pname2')" name="parent_name2" min="4" maxlength="32" value="${student.parent_name2}" />
-					                <br/><font color="Red" size="+1"><form:errors path="studentRegistration.parent_name2"></form:errors></font></td>
+					                <br/><font color="Red" size="+1"><span id="pname2error"><form:errors path="studentRegistration.parent_name2"></form:errors></font></span></td>
 					             </tr>
 					              			                
 					             <tr class="row2">
@@ -300,7 +300,25 @@ $('#drop_address').html(response);
 		
 <script type="text/javascript">
 function mobilecheck()
+{document.getElementById("pname1error").innerHTML="";
+document.getElementById("pname2error").innerHTML="";
+	
+	var error="";
+if(document.getElementById("pname1").value.substring(0,1)==' ')
+	{
+	document.getElementById("pname1error").innerHTML="Invalid Parent Name 1";
+ error="true";
+	}
+	
+if(document.getElementById("pname2").value.substring(0,1)==' ')
 {
+document.getElementById("pname2error").innerHTML="Invalid Parent Name 2";
+error="true";
+}
+if(error=="true")
+	{
+	return false;
+	}
 	if(document.getElementById("mob1").value!='' && document.getElementById("mob2").value!=''){
 		document.getElementById("mrequires").innerHTML="";
 		document.getElementById("mrequires1").innerHTML="";
