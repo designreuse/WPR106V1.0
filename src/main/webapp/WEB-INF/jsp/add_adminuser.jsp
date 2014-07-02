@@ -99,7 +99,7 @@
 				                  <span class="err">*</span> First Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="fname" oninput="validateAlpha();" min="4" maxlength="32"  onblur="toTitleCase('fname')" value="${adminuser.firstname }" name="firstname" />
-				                  <br/><font color="Red" size="+1"><span id="ferror"></span><form:errors path="user.firstname"></form:errors></font>
+				                  <br/><font color="Red" size="+1"><span id="ferror"><form:errors path="user.firstname"></form:errors></font></span>
 				                  </td><td width="15%"></td>
 				                </tr>
                         		<tr class="row2">
@@ -108,7 +108,7 @@
 				                  <span class="err">*</span> Last Name </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="lname" oninput="validateAlpha1();" min="5" maxlength="32" onblur="toTitleCase1('lname')" name="lastname"   value="${adminuser.lastname}"/>
-				                  	<br/><font color="Red" size="+1"><span id="lerror" style="display:none:"></span><form:errors path="user.lastname"></form:errors></font>
+				                  	<br/><font color="Red" size="+1"><span id="lerror" style="display:none:"><form:errors path="user.lastname"></form:errors></font></span>
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row1">
@@ -266,6 +266,10 @@ function doAjaxPost_for_orgname() {
 
 <script>
 function check(){
+	document.getElementById("info2").innerHTML="";
+	document.getElementById("lerror").innerHTML="";
+	document.getElementById("ferror").innerHTML="";
+	document.getElementById("vali").innerHTML="";
 	document.getElementById("vali").innerHTML="";
 	if(document.getElementById("pass").value != document.getElementById("repass").value){
 		document.getElementById("vali").innerHTML="Password and Confirm Password should be same!!!";
@@ -282,6 +286,17 @@ function check(){
 	document.getElementById("ferror").innerHTML="Invalid Firstname";
 	return false;
 	}
+	var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    
+	 if(document.getElementById("eid").value!="")
+		{
+	if(document.getElementById("eid").value.match(mail)==null)
+   {
+   	document.getElementById("info2").innerHTML="Invalid Email ID";
+   	
+       return false;
+   }
+		}
 	
 }
 

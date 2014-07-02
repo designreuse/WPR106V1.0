@@ -86,7 +86,7 @@
 				                  <span class="err">*</span> Email </td><td>:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<input type="text" class="org_input_txtbx_height1" id="eid"  name="email" oninput="validateemail();" onblur="emailcheck('eid')"  value="${addUser.email}"/>
-				                 <br/><font color="Red" size="+1"><form:errors path="user.email"></form:errors></font>
+				                 <br/><font color="Red" size="+1"><span id="info2"><form:errors path="user.email"></form:errors></font></span>
 				                  </td><td width="15%"></td>
 				                </tr>
 				                <tr class="row2">
@@ -192,6 +192,23 @@ function validateemail(){
 
 <script>
 function check(){
+document.getElementById("info2").innerHTML="";
+document.getElementById("lerror").innerHTML="";
+document.getElementById("ferror").innerHTML="";
+document.getElementById("vali").innerHTML="";
+	var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    
+	 if(document.getElementById("eid").value!="")
+		{
+	if(document.getElementById("eid").value.match(mail)==null)
+  {
+  	document.getElementById("info2").innerHTML="Invalid Email ID";
+  	
+  	
+      return false;
+  }
+		}
+	
 	document.getElementById("vali").innerHTML="";
 	if(document.getElementById("pass").value != document.getElementById("repass").value){
 		document.getElementById("vali").innerHTML="Password and Confirm Password should be same!!!";
