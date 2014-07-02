@@ -194,7 +194,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
         				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if> >${orgname}</option>
 			                  </c:forEach>
 			                 </select>
-			                 <br><span id="org_error" style="color: red;"></span>
+			                 <td align="left" valign="middle" width="15%"><span id="org_error" style="color: red;"></span></td>
 			                 </td>
 			                 <td align="right" valign="middle" width="10%" style="color: white;">Branch:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
@@ -206,7 +206,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
         				       <span id="info"> 
 							   <c:choose>
 							  	  <c:when test="${fn:length(branch_array) gt 0}">
-				                 	<select class="input_cmbbx" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost_vechicle()">
+				                 	<select name="branch" class="input_cmbbx" style="width:220px;margin-top:-4px;" id="bid" onchange="doAjaxPost_vechicle()">
 				                 	<option value="null">--Select Branch--</option>
 							  		<c:forEach items="${branch_array}" var="orgReg" >
 							  		<option value="${orgReg}" <c:if test="${orgReg==branch}"><c:out value="Selected"/></c:if>>${orgReg}</option>
@@ -219,7 +219,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 								    </select>
 								 </c:otherwise>
 								</c:choose>	
-        				       </span> <br><span id="biderror" style="color: red;"></span>
+        				       </span><td align="left" valign="middle" width="15%"><span id="biderror" style="color: red;"></span></td>
         				        </td></tr><tr>
 							    <td align="right" valign="middle" width="20%" style="color: white;">Vehicle Reg no:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
@@ -245,11 +245,11 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							    </select>
 							    </c:otherwise>
 							    </c:choose>	
-							</span><br><span id="deviceerror" style="color: red;"></span>
+							</span><td align="left" valign="middle" width="15%"><span id="deviceerror" style="color: red;"></span></td>
 							    </td>
 							    <td align="right" valign="middle" width="10%" style="color: white;">Date :&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="8%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date}" readonly="readonly">
-							    <br><span id="dateerror" style="color: red;"></span>
+							    <td align="left" valign="middle" width="15%"><span id="dateerror" style="color: red;"></span></td>
 							    </td>
 							    <td align="center" valign="middle" width="8%"><input type="submit" class="btn" value="Show" name="find" onclick="return check();"></td>
 							 <td align="center" valign="middle" width="8%"><input type="reset"  onclick="window.location.href='admin_view_map_history'" class="btn" value="Reset"></td>
