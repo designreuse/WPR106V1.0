@@ -11,7 +11,6 @@ Email: <font style="color:blue">${email}</font><br/>
 Organisation: <font style="color:blue">${organisation}</font><br/>
 Mobile phone: <font style="color:blue">${mobile}</font><br/>
 Address1: <font style="color:blue">${address1}</font><br/>
-Address2: <font style="color:blue">${address2}</font><br/>
 City: <font style="color:blue">${city}</font><br/>
 State: <font style="color:blue">${state}</font><br/>
 
