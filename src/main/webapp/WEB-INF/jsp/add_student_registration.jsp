@@ -369,7 +369,7 @@
 				                     </tr>
 				               </table>
 				                <table style="margin:0 0 0 30%;">
-                <tr class="row1">
+                <tr class="row">
 				              <td valign="top" align="left" colspan="3"></td>
                 
                  <td valign="top">

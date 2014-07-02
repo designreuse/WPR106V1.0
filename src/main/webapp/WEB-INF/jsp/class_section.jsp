@@ -77,11 +77,11 @@ select.add(option, 0); */
               <table cellpadding="0" cellspacing="0" border="0" width="100%" >
               
   				<tr>
-    				<td align="left" valign="top" width="100%" style="padding-right:25px;">
+    				<td align="left" valign="top" width="100%">
     				
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    						<tr class="row2">
-				                  <td valign="middle" align="right" class="input_txt" width="40%" ><span class="err">*</span> Organization :</td>
+    						<tr class="row2"><td width="25%"></td>
+				                  <td valign="middle" align="left" class="input_txt" width="15%" ><span class="err">*</span> Organization :</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	<select  style="width:220px;" name="org_name" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
@@ -93,8 +93,8 @@ select.add(option, 0); */
 				                  </td>
 				               </tr>
 				                
-                        		<tr class="row1">
-                        		<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Branch:</td>
+                        		<tr class="row1"><td width="25%"></td>
+                        		<td valign="middle" align="left" class="input_txt" width="15%"><span class="err">*</span> Branch:</td>
 				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	<span id="info" style="height:8px;" > 
 				                  	 	<c:choose>
@@ -116,8 +116,8 @@ select.add(option, 0); */
 				                  </td>
 				                 
 				                </tr> 
-						  <tr class="row2">
-				                <td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Class :</td>
+						  <tr class="row2"><td width="25%"></td>
+				                <td valign="middle" align="left" class="input_txt" width="15%"><span class="err">*</span> Class :</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  
 				                  	<select  style="width:220px;"id="inp_id" name="class_std" value="${class_section.class_std}">
@@ -145,8 +145,8 @@ select.add(option, 0); */
 				                  	<br/><font color="Red" size="+1"><form:errors path="classSection.class_std"></form:errors></font></td>
 				                </tr>
 				                
-				                <tr class="row1">
-					            	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Section:</td>
+				                <tr class="row1"><td width="25%"></td>
+					            	<td valign="middle" align="left" class="input_txt" width="15%"><span class="err">*</span> Section:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<c:choose>
 				                  	<c:when test="${section=='A'}">
@@ -966,8 +966,8 @@ select.add(option, 0); */
 				                  	<br/><font color="Red" size="+1"><form:errors path="classSection.section"></form:errors></font></td>
 				                    
 				                     </tr>
-				                     <tr class="row2">
-					            	<td valign="middle" align="right" class="input_txt" width="40%"><span class="err">*</span> Services:</td>
+				                     <tr class="row2"><td width="25%"></td>
+					            	<td valign="middle" align="left" class="input_txt" width="15%"><span class="err">*</span> Services:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<c:choose>
 				                  	<c:when test="${service=='Attendance'}">
@@ -1021,8 +1021,9 @@ select.add(option, 0); */
 				                     </tr>
 				               
 				                
-                <tr class="row1" >
-				              <td valign="top" align="left"></td>
+                <tr class="row" >
+                <td width="25%"></td>
+				              <td valign="top" align="left"width="15%"></td>
                  
                   <td valign="top" align="justify">
                   <table cellpadding="0" cellspacing="0" border="0">

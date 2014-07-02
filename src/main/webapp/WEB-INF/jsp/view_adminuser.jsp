@@ -113,12 +113,12 @@
 							
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-								<td valign="top" align="left" width="15%"> Organization</td>
-         						<td valign="top" align="left" width="15%"> Branch</td>
+								<td valign="top" align="left" width="15.5%"> Organization</td>
+         						<td valign="top" align="left" width="14.5%"> Branch</td>
          						<td valign="top" align="left" width="10%"> FirstName</td>
          						<td valign="top" align="left" width="10%"> LastName</td>
-         						<td valign="top" align="left" width="18%"> Email</td>
-					         	<td valign="top" align="left" width="13%"> UserName</td>
+         						<td valign="top" align="left" width="18%">&nbsp;Email</td>
+					         	<td valign="top" align="left" width="13%">&nbsp;&nbsp;UserName</td>
 					         	<td valign="top" align="left" width="9%"> Password</td>
 					        	<td valign="top" align="left" width="9%"> Action</td>
           						
@@ -131,15 +131,15 @@
         					<c:forEach items="${adduserform.adduser}" var="addUser" varStatus="status">
         				       					<tr class="row1">
 							         	    <td valign="top" align="left" style="overflow:hidden;"width="15%" title="${addUser.org_name}" >${addUser.org_name}</td>
-							         	    <td valign="top" align="left" style="overflow:hidden;"width="15%"title="${addUser.branch}">${addUser.branch}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="11%"title="${addUser.firstname}">${addUser.firstname}</td>
+							         	    <td valign="top" align="left" style="overflow:hidden;"width="14%"title="${addUser.branch}">${addUser.branch}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%"title="${addUser.firstname}">${addUser.firstname}</td>
 											<td valign="top" align="left" style="overflow:hidden;"width="10%"title="${addUser.lastname}">${addUser.lastname}</td>
 											<td valign="top" align="left" style="overflow:hidden;"width="18%"title="${addUser.email}">${addUser.email}</td>
-											<td valign="top" align="left"  style="overflow:hidden;"width="13%"title="${addUser.username}">${addUser.username}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="9.5%"title="${addUser.password}">${addUser.password}</td>
+											<td valign="top" align="left"  style="overflow:hidden;"width="12%"title="${addUser.username}">${addUser.username}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="8.5%"title="${addUser.password}">${addUser.password}</td>
 											
 											
-											<td valign="top" align="left" width="7%">
+											<td valign="top" align="left" width="9%">
 										
 												<a href="<c:out value="edituser?username=${addUser.username}"/>" >
 												<img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|

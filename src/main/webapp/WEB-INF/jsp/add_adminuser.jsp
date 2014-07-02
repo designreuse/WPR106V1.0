@@ -156,7 +156,7 @@
 				                </tr>
                         		
 				                
-                  <tr class="row1">
+                  <tr class="row">
                   
                  <td valign="top" align="left"></td>
                  <td valign="top" align="left"></td><td valign="top" align="left"></td>

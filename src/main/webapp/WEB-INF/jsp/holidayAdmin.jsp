@@ -229,7 +229,7 @@ select.add(option, 0); */
 				                    
 				                     </tr></table>
 				                <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-                <tr class="row1" ><td width="25%" class="input_txt"></td>
+                <tr class="row" ><td width="25%" class="input_txt"></td>
 				              <td valign="top" align="left"></td>
                  <td width="1%"></td>
                   <td valign="top" align="justify">

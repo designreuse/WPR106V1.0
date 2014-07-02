@@ -90,13 +90,13 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								<!-- <td valign="middle" align="center" width="15%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
-         						<td valign="top" align="left" width="19.8%"> Organization Name </td>					         	
-					         	<td valign="top" align="left" width="15%"> Branch</td>
+         						<td valign="top" align="left" width="19.8%">&nbsp;Organization Name </td>					         	
+					         	<td valign="top" align="left" width="14%"> Branch</td>
           						<td valign="top" align="left" width="13.5%"> City</td>
           						<td valign="top" align="left" width="13.0%"> Country</td>
-          						<td valign="top" align="left" width="12.5%"> Org Type</td>
-          						<td valign="top" align="left" width="2%">Status</td>
-          						<td valign="top" align="left" width="9.5%"> Action</td>
+          						<td valign="top" align="left" width="12.5%">&nbsp; Org Type</td>
+          						<td valign="top" align="left" width="2%">&nbsp;Status</td>
+          						<td valign="top" align="left" width="9.5%">&nbsp; Action</td>
           						
           						
         					</tr></table>
@@ -111,10 +111,10 @@
 							       		<%-- <td valign="middle" align="center" width="15%"><input type="checkbox" value="${orgRegistration.org_name}" name="chkUser"></td> --%>
 					     		     	<td valign="top" align="left" style="overflow:hidden;"width="19.2%" title="${orgRegistration.org_name}">${orgRegistration.org_name}</td>					     		     
 					     		     
-											<td valign="top" align="left" style="overflow:hidden;"width="14.6%" title="${orgRegistration.branch}">${orgRegistration.branch}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="13.6%" title="${orgRegistration.branch}">${orgRegistration.branch}</td>
 											<td valign="top" align="left" style="overflow:hidden;"width="13%" title="${orgRegistration.city}">${orgRegistration.city}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="13.0%" title="${orgRegistration.country}">${orgRegistration.country}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="12.5%" title="${orgRegistration.type_of_organization}">${orgRegistration.type_of_organization}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="12.8%" title="${orgRegistration.country}">${orgRegistration.country}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="12.3%" title="${orgRegistration.type_of_organization}">${orgRegistration.type_of_organization}</td>
 											<td valign="top" align="left" style="overflow:hidden;"width="5.8%" >
 											<c:choose>
 											<c:when test="${orgRegistration.is_active==1}">
