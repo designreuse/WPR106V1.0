@@ -120,7 +120,7 @@
 				                  </td><td width="25%"></td>
 				                  
 				                </tr>
-                        		<tr class="row1">
+                        		<tr class="row">
                         		<td>&nbsp;&nbsp;</td>
 				                   <td align="right" ><input type="submit" class="btn" value="Save Changes" onclick="return check('this')"></td>
 				                   

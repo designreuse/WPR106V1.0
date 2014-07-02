@@ -28,17 +28,17 @@
     				<td align="left" valign="top" width="100%" >
     				<c:set value="${classSectionForm.classSections[0]}" var="class_section"></c:set>
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    						<tr class="row1">
-				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Organization:</td>
-				                  <td valign="top" align="left" class="input_txt">
+    						<tr class="row1"><td width="25%"></td>
+				                  <td valign="middle" align="left" class="input_txt" width="14%"><span class="err">*</span> Organization:</td>
+				                 <td valign="top" align="left" class="input_txt" width="60%">
 				                  	<input type="hidden" name="org_name" class="org_input_cmbbx" value="${class_section.org_name}"/>${class_section.org_name}
 
 				                  </td>
 				                  
 				                </tr>
-				                <tr class="row2">
-				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Branch:</td>
-				                  <td valign="top" align="left" class="input_txt">
+				                <tr class="row2"><td width="25%"></td>
+				                  <td valign="middle" align="left" class="input_txt" width="15%"><span class="err">*</span> Branch:</td>
+				                  <td valign="top" align="left" class="input_txt" width="60%">
 				                  	 <input type="hidden" name="branch" class="org_input_cmbbx" value="${class_section.branch}"/>${class_section.branch}
 				                  	
 				                  	<br/><font color="Red" size="+1"></font>
@@ -47,23 +47,23 @@
 				                </tr>
                         		
 
-								 <tr class="row2">
-						         	<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Class:</td>
-						            <td valign="top" align="left" class="input_txt">
+								 <tr class="row2"><td width="25%"></td>
+						         	<td valign="middle" align="left" class="input_txt" width="15%"><span class="err">*</span>Class:</td>
+						            <td valign="top" align="left" class="input_txt" width="60%">
 						            	<input type="hidden" name="class_std" class="org_input_cmbbx" value="${class_section.class_std}"/>${class_section.class_std}
 						            	<font color="Red" size="+1"></font></td>
 						            	
 						         </tr> 
-								<tr class="row1">
-				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Section:</td>
-				                  	<td valign="top" align="left" class="input_txt">
+								<tr class="row1"><td width="25%"></td>
+				                	<td valign="middle" align="left" class="input_txt" width="15%"><span class="err">*</span>Section:</td>
+				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	<input type="hidden" name="section" class="org_input_cmbbx" value="${class_section.section}"/>${class_section.section}
 				                  	 <br/><font color="Red" size="+1"></font>
 				                  </td>
 				                </tr> 
-								<tr class="row2">
-				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Services:</td>
-				                  	<td valign="top" align="left" class="input_txt">
+								<tr class="row2"><td width="25%"></td>
+				                  	<td valign="middle" align="left" class="input_txt" width="15%"><span class="err">*</span>Services:</td>
+				                  	<td valign="top" align="left" class="input_txt" width="60%">
 				                  	 <select name="service" id="service_id"  style="width:220px;">
 					               <option value="${class_section.service}" selected>${class_section.service}</option>
 					               <option value="Attendance" >Attendance</option>
@@ -77,7 +77,7 @@
 				                
 					           
 				               
-                <tr class="row1">
+                <tr class="row">
                 <td valign="top" align="right"></td>
 				             
 				               <td valign="top" align="justify">

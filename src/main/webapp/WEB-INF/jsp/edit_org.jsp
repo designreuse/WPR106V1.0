@@ -197,7 +197,7 @@
 				                  </td>
 				                </tr>
 				                
-	                            <tr class="row1">
+	                            <tr class="row">
 	                            	<td valign="middle" align="left"   class="input_txtlabel"></td>
 				                   <td valign="middle" align="right" class="input_txt"><input id="inp_id" type="submit" class="btn" value="Save Changes" onclick="return check('this')"></td>
 				                   
