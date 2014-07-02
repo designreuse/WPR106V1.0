@@ -164,7 +164,7 @@ p {
 						<h2> Route Registration1</h2>
 					</div>
 					
-
+<input type="hidden" id="rsession">
 						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
 						<tr class="row1">
 								<td valign="middle" align="right" class="input_txt" width="30%"><span
@@ -177,7 +177,7 @@ p {
         				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if> >${orgname}</option>
 			                  </c:forEach>
 								</select>
-								<br/><font color="Red" size="+1"><form:errors path="route.org_name"></form:errors></font>
+								<br/><font color="Red" size="+1"><span id="orgerror"><form:errors path="route.org_name"></form:errors></font></span>
 								</td>
 							</tr>
 							<tr class="row2">
@@ -205,7 +205,7 @@ p {
 					  </c:otherwise>
 					  </c:choose>
 								</span>
-								<br><font color="Red" size="+1"><form:errors path="route.branch"></form:errors></font>
+								<br><font color="Red" size="+1"><span id="brancherror"> <form:errors path="route.branch"></form:errors></span></font>
 								</td>
 							</tr>
 							<!-- <tr class="row1">
@@ -247,7 +247,7 @@ p {
 			                  </c:forEach> --%>
 			                  
 			                  </span>
-								<br/><font color="Red" size="+1"><form:errors path="route.route_no"></form:errors></font>
+								<br/><font color="Red" size="+1"><span id="routeerror"><form:errors path="route.route_no"></form:errors></font></span>
 								</td>
 							</tr>							
 							<tr class="row1" style="margin-top:20px;">
@@ -259,7 +259,7 @@ p {
 								<br/>
 								<select name="stop_pick" id="stop_pick_info"><option value="0">Pick</option><option value="1">Drop</option><option value="2">Both</option></select>
 								
-								<input type="text" id="timepicker" onkeydown="onKeyDown(this);"/><br/>
+								<input type="text" id="timepicker" readonly="readonly" onkeydown="onKeyDown(this);"/><br/>
 								<input type="button" value="Add Stop" style="padding:5px;" onclick="doPopulateStops();"/>
 								</div>
 								</td>
@@ -286,7 +286,7 @@ p {
                   <td valign="top" align="left">
                   <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                  <td><input type="submit" class="btn" value="Save" ></td>
+                  <td><input type="submit" class="btn" value="Save" onclick="return checkvalidatation('this')"></td>
                   <td><input type="button" onclick="window.location.href='insert_route'" class="btn" value="Reset"></td>
                   <td> 
                    <input type="button" class="btn" onclick="window.location.href='welcome'" value="Cancel">
@@ -323,6 +323,46 @@ google.maps.event.addDomListener(window, 'load', initialize);
 							
 
 <script>
+function checkvalidatation()
+{
+	var error="";
+	document.getElementById("orgerror").innerHTML="";
+	document.getElementById("brancherror").innerHTML="";
+	document.getElementById("routeerror").innerHTML="";
+	
+	var oid=document.getElementById("orgid").value.trim();
+	var bid=document.getElementById("bid").value.trim();
+	
+	
+if(oid=="")
+	{	
+	
+	document.getElementById("orgerror").innerHTML="Required field should not be empty";
+	error="true";
+	}
+if(document.getElementById("bid").value=="")
+{	
+document.getElementById("brancherror").innerHTML="Required field should not be empty";
+error="true";
+}
+if(document.getElementById("route_id").value=="")
+	{
+	
+document.getElementById("routeerror").innerHTML="Required field should not be empty";
+error="true";
+	}
+if(document.getElementById("rsession").value=='')
+{
+alert("Kindly add stops");
+error="true";
+}
+
+	if(error=='true')
+		{
+		return false;
+		}
+	
+}
 
 function Validate(orgid)
 {
@@ -400,11 +440,18 @@ $('#info1').html(response);
 		
 <script type="text/javascript">
  function doPopulateStops() {  
-	
+	 document.getElementById("rsession").value="";
 	var stop_address = $('#stop_address_info').val();
+
 	var stop_pick=$('#stop_pick_info').val();
 	var stop_time=$('#timepicker').val();
-	 document.getElementById("stop_address_info").value="";
+	if(stop_address=='' || stop_pick=='' || stop_time=='' || stop_address=='Stop Location')
+		{
+		alert("Check all the fields");
+		return false;
+		}
+	else{
+	document.getElementById("stop_address_info").value="";
      document.getElementById("timepicker").value="";
 	/* alert(orgname); */
 	 $.ajax({  
@@ -415,13 +462,15 @@ $('#info1').html(response);
 		    success: function(response){  
 		
             $('#added_stops').html(response);
+            document.getElementById("rsession").value=response;
            
    },  
 		    error: function(e){  
 		      alert('Error: ' + e);  
 		    }  
 		  });  
-		}  
+	}	
+	}  
  
  function doRemovestop(value) {  
 		
