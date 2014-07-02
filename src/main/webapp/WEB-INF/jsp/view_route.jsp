@@ -15,7 +15,7 @@
         #report ul { margin:10px 0 10px 40px; padding:0px;}
     </style>
     
-    <script type="text/javascript">  
+   <!--  <script type="text/javascript">  
         $(document).ready(function(){
             $("#report tr:odd").addClass("odd");
             $("#report tr:not(.click_row)").hide();
@@ -27,7 +27,7 @@
             });
             //$("#report").jExpand();
         });
-    </script> 
+    </script> --> 
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -154,11 +154,11 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 									<!-- 	<td valign="top" align="left" width="18%"> Bus Id</td> -->
-					         	<td valign="top" align="left" width="20%">&nbsp;Organization Name</td>
-					         	<td valign="top" align="left" width="14%">Branch</td>
+					         	<td valign="top" align="left" width="19.3%">&nbsp;&nbsp;Organization Name</td>
+					         	<td valign="top" align="left" width="13%">Branch</td>
 					       	 	<td valign="top" align="left" width="10%"> Bus Reg No</td>
 					       	 	<td valign="top" align="left" width="10%"> RouteNo</td>
-          						<td valign="top" align="left" width="7%">  &nbsp;Trip</td>
+          						<td valign="top" align="left" width="7.5%">  &nbsp;Trip</td>
           						<td valign="top" align="left" width="9%"> No. of Stops</td>
           						<td valign="top" align="left" width="10%"> Action</td>
           						
@@ -172,7 +172,7 @@
         					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         					
-        				       				 <tr class="click_row"> 
+        				       				 <tr class="row1"> 
         				            		<td valign="middle" align="left"   style="overflow:hidden;width:200px">&nbsp;&nbsp;&nbsp;&nbsp;${route.org_name}</td>
 					     		     		<td valign="top" align="left" style="overflow:hidden;width:150px;">&nbsp;&nbsp;&nbsp;&nbsp;${route.branch}</td> 
 											<td valign="top" align="left" style="overflow:hidden;width:90px">${route.bus_reg_no}</td>
