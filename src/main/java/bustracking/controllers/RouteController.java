@@ -758,7 +758,7 @@ public @ResponseBody String edit_change_populate_stops(HttpSession session,HttpS
 	String returnString="<div style='padding:20px;width:700px;height:100px;background-color:#F4F4F8;border:solid 1px 	#C6C6CF;'>" +
 	"<input type='hidden' id='editid' value='"+id1+"'/><input type='text'  size='500' class='input_txtbx_height' style='width:700px;' id='stop_address_info' name='stop_address' value='"+routes.get(id1).getBus_stop_address()+"' placeholder='Stop Location' /><br/>" +
 	"<select name='stop_pick' id='stop_pick_info'>'"+pick_drop+"'</select>" +
-	"<input type='text' id='timepicker' value='"+routes.get(id1).getBus_arrival_time()+"' onkeydown='onKeyDown(this);'/><br/>" +
+	"<input type='text' id='timepicker' readonly='readonly' value='"+routes.get(id1).getBus_arrival_time()+"' onkeydown='onKeyDown(this);'/><br/>" +
 	"<input type='button' value='Update Stop' style='padding:5px;' onclick='doUpdateStops();'/>" +
 	"</div>";
 	
