@@ -209,7 +209,7 @@ Username </td><td style="color:#fff;"> Password</td><td></td><td></td></tr>
 <td align="left" width="15%"><input type="text" class="txtfld"value="" name="j_username" oninput="validateusername();" placeholder="Username" id="uname" /><span style="color:red" id="urequires"></span></td>
 <td><input type="password" value=""class="pass" name="j_password"placeholder="password" id="pswd"/><span style="color:red" id="prequires"></span></td><td>
 <input type="submit" class="btn" value="Login"  onclick="return require()"/></td><td>
-<input type="reset" class="btn" value="Reset"/></td></tr>
+<input type="reset" class="btn" value="Reset" onclick="window.location.href='login'"/></td></tr>
 <tr><td  align="right"></td><td style="color:#fff;">
 <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" /><label for="checkboxG1" class="css-label">keep me logged in</label> </td>
 <!-- <td >

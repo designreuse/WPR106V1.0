@@ -62,7 +62,7 @@ import bustracking.model.*;
 
 import bustracking.model.XMLWriter;
 @Controller
-@SessionAttributes({"sample","device","listsize","menu","role","org_name","branch","vec_imei","holi","vechicle_reg_no","from_date","to_date","contact"})
+@SessionAttributes({"sample","device","listsize","menu","role","org_name","branch","vec_imei","holi","vechicle_reg_no","from_date","to_date","contact","sms"})
 public class MainController {
 	@Autowired
 	RouteDAO routeDAO;
@@ -404,9 +404,9 @@ public class MainController {
 
 
 	@RequestMapping(value="/clientsmsparent", method = RequestMethod.GET)
-	public String clientsmsparent(HttpServletRequest request,String trip, String org_id, ModelMap model, Principal principal ) {
+	public String clientsmsparent(HttpSession session,HttpServletRequest request,String trip, String org_id, ModelMap model, Principal principal ) {
 		
-		
+		session.removeAttribute("sms");
 		return "client_smstoparent";
 	}
 	
@@ -440,7 +440,7 @@ public class MainController {
 		
 		
 	   mainDAO.sms_parent(parent);
-	  /* 	*/
+	
 		
 		return "client_smstoparent";
 	}
@@ -1111,8 +1111,11 @@ public class MainController {
 	 */
 	
 	@RequestMapping(value="/sms_to_parent", method=RequestMethod.POST)
-	public String sms_to_parent(HttpServletRequest request,@RequestParam("trip") String trip,@RequestParam("route") String route_no,@RequestParam("message") String Message,@ModelAttribute("smsparent") @Valid Smsparent smsparent,BindingResult result,ModelMap model,Principal principal)
+	public String sms_to_parent(HttpSession session,HttpServletRequest request,@RequestParam("trip") String trip,@RequestParam("route") String route_no,@RequestParam("message") String Message,@ModelAttribute("smsparent") @Valid Smsparent smsparent,BindingResult result,ModelMap model,Principal principal)
 	{
+		session.setAttribute("sms", smsparent);
+		session.setAttribute("route", route_no);
+		
 		if(result.hasErrors())
 		{
 			
@@ -1120,6 +1123,7 @@ public class MainController {
 		}
 		else{
 			messageSending.SMS_to_parent(trip,route_no, Message);
+			model.addAttribute("route_array", mainDAO.get_route(trip,mainDAO.getOrg_id(principal.getName())));
 			model.addAttribute("suceess","true");
 			
 			

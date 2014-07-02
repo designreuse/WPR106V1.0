@@ -59,9 +59,9 @@
 				                  	<td valign="top" align="left" class="input_txt" width="50%">
 				                  	<select  style="width:220px;" name="trip" id="trip"  onchange="doAjaxPost1()">
 				                  	<option value="">--Select Trip--</option>
-				                  	<option value="0">Pick up</option>
-				                  	<option value="1">Drop</option>
-				                  	<option value="2">KG Drop</option>
+				                  	<option value="0" <c:if test="${smsparent.trip=='0'}"><c:out value="selected"/></c:if>>Pick up</option>
+				                  	<option value="1" <c:if test="${smsparent.trip=='1'}"><c:out value="selected"/></c:if>>Drop</option>
+				                  	<option value="2" <c:if test="${smsparent.trip=='2'}"><c:out value="selected"/></c:if>>KG Drop</option>
 				                  	
 				                  	</select>
 				                  	
@@ -84,11 +84,27 @@
 						  <tr class="row2">
 						  <td valign="middle" align="right" class="input_txt" width="30%" ><span class="err">*</span> Route </td><td width="1%">:</td>
 				                  <td valign="middle" align="left" class="input_txt" width="50%">
-				                 <span id="info1">	<select  style="width:220px;" name="route" id="route_id" >
+				                <!--  <span id="info1">	<select  style="width:220px;" name="route" id="route_id" >
 							    <option value="" >-- Select Route--</option>
-        				        <!-- <option value="Routes here" >Routes here</option> -->
-			                  
-			                 </select></span> 
+			                 </select></span>  -->
+			                  <span id="info1">  
+				                  <c:choose>
+							  	  <c:when test="${fn:length(route_array) gt 0}">
+				                 	<select style="width:220px;margin-top:-4px;" name="route" id="route_id">
+				                 	<option selected value="">--Select Route--</option>
+							  		<c:forEach items="${route_array}" var="route" >
+							  		<option value="${route}" <c:if test="${route==route}"><c:out value="Selected"/></c:if>>${route}</option>
+							  		</c:forEach>
+								    </select>
+								 </c:when>
+								 <c:otherwise>
+									 <select style="width:220px;margin-top:-4px;" name="route" id="route_id"  >
+							  		<option selected value="">-- Select Route--</option>
+								    </select>
+								 </c:otherwise>
+								</c:choose>	
+								</span>
+			                 
 				                  	<br/><font color="Red" size="+1"><form:errors path="smsparent.route"></form:errors></font>
 				                  </td>
 				               
@@ -97,7 +113,7 @@
 				                <tr class="row1">
 					            	<td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Message</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="50%">
-				                  	<textarea name="message" class="textareanew" ></textarea>
+				                  	<textarea name="message" class="textareanew" >${smsparent.message}</textarea>
 				                  	
 				                  	<br/><font color="Red" size="+1"><form:errors path="smsparent.message"></form:errors></font></td>
 				                    
