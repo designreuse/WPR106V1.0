@@ -92,8 +92,8 @@
 							  	  <c:when test="${fn:length(route_array) gt 0}">
 				                 	<select style="width:220px;margin-top:-4px;" name="route" id="route_id">
 				                 	<option selected value="">--Select Route--</option>
-							  		<c:forEach items="${route_array}" var="route" >
-							  		<option value="${route}" <c:if test="${route==route}"><c:out value="Selected"/></c:if>>${route}</option>
+							  		<c:forEach items="${route_array}" var="routes" >
+							  		<option value="${routes}" <c:if test="${routes==route}"><c:out value="Selected"/></c:if>>${routes}</option>
 							  		</c:forEach>
 								    </select>
 								 </c:when>
