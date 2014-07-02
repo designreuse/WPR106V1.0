@@ -48,7 +48,7 @@
             <div class="contentbox" style="height:700px;">
               <table cellpadding="0" cellspacing="0"  width="100%" border="0">
   				<tr>
-    				<td align="left" valign="top" width="100%" style="padding-right:25px;">
+    				<td align="left" valign="top" width="100%">
     				<c:set value="${studentRegistrationForm.studentregistration[0]}" var="student"></c:set>
     						<table cellpadding="0" cellspacing="0" border="0" width="100%" >
     						
@@ -71,7 +71,7 @@
 				                    <td width="15%" class="input_txt"></td>
 				               </tr>
 				                
-                        		<tr class="row2">
+                        		<tr class="row2" style="height:50px;">
                         		<td width="3%" class="input_txt"></td>
                         		<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Branch :</td>
 				                  <td valign="top" align="left" class="input_txt">
@@ -87,7 +87,7 @@
 				                </tr>
 
 								 
-								<tr class="row1">
+								<tr class="row1" style="height:50px;">
 								<td width="3%" class="input_txt"></td>
 								<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Student Roll Number:</td>
 				                  <td valign="middle" align="left" class="input_txt">
@@ -102,7 +102,7 @@
 				                   <td width="15%" class="input_txt"></td>
 				                </tr>
 				                
-				                 <tr class="row2">
+				                 <tr class="row2" style="height:50px;">
 				                 <td width="3%" class="input_txt"></td>
 				                        <td valign="middle" align="right" class="input_txt"><span class="err">*</span> First Name:</td>
 				                  	<td valign="top" align="left" class="input_txt">
@@ -115,7 +115,7 @@
 					               	 	
 					               	 	<td width="15%" class="input_txt"></td>			                					            	 
 				                </tr>
-				                <tr class="row1">
+				                <tr class="row1" style="height:50px;">
 				                <td width="3%" class="input_txt"></td>
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Last Name</td>
 				                  	<td valign="top" align="left" class="input_txt">
@@ -131,7 +131,7 @@
 					              
 					              <td width="15%" class="input_txt"></td>
 				                </tr>
-				                <tr class="row2">
+				                <tr class="row2" style="height:50px;">
 				                
 				                <td width="3%" class="input_txt"></td>
 					            	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Gender :</td>
@@ -160,7 +160,7 @@
 					               <td width="15%" class="input_txt"></td>
 				                </tr>
 				                
-				                <tr class="row1">
+				                <tr class="row1" style="height:50px;">
 				                    <td width="3%" class="input_txt"></td>
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Avail Transport Facility :</td>
 				                  	<td valign="top" align="left" class="input_txt">
@@ -254,7 +254,7 @@
 				                     </tr>
 				               
 					                
-                <tr class="row1">
+                <tr class="row">
                 <td valign="top" align="right"></td>
 				               <td valign="top" align="right"></td>
 				               <td valign="top" align="justify">

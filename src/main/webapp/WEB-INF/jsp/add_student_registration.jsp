@@ -117,9 +117,9 @@
 				                    <td width="25%" class="input_txt"></td>
 				               </tr>
 				                
-                        		<tr class="row2" rowspan="2">
+                        		<tr class="row2" rowspan="2" style="height:50px;">
                         		<td width="5%" class="input_txt"></td>
-                        		<td valign="middle" align="left" class="input_txt" ><span class="err">*</span>Branch <br/>.</td>:</td><td width="0.5%">:</td>
+                        		<td valign="middle" align="left" class="input_txt" ><span class="err">*</span> Branch <br/>.</td>:</td><td width="0.5%">:</td>
 				                  <td valign="top" align="left" class="input_txt">
 				                  	<!-- <div id="info" style="height:8px;">
 				                  	<select  style="width:220px;"onchange="doAjaxPost1()" name="branch" id="bid" onblur="Validate1('bid')" disabled="disabled">
@@ -145,7 +145,7 @@
 						            </span>
 				                  	 <br/><font color="Red" size="+1"><form:errors path="student.branch"></form:errors></font></td>
 				                  	 
-				                 <td valign="middle" align="left" class="input_txt"><span class="err"></span> KG Drop </td><td width="0.5%">:</td>
+				                 <td valign="middle" align="left" class="input_txt"><span class="err">&nbsp;</span> KG Drop </td><td width="0.5%">:</td>
 				                  <td valign="middle" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="checkbox"  id="inp_id" value="yes" tabindex="12" name="kg_drop" <c:if test="${studentDetails.kg_drop=='yes'}"><c:out value="checked=checked"/></c:if> />
 				                  	
@@ -161,7 +161,7 @@
 				                  	<input type="text"  id="rollid" name="student_roll_no" oninput="validateAlpha4();" tabindex="3" value="${studentDetails.student_roll_no}"/><br/>
 				                  	 <br/><font color="Red" size="+1"><form:errors path="student.student_roll_no"></form:errors></font>
 				                  </td>
-				                  <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Name 1</td><td width="0.5%">:</td>
+				                  <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Parent Name 1</td><td width="0.5%">:</td>
 					                <td valign="top" align="left" class="input_txt">
 					                <input type="text"  id="pname1" name="parent_name1" oninput="validateAlpha2();" tabindex="13" onblur="toTitleCase2('pname1')" value="${studentDetails.parent_name1}"/>
 					               <br/><font color="Red" size="+1"><span id="p1error"><form:errors path="student.parent_name1"></form:errors></span></font></td>
@@ -169,7 +169,7 @@
 				                   <td width="15%" class="input_txt"></td>
 				                </tr>
 				                
-				                 <tr class="row2">
+				                 <tr class="row2" style="height:50px;">
 				                 <td width="5%" class="input_txt"></td>
 				                        <td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
@@ -182,7 +182,7 @@
 					               	 	
 					               	 	<td width="15%" class="input_txt"></td>			                					            	 
 				                </tr>
-				                <tr class="row1">
+				                <tr class="row1" style="height:50px;">
 				                <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Last Name</td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
@@ -198,7 +198,7 @@
 					              </td>
 					              <td width="15%" class="input_txt"></td>
 				                </tr>
-				                <tr class="row2">
+				                <tr class="row2" style="height:50px;">
 				                
 				                <td width="5%" class="input_txt"></td>
 					            	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Gender </td><td width="0.5%">:</td>
@@ -207,7 +207,7 @@
 						            	</td>
 						            	
 						       
-				                 <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Mobile 2</td><td width="0.5%">:</td>
+				                 <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Parent Mobile 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
 					               <input type="text"  name="parent_mobile2" id="mob2" oninput="validatenum1();" tabindex="16" min="10" maxlength="10" value="${studentDetails.parent_mobile2}"/>
 					         <br/><font color="Red" size="+1"><span id="mob2error"></span><form:errors path="student.parent_mobile2"></form:errors></font>
@@ -215,7 +215,7 @@
 					               <td width="15%" class="input_txt"></td>
 				                </tr>
 				                
-				                <tr class="row1">
+				                <tr class="row1" style="height:50px;">
 				                    <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Avail Transport Facility </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -224,7 +224,7 @@
 				                  <!-- <br/><font color="Red" size="+1"><form:errors path="StudentRegistration.transport_facility"></form:errors></font> -->	
 				                  </td>
 				                  
-				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Email 1</td><td width="0.5%">:</td>
+				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Parent Email 1</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
 					               <input type="text"  id="email1" name="parent_email1" tabindex="17" oninput="validateemail1()" value="${studentDetails.parent_email1}" />
 					         <br/><font color="Red" size="+1"><span id="eiderror"><form:errors path="student.parent_email1"></form:errors></font></span></td>
@@ -243,13 +243,13 @@
 			                   
 				                  <br/><font color="Red" size="+1"><form:errors path="student.pickup_route_no"></form:errors></font> 	</td>
 				                  
-				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Parent Email 2</td><td width="0.5%">:</td>
+				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Parent Email 2</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
 					               <input type="text"  id="email2" name="parent_email2" tabindex="18" oninput="validateemail2()" value="${studentDetails.parent_email2}" />
 					        <br/><font color="Red" size="+1"><span id="eiderror1"><form:errors path="student.parent_email2"></form:errors></font></span></td>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
-				                      <tr class="row1">
+				                      <tr class="row1" style="height:50px;">
 				                    <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Pickup Point Address </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
@@ -278,7 +278,7 @@
 				                  	 <br/><font color="Red" size="+1"><form:errors path="student.pickup_point_address"></form:errors></font>
 				                  </td>
 				                  
-				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Class</td><td width="0.5%">:</td>
+				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Class</td><td width="0.5%">:</td>
 					               <td valign="middle" align="left" class="input_txt">
 					              <%--  <div id="info3">
 					                <select name="class_standard" id="class_standard_id"style="width:220px;" onchange="doAjaxPost_section()" disabled="disabled" >
@@ -307,7 +307,7 @@
 					               <br/><font color="Red" size="+1"><form:errors path="student.class_standard"></form:errors></font> </td>
 					               <td width="15%" class="input_txt"></td>
 				                     </tr>
-				                      <tr class="row2">
+				                      <tr class="row2" style="height:50px;">
 				                    <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Drop Route No </td><td width="0.5%">:</td>
 				                  	<td valign="top" align="left" class="input_txt">
@@ -338,7 +338,7 @@
 			                   <br/><font color="Red" size="+1"><form:errors path="student.drop_route_no"></form:errors></font>
 			                  </td>
 				                  
-				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Section</td><td width="0.5%">:</td>
+				                    <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Section</td><td width="0.5%">:</td>
 					               <td valign="top" align="left" class="input_txt">
 					              <%-- <div id="info_section"> 
 					              <select style="width:220px;"name="section" id="section_id" disabled="disabled">
