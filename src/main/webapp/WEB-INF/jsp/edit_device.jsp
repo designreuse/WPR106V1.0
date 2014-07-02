@@ -291,7 +291,7 @@ jQuery(function () {
 				                
 				                </tr>
 				                
-				                      <tr class="row1">
+				                      <tr class="roww">
 				                      <td width="10%"></td>
 				                      <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>APN:</td>
 				                      <td valign="top" align="left" class="input_txt"  ><div id="info" >
@@ -305,7 +305,7 @@ jQuery(function () {
       <td><input type="hidden" class="org_input_txtbx_height1" name="create_user_id" id="userid" onblur="usercheck('userid')" value="<sec:authentication property="principal.username" />" /></td></tr>
 				                  
 				 
-				 <tr class="row2">
+				 <tr class="roww">
                    <table border="0" width="100%">
                    <tr>
                    <td width="30%"></td>

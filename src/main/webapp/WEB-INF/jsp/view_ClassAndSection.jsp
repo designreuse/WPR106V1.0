@@ -101,13 +101,13 @@
         					<c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
         				       					<tr class="row1">
 							       		
-					     		     	<td valign="top" align="left" style="overflow:hidden;"width="20.75%" title="${classSection.org_name}">${classSection.org_name}</td>					     		     
+					     		     	<td valign="top" align="left" style="overflow:hidden;"width="20.5%" title="${classSection.org_name}">${classSection.org_name}</td>					     		     
 					     		     
 											<td valign="top" align="left" style="overflow:hidden;"width="15%" title="${classSection.branch}">${classSection.branch}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="15.75%" title="${classSection.class_std}">${classSection.class_std}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="15.5%" title="${classSection.class_std}">${classSection.class_std}</td>
 											<td valign="top" align="left" style="overflow:hidden;"width="15%" title="${classSection.section}">${classSection.section}</td>
 											<td valign="top" align="left" style="overflow:hidden;"width="8%" title="${classSection.service}">${classSection.service}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="8%" >
+											<td valign="top" align="left" style="overflow:hidden;"width="9%" >
 										
 										<a href="<c:out value="editclass?org_name=${classSection.org_name}&branch=${classSection.branch}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 												

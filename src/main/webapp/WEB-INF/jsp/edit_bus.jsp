@@ -134,7 +134,7 @@ jQuery(function () {
 				                  	</br><font color="Red" size="+1"><form:errors path="busRegistration.driver_licence_exp_date"></form:errors></font></td>
 				                </tr> 
 
-				                <tr class="row1">
+				                <tr class="roww">
 				                  	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Route No : </td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text"  style="text-transform: uppercase;" class="org_input_txtbx_height1" id="route_id" name="route_no" value="${BusRegistration.route_no}" oninput="validatealphanum_route_no()"/>
 				                  <%-- 	<select class="org_input_cmbbx" name="route_no" id="imei" onblur="Validate2('imei')">

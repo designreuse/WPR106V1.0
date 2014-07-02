@@ -154,11 +154,11 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 									<!-- 	<td valign="top" align="left" width="18%"> Bus Id</td> -->
-					         	<td valign="top" align="left" width="20%"> 	Organization Name</td>
+					         	<td valign="top" align="left" width="20%">&nbsp;Organization Name</td>
 					         	<td valign="top" align="left" width="14%">Branch</td>
 					       	 	<td valign="top" align="left" width="10%"> Bus Reg No</td>
 					       	 	<td valign="top" align="left" width="10%"> RouteNo</td>
-          						<td valign="top" align="left" width="7%"> Trip</td>
+          						<td valign="top" align="left" width="7%">  &nbsp;Trip</td>
           						<td valign="top" align="left" width="9%"> No. of Stops</td>
           						<td valign="top" align="left" width="10%"> Action</td>
           						
@@ -173,10 +173,10 @@
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         					
         				       				 <tr class="click_row"> 
-        				            		<td valign="middle" align="left"style="overflow:hidden; width:210px">${route.org_name}</td>
-					     		     		<td valign="top" align="left" style="overflow:hidden;width:150px">${route.branch}</td> 
-											<td valign="top" align="left" style="overflow:hidden;width:110px">${route.bus_reg_no}</td>
-											<td valign="top" align="left" style="overflow:hidden;width:90px">${route.route_no}</td>
+        				            		<td valign="middle" align="left"   style="overflow:hidden;width:200px">&nbsp;&nbsp;&nbsp;&nbsp;${route.org_name}</td>
+					     		     		<td valign="top" align="left" style="overflow:hidden;width:150px;">&nbsp;&nbsp;&nbsp;&nbsp;${route.branch}</td> 
+											<td valign="top" align="left" style="overflow:hidden;width:90px">${route.bus_reg_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;width:110px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${route.route_no}</td>
 											<td valign="top" align="left" style="overflow:hidden;width:70px"><span style="line-space:20px;"><c:choose>
 											<c:when test="${route.trip==0}">&nbsp;	<c:out value="Pick Up" ></c:out></c:when>
 											<c:when test="${route.trip==1}">&nbsp;<c:out value="Drop" ></c:out></c:when><c:otherwise>
@@ -187,7 +187,7 @@
 											<td valign="top" align="left"style="overflow:hidden; width:90px" title="${route.no_of_stops}">${route.no_of_stops}</td>
 											
 											<td valign="top" align="left" style="overflow:hidden;width:90px">	
-											<a href="<c:out value="showfulldetails?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}"/>">Stops</a>&nbsp;|&nbsp;&nbsp;
+											&nbsp;<a href="<c:out value="showfulldetails?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}"/>">Stops</a>&nbsp;|&nbsp;&nbsp;
 										    <a href="<c:out value="editroute?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}&vechicle_reg_no=${route.bus_reg_no}"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 											<a href="<c:out value="deleteroute?route_no=${route.route_no}&org_name=${route.org_name}&branch=${route.branch}&vechicle_reg_no=${route.bus_reg_no}"/>" onclick="return confirmation()"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 											</td>

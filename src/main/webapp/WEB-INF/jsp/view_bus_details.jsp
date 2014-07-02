@@ -103,14 +103,14 @@
 							
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-								<td valign="top" align="left" width="18%"> Organization</td>
-         						<td valign="top" align="left" width="10%"> Branch</td>
-         						<td valign="top" align="left" width="10%"> Bus Reg No</td>
-         						<td valign="top" align="left" width="13%"> Device IMEI No</td>
-         						<td valign="top" align="left" width="12%"> Driver Name</td>
-					         	<td valign="top" align="left" width="10%"> Licence No</td>
-					         	<td valign="top" align="left" width="14%"> Licence Exp Date</td>
-					        	<td valign="top" align="left" width="10%"> Action</td>
+								<td valign="top" align="left" width="18%">&nbsp;Organization</td>
+         						<td valign="top" align="left" width="10%">&nbsp;Branch</td>
+         						<td valign="top" align="left" width="10%">&nbsp;Bus Reg No</td>
+         						<td valign="top" align="left" width="13%">&nbsp;Device IMEI No</td>
+         						<td valign="top" align="left" width="12%">&nbsp;Driver Name</td>
+					         	<td valign="top" align="left" width="10%">&nbsp;Licence No</td>
+					         	<td valign="top" align="left" width="14%">&nbsp;Licence Exp Date</td>
+					        	<td valign="top" align="left" width="10%">&nbsp;Action</td>
           						
         					</tr></table>
 							<div class="Panel_One_Inner">

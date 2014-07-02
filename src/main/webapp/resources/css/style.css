@@ -333,6 +333,14 @@ background: -moz-linear-gradient(top, #EEEEEE, #6600cc); for firefox 3.6+ */
 	border-bottom:1px solid #e5e5e5;
 	font-size:12px;
 }
+.roww td {
+	background:#fff;
+	padding:5px 10px;
+	font-size:11px;
+	line-height:16px;
+	border-bottom:1px solid #ffffff;
+	font-size:12px;
+}
 .row td {
 	background:#fff;
 	padding:5px 10px;

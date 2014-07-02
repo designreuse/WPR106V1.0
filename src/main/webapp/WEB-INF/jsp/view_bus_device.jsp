@@ -207,14 +207,14 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								
-         						<td valign="top" align="left" width="15%">Device IMEI</td>
+         						<td valign="top" align="left" width="15%">&nbsp;Device IMEI</td>
 					         	<td valign="top" align="left" width="12%">Sim Card No</td>
 					         	
-					         	<td valign="top" align="left" width="16.6%">Admin ip</td>
+					         	<td valign="top" align="left" width="16.6%"> Admin ip</td>
 					         	<td valign="top" align="left" width="20%">Is Assigned</td>
           						<td valign="top" align="left" width="10%">Created by</td>  
           						<td valign="top" align="left" width="13%">Device Status</td>        					
-          						<td valign="top" align="left" width="21%">Action</td>
+          						<td valign="top" align="left" width="21%">&nbsp;Action</td>
         					</tr>
         				</table>
 						<div class="Panel_One_Inner">
@@ -225,13 +225,13 @@
         					<c:forEach items="${deviceRegistrationForm.deviceRegistrations}" var="deviceRegistrations" varStatus="status">
         				       					<tr class="row1">
 							       		<%-- <td valign="center" align="center" width="5%"><input type="checkbox" value="${deviceRegistrations.device_imei_no}" name="chkUser"></td> --%>
-							       		<td valign="top" align="left"  width="14%">${deviceRegistrations.device_imei_number}</td>
+							       		<td valign="top" align="left"  width="15%">${deviceRegistrations.device_imei_number}</td>
 					     		     	
 					     		     	<td valign="top" align="left"  width="12%">${deviceRegistrations.sim_card_number}</td>
 										
 											
 											<td valign="top" align="left" width="16.6%">${deviceRegistrations.adminip}</td>
-											<td valign="top" align="left" width="18%">
+											<td valign="top" align="left" width="20%">
 											 <c:choose>
 											<c:when test="${deviceRegistrations.is_assigned==1}">
 											<c:out value="Assigned"></c:out>
@@ -245,7 +245,7 @@
 											</c:choose> 
 											</td>
 											<td valign="top" align="left" width="10%">${deviceRegistrations.create_user_id}</td>
-											<td valign="top" align="left" width="10%">
+											<td valign="top" align="left" width="13%">
 											
 											 <c:choose>
 											<c:when test="${deviceRegistrations.device_status==1}">
@@ -260,7 +260,7 @@
 											</c:choose> 
 											
 											</td>
-											<td valign="top" align="left" width="15%">
+											<td valign="top" align="left" width="21%">
 										
 												<a href="<c:out value="edit_device?device_imei_number=${deviceRegistrations.device_imei_number}"/>" style="padding-right:10px;"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 												

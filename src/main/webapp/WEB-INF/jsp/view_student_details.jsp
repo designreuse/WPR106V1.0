@@ -85,11 +85,11 @@
 </div></div>
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-					         	<td valign="top" align="left" width="20%"> Organization Name</td>
-					         	<td valign="top" align="left" width="15%"> Branch</td>
-					         	<td valign="top" align="left" width="15%"> Roll No</td>
-					         	<td valign="top" align="left" width="15%"> First Name</td>
-					         	<td valign="top" align="left" width="15%"> Last Name</td>
+					         	<td valign="top" align="left" width="23%"> Organization Name</td>
+					         	<td valign="top" align="left" width="17.3%"> Branch</td>
+					         	<td valign="top" align="left" width="17.3%"> Roll No</td>
+					         	<td valign="top" align="left" width="17.3%"> First Name</td>
+					         	<td valign="top" align="left" width="17.3%"> Last Name</td>
           						<td valign="top" align="left" width="8%">Action</td>
           						
         					</tr>

@@ -91,7 +91,7 @@ jQuery(function () {
     							<tr class="row1">
     							<td width="20%"></td>
 				                  <td valign="middle" width="24%"  align="left" class="txtinput"><span class="err">*</span>  Device Manufacturer Name:</td>
-				                  <td valign="top" align="left" class="input_txt">
+				                  <td valign="center" align="left" class="input_txt">
 				                  <input type="hidden" value="" name="org_id"/>
 									<%-- <input type="text" class="org_input_txtbx_height1" id="manuid" onblur="toTitleCase('manuid')" name="manufacturer" oninput="validateAlpha()" value=""/>
 				                  	<br/><font color="Red" size="+1"><form:errors path="OrgRegistration.org_name"></form:errors></font> --%>
@@ -115,7 +115,7 @@ jQuery(function () {
 				                  </td>	
 				                  
 				                  <td valign="middle"  width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Card Carrier:</td>
-				                  <td valign="top" align="left" class="input_txt">
+				                  <td valign="middle" align="left" class="input_txt">
 				                  	<%-- <input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="org_contact_person_name_id" onkeypress="return onlyAlphabets(event,this);" name="contact_person_name" value="${organisation.contact_person_name}" />
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="OrgRegistration.contact_person_name"></form:errors></font>
 				                 --%>
@@ -132,18 +132,18 @@ jQuery(function () {
 				              </tr>
 				              <tr class="row2">
 				              <td width="10%"></td>
-				              <td valign="middle" align="left"  width="20%"  class="txtinput"><span class="err">*</span> Device Model Number:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				              <td valign="middle" align="left"  width="20%"   class="txtinput"><span class="err">*</span> Device Model Number:</td>
+				                  <td valign="center" align="left" class="input_txt" >
 				                	<input type="text" class="org_input_txtbx_height1" onkeyup="doAjaxPost()" id="modelid" onblur="modelcheck('modelid')" name="model_no" oninput="validatealphanum_device_model()" value="${devicesimsetup.model_no}" />
 				                   <br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.model_no"></form:errors></font>
 				                  </td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> APN :</td>
-				                  <td valign="top" align="left" class="input_txt">
+				                  <td valign="middle" align="left" class="input_txt">
 				                  <div id="info" >
 				                   
 				        <c:choose>
-				        <c:when test="${fn:length(apn_array) gt 0}">
-				        <select  style="width:220px;margin-top:-4px;" id="apn_id" name="apn" >
+				        <c:when test="${fn:length(apn_array) gt 0}"><br/>
+				        <select  style="width:220px;" id="apn_id" name="apn" >
 				                 	<option selected>--Select APN--</option>
 							  		<c:forEach items="${apn_array}" var="apn1" >
 							  		<option value="${apn1}" <c:if test="${apn1==apn}"><c:out value="Selected"/></c:if>>${apn1}</option>
@@ -184,7 +184,7 @@ jQuery(function () {
 				                <tr class="row2">
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Invoice Number:</td>
-				                  <td valign="top" align="left" class="input_txt">
+				                  <td valign="middle" align="left" class="input_txt">
 				                  	<input type="text" name="device_invoice_number" class="org_input_txtbx_height1" id="invoice_id" onblur="deviceinvoice('invoiceid')" oninput="validatealphanum_device_invoice()" value="${devicesimsetup.device_invoice_number}">
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.device_invoice_number"></form:errors></font>
 				                  </td>
@@ -217,10 +217,10 @@ jQuery(function () {
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_invoice_number"></form:errors></font>
 				                  </td>
 				                </tr>
-				                <tr class="row2">
+				                <tr class="row2" style="height: 50px">
 				                <td width="10%"></td>
-				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Tested:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left"  width="20%" class="input_txtlabel"><span class="err">*</span> Device Tested:</td>
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  <c:choose>
 				                  <c:when test="${device_tested==1}">
 				                  <input type="radio" id="id_yes_active" name="device_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
@@ -240,7 +240,7 @@ jQuery(function () {
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Sim Tested ? :</td>
-				                  <td valign="top" align="left" class="input_txt"  >
+				                  <td valign="middle" align="left" class="input_txt"  >
 				                  <c:choose>
 				                  <c:when test="${sim_card_tested==1}">
 				                  <input type="radio" id="id_yes_active" name="sim_card_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
@@ -260,10 +260,10 @@ jQuery(function () {
 				                  </td>
 				                
 				                </tr>
-				                <tr class="row1">
+				                <tr class="row1" style="height: 50px">
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Status:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  <c:choose>
 				                  <c:when test="${device_status==1}">
 				                  <input type="radio" id="id_yes_active" name="device_status" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
@@ -283,7 +283,7 @@ jQuery(function () {
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Device-Sim Paired? :</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  <c:choose>
 				                  <c:when test="${device_sim_paired==1}">
 				                  <input type="radio" id="id_yes_active" name="device_sim_paired" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
@@ -312,7 +312,7 @@ jQuery(function () {
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Is Assigned?:</td>
-				                  <td valign="top" align="left" class="input_txt">
+				                  <td valign="middle" align="left" class="input_txt">
 				                  <c:choose>
 				                  <c:when test="${is_assigned==1}">
 				                  <input type="radio" id="id_yes_active" name="is_assigned" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
@@ -335,7 +335,7 @@ jQuery(function () {
 				                
 				                </tr>
 				                
-				                      <tr class="row1">
+				                      <tr class="roww">
 				                      <td width="10%"></td>
 				                      <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Comments:</td>
 				                      <td valign="top" align="left" class="input_txt"  >
@@ -349,11 +349,12 @@ jQuery(function () {
       					</div>  -->
      					
       						
-      						<td><input type="hidden" class="org_input_txtbx_height1" name="create_user_id" id="userid" onblur="usercheck('userid')" value="<sec:authentication property="principal.username" />" /></td></tr>
+      						<td><input type="hidden" class="org_input_txtbx_height1" name="create_user_id" id="userid" onblur="usercheck('userid')" value="<sec:authentication property="principal.username" />" /></td><td width="50"></td></tr>
 				                
      
 				  
-                   <tr class="row1"><td border="0" colspan="4">
+                   <tr class="row">
+                   <td border="0" colspan="2">
                  
                    <table border="0" width="80%" align="right">
                    <tr>
