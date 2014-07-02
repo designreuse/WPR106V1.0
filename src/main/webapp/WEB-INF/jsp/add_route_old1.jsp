@@ -11,7 +11,52 @@
   <script type='text/javascript' src="resources/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
- 
+  <script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+	 $(document).ready( function() {
+		    var now = new Date();
+		 
+		    var day = ("0" + now.getDate()).slice(-2);
+		    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+		    var today = now.getFullYear()+"/"+(month)+"/"+(day) ;
+
+
+		   $('#datePickertest').val(today);
+		    
+		    
+		});
+jQuery(function () {
+    jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate1').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    
+    jQuery('#startDate1').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+	/* jQuery('#startDate1').datetimepicker({ format: 'dd/MM/yyyy',dateonly:true }); */
+	jQuery('#endDate').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+
+	jQuery('#startDate').datetimepicker({ format: 'hh:mm' ,pickDate: false });
+    jQuery('#endDate2').datetimepicker({ format: 'yyyy/MM/dd' ,pickTime: false});
+    
+	jQuery("#startDate").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#startDate1").on("dp.change",function (e) {
+    jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);});
+    
+	jQuery("#startDate").on("dp.change",function (e) {
+	    jQuery('#endDate2').data("DateTimePicker").setMinDate(e.date);});
+	
+	jQuery("#endDate").on("dp.change",function (e) {
+    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	jQuery("#endDate1").on("dp.change",function (e) {
+	    jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);});
+
+	
+});
+});//]]>  
+
+</script>
 <!-- DropDown Scripts -->
 <script id="script_orgid">
     $(document).ready(function() {
@@ -38,11 +83,14 @@
 	src='http://code.jquery.com/jquery-1.4.3.min.js'></script>
 	<script type="text/javascript"
 	src="<c:url value="/resources/js/jquery.ui.timepicker.js" />"></script>
-	<link href="<c:url value="/resources/css/timepicker_css.css" />"
+	<link href="<c:url value="/resources/css/jquery.ui.timepicker.css" />"
 	rel="stylesheet" type="text/css" />
 	<script type="text/javascript">
 	 $(document).ready(function() {
-		 $('#timepicker').timepicker();
+		 $('#timepicker').timepicker({
+			    showPeriod: true,
+			    showLeadingZero: true
+			});
      });
 	
 	</script> 
@@ -161,7 +209,7 @@ p {
 			<td valign="top" align="left">
 				<div>
 					<div class="headings altheading">
-						<h2> Route Registration1</h2>
+						<h2> Route Registration</h2>
 					</div>
 					
 
@@ -252,32 +300,16 @@ p {
 							</tr>							
 							<tr class="row1" style="margin-top:20px;">
 								<td valign="bottom" align="right" class="input_txt" ><span
-									class="err">*</span>&nbsp;&nbsp;</td>
-								<td>
-								<div style="padding:20px;width:700px;height:100px;background-color:#F4F4F8;border:solid 1px 	#C6C6CF;">
-								<input type="text"  size="500" class="input_txtbx_height" style="width:700px;" id="stop_address_info" name="stop_address" value="" placeholder="Stop Location" />
-								<br/>
-								<select name="stop_pick" id="stop_pick_info"><option value="0">Pick</option><option value="1">Drop</option><option value="2">Both</option></select>
+									class="err">*</span>&nbsp;&nbsp;
+									<a href="#" id="addScnt" style="padding:3px;border:2px inset #9fb7cd;border-radius:5px;text-decoration:none;">
+									 Add Bus Stops :</a><input type="hidden" id="number_of_stops" name="number_of_stops"></td>
+								<td valign="top" align="left" class="input_txt" width="70%">
+								<div  id="p_scents" style="height:auto;overflow:auto;">
 								
-								<input type="text" id="timepicker" onkeydown="onKeyDown(this);"/><br/>
-								<input type="button" value="Add Stop" style="padding:5px;" onclick="doPopulateStops();"/>
 								</div>
+								<%-- <font color="Red" size="+1"><form:errors path="route.number_of_stops"></form:errors></font> --%>
 								</td>
-							</tr>
-							<tr class="row1" style="margin-top:20px;">
-							<td valign="bottom" align="Right" class="input_txt"></td>
-								<td valign="bottom" align="left" class="input_txt">
-								<b>Added Stops:</b>
-								</td>
-							</tr>
-							<tr class="row1" style="margin-top:20px;">
-							
-							<td valign="bottom" align="left" class="input_txt"></td>
-								<td valign="bottom" align="left" class="input_txt">
-								<span id="added_stops"></span>
-								</td>
-							</tr>
-							
+								</tr>
 			
 							<tr class="row1">
                   
@@ -307,15 +339,35 @@ p {
 <script
 	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 <script type="text/javascript">
+//This example adds a search box to a map, using the Google Place Autocomplete
+//feature. People can enter geographical searches. The search box will return a
+//pick list containing a mix of places and predicted search terms.
+$(function() {
+	
+        var scntDiv = $('#p_scents');
+        var i = $('#p_scents p').size();
+        //alert(i);
+        var j=0;
+        $('#addScnt').live('click', function() {
+        	//alert(i);
+        	$('<p style="border:solid 1px grey;padding:5px;margin-top:5px;width:700px;background-color:#E5E5E5;"><label for="p_scents"><input type="text"  size="500" class="input_txtbx_height" style="width:700px;" id="stop_info_'+i+'" name="stop[]" value="" placeholder="Stop Location" /></label><select name="stop_pick[]"><option value="0">Pick</option><option value="1">Drop</option><option value="2">Both</option></select>&nbsp<input type="text" name="particular_stop_time[]" id="endDate" placeholder="Bus Arrival time" class="timepicker" style="width=100px; value=""/><font color="Red" size="+1">&nbsp<a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
+        	document.getElementById("number_of_stops").value=i;
+        	var autocomplete_stop = new google.maps.places.Autocomplete(document.getElementById("stop_info_"+i));
+            i++;
+            return false;
+    });
+    
+    $('#remScnt').live('click', function() { 
+               $(this).parents('p').remove();
+                    i--;
+           
+		});
+});
 
 function initialize() {
-	
-	//This example adds a search box to a map, using the Google Place Autocomplete
-	//feature. People can enter geographical searches. The search box will return a
-	//pick list containing a mix of places and predicted search terms.
 
-	var autocomplete_stop = new google.maps.places.Autocomplete(document.getElementById("stop_address_info"));
-	
+	var autocomplete_stop_address = new  google.maps.places.Autocomplete(document.getElementById('stop_address'));
+	var autocomplete_route_stop = new google.maps.places.Autocomplete(document.getElementById('route_stop'));
 	
 }
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -397,52 +449,4 @@ $('#info1').html(response);
 		  });  
 		}  
 		</script>
-		
-<script type="text/javascript">
- function doPopulateStops() {  
-	
-	var stop_address = $('#stop_address_info').val();
-	var stop_pick=$('#stop_pick_info').val();
-	var stop_time=$('#timepicker').val();
-	 document.getElementById("stop_address_info").value="";
-     document.getElementById("timepicker").value="";
-	/* alert(orgname); */
-	 $.ajax({  
-		    type: "POST",  
-		    url: "/BusTrackingApp/populate_stops",  
-		    data: "stop_address_info="+stop_address+"&stop_pick_info="+stop_pick+"&stop_time_info="+stop_time,
-		    
-		    success: function(response){  
-		
-            $('#added_stops').html(response);
-           
-   },  
-		    error: function(e){  
-		      alert('Error: ' + e);  
-		    }  
-		  });  
-		}  
- 
- function doRemovestop(value) {  
-		
-		
-		/* alert(orgname); */
-		 $.ajax({  
-			    type: "POST",  
-			    url: "/BusTrackingApp/remove_populate_stops",  
-			    data: "id="+value,
-			    
-			    success: function(response){  
-			
-	            $('#added_stops').html(response);
-
-	   },  
-			    error: function(e){  
-			      alert('Error: ' + e);  
-			    }  
-			  });  
-			}  
-		</script>	
-		
-		
 <jsp:include page="footer.jsp"></jsp:include>
