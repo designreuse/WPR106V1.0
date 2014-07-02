@@ -175,10 +175,10 @@ jQuery(function () {
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.sim_invoice_number"></form:errors></font>
 				                  </td>
 				                </tr>
-				                <tr class="row1">
+				                <tr class="row1" height="50px">
 				                <td width="10%"></td>
 				                 <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span>  Device IMEI Number:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  	 <input type="hidden" name="device_imei_number" class="org_input_txtbx_height1" maxlength="15" id="imei_id" onblur="deviceimei('imei_id')" oninput="validatenum4()" value="${device.device_imei_number}">${device.device_imei_number}
 				                  	<br/><font color="Red" size="+1"><span id="unique_error"></span><form:errors path="deviceRegistration.device_imei_number"></form:errors></font>
 				                  
@@ -187,7 +187,7 @@ jQuery(function () {
   
 				                   </td>
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span>Sim tested ?:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  <c:choose>
 				                  <c:when test="${device.sim_card_tested==0}">
 				                  <input type="radio" id="id_yes_active" name="sim_card_tested" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
@@ -203,10 +203,10 @@ jQuery(function () {
 				                  	
 				                  </td>
 				                </tr>
-				                <tr class="row2">
+				                <tr class="row2" height="50px">
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Tested:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  <c:choose>
 				                  <c:when test="${device.device_tested==1}">
 				                  <input type="radio" id="id_yes_active" name="device_tested" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
@@ -223,7 +223,7 @@ jQuery(function () {
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Device-Sim Paired ? :</td>
-				                  <td valign="top" align="left" class="input_txt"  >
+				                  <td valign="middle" align="left" class="input_txt"  >
 				                  <c:choose>
 				                  <c:when test="${device.device_sim_paired==0}">
 				                  <input type="radio" id="id_yes_active" name="device_sim_paired" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
@@ -240,10 +240,10 @@ jQuery(function () {
 				                  </td>
 				                
 				                </tr>
-				                <tr class="row1">
+				                <tr class="row1" height="50px">
 				                <td width="10%"></td>
 				                  <td valign="middle" align="left"  width="20%"  class="input_txtlabel"><span class="err">*</span> Device Status:</td>
-				                  <td valign="top" align="left" class="input_txt" >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  <c:choose>
 				                  <c:when test="${device.device_status==1}"><input type="radio" id="id_yes_active" name="device_status" checked value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="radio" id="id_no_active" name="device_status" value="0">&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;
@@ -259,7 +259,7 @@ jQuery(function () {
 				                  </td>
 				                
 				                  <td valign="middle"   width="20%" align="left" class="input_txtlabel"><span class="err">*</span> Is Assigned? :</td>
-				                  <td valign="top" align="left" class="input_txt"  >
+				                  <td valign="middle" align="left" class="input_txt" >
 				                  <c:choose>
 				                  <c:when test="${device.is_assigned==0}">
 				                  <input type="radio" id="id_yes_active" name="is_assigned" value="1">&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;
