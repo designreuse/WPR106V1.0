@@ -186,15 +186,17 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding:20px;">
 							  <tr style="border:solid 1px black;">
-							  <td align="right" valign="middle" width="20%">Organization:&nbsp;&nbsp;</td>
+							  <td align="right" valign="middle" width="20%" style="color: white;">Organization:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
 							     <select class="input_cmbbx" name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
-							    <option selected>-- Select Organization--</option>
+							    <option selected value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
         				        <option value="${orgname}" <c:if test="${orgname==org_name}"><c:out value="Selected"/></c:if> >${orgname}</option>
 			                  </c:forEach>
-			                 </select></td>
-			                 <td align="right" valign="middle" width="10%">Branch:&nbsp;&nbsp;</td>
+			                 </select>
+			                 <br><span id="org_error" style="color: red;"></span>
+			                 </td>
+			                 <td align="right" valign="middle" width="10%" style="color: white;">Branch:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
 							    <!-- <span id="info"> 
 				                 	<select class="input_cmbbx" style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()" disabled="disabled">
@@ -212,14 +214,14 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 								    </select>
 								 </c:when>
 								 <c:otherwise>
-									 <select class="input_cmbbx" style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()" disabled="disabled">
+									 <select class="input_cmbbx" style="width:220px;margin-top:-4px;" name="branch" id="bid" onchange="doAjaxPost_vechicle()">
 							  		<option value="">-- Select branch--</option>
 								    </select>
 								 </c:otherwise>
 								</c:choose>	
-        				       </span> 
+        				       </span> <br><span id="biderror" style="color: red;"></span>
         				        </td></tr><tr>
-							    <td align="right" valign="middle" width="20%">Vehicle Reg no:&nbsp;&nbsp;</td>
+							    <td align="right" valign="middle" width="20%" style="color: white;">Vehicle Reg no:&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%">
 							   <!-- <span id="info1">
 							   <select class="input_cmbbx" name="device_id" id="device"  style='width:220px;'>
@@ -238,17 +240,19 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							    </select>
 							  </c:when>	
 							  <c:otherwise>
-							  		<select class="input_cmbbx" name="device_id" id="device"  onchange="doAction(this.value);" disabled style='width:220px;'>
+							  		<select class="input_cmbbx" name="device_id" id="device"  onchange="doAction(this.value);"  style='width:220px;'>
 							     <option value="">--Select Vechicle--</option>
 							    </select>
 							    </c:otherwise>
 							    </c:choose>	
-							</span>
+							</span><br><span id="deviceerror" style="color: red;"></span>
 							    </td>
-							    <td align="right" valign="middle" width="10%">Date :&nbsp;&nbsp;</td>
-							    <td align="left" valign="middle" width="8%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date}"></td>
-							    <td align="center" valign="middle" width="8%"><input type="submit" class="btn" value="Show" name="find"></td>
-							 <td align="center" valign="middle" width="8%"><input type="reset" class="btn" value="Reset"></td>
+							    <td align="right" valign="middle" width="10%" style="color: white;">Date :&nbsp;&nbsp;</td>
+							    <td align="left" valign="middle" width="8%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date}" readonly="readonly">
+							    <br><span id="dateerror" style="color: red;"></span>
+							    </td>
+							    <td align="center" valign="middle" width="8%"><input type="submit" class="btn" value="Show" name="find" onclick="return check();"></td>
+							 <td align="center" valign="middle" width="8%"><input type="reset"  onclick="window.location.href='admin_view_map_history'" class="btn" value="Reset"></td>
 							  </tr>
 							</table>
 
@@ -260,6 +264,39 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 	
 	</div>
 </form>
+<script>
+function check(){
+	
+	document.getElementById("org_error").innerHTML="";
+	document.getElementById("biderror").innerHTML="";
+	document.getElementById("deviceerror").innerHTML="";
+	document.getElementById("dateerror").innerHTML="";
+	
+	if(document.getElementById("orgid").value=='')
+	{
+		
+	document.getElementById("org_error").innerHTML="Kindly Select Organization";
+
+	return false;
+	}
+	if(document.getElementById("bid").value =='')
+	{
+	document.getElementById("biderror").innerHTML="Kindly Select Branch";
+	return false;
+	}
+	if(document.getElementById("device").value =='')
+	{
+	document.getElementById("deviceerror").innerHTML="Kindly Select Device";
+	return false;
+	}
+	if(document.getElementById("datepicker").value =='')
+	{
+	document.getElementById("dateerror").innerHTML="Kindly Choose Date";
+	return false;
+	}
+	
+}
+</script>
 
 <script type="text/javascript">
 function doAjaxPost() {  

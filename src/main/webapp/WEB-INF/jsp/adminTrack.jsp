@@ -111,6 +111,9 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							date[i] = data.latLongs[i].date;
 							exceed_speed=data.latLongs[i].exceed_speed;
 							}
+						var org_name=document.getElementById("org_id");
+						var branch=document.getElementById("bid");
+						var vechicle_no=document.getElementById("device");
 						if(lat_array.length==0)
 							alert("No Locations Found!!");
 						
@@ -280,7 +283,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding:20px;">
 							  <tr style="border:solid 1px black;">
-							    <td align="left" valign="middle" width="10%">
+							    <td align="left" valign="middle" width="10%" style="color: white;">
 							    	     Select Organization:&nbsp;&nbsp; <select class="input_cmbbx" name="org_name" style="width:220px;margin-top:-4px;" id="orgid"  onchange="doAjaxPost()" onblur="Validate('orgid')">
 							    <option value="">-- Select Organization--</option>
         				        <c:forEach items="${orgname}" var="orgname" varStatus="status">
@@ -289,7 +292,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 			                 </select>
 							    
 							    </td>
-							    <td align="left" valign="middle" width="10%">
+							    <td align="left" valign="middle" width="10%" style="color: white;">
 							    Select branch:&nbsp;&nbsp;
 							    <span id="info"> 
 							   <c:choose>
@@ -309,7 +312,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 								</c:choose>	
         				       </span> 
 							    </td>
-							    <td align="right" valign="middle" width="8%">Select Vehicle:&nbsp;&nbsp; 
+							    <td align="right" valign="middle" width="8%" style="color: white;">Select Vehicle:&nbsp;&nbsp; 
 							    <span id="info1">
 							<c:choose>
 							  <c:when test="${fn:length(vehicle_array.busDeviceRegistrations) gt 0}">
