@@ -36,6 +36,16 @@ public class Route
 	
 	
 	private String address;
+	
+	//Session
+	public Route(String trip, String address, String bus_arrival_time) {
+		super();
+		this.trip = trip;
+		this.address = address;
+		this.bus_arrival_time = bus_arrival_time;
+	}
+
+
 	private String latitude;
 	private String longitude;
 	

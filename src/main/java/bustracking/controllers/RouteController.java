@@ -51,7 +51,7 @@ import bustracking.forms.BusRegistrationForm;
 
 
 @Controller
-@SessionAttributes({"routes","org_name","branch","vechicle_reg_no","trip","route_no"})
+@SessionAttributes({"routes","org_name","branch","vechicle_reg_no","trip","route_no","session_route"})
 public class RouteController
 {
 	@Autowired
@@ -80,6 +80,9 @@ public class RouteController
 		session.removeAttribute("org_name");
 		session.removeAttribute("branch");
 		session.removeAttribute("route_no");
+		
+		List<Route> routes=new ArrayList<Route>();
+		session.setAttribute("session_route", routes);
 		
 		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
 		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
@@ -227,24 +230,50 @@ public class RouteController
 			}
 		}
 	
+@SuppressWarnings("unchecked")
 @RequestMapping(value="/insert_route_stop", method = RequestMethod.POST)
 
 	public String inserting_route(HttpSession session,HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("route_no") String route_no,@ModelAttribute("route") @Valid Route route,BindingResult result,ModelMap model, Principal principal ) {
 		
-	
+	if(result.hasErrors())
+	{
+		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
+		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
+		model.addAttribute("orgRegistrationForm",orgRegistrationForm);
+		
+		BusRegistrationForm busregistrationform= new BusRegistrationForm();
+		busregistrationform.setBusregistration(busDAO.getBusregistration());
+		model.addAttribute("busregistrationform",busregistrationform);
+		
+		
+		
+		List <String> orgname=new ArrayList<String>();
+		orgname=busDAO.getorgname();
+		model.addAttribute("orgname",orgname);
+		
+		return "add_route";
+	}
 		String[] stop_info=new String[100];
 		String[] trip_info=new String[100];
 		String[] stop_time=new String[100];
 		
-		stop_info=request.getParameterValues("stop[]");
-		trip_info=request.getParameterValues("stop_pick[]");
-		stop_time=request.getParameterValues("particular_stop_time[]");
+	   List<Route> ses_route=new ArrayList<Route>();
+	   
+	   ses_route=(List<Route>) session.getAttribute("session_route");
 		
+	   int index=0;
+	   for (Route route2 : ses_route) {
+		stop_info[index]=route2.getAddress();
+		stop_time[index]=route2.getBus_arrival_time();
+		trip_info[index]=route2.getTrip();
+		index++;
+	}
+		
+		int no_of_pick=0,no_of_drop=0,k=0;
 				
-		int no_of_pick=0,no_of_drop=0;
-				
-		for (String pick_or_drop : trip_info) {
-			switch (Integer.parseInt(pick_or_drop)) {
+		for (k=0;k<index;k++) {
+			
+			switch (Integer.parseInt(trip_info[k])) {
 			case 0:no_of_pick++;			
 				break;
 			case 1:no_of_drop++;
@@ -263,7 +292,7 @@ public class RouteController
 		//setting the route values
 		  route.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
 		//insert route
-		for (int i=0;i<stop_info.length;i++)
+		for (int i=0;i<index;i++)
 		{
 			
 			switch (Integer.parseInt(trip_info[i])) {
@@ -584,6 +613,50 @@ public String updateuser(HttpServletRequest request,@ModelAttribute ("Route") Ro
 		return "route_details";
 	}
 */
+
+
+@SuppressWarnings("unchecked")
+@RequestMapping(value="/populate_stops",method=RequestMethod.POST)
+public @ResponseBody String populate_stops(HttpSession session,HttpServletRequest request,@RequestParam("stop_address_info")String stop_address_info,@RequestParam("stop_pick_info") String stop_pick_info,@RequestParam("stop_time_info") String stop_time_info,ModelMap model)
+{
+	List<Route> routes=new ArrayList<Route>();
+	routes=(List<Route>) session.getAttribute("session_route");
+	routes.add(new Route(stop_pick_info, stop_address_info,stop_time_info));
+	String returnString="<div style='height:200px;overflow-y:scroll;'>";
+	returnString+="<table style='border:solid 1px lightgrey;'><tr style='background-color:grey;font-weight:bold;'><td width='20px'>S.No</td><td width='400px' style='overflow:hidden;'>Stop Address</td><td width='100px'>Pick/Drop/Both</td><td width='100px'>Arrival Time</td><td width='100px'></td></tr></table>";
+	int i=0;
+	for (Route route : routes) {
+		
+		returnString+="<table style='border:solid 1px lightgrey'><tr><td width='20px'>"+(i+1)+"</td><td width='400px' style='overflow:hidden;'>"+route.getAddress()+"</td><td width='100px'>"+route.getTrip()+"</td><td width='100px'>"+route.getBus_arrival_time()+"</td><td width='100px'><a href='#'  onclick='doRemovestop("+i+")'>Remove</a></td></tr></table>";
+	i++;
+	}
+	returnString+="</div>";
+	session.setAttribute("session_route", routes);
+	return returnString;
+	
+}
+@SuppressWarnings("unchecked")
+@RequestMapping(value="/remove_populate_stops",method=RequestMethod.POST)
+public @ResponseBody String remove_populate_stops(HttpSession session,HttpServletRequest request,@RequestParam("id")String id,ModelMap model)
+{
+	List<Route> routes=new ArrayList<Route>();
+	routes=(List<Route>) session.getAttribute("session_route");
+	routes.remove(Integer.parseInt(id));
+	String returnString="<div style='height:200px;overflow-y:scroll;'>";
+	returnString+="<table style='border:solid 1px lightgrey;'><tr style='background-color:grey;font-weight:bold;'><td width='20px'>S.No</td><td width='400px' style='overflow:hidden;'>Stop Address</td><td width='100px'>Pick/Drop/Both</td><td width='100px'>Arrival Time</td><td width='100px'></td></tr></table>";
+	int i=0;
+	for (Route route : routes) {
+		
+		returnString+="<table style='border:solid 1px lightgrey'><tr><td width='20px'>"+(i+1)+"</td><td width='400px' style='overflow:hidden;'>"+route.getAddress()+"</td><td width='100px'>"+route.getTrip()+"</td><td width='100px'>"+route.getBus_arrival_time()+"</td><td width='100px'><a href='#'  onclick='doRemovestop("+i+")'>Remove</a></td></tr></table>";
+	i++;
+	}
+	returnString+="</div>";
+	session.setAttribute("session_route", routes);
+	return returnString;
+	
+}
+
+
 
 }
 
