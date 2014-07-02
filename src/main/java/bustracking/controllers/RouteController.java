@@ -394,25 +394,35 @@ public class RouteController
 	
 	// Update Route Information
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/update_route_stop", method = RequestMethod.POST)
 
-	public String update_route(HttpServletRequest request,ModelMap model,Route_view route,Route updateroute, Principal principal ) {
+	public String update_route(HttpSession session,HttpServletRequest request,ModelMap model,Route_view route,Route updateroute, Principal principal ) {
 		
 	 
-updateroute.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
+          updateroute.setOrg_id(orgRegistrationDAO.getOrg_id(route.getOrg_name(),route.getBranch()));
 		
 		//this.setInfo(route, route.getRoute_from(),"both",request.getParameter("route_pick_time"),request.getParameter("route_drop_time"));
-		System.out.println(request.getParameter("org_name"));
-		System.out.println(request.getParameter("branch"));
-		System.out.println(request.getParameter("stop[]"));
+		
 		String[] stop_locations=new String[100];
 		String[] stop_pick_drop=new String[100];
 		String[] stop_timings=new String[100];
-		int stop_count=Integer.parseInt(request.getParameter("number_of_stops"));
+		/*int stop_count=Integer.parseInt(request.getParameter("number_of_stops"));
 		System.out.println(stop_count);
-		stop_locations=request.getParameterValues("stop[0]");
-		stop_pick_drop=request.getParameterValues("stop_pick[0]");
-		stop_timings=request.getParameterValues("particular_stop_pickup_time[0]");
+		*/
+		List<Route_view> ses_route=new ArrayList<Route_view>();
+		   
+		   ses_route=(List<Route_view>) session.getAttribute("session_route");
+			
+		   int index=0;
+		   for (Route_view route2 : ses_route) {
+			stop_locations[index]=route2.getBus_stop_address();
+			stop_timings[index]=route2.getBus_arrival_time();
+			stop_pick_drop[index]=route2.getTrip();
+			index++;
+		}
+		
+		
 	
 		// Delete Route Information While updating route
 		
@@ -423,24 +433,17 @@ updateroute.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_nam
 		  updateroute.setOrg_id(orgRegistrationDAO.getOrg_id(request.getParameter("org_name"),request.getParameter("branch")));
 		  
 		String stop_location;
-		for (int i=0;i<=stop_count;i++)
+		for (int i=0;i<index;i++)
 		{
-			System.out.println("request.getParameter(stop["+i+"])");
-			if(!request.getParameter("stop["+i+"]").equals(""))
-			{
-				stop_location=request.getParameter("stop["+i+"]");
+				stop_location=stop_locations[i];
 				updateroute.setStop_id("S"+i);
 				updateroute.setAddress(stop_location);
 				updateroute.setLatitude(getLat(stop_location));
 				updateroute.setLongitude(getLong(stop_location));
-				updateroute.setTrip(request.getParameter("stop_pick["+i+"]"));
-				updateroute.setBus_arrival_time(request.getParameter("particular_stop_pickup_time["+i+"]"));
+				updateroute.setTrip(stop_pick_drop[i]);
+				updateroute.setBus_arrival_time(stop_timings[i]);
 				routeDAO.updateRoute(updateroute);
-				
-			}
-			
-			System.out.println(route);
-			
+		
 				
 		}
 		
@@ -657,6 +660,136 @@ public @ResponseBody String remove_populate_stops(HttpSession session,HttpServle
 }
 
 
+/*@SuppressWarnings("unchecked")
+@RequestMapping(value="/removeedit_populate_stops",method=RequestMethod.POST)
+public @ResponseBody String removeedit_populate_stops(HttpSession session,HttpServletRequest request,@RequestParam("id")String id,ModelMap model)
+{
+	List<Route_view> routes=new ArrayList<Route_view>();
+	routes=(List<Route_view>) session.getAttribute("session_route");
+	routes.remove(Integer.parseInt(id));
+	String returnString="<div style='height:200px;overflow-y:scroll;'>";
+	returnString+="<table style='border:solid 1px lightgrey;'><tr style='background-color:grey;font-weight:bold;'><td width='20px'>S.No</td><td width='400px' style='overflow:hidden;'>Stop Address</td><td width='100px'>Pick/Drop/Both</td><td width='100px'>Arrival Time</td><td width='100px'></td></tr></table>";
+	int i=0;
+	for (Route_view route : routes) {
+		
+		returnString+="<table style='border:solid 1px lightgrey'><tr><td width='20px'>"+(i+1)+"</td><td width='400px' style='overflow:hidden;'>"+route.getBus_stop_address()+"</td><td width='100px'>"+route.getTrip()+"</td><td width='100px'>"+route.getBus_arrival_time()+"</td><td width='100px'><a href='#'  onclick='doRemovestop("+i+")'>Remove</a></td></tr></table>";
+	i++;
+	}
+	returnString+="</div>";
+	session.setAttribute("session_route", routes);
+	return returnString;
+	
+}
 
+
+*/
+
+
+@SuppressWarnings("unchecked")
+@RequestMapping(value="/edit_populate_stops",method=RequestMethod.POST)
+public @ResponseBody String edit_populate_stops(HttpSession session,HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch")String branch,@RequestParam("route_no") String route_no,ModelMap model)
+{
+	
+	
+	RouteViewForm routeForm= new RouteViewForm();
+	routeForm.setRoute_views(routeDAO.getRoutesView(route_no,org_name,branch));
+	model.addAttribute("routeForm",routeForm);
+	
+	List<Route_view> route_views=new ArrayList<Route_view>();	
+	route_views=routeDAO.getRoutesView(route_no, org_name, branch);
+	
+	session.setAttribute("session_route",route_views);
+		
+	String returnString="<div style='height:120px;overflow-y:scroll;'>";
+	returnString+="<table style='border:solid 1px lightgrey;'><tr style='background-color:grey;font-weight:bold;'><td width='20px'>S.No</td><td width='400px' style='overflow:hidden;'>Stop Address</td><td width='100px'>Pick/Drop/Both</td><td width='100px'>Arrival Time</td><td width='100px'></td></tr></table>";
+	int i=0;
+	for (Route_view route : route_views) {
+		
+		returnString+="<table style='border:solid 1px lightgrey'><tr><td width='20px'>"+(i+1)+"</td><td width='400px' style='overflow:hidden;'>"+route.getBus_stop_address()+"</td><td width='100px'>"+route.getTrip()+"</td><td width='100px'>"+route.getBus_arrival_time()+"</td><td width='100px'><a href='#' style='margin-right:10px;' onclick='doEditstop("+i+")'>Edit</a><a href='#'  onclick='doRemovestop("+i+")'>Remove</a></td></tr></table>";
+	    i++;
+	}
+	returnString+="</div>";
+	
+	return returnString;
+	
+}
+
+@SuppressWarnings("unchecked")
+@RequestMapping(value="/edit_remove_populate_stops",method=RequestMethod.POST)
+public @ResponseBody String edit_remove_populate_stops(HttpSession session,HttpServletRequest request,@RequestParam("id")String id,ModelMap model)
+{
+	List<Route_view> routes=new ArrayList<Route_view>();
+	routes=(List<Route_view>) session.getAttribute("session_route");
+	routes.remove(Integer.parseInt(id));
+	String returnString="<div style='height:120px;overflow-y:scroll;'>";
+	returnString+="<table style='border:solid 1px lightgrey;'><tr style='background-color:grey;font-weight:bold;'><td width='20px'>S.No</td><td width='400px' style='overflow:hidden;'>Stop Address</td><td width='100px'>Pick/Drop/Both</td><td width='100px'>Arrival Time</td><td width='100px'></td></tr></table>";
+	int i=0;
+	for (Route_view route : routes) {
+		
+		returnString+="<table style='border:solid 1px lightgrey'><tr><td width='20px'>"+(i+1)+"</td><td width='400px' style='overflow:hidden;'>"+route.getBus_stop_address()+"</td><td width='100px'>"+route.getTrip()+"</td><td width='100px'>"+route.getBus_arrival_time()+"</td><td width='100px'><a href='#' style='margin-right:10px;' onclick='doEditstop("+i+")'>Edit</a><a href='#'  onclick='doRemovestop("+i+")'>Remove</a></td></tr></table>";
+	i++;
+	}
+	returnString+="</div>";
+	session.setAttribute("session_route", routes);
+	return returnString;
+	
+}
+
+
+
+@SuppressWarnings("unchecked")
+@RequestMapping(value="/edit_change_populate_stops",method=RequestMethod.POST)
+public @ResponseBody String edit_change_populate_stops(HttpSession session,HttpServletRequest request,@RequestParam("id")String id,ModelMap model)
+{
+	List<Route_view> routes=new ArrayList<Route_view>();
+	routes=(List<Route_view>) session.getAttribute("session_route");
+	
+	int id1=Integer.parseInt(id);
+	String pick_drop="";
+	if(Integer.parseInt(routes.get(id1).getTrip())==0)
+		pick_drop="<option value='0' selected>Pick</option><option value='1'>Drop</option><option value='2'>Both</option>";
+	else if(Integer.parseInt(routes.get(id1).getTrip())==1)
+		pick_drop="<option value='0' >Pick</option><option value='1' selected>Drop</option><option value='2'>Both</option>";
+	else if(Integer.parseInt(routes.get(id1).getTrip())==2)
+		pick_drop="<option value='0' >Pick</option><option value='1'>Drop</option><option value='2' selected>Both</option>";
+	
+		
+	
+	String returnString="<div style='padding:20px;width:700px;height:100px;background-color:#F4F4F8;border:solid 1px 	#C6C6CF;'>" +
+	"<input type='hidden' id='editid' value='"+id1+"'/><input type='text'  size='500' class='input_txtbx_height' style='width:700px;' id='stop_address_info' name='stop_address' value='"+routes.get(id1).getBus_stop_address()+"' placeholder='Stop Location' /><br/>" +
+	"<select name='stop_pick' id='stop_pick_info'>'"+pick_drop+"'</select>" +
+	"<input type='text' id='timepicker' value='"+routes.get(id1).getBus_arrival_time()+"' onkeydown='onKeyDown(this);'/><br/>" +
+	"<input type='button' value='Update Stop' style='padding:5px;' onclick='doUpdateStops();'/>" +
+	"</div>";
+	
+
+	session.setAttribute("session_route", routes);
+	return returnString;
+	
+}
+@SuppressWarnings("unchecked")
+@RequestMapping(value="/update_stop",method=RequestMethod.POST)
+public @ResponseBody String update_populate_stop(HttpSession session,HttpServletRequest request,@RequestParam("stop_address_info")String stop_address_info,@RequestParam("stop_pick_info") String stop_pick_info,@RequestParam("stop_time_info") String stop_time_info,@RequestParam("id") String id,ModelMap model)
+{
+	List<Route_view> routes=new ArrayList<Route_view>();
+	routes=(List<Route_view>) session.getAttribute("session_route");
+	
+	routes.get(Integer.parseInt(id)).setBus_stop_address(stop_address_info);
+	routes.get(Integer.parseInt(id)).setTrip(stop_pick_info);
+	routes.get(Integer.parseInt(id)).setBus_arrival_time(stop_time_info);
+	
+	String returnString="<div style='height:120px;overflow-y:scroll;'>";
+	returnString+="<table style='border:solid 1px lightgrey;'><tr style='background-color:grey;font-weight:bold;'><td width='20px'>S.No</td><td width='400px' style='overflow:hidden;'>Stop Address</td><td width='100px'>Pick/Drop/Both</td><td width='100px'>Arrival Time</td><td width='100px'></td></tr></table>";
+	int i=0;
+	for (Route_view route : routes) {
+		
+		returnString+="<table style='border:solid 1px lightgrey'><tr><td width='20px'>"+(i+1)+"</td><td width='400px' style='overflow:hidden;'>"+route.getBus_stop_address()+"</td><td width='100px'>"+route.getTrip()+"</td><td width='100px'>"+route.getBus_arrival_time()+"</td><td width='100px'><a href='#' style='margin-right:10px;' onclick='doEditstop("+i+")'>Edit</a><a href='#'  onclick='doRemovestop("+i+")'>Remove</a></td></tr></table>";
+	i++;
+	}
+	returnString+="</div>";
+	session.setAttribute("session_route", routes);
+	return returnString;
+	
+}
 }
 
