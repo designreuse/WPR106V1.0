@@ -22,11 +22,11 @@
     	<tr class="title">
 									<!-- 	<td valign="top" align="left" width="18%"> Bus Id</td> -->
 					         	
-					       	 	<td valign="top" align="left" width="8%">RouteNo</td>
-          						<td valign="top" align="left" width="7%"> Trip</td>
-					       	 	<td valign="top" align="left" width="8%"> Stop Id</td>
-          						<td valign="top" align="left" width="30%"> Stop Address</td>
-          						<td valign="top" align="left" width="10%"> Bus Arrival Time</td>
+					       	 	<td valign="top" align="left" width="5%">RouteNo</td>
+          						<td valign="top" align="left" width="5%">&nbsp;Trip</td>
+					       	 	<td valign="top" align="left" width="5%"> Stop Id</td>
+          						<td valign="top" align="left" width="26%">&nbsp;&nbsp;&nbsp;&nbsp;Stop Address</td>
+          						<td valign="top" align="left" width="8%"> Bus Arrival Time</td>
           						
         					</tr></table>
 							
@@ -37,18 +37,19 @@
         					<c:if test="${fn:length(routeViewForm.route_views) gt 0 }">
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         					
-        				       				<tr class="click_row">
-        				            		<td valign="top" align="left" style="overflow:hidden;width:70px;height:30px;">${route.route_no}</td>
-											<td valign="top" align="left" style="overflow:hidden;width:60px;height:30px;"><span style="line-space:20px;"><c:choose>
+        				       				<tr class="row1">
+        				            		<td valign="top" align="left" style="overflow:hidden;width:50px;height:30px;">&nbsp;${route.route_no}</td>
+											<td valign="top" align="left" style="overflow:hidden;width:50px;height:30px;"><span style="line-space:20px;">
+											&nbsp;&nbsp;&nbsp;<c:choose>
 											<c:when test="${route.trip==0}">&nbsp;	<c:out value="Pick Up" ></c:out></c:when>
 											<c:when test="${route.trip==1}">&nbsp;<c:out value="Drop" ></c:out></c:when><c:otherwise>
 											&nbsp;<c:out value="KG Drop"></c:out>
 											</c:otherwise>
 											</c:choose></span>
 											</td>
-											<td valign="top" align="left" style="overflow:hidden; width:70px;height:30px;" title="${route.stop_id}">${route.stop_id}</td>
-											<td valign="middle" align="left" style="overflow:hidden; width:260px;height:30px;">${route.bus_stop_address}</td>
-					     		     		<td valign="top" align="left" style="overflow:hidden;width:80px;height:30px;">${route.bus_arrival_time}</td> 
+											<td valign="top" align="left" style="overflow:hidden; width:50px;height:30px;" title="${route.stop_id}">${route.stop_id}</td>
+											<td valign="middle" align="left" style="overflow:hidden; width:280px;height:30px;">${route.bus_stop_address}</td>
+					     		     		<td valign="top" align="left" style="overflow:hidden;width:80px;height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;${route.bus_arrival_time}</td> 
 								</tr>
 								
 							    	</c:forEach>

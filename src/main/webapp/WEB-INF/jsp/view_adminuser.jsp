@@ -132,14 +132,14 @@
         				       					<tr class="row1">
 							         	    <td valign="top" align="left" style="overflow:hidden;"width="15%" title="${addUser.org_name}" >${addUser.org_name}</td>
 							         	    <td valign="top" align="left" style="overflow:hidden;"width="14%"title="${addUser.branch}">${addUser.branch}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="10%"title="${addUser.firstname}">${addUser.firstname}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="10%"title="${addUser.lastname}">${addUser.lastname}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%"title="${addUser.firstname}">&nbsp;&nbsp;${addUser.firstname}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="10%"title="${addUser.lastname}">&nbsp;${addUser.lastname}</td>
 											<td valign="top" align="left" style="overflow:hidden;"width="18%"title="${addUser.email}">${addUser.email}</td>
-											<td valign="top" align="left"  style="overflow:hidden;"width="12%"title="${addUser.username}">${addUser.username}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="8.5%"title="${addUser.password}">${addUser.password}</td>
+											<td valign="top" align="left"  style="overflow:hidden;"width="12%"title="${addUser.username}">&nbsp;&nbsp;${addUser.username}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="8.5%"title="${addUser.password}">&nbsp;&nbsp;&nbsp;${addUser.password}</td>
 											
 											
-											<td valign="top" align="left" width="9%">
+											<td valign="top" align="left" width="9%">&nbsp;&nbsp;&nbsp;
 										
 												<a href="<c:out value="edituser?username=${addUser.username}"/>" >
 												<img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|

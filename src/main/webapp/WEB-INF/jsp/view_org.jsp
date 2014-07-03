@@ -113,9 +113,9 @@
 					     		     
 											<td valign="top" align="left" style="overflow:hidden;"width="13.6%" title="${orgRegistration.branch}">${orgRegistration.branch}</td>
 											<td valign="top" align="left" style="overflow:hidden;"width="13%" title="${orgRegistration.city}">${orgRegistration.city}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="12.8%" title="${orgRegistration.country}">${orgRegistration.country}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="12.3%" title="${orgRegistration.type_of_organization}">${orgRegistration.type_of_organization}</td>
-											<td valign="top" align="left" style="overflow:hidden;"width="5.8%" >
+											<td valign="top" align="left" style="overflow:hidden;"width="12.8%" title="${orgRegistration.country}">&nbsp;&nbsp;&nbsp;${orgRegistration.country}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="12.3%" title="${orgRegistration.type_of_organization}">&nbsp;&nbsp;&nbsp;&nbsp;${orgRegistration.type_of_organization}</td>
+											<td valign="top" align="left" style="overflow:hidden;"width="5.8%" >&nbsp;&nbsp;&nbsp;
 											<c:choose>
 											<c:when test="${orgRegistration.is_active==1}">
 											<c:out value="Active"></c:out>
@@ -129,7 +129,7 @@
 											</c:choose>
 											</td>
 											
-											<td valign="top" align="left" style="overflow:hidden;"width="8.6%" >
+											<td valign="top" align="left" style="overflow:hidden;"width="8.6%" >&nbsp;&nbsp;&nbsp;
 										    <a href="<c:out value="editorg?org_name=${orgRegistration.org_name}&branch=${orgRegistration.branch}"/>">
 										    <img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 											<a href="<c:out value="deleteorg?org_name=${orgRegistration.org_name}&branch=${orgRegistration.branch}"/>" onclick="return confirmation('Are you sure Want to Delete?')">

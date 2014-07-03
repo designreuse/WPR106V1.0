@@ -55,18 +55,18 @@
 	</div>
 </div></div>
 							
-							<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<table cellpadding="0" cellspacing="0" width="100%">
 								<tr class="title">
 									<!-- <td valign="middle" align="center" width="1%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="23.8%"> Organization Name</td>					         	
-					         	<td valign="top" align="left" width="15%"> Branch Name</td>
-          						<td valign="top" align="left" width="14%"> No.of Busses</td>
-          						<td valign="top" align="left" width="25%"> No.of Students</td>
+					         	<td valign="top" align="left" width="15%">&nbsp;Branch Name</td>
+          						<td valign="top" align="left" width="14%">&nbsp; No.of Busses</td>
+          						<td valign="top" align="left" width="25%">&nbsp;&nbsp;&nbsp;&nbsp;No.of Students</td>
 
 
 
 								</tr></table><div class="Panel_One_Inner">
-								<table cellpadding="0" cellspacing="0" border="0" class="order-table table" style="table-layout: fixed;width:100%">
+								<table cellpadding="0" cellspacing="0"  class="order-table table" style="table-layout: fixed;width:100%">
 								<!-- Display Admin Userd here  Suresh--> 
 								<c:if test="${fn:length(superAdminHomeForm.superAdminHome) gt 0 }">
 									<c:forEach items="${superAdminHomeForm.superAdminHome}" var="superAdmin" varStatus="status">
