@@ -98,7 +98,7 @@ jQuery(function () {
 					
         				
         				<table cellpadding="0" cellspacing="0" border="0" width="100%">
-							<tr >
+							<tr>
           						<td valign="top" align="right" width="100%"><div class="report_table" style="height:700px;">
 <ul id="tabs">
   <!--  <li><a href="#" name="tab1">Vehicle List</a></li> 
@@ -122,9 +122,8 @@ jQuery(function () {
 							    <c:forEach items="${reportForm1.reports}" var="clientoverspeedreport1" varStatus="status">
 							    <option value="${clientoverspeedreport1.vechicle_reg_no}"<c:if test="${clientoverspeedreport1.vechicle_reg_no==vechicle_reg_no}"><c:out value="selected"></c:out></c:if> >${clientoverspeedreport1.vechicle_reg_no}</option>
 							    </c:forEach>
-							    </select>
-							    <br><span id="vechicle_error" style="color: red;"></span>
-							    </td></tr>
+							    </select>&nbsp;&nbsp;<span id="vechicle_error" style="color: red;"></span>
+							    </td></tr><br>
 							    
   <tr>
     <td><span class="err">*</span>&nbsp;Date From<br/><span class='input-group date' id='endDate' >
@@ -134,25 +133,26 @@ jQuery(function () {
 												<img src="resources/images/date.png" width="25" height="25"/>
         										</span>
         										
-					</span><span id="fdateerror" style="color: red;"></span>
+					</span><br>&nbsp;&nbsp;<span id="fdateerror" style="color: red;"></span>
 					</td>
     <td><span class="err">*</span>&nbsp;Time From<br/><span class='input-group date' id='startDate' >
 												<input type="text" id="fromtime" value="${from_time}"  name="from_time"  style="height:24px;width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
-        										</span>	
-					</span><span id="ftimeerror" style="color: red;"></span></td>
-	<td><span class="err">*</span>&nbsp;Date To<br/><span class='input-group date' id='endDate1' >
+        										</span><br>&nbsp;&nbsp;<span id="ftimeerror" style="color: red;"></span>
+					</span></td>
+	</tr>
+	<tr><td><span class="err">*</span>&nbsp;Date To<br/><span class='input-group date' id='endDate1' >
 												<input type="text" id="todate"	name="to_date" value="${to_date}" style="height:24px; width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="45"/>
-        										</span><span id="tdateerror" style="color: red;"></span>
+        										</span><br>&nbsp;&nbsp;<span id="tdateerror" style="color: red;"></span>
 					</span></td>
 	<td><span class="err">*</span>&nbsp;Time To<br/><span class='input-group date' id='startDate1' >
 												<input type="text" id="totime"	name="to_time" value="${to_time}" style="height:24px;width:150px;float:left;" readonly="readonly" />
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
-        										</span><span id="ttimeerror" style="color: red;"></span>	
+        										</span><br>&nbsp;&nbsp;<span id="ttimeerror" style="color: red;"></span>	
 					</span></td>
 					
 					<td align="right"><input type="submit" class="btn" value="Search" onclick="return check('this')"></td>
@@ -176,8 +176,8 @@ jQuery(function () {
     </table>-->
     
     
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" >
-    <tr><td><br/>
+    <!-- <table width="100%" cellpadding="0" cellspacing="0" border="0" >
+    <tr><td><br/> -->
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
     <tr><td align="left" width="30%">
     <div class="report_table_innertop" id="printMe">
@@ -218,7 +218,7 @@ jQuery(function () {
     </td></tr>
     
     </table>
-    </td></tr></table>
+   <!--  </td></tr></table> -->
     <!-- <div id="tab3">...</div> -->
     <!-- <div id="tab4">...</div> -->
 
@@ -260,27 +260,27 @@ function check(){
 	
 	if(document.getElementById("e3").value=='')
 	{
-	document.getElementById("vechicle_error").innerHTML="Choose Vechicle No";
+	document.getElementById("vechicle_error").innerHTML="Kindly Select Vechicle No";
 	return false;
 	}
 	if(document.getElementById("fromdate").value =='')
 	{
-	document.getElementById("fdateerror").innerHTML="Choose From Date";
+	document.getElementById("fdateerror").innerHTML="Kindly Select From Date";
 	return false;
 	}
 	if(document.getElementById("fromtime").value =='')
 	{
-	document.getElementById("ftimeerror").innerHTML="Choose From Time";
+	document.getElementById("ftimeerror").innerHTML="Kindly Select From Time";
 	return false;
 	}
 	if(document.getElementById("todate").value =='')
 	{
-	document.getElementById("tdateerror").innerHTML="Choose End Date";
+	document.getElementById("tdateerror").innerHTML="Kindly Select To Date";
 	return false;
 	}
 	if(document.getElementById("totime").value =='')
 	{
-	document.getElementById("ttimeerror").innerHTML="Choose End Time";
+	document.getElementById("ttimeerror").innerHTML="Kindly Select To Time";
 	return false;
 	}
 }

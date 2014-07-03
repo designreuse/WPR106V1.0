@@ -1,2 +1,2 @@
 
-<div id="footer"> &copy; Copyright 2012 Your Company Name </div>
+<div id="footer"> &copy; Copyright 2014 Deemsys Inc </div>

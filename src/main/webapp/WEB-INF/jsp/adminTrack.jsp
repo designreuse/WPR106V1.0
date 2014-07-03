@@ -111,12 +111,18 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							date[i] = data.latLongs[i].date;
 							exceed_speed=data.latLongs[i].exceed_speed;
 							}
-						var org_name=document.getElementById("org_id");
-						var branch=document.getElementById("bid");
-						var vechicle_no=document.getElementById("device");
-						if(lat_array.length==0)
-							alert("No Locations Found!!");
+						var org_name=document.getElementById("orgid").value;
 						
+						var branch=document.getElementById("bid").value;
+						
+						var vechicle_no=document.getElementById("device").value;
+						
+						if(lat_array.length==0)
+							{
+							if(org_name!=''||branch!=''||vechicle_no!=''){
+							alert("No Locations Found!!");
+							}
+							}
 						
 						var mapOptions = {
 							center : new google.maps.LatLng(lat_array[data.latLongs.length-1],long_array[data.latLongs.length-1]),

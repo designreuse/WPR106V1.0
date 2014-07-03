@@ -184,7 +184,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							   
 							   </c:forEach>
 							    </select><br>
-							    <td align="left" valign="middle" width="15%"><span id="deviceerror" style="color: red;"></span></td>
+							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;<span id="deviceerror" style="color: red;"></span></td>
 							    </c:when>
 							   <%--  <c:otherwise>
 							    <select name="device_id" class="input_cmbbx" id="device">
@@ -210,7 +210,7 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							    </td> --%>
 							    <td align="right" valign="middle" width="8%" style="color: white;">Date :&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date}" readonly="readonly">
-							    <td align="left" valign="middle" width="15%"><span id="dateerror" style="color: red;"></span></td>
+							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;<span id="dateerror" style="color: red;"></span></td>
 							    </td>
 							    <td align="center" valign="middle" width="30%"><input type="submit" class="btn" onclick="return check();" value="Show" name="find" onclick="return check();"></td>
 							 <td align="center" valign="middle" width="30%"><a href="client_view_map_history" class="btn">Reset</a></td>
@@ -240,7 +240,7 @@ function check(){
 	}
 	if(document.getElementById("datepicker").value =='')
 	{
-	document.getElementById("dateerror").innerHTML="Kindly Choose Date";
+	document.getElementById("dateerror").innerHTML="Kindly Select Date";
 	return false;
 	}
 	
