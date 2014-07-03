@@ -558,8 +558,8 @@ public class ReportsDAO extends AbstractExcelView{
 		List<Report> reportForms=new ArrayList<Report>();
 		try{
 			
-			resultSet = statement.executeQuery("Select t2.driver_name,t1.org_id,t1.vechicle_reg_no,count(t1.exceed_speed_limit) as over_speed_count,bus_tracking_timestamp from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no where t1.org_id='"+org_id+"' and t1.exceed_speed_limit='1'");
-			System.out.println("Select t2.driver_name,t1.org_id,t1.vechicle_reg_no,count(t1.exceed_speed_limit) as over_speed_count,bus_tracking_timestamp from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no where t1.org_id='"+org_id+"' and t1.exceed_speed_limit='1'");
+			resultSet = statement.executeQuery("Select t2.driver_name,t1.org_id,t1.vechicle_reg_no,(select count(exceed_speed_limit)  from tbl_vechicle_tracking_history where exceed_speed_limit ='1' and org_id='"+org_id+"') as over_speed_count,t1.bus_tracking_timestamp from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no where t1.org_id='"+org_id+"' group by  vechicle_reg_no");
+			System.out.println("Select t2.driver_name,t1.org_id,t1.vechicle_reg_no,(select count(exceed_speed_limit)  from tbl_vechicle_tracking_history where exceed_speed_limit ='1' and org_id='"+org_id+"') as over_speed_count,t1.bus_tracking_timestamp from tbl_vechicle_tracking_history as t1 join tbl_vechicle as t2 on t1.vechicle_reg_no=t2.vechicle_reg_no where t1.org_id='"+org_id+"' group by  vechicle_reg_no");
 			while(resultSet.next())
 					{
 					reportForms.add(new Report(resultSet.getString("vechicle_reg_no"),resultSet.getString("driver_name"),resultSet.getString("over_speed_count"),resultSet.getString("bus_tracking_timestamp")));

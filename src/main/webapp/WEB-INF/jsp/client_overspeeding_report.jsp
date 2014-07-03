@@ -117,39 +117,43 @@ jQuery(function () {
     
     <table width="100%"cellpadding="2" cellspacing="0" border="0" >
     <tr>
-    <td><span class="err">*</span>Vehicle Number<br/><select id="e3" style="width:250px;" name="vechicle_reg_no">
+    <td><span class="err">*</span>&nbsp;Vehicle Number<br/><select id="e3" style="width:250px;" name="vechicle_reg_no">
 							 	<option selected value=""> -- Select Vehicle No -- </option>     
 							    <c:forEach items="${reportForm1.reports}" var="clientoverspeedreport1" varStatus="status">
 							    <option value="${clientoverspeedreport1.vechicle_reg_no}"<c:if test="${clientoverspeedreport1.vechicle_reg_no==vechicle_reg_no}"><c:out value="selected"></c:out></c:if> >${clientoverspeedreport1.vechicle_reg_no}</option>
 							    </c:forEach>
-							    </select><br><span id="vechicle_error" style="color: red;"></span>
+							    </select>
+							    <br><span id="vechicle_error" style="color: red;"></span>
 							    </td></tr>
 							    
   <tr>
-    <td><span class="err">*</span>Date From<br/><div class='input-group date' id='endDate' >
+    <td><span class="err">*</span>&nbsp;Date From<br/><span class='input-group date' id='endDate' >
+												
 												<input type="text" id="fromdate"	name="from_date" value="${from_date}"  style="height:24px;width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="25"/>
-        										</span><span id="fdateerror" style="color: red;"></span>
-					</div></td>
-    <td><span class="err">*</span>Time From<br/><div class='input-group date' id='startDate' >
+        										</span>
+        										
+					</span><span id="fdateerror" style="color: red;"></span>
+					</td>
+    <td><span class="err">*</span>&nbsp;Time From<br/><span class='input-group date' id='startDate' >
 												<input type="text" id="fromtime" value="${from_time}"  name="from_time"  style="height:24px;width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
-        										</span><span id="ftimeerror" style="color: red;"></span>	
-					</div></td>
-	<td><span class="err">*</span>Date To<br/><div class='input-group date' id='endDate1' >
+        										</span>	
+					</span><span id="ftimeerror" style="color: red;"></span></td>
+	<td><span class="err">*</span>&nbsp;Date To<br/><span class='input-group date' id='endDate1' >
 												<input type="text" id="todate"	name="to_date" value="${to_date}" style="height:24px; width:150px;float:left;" readonly="readonly"/>
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/date.png" width="25" height="45"/>
         										</span><span id="tdateerror" style="color: red;"></span>
-					</div></td>
-	<td><span class="err">*</span>Time To<br/><div class='input-group date' id='startDate1' >
+					</span></td>
+	<td><span class="err">*</span>&nbsp;Time To<br/><span class='input-group date' id='startDate1' >
 												<input type="text" id="totime"	name="to_time" value="${to_time}" style="height:24px;width:150px;float:left;" readonly="readonly" />
 												<span class="add-on" style="margin-top:0px;float:left">
 												<img src="resources/images/clock.png" width="25" height="25"/>
         										</span><span id="ttimeerror" style="color: red;"></span>	
-					</div></td>
+					</span></td>
 					
 					<td align="right"><input type="submit" class="btn" value="Search" onclick="return check('this')"></td>
 					</tr>
