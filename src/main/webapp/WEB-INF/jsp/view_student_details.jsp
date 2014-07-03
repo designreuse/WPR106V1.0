@@ -95,17 +95,17 @@
         					</tr>
         				</table>
 							<div class="Panel_One_Inner">    
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%" class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%" class="order-table table">
 								<c:if test="${fn:length(studentregistrationform.studentregistration) gt 0 }">
         					    <c:forEach items="${studentregistrationform.studentregistration}" var="studentRegistration" varStatus="status">
         				       			<tr class="row1">
-					     		     	<td valign="top" align="left"  style="overflow:hidden;"width="23%" title="${studentRegistration.org_name}">${studentRegistration.org_name}</td>
-					     		     	<td valign="top" align="left"  style="overflow:hidden;"width="17.3%"title="${studentRegistration.branch}">${studentRegistration.branch}</td>
-									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.student_roll_no}">${studentRegistration.student_roll_no}</td>
-									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.first_name}">${studentRegistration.first_name}</td>
-									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.last_name}">${studentRegistration.last_name}</td>
+					     		     	<td valign="top" align="left"  style="overflow:hidden;"width="23%" title="${studentRegistration.org_name}">&nbsp;${studentRegistration.org_name}</td>
+					     		     	<td valign="top" align="left"  style="overflow:hidden;"width="17.3%"title="${studentRegistration.branch}">&nbsp;&nbsp;${studentRegistration.branch}</td>
+									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.student_roll_no}">&nbsp;&nbsp;${studentRegistration.student_roll_no}</td>
+									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.first_name}">&nbsp;&nbsp;&nbsp;${studentRegistration.first_name}</td>
+									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.last_name}">&nbsp;&nbsp;&nbsp;&nbsp;${studentRegistration.last_name}</td>
 										<td valign="top" align="left" style="overflow:hidden;"width="8%">
-										<a href="<c:out value="edit_student?student_roll_no=${studentRegistration.student_roll_no}&org_name=${studentRegistration.org_name}&branch=${studentRegistration.branch}"/>" ><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
+										<a href="<c:out value="edit_student?student_roll_no=${studentRegistration.student_roll_no}&org_name=${studentRegistration.org_name}&branch=${studentRegistration.branch}"/>">&nbsp;&nbsp;&nbsp;<img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 										<a href="<c:out value="delete_student?student_roll_no=${studentRegistration.student_roll_no}"/>" onclick="return confirm('Are you sure want to delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 								        <td>
 								     </tr>

@@ -38,17 +38,17 @@
         					<c:forEach items="${routeViewForm.route_views}" var="route" varStatus="status">
         					
         				       				<tr class="click_row">
-        				            		<td valign="top" align="left" style="overflow:hidden;width:70px;height:30px;">${route.route_no}</td>
+        				            		<td valign="top" align="left" style="overflow:hidden;width:70px;height:30px;">&nbsp;&nbsp;${route.route_no}</td>
 											<td valign="top" align="left" style="overflow:hidden;width:60px;height:30px;"><span style="line-space:20px;"><c:choose>
-											<c:when test="${route.trip==0}">&nbsp;	<c:out value="Pick Up" ></c:out></c:when>
-											<c:when test="${route.trip==1}">&nbsp;<c:out value="Drop" ></c:out></c:when><c:otherwise>
-											&nbsp;<c:out value="KG Drop"></c:out>
+											<c:when test="${route.trip==0}">&nbsp;&nbsp;<c:out value="Pick Up" ></c:out></c:when>
+											<c:when test="${route.trip==1}">&nbsp;&nbsp;<c:out value="Drop" ></c:out></c:when><c:otherwise>
+											&nbsp;&nbsp;<c:out value="KG Drop"></c:out>
 											</c:otherwise>
 											</c:choose></span>
 											</td>
-											<td valign="top" align="left" style="overflow:hidden; width:70px;height:30px;" title="${route.stop_id}">${route.stop_id}</td>
-											<td valign="middle" align="left" style="overflow:hidden; width:260px;height:30px;">${route.bus_stop_address}</td>
-					     		     		<td valign="top" align="left" style="overflow:hidden;width:80px;height:30px;">${route.bus_arrival_time}</td> 
+											<td valign="top" align="left" style="overflow:hidden; width:70px;height:30px;" title="${route.stop_id}">&nbsp;&nbsp;&nbsp;${route.stop_id}</td>
+											<td valign="middle" align="left" style="overflow:hidden; width:260px;height:30px;">&nbsp;&nbsp;&nbsp;${route.bus_stop_address}</td>
+					     		     		<td valign="top" align="left" style="overflow:hidden;width:80px;height:30px;">&nbsp;${route.bus_arrival_time}</td> 
 								</tr>
 								
 							    	</c:forEach>

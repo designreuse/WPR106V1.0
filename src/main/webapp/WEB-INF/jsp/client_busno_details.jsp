@@ -151,8 +151,8 @@ jQuery(function () {
 							    	</c:forEach>
                                  </c:if>
                                  <c:if test="${fn:length(clientHomeForm.clienthome) == 0}">	
-							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Vehicle Information  Found!!!</b></center></td>
+							    	<tr>
+							    	<td colspan="7" width="100%"><center><b>No Vehicle Information  Found !!!</b></center></td>
 							    	</tr>
 							    	</c:if>
         				</table>

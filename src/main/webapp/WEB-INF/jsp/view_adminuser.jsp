@@ -117,8 +117,8 @@
          						<td valign="top" align="left" width="14.5%"> Branch</td>
          						<td valign="top" align="left" width="10%"> FirstName</td>
          						<td valign="top" align="left" width="10%"> LastName</td>
-         						<td valign="top" align="left" width="18%">&nbsp;Email</td>
-					         	<td valign="top" align="left" width="13%">&nbsp;&nbsp;UserName</td>
+         						<td valign="top" align="left" width="18%"> Email</td>
+					         	<td valign="top" align="left" width="13%"> UserName</td>
 					         	<td valign="top" align="left" width="9%"> Password</td>
 					        	<td valign="top" align="left" width="9%"> Action</td>
           						

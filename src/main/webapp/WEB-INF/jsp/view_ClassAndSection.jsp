@@ -96,7 +96,7 @@
 							<div class="Panel_One_Inner">
 							
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%" class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%" class="order-table table">
 							<c:if test="${fn:length(classSectionForm.classSections) gt 0 }">
         					<c:forEach items="${classSectionForm.classSections}" var="classSection" varStatus="status">
         				       					<tr class="row1">

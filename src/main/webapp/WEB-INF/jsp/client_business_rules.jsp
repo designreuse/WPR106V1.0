@@ -61,32 +61,32 @@
         				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 								
-         						<td valign="top" align="left" width="23.50%"><span style="line-height:12px;font-weight:bold;"><br/>Organization Name</span></td>
-					         	<td valign="top" align="left" width="14%"><span style="line-height:12px;font-weight:bold;"><br/>Branch</span></td>
-					         	<td valign="top" align="left" width="4%"><span style="line-height:12px;font-weight:bold;"><br/>Use<br/>Map</span></td>
-          						<td valign="top" align="left" width="13%"><span style="line-height:12px;font-weight:bold;"><br/>PickUp <br/>Start/end</span></td>          						
-          						<td valign="top" align="left" width="13%"><span style="line-height:12px;font-weight:bold;"><br/>Drop <br/>Start/end</span></td>
-          						<td valign="top" align="left" width="13%"><span style="line-height:12px;font-weight:bold;"><br/>KGDrop <br/>Start/end</span></td>
-          						<td valign="top" align="left" width="7%"><span style="line-height:12px;font-weight:bold;">Speed<br/> Limit<br/>(kmph)</span></td>
-          						<td valign="top" align="left" width="5%"><span style="line-height:12px;font-weight:bold;"><br/>SMS <br/>Option</span></td>          						
+         						<td valign="top" align="left" width="18%"><span style="line-height:12px;font-weight:bold;"><br/>Organization Name</span></td>
+					         	<td valign="top" align="left" width="13%"><span style="line-height:12px;font-weight:bold;"><br/>&nbsp;Branch</span></td>
+					         	<td valign="top" align="left" width="5%"><span style="line-height:12px;font-weight:bold;"><br/>&nbsp;Use<br/>&nbsp;Map</span></td>
+          						<td valign="top" align="left" width="12%"><span style="line-height:12px;font-weight:bold;"><br/>&nbsp;PickUp <br/>&nbsp;Start/end</span></td>          						
+          						<td valign="top" align="left" width="12%"><span style="line-height:12px;font-weight:bold;"><br/>&nbsp;Drop <br/>&nbsp;Start/end</span></td>
+          						<td valign="top" align="left" width="13%"><span style="line-height:12px;font-weight:bold;"><br/>&nbsp;KGDrop <br/>&nbsp;Start/end</span></td>
+          						<td valign="top" align="left" width="7%"><span style="line-height:12px;font-weight:bold;">&nbsp;Speed<br/>&nbsp; Limit<br/>&nbsp;(kmph)</span></td>
+          						<td valign="top" align="left" width="5%"><span style="line-height:12px;font-weight:bold;"><br/>&nbsp;SMS <br/>&nbsp;Option</span></td>          						
           						<td valign="top" align="left" width="7%">Action</td>          						
         					</tr></table>
     	<div class="Panel_One_Inner">
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%"class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" style="width:100%">
 							<c:if test="${fn:length(orgBusinessRuleForm.orgBusinessRules) gt 0 }">
         					
         					<c:forEach items="${orgBusinessRuleForm.orgBusinessRules}" var="vieworgBusinessRules" varStatus="status">
         				       <tr class="row1">
         				       
-        				       <td valign="top" align="left" style="overflow:hidden;"width="24.5%">${vieworgBusinessRules.org_name}</td>
-					         	<td valign="top" align="left" style="overflow:hidden;"width="14.5%">${vieworgBusinessRules.branch}</td>
-					         	<td valign="top" align="center" style="overflow:hidden;"width="5%">${vieworgBusinessRules.google_map_traffic}</td>
-          						<td valign="top" align="center" style="overflow:hidden;"width="14%">${vieworgBusinessRules.pickup_start_time } &#47; ${vieworgBusinessRules.pickup_end_time }</td>          						
-          						<td valign="top" align="center" style="overflow:hidden;"width="14%">${vieworgBusinessRules.drop_start_time } &#47; ${vieworgBusinessRules.drop_end_time }</td>
-          						<td valign="top" align="center" style="overflow:hidden;"width="14%">${vieworgBusinessRules.kg_start_time } &#47; ${vieworgBusinessRules.kg_end_time }</td>
-          						<td valign="top" align="center" style="overflow:hidden;"width="8%">${vieworgBusinessRules.speed_limit }</td>
-          						<td valign="top" align="left" style="overflow:hidden;"width="6%">${vieworgBusinessRules.sms_options }</td> 
-        				        <td valign="top" align="right" style="overflow:hidden;"width="7.5%">
+        				       <td valign="top" align="left" style="overflow:hidden;"width="18%">${vieworgBusinessRules.org_name}</td>
+					         	<td valign="top" align="left" style="overflow:hidden;"width="13%">${vieworgBusinessRules.branch}</td>
+					         	<td valign="top" align="left" style="overflow:hidden;"width="5%">${vieworgBusinessRules.google_map_traffic}</td>
+          						<td valign="top" align="left" style="overflow:hidden;"width="12%">${vieworgBusinessRules.pickup_start_time } &#47; ${vieworgBusinessRules.pickup_end_time }</td>          						
+          						<td valign="top" align="left" style="overflow:hidden;"width="12%">${vieworgBusinessRules.drop_start_time } &#47; ${vieworgBusinessRules.drop_end_time }</td>
+          						<td valign="top" align="left" style="overflow:hidden;"width="13%">${vieworgBusinessRules.kg_start_time } &#47; ${vieworgBusinessRules.kg_end_time }</td>
+          						<td valign="top" align="left" style="overflow:hidden;"width="7%">${vieworgBusinessRules.speed_limit }</td>
+          						<td valign="top" align="left" style="overflow:hidden;"width="5%">${vieworgBusinessRules.sms_options }</td> 
+        				        <td valign="top" align="left" style="overflow:hidden;"width="7%">
 							    <a href="<c:out value="change_setting"/>"><img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>
 							    <%-- <a href="<c:out value="deleteadminbrules?org_name=${vieworgBusinessRules.org_name}&branch=${vieworgBusinessRules.branch}"/>" onclick="return confirm('Are you sure want to delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a> --%>
 									

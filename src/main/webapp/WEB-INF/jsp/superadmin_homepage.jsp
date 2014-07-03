@@ -59,8 +59,8 @@
 								<tr class="title">
 									<!-- <td valign="middle" align="center" width="1%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="23.8%"> Organization Name</td>					         	
-					         	<td valign="top" align="left" width="15%">&nbsp;Branch Name</td>
-          						<td valign="top" align="left" width="14%">&nbsp; No.of Busses</td>
+					         	<td valign="top" align="left" width="15%">&nbsp;&nbsp;Branch Name</td>
+          						<td valign="top" align="left" width="14%">&nbsp;&nbsp;No.of Busses</td>
           						<td valign="top" align="left" width="25%">&nbsp;&nbsp;&nbsp;&nbsp;No.of Students</td>
 
 

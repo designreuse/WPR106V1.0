@@ -91,19 +91,19 @@
 							<tr class="title">
 								<!-- <td valign="middle" align="center" width="15%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="19.8%">&nbsp;Organization Name </td>					         	
-					         	<td valign="top" align="left" width="14%"> Branch</td>
+					         	<td valign="top" align="left" width="14%"> &nbsp;Branch</td>
           						<td valign="top" align="left" width="13.5%"> City</td>
-          						<td valign="top" align="left" width="13.0%"> Country</td>
-          						<td valign="top" align="left" width="12.5%">&nbsp; Org Type</td>
+          						<td valign="top" align="left" width="13.0%">&nbsp;Country</td>
+          						<td valign="top" align="left" width="12.5%">Org Type</td>
           						<td valign="top" align="left" width="2%">&nbsp;Status</td>
-          						<td valign="top" align="left" width="9.5%">&nbsp; Action</td>
+          						<td valign="top" align="left" width="9.5%">&nbsp;Action</td>
           						
           						
         					</tr></table>
 							<div class="Panel_One_Inner">
 							
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: fixed;width:100%"class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%"class="order-table table">
 							
         					<c:if test="${fn:length(orgregistrationform.orgregistration) gt 0 }">
         					<c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration" varStatus="status">
