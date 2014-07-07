@@ -157,7 +157,7 @@ public class StudentRegistrationDAO {
 	    try{
 	    	//String cmd="select t1.route_no from tbl_vechicle as t1  where t1.org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')";
 	    	
-	    	String cmd="select t1.route_no from tbl_vechicle as t1 left join tbl_bus_route as t2 on t1.route_no=t2.route_no  where  t1.org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') and t2.route_no is null";
+	    	String cmd="select t1.route_no from tbl_vechicle as t1 left join tbl_bus_route as t2 on t1.route_no=t2.route_no  where  t1.org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') group by t1.route_no";
 	    	//System.out.println(org_id);
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);

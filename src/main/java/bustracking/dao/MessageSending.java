@@ -628,7 +628,7 @@ public class MessageSending{
 			logger.info("Message Setting fail!!");
 			status=0;
 		}
-		else if(getHolidays(businessRule.getOrg_id(),localDate.toString()))
+		else if(getHolidays(businessRule.getOrg_id(),localDate.toString("MM/dd/yyyy")))
 		{
 			logger.info("Today Holiday!!");
 			status=4;
