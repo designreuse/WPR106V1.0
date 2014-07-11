@@ -1,4 +1,6 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html><head><%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- <script type="text/javascript" src="resources/js/autoddl/jquery-1.8.3-min.js"></script> -->
  <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.js'></script> 
@@ -32,90 +34,31 @@ jQuery(function () {
 });
 });//]]>  
 
-</script>
-
-<jsp:include page="header.jsp"></jsp:include>
-<div id="GPS_View_container">
-    <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
-    <div id="GPS_View_table">
-<table cellpadding="0" cellspacing="0" border="0" width="100%" class="margin_table"> 
+</script></head>
+<body>
+<jsp:include page="fleet_header.jsp"></jsp:include>
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="margin_table_fleet"> 
       		
 			
       		<tr>
         		<td valign="top" align="left">
-			        <div class="headings altheading">
-			          <h2>Over Speed Report </h2><!-- <div class="searchdiv">
-                        <a href="#" class="searchpressable" onclick="toggle(this,'div');return false">
-                          Open Search
-                        </a></div> -->
+			        <div class="headings altheading" style="width:100%">
+			          <h2>Over Speed Report </h2>
 			        </div>
-			        
-			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-						<c:if test="${success==true}">
-        <tr>
-        <td valign="top" align="left" style="padding:5px 0 10px 0;">&nbsp;
-            <div id="success_statusbar" class="status success">
-            <p class="closestatus"><a title="Close" href="viewdriver">x</a></p>
-            <p><img alt="Success" src="resources/images/icons/icon_success.png"><span>Success!</span>.</p>
-          </div>
-      </tr>
-    </c:if> 
-    <tr>
-    <td>
-						<div style="display:none;height:700px;" id="div"><div class="searchpanel">
-<form action="findadminhome" method="GET">
- 
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							  <tr><td align="left" valign="middle" width="30%">Vehicle Number:<br/>
-							    <select   id="e1"style="width:250px;" name="org_name">
-							 	<option value="">Select None</option>     
-							    <c:forEach items="${reportForm1.reports}" var="clientoverspeedreport1" varStatus="status">
-							    <option value="${clientoverspeedreport1.vechicle_reg_no}">${clientoverspeedreport1.vechicle_reg_no}</option>
-							    </c:forEach>
-							    </select></td>
-							    <td align="left" valign="middle" width="70%">
-							  <!-- <input type="submit" class="searchpressable" value="Search" ></td>
-							  --><a href="submit();" class="searchpressable" >
-                        Search
-                        </a>
-							  </tr>
-							</table>
-							</form>
-						</div>
-					</div>
-						</td>
-						</tr>
-					</table>
-					
-							        					<div style="display:none" id="divfilter">
-							<div id="filter_box">
-
-	<div class="wrapperFilter">
-		<img src="resources/images/filter.png" width="25" height="27"title="Search" align="center"/>
-	<input type="text" id="search" name="search" placeholder="Enter Text To Filter" class="light-table-filter" data-table="order-table" placeholder="Filter"/>
-	</div>
-</div></div>
-					
-        				
-        				<table cellpadding="0" cellspacing="0" border="0" width="100%">
+			        <div class="contentbox" style="width:100%">
+			     <table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr>
-          						<td valign="top" align="right" width="100%"><div class="report_table" style="height:700px;">
-<ul id="tabs">
-  <!--  <li><a href="#" name="tab1">Vehicle List</a></li> 
-    <li><a href="#" name="tab2">Report</a></li> -->
-    <!-- <li><a href="#" name="tab3">Settings</a></li> -->
-    <!-- <li><a href="#" name="tab4">Four</a></li>   -->  
-</ul>
+          						<td valign="top" align="right" width="100%">
+          						 <div class="report_table" style="height:700px;">
+
 
 <div id="content" style="height:800px;"> 
 
-    <!-- <div id="tab1">...</div> -->
-    <div id="tab2">
-  
-    </div>
-     <form method="GET" action="searchoverspeedreport">
     
-    <table width="100%" cellpadding="2" cellspacing="0" border="0" >
+    
+     <form method="GET" action="searchfleetoverspeedreport">
+    
+    <table width="100%" cellpadding="2" cellspacing="0" border="0"  class="margin_table_fleet" >
     <tr>
    <td valign="middle" width="15%"><span class="err">*</span>&nbsp;Vehicle Number :</td>
    <td  valign="middle" style="padding-top: 5px;"> <select id="e3" style="width:250px;" name="vechicle_reg_no">
@@ -154,7 +97,7 @@ jQuery(function () {
 	</tr>
 	
 	</table>
-	<table width="100%" cellpadding="2" cellspacing="0" border="0" >
+	<table width="100%" cellpadding="2" cellspacing="0" border="0" class="margin_table_fleet">
 	<tr><td valign="middle" width="15%"><span class="err">*</span>&nbsp;Date To :</td>
 							<td valign="middle" style="padding-top: 10px;"  width="18%">			<div class='input-group date' id='endDate1' >
 												<input type="text" id="todate"	name="to_date" value="${to_date}" style="height:24px; width:150px;float:left;" readonly="readonly"/>
@@ -178,24 +121,7 @@ jQuery(function () {
     </table>
     </form>
     
-    <!--  </tr>
-     <tr><td align="center">
-    <table width="40%"cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
-    <tr><td><input type="button" class="btn" value="Search"></td>
-    <td><input type="button" class="btn" value="Export to Excel"></td>
-    <td><a href="javascript:void(processPrint());" class="searchpressable printreport" >Print</a></td>
-    <td>
-    <a href="" class="searchpressable mailreport" >Email</a></td>
-    </tr>
-    
-    </table>
-    </td></tr> 
-    </table>-->
-    
-    
-    <!-- <table width="100%" cellpadding="0" cellspacing="0" border="0" >
-    <tr><td><br/> -->
-    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="margin_table_fleet">
     <tr><td align="left" width="30%">
     <div class="report_table_innertop" id="printMe">
     <table width="100%" cellpadding="0" cellspacing="0" border="1" bordercolor="#ccc" >
@@ -214,41 +140,29 @@ jQuery(function () {
   </c:if>
     </table></div></div>
     </td>
-   <!--  <td align="right" width="70%"><br/>
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="report_table_inner_1">
-    <tr><th class="report_side_table">Over Speeding Report</th></tr>
-  <tr><td style="width:100% ; height:300px;"> <img src="resources/images/Chart.jpg" style="width:100% ; height:300px;" /></td></tr>    
-    </table> 
-    </td> -->
+   
     </tr>
     <tr><td align="right"><br>
     <table width="40%"cellpadding="2" cellspacing="0" border="0" style="margin:0 0 0 61%;">
     <tr>
     
     <td align="right">
-    <input type="submit" class="btn" value="Export to Excel" onclick="window.location.href='export_overspeedreport?vechicle_reg_no=${vechicle_reg_no}&from_date=${from_date}&from_time=${from_time}&to_date=${to_date}&to_time=${to_time}'">
+   	
+    <input type="submit" class="btn" value="Export to Excel" onclick="window.location.href='export_overspeedreport?vechicle_reg_no=${vechicle_reg_no}&from_date=${from_date}&from_time=${from_time}&to_date=${to_date}&to_time=${to_time}'"></td>
     
-    </td>
-    <!-- <td><a href="javascript:void(processPrint());" class="searchpressable printreport" >Print</a></td>
-    <td>
-    <a href="" class="searchpressable mailreport" >Email</a></td> -->
     </tr>
     
     </table>
     </td></tr>
     
     </table>
-   <!--  </td></tr></table> -->
-    <!-- <div id="tab3">...</div> -->
-    <!-- <div id="tab4">...</div> -->
+   
 
 </div></div></td>
-        					</tr> </table>
+        					</tr> </table></div>
         				</td>
         				</tr>
-        				</table></div></div>
-        				
-<jsp:include page="footer.jsp"></jsp:include>
+        				</table>
 
 <script>
 $(document).ready(function() {
@@ -270,6 +184,7 @@ $(document).ready(function() {
     });
 });
 </script>
+
 <script>
 function check(){
 	document.getElementById("vechicle_error").innerHTML="";
@@ -307,7 +222,9 @@ function check(){
 
 
 
+
 </script>
+<jsp:include page="footer.jsp"></jsp:include>
 
 <script language="javascript">
     var gAutoPrint = true;
@@ -341,3 +258,8 @@ function check(){
 
     }
 </script>
+
+
+
+
+</body></html>

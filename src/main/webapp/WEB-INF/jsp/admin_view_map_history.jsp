@@ -245,12 +245,13 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 							    </select>
 							    </c:otherwise>
 							    </c:choose>	
+							    
 							</span><td align="left" valign="middle" width="15%">&nbsp;&nbsp;<span id="deviceerror" style="color: red;"></span></td>
-							    </td>
+							    
 							    <td align="right" valign="middle" width="10%" style="color: white;">Date :&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="8%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date}" readonly="readonly">
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;<span id="dateerror" style="color: red;"></span></td>
-							    </td>
+							    
 							    <td align="center" valign="middle" width="8%"><input type="submit" class="btn" value="Show" name="find" onclick="return check();"></td>
 							 <td align="center" valign="middle" width="8%"><input type="reset"  onclick="window.location.href='admin_view_map_history'" class="btn" value="Reset"></td>
 							  </tr>

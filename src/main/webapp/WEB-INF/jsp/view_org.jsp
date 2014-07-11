@@ -87,7 +87,7 @@
 	<input type="text" id="search" name="search" placeholder="Enter Text To Filter" class="light-table-filter" data-table="order-table" placeholder="Filter"/>
 	</div>
 </div></div>
-							<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%">
 							<tr class="title">
 								<!-- <td valign="middle" align="center" width="15%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="19.8%">&nbsp;Organization Name </td>					         	
@@ -103,7 +103,7 @@
 							<div class="Panel_One_Inner">
 							
 							
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%"class="order-table table">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout:fixed; width:100%" class="order-table table">
 							
         					<c:if test="${fn:length(orgregistrationform.orgregistration) gt 0 }">
         					<c:forEach items="${orgregistrationform.orgregistration}" var="orgRegistration" varStatus="status">

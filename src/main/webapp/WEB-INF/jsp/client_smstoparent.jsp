@@ -20,6 +20,17 @@
         $("#trip").select2();
     });
 </script>
+<script id='script_bid'> 
+   $(document).ready(function() {
+	    $('#from_stops').select2(); 
+	});
+</script>
+<script id='script_bid'>
+  $(document).ready(function() { 
+	  $('#to_stops').select2(); 
+	});
+</script>
+
 <jsp:include page="header.jsp"></jsp:include>
 <div id="GPS_View_container">
     <div id="GPS_View_menu"><jsp:include page="admin_menu.jsp"></jsp:include></div>
@@ -61,7 +72,7 @@
 				                  	<option value="">--Select Trip--</option>
 				                  	<option value="0" <c:if test="${smsparent.trip=='0'}"><c:out value="selected"/></c:if>>Pick up</option>
 				                  	<option value="1" <c:if test="${smsparent.trip=='1'}"><c:out value="selected"/></c:if>>Drop</option>
-				                  	<option value="2" <c:if test="${smsparent.trip=='2'}"><c:out value="selected"/></c:if>>KG Drop</option>
+				                  	
 				                  	
 				                  	</select>
 				                  	
@@ -98,7 +109,7 @@
 								    </select>
 								 </c:when>
 								 <c:otherwise>
-									 <select style="width:220px;margin-top:-4px;" name="route" id="route_id"  >
+									 <select style="width:220px;margin-top:-4px;" name="route" id="route_id" >
 							  		<option selected value="">-- Select Route--</option>
 								    </select>
 								 </c:otherwise>
@@ -107,10 +118,34 @@
 			                 
 				                  	<br/><font color="Red" size="+1"><form:errors path="smsparent.route"></form:errors></font>
 				                  </td>
-				               
-				                </tr>
+				               	</tr>
 				                
-				                <tr class="row1">
+				                
+				               <!--  <tr class="row1">
+				                <td ></td>
+				                <td><span id="stops">
+				               	<select  name="from_stop" id="from_stops" style='width:220px;' >
+				               	<option value="">-- Select Stop --</option>
+				               	</select>
+				               	</span>
+				               	<span id="from_id">
+				               	
+				               	<input type="hidden" value="" name="from_stop_id" id="from_stops_id"/>
+				               	</span>
+				               	</td>
+				               	<td>
+				               	<span id="stops1">
+				               	<select  name="to_stop" id="to_stops" style='width:220px;' >
+				               	<option value="">-- Select Stop --</option>
+				               	</select>
+				               	</span>
+				               	<span id="to_id">
+				               	<input type="hidden" value="" name="to_stop_id" id="to_stops_id"/>
+				               	</span>
+				               	</td>
+				                </tr>
+				                -->
+				                <tr class="row2">
 					            	<td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Message</td><td width="1%">:</td>
 				                  	<td valign="top" align="left" class="input_txt" width="50%">
 				                  	<textarea name="message" class="textareanew" >${smsparent.message}</textarea>
@@ -161,3 +196,30 @@ function doAjaxPost1() {
 		  });  
 		}  
 		</script>
+
+<script type="text/javascript">
+function doAjaxPost_Stop() {  
+ alert("hi");  
+	var route_no = $('#route_id').val();
+	var trip=$('#trip').val();
+	
+	  alert(trip);  
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/stops_ajax",  
+		    data: "route_no="+route_no+"&trip="+trip,
+		    success: function(response){  
+		
+		    	var two_stops=response.split("<split>");
+		    	
+		    	$('#stops').html(two_stops[0]);
+		    	$('#stops1').html(two_stops[1]);
+
+   },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+		</script>	
+		

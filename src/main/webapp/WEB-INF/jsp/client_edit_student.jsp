@@ -138,16 +138,21 @@ $(document).ready(function () {
 								<tr class="row1">
 				                	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Pick Point Address :</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<span id="pickup_address" style="height:8px;"><select  name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')" style="width:220px">
+				                  	<span id="pickup_address" style="height:8px;"><select  name="pickup_point_address" id="pickup_location_id" onblur="Validate1('bid')" style="width:220px" onchange="doAjaxPost_pickup_stop_id()">
 						    	<option value="">-- Select Pickup Location--</option>
+						    	<c:forEach items="${pickup_location}" var="pickup_locations" varStatus="status">
+							    <option value="${pickup_locations}" <c:if test="${student.pickup_point_address==pickup_locations}"><c:out value="selected"></c:out></c:if> >${pickup_locations}</option>
+				                  </c:forEach>
 						    	
-						    	<option value="${student.pickup_point_address}" selected>${student.pickup_point_address}</option>
 						    	<%-- <c:forEach items="${pickup_route_location}" var="pickup_location">
 						    	<option value="${student.pickup_point_address}" <c:if test="${pickup_location==student.pickup_point_address}"><c:out values="selected"></c:out></c:if> >${student.pickup_point_address}</option>
 						    	</c:forEach>  --%>
 				                  	</select>
 				                  	</span>
 				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.pickup_point_address"></form:errors></font>
+				                  <span id='pickups_stop_id'>
+				                  <input type="hidden" name='pickup_stop_id' id='pickup_stops_id' value="${student.pickup_stop_id}">
+				                  </span>
 				                  </td>
 				                </tr> 
 								<tr class="row2">
@@ -166,12 +171,17 @@ $(document).ready(function () {
 				                <tr class="row1">
 				                 	<td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Point Address:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<span id="drop_address" style="height:8px;"><select  name="drop_point_address" id="drop_location_id" onblur="Validate1('bid')" style="width:220px">
-							    <option value="">-- Select Drop Location --</option>
-							    <option value="${student.drop_point_address}" selected>${student.drop_point_address}</option>
+				                  	<span id="drop_address" style="height:8px;"><select  name="drop_point_address" id="drop_location_id" onblur="Validate1('bid')" style="width:220px" onchange="doAjaxPost_drop_stop_id()">
+							   <option value="">-- Select Drop Location --</option>
+							   <c:forEach items="${drop_location}" var="drop_locations" varStatus="status">
+							    <option value="${drop_locations}" <c:if test="${student.drop_point_address==drop_locations}"><c:out value="selected"></c:out></c:if> >${drop_locations}</option>
+				                  </c:forEach>
 				                  	</select>
 				                  	</span>
 				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.drop_point_address"></form:errors></font>
+				                  <span id='drops_stop_id'>
+				                  <input type="hidden" name='drop_stop_id' id='drop_stops_id' value="${student.drop_stop_id}">
+				                  </span>
 				                  </td>
 				                </tr>
 				                 <tr class="row2">
@@ -276,6 +286,28 @@ $('#pickup_address').html(response);
 		}  
 		</script>
 		
+		<script type="text/javascript">
+function doAjaxPost_pickup_stop_id() {  
+	/* alert("hi"); */
+	var pickup_route_no = $('#pickup_route_id').val();
+	var pickup_point_address=$('#pickup_location_id').val();
+	/* alert(orgname); */
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/pickup_stop_id_ajax",  
+		    data: "pickup_route_no="+pickup_route_no+"&pickup_point_address="+pickup_point_address,
+		    success: function(response){  
+		
+$('#pickups_stop_id').html(response);
+
+   },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+		</script>	
+		
 		
 <script type="text/javascript">
 function doAjaxPost_drop_route_no() {  
@@ -298,6 +330,28 @@ $('#drop_address').html(response);
 		}  
 		</script>
 		
+<script type="text/javascript">
+function doAjaxPost_drop_stop_id() {  
+	/* alert("hi"); */
+	var drop_route_no = $('#drop_route_id').val();
+	var drop_point_address=$('#drop_location_id').val();
+	/* alert(orgname); */
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/drop_stop_id_ajax",  
+		    data: "drop_route_no="+drop_route_no+"&drop_point_address="+drop_point_address,
+		    success: function(response){  
+		
+$('#drops_stop_id').html(response);
+
+   },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+		</script>
+				
 <script type="text/javascript">
 $(function() {
 	$("#pname1").on("keypress", function(e) {

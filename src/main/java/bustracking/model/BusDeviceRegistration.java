@@ -22,6 +22,10 @@ public class BusDeviceRegistration {
 		this.bus_reg_id = bus_reg_id;
 		this.device_imei_number = device_imei_number;
 	}
+	public BusDeviceRegistration(String device_imei_number) {
+		super();
+		this.device_imei_number = device_imei_number;
+	}
 	@NotEmpty
 	private String device_imei_number;
 	

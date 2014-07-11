@@ -105,7 +105,7 @@
 									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.first_name}">&nbsp;&nbsp;&nbsp;${studentRegistration.first_name}</td>
 									    <td valign="top" align="left" style="overflow:hidden;"width="17.3%"title="${studentRegistration.last_name}">&nbsp;&nbsp;&nbsp;&nbsp;${studentRegistration.last_name}</td>
 										<td valign="top" align="left" style="overflow:hidden;"width="8%">
-										<a href="<c:out value="edit_student?student_roll_no=${studentRegistration.student_roll_no}&org_name=${studentRegistration.org_name}&branch=${studentRegistration.branch}"/>">&nbsp;&nbsp;&nbsp;<img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
+										<a href="<c:out value="edit_student?student_roll_no=${studentRegistration.student_roll_no}&org_name=${studentRegistration.org_name}&branch=${studentRegistration.branch}&pickup_route_no=${studentRegistration.pickup_route_no}&drop_route_no=${studentRegistration.drop_route_no}&class_standard=${studentRegistration.class_standard}"/>">&nbsp;&nbsp;&nbsp;<img src="resources/images/edit-29.png" width="20"height="18"alt="Edit" title="Edit"/></a>|
 										<a href="<c:out value="delete_student?student_roll_no=${studentRegistration.student_roll_no}"/>" onclick="return confirm('Are you sure want to delete?')"><img src="resources/images/del.png" alt="Delete" width="20"height="18" title="Delete"/></a>
 								        <td>
 								     </tr>

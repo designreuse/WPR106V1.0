@@ -114,7 +114,7 @@
           						
         					</tr></table>
 							<div class="Panel_One_Inner">
-							 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%" class="order-table table">
+							 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout:fixed; width:100%" class="order-table table">
 							<c:if test="${fn:length(busregistrationform.busregistration) gt 0 }">
         					<c:forEach items="${busregistrationform.busregistration}" var="BusRegistration" varStatus="status">
         				       					<tr class="row1">

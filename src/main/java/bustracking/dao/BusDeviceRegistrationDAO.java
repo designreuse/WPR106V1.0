@@ -123,6 +123,38 @@ public class BusDeviceRegistrationDAO {
 	    return busDeviceRegistrations;
 		
 	}
+	
+	public List<BusDeviceRegistration> getdevice_imei_number_for_personal(String org_id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<BusDeviceRegistration> device_imei_number = new ArrayList<BusDeviceRegistration>();
+		try{
+			resultSet = statement.executeQuery("select device_imei_number from tbl_vechicle where org_id='"+org_id+"'");
+			while(resultSet.next()){
+				device_imei_number.add(new BusDeviceRegistration(resultSet.getString("device_imei_number")));
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return device_imei_number;
+		
+	}
+	
 	//Search admin device
 	
 	

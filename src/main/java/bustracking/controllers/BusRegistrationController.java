@@ -132,6 +132,10 @@ public class BusRegistrationController {
 		busregistrationform.setBusregistration(busDAO.getBusregistration());
 		model.addAttribute("busregistrationform",busregistrationform);
 		
+		BusRegistrationForm busregistrationform1= new BusRegistrationForm();
+		busregistrationform1.setBusregistration(busDAO.getBusregistration());
+		model.addAttribute("busregistrationform1",busregistrationform1);
+		
 		return "view_bus_details";
 	}
 	

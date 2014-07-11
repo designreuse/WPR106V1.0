@@ -79,9 +79,10 @@ public class AddUserDAO{
         	preparedStatement.setInt(8,1);
         		if(type.equals("school")||type.equals("college")||type.equals("school and college"))
         			preparedStatement.setString(9,"ROLE_ADMIN");
-        		else
+        		else if(type.equals("fleet management"))
         			preparedStatement.setString(9,"ROLE_FCLIENT");
-
+        		else 
+        			preparedStatement.setString(9,"ROLE_PCLIENT");
         	preparedStatement.execute();
         }
         catch(Exception e)

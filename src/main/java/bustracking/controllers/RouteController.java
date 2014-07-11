@@ -106,7 +106,7 @@ public class RouteController
 		
 		String returnText="";
 		List <String> studroute=new ArrayList<String>();
-		studroute=studentDAO.getStud_route(org_name,branch);
+		studroute=routeDAO.getStud_route_for_route(org_name,branch);
 		
 		returnText=returnText+"<script id='script_route_id'>$(document).ready(function() { $('#route_id').select2(); });</script><select name='route_no' id='route_id' style='width:220px'>";
 		returnText+="<option value='' selected>--Select Route No--</option>";
@@ -630,8 +630,9 @@ public @ResponseBody String populate_stops(HttpSession session,HttpServletReques
 	int i=0;
 	for (Route route : routes) {
 		
-		returnString+="<table style='border:solid 1px lightgrey'><tr><td width='20px'>"+(i+1)+"</td><td width='400px' style='overflow:hidden;'>"+route.getAddress()+"</td><td width='100px'>"+route.getTrip()+"</td><td width='100px'>"+route.getBus_arrival_time()+"</td><td width='100px'><a href='#'  onclick='doRemovestop("+i+")'>Remove</a></td></tr></table>";
+		returnString+="<table style='border:solid 1px lightgrey'><tr><td width='20px'>"+(i+1)+"</td><td width='400px' style='overflow:hidden;'>"+route.getAddress()+"</td><td width='100px'><c:if test='${"+route.getTrip()+"==0}'><c:out value='Pick Up'></c:out></c:if></td><td width='100px'>"+route.getBus_arrival_time()+"</td><td width='100px'><a href='#' onclick='doRemovestop("+i+")'>Remove</a></td></tr></table>";
 	i++;
+	System.out.println(returnString);
 	}
 	returnString+="</div>";
 	session.setAttribute("session_route", routes);

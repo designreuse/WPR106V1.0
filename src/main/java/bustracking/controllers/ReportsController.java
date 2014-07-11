@@ -267,6 +267,60 @@ public class ReportsController{
 		}
 		
 		
+		
+
+		/*
+		 * 
+		 * Fleet Client Over Speed Report
+		 */
+		
+		@RequestMapping(value="/fleetreports", method=RequestMethod.GET)
+		public String fleet_overspeed_report(HttpSession session,ModelMap model,Principal principal)
+		{
+			
+			session.removeAttribute("vechicle_reg_no");
+			session.removeAttribute("from_date");
+			session.removeAttribute("from_time");
+			session.removeAttribute("to_date");
+			session.removeAttribute("to_time");
+			
+			ReportForm reportForm=new ReportForm();
+			reportForm.setReports(reportsDAO.getoverspeedreport(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("reportForm",reportForm);
+			
+			ReportForm reportForm1=new ReportForm();
+			reportForm1.setReports(reportsDAO.getvechicle_reg_no_for_over_speed_report(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("reportForm1",reportForm1);
+			
+			return "fleet_overspeed_report";
+		}
+		
+		/*
+		 * Fleet Search Over Speed Report
+		 * 
+		 */
+		
+		@RequestMapping(value="/searchfleetoverspeedreport", method = RequestMethod.GET)
+		public String searchfleetoverspeedingreport(HttpSession session,HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("from_date") String from_date,@RequestParam("from_time") String from_time,@RequestParam("to_date") String to_date,@RequestParam("to_time") String to_time,ModelMap model, Principal principal ) {
+		
+			session.setAttribute("vechicle_reg_no", vechicle_reg_no);
+			session.setAttribute("from_date", from_date);
+			session.setAttribute("from_time", from_time);
+			session.setAttribute("to_date", to_date);
+			session.setAttribute("to_time", to_time);
+			
+			ReportForm reportForm=new ReportForm();
+			reportForm.setReports(reportsDAO.search_over_speed_report_(mainDAO.getOrg_id(principal.getName()), vechicle_reg_no, from_date, from_time, to_date, to_time));
+			model.addAttribute("reportForm",reportForm);
+			
+			ReportForm reportForm1=new ReportForm();
+			reportForm1.setReports(reportsDAO.getvechicle_reg_no_for_over_speed_report(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("reportForm1",reportForm1);
+			
+			return "fleet_overspeed_report";
+		}
+		
+		
 		//Download admin sms tracking 
 		@RequestMapping(value="/export_adminsmstrack", method = RequestMethod.POST)
 		public ModelAndView adminsmstrack_export(HttpServletResponse response,HttpServletRequest request,ModelMap model, Principal principal ) {
@@ -299,8 +353,8 @@ public class ReportsController{
 		 * 
 		 */
 		
-		@RequestMapping(value="/export_clientsmstrack", method = RequestMethod.POST)
-		public ModelAndView clientsmstrack_export(HttpServletResponse response,HttpServletRequest request,ModelMap model, Principal principal ) {
+		@RequestMapping(value="/export_clientsmstrack", method = RequestMethod.GET)
+		public ModelAndView clientsmstrack_export(HttpServletResponse response,HttpServletRequest request,@RequestParam("fromdate") String fromdate,@RequestParam("todate") String todate,@RequestParam("student_roll_no") String student_roll_no,ModelMap model, Principal principal ) {
 		
 			
 			
@@ -313,7 +367,7 @@ public class ReportsController{
 			response.setHeader("Content-Disposition","attachment;filename=ClientSMSReport.xls");
 			
 			//Fill the report
-			reports=reportsDAO.getTracksmsreport(mainDAO.getOrg_id(principal.getName()));
+			reports=reportsDAO.getclientsmsreport_search(mainDAO.getOrg_id(principal.getName()), student_roll_no, fromdate, todate);;
 			
 			ModelAndView modelAndView=new ModelAndView("reportsDAO","reports",reports);
 			
@@ -331,13 +385,13 @@ public class ReportsController{
 		 * 
 		 */
 		
-		@RequestMapping(value="/export_overspeedreport", method = RequestMethod.POST)
+		@RequestMapping(value="/export_overspeedreport1", method = RequestMethod.POST)
 		public ModelAndView clientoverspeed_export(HttpServletResponse response,HttpServletRequest request,ModelMap model, Principal principal ) {
 		
 			
 			
 			//Field going to be used in the document
-			String[] fields={"Vechicle_Reg_No","Driver Name","Over Speed Count","Date/Time"};
+			String[] fields={"Route No","Vechicle_Reg_No","Driver Name","Over Speed Count"};
 			
 			List<Report> reports=new ArrayList<Report>();
 			
@@ -346,6 +400,37 @@ public class ReportsController{
 			
 			//Fill the report
 			reports=reportsDAO.export_overspeedreport(mainDAO.getOrg_id(principal.getName()));
+			
+			ModelAndView modelAndView=new ModelAndView("reportsDAO","reports",reports);
+			
+			modelAndView.addObject("fields",fields);
+			modelAndView.addObject("content","over_speed_report");
+		
+			return modelAndView ;
+			
+			
+		}
+		
+		/*
+		 * Export Client Side Search Over Speed Report 
+		 * 
+		 */
+		
+		@RequestMapping(value="/export_overspeedreport", method = RequestMethod.GET)
+		public ModelAndView clientsearchoverspeed_export(HttpServletResponse response,HttpServletRequest request,@RequestParam("vechicle_reg_no") String vechicle_reg_no,@RequestParam("from_date") String from_date,@RequestParam("from_time") String from_time,@RequestParam("to_date") String to_date,@RequestParam("to_time") String to_time,ModelMap model, Principal principal ) {
+		
+			
+			
+			//Field going to be used in the document
+			String[] fields={"Route No","Vechicle_Reg_No","Driver Name","Over Speed Count"};
+			
+			List<Report> reports=new ArrayList<Report>();
+			
+			//Must set this line to download
+			response.setHeader("Content-Disposition","attachment;filename=OverSpeedReport.xls");
+			
+			//Fill the report
+			reports=reportsDAO.search_over_speed_report_(mainDAO.getOrg_id(principal.getName()), vechicle_reg_no, from_date, from_time, to_date, to_time);
 			
 			ModelAndView modelAndView=new ModelAndView("reportsDAO","reports",reports);
 			

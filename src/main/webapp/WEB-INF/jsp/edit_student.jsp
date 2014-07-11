@@ -62,11 +62,17 @@
 				                  
 				                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Point Address:</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<div id="drop_address" style="height:8px;"><select name="drop_point_address" id="drop_location_id" style="width:220px;" onblur="Validate1('bid')">
-							    	<option value="${student.drop_point_address}" selected>${student.drop_point_address}</option>
+				                  	<div id="drop_address" style="height:8px;"><select name="drop_point_address" id="drop_location_id" style="width:220px;" onblur="Validate1('bid')" onchange="doAjaxPost_drop_stop_id()">
+							    	<c:forEach items="${drop_location}" var="drop_locations">
+							    	<option value="${drop_locations}" <c:if test="${student.drop_point_address==drop_locations}"><c:out value="selected"></c:out></c:if> >${drop_locations}</option>
+				                  	</c:forEach>
 				                  	</select>
 				                  	</div>
-				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.drop_point_address"></form:errors></font></td>
+				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.drop_point_address"></form:errors></font>
+				                  	 <span id='drops_stop_id'>
+				                  <input type="hidden" name='drop_stop_id' id='drop_stops_id' value="${student.drop_stop_id}">
+				                  </span>
+				                  	 </td>
 				                  	
 				                    <td width="15%" class="input_txt"></td>
 				               </tr>
@@ -74,12 +80,12 @@
                         		<tr class="row2" style="height:50px;">
                         		<td width="3%" class="input_txt"></td>
                         		<td valign="middle" align="right" class="input_txt"><span class="err">*</span>Branch :</td>
-				                  <td valign="top" align="left" class="input_txt">
+				                  <td valign="bottom" align="left" class="input_txt">
 				                  	<input type="hidden" name="branch" id="bid" value="${student.branch}"/>${student.branch}
 				                  	 <br/><font color="Red" size="+1"><form:errors path="studentRegistration.branch"></form:errors></font></td>
 				                  	
 				                 <td valign="middle" align="right" class="input_txt"><span class="err">*</span> KG Drop :</td>
-				                  <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;
+				                  <td valign="middle" align="left" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;
 				                  	<input type="checkbox"  id="inp_id" name="kg_drop" value="${student.kg_drop}" />
 				                  	
 				                  </td>
@@ -117,7 +123,7 @@
 				                </tr>
 				                <tr class="row1" style="height:50px;">
 				                <td width="3%" class="input_txt"></td>
-				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Last Name</td>
+				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Last Name:</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<input type="text"  id="lname" name="last_name" oninput="validateAlpha1();" onblur="toTitleCase1('lname')" value="${student.last_name}"/>
 				                  	   <br/><font color="Red" size="+1"><span id="lnameerror"><form:errors path="studentRegistration.last_name"></form:errors></font></span></td>
@@ -189,9 +195,8 @@
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Pickup Route No :</td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	 <div id="info1"><select name="pickup_route_no" id="pickup_route_id" onchange="doAjaxPost_pickup_route_no()" style="width:220px;" value="${student.pickup_route_no}">
-					               <option value="${student.pickup_route_no}" selected>${student.pickup_route_no}</option>
-					               <c:forEach items="${route_no}" var="route_no" varStatus="status">
-        				        <option value="${route_no}">${route_no}</option> 
+					              <c:forEach items="${route_no}" var="route_no" varStatus="status">
+					               <option value="${route_no}"<c:if test="${student.pickup_route_no==route_no}"><c:out value="selected"></c:out></c:if> >${route_no}</option> 
 			                  </c:forEach>
 			                  </select>
 			                  </div>
@@ -208,20 +213,24 @@
 				                    <td width="5%" class="input_txt"></td>
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Pickup Point Address :</td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	 <div id="pickup_address" style="height:8px;"><select name="pickup_point_address" id="pickup_location_id"  style="width:220px;" onblur="Validate1('bid')" >
-							    <option value="${student.pickup_point_address}" selected>${student.pickup_point_address}</option>
+				                  	 <div id="pickup_address" style="height:8px;"><select name="pickup_point_address" id="pickup_location_id"  style="width:220px;" onblur="Validate1('bid')" onchange="doAjaxPost_pickup_stop_id()">
+							    <c:forEach items="${pickup_location}" var="pickup_locations">
+							    <option value="${pickup_locations}" <c:if test="${student.pickup_point_address==pickup_locations}"><c:out value="selected"></c:out></c:if> >${pickup_locations}</option>
+				                  	</c:forEach>
 				                  	</select>
 				                  	</div>
 				                  	<br/><font color="Red" size="+1"><form:errors path="studentRegistration.pickup_point_address"></form:errors></font>
+				                  <span id='pickups_stop_id'>
+				                  <input type="hidden" name='pickup_stop_id' id='pickup_stops_id' value="${student.pickup_stop_id}">
+				                  </span>
 				                  </td>
 				                  
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Class:</td>
 					               <td valign="middle" align="left" class="input_txt">
 					               <div id="info3"> <select name="class_standard" id="class_standard_id" style="width:220px;" onchange="doAjaxPost_section()"  >
-					               <option value="${student.class_standard}" selected>${student.class_standard}</option>
 					               <c:forEach items="${class_std}" var="class_std" varStatus="status">
-        				        <option value="${class_std}">${class_std}</option>
-			                  </c:forEach> 
+					               <option value="${class_std}" <c:if test="${student.class_standard==class_std}"><c:out value="selected"></c:out></c:if> >${class_std}</option>
+					              </c:forEach> 
 					               </select></div>
 					               <br/><font color="Red" size="+1"><form:errors path="studentRegistration.class_standard"></form:errors></font>
 					               </td>
@@ -232,9 +241,8 @@
 				                <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Drop Route No :</td>
 				                  	<td valign="middle" align="left" class="input_txt">
 				                  	 <div id="info2"><select name="drop_route_no" style="width:220px;" onchange="doAjaxPost_drop_route_no()" id="drop_route_id">
-					               <option value="${student.drop_route_no}" selected>${student.drop_route_no}</option>
-					                <c:forEach items="${route_no}" var="route_no" varStatus="status">
-        				        <option value="${route_no}">${route_no}</option>
+					               <c:forEach items="${route_no}" var="route_no" varStatus="status">
+					              <option value="${route_no}" <c:if test="${student.drop_route_no==route_no}"><c:out value="selected"></c:out></c:if> >${route_no}</option>
 			                  </c:forEach>
 			                  
 			                  </select> </div>
@@ -244,10 +252,9 @@
 				                    <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Section:</td>
 					               <td valign="middle" align="left" class="input_txt">
 					              <div id="info_section"> <select name="section" id="section_id"  style="width:220px;" >
-					               <option value="${student.section}" selected>${student.section}</option>
-					               <%-- <c:forEach items="${class_std}" var="classSection" varStatus="status">
-        				        <option value="${class_std}">${class_std}</option>
-			                  </c:forEach> --%> 
+					               <c:forEach items="${studsection}" var="classSection" varStatus="status">
+        				        <option value="${classSection}" <c:if test="${student.section==classSection}"><c:out value="selected"></c:out></c:if>  >${classSection}</option>
+			                  </c:forEach>
 					               </select></div>
 					        <br/><font color="Red" size="+1"><form:errors path="studentRegistration.section"></form:errors></font>
 					               <td width="15%" class="input_txt"></td>
@@ -302,8 +309,30 @@ $('#pickup_address').html(response);
 		    }  
 		  });  
 		}  
-		</script>
+</script>
 		
+<script type="text/javascript">
+function doAjaxPost_pickup_stop_id() {  
+	/* alert("hi"); */
+	var pickup_route_no = $('#pickup_route_id').val();
+	var pickup_point_address=$('#pickup_location_id').val();
+	/* alert(orgname); */
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/pickup_stop_id_ajax",  
+		    data: "pickup_route_no="+pickup_route_no+"&pickup_point_address="+pickup_point_address,
+		    success: function(response){  
+		
+$('#pickups_stop_id').html(response);
+
+   },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+		</script>	
+			
 	
 <script type="text/javascript">
 function doAjaxPost_drop_route_no() {  
@@ -327,8 +356,30 @@ $('#drop_address').html(response);
 	</script>
 
 <script type="text/javascript">
+function doAjaxPost_drop_stop_id() {  
+	/* alert("hi"); */
+	var drop_route_no = $('#drop_route_id').val();
+	var drop_point_address=$('#drop_location_id').val();
+	/* alert(orgname); */
+	 $.ajax({  
+		    type: "POST",  
+		    url: "/BusTrackingApp/drop_stop_id_ajax",  
+		    data: "drop_route_no="+drop_route_no+"&drop_point_address="+drop_point_address,
+		    success: function(response){  
+		
+$('#drops_stop_id').html(response);
+
+   },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }  
+		  });  
+		}  
+		</script>
+
+<script type="text/javascript">
 function doAjaxPost_section() { 
-	alert("calling!!!");
+	//alert("calling!!!");
 	var orgname = $('#orgid').val();
 	var branch=$('#bid').val();
 	var classstandard=$('#class_standard_id').val();

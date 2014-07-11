@@ -56,7 +56,7 @@ public class StudentRegistrationDAO {
 			System.out.println("orgid"+student.getOrg_id());
 			
 			System.out.println("inserting into tbl_student");
-			PreparedStatement preparedStatement=con.prepareStatement("Insert into tbl_student(org_id,student_roll_no,first_name,last_name,gender,transport_facility,pickup_route_no,pickup_point_address,drop_route_no,drop_point_address,kg_drop,parent_name1,parent_name2,parent_mobile1,parent_mobile2,parent_email1,parent_email2,class_standard,section,create_timestamp,create_user_id,create_user_system_name) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement preparedStatement=con.prepareStatement("Insert into tbl_student(org_id,student_roll_no,first_name,last_name,gender,transport_facility,pickup_route_no,pickup_point_address,pickup_stop_id,drop_route_no,drop_point_address,drop_stop_id,kg_drop,parent_name1,parent_name2,parent_mobile1,parent_mobile2,parent_email1,parent_email2,class_standard,section,create_timestamp,create_user_id,create_user_system_name) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1,student.getOrg_id());
 			preparedStatement.setString(2,student.getStudent_roll_no());
 			preparedStatement.setString(3,student.getFirst_name());
@@ -65,20 +65,22 @@ public class StudentRegistrationDAO {
 			preparedStatement.setString(6,student.getTransport_facility());
 			preparedStatement.setString(7,student.getPickup_route_no());
 			preparedStatement.setString(8,student.getPickup_point_address());
-			preparedStatement.setString(9,student.getDrop_route_no());
-			preparedStatement.setString(10,student.getDrop_point_address());
-			preparedStatement.setString(11,student.getKg_drop());
-			preparedStatement.setString(12,student.getParent_name1());
-			preparedStatement.setString(13,student.getParent_name2());
-			preparedStatement.setString(14,student.getParent_mobile1());
-			preparedStatement.setString(15,student.getParent_mobile2());
-			preparedStatement.setString(16,student.getParent_email1());
-			preparedStatement.setString(17,student.getParent_email2());
-			preparedStatement.setString(18,student.getClass_standard());
-			preparedStatement.setString(19,student.getSection());
-			preparedStatement.setTimestamp(20,getCurrentTimeStamp());
-			preparedStatement.setString(21,principal.getName());
-			preparedStatement.setString(22,computername);
+			preparedStatement.setString(9,student.getPickup_stop_id());
+			preparedStatement.setString(10,student.getDrop_route_no());
+			preparedStatement.setString(11,student.getDrop_point_address());
+			preparedStatement.setString(12,student.getDrop_stop_id());
+			preparedStatement.setString(13,student.getKg_drop());
+			preparedStatement.setString(14,student.getParent_name1());
+			preparedStatement.setString(15,student.getParent_name2());
+			preparedStatement.setString(16,student.getParent_mobile1());
+			preparedStatement.setString(17,student.getParent_mobile2());
+			preparedStatement.setString(18,student.getParent_email1());
+			preparedStatement.setString(19,student.getParent_email2());
+			preparedStatement.setString(20,student.getClass_standard());
+			preparedStatement.setString(21,student.getSection());
+			preparedStatement.setTimestamp(22,getCurrentTimeStamp());
+			preparedStatement.setString(23,principal.getName());
+			preparedStatement.setString(24,computername);
 			
 			
         	preparedStatement.execute();
@@ -157,7 +159,7 @@ public class StudentRegistrationDAO {
 	    try{
 	    	//String cmd="select t1.route_no from tbl_vechicle as t1  where t1.org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')";
 	    	
-	    	String cmd="select t1.route_no from tbl_vechicle as t1 left join tbl_bus_route as t2 on t1.route_no=t2.route_no  where  t1.org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') group by t1.route_no";
+	    	String cmd="select t1.route_no from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no  where  t1.org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') group by t2.route_no";
 	    	//System.out.println(org_id);
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);
@@ -177,6 +179,8 @@ public class StudentRegistrationDAO {
 	        }
 	        return studrouteRegistrations;
 	    }
+	
+	
 	
 	// Get class For specific organization
 	
@@ -370,9 +374,9 @@ public class StudentRegistrationDAO {
 	}
 	List<StudentRegistration> studentregistration = new ArrayList<StudentRegistration>();
 	try{
-		resultSet = statement.executeQuery("SELECT t1.org_name,t1.branch,t2.student_roll_no,t2.first_name,t2.last_name from tbl_organization as t1 join tbl_student as t2 on t1.org_id=t2.org_id");
+		resultSet = statement.executeQuery("SELECT t1.org_name,t1.branch,t2.student_roll_no,t2.first_name,t2.last_name,t2.pickup_route_no,t2.drop_route_no,t2.class_standard from tbl_organization as t1 join tbl_student as t2 on t1.org_id=t2.org_id");
 		while(resultSet.next()){
-			studentregistration.add(new StudentRegistration(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("student_roll_no"),resultSet.getString("first_name"),resultSet.getString("last_name")));
+			studentregistration.add(new StudentRegistration(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("student_roll_no"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("pickup_route_no"),resultSet.getString("drop_route_no"),resultSet.getString("class_standard")));
 		}
 	
     }catch(Exception e){
@@ -409,7 +413,7 @@ public class StudentRegistrationDAO {
 			System.out.println(cmd);
 			while(resultSet.next())
 			{
-				studentregistration.add(new StudentRegistration(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("student_roll_no"), resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("pickup_route_no"),resultSet.getString("pickup_point_address"),resultSet.getString("drop_route_no"),resultSet.getString("drop_point_address"),resultSet.getString("parent_name1"),resultSet.getString("parent_name2"),resultSet.getString("parent_mobile1"),resultSet.getString("parent_mobile2"),resultSet.getString("parent_email1"),resultSet.getString("parent_email2"),resultSet.getString("class_standard"),resultSet.getString("section")));
+				studentregistration.add(new StudentRegistration(resultSet.getString("org_id"),resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("student_roll_no"), resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("pickup_route_no"),resultSet.getString("pickup_point_address"),resultSet.getString("pickup_stop_id"),resultSet.getString("drop_route_no"),resultSet.getString("drop_point_address"),resultSet.getString("drop_stop_id"),resultSet.getString("parent_name1"),resultSet.getString("parent_name2"),resultSet.getString("parent_mobile1"),resultSet.getString("parent_mobile2"),resultSet.getString("parent_email1"),resultSet.getString("parent_email2"),resultSet.getString("class_standard"),resultSet.getString("section")));
 			}
 	    }catch(Exception e){
 	        System.out.println(e.toString());
@@ -440,7 +444,7 @@ public class StudentRegistrationDAO {
 			e1.printStackTrace();
 		}
 	    try{
-	    	String cmd="UPDATE tbl_student SET pickup_route_no='"+student.getPickup_route_no()+"', pickup_point_address='"+student.getPickup_point_address()+"',drop_route_no='"+student.getDrop_route_no()+"',drop_point_address='"+student.getDrop_point_address()+"',parent_name1='"+student.getParent_name1()+"',parent_name2='"+student.getParent_name2()+"',parent_mobile1='"+student.getParent_mobile1()+"',parent_mobile2='"+student.getParent_mobile2()+"',parent_email1='"+student.getParent_email1()+"',parent_email2='"+student.getParent_email2()+"' WHERE student_roll_no='"+student.getStudent_roll_no()+"' and org_id='"+org_id+"'";
+	    	String cmd="UPDATE tbl_student SET pickup_route_no='"+student.getPickup_route_no()+"', pickup_point_address='"+student.getPickup_point_address()+"',pickup_stop_id='"+student.getPickup_stop_id()+"',drop_route_no='"+student.getDrop_route_no()+"',drop_point_address='"+student.getDrop_point_address()+"',drop_stop_id='"+student.getDrop_stop_id()+"',parent_name1='"+student.getParent_name1()+"',parent_name2='"+student.getParent_name2()+"',parent_mobile1='"+student.getParent_mobile1()+"',parent_mobile2='"+student.getParent_mobile2()+"',parent_email1='"+student.getParent_email1()+"',parent_email2='"+student.getParent_email2()+"' WHERE student_roll_no='"+student.getStudent_roll_no()+"' and org_id='"+org_id+"'";
 	    	System.out.println(cmd);
 	    	statement.execute(cmd);
 	    	flag=1;
@@ -484,7 +488,7 @@ public class StudentRegistrationDAO {
 			
 			while(resultSet.next())
 			{
-				studentregistration.add(new StudentRegistration(resultSet.getString("org_name"), resultSet.getString("branch"),resultSet.getString("student_roll_no"), resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("gender"),resultSet.getString("transport_facility"),resultSet.getString("pickup_route_no"),resultSet.getString("pickup_point_address"),resultSet.getString("drop_route_no"),resultSet.getString("drop_point_address"),resultSet.getString("kg_drop"),resultSet.getString("parent_name1"),resultSet.getString("parent_name2"),resultSet.getString("parent_mobile1"),resultSet.getString("parent_mobile2"),resultSet.getString("parent_email1"),resultSet.getString("parent_email2"), resultSet.getString("class_standard"),resultSet.getString("section")));
+				studentregistration.add(new StudentRegistration(resultSet.getString("org_name"), resultSet.getString("branch"),resultSet.getString("student_roll_no"), resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("gender"),resultSet.getString("transport_facility"),resultSet.getString("pickup_route_no"),resultSet.getString("pickup_point_address"),resultSet.getString("pickup_stop_id"),resultSet.getString("drop_route_no"),resultSet.getString("drop_point_address"),resultSet.getString("drop_stop_id"),resultSet.getString("kg_drop"),resultSet.getString("parent_name1"),resultSet.getString("parent_name2"),resultSet.getString("parent_mobile1"),resultSet.getString("parent_mobile2"),resultSet.getString("parent_email1"),resultSet.getString("parent_email2"), resultSet.getString("class_standard"),resultSet.getString("section")));
 				System.out.println("Sex"+resultSet.getString("gender"));
 			}
 	    }catch(Exception e){
@@ -516,7 +520,7 @@ public class StudentRegistrationDAO {
 			e1.printStackTrace();
 		}
 	    try{
-	    	String cmd="UPDATE tbl_student SET first_name='"+student.getFirst_name()+"',last_name='"+student.getLast_name()+"',gender='"+student.getGender()+"',transport_facility='"+student.getTransport_facility()+"',pickup_route_no='"+student.getPickup_route_no()+"', pickup_point_address='"+student.getPickup_point_address()+"',drop_route_no='"+student.getDrop_route_no()+"',drop_point_address='"+student.getDrop_point_address()+"',kg_drop='"+student.getKg_drop()+"',parent_name1='"+student.getParent_name1()+"',parent_name2='"+student.getParent_name2()+"',parent_mobile1='"+student.getParent_mobile1()+"',parent_mobile2='"+student.getParent_mobile2()+"',parent_email1='"+student.getParent_email1()+"',parent_email2='"+student.getParent_email2()+"',class_standard='"+student.getClass_standard()+"',section='"+student.getSection()+"' WHERE student_roll_no='"+student.getStudent_roll_no()+"'";
+	    	String cmd="UPDATE tbl_student SET first_name='"+student.getFirst_name()+"',last_name='"+student.getLast_name()+"',gender='"+student.getGender()+"',transport_facility='"+student.getTransport_facility()+"',pickup_route_no='"+student.getPickup_route_no()+"', pickup_point_address='"+student.getPickup_point_address()+"',pickup_stop_id='"+student.getPickup_stop_id()+"',drop_route_no='"+student.getDrop_route_no()+"',drop_point_address='"+student.getDrop_point_address()+"',drop_stop_id='"+student.getDrop_stop_id()+"',kg_drop='"+student.getKg_drop()+"',parent_name1='"+student.getParent_name1()+"',parent_name2='"+student.getParent_name2()+"',parent_mobile1='"+student.getParent_mobile1()+"',parent_mobile2='"+student.getParent_mobile2()+"',parent_email1='"+student.getParent_email1()+"',parent_email2='"+student.getParent_email2()+"',class_standard='"+student.getClass_standard()+"',section='"+student.getSection()+"' WHERE student_roll_no='"+student.getStudent_roll_no()+"'";
 	    	System.out.println(cmd);
 	    	statement.execute(cmd);
 	    	flag=1;
@@ -598,12 +602,12 @@ public class StudentRegistrationDAO {
 		List<StudentRegistration> studentRegistrations = new ArrayList<StudentRegistration>();
 	    try{
 	    		
-	    		    	String cmd="SELECT t1.org_name,t1.branch,t2.student_roll_no,t2.first_name,t2.last_name from tbl_organization as t1 join tbl_student as t2 on t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"' or  student_roll_no='"+student_roll_no+"' or first_name='"+first_name+"' or last_name='"+last_name+"';";
+	    		    	String cmd="SELECT t1.org_name,t1.branch,t2.student_roll_no,t2.first_name,t2.last_name,t2.pickup_route_no,t2.drop_route_no,t2.class_standard from tbl_organization as t1 join tbl_student as t2 on t1.org_id=t2.org_id where org_name='"+org_name+"' or branch='"+branch+"' or  student_roll_no='"+student_roll_no+"' or first_name='"+first_name+"' or last_name='"+last_name+"';";
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);			
 			while(resultSet.next()){
 				
-				studentRegistrations.add(new StudentRegistration(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("student_roll_no"),resultSet.getString("first_name"),resultSet.getString("last_name")));
+				studentRegistrations.add(new StudentRegistration(resultSet.getString("org_name"),resultSet.getString("branch"),resultSet.getString("student_roll_no"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("pickup_route_no"),resultSet.getString("drop_route_no"),resultSet.getString("class_standard")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());

@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
-<jsp:include page="fleet_header.jsp"></jsp:include>
+<jsp:include page="personal_tracking_header.jsp"></jsp:include>
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
 <script type="text/javascript" src="resources/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="resources/js/jquery-1.2.6.min.js"></script>
@@ -143,30 +143,23 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 				</script>
 				
 			
-<form name="grid" action="viewmap" method="POST" id="form1">
+<form name="grid" action="personal_tracking_history" method="POST" id="form1">
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding:20px;">
 							  <tr style="border:solid 1px black;">
 							    <td align="left" valign="middle" width="10%"></td>
-							    <td align="left" valign="middle" width="5%"></td>
-							    <td align="right" valign="middle" width="8%" style="color:white">Vehicle:&nbsp;&nbsp;</td>
-							    <td align="left" valign="middle" width="5%">
-							  
-							   <select name="device_id" class="input_cmbbx"  id="device">
-							   <option value="">--Select Device--</option>
-							   <c:forEach items="${busDeviceRegistrationForm1.busDeviceRegistrations}" var="busDeviceRegistrations">
-							   <option <c:if test="${device==busDeviceRegistrations.device_imei_number}"><c:out value="selected"/></c:if> value="${busDeviceRegistrations.device_imei_number}">${busDeviceRegistrations.bus_reg_id}</option>
+							    <td align="left" valign="middle" width="10%"></td>
+							    <td align="right" valign="middle" width="5%"></td>
+							    <td align="left" valign="middle" width="10%">
+							   <input type="hidden"  name="device_id" class="input_txtbx1" value="${device_imei_number}">
 							   
-							   </c:forEach>
-							    </select>
-							   </td>
-							   <td align="left" valign="middle" width="15%">&nbsp;&nbsp;<span id="deviceerror" style="color: red;"></span></td>
-							    
-							    <td align="right" valign="middle" width="8%" style="color:white">Date :&nbsp;&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date }" readonly="readonly"></td>
-							   <td align="left" valign="middle" width="12%">&nbsp;&nbsp;<span id="dateerror" style="color: red;"></span></td>
-							    <td align="center" valign="middle" width="20%"><input type="submit" class="btn" value="Show" name="find" onclick="return check()"></td>
-							 <td align="center" valign="middle" width="20%"><input type="reset" onclick="window.location.href='view_map_history'" class="btn" value="Reset"></td>
+							    </td>
+							    <td align="right" valign="middle" width="8%" style="color:white;">Date :&nbsp;&nbsp; </td>
+							    <td align="left" valign="middle" width="10%"><input type="text" id="datepicker" name="date" class="input_txtbx1" value="${date }" readonly="readonly">
+							    </td>
+							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;<span id="dateerror" style="color: red;"></span></td>
+							    <td align="center" valign="middle" width="30%"><input type="submit" class="btn" value="Show" name="find" onclick="return check()"></td>
+							 <td align="center" valign="middle" width="30%"><input type="reset" class="btn" onclick="window.location.href='personal_track_history'" value="Reset"></td>
 							  </tr>
 							</table>
 
@@ -181,19 +174,13 @@ $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
 
 
 <jsp:include page="footer.jsp"></jsp:include>
-
 <script>
 function check(){
 	
-	document.getElementById("deviceerror").innerHTML="";
+	
 	document.getElementById("dateerror").innerHTML="";
- 
-  
-	if(document.getElementById("device").value =='')
-	{
-	document.getElementById("deviceerror").innerHTML="Kindly Select Device";
-	return false;
-	}
+	
+	
 	if(document.getElementById("datepicker").value =='')
 	{
 	document.getElementById("dateerror").innerHTML="Kindly Select Date";

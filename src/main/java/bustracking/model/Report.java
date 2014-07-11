@@ -21,8 +21,22 @@ public class Report{
 	
 	private String driver_name;
 	
+	private String route_no;
+	
    
-    public String getFrom_date() {
+    public String getRoute_no() {
+		return route_no;
+	}
+
+
+
+	public void setRoute_no(String route_no) {
+		this.route_no = route_no;
+	}
+
+
+
+	public String getFrom_date() {
 		return from_date;
 	}
 
@@ -233,11 +247,14 @@ public class Report{
 	 * 
 	 */
 	
-	public Report(String org_id, String vechicle_reg_no, String over_speed_count) {
+	public Report(String org_id,String driver_name, String vechicle_reg_no, String route_no,String over_speed_count,String bus_tracking_timestamp) {
 		super();
 		this.org_id = org_id;
+		this.driver_name=driver_name;
 		this.vechicle_reg_no = vechicle_reg_no;
+		this.route_no=route_no;
 		this.over_speed_count = over_speed_count;
+		this.bus_tracking_timestamp=bus_tracking_timestamp;
 	}
 
 
@@ -245,14 +262,15 @@ public class Report{
 	 * Constructor For Export Over Speed Report
 	 * 
 	 */
-	public Report(String vechicle_reg_no,String driver_name,
-			String over_speed_count, String bus_tracking_timestamp) {
+	public Report(String route_no,String vechicle_reg_no,String driver_name,
+			String over_speed_count) {
 		super();
 		
+		this.route_no=route_no;
 		this.vechicle_reg_no = vechicle_reg_no;
 		this.driver_name= driver_name;
 		this.over_speed_count = over_speed_count;
-		this.bus_tracking_timestamp = bus_tracking_timestamp;
+		
 		
 	}
 	

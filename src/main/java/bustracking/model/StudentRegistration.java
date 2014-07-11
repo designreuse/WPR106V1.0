@@ -37,12 +37,15 @@ public class StudentRegistration{
 	@NotEmpty
 	private String pickup_point_address;
 	
+	private String pickup_stop_id;
+	
 	@NotEmpty
 	private String drop_route_no;
 	
 	@NotEmpty
 	private String drop_point_address;
 	
+	private String drop_stop_id;
 	
 	private String kg_drop;
 	
@@ -84,8 +87,8 @@ public class StudentRegistration{
 	public StudentRegistration(String org_id, String student_roll_no,
 			String first_name, String last_name, String gender,
 			String transport_facility, String pickup_route_no,
-			String pickup_point_address, String drop_route_no,
-			String drop_point_address, String kg_drop, String parent_name1,
+			String pickup_point_address,String pickup_stop_id, String drop_route_no,
+			String drop_point_address,String drop_stop_id, String kg_drop, String parent_name1,
 			String parent_name2, String parent_mobile1, String parent_mobile2,
 			String parent_email1, String parent_email2, String class_standard,
 			String section) {
@@ -98,8 +101,10 @@ public class StudentRegistration{
 		this.transport_facility = transport_facility;
 		this.pickup_route_no = pickup_route_no;
 		this.pickup_point_address = pickup_point_address;
+		this.pickup_stop_id=pickup_stop_id;
 		this.drop_route_no = drop_route_no;
 		this.drop_point_address = drop_point_address;
+		this.drop_stop_id=drop_stop_id;
 		this.kg_drop = kg_drop;
 		this.parent_name1 = parent_name1;
 		this.parent_name2 = parent_name2;
@@ -191,6 +196,22 @@ public class StudentRegistration{
 		this.drop_point_address = drop_point_address;
 	}
 
+	public String getPickup_stop_id() {
+		return pickup_stop_id;
+	}
+
+	public void setPickup_stop_id(String pickup_stop_id) {
+		this.pickup_stop_id = pickup_stop_id;
+	}
+
+	public String getDrop_stop_id() {
+		return drop_stop_id;
+	}
+
+	public void setDrop_stop_id(String drop_stop_id) {
+		this.drop_stop_id = drop_stop_id;
+	}
+
 	public String getKg_drop() {
 		return kg_drop;
 	}
@@ -280,13 +301,16 @@ public class StudentRegistration{
 	}
 
 	public StudentRegistration(String org_name, String branch,
-			String student_roll_no, String first_name, String last_name) {
+			String student_roll_no, String first_name, String last_name,String pickup_route_no,String drop_route_no,String class_standard) {
 		super();
 		this.org_name = org_name;
 		this.branch = branch;
 		this.student_roll_no = student_roll_no;
 		this.first_name = first_name;
 		this.last_name = last_name;
+		this.pickup_route_no=pickup_route_no;
+		this.drop_route_no=drop_route_no;
+		this.class_standard=class_standard;
 	}
 	
 	
@@ -326,8 +350,8 @@ public class StudentRegistration{
 	
 	public StudentRegistration(String org_id,String org_name,String branch,String student_roll_no, String first_name,
 			String last_name, String pickup_route_no,
-			String pickup_point_address, String drop_route_no,
-			String drop_point_address, String parent_name1,
+			String pickup_point_address,String pickup_stop_id, String drop_route_no,
+			String drop_point_address,String drop_stop_id, String parent_name1,
 			String parent_name2, String parent_mobile1, String parent_mobile2,
 			String parent_email1, String parent_email2,String class_standard,String section) {
 		super();
@@ -339,8 +363,10 @@ public class StudentRegistration{
 		this.last_name = last_name;
 		this.pickup_route_no = pickup_route_no;
 		this.pickup_point_address = pickup_point_address;
+		this.pickup_stop_id=pickup_stop_id;
 		this.drop_route_no = drop_route_no;
 		this.drop_point_address = drop_point_address;
+		this.drop_stop_id=drop_stop_id;
 		this.parent_name1 = parent_name1;
 		this.parent_name2 = parent_name2;
 		this.parent_mobile1 = parent_mobile1;
@@ -359,8 +385,8 @@ public class StudentRegistration{
 	public StudentRegistration(String org_name, String branch,
 			String student_roll_no, String first_name, String last_name,
 			String gender, String transport_facility, String pickup_route_no,
-			String pickup_point_address, String drop_route_no,
-			String drop_point_address, String kg_drop, String parent_name1,
+			String pickup_point_address,String pickup_stop_id, String drop_route_no,
+			String drop_point_address,String drop_stop_id, String kg_drop, String parent_name1,
 			String parent_name2, String parent_mobile1, String parent_mobile2,
 			String parent_email1, String parent_email2, String class_standard,
 			String section) {
@@ -374,8 +400,10 @@ public class StudentRegistration{
 		this.transport_facility = transport_facility;
 		this.pickup_route_no = pickup_route_no;
 		this.pickup_point_address = pickup_point_address;
+		this.pickup_stop_id=pickup_stop_id;
 		this.drop_route_no = drop_route_no;
 		this.drop_point_address = drop_point_address;
+		this.drop_stop_id=drop_stop_id;
 		this.kg_drop = kg_drop;
 		this.parent_name1 = parent_name1;
 		this.parent_name2 = parent_name2;

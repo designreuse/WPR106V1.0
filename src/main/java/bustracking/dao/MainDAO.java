@@ -385,6 +385,103 @@ public class MainDAO {
 			
 		}
 		
+		/*
+		 * Select Pickup Stop Addresses For SMS to Parent 
+		 * 
+		 */
+		public List<String> get_pickupstops(String trip,String route_no, String org_id){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<String> pickup_address=new ArrayList<String>();
+			try{
+				 
+				if(trip.equals("0")){
+				String cmd_sql="Select address from tbl_bus_route where route_no='"+route_no+"' AND org_id='"+org_id+"' and trip='0'";
+				resultSet=statement.executeQuery(cmd_sql);
+				
+					while(resultSet.next())
+					{
+					pickup_address.add(resultSet.getString("address"));
+					}
+				
+				}
+				else if(trip.equals("1")){
+					
+					String cmd_sql="Select address from tbl_bus_route where route_no='"+route_no+"' AND org_id='"+org_id+"' and trip='1'";
+					resultSet=statement.executeQuery(cmd_sql);
+					
+					while(resultSet.next())
+					{
+						pickup_address.add(resultSet.getString("address"));
+					}
+					
+				}
+				
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return pickup_address;
+			
+		}
+		
+		/*
+		 * Select Drop Stop Addresses For SMS to Parent 
+		 * 
+		 */
+		public List<String> get_dropstops(String route_no, String org_id){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<String> drop_address=new ArrayList<String>();
+			try{
+				
+				String cmd_sql="Select address from tbl_bus_route where route_no='"+route_no+"' AND org_id='"+org_id+"' and trip='1'";
+				resultSet=statement.executeQuery(cmd_sql);
+				
+				while(resultSet.next())
+				{
+					drop_address.add(resultSet.getString("address"));
+				}
+				
+				
+				
+				
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return drop_address;
+			
+		}
+		
 		// Get Vechicle no for admin tracking map
 		
 		public List<BusDeviceRegistration> get_vechicle_no(String org_name, String branch){

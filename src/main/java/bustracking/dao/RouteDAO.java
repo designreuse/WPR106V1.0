@@ -184,6 +184,45 @@ public class RouteDAO {
 		
 	}
 	
+	// Get Route No for Specific organization and Branch for Route Registration
+	
+	public ArrayList<String> getStud_route_for_route(String org_name, String branch){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		ArrayList<String> studrouteRegistrations = new ArrayList<String>();
+	    try{
+	    	//String cmd="select t1.route_no from tbl_vechicle as t1  where t1.org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')";
+	    	
+	    	String cmd="select route_no from tbl_vechicle where org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"')";
+	    	//System.out.println(org_id);
+			resultSet = statement.executeQuery(cmd);
+			System.out.println(cmd);
+			while(resultSet.next())
+			{
+				studrouteRegistrations.add(resultSet.getString("route_no"));//,resultSet.getString("class"),resultSet.getString("section"));
+			}
+	    }catch(Exception e){
+	        System.out.println(e.toString());
+	        	releaseResultSet(resultSet);
+	        	releaseStatement(statement);
+	        	releaseConnection(con);
+	        }finally{
+	        	releaseResultSet(resultSet);
+	        	releaseStatement(statement);
+	        	releaseConnection(con);	    	
+	        }
+	        return studrouteRegistrations;
+	    }
+	
+	
+	
 	// View the Route Information Admin Side
 	
 	public List<Route_view> getRoutes(){

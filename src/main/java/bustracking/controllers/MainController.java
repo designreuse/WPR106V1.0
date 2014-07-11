@@ -136,7 +136,7 @@ public class MainController {
 			return "fleetclient_homepage";
 				
 		}
-		else{
+		else if(role.equals("ROLE_ADMIN")){
 			
 			session.removeAttribute("vechcicle_reg_no");
 			
@@ -150,7 +150,25 @@ public class MainController {
 			
 			return "client_home";
 		}
- 
+		else {
+			
+			BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
+			busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
+			model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
+			
+			BusDeviceRegistrationForm device_id=new BusDeviceRegistrationForm();
+			device_id.setBusDeviceRegistrations(busDeviceRegistrationDAO.getdevice_imei_number_for_personal(mainDAO.getOrg_id(principal.getName())));
+			model.addAttribute("device_id",device_id);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		    TimeZone.setDefault(TimeZone.getTimeZone("IST"));
+		    Date date=new Date();
+		    
+		    model.addAttribute("click_time",sdf.format(date));
+			
+			
+			return "personal_live_track_map";
+		}
 		
  
 	}
@@ -432,6 +450,48 @@ public class MainController {
 	
 	}
 	
+	/*
+	 * Pickup and Drop Stops Addresses
+	 * 
+	 */
+	
+	@RequestMapping(value="/stops_ajax",method=RequestMethod.POST)
+	public @ResponseBody String stop(@RequestParam("trip") String trip,@RequestParam("route_no") String route_no,ModelMap model, Principal principal) {
+		String returnText="";
+		List <String> stop=new ArrayList<String>();
+		stop=mainDAO.get_pickupstops(trip,route_no,mainDAO.getOrg_id(principal.getName()));
+		String a=mainDAO.getOrg_id(principal.getName());
+		System.out.println("orgid"+a);
+		returnText=returnText+"<script id='script_bid'> $(document).ready(function() {$('#from_stops').select2(); });</script><select style='width:220px;' name='from_stop' id='from_stops' >";
+		returnText+="<option value='' selected>--Select Stops--</option>";
+		for(String stops:stop)
+		{
+			 
+			returnText+="<option value='"+stops+"'>"+stops+"</option>";
+		}			
+		
+		returnText=returnText+"</select>";
+		
+		System.out.println(returnText);
+		
+		returnText=returnText+"<split>";
+		   
+		   returnText=returnText+"<script id='script_bid'>$(document).ready(function() { $('#to_stops').select2(); });</script><select name='to_stop' id='to_stops' style='width:220px'>";
+	 		returnText+="<option value='' selected>--Select Stops--</option>";
+			
+			for(String stops:stop)
+			{
+				returnText+="<option value='"+stops+"'>"+stops+"</option>";
+				}			
+			  
+		   returnText=returnText+"</select>";
+		  
+		   System.out.println(returnText);
+		
+		return returnText;
+		
+	}
+	
 	@RequestMapping(value="/smsparent", method = RequestMethod.POST)
 	public String sms_route(HttpServletRequest req,HttpServletResponse response,HttpSession session,@ModelAttribute("Smsparent") @Valid Smsparent parent, String org_id, BindingResult result,ModelMap model, Principal principal ) {
 	 
@@ -701,7 +761,8 @@ public class MainController {
 	    Date date=new Date();
 	    
 	    model.addAttribute("click_time",sdf.format(date));
-		return "view_map";
+		
+	    return "view_map";
  
 	}
 	
@@ -796,7 +857,9 @@ public class MainController {
 	public String view_map_history(HttpSession session,ModelMap model,Principal principal) {
 		
 	
-	
+		session.removeAttribute("device");
+		model.remove("device");
+		
 		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
 		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
 		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
@@ -818,6 +881,76 @@ public class MainController {
 		return "view_map_history";
  
 	}
+	
+	/*
+	 * Personal Tracker History Map
+	 * 
+	 */
+	
+	@RequestMapping(value="/personal_track_history", method = RequestMethod.GET)
+	public String personal_track_map_history(HttpSession session,ModelMap model,Principal principal) {
+		
+		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
+		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
+		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
+		
+		List <String> orgname=new ArrayList<String>();
+		orgname=busDAO.getorgname();
+		model.addAttribute("orgname",orgname);
+		
+		BusDeviceRegistrationForm device_imei_number=new BusDeviceRegistrationForm();
+		device_imei_number.setBusDeviceRegistrations(busDeviceRegistrationDAO.getdevice_imei_number_for_personal(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("device_imei_number",device_imei_number);
+		
+		LatLongForm latLongForm=new LatLongForm();
+		//latLongForm.setLatLongs(trackingInfoDAO.getTrackingInfo("359710042476300"),'');
+		
+		model.addAttribute("latLongForm",latLongForm);
+		model.addAttribute("first",1);
+		
+		return "personal_track_history_map";
+ 
+	}
+	
+	/*
+	 * 
+	 * Personal Tracker History Map After Selecting Date
+	 * 
+	 */
+	
+	@RequestMapping(value="/personal_tracking_history", method = RequestMethod.POST)
+	public String personal_history_map(HttpServletRequest request,HttpSession session,ModelMap model,Principal principal) {
+		
+	
+	
+		BusDeviceRegistrationForm busDeviceRegistrationForm=new BusDeviceRegistrationForm();
+		busDeviceRegistrationForm.setBusDeviceRegistrations(busDeviceRegistrationDAO.getBusdeviceregistration());
+		model.addAttribute("busDeviceRegistrationForm",busDeviceRegistrationForm);		
+		
+		BusDeviceRegistrationForm device_imei_number=new BusDeviceRegistrationForm();
+		device_imei_number.setBusDeviceRegistrations(busDeviceRegistrationDAO.getdevice_imei_number_for_personal(mainDAO.getOrg_id(principal.getName())));
+		model.addAttribute("device_imei_number",device_imei_number);
+		
+		
+		
+		LatLongForm latLongForm=new LatLongForm();
+		System.out.println("Selected Date:"+request.getParameter("date").toString());
+		latLongForm.setLatLongs(trackingInfoDAO.getTrackingInfo(request.getParameter("device_id"),request.getParameter("date")));
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    TimeZone.setDefault(TimeZone.getTimeZone("IST"));
+	    Date date=new Date();
+	    
+	    model.addAttribute("click_time",sdf.format(date));
+		model.addAttribute("latLongForm",latLongForm);
+		model.addAttribute("first",2);
+		model.addAttribute("device",request.getParameter("device_id"));
+		model.addAttribute("date",request.getParameter("date"));
+		
+		return "personal_track_history_map";
+ 
+	}
+	
 	
 	// Admin Tracking History
 	

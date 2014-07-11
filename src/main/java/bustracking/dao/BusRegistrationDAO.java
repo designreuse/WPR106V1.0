@@ -302,7 +302,7 @@ public class BusRegistrationDAO {
 		}
 		List<String> busregistration = new ArrayList<String>();
 		try{
-			resultSet = statement.executeQuery("SELECT route_no FROM tbl_vechicle WHERE org_id=(SELECT org_id FROM tbl_organization WHERE org_name='"+org_name+"' and branch='"+branch+"')");
+			resultSet = statement.executeQuery("select t1.route_no from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no  where  t1.org_id=(select org_id from tbl_organization where org_name='"+org_name+"' and branch='"+branch+"') group by t2.route_no");
 			while(resultSet.next()){
 				busregistration.add(resultSet.getString("route_no"));
 				
@@ -421,6 +421,40 @@ public class BusRegistrationDAO {
 		
 	}
 	
+	// Get Pickup Stop Id of Student 
+	
+	public List<String> getPickupStop_id(String pickup_route_no,String pickup_point_address){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> pickup_stop_id=new ArrayList<String>();
+		try{
+			resultSet = statement.executeQuery("select stop_id from tbl_bus_route where route_no='"+pickup_route_no+"'and address='"+pickup_point_address+"' and trip='0'");
+			while(resultSet.next()){
+		     pickup_stop_id.add(resultSet.getString("stop_id"));
+			}
+		
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return pickup_stop_id;
+		
+	}
+	
+	
 	
 	public List<String> getDropStop_location(String drop_route_no){
 		Connection con = null;
@@ -453,6 +487,41 @@ public class BusRegistrationDAO {
 		
 	}
 	
+	// Get Drop Stop Id of Student 
+	
+		public List<String> getDropStop_id(String drop_route_no,String drop_point_address){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<String> drop_stop_id=new ArrayList<String>();
+			try{
+				resultSet = statement.executeQuery("select stop_id from tbl_bus_route where route_no='"+drop_route_no+"'and address='"+drop_point_address+"' and trip='1'");
+				while(resultSet.next()){
+			     drop_stop_id.add(resultSet.getString("stop_id"));
+				}
+			
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return drop_stop_id;
+			
+		}
+		
+	
+	
 	// Get Route_no For Particular User In Client Side Edit Page
 	
 	
@@ -469,7 +538,7 @@ public List<String> getStudent_route_no(String org_id){
 		}
 		List<String> route_no = new ArrayList<String>();
 		try{
-			resultSet = statement.executeQuery("SELECT route_no FROM tbl_vechicle WHERE org_id='"+org_id+"'");
+			resultSet = statement.executeQuery("select t1.route_no from tbl_vechicle as t1 join tbl_bus_route as t2 on t1.route_no=t2.route_no  where  t1.org_id='"+org_id+"' group by t2.route_no");
 			while(resultSet.next()){
 				route_no.add(resultSet.getString("route_no"));
 				

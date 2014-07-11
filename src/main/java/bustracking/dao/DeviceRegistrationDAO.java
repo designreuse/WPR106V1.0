@@ -1380,6 +1380,14 @@ public int updateDevice(DeviceRegistration device)
     	System.out.println(cmd);
     	statement.execute(cmd);
     	flag=1;
+    	String is_assigned=device.getIs_assigned();
+    	
+    	if(is_assigned.equals("0"))
+    	{
+    		String update_imei="UPDATE tbl_vechicle SET device_imei_number='' where device_imei_number='"+device.getDevice_imei_number()+"'";
+    		System.out.println(update_imei);
+        	statement.execute(update_imei);
+    	}
     	
     	String cmd1="UPDATE tbl_device_config_changes_history SET manufacturer='"+device.getManufacturer()+"',model_no='"+device.getModel_no()+"',carrier='"+device.getCarrier()+"',sim_card_number='"+device.getSim_card_number()+"',device_procured_date='"+device.getDevice_procured_date()+"',device_invoice_number='"+device.getDevice_invoice_number()+"',device_tested='"+device.getDevice_tested()+"',sim_procured_date='"+device.getSim_procured_date()+"',sim_invoice_number='"+device.getSim_invoice_number()+"',sim_card_tested='"+device.getSim_card_tested()+"',device_sim_paired='"+device.getDevice_sim_paired()+"',is_assigned='"+device.getIs_assigned()+"',password='"+device.getPassword()+"',device_status='"+device.getDevice_status()+"',comments='"+device.getComments()+"',apn='"+device.getApn()+"',create_user_id='"+device.getCreate_user_id()+"',create_user_system_name='"+computername+"',modified_user_id='"+device.getCreate_user_id()+"',modified_timestamp='"+getCurrentTimeStamp()+"',modified_user_system_name='"+computername+"' WHERE create_timestamp='"+device.getCreate_timestamp()+"' and device_imei_number='"+device.getDevice_imei_number()+"'";
     	System.out.println(cmd1);

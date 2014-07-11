@@ -162,9 +162,9 @@ jQuery(function () {
 							    	</c:if>
         					<tr>
         					<td valign="top" align="right" style="padding:20px;" colspan="6">
-        					<form action="export_clientsmstrack" method="post">
-        					<input type="submit" class="btn" value="Export to excel"/>
-        				</form>
+        					
+        					<input type="submit" class="btn" value="Export to excel" onclick="window.location.href='export_clientsmstrack?student_roll_no=${student_roll_no}&fromdate=${from_date}&todate=${to_date}'"/>
+        				
         					</td></tr>
         					
         					  </table>

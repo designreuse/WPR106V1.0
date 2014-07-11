@@ -58,7 +58,7 @@
   
 
     
-      <script type='text/javascript' src="https://rawgithub.com/fgelinas/timepicker/master/jquery.ui.timepicker.js"></script>
+      <script type='text/javascript' src="resources/js/jquery.ui.timepicker1.js"></script>
     
 	
 	
@@ -274,7 +274,9 @@ p {
 							
 							<td valign="bottom" align="left" class="input_txt"></td>
 								<td valign="bottom" align="left" class="input_txt">
-								<span id="added_stops"></span>
+								<span id="added_stops">
+<%-- 								<c:choose><c:when test='${route.getTrip()=="0"}'><c:out value='Pickup'></c:out></c:when><c:when test='${route.getTrip()=="1"}'><c:out value='Drop'></c:out></c:when><c:when test='${route.getTrip()=="2"}'><c:out value='Both'></c:out></c:when></c:choose>
+ --%>								</span>
 								</td>
 							</tr>
 							

@@ -139,6 +139,16 @@ background-size: auto 100%;/* for non-css3 browsers */
 background: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#3366cc)); for webkit browsers
 background: -moz-linear-gradient(top, #EEEEEE, #6600cc); for firefox 3.6+ */
 }
+
+#personalheader {
+height:100px;
+background: url(../images/road1.jpg);
+background-size: auto 100%;/* for non-css3 browsers */
+/* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#3366cc'); for IE
+background: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#3366cc)); for webkit browsers
+background: -moz-linear-gradient(top, #EEEEEE, #6600cc); for firefox 3.6+ */
+}
+
 /* New CSS */
 #right_content {
 	float:left;
@@ -618,6 +628,13 @@ ul.pagination li.page a:hover {
 	background:#f8fbfd;
 	border:1px solid #9fb7cd;
 }
+.input_cmbbx1 {
+	width:300px;
+	padding:3px;
+	background:#f8fbfd;
+	border:1px solid #9fb7cd;
+}
+
 .org_input_cmbbx {
 	width:200px;
 	height:22px;

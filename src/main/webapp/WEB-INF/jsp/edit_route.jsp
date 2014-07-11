@@ -145,7 +145,7 @@ function doAjaxPost() {
 		{
 			var stoplist=document.getElementById("stop_list").innerHTML;
 		var count = stoplist.match(/Remove/g);
-		if(count.length>2) {
+		if(count.length<2) {
         alert("Should have atleast one stop");
 		return false;
 		} 

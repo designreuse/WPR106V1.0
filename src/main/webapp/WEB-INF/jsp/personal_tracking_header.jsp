@@ -12,7 +12,7 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>:: Fleet Management ::</title>
+<title>:: Personal Track ::</title>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/ddlevelsmenu.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/clock.js" />"></script>
@@ -121,7 +121,7 @@ function toggleBounce() {
 			<div class="school_div"><img style="width: 240px;height:100px;" src="resources/images/truck.png"/></div>
 			<div class="logo" style="background-color:none;height:50px;width:auto;border:solid 1px black;margin-right:250px;margin-top:10px;border-radius:5px;box-shadow:inset 0px 0px 7px #eee;padding:10px; ">
 				<!-- <img src="resources/images/logo123.png" width="250px" height="70px"/> -->
-				<span class="Three-DeePjtHeader">Fleet Management</span>
+				<span class="Three-DeePjtHeader">Personal Tracking</span>
 			</div>
 			
 			<div class="top_link">
@@ -157,15 +157,15 @@ function toggleBounce() {
 				            	</a>
 				            </li>
 				                <li style="float:left;">
-				            	<a href="view_map_history" class="select" rel="ddsubmenu7">
+				            	<a href="personal_track_history" class="select" rel="ddsubmenu7">
 				            		<span><img src="<c:url value="/resources/images/icon_06.png" />" alt="" style="padding:5px 5px 0 0;" />Tracking</span>
 				            	</a>
 				            </li>
-				            <li style="float:left;">
+				            <%-- <li style="float:left;">
 				            	<a href="fleetreports" class="select" rel="ddsubmenu7">
 				            		<span><img src="<c:url value="/resources/images/icon_06.png" />" alt="" style="padding:5px 5px 0 0;" />Reports</span>
 				            	</a>
-				            </li>
+				            </li> --%>
 				            </ul>
 					<div class="menu_r"></div>
 					<div class="clear"></div>

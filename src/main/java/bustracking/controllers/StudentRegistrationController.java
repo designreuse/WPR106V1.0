@@ -218,7 +218,7 @@ public class StudentRegistrationController {
 		List <String> pickup_location=new ArrayList<String>();
 		pickup_location=busDAO.getPickupStop_location(pickup_route_no);
 		
-		returnText=returnText+"<script id='script_section_id'>$(document).ready(function() { $('#pickup_location_id').select2(); });</script><select name='pickup_point_address' id='pickup_location_id' style='width:220px'>";
+		returnText=returnText+"<script id='script_section_id'>$(document).ready(function() { $('#pickup_location_id').select2(); });</script><select name='pickup_point_address' id='pickup_location_id'  onchange='doAjaxPost_pickup_stop_id()' style='width:220px'>";
 		returnText+="<option value='' selected>--Select PickUp Location--</option>";
 		for(String pickup_locationname:pickup_location)
 		{
@@ -230,6 +230,26 @@ public class StudentRegistrationController {
 	return returnText;
 	}
 	
+	
+	// get pickup Stop Id of student
+	
+		@RequestMapping(value="/pickup_stop_id_ajax",method=RequestMethod.POST)
+		public @ResponseBody String pickup_stop_id(@RequestParam("pickup_route_no") String pickup_route_no,@RequestParam("pickup_point_address") String pickup_point_address,ModelMap model) {
+		
+			String returnText="";
+			List <String> pickup_stop_id=new ArrayList<String>();
+			pickup_stop_id=busDAO.getPickupStop_id(pickup_route_no, pickup_point_address);
+			
+			for(String pickups_stop_id:pickup_stop_id)
+			{
+			returnText=returnText+"<input type='hidden' name='pickup_stop_id' id='pickup_stops_id' value='"+pickups_stop_id+"'>";
+			}		
+				
+		   System.out.println(returnText);
+		return returnText;
+		}
+	
+	
 	// get drop location of student
 	
 	@RequestMapping(value="/drop_route_no_ajax",method=RequestMethod.POST)
@@ -239,7 +259,7 @@ public class StudentRegistrationController {
 		List <String> drop_location=new ArrayList<String>();
 		drop_location=busDAO.getDropStop_location(drop_route_no);
 		
-		returnText=returnText+"<script id='script_section_id'>$(document).ready(function() { $('#drop_location_id').select2(); });</script><select name='drop_point_address' id='drop_location_id' style='width:220px'>";
+		returnText=returnText+"<script id='script_section_id'>$(document).ready(function() { $('#drop_location_id').select2(); });</script><select name='drop_point_address' id='drop_location_id' style='width:220px' onchange='doAjaxPost_drop_stop_id()'>";
 		returnText+="<option value='' selected>--Select Drop Location--</option>";
 		for(String drop_locationname:drop_location)
 		{
@@ -251,6 +271,23 @@ public class StudentRegistrationController {
 	return returnText;
 	}
 	
+	// get drop Stop Id of student
+	
+			@RequestMapping(value="/drop_stop_id_ajax",method=RequestMethod.POST)
+			public @ResponseBody String drop_stop_id(@RequestParam("drop_route_no") String drop_route_no,@RequestParam("drop_point_address") String drop_point_address,ModelMap model) {
+			
+				String returnText="";
+				List <String> drop_stop_id=new ArrayList<String>();
+				drop_stop_id=busDAO.getDropStop_id(drop_route_no, drop_point_address);
+				
+				for(String drops_stop_id:drop_stop_id)
+				{
+				returnText=returnText+"<input type='hidden' name='drop_stop_id' id='drop_stops_id' value='"+drops_stop_id+"'>";
+				}			
+					
+			   System.out.println(returnText);
+			return returnText;
+			}
 	
 	@RequestMapping(value="/studentregistration", method=RequestMethod.POST)
 	public String addstudent(HttpServletRequest request,HttpSession session,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("pickup_route_no") String pickup_route_no,@RequestParam("drop_route_no") String drop_route_no,@RequestParam("class_standard") String class_standard,@RequestParam("pickup_point_address") String pickup_point_address,@RequestParam("drop_point_address") String drop_point_address,@RequestParam("section") String section,@ModelAttribute("student") @Valid StudentRegistration student,BindingResult result,ModelMap model,Principal principal)
@@ -356,7 +393,7 @@ public class StudentRegistrationController {
 	// Edit Controller for Admin Side 
 	
 	@RequestMapping(value="/edit_student", method=RequestMethod.GET)
-	public String editStudent(HttpServletRequest request,@RequestParam("student_roll_no")String student_roll_no,@RequestParam("org_name")String org_name,@RequestParam("branch")String branch,ModelMap model,StudentRegistration studentRegistration)
+	public String editStudent(HttpServletRequest request,@RequestParam("student_roll_no")String student_roll_no,@RequestParam("org_name")String org_name,@RequestParam("branch")String branch,@RequestParam("pickup_route_no")String pickup_route_no,@RequestParam("drop_route_no")String drop_route_no,@RequestParam("class_standard")String class_standard,ModelMap model,StudentRegistration studentRegistration)
 	{
 		OrgRegistrationForm orgRegistrationForm=new OrgRegistrationForm();
 		orgRegistrationForm.setOrgregistration(orgRegistrationDAO.getOrgregistration());
@@ -366,6 +403,8 @@ public class StudentRegistrationController {
 		studentRegistrationForm.setStudentregistration(studentDAO.getStudent_for_edit(student_roll_no));
 		model.addAttribute("studentRegistrationForm",studentRegistrationForm);
 		
+		
+		
 		List <String> class_std=new ArrayList<String>();
 		class_std=classSectionDAO.getclass_for_edit(org_name, branch);
 		model.addAttribute("class_std",class_std);
@@ -374,13 +413,25 @@ public class StudentRegistrationController {
 		route_no=busDAO.getBusRegistrations_route_no(org_name, branch);
 		model.addAttribute("route_no",route_no);
 		
+		List <String> pickup_location=new ArrayList<String>();
+		pickup_location=busDAO.getPickupStop_location(pickup_route_no);
+		model.addAttribute("pickup_location",pickup_location);
+		
+		List <String> drop_location=new ArrayList<String>();
+		drop_location=busDAO.getDropStop_location(drop_route_no);
+		model.addAttribute("drop_location",drop_location);
+		
+		List<String> studsection=new ArrayList<String>();
+		studsection=studentDAO.getStud_section(org_name, branch, class_standard);
+		model.addAttribute("studsection",studsection);
+		
 		return "edit_student";
 	}
 	
 	//Update operation for Student Admin side
 	
 	@RequestMapping(value="/update_student", method=RequestMethod.POST)
-	public String updatestudent(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("student_roll_no") String student_roll_no,@ModelAttribute("studentRegistration") @Valid StudentRegistration studentRegistration,
+	public String updatestudent(HttpServletRequest request,@RequestParam("org_name") String org_name,@RequestParam("branch") String branch,@RequestParam("student_roll_no") String student_roll_no,@RequestParam("pickup_route_no")String pickup_route_no,@RequestParam("drop_route_no")String drop_route_no,@ModelAttribute("studentRegistration") @Valid StudentRegistration studentRegistration,
 			BindingResult result,ModelMap model,Principal principal)
 	{
 	
@@ -402,6 +453,14 @@ public class StudentRegistrationController {
 			List <String> route_no=new ArrayList<String>();
 			route_no=busDAO.getBusRegistrations_route_no(org_name, branch);
 			model.addAttribute("route_no",route_no);
+			
+			List <String> pickup_location=new ArrayList<String>();
+			pickup_location=busDAO.getPickupStop_location(pickup_route_no);
+			model.addAttribute("pickup_location",pickup_location);
+			
+			List <String> drop_location=new ArrayList<String>();
+			drop_location=busDAO.getDropStop_location(drop_route_no);
+			model.addAttribute("drop_location",drop_location);
 			
 			return "edit_student";
 		
@@ -592,6 +651,14 @@ public class StudentRegistrationController {
 		route_no=busDAO.getStudent_route_no(mainDAO.getOrg_id(principal.getName()));
 		model.addAttribute("route_no",route_no);
 		
+		List <String> pickup_location=new ArrayList<String>();
+		pickup_location=busDAO.getPickupStop_location(pickup_route_no);
+		model.addAttribute("pickup_location",pickup_location);
+		
+		List <String> drop_location=new ArrayList<String>();
+		drop_location=busDAO.getDropStop_location(drop_route_no);
+		model.addAttribute("drop_location",drop_location);
+		
 		model.addAttribute("pickup_route_location",busDAO.getPickupStop_location(pickup_route_no));
 		model.addAttribute("drop_route_location",busDAO.getDropStop_location(drop_route_no));
 		
@@ -603,7 +670,7 @@ public class StudentRegistrationController {
 	//Client Side Update
 	
 	@RequestMapping(value="/client_update_student", method=RequestMethod.POST)
-	public String clientupdatestudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,@ModelAttribute("studentRegistration") @Valid StudentRegistration studentRegistration,
+	public String clientupdatestudent(HttpServletRequest request,@RequestParam("student_roll_no") String student_roll_no,@RequestParam("pickup_route_no") String pickup_route_no,@RequestParam("drop_route_no") String drop_route_no,@ModelAttribute("studentRegistration") @Valid StudentRegistration studentRegistration,
 			BindingResult result,ModelMap model,Principal principal)
 	{
 		if(result.hasErrors())
@@ -616,6 +683,14 @@ public class StudentRegistrationController {
 	 		List <String> route_no=new ArrayList<String>();
 			route_no=busDAO.getStudent_route_no(mainDAO.getOrg_id(principal.getName()));
 			model.addAttribute("route_no",route_no);
+			
+			List <String> pickup_location=new ArrayList<String>();
+			pickup_location=busDAO.getPickupStop_location(pickup_route_no);
+			model.addAttribute("pickup_location",pickup_location);
+			
+			List <String> drop_location=new ArrayList<String>();
+			drop_location=busDAO.getDropStop_location(drop_route_no);
+			model.addAttribute("drop_location",drop_location);
 			
 			return "client_edit_student";
 			
