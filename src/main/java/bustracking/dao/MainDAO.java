@@ -308,7 +308,8 @@ public class MainDAO {
 			}
 
 			try {
-
+				
+				if(parent.getTrip().equals("0")){
 				String mobile_number = "select * from tbl_student where pickup_route_no='"+ parent.getRoute() + "'";
 				resultSet = statement.executeQuery(mobile_number);
 				while (resultSet.next()) {
@@ -325,11 +326,33 @@ public class MainDAO {
 					
 					
 					MessageSender.sendMessage(resultSet.getString("parent_mobile1"),parent.getMessage());
-					
-
 				}
 				resultSet.close();
-			} catch (Exception e) {
+			}
+			
+			else if(parent.getTrip().equals("1")){
+				
+					String mobile_number = "select * from tbl_student where drop_route_no='"+ parent.getRoute() + "'";
+					resultSet = statement.executeQuery(mobile_number);
+					while (resultSet.next()) {
+						//logger.info("Message Sending....");
+						//logger.info("MESSAGE SEND TO: "+ resultSet.getString("parent_mobile1"));
+						
+						PreparedStatement preparedStatement1=con.prepareStatement("insert into sms_track(sim_card_number,message,status,updated_on,res) values(?,?,?,?,?)");
+						preparedStatement1.setString(1,resultSet.getString("parent_mobile1"));
+						preparedStatement1.setString(2,parent.getMessage());
+						preparedStatement1.setString(3,"NULL");
+						preparedStatement1.setString(4,"NULL");
+						preparedStatement1.setString(5,"NULL");
+						preparedStatement1.execute();
+						
+						
+						MessageSender.sendMessage(resultSet.getString("parent_mobile1"),parent.getMessage());
+					}
+					resultSet.close();
+			}
+			}	
+			catch (Exception e) {
 				System.out.println(e.toString
 
 				());

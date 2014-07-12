@@ -494,12 +494,8 @@ public class MainController {
 	
 	@RequestMapping(value="/smsparent", method = RequestMethod.POST)
 	public String sms_route(HttpServletRequest req,HttpServletResponse response,HttpSession session,@ModelAttribute("Smsparent") @Valid Smsparent parent, String org_id, BindingResult result,ModelMap model, Principal principal ) {
-	 
-		
-		
-		
-		
-	   mainDAO.sms_parent(parent);
+	
+		mainDAO.sms_parent(parent);
 	
 		
 		return "client_smstoparent";
